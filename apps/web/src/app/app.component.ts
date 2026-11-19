@@ -36,6 +36,7 @@ import { ExplorationDashboardComponent } from './features/exploration/exploratio
 import { QuestionsPageComponent } from './features/questions/questions-page.component';
 import { DocumentsPageComponent } from './features/documents/documents-page.component';
 import { CounselorSettingsComponent, CounselorProfileData } from './features/settings/counselor-settings.component';
+import { CounselorFactReviewComponent } from './features/counselor/counselor-fact-review.component';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -270,6 +271,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     ExplorationDashboardComponent,
     QuestionsPageComponent,
     DocumentsPageComponent,
+    CounselorFactReviewComponent,
     SettingsComponent,
     CounselorSettingsComponent,
     LoginComponent
@@ -2381,225 +2383,188 @@ export const TONE_OPTIONS: ToneOption[] = [
               <!-- ÉTAPE 01 : IMPORTER LE RAPPORT (PDF)       -->
               <!-- ========================================== -->
               <div *ngIf="counselorWorkflowStep === 1" class="space-y-6">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <!-- Zone d'importation glisser-déposer + bouton ordinateur / smartphone -->
-                  <div
-                    (dragover)="onDragOver($event)"
-                    (dragleave)="onDragLeave($event)"
-                    (drop)="onFileDropped($event)"
-                    [class.border-[#7C3AED]]="isDraggingFile"
-                    [class.bg-[#FAF8FF]]="isDraggingFile"
-                    class="lg:col-span-7 rounded-[28px] bg-white border-2 border-dashed border-[#C4B5FD] hover:border-[#7C3AED] transition-all p-6 sm:p-8 text-center space-y-5 shadow-sm flex flex-col items-center justify-center relative overflow-hidden"
-                  >
-                    <div class="h-20 w-20 rounded-3xl bg-gradient-to-br from-[#EDE9FE] to-[#DDD6FE] text-[#7C3AED] ring-8 ring-purple-50 flex items-center justify-center shadow-sm">
-                      <svg class="h-10 w-10 text-[#6D28D9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                      </svg>
+                <!-- Nouveau layout fidèle à la Maquette Importer un nouveau rapport -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                  <!-- COLONNE GAUCHE (8 Cols) : Sélection, Dépôt & Vérification -->
+                  <div class="lg:col-span-8 rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
+                    <!-- 1. Sélectionner le jeune -->
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black">1</span>
+                        <h3 class="text-sm font-black text-[#0F1035]">Sélectionner le jeune</h3>
+                      </div>
+                      <p class="text-xs text-gray-500 pl-8">Choisis le dossier du jeune concerné par ce rapport.</p>
+                      <div class="pl-8 pt-1">
+                        <div class="relative">
+                          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">👤</span>
+                          <select class="w-full rounded-2xl bg-gray-50 border border-gray-300 pl-11 pr-8 py-3 text-xs sm:text-sm font-bold text-gray-800 focus:outline-none focus:border-[#7C3AED]">
+                            <option value="emma">Emma D. — Dossier Rdv 2187 (Centre des Possibles)</option>
+                            <option value="lucas">Lucas M. — Dossier Rdv 2188 (Mission Locale)</option>
+                            <option value="sarah">Sarah B. — Dossier Rdv 2189 (Centre des Possibles)</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
 
-                    <div class="space-y-1.5 max-w-md">
-                      <h2 class="text-xl sm:text-2xl font-black text-[#0F1035] tracking-tight">
-                        Glissez-déposez le rapport PDF du Centre des Possibles
-                      </h2>
-                      <p class="text-xs sm:text-sm text-[#42466B]">
-                        Le psychologue importe le rapport d'orientation officiel pour extraire l'intégralité des données.
-                      </p>
+                    <!-- 2. Déposer le rapport -->
+                    <div class="space-y-2 pt-2 border-t border-gray-100">
+                      <div class="flex items-center gap-2">
+                        <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black">2</span>
+                        <h3 class="text-sm font-black text-[#0F1035]">Déposer le rapport</h3>
+                      </div>
+                      <p class="text-xs text-gray-500 pl-8">Ajoute le rapport d'orientation (PDF) fourni par la structure.</p>
+                      
+                      <div class="pl-8 pt-1">
+                        <div
+                          (dragover)="onDragOver($event)"
+                          (dragleave)="onDragLeave($event)"
+                          (drop)="onFileDropped($event)"
+                          (click)="fileInput.click()"
+                          [class.border-purple-600]="isDraggingFile"
+                          [class.bg-purple-50]="isDraggingFile"
+                          class="rounded-2xl border-2 border-dashed border-[#C4B5FD] hover:border-[#7C3AED] transition-all p-8 text-center space-y-3 bg-[#FAF8FF] cursor-pointer flex flex-col items-center justify-center"
+                        >
+                          <div class="h-14 w-14 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-2xl">
+                            ☁️
+                          </div>
+                          <div>
+                            <p class="text-sm font-extrabold text-[#0F1035]">
+                              Déposer le PDF ici ou <span class="text-[#7C3AED] underline">parcourir les fichiers</span>
+                            </p>
+                            <p class="text-xs text-gray-400 mt-0.5">Glisse ton fichier dans cette zone ou clique pour le sélectionner.</p>
+                          </div>
+                          <span class="rounded-full bg-white border border-gray-200 px-3 py-1 text-[11px] font-bold text-gray-600 flex items-center gap-1 shadow-2xs">
+                            <span>📄</span>
+                            <span>PDF uniquement</span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
 
-                    <div class="flex items-center justify-center pt-1">
+                    <!-- 3. Vérification du fichier -->
+                    <div class="space-y-2 pt-2 border-t border-gray-100">
+                      <div class="flex items-center gap-2">
+                        <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black">3</span>
+                        <h3 class="text-sm font-black text-[#0F1035]">Vérification du fichier</h3>
+                      </div>
+                      <p class="text-xs text-gray-500 pl-8">Contrôle les informations du document avant de lancer l'extraction.</p>
+                      
+                      <div class="pl-8 pt-1 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
+                          <span class="text-base text-gray-500">📄</span>
+                          <div>
+                            <span class="text-[10px] uppercase font-bold text-gray-400 block">Nombre de pages</span>
+                            <span class="text-xs font-black text-gray-900">{{ uploadedFile ? '17 pages' : '—' }}</span>
+                          </div>
+                        </div>
+
+                        <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
+                          <span class="text-base text-gray-500">💾</span>
+                          <div>
+                            <span class="text-[10px] uppercase font-bold text-gray-400 block">Taille du fichier</span>
+                            <span class="text-xs font-black text-gray-900">{{ uploadedFile ? uploadedFile.size : '—' }}</span>
+                          </div>
+                        </div>
+
+                        <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
+                          <span class="text-base text-gray-500">📁</span>
+                          <div>
+                            <span class="text-[10px] uppercase font-bold text-gray-400 block">Dossier associé</span>
+                            <span class="text-xs font-black text-gray-900">Emma D. (2187)</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Bouton Démarrer l'extraction -->
+                    <div class="pl-8 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
                       <button
                         type="button"
-                        (click)="fileInput.click()"
-                        class="inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#541fd0] hover:to-[#8228d6] text-white px-7 py-3.5 text-xs sm:text-sm font-extrabold shadow-md hover:shadow-lg transition-all"
+                        (click)="setWorkflowStep(3)"
+                        class="w-full sm:w-auto rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#541fd0] hover:to-[#8228d6] text-white px-7 py-3 text-xs sm:text-sm font-black shadow-md flex items-center justify-center gap-2 cursor-pointer"
                       >
-                        <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                        </svg>
-                        <span>Importer un fichier sur ordinateur ou téléphone</span>
+                        <span>▶</span>
+                        <span>Démarrer l'extraction</span>
                       </button>
-                    </div>
 
-                    <!-- Fiche du fichier actuellement importé / prêt -->
-                    <div
-                      *ngIf="uploadedFile"
-                      class="w-full max-w-lg rounded-2xl bg-gradient-to-br from-[#FAF8FF] to-[#F3EFFE] border border-[#E4E0F5] p-4 text-left space-y-3 shadow-2xs mt-2"
-                    >
-                      <div class="flex items-center justify-between gap-3">
-                        <div class="flex items-center gap-3 min-w-0">
-                          <div class="h-10 w-10 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center flex-shrink-0">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                            </svg>
-                          </div>
-                          <div class="truncate">
-                            <strong class="text-xs sm:text-sm font-extrabold text-[#0F1035] block truncate">
-                              {{ uploadedFile.name }}
-                            </strong>
-                            <span class="text-[11px] text-[#6B7280]">
-                              {{ uploadedFile.size }} • Importé le {{ uploadedFile.lastModified }}
-                            </span>
-                          </div>
-                        </div>
-                        <span class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-extrabold text-emerald-800 flex-shrink-0">
-                          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                          </svg>
-                          Prêt &amp; Analysé
-                        </span>
-                      </div>
-
-                      <div class="space-y-1.5">
-                        <div class="flex items-center justify-between text-[11px] text-[#42466B] font-semibold">
-                          <span class="flex items-center gap-1.5">
-                            <span *ngIf="isAnalyzingIA" class="h-2 w-2 rounded-full bg-[#7C3AED] animate-ping"></span>
-                            <span>{{ analysisStepLabel }}</span>
-                          </span>
-                          <span class="font-extrabold text-[#7C3AED]">{{ uploadProgress }} %</span>
-                        </div>
-                        <div class="w-full h-2 rounded-full bg-[#E2DCFA] overflow-hidden">
-                          <div
-                            class="h-full bg-gradient-to-r from-[#6328E8] to-[#22C55E] transition-all duration-300"
-                            [style.width.%]="uploadProgress"
-                          ></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Garanties techniques sous forme de capsules -->
-                    <div class="flex flex-wrap items-center justify-center gap-2 pt-2 text-[11px] text-[#42466B]">
-                      <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F4F2FF] px-3 py-1 font-semibold text-[#6D28D9]">
-                        Format PDF (jusqu’à 25 Mo)
-                      </span>
-                      <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F4F2FF] px-3 py-1 font-semibold text-[#6D28D9]">
-                        Chiffrement AES-256 &amp; Isolation établissement
-                      </span>
-                      <span class="inline-flex items-center gap-1.5 rounded-full bg-[#DCFCE7] px-3 py-1 font-semibold text-[#15803D]">
-                        Zéro hallucination (RAG sourcé)
+                      <span class="text-[11px] text-gray-500 text-center sm:text-right">
+                        ⓘ Les données extraites seront soumises à ton contrôle professionnel.
                       </span>
                     </div>
                   </div>
 
-                  <!-- Colonne de droite : Traitement par l'IA (5 cols) -->
-                  <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-5 flex flex-col justify-between">
-                    <div class="space-y-4">
-                      <div class="flex items-center justify-between pb-3 border-b border-[#F0EDFA]">
-                        <div class="flex items-center gap-2.5">
-                          <div class="h-9 w-9 rounded-xl bg-purple-50 text-[#7C3AED] ring-1 ring-purple-100 flex items-center justify-center">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                          </div>
+                  <!-- COLONNE DROITE (4 Cols) : Étapes du traitement (Stepper vertical) -->
+                  <div class="lg:col-span-4 space-y-4">
+                    <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 sm:p-6 shadow-sm space-y-4">
+                      <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
+                        <span class="text-purple-600 font-bold">🏁</span>
+                        <h4 class="text-sm font-black text-[#0F1035]">Étapes du traitement</h4>
+                      </div>
+
+                      <div class="space-y-3 text-xs">
+                        <!-- Étape 1 -->
+                        <div class="flex items-start gap-3 p-3 rounded-2xl bg-purple-50 border border-purple-200">
+                          <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-bold shrink-0">1</span>
                           <div>
-                            <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Extraction structurée</h3>
-                            <p class="text-xs text-[#6B7280]">Pipeline certifié Centre des Possibles</p>
+                            <strong class="text-gray-900 block font-black">Import et extraction</strong>
+                            <p class="text-[11px] text-gray-500">Dépôt du rapport, vérification du fichier et extraction des informations.</p>
                           </div>
                         </div>
-                        <span class="inline-flex items-center rounded-full bg-purple-50 px-2.5 py-0.5 text-xs font-bold text-[#7C3AED]">
-                          RAG certifié
-                        </span>
-                      </div>
 
-                      <ul class="space-y-3 text-xs sm:text-sm font-bold text-[#31355B]">
-                        <li class="flex items-start gap-3">
-                          <div class="h-5 w-5 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
-                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
-                          </div>
+                        <!-- Étape 2 -->
+                        <div class="flex items-start gap-3 p-2.5">
+                          <span class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold shrink-0">2</span>
                           <div>
-                            <strong class="text-[#0F1035] block leading-tight">Extraction documentaire intégrale</strong>
-                            <span class="text-xs text-[#6B7280] font-normal">Scores, verbatim et pagination des 17 pages du rapport.</span>
+                            <strong class="text-gray-700 block font-bold">Entretien et contexte</strong>
+                            <p class="text-[11px] text-gray-400">Renseignement des observations et du contexte d'accompagnement.</p>
                           </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                          <div class="h-5 w-5 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
-                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
-                          </div>
-                          <div>
-                            <strong class="text-[#0F1035] block leading-tight">Résultats RIASEC (p. 4), Aptitudes (p. 5) &amp; HEXACO (p. 6)</strong>
-                            <span class="text-xs text-[#6B7280] font-normal">Positionnement exact des dimensions sans extrapolation.</span>
-                          </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                          <div class="h-5 w-5 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
-                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
-                          </div>
-                          <div>
-                            <strong class="text-[#0F1035] block leading-tight">22 Métiers O*NET exhaustifs</strong>
-                            <span class="text-xs text-[#6B7280] font-normal">Chaque métier est extrait fidèlement avec sa zone de préparation.</span>
-                          </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                          <div class="h-5 w-5 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0 mt-0.5 shadow-xs">
-                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
-                          </div>
-                          <div>
-                            <strong class="text-[#0F1035] block leading-tight">Réserve méthodologique (p. 17)</strong>
-                            <span class="text-xs text-[#6B7280] font-normal">Pistes exploratoires, aucune prédiction déterministe.</span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
+                        </div>
 
-                    <div class="rounded-2xl bg-gradient-to-br from-[#FAF8FF] to-[#EDE9FE] border border-purple-100 p-4 flex items-center gap-4">
-                      <mb-icon name="bot" class="text-5xl text-[#7C3AED] flex-shrink-0"></mb-icon>
-                      <div class="text-xs">
-                        <strong class="text-[#0F1035] block font-extrabold">Garantie Zéro-Hallucination</strong>
-                        <p class="text-[#6B7280] mt-0.5 leading-relaxed">
-                          Toutes les valeurs sont ancrées dans le PDF source avec citation de page vérifiable.
-                        </p>
+                        <!-- Étape 3 -->
+                        <div class="flex items-start gap-3 p-2.5">
+                          <span class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold shrink-0">3</span>
+                          <div>
+                            <strong class="text-gray-700 block font-bold">Analyse assistée par IA</strong>
+                            <p class="text-[11px] text-gray-400">Rapprochement des données, synthèses et pistes d'analyse.</p>
+                          </div>
+                        </div>
+
+                        <!-- Étape 4 -->
+                        <div class="flex items-start gap-3 p-2.5">
+                          <span class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold shrink-0">4</span>
+                          <div>
+                            <strong class="text-gray-700 block font-bold">Révision des métiers</strong>
+                            <p class="text-[11px] text-gray-400">Contrôle et ajustement des métiers identifiés dans le rapport.</p>
+                          </div>
+                        </div>
+
+                        <!-- Étape 5 -->
+                        <div class="flex items-start gap-3 p-2.5">
+                          <span class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold shrink-0">5</span>
+                          <div>
+                            <strong class="text-gray-700 block font-bold">Restitution et épisodes audio</strong>
+                            <p class="text-[11px] text-gray-400">Préparation de la restitution et génération des épisodes audio.</p>
+                          </div>
+                        </div>
+
+                        <!-- Étape 6 -->
+                        <div class="flex items-start gap-3 p-2.5">
+                          <span class="h-6 w-6 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xs font-bold shrink-0">6</span>
+                          <div>
+                            <strong class="text-gray-700 block font-bold">Validation finale et publication</strong>
+                            <p class="text-[11px] text-gray-400">Contrôle global, validation par le conseiller et publication dans l'Espace Jeune.</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                <!-- Tableau de vérification des 7 faits extraits -->
-                <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <div class="pb-3 border-b border-[#F0EDFA] flex items-center justify-between">
-                    <div>
-                      <h2 class="text-lg font-black text-[#0F1035]">
-                        Faits extraits vérifiés — Rapport Rdv {{ rdvNumber }} ({{ facts.length }} preuves sourcées)
-                      </h2>
-                      <p class="text-xs text-[#42466B]">
-                        Contrôle de conformité avec les 17 pages du rapport original du Centre des Possibles.
+                    <!-- Encart de garantie éthique -->
+                    <div class="rounded-2xl bg-purple-50/70 border border-purple-200 p-4 flex items-start gap-3">
+                      <span class="text-lg">🛡️</span>
+                      <p class="text-xs text-purple-900 font-bold leading-relaxed">
+                        Les informations extraites doivent être obligatoirement contrôlées par un conseiller avant toute publication.
                       </p>
                     </div>
-                    <span class="rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-black">
-                      ✓ {{ facts.length }}/{{ facts.length }} conformes
-                    </span>
-                  </div>
-
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                    <div
-                      *ngFor="let fact of facts"
-                      class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 space-y-2 hover:bg-[#F3EFFE]/40 transition"
-                    >
-                      <div class="flex items-center justify-between text-xs">
-                        <span class="inline-flex items-center gap-1 rounded-full bg-purple-100 text-[#6D28D9] px-2.5 py-0.5 font-extrabold">
-                          Page {{ fact.pageNumber }} / 17 • {{ fact.category }}
-                        </span>
-                        <label class="inline-flex items-center gap-2 font-bold cursor-pointer select-none">
-                          <input type="checkbox" [(ngModel)]="fact.isVerified" class="h-4 w-4 rounded text-[#22C55E] focus:ring-[#22C55E] accent-[#22C55E]" />
-                          <span [class.text-emerald-700]="fact.isVerified" [class.text-[#6B7280]="!fact.isVerified">
-                            {{ fact.isVerified ? '✓ Vérifié' : 'À contrôler' }}
-                          </span>
-                        </label>
-                      </div>
-                      <p class="text-sm font-extrabold text-[#0F1035] leading-snug">{{ fact.label }}</p>
-                      <p class="text-xs text-[#42466B] leading-relaxed italic bg-white/80 p-2.5 rounded-xl border border-purple-100/60">
-                        « {{ fact.rawExcerpt }} »
-                      </p>
-                    </div>
-                  </div>
-
-                  <!-- Bouton suivant vers étape 2 -->
-                  <div class="flex justify-end pt-3 border-t border-[#F0EDFA]">
-                    <button
-                      type="button"
-                      (click)="setWorkflowStep(2)"
-                      class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#541fd0] hover:to-[#8228d6] text-white px-7 py-3 text-xs sm:text-sm font-extrabold shadow-md transition"
-                    >
-                      <span>Passer à l'Étape 02 : Renseigner l'entretien</span>
-                      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                    </button>
                   </div>
                 </div>
               </div>
@@ -2803,151 +2768,17 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================== -->
-              <!-- ÉTAPE 03 : PROPOSER UNE SÉLECTION (IA)     -->
+              <!-- ÉTAPE 03 : ANALYSE ASSISTÉE PAR IA (RÉVISION DES FAITS) -->
               <!-- ========================================== -->
-              <div *ngIf="counselorWorkflowStep === 3" class="space-y-6">
-                <!-- 4 Compteurs de synthèse du rapprochement -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-xs flex items-center gap-3.5">
-                    <div class="h-12 w-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xl">
-                      {{ countToDeepen }}
-                    </div>
-                    <div>
-                      <strong class="text-sm font-black text-[#0F1035] block">À approfondir</strong>
-                      <span class="text-xs text-emerald-700 font-bold">Intérêt vif explicite</span>
-                    </div>
-                  </div>
-
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-xs flex items-center gap-3.5">
-                    <div class="h-12 w-12 rounded-xl bg-[#EDE9FE] text-[#6D28D9] flex items-center justify-center font-black text-xl">
-                      {{ countToExplore }}
-                    </div>
-                    <div>
-                      <strong class="text-sm font-black text-[#0F1035] block">À explorer</strong>
-                      <span class="text-xs text-[#6D28D9] font-bold">Pistes ouvertes (non écartées)</span>
-                    </div>
-                  </div>
-
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-xs flex items-center gap-3.5">
-                    <div class="h-12 w-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black text-xl">
-                      {{ countDeferred }}
-                    </div>
-                    <div>
-                      <strong class="text-sm font-black text-[#0F1035] block">Différés</strong>
-                      <span class="text-xs text-amber-700 font-bold">Réserves exprimées</span>
-                    </div>
-                  </div>
-
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-xs flex items-center gap-3.5">
-                    <div class="h-12 w-12 rounded-xl bg-gray-100 text-gray-700 flex items-center justify-center font-black text-xl">
-                      {{ countNeedsReview }}
-                    </div>
-                    <div>
-                      <strong class="text-sm font-black text-[#0F1035] block">À clarifier</strong>
-                      <span class="text-xs text-[#6B7280] font-bold">Ambiguïtés levées</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Carte Méthodologie et Règles Non-Négociables -->
-                <div class="rounded-[26px] bg-gradient-to-br from-[#FAF8FF] to-[#EDE9FE] border border-purple-200 p-6 space-y-3">
-                  <div class="flex items-center gap-2">
-                    <span class="text-[#7C3AED] text-lg font-black"><mb-icon name="settings"></mb-icon></span>
-                    <h3 class="text-base font-black text-[#0F1035]">Règles du moteur de rapprochement déterministe</h3>
-                  </div>
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-[#31355B]">
-                    <div class="bg-white/80 p-3 rounded-xl border border-purple-100">
-                      <strong class="text-[#0F1035] block font-bold">1. Zéro suppression</strong>
-                      <span>Les 22 métiers du rapport 2187 sont conservés sans omission ni ajout fantôme.</span>
-                    </div>
-                    <div class="bg-white/80 p-3 rounded-xl border border-purple-100">
-                      <strong class="text-[#0F1035] block font-bold">2. Absence ≠ Désintérêt</strong>
-                      <span>Un métier non mentionné en entretien conserve son statut "À explorer" sans pénalité.</span>
-                    </div>
-                    <div class="bg-white/80 p-3 rounded-xl border border-purple-100">
-                      <strong class="text-[#0F1035] block font-bold">3. Justification sourcée</strong>
-                      <span>Chaque statut est motivé par la page du rapport et le verbatim de l'entretien.</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Showcase des rapprochements motivés -->
-                <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <h3 class="text-base font-black text-[#0F1035]">
-                    Propositions IA motivées par le rapport et l'entretien
-                  </h3>
-
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Technicien du son -->
-                    <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2">
-                      <div class="flex items-center justify-between">
-                        <strong class="text-sm font-black text-emerald-900">Technicien / Technicienne du son</strong>
-                        <span class="rounded-full bg-emerald-200 text-emerald-800 px-2.5 py-0.5 text-xs font-black">À approfondir</span>
-                      </div>
-                      <p class="text-xs text-emerald-800 leading-relaxed">
-                        <strong>Justification :</strong> Présent dans le rapport (Page 9, Zone 3) et cité avec grand enthousiasme lors de l'entretien pour la manipulation de consoles audio.
-                      </p>
-                      <div class="text-[11px] font-mono text-emerald-700 bg-white/70 p-2 rounded-lg">
-                        Preuves : Rapport p. 9 • Entretien §2 (Motivations studio)
-                      </div>
-                    </div>
-
-                    <!-- Graphiste -->
-                    <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2">
-                      <div class="flex items-center justify-between">
-                        <strong class="text-sm font-black text-emerald-900">Graphiste</strong>
-                        <span class="rounded-full bg-emerald-200 text-emerald-800 px-2.5 py-0.5 text-xs font-black">À approfondir</span>
-                      </div>
-                      <p class="text-xs text-emerald-800 leading-relaxed">
-                        <strong>Justification :</strong> Présent dans le rapport (Page 9, Zone 3) en adéquation avec le profil Artistique (p. 4). Intérêt fort pour la création graphique.
-                      </p>
-                      <div class="text-[11px] font-mono text-emerald-700 bg-white/70 p-2 rounded-lg">
-                        Preuves : Rapport p. 9 &amp; RIASEC p. 4 • Entretien §2
-                      </div>
-                    </div>
-
-                    <!-- Développeur web -->
-                    <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
-                      <div class="flex items-center justify-between">
-                        <strong class="text-sm font-black text-amber-900">Développeur / Développeuse web</strong>
-                        <span class="rounded-full bg-amber-200 text-amber-800 px-2.5 py-0.5 text-xs font-black">Différé</span>
-                      </div>
-                      <p class="text-xs text-amber-800 leading-relaxed">
-                        <strong>Justification :</strong> Présent dans le rapport (Page 9, Zone 3). Emma a formulé une réserve explicite sur le travail solitaire prolongé devant un écran.
-                      </p>
-                      <div class="text-[11px] font-mono text-amber-700 bg-white/70 p-2 rounded-lg">
-                        Preuves : Rapport p. 9 • Entretien §3 (Réserves explicites)
-                      </div>
-                    </div>
-
-                    <!-- Pistes ouvertes -->
-                    <div class="p-4 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] space-y-2">
-                      <div class="flex items-center justify-between">
-                        <strong class="text-sm font-black text-[#0F1035]">19 Pistes ouvertes (Photographe, Monteur...)</strong>
-                        <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] px-2.5 py-0.5 text-xs font-black">À explorer</span>
-                      </div>
-                      <p class="text-xs text-[#42466B] leading-relaxed">
-                        <strong>Justification :</strong> Métiers du rapport non abordés en détail durant la séance. Ils restent intégralement accessibles dans l'espace jeune.
-                      </p>
-                      <div class="text-[11px] font-mono text-[#6D28D9] bg-white/70 p-2 rounded-lg">
-                        Preuves : Rapport p. 8 à 11 • Statut ouvert préservé
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center justify-between pt-4 border-t border-[#F0EDFA]">
-                    <button type="button" (click)="setWorkflowStep(2)" class="text-xs font-bold text-[#42466B] hover:text-[#0F1035]">
-                      ← Ajuster l'entretien (Étape 02)
-                    </button>
-                    <button
-                      type="button"
-                      (click)="setWorkflowStep(4)"
-                      class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white px-7 py-3 text-xs sm:text-sm font-extrabold shadow-md hover:shadow-lg transition cursor-pointer"
-                    >
-                      <span>Passer à la validation des métiers par le psychologue (Étape 04) →</span>
-                    </button>
-                  </div>
-                </div>
+              <div *ngIf="counselorWorkflowStep === 3">
+                <app-counselor-fact-review
+                  [youngName]="'Emma D.'"
+                  [rdvNumber]="rdvNumber"
+                  [counselorName]="'Sarah Dupont'"
+                  [totalPages]="17"
+                  [reportDate]="reportDate"
+                  (stepChange)="setWorkflowStep($event)"
+                ></app-counselor-fact-review>
               </div>
 
               <!-- ========================================== -->
@@ -2985,8 +2816,8 @@ export const TONE_OPTIONS: ToneOption[] = [
                       [class.border-emerald-200]="a.finalStatus === 'TO_DEEPEN'"
                       [class.bg-amber-50]="a.finalStatus === 'DEFERRED'"
                       [class.border-amber-200]="a.finalStatus === 'DEFERRED'"
-                      [class.bg-[#FAF8FF]]="a.finalStatus === 'TO_EXPLORE'"
-                      [class.border-[#E4E0F5]]="a.finalStatus === 'TO_EXPLORE'"
+                      [class.bg-purple-50]="a.finalStatus === 'TO_EXPLORE'"
+                      [class.border-purple-200]="a.finalStatus === 'TO_EXPLORE'"
                     >
                       <div class="flex flex-wrap items-center justify-between gap-2">
                         <div class="flex items-center gap-2.5">

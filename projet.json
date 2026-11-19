@@ -18,5 +18,5 @@
   ],
   "demo": "https://code4sud.github.io/2026-equipe-03/",
   "video": "",
-  "captures": ["captures/landing_page.png", "captures/bilan.png", "captures/coach_ia.png", "captures/immersion.png", "captures/location.png", "captures/accueuil_jeune.png"]
+  "captures": ["captures/landing_page.png", "captures/accueuil_jeune.png", "captures/bilan.png", "captures/coach_ia.png", "captures/immersion.png", "captures/location.png"]
 }

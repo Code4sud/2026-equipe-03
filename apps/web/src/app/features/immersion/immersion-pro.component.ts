@@ -262,61 +262,6 @@ import {
             </div>
           </div>
 
-          <!-- Section 2 : Les questions à poser -->
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-lg">❓</span>
-                <h4 class="text-sm font-black text-[#0F1035]">Les questions à poser</h4>
-              </div>
-              <span class="h-5 w-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
-            </div>
-            <p class="text-xs text-[#6B7280]">Au professionnel, sur le quotidien, la formation, les conditions de travail...</p>
-            <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3 space-y-2">
-              <div *ngFor="let q of project.preparedQuestions" class="flex items-start gap-2 text-xs text-[#42466B]">
-                <span class="text-[#7C3AED] font-bold">💬</span>
-                <span>{{ q }}</span>
-              </div>
-              <div *ngFor="let cq of project.customQuestions" class="flex items-start gap-2 text-xs text-[#7C3AED] font-semibold">
-                <span>★</span>
-                <span>{{ cq }}</span>
-              </div>
-              <!-- Ajout rapide -->
-              <div class="flex gap-2 pt-1">
-                <input
-                  type="text"
-                  [(ngModel)]="newQuestionInput"
-                  placeholder="Ajouter une question personnelle..."
-                  class="flex-1 rounded-xl border border-[#D8DCF0] px-3 py-1.5 text-xs text-[#0F1035] bg-white focus:outline-none"
-                />
-                <button
-                  type="button"
-                  (click)="addQuestion()"
-                  class="rounded-xl bg-[#7C3AED] text-white px-3 py-1.5 text-xs font-bold hover:bg-[#6D28D9]"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Section 3 : Les démarches à connaître -->
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="text-lg">📄</span>
-                <h4 class="text-sm font-black text-[#0F1035]">Les démarches à connaître</h4>
-              </div>
-              <span class="h-5 w-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
-            </div>
-            <p class="text-xs text-[#6B7280]">Durée, autorisation, convention, assurance (selon ma situation)...</p>
-            <div class="rounded-2xl bg-[#EFF6FF] border border-[#BFDBFE] p-3 space-y-1.5 text-xs text-[#1E3A8A]">
-              <p>• <strong>Durée :</strong> 1 à 5 jours consécutifs ou fractionnés pendant ou hors temps scolaire.</p>
-              <p>• <strong>Convention :</strong> Délivrée par ton collège, lycée, CFA ou le Centre des Possibles.</p>
-              <p>• <strong>Assurance :</strong> Couverture responsabilité civile et scolaire requise.</p>
-            </div>
-          </div>
-
           <!-- Bouton Continuer -->
           <button
             type="button"

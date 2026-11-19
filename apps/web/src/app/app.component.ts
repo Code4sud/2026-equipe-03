@@ -30,6 +30,7 @@ import { ReportOverviewComponent } from './features/report/report-overview.compo
 import { CoachIaComponent } from './features/coach/coach-ia.component';
 import { LoginComponent, LoginSuccessEvent } from './features/auth/login.component';
 import { LocalDiscoveryComponent } from './features/local-discovery/local-discovery.component';
+import { SettingsComponent } from './features/settings/settings.component';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -261,6 +262,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     ReportOverviewComponent,
     CoachIaComponent,
     LocalDiscoveryComponent,
+    SettingsComponent,
     LoginComponent
   ],
   template: `
@@ -332,14 +334,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                   class="h-8 w-auto object-contain"
                 />
               </div>
-              <div class="flex items-center justify-between px-1">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-2 py-0.5 text-[11px] font-bold text-[#C4B5FD]">
+              <div class="px-1">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-2.5 py-0.5 text-[11px] font-bold text-[#C4B5FD]">
                   <span class="h-1.5 w-1.5 rounded-full" [ngClass]="activePortal === 'YOUNG' ? 'bg-[#10B981]' : 'bg-[#38BDF8]'"></span>
                   {{ activePortal === 'YOUNG' ? 'Espace Jeune' : 'Espace Conseiller' }}
-                </span>
-                <span class="text-[11px] text-[#A78BFA] group-hover:text-white transition flex items-center gap-1">
-                  <span>Accueil</span>
-                  <span>↗</span>
                 </span>
               </div>
             </a>
@@ -937,120 +935,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </div>
                 </div>
 
-                <!-- Rangée du milieu : "Mon profil en bref" + "Les métiers proposés dans mon bilan" -->
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <!-- Carte gauche : Mon profil en bref (3 sous-colonnes comme sur la maquette) -->
-                  <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-col justify-between space-y-5">
-                    <h3 class="text-xl font-extrabold text-[#0F1035]">Mon profil en bref</h3>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      <!-- Sous-carte 1 : Centres d'intérêt RIASEC -->
-                      <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3.5 space-y-2.5">
-                        <div class="flex items-center gap-2">
-                          <span class="text-[#EC4899] text-lg">💗</span>
-                          <span class="text-xs font-extrabold text-[#0F1035] leading-tight">
-                            Mes centres d’intérêt (RIASEC)
-                          </span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5">
-                          <span class="rounded-full bg-[#F3E8FF] text-[#7E22CE] px-2.5 py-0.5 text-xs font-bold">
-                            Artistique
-                          </span>
-                          <span class="rounded-full bg-[#DBEAFE] text-[#1D4ED8] px-2.5 py-0.5 text-xs font-bold">
-                            Entreprenant
-                          </span>
-                          <span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-2.5 py-0.5 text-xs font-bold">
-                            Réaliste
-                          </span>
-                          <span class="rounded-full bg-white border border-[#E4E0F5] text-[#42466B] px-2.5 py-0.5 text-[11px] font-bold">
-                            + 3 autres (p. 4)
-                          </span>
-                        </div>
-                      </div>
-
-                      <!-- Sous-carte 2 : Mes atouts -->
-                      <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3.5 space-y-2">
-                        <div class="flex items-center gap-2">
-                          <span class="text-[#7C3AED] text-lg">☆</span>
-                          <span class="text-xs font-extrabold text-[#0F1035]">Mes points d’appui</span>
-                        </div>
-                        <div class="space-y-1.5 text-xs font-bold text-[#31355B]">
-                          <span class="block rounded-full bg-[#EDE9FE] px-2.5 py-1 text-center">Créativité &amp; Idées</span>
-                          <span class="block rounded-full bg-[#EDE9FE] px-2.5 py-1 text-center">Flexibilité (p. 5)</span>
-                          <span class="block rounded-full bg-[#EDE9FE] px-2.5 py-1 text-center">Partage du temps</span>
-                        </div>
-                      </div>
-
-                      <!-- Sous-carte 3 : Mon environnement préféré -->
-                      <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3.5 space-y-2">
-                        <div class="flex items-center gap-2">
-                          <span class="text-[#16A34A] text-lg">🌱</span>
-                          <span class="text-xs font-extrabold text-[#0F1035] leading-tight">
-                            Mon environnement préféré
-                          </span>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 text-xs font-bold text-[#31355B]">
-                          <span class="rounded-full bg-[#EDE9FE] px-2.5 py-1">Créatif</span>
-                          <span class="rounded-full bg-[#EDE9FE] px-2.5 py-1">Utile aux autres</span>
-                          <span class="rounded-full bg-[#EDE9FE] px-2.5 py-1">Concret</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="text-center pt-1 border-t border-[#F0EDFA]">
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('MON_BILAN')"
-                        class="text-sm font-extrabold text-[#6D28D9] hover:underline"
-                      >
-                        Voir mes résultats en détail →
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Carte droite : Les métiers proposés dans mon bilan (3 cartes avec photos comme sur la maquette) -->
-                  <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-col justify-between space-y-4">
-                    <div class="flex items-center justify-between">
-                      <h3 class="text-xl font-extrabold text-[#0F1035] flex items-center gap-2">
-                        <span class="text-[#7C3AED]">💼</span>
-                        <span>Les métiers proposés dans mon bilan</span>
-                      </h3>
-                      <span class="text-xs font-bold text-[#6D28D9]">Rdv 2187 (22 métiers)</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                      <div
-                        *ngFor="let c of featuredSixCareers.slice(0, 3)"
-                        (click)="openCareerDetail(c)"
-                        class="group rounded-2xl border border-[#E4E0F5] bg-[#F8F7FF] overflow-hidden shadow-sm hover:border-[#7C3AED] transition cursor-pointer"
-                      >
-                        <img [src]="c.imageUrl" [alt]="c.titleFr" class="w-full h-24 object-cover" />
-                        <div class="p-3 flex items-center justify-between">
-                          <span class="text-xs font-extrabold text-[#0F1035] leading-tight group-hover:text-[#6D28D9]">
-                            {{ c.titleFr }}
-                          </span>
-                          <button
-                            type="button"
-                            (click)="$event.stopPropagation(); c.isFavorite = !c.isFavorite"
-                            class="text-base"
-                          >
-                            {{ c.isFavorite ? '💗' : '♡' }}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="text-center pt-1 border-t border-[#F0EDFA]">
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('EXPLORER_METIERS')"
-                        class="text-sm font-extrabold text-[#6D28D9] hover:underline"
-                      >
-                        Explorer tous les métiers ({{ careers.length }}) →
-                      </button>
-                    </div>
-                  </div>
-                </div>
 
                 <!-- Rangée du bas : "Mon parcours d'exploration (2/4)" + "Mon prochain rendez-vous (MAR 18 NOV)" -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -1913,137 +1798,17 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 7 : PARAMÈTRES, ONBOARDING & APERÇU MOBILE       -->
-              <!-- (Maquette "Maquette MonBilan+ _ parcours et interfaces mobile.webp") -->
+              <!-- VUE JEUNE : MES PARAMÈTRES (Conforme à la maquette officielle) -->
               <!-- ========================================================== -->
-              <div *ngIf="activeYoungTab === 'PARAMETRES_JEUNE'" class="space-y-6">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <!-- Carte 1 : Onboarding (1/4) — Bienvenue sur MonBilan+ -->
-                  <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                      <div class="flex items-center justify-between">
-                        <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] px-3.5 py-1 text-xs font-extrabold">
-                          🚀 Onboarding (1/4)
-                        </span>
-                        <div class="flex gap-1.5">
-                          <span class="h-2 w-5 rounded-full bg-[#7C3AED]"></span>
-                          <span class="h-2 w-2 rounded-full bg-[#D8CEFF]"></span>
-                          <span class="h-2 w-2 rounded-full bg-[#D8CEFF]"></span>
-                          <span class="h-2 w-2 rounded-full bg-[#D8CEFF]"></span>
-                        </div>
-                      </div>
-
-                      <h3 class="text-xl font-extrabold text-[#0F1035]">
-                        Bienvenue sur MonBilan+ 👋
-                      </h3>
-                      <p class="text-xs text-[#42466B] leading-relaxed">
-                        Ton espace personnel pour comprendre ton bilan d’orientation, explorer les métiers proposés et préparer ton prochain échange avec ton conseiller.
-                      </p>
-
-                      <div class="space-y-2 pt-1 text-xs font-extrabold text-[#0F1035]">
-                        <div class="rounded-2xl bg-[#F4F2FF] px-4 py-2.5 flex items-center gap-3">
-                          <span class="text-[#7C3AED] text-base">📄</span>
-                          <span>Ton bilan expliqué simplement</span>
-                        </div>
-                        <div class="rounded-2xl bg-[#F4F2FF] px-4 py-2.5 flex items-center gap-3">
-                          <span class="text-[#7C3AED] text-base">🎓</span>
-                          <span>Les 22 métiers de ton rapport (5 zones)</span>
-                        </div>
-                        <div class="rounded-2xl bg-[#F4F2FF] px-4 py-2.5 flex items-center gap-3">
-                          <span class="text-[#7C3AED] text-base">📅</span>
-                          <span>Un parcours et des questions pour ton conseiller</span>
-                        </div>
-                        <div class="rounded-2xl bg-[#F4F2FF] px-4 py-2.5 flex items-center gap-3">
-                          <span class="text-[#7C3AED] text-base">✓</span>
-                          <span>Une restitution vérifiée par un professionnel</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="flex items-center justify-between gap-3 pt-2">
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('ACCUEIL')"
-                        class="rounded-full bg-[#F4F2FF] text-[#42466B] px-5 py-2.5 text-xs font-extrabold"
-                      >
-                        Passer
-                      </button>
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('MON_BILAN')"
-                        class="flex-1 rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white px-5 py-2.5 text-xs font-extrabold shadow"
-                      >
-                        Commencer →
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Carte 2 : Paramètres Espace Jeune (Mon compte, Sécurité, Confidentialité RGPD, Accessibilité) -->
-                  <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                    <div class="flex items-center justify-between">
-                      <h3 class="text-lg font-extrabold text-[#0F1035]">👤 Mon compte &amp; Préférences</h3>
-                      <span class="rounded-full bg-[#7C3AED] text-white px-3.5 py-1 text-xs font-extrabold">Paramètres</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
-                      <div class="sm:col-span-5 space-y-1.5 text-xs font-extrabold">
-                        <div class="rounded-xl bg-[#7C3AED] text-white px-3 py-2 flex items-center justify-between">
-                          <span>👤 Mon compte</span>
-                          <span>›</span>
-                        </div>
-                        <div class="rounded-xl bg-[#F8F7FF] text-[#31355B] px-3 py-2">🔒 Sécurité</div>
-                        <div class="rounded-xl bg-[#F8F7FF] text-[#31355B] px-3 py-2">🛡️ Confidentialité (RGPD)</div>
-                        <div class="rounded-xl bg-[#F8F7FF] text-[#31355B] px-3 py-2">♿ Accessibilité</div>
-                        <div class="rounded-xl bg-[#F8F7FF] text-[#31355B] px-3 py-2">🔔 Notifications</div>
-                        <div class="rounded-xl bg-[#F8F7FF] text-[#31355B] px-3 py-2">🌐 Langue &amp; apparence</div>
-                      </div>
-
-                      <div class="sm:col-span-7 space-y-3 text-xs">
-                        <div class="flex items-center gap-3 pb-2 border-b border-[#F0EDFA]">
-                          <div class="h-11 w-11 rounded-full bg-[#7C3AED] text-white font-extrabold flex items-center justify-center">
-                            ED
-                          </div>
-                          <div>
-                            <p class="font-extrabold text-sm text-[#0F1035]">Emma D.</p>
-                            <p class="text-[#42466B]">Dossier Rdv {{ rdvNumber }}</p>
-                          </div>
-                        </div>
-                        <div>
-                          <label class="font-bold text-[#42466B] block mb-1">Prénom &amp; Initiale</label>
-                          <input type="text" value="Emma D." readonly class="w-full rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-2 font-bold text-[#0F1035]" />
-                        </div>
-                        <div>
-                          <label class="font-bold text-[#42466B] block mb-1">Structure d’accompagnement</label>
-                          <input type="text" value="Centre des Possibles — Nice" readonly class="w-full rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-2 font-bold text-[#0F1035]" />
-                        </div>
-                        <div>
-                          <label class="font-bold text-[#42466B] block mb-1">Vitesse de lecture audio par défaut</label>
-                          <div class="flex gap-2">
-                            <button type="button" (click)="setSpeechRate(0.85)" [class]="speechRate === 0.85 ? 'bg-[#7C3AED] text-white' : 'bg-[#F8F7FF] text-[#0F1035]'" class="rounded-lg px-3 py-1.5 font-extrabold border border-[#E4E0F5]">0.85x</button>
-                            <button type="button" (click)="setSpeechRate(1)" [class]="speechRate === 1 ? 'bg-[#7C3AED] text-white' : 'bg-[#F8F7FF] text-[#0F1035]'" class="rounded-lg px-3 py-1.5 font-extrabold border border-[#E4E0F5]">1x</button>
-                            <button type="button" (click)="setSpeechRate(1.15)" [class]="speechRate === 1.15 ? 'bg-[#7C3AED] text-white' : 'bg-[#F8F7FF] text-[#0F1035]'" class="rounded-lg px-3 py-1.5 font-extrabold border border-[#E4E0F5]">1.15x</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Carte 3 : Versions mobiles (Aperçu) -->
-                  <div class="lg:col-span-3 rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm flex flex-col justify-between space-y-3">
-                    <div class="flex items-center justify-between">
-                      <h3 class="text-sm font-extrabold text-[#0F1035]">📱 Versions mobiles</h3>
-                      <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] px-3 py-0.5 text-[11px] font-extrabold">Aperçu</span>
-                    </div>
-                    <img
-                      src="assets/visuals/mobile-preview-phones.png"
-                      alt="Aperçu versions mobiles MonBilan+"
-                      class="w-full h-64 object-contain rounded-2xl bg-[#F8F7FF] p-2"
-                    />
-                    <p class="text-[11px] text-[#42466B] text-center">
-                      Interface responsive consultable sur smartphone, tablette et ordinateur après ton rendez-vous.
-                    </p>
-                  </div>
-                </div>
+              <div *ngIf="activeYoungTab === 'PARAMETRES_JEUNE'">
+                <app-settings
+                  [firstName]="'Emma'"
+                  [lastName]="'D.'"
+                  [email]="'emma.d@exemple.fr'"
+                  [speechRate]="speechRate"
+                  (speechRateChange)="setSpeechRate($event)"
+                  (logout)="logout()"
+                ></app-settings>
               </div>
             </ng-container>
           </ng-container>

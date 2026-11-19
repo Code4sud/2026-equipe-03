@@ -1,10 +1,22 @@
 // ============================================================================
 // Composant Angular — « Autour de moi » (MonBilan+ Web)
 // Découverte territoriale des Formations, Organismes & Immersions (Nice / 06)
+// Véritable carte interactive Satellite Hybride & Plan (Leaflet / Esri / OSM)
+// Conforme à la maquette Trustdio Local / MonBilan+
 // ============================================================================
 
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   filterOpportunities,
@@ -15,502 +27,441 @@ import {
   OpportunityCategory
 } from '../../shared/local-discovery-data';
 
+declare const L: any;
+
+export interface LocalZone {
+  id: string;
+  label: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+}
+
 @Component({
   selector: 'app-local-discovery',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  styles: [`
+    :host ::ng-deep .leaflet-div-icon {
+      background: transparent !important;
+      border: none !important;
+    }
+    :host ::ng-deep .leaflet-popup-content-wrapper {
+      border-radius: 20px !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+      border: 1px solid #E4E0F5 !important;
+    }
+    :host ::ng-deep .leaflet-popup-content {
+      margin: 0 !important;
+      line-height: normal !important;
+    }
+    :host ::ng-deep .leaflet-container {
+      font-family: inherit !important;
+      z-index: 10 !important;
+    }
+    :host ::ng-deep .leaflet-popup-tip {
+      background: white !important;
+    }
+  `],
   template: `
     <div class="space-y-6">
       <!-- ==================================================================== -->
-      <!-- 1. EN-TÊTE AVEC BANDEAU PANORAMIQUE BAIE DES ANGES (NICE 06)        -->
+      <!-- 1. EN-TÊTE : AUTOUR DE MOI (Style Trustdio Local / MonBilan+)        -->
       <!-- ==================================================================== -->
-      <section
-        class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#2A1668] via-[#48209E] to-[#6D28D9] text-white shadow-xl p-6 sm:p-8"
-        aria-label="En-tête Autour de moi"
-      >
-        <!-- Illustration panoramique SVG légère (Baie des Anges, mer Méditerranée, collines niçoises) -->
-        <div class="absolute inset-0 pointer-events-none opacity-25 mix-blend-screen overflow-hidden">
-          <svg class="w-full h-full object-cover" viewBox="0 0 1200 320" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Ciel & Dégradé d'horizon -->
-            <path d="M0 0h1200v320H0z" fill="url(#sky-gradient)"/>
-            <!-- Collines de Nice & Mont Boron -->
-            <path d="M0 240 C 200 180, 450 250, 700 190 C 950 130, 1100 200, 1200 170 L 1200 320 L 0 320 Z" fill="#6B21A8" fill-opacity="0.4"/>
-            <path d="M0 260 C 250 210, 500 280, 850 220 C 1050 180, 1150 230, 1200 210 L 1200 320 L 0 320 Z" fill="#4338CA" fill-opacity="0.5"/>
-            <!-- Courbe de la Baie des Anges & Promenade des Anglais -->
-            <path d="M0 290 Q 300 270, 600 290 T 1200 280 L 1200 320 L 0 320 Z" fill="#38BDF8" fill-opacity="0.35"/>
-            <!-- Soleils & reflets d'or -->
-            <circle cx="1080" cy="80" r="45" fill="#FDE047" fill-opacity="0.15"/>
-            <defs>
-              <linearGradient id="sky-gradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#4C1D95"/>
-                <stop offset="100%" stop-color="#1E1B4B"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        <div class="relative z-10 max-w-3xl space-y-3">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-xs font-semibold tracking-wide text-purple-100 border border-white/20">
-            <span>📍 Alpes-Maritimes & Métropole Nice Côte d'Azur</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Données vérifiées</span>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2.5">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-[#0F1035] tracking-tight flex items-center gap-2">
+              <span>Autour de moi</span>
+              <span class="text-xl sm:text-2xl text-[#7C3AED]">✨</span>
+            </h1>
           </div>
-
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight flex items-center gap-3">
-            <span class="text-3xl sm:text-4xl text-[#C084FC]">📍</span>
-            <span>Autour de moi</span>
-          </h1>
-
-          <p class="text-sm sm:text-base text-purple-100/90 leading-relaxed max-w-2xl">
-            Des opportunités près de chez toi : formations, organismes d'accompagnement et entreprises où découvrir un métier.
+          <p class="text-xs sm:text-sm text-[#6B7280] mt-1">
+            Des opportunités près de chez toi : formations, organismes d’accompagnement et entreprises où découvrir un métier.
           </p>
         </div>
-      </section>
+
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-700 self-start sm:self-auto shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Données officielles vérifiées (Nice & 06)</span>
+        </div>
+      </div>
 
       <!-- ==================================================================== -->
-      <!-- 2. BARRE DE RECHERCHE 3 CHAMPS + BOUTON                              -->
+      <!-- 2. BARRE DE RECHERCHE & FILTRES RAPIDES                              -->
       <!-- ==================================================================== -->
-      <section
-        class="bg-white rounded-3xl p-4 sm:p-5 shadow-lg border border-[#E9E4F5]"
-        aria-label="Filtres de recherche géographique"
-      >
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center">
-          <!-- 1. Métier recherché avec autocomplétion -->
-          <div class="md:col-span-4 relative">
-            <label for="career-search" class="block text-xs font-bold text-[#42466B] mb-1">
-              Quel métier t'intéresse ?
-            </label>
-            <div class="relative flex items-center">
-              <span class="absolute left-3.5 text-lg pointer-events-none text-purple-600">💼</span>
-              <input
-                id="career-search"
-                type="text"
-                [(ngModel)]="filterState.careerQuery"
-                (ngModelChange)="onFilterChanged()"
-                placeholder="Ex : Peintre décorateur, Menuisier..."
-                class="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] text-sm font-semibold text-[#0F1035] placeholder:text-[#9A9EB2] focus:bg-white focus:border-[#8B3DFF] focus:ring-2 focus:ring-[#8B3DFF]/20 outline-none transition"
-              />
-              <button
-                *ngIf="filterState.careerQuery"
-                type="button"
-                (click)="clearCareerQuery()"
-                class="absolute right-3 text-xs text-gray-400 hover:text-gray-700"
-                title="Effacer le métier"
-              >
-                ✕
-              </button>
-            </div>
+      <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-4 sm:p-5 shadow-sm space-y-4">
+        <!-- Champ de recherche + Ville + Rayon -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+          <!-- Recherche par mot-clé / métier -->
+          <div class="md:col-span-5 relative">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">🔍</span>
+            <input
+              type="text"
+              [(ngModel)]="filterState.careerQuery"
+              (ngModelChange)="onFilterChanged()"
+              placeholder="Quel métier ou formation t’intéresse ? (ex: Peintre décorateur)"
+              class="w-full rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] pl-10 pr-9 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-[#0F1035] placeholder:text-[#8E95AF] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition"
+            />
+            <button
+              *ngIf="filterState.careerQuery"
+              type="button"
+              (click)="clearCareerQuery()"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-xs font-bold"
+            >
+              ✕
+            </button>
           </div>
 
-          <!-- 2. Ma ville -->
-          <div class="md:col-span-3">
-            <label for="city-select" class="block text-xs font-bold text-[#42466B] mb-1">
-              Ma ville
-            </label>
-            <div class="relative flex items-center">
-              <span class="absolute left-3.5 text-lg pointer-events-none text-purple-600">📍</span>
-              <select
-                id="city-select"
-                [(ngModel)]="filterState.city"
-                (ngModelChange)="onFilterChanged()"
-                class="w-full pl-11 pr-8 py-2.5 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] text-sm font-semibold text-[#0F1035] focus:bg-white focus:border-[#8B3DFF] focus:ring-2 focus:ring-[#8B3DFF]/20 outline-none appearance-none transition cursor-pointer"
-              >
-                <option value="Nice">Nice (06)</option>
-                <option value="Cagnes-sur-Mer">Cagnes-sur-Mer (06)</option>
-                <option value="Saint-Laurent-du-Var">Saint-Laurent-du-Var (06)</option>
-                <option value="Grasse">Grasse (06)</option>
-                <option value="Cannes">Cannes (06)</option>
-                <option value="Antibes">Antibes (06)</option>
-              </select>
-              <span class="absolute right-3.5 pointer-events-none text-xs text-gray-400">▼</span>
-            </div>
+          <!-- Ville / Territoire -->
+          <div class="md:col-span-3 relative">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">📍</span>
+            <select
+              [(ngModel)]="filterState.city"
+              (ngModelChange)="onCityChanged()"
+              class="w-full rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] pl-10 pr-8 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-[#0F1035] appearance-none focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition cursor-pointer"
+            >
+              <option value="Nice">Nice (06)</option>
+              <option value="Cannes">Cannes (06)</option>
+              <option value="Antibes">Antibes (06)</option>
+              <option value="Grasse">Grasse (06)</option>
+              <option value="Toutes">Tout le département 06</option>
+            </select>
+            <span class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-gray-400">⌄</span>
           </div>
 
-          <!-- 3. Rayon -->
+          <!-- Rayon -->
+          <div class="md:col-span-2 relative">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">🎯</span>
+            <select
+              [(ngModel)]="filterState.radiusKm"
+              (ngModelChange)="onFilterChanged()"
+              class="w-full rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] pl-10 pr-8 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-[#0F1035] appearance-none focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition cursor-pointer"
+            >
+              <option [ngValue]="10">10 km</option>
+              <option [ngValue]="25">25 km</option>
+              <option [ngValue]="50">50 km</option>
+              <option [ngValue]="100">Département</option>
+            </select>
+            <span class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-xs text-gray-400">⌄</span>
+          </div>
+
+          <!-- Bouton Rechercher -->
           <div class="md:col-span-2">
-            <label for="radius-select" class="block text-xs font-bold text-[#42466B] mb-1">
-              Rayon
-            </label>
-            <div class="relative flex items-center">
-              <span class="absolute left-3.5 text-lg pointer-events-none text-purple-600">🎯</span>
-              <select
-                id="radius-select"
-                [(ngModel)]="filterState.radiusKm"
-                (ngModelChange)="onFilterChanged()"
-                class="w-full pl-11 pr-8 py-2.5 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] text-sm font-semibold text-[#0F1035] focus:bg-white focus:border-[#8B3DFF] focus:ring-2 focus:ring-[#8B3DFF]/20 outline-none appearance-none transition cursor-pointer"
-              >
-                <option [ngValue]="5">5 km</option>
-                <option [ngValue]="10">10 km</option>
-                <option [ngValue]="25">25 km</option>
-                <option [ngValue]="50">50 km</option>
-                <option [ngValue]="100">100 km</option>
-              </select>
-              <span class="absolute right-3.5 pointer-events-none text-xs text-gray-400">▼</span>
-            </div>
-          </div>
-
-          <!-- 4. Bouton Rechercher -->
-          <div class="md:col-span-3 pt-4 md:pt-5">
             <button
               type="button"
-              (click)="triggerSearchAnimation()"
-              class="w-full py-2.5 px-5 rounded-2xl bg-gradient-to-r from-[#8B3DFF] to-[#6D28D9] text-white text-sm font-extrabold shadow-md shadow-purple-500/25 hover:brightness-110 active:scale-98 transition flex items-center justify-center gap-2"
+              (click)="onFilterChanged()"
+              class="w-full rounded-2xl bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-extrabold text-xs sm:text-sm py-2.5 sm:py-3 shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span class="text-base">🔍</span>
+              <span>🔍</span>
               <span>Rechercher</span>
             </button>
           </div>
         </div>
-      </section>
 
-      <!-- ==================================================================== -->
-      <!-- 3. ONGLETS DE CATÉGORIES AVEC COMPTEURS DYNAMIQUES                   -->
-      <!-- ==================================================================== -->
-      <nav class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none" aria-label="Catégories d'opportunités">
-        <!-- 1. Tout voir -->
-        <button
-          type="button"
-          (click)="selectCategory('ALL')"
-          [class]="filterState.category === 'ALL'
-            ? 'bg-[#8B3DFF] text-white shadow-md shadow-purple-500/20 font-extrabold'
-            : 'bg-white text-[#42466B] hover:bg-purple-50 border border-[#E9E4F5] font-semibold'"
-          class="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition cursor-pointer"
-        >
-          <span class="text-base">⊞</span>
-          <span>Tout voir ({{ counts.total }})</span>
-        </button>
-
-        <!-- 2. Formations -->
-        <button
-          type="button"
-          (click)="selectCategory('FORMATION')"
-          [class]="filterState.category === 'FORMATION'
-            ? 'bg-[#8B3DFF] text-white shadow-md shadow-purple-500/20 font-extrabold'
-            : 'bg-white text-[#42466B] hover:bg-purple-50 border border-[#E9E4F5] font-semibold'"
-          class="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition cursor-pointer"
-        >
-          <span class="text-base">🎓</span>
-          <span>Formations ({{ counts.formations }})</span>
-        </button>
-
-        <!-- 3. Organismes d'accompagnement -->
-        <button
-          type="button"
-          (click)="selectCategory('ACCOMPAGNEMENT')"
-          [class]="filterState.category === 'ACCOMPAGNEMENT'
-            ? 'bg-[#8B3DFF] text-white shadow-md shadow-purple-500/20 font-extrabold'
-            : 'bg-white text-[#42466B] hover:bg-purple-50 border border-[#E9E4F5] font-semibold'"
-          class="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition cursor-pointer"
-        >
-          <span class="text-base">🤝</span>
-          <span>Organismes d'accompagnement ({{ counts.organismes }})</span>
-        </button>
-
-        <!-- 4. Entreprises & immersions -->
-        <button
-          type="button"
-          (click)="selectCategory('ENTREPRISE')"
-          [class]="filterState.category === 'ENTREPRISE'
-            ? 'bg-[#8B3DFF] text-white shadow-md shadow-purple-500/20 font-extrabold'
-            : 'bg-white text-[#42466B] hover:bg-purple-50 border border-[#E9E4F5] font-semibold'"
-          class="flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs sm:text-sm whitespace-nowrap transition cursor-pointer"
-        >
-          <span class="text-base">🏢</span>
-          <span>Entreprises & immersions ({{ counts.entreprises }})</span>
-        </button>
-      </nav>
-
-      <!-- ==================================================================== -->
-      <!-- 4. SPLIT-SCREEN : LISTE DES RÉSULTATS (GAUCHE) & CARTE (DROITE)       -->
-      <!-- ==================================================================== -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        <!-- ------------------------------------------------------------------ -->
-        <!-- COLONNE GAUCHE : LISTE DES CARTES                                  -->
-        <!-- ------------------------------------------------------------------ -->
-        <div class="lg:col-span-7 space-y-4">
-          <!-- Barre de tri & Décompte -->
-          <div class="flex items-center justify-between px-1">
-            <h2 class="text-base sm:text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span>Résultats près de {{ filterState.city }}</span>
-              <span class="text-xs px-2.5 py-0.5 rounded-full bg-purple-100 text-[#6D28D9] font-bold">
-                {{ filteredOpportunities.length }}
-              </span>
-            </h2>
-
-            <div class="flex items-center gap-2 text-xs font-semibold text-[#42466B]">
-              <label for="sort-select" class="hidden sm:inline">Trier par :</label>
-              <select
-                id="sort-select"
-                [(ngModel)]="filterState.sortBy"
-                (ngModelChange)="onFilterChanged()"
-                class="bg-white border border-[#E4E0F5] rounded-xl px-2.5 py-1.5 text-xs font-bold text-[#0F1035] outline-none focus:border-[#8B3DFF] cursor-pointer"
-              >
-                <option value="relevance">Pertinence</option>
-                <option value="distance">Distance croissante</option>
-                <option value="name">Nom alphabétique</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- État aucun résultat -->
-          <div
-            *ngIf="filteredOpportunities.length === 0"
-            class="bg-white rounded-3xl p-8 text-center border border-[#E9E4F5] shadow-sm space-y-3"
+        <!-- Catégories (Pilules horizontales style Trustdio Local) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 pt-1 no-scrollbar">
+          <!-- Toutes -->
+          <button
+            type="button"
+            (click)="selectCategory('ALL')"
+            [class]="filterState.category === 'ALL'
+              ? 'bg-[#0F1035] text-white shadow-sm font-extrabold'
+              : 'bg-[#F8F7FF] text-[#42466B] hover:bg-[#F3EFFE] border border-[#E4E0F5] font-semibold'"
+            class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5"
           >
-            <div class="text-4xl">🔍</div>
-            <h3 class="text-base font-bold text-[#0F1035]">Aucune opportunité trouvée pour cette recherche</h3>
-            <p class="text-xs text-[#42466B] max-w-md mx-auto">
-              Essaie d'élargir le rayon, de sélectionner une autre commune des Alpes-Maritimes ou de supprimer le filtre par métier.
-            </p>
-            <button
-              type="button"
-              (click)="resetFilters()"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-purple-50 text-[#6D28D9] hover:bg-purple-100 font-bold text-xs transition"
-            >
-              <span>↺ Réinitialiser les filtres</span>
-            </button>
+            <span>Toutes ({{ counts.total }})</span>
+          </button>
+
+          <!-- Formations -->
+          <button
+            type="button"
+            (click)="selectCategory('FORMATION')"
+            [class]="filterState.category === 'FORMATION'
+              ? 'bg-[#7C3AED] text-white shadow-sm font-extrabold'
+              : 'bg-[#F8F7FF] text-[#42466B] hover:bg-[#F3EFFE] border border-[#E4E0F5] font-semibold'"
+            class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5"
+          >
+            <span>🎓</span>
+            <span>Formations ({{ counts.formations }})</span>
+          </button>
+
+          <!-- Organismes -->
+          <button
+            type="button"
+            (click)="selectCategory('ACCOMPAGNEMENT')"
+            [class]="filterState.category === 'ACCOMPAGNEMENT'
+              ? 'bg-[#059669] text-white shadow-sm font-extrabold'
+              : 'bg-[#F8F7FF] text-[#42466B] hover:bg-[#F3EFFE] border border-[#E4E0F5] font-semibold'"
+            class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5"
+          >
+            <span>🤝</span>
+            <span>Organismes ({{ counts.organismes }})</span>
+          </button>
+
+          <!-- Entreprises & immersions -->
+          <button
+            type="button"
+            (click)="selectCategory('ENTREPRISE')"
+            [class]="filterState.category === 'ENTREPRISE'
+              ? 'bg-[#2563EB] text-white shadow-sm font-extrabold'
+              : 'bg-[#F8F7FF] text-[#42466B] hover:bg-[#F3EFFE] border border-[#E4E0F5] font-semibold'"
+            class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5"
+          >
+            <span>🏢</span>
+            <span>Entreprises & immersions ({{ counts.entreprises }})</span>
+          </button>
+        </div>
+
+        <!-- Sous-pilules : Zones territoriales 06 (Nice, Cannes, Antibes, Grasse) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar border-t border-[#F0EDFA] pt-3">
+          <span class="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider shrink-0 mr-1">
+            Territoires 06 :
+          </span>
+          <button
+            *ngFor="let zone of zones"
+            type="button"
+            (click)="selectZone(zone)"
+            [class]="selectedZoneId === zone.id
+              ? 'bg-[#EDE9FE] text-[#6D28D9] border-2 border-[#7C3AED] font-extrabold'
+              : 'bg-white text-[#42466B] hover:bg-[#F8F7FF] border border-[#E4E0F5] font-semibold'"
+            class="rounded-xl px-3 py-1.5 text-xs whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
+          >
+            <span>📍</span>
+            <span>{{ zone.label }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ==================================================================== -->
+      <!-- 3. LA VÉRITABLE CARTE SATELLITE HYBRIDE & INTERACTIVE                -->
+      <!-- ==================================================================== -->
+      <div class="rounded-[28px] sm:rounded-[32px] bg-white border border-[#E4E0F5] p-4 sm:p-5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between px-1 flex-wrap gap-2">
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <h2 class="text-sm sm:text-base font-extrabold text-[#0F1035]">
+              Carte réelle des opportunités — {{ selectedZoneLabel }}
+            </h2>
           </div>
 
-          <!-- Liste des cartes d'opportunités -->
-          <div class="space-y-3.5">
-            <article
-              *ngFor="let item of filteredOpportunities"
-              (mouseenter)="hoveredOpportunityId = item.id"
-              (mouseleave)="hoveredOpportunityId = null"
-              [class.ring-2]="hoveredOpportunityId === item.id || selectedOpportunity?.id === item.id"
-              [class.ring-[#8B3DFF]]="hoveredOpportunityId === item.id || selectedOpportunity?.id === item.id"
-              class="bg-white rounded-2xl p-4 sm:p-5 border border-[#E9E4F5] shadow-sm hover:shadow-md transition-all duration-200 flex flex-col sm:flex-row gap-4 relative group"
-            >
-              <!-- Visuel d'illustration stylisé de l'établissement -->
-              <div class="w-full sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-purple-100 via-indigo-50 to-pink-50 border border-purple-100/60 flex-shrink-0 flex flex-col items-center justify-center p-3 text-center overflow-hidden relative">
-                <span class="text-3xl sm:text-4xl mb-1 transform group-hover:scale-110 transition duration-200">
-                  {{ item.category === 'FORMATION' ? '🎓' : (item.category === 'ACCOMPAGNEMENT' ? '🤝' : '🏢') }}
-                </span>
-                <span class="text-[10px] font-bold text-[#6D28D9] truncate max-w-full">
-                  {{ item.subType }}
-                </span>
-              </div>
-
-              <!-- Corps de la carte -->
-              <div class="flex-1 min-w-0 space-y-2">
-                <!-- Badges & Distance -->
-                <div class="flex items-center justify-between gap-2 flex-wrap">
-                  <div class="flex items-center gap-1.5 flex-wrap">
-                    <!-- Badge Catégorie -->
-                    <span
-                      [class]="item.category === 'FORMATION'
-                        ? 'bg-purple-100 text-[#6D28D9]'
-                        : (item.category === 'ACCOMPAGNEMENT' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800')"
-                      class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full"
-                    >
-                      {{ item.category === 'FORMATION' ? 'Formation' : (item.category === 'ACCOMPAGNEMENT' ? 'Accompagnement' : 'Entreprise') }}
-                    </span>
-
-                    <!-- Badge Sous-type -->
-                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-700">
-                      {{ item.subType }}
-                    </span>
-                  </div>
-
-                  <!-- Bouton Favori -->
-                  <button
-                    type="button"
-                    (click)="toggleFavorite(item)"
-                    [attr.aria-label]="item.isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'"
-                    class="w-8 h-8 rounded-full flex items-center justify-center text-sm transition hover:bg-pink-50"
-                  >
-                    <span *ngIf="item.isFavorite" class="text-pink-500 scale-110">❤️</span>
-                    <span *ngIf="!item.isFavorite" class="text-gray-300 hover:text-pink-400">🤍</span>
-                  </button>
-                </div>
-
-                <!-- Nom de l'établissement -->
-                <h3 class="text-base font-extrabold text-[#0F1035] leading-snug group-hover:text-[#6D28D9] transition truncate">
-                  {{ item.name }}
-                </h3>
-
-                <!-- Localisation & distance -->
-                <div class="flex items-center gap-2 text-xs text-[#5E6482]">
-                  <span class="text-purple-600 font-bold">📍 {{ item.city }}</span>
-                  <span>—</span>
-                  <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md">
-                    {{ item.distanceKm }} km
-                  </span>
-                </div>
-
-                <!-- Description / Intitulé de formation ou service -->
-                <p class="text-xs text-[#42466B] line-clamp-2 leading-relaxed font-medium">
-                  {{ item.headline }}
-                </p>
-
-                <!-- Actions du bas de carte -->
-                <div class="pt-2 flex items-center justify-between gap-3 border-t border-gray-100 mt-2">
-                  <span class="text-[11px] text-gray-400 truncate hidden sm:inline">
-                    {{ item.transitInfo ? item.transitInfo : item.address }}
-                  </span>
-
-                  <button
-                    type="button"
-                    (click)="openDetailModal(item)"
-                    class="ml-auto inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl border border-purple-300 text-xs font-extrabold text-[#6D28D9] hover:bg-purple-50 active:scale-95 transition"
-                  >
-                    <span>Voir la fiche</span>
-                    <span>→</span>
-                  </button>
-                </div>
-              </div>
-            </article>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-xs font-extrabold text-[#7C3AED] bg-[#F3E8FF] px-3 py-1 rounded-full">
+              {{ filteredOpportunities.length }} adresses géolocalisées
+            </span>
           </div>
         </div>
 
-        <!-- ------------------------------------------------------------------ -->
-        <!-- COLONNE DROITE : CARTE GÉOGRAPHIQUE VECTORIELLE INTERACTIVE       -->
-        <!-- ------------------------------------------------------------------ -->
-        <div class="lg:col-span-5 sticky top-24">
-          <div class="bg-white rounded-3xl p-4 border border-[#E9E4F5] shadow-lg overflow-hidden space-y-3">
-            <div class="flex items-center justify-between px-1">
-              <span class="text-xs font-extrabold text-[#0F1035] uppercase tracking-wider flex items-center gap-1.5">
-                <span>🗺️</span>
-                <span>Carte interactive — Nice & Environs</span>
-              </span>
-              <span class="text-[11px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
-                {{ filteredOpportunities.length }} adresses
-              </span>
+        <!-- CONTENEUR CARTE RÉELLE (Leaflet / Satellite Hybride) -->
+        <div class="relative w-full h-[400px] sm:h-[480px] lg:h-[520px] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E4E0F5] shadow-inner bg-[#1A1A2E]">
+          <!-- Le conteneur DOM Leaflet -->
+          <div #mapContainer id="real-leaflet-map" class="w-full h-full z-10"></div>
+
+          <!-- BADGE FLOTTANT HAUT-GAUCHE : MODE GOOGLE HYBRIDE • PRÉCIS (Conforme à la capture) -->
+          <div class="absolute top-4 left-4 z-20 flex items-center gap-2 bg-[#0F1035]/90 backdrop-blur-md text-white px-3.5 py-1.5 rounded-full border border-white/20 shadow-lg text-xs font-bold">
+            <span class="h-2 w-2 rounded-full" [ngClass]="currentMapLayer === 'satellite' ? 'bg-emerald-400 animate-pulse' : 'bg-cyan-400'"></span>
+            <span>{{ currentMapLayer === 'satellite' ? 'Google Hybride • Précis' : 'Plan OSM • Vectoriel' }}</span>
+          </div>
+
+          <!-- CONTRÔLES FLOTTANTS HAUT-DROITE (Style Trustdio Local) -->
+          <div class="absolute top-4 right-4 z-20 flex flex-col gap-2">
+            <!-- Sélecteur de couche (Satellite / Rues) -->
+            <button
+              type="button"
+              (click)="toggleMapLayer()"
+              [title]="currentMapLayer === 'satellite' ? 'Passer en vue Plan des rues' : 'Passer en vue Satellite Hybride'"
+              class="h-10 w-10 rounded-2xl bg-white/95 backdrop-blur-md text-[#0F1035] hover:bg-white shadow-lg border border-white/40 flex items-center justify-center text-base font-bold transition hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              {{ currentMapLayer === 'satellite' ? '🗺️' : '🛰️' }}
+            </button>
+
+            <!-- Bouton de recentrage / géolocalisation -->
+            <button
+              type="button"
+              (click)="recenterMap()"
+              title="Recentrer sur Nice"
+              class="h-10 w-10 rounded-2xl bg-white/95 backdrop-blur-md text-[#0F1035] hover:bg-white shadow-lg border border-white/40 flex items-center justify-center text-base font-bold transition hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              🎯
+            </button>
+
+            <!-- Zoom In -->
+            <button
+              type="button"
+              (click)="zoomIn()"
+              title="Zoom avant"
+              class="h-10 w-10 rounded-2xl bg-white/95 backdrop-blur-md text-[#0F1035] hover:bg-white shadow-lg border border-white/40 flex items-center justify-center text-lg font-black transition hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              +
+            </button>
+
+            <!-- Zoom Out -->
+            <button
+              type="button"
+              (click)="zoomOut()"
+              title="Zoom arrière"
+              class="h-10 w-10 rounded-2xl bg-white/95 backdrop-blur-md text-[#0F1035] hover:bg-white shadow-lg border border-white/40 flex items-center justify-center text-lg font-black transition hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              −
+            </button>
+          </div>
+
+          <!-- LÉGENDE FLOTTANTE EN BAS DE LA CARTE -->
+          <div class="absolute bottom-4 left-4 right-4 z-20 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-white/60 flex items-center justify-around text-xs font-bold text-[#0F1035] flex-wrap gap-2">
+            <div (click)="selectCategory('FORMATION')" class="flex items-center gap-2 cursor-pointer hover:opacity-80">
+              <span class="h-3 w-3 rounded-full bg-[#7C3AED] ring-2 ring-purple-200"></span>
+              <span>Formations ({{ counts.formations }})</span>
             </div>
-
-            <!-- Conteneur Carte SVG interactif -->
-            <div class="relative w-full h-[460px] rounded-2xl bg-[#E0F2FE] border border-blue-200/60 overflow-hidden select-none">
-              <!-- SVG du fond de carte de Nice (Baie des Anges, relief, autoroute A8, fleuve Paillon) -->
-              <svg
-                class="w-full h-full object-cover transition-transform duration-300"
-                [style.transform]="'scale(' + zoomLevel + ')'"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient id="sea-grad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#38BDF8"/>
-                    <stop offset="100%" stop-color="#0284C7"/>
-                  </linearGradient>
-                  <linearGradient id="land-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#ECFDF5"/>
-                    <stop offset="100%" stop-color="#D1FAE5"/>
-                  </linearGradient>
-                </defs>
-
-                <!-- Terre ferme (Côte d'Azur) -->
-                <path
-                  d="M0 0 L100 0 L100 68 C 90 70, 75 80, 68 76 C 58 70, 48 85, 30 84 C 18 84, 5 95, 0 95 Z"
-                  fill="url(#land-grad)"
-                />
-
-                <!-- Mer Méditerranée / Baie des Anges -->
-                <path
-                  d="M0 95 C 5 95, 18 84, 30 84 C 48 85, 58 70, 68 76 C 75 80, 90 70, 100 68 L100 100 L0 100 Z"
-                  fill="url(#sea-grad)"
-                  opacity="0.85"
-                />
-
-                <!-- Plage de galets & Promenade des Anglais -->
-                <path
-                  d="M0 94 C 5 94, 18 83, 30 83 C 48 84, 58 69, 68 75 C 75 79, 90 69, 100 67"
-                  stroke="#FDE047"
-                  stroke-width="1.2"
-                  fill="none"
-                />
-
-                <!-- Voie Rapide / Autoroute A8 (Tracé courbe jaune-orangé) -->
-                <path
-                  d="M0 45 C 20 40, 40 48, 60 35 C 80 25, 95 30, 100 28"
-                  stroke="#F59E0B"
-                  stroke-width="1.8"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <text x="8" y="44" font-size="3" fill="#D97706" font-weight="bold">A8</text>
-
-                <!-- Fleuve Paillon et Vallée du Var -->
-                <path d="M68 0 Q 64 35, 58 70" stroke="#7DD3FC" stroke-width="1.5" fill="none"/>
-                <path d="M26 0 Q 24 40, 20 85" stroke="#7DD3FC" stroke-width="2" fill="none"/>
-
-                <!-- Villes et toponymes -->
-                <text x="48" y="66" font-size="3.5" fill="#0F1035" font-weight="800">Nice</text>
-                <text x="6" y="80" font-size="2.6" fill="#334155" font-weight="600">Saint-Laurent</text>
-                <text x="75" y="62" font-size="2.6" fill="#334155" font-weight="600">Villefranche</text>
-                <text x="60" y="24" font-size="2.6" fill="#334155" font-weight="600">Saint-André</text>
-                <text x="78" y="20" font-size="2.6" fill="#334155" font-weight="600">La Trinité</text>
-              </svg>
-
-              <!-- Marqueurs interactifs dynamiques -->
-              <div
-                *ngFor="let item of filteredOpportunities"
-                [style.left.%]="item.mapSvgCoords.x"
-                [style.top.%]="item.mapSvgCoords.y"
-                (click)="openDetailModal(item)"
-                (mouseenter)="hoveredOpportunityId = item.id"
-                (mouseleave)="hoveredOpportunityId = null"
-                class="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer z-10 transition-transform duration-200"
-                [class.scale-125]="hoveredOpportunityId === item.id || selectedOpportunity?.id === item.id"
-                [class.z-20]="hoveredOpportunityId === item.id || selectedOpportunity?.id === item.id"
-              >
-                <!-- Pin circulaire stylisé -->
-                <div
-                  [class]="item.category === 'FORMATION'
-                    ? 'bg-[#7C3AED] ring-[#C4B5FD]'
-                    : (item.category === 'ACCOMPAGNEMENT' ? 'bg-[#059669] ring-[#A7F3D0]' : 'bg-[#2563EB] ring-[#BFDBFE]')"
-                  class="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-white shadow-lg flex items-center justify-center text-xs sm:text-sm font-bold ring-2 ring-white hover:brightness-110 active:scale-90 transition"
-                  [title]="item.name + ' (' + item.distanceKm + ' km)'"
-                >
-                  <span>{{ item.category === 'FORMATION' ? '🎓' : (item.category === 'ACCOMPAGNEMENT' ? '🤝' : '🏢') }}</span>
-                </div>
-
-                <!-- Infobulle au survol -->
-                <div
-                  *ngIf="hoveredOpportunityId === item.id"
-                  class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-44 bg-[#0F1035] text-white text-[11px] p-2 rounded-xl shadow-xl pointer-events-none z-30 text-center animate-fadeIn"
-                >
-                  <p class="font-bold truncate">{{ item.name }}</p>
-                  <p class="text-purple-300 font-semibold">{{ item.city }} · {{ item.distanceKm }} km</p>
-                </div>
-              </div>
-
-              <!-- Contrôles de zoom en bas à droite -->
-              <div class="absolute bottom-16 right-3 flex flex-col gap-1 z-20">
-                <button
-                  type="button"
-                  (click)="zoomIn()"
-                  class="w-8 h-8 rounded-xl bg-white shadow-md text-gray-700 hover:bg-gray-100 flex items-center justify-center font-extrabold text-sm border border-gray-200"
-                  title="Zoom avant"
-                >
-                  +
-                </button>
-                <button
-                  type="button"
-                  (click)="zoomOut()"
-                  class="w-8 h-8 rounded-xl bg-white shadow-md text-gray-700 hover:bg-gray-100 flex items-center justify-center font-extrabold text-sm border border-gray-200"
-                  title="Zoom arrière"
-                >
-                  -
-                </button>
-              </div>
-
-              <!-- Légende flottante en bas de carte -->
-              <div class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md px-3 py-2 rounded-2xl shadow-md border border-gray-100 flex items-center justify-around text-[11px] font-bold text-[#42466B]">
-                <div class="flex items-center gap-1.5 cursor-pointer" (click)="selectCategory('FORMATION')">
-                  <span class="w-2.5 h-2.5 rounded-full bg-[#7C3AED]"></span>
-                  <span>Formations ({{ counts.formations }})</span>
-                </div>
-                <div class="flex items-center gap-1.5 cursor-pointer" (click)="selectCategory('ACCOMPAGNEMENT')">
-                  <span class="w-2.5 h-2.5 rounded-full bg-[#059669]"></span>
-                  <span>Organismes ({{ counts.organismes }})</span>
-                </div>
-                <div class="flex items-center gap-1.5 cursor-pointer" (click)="selectCategory('ENTREPRISE')">
-                  <span class="w-2.5 h-2.5 rounded-full bg-[#2563EB]"></span>
-                  <span>Entreprises ({{ counts.entreprises }})</span>
-                </div>
-              </div>
+            <div (click)="selectCategory('ACCOMPAGNEMENT')" class="flex items-center gap-2 cursor-pointer hover:opacity-80">
+              <span class="h-3 w-3 rounded-full bg-[#059669] ring-2 ring-emerald-200"></span>
+              <span>Organismes ({{ counts.organismes }})</span>
+            </div>
+            <div (click)="selectCategory('ENTREPRISE')" class="flex items-center gap-2 cursor-pointer hover:opacity-80">
+              <span class="h-3 w-3 rounded-full bg-[#2563EB] ring-2 ring-blue-200"></span>
+              <span>Entreprises ({{ counts.entreprises }})</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================== -->
+      <!-- 4. LISTE DES OPPORTUNITÉS PROCHES (Fidèle à la maquette)             -->
+      <!-- ==================================================================== -->
+      <div class="space-y-4">
+        <!-- En-tête de liste : Titre + Tri -->
+        <div class="flex items-center justify-between px-1 flex-wrap gap-2">
+          <h2 class="text-lg sm:text-xl font-extrabold text-[#0F1035] flex items-center gap-2">
+            <span>Opportunités proches</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-purple-100 text-[#6D28D9] font-bold">
+              {{ filteredOpportunities.length }} résultats
+            </span>
+          </h2>
+
+          <div class="flex items-center gap-2 text-xs font-semibold text-[#42466B]">
+            <label for="sort-select" class="hidden sm:inline">Trier par :</label>
+            <select
+              id="sort-select"
+              [(ngModel)]="filterState.sortBy"
+              (ngModelChange)="onFilterChanged()"
+              class="bg-white border border-[#E4E0F5] rounded-xl px-3 py-2 text-xs font-bold text-[#0F1035] outline-none focus:border-[#7C3AED] cursor-pointer shadow-2xs"
+            >
+              <option value="relevance">Pertinence</option>
+              <option value="distance">Distance croissante</option>
+              <option value="name">Nom alphabétique</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- État vide -->
+        <div
+          *ngIf="filteredOpportunities.length === 0"
+          class="bg-white rounded-3xl p-8 text-center border border-[#E4E0F5] shadow-sm space-y-3"
+        >
+          <div class="text-4xl">🔍</div>
+          <h3 class="text-base font-bold text-[#0F1035]">Aucune opportunité trouvée pour cette recherche</h3>
+          <p class="text-xs text-[#42466B] max-w-md mx-auto">
+            Essaie d’élargir le rayon, de choisir une autre ville ou de réinitialiser le filtre métier.
+          </p>
+          <button
+            type="button"
+            (click)="resetFilters()"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#EDE9FE] text-[#6D28D9] font-extrabold text-xs transition hover:bg-[#DDD6FE]"
+          >
+            <span>↺ Réinitialiser les filtres</span>
+          </button>
+        </div>
+
+        <!-- Grille des cartes d'opportunités -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <article
+            *ngFor="let item of filteredOpportunities"
+            (mouseenter)="onHoverCard(item)"
+            (mouseleave)="hoveredOpportunityId = null"
+            [class.ring-2]="hoveredOpportunityId === item.id || selectedOpportunity?.id === item.id"
+            [class.ring-[#7C3AED]]="hoveredOpportunityId === item.id || selectedOpportunity?.id === item.id"
+            class="bg-white rounded-[24px] p-4 border border-[#E4E0F5] shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group space-y-3"
+          >
+            <div class="space-y-3">
+              <!-- Photo de l'établissement avec badges superposés -->
+              <div class="relative w-full h-40 rounded-2xl overflow-hidden bg-gray-100 border border-[#E4E0F5]/80">
+                <img
+                  [src]="item.imageUrl || getDefaultImage(item)"
+                  [alt]="item.name"
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                  (error)="onImageError($event, item)"
+                />
+
+                <!-- Badge Catégorie flottant en haut à gauche -->
+                <div class="absolute top-2.5 left-2.5">
+                  <span
+                    [class]="item.category === 'FORMATION'
+                      ? 'bg-[#7C3AED] text-white'
+                      : (item.category === 'ACCOMPAGNEMENT' ? 'bg-[#059669] text-white' : 'bg-[#2563EB] text-white')"
+                    class="text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow-md backdrop-blur-md"
+                  >
+                    {{ item.category === 'FORMATION' ? 'Formation' : (item.category === 'ACCOMPAGNEMENT' ? 'Accompagnement' : 'Entreprise') }}
+                  </span>
+                </div>
+
+                <!-- Bouton Favori en haut à droite -->
+                <button
+                  type="button"
+                  (click)="toggleFavorite(item)"
+                  class="absolute top-2.5 right-2.5 h-8 w-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-sm shadow-md hover:bg-white transition"
+                  [title]="item.isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+                >
+                  <span *ngIf="item.isFavorite" class="text-pink-500">❤️</span>
+                  <span *ngIf="!item.isFavorite" class="text-gray-400">🤍</span>
+                </button>
+
+                <!-- Badge distance en bas à gauche -->
+                <div class="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-md">
+                  📍 {{ item.city }} · {{ item.distanceKm }} km
+                </div>
+              </div>
+
+              <!-- Informations de la carte -->
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+                  <span class="font-bold text-gray-700">{{ item.subType }}</span>
+                  <span>•</span>
+                  <span class="text-emerald-600 font-bold">✓ Données vérifiées</span>
+                </div>
+
+                <h3 class="text-base font-extrabold text-[#0F1035] leading-snug group-hover:text-[#7C3AED] transition line-clamp-1">
+                  {{ item.name }}
+                </h3>
+
+                <p class="text-xs text-[#42466B] line-clamp-2 leading-relaxed">
+                  {{ item.headline }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Pied de carte : Bouton Voir la fiche & centrage -->
+            <div class="pt-2 border-t border-[#F0EDFA] flex items-center justify-between gap-2">
+              <button
+                type="button"
+                (click)="focusOnMap(item)"
+                class="text-xs font-bold text-gray-500 hover:text-[#7C3AED] flex items-center gap-1"
+                title="Situer sur la carte"
+              >
+                <span>🎯</span>
+                <span>Situer</span>
+              </button>
+
+              <button
+                type="button"
+                (click)="openDetailModal(item)"
+                class="rounded-xl border border-[#7C3AED] text-[#7C3AED] hover:bg-[#F5F3FF] font-extrabold text-xs px-3.5 py-1.5 transition flex items-center gap-1.5 shadow-2xs"
+              >
+                <span>Voir la fiche</span>
+                <span>→</span>
+              </button>
+            </div>
+          </article>
         </div>
       </div>
 
@@ -525,7 +476,7 @@ import {
         [attr.aria-label]="selectedOpportunity.name"
       >
         <div
-          class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl border border-[#E9E4F5] overflow-hidden flex flex-col max-h-[90vh]"
+          class="bg-white w-full max-w-2xl rounded-[32px] shadow-2xl border border-[#E9E4F5] overflow-hidden flex flex-col max-h-[90vh]"
           (click)="$event.stopPropagation()"
         >
           <!-- En-tête Modale -->
@@ -556,7 +507,7 @@ import {
             <button
               type="button"
               (click)="closeDetailModal()"
-              class="w-9 h-9 rounded-full bg-white/80 hover:bg-white text-gray-500 hover:text-gray-900 flex items-center justify-center font-bold text-lg shadow-sm border border-gray-200"
+              class="w-9 h-9 rounded-full bg-white/80 hover:bg-white text-gray-500 hover:text-gray-900 flex items-center justify-center font-bold text-lg shadow-sm border border-gray-200 cursor-pointer"
               aria-label="Fermer la fiche"
             >
               ✕
@@ -631,7 +582,7 @@ import {
             <button
               type="button"
               (click)="toggleFavorite(selectedOpportunity)"
-              class="w-full sm:w-auto px-4 py-2.5 rounded-2xl border border-gray-300 bg-white text-xs font-bold text-gray-700 hover:bg-gray-100 flex items-center justify-center gap-2 transition"
+              class="w-full sm:w-auto px-4 py-2.5 rounded-2xl border border-gray-300 bg-white text-xs font-bold text-gray-700 hover:bg-gray-100 flex items-center justify-center gap-2 transition cursor-pointer"
             >
               <span>{{ selectedOpportunity.isFavorite ? '❤️ Dans mes favoris' : '🤍 Ajouter aux favoris' }}</span>
             </button>
@@ -641,7 +592,7 @@ import {
               <button
                 type="button"
                 (click)="onOpenCoachIA(selectedOpportunity)"
-                class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-gradient-to-r from-[#8B3DFF] to-[#6D28D9] text-white text-xs font-extrabold shadow-md hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-1.5"
+                class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-gradient-to-r from-[#8B3DFF] to-[#6D28D9] text-white text-xs font-extrabold shadow-md hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <span>✨ Mon Coach IA</span>
                 <span class="hidden sm:inline">(Préparer ma demande)</span>
@@ -652,7 +603,7 @@ import {
                 *ngIf="selectedOpportunity.category === 'ENTREPRISE'"
                 type="button"
                 (click)="onChooseForImmersion(selectedOpportunity)"
-                class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-[#0F1035] text-white text-xs font-extrabold hover:bg-black active:scale-95 transition flex items-center justify-center gap-1.5"
+                class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-[#0F1035] text-white text-xs font-extrabold hover:bg-black active:scale-95 transition flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <span>💼 Immersion</span>
               </button>
@@ -663,10 +614,12 @@ import {
     </div>
   `
 })
-export class LocalDiscoveryComponent implements OnInit {
+export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() initialCareer?: string;
   @Output() navigateToCoach = new EventEmitter<{ establishmentName: string; career: string }>();
   @Output() navigateToImmersion = new EventEmitter<{ companyName: string; career: string }>();
+
+  @ViewChild('mapContainer') mapContainerRef?: ElementRef<HTMLDivElement>;
 
   filterState: LocalFilterState = {
     careerQuery: '',
@@ -676,11 +629,28 @@ export class LocalDiscoveryComponent implements OnInit {
     sortBy: 'relevance'
   };
 
+  zones: LocalZone[] = [
+    { id: 'ALL', label: 'Toutes les zones', lat: 43.68, lng: 7.15, zoom: 11 },
+    { id: 'NICE', label: 'Nice Baie des Anges', lat: 43.7102, lng: 7.2620, zoom: 13 },
+    { id: 'CANNES', label: 'Cannes & Lérins', lat: 43.5528, lng: 7.0174, zoom: 13 },
+    { id: 'ANTIBES', label: 'Antibes & Sophia', lat: 43.5804, lng: 7.1251, zoom: 13 },
+    { id: 'GRASSE', label: 'Grasse & Pays de Grasse', lat: 43.6601, lng: 6.9242, zoom: 13 }
+  ];
+
+  selectedZoneId = 'NICE';
+  selectedZoneLabel = 'Nice Baie des Anges';
+
   allOpportunities: LocalOpportunity[] = [];
   filteredOpportunities: LocalOpportunity[] = [];
   selectedOpportunity: LocalOpportunity | null = null;
   hoveredOpportunityId: string | null = null;
-  zoomLevel = 1.0;
+
+  // État carte réelle Leaflet
+  private map: any = null;
+  private markersLayer: any = null;
+  private satelliteLayerGroup: any = null;
+  private osmLayer: any = null;
+  currentMapLayer: 'satellite' | 'streets' = 'satellite';
 
   get counts() {
     return getCategoryCounts(this.allOpportunities);
@@ -691,14 +661,275 @@ export class LocalDiscoveryComponent implements OnInit {
     if (this.initialCareer) {
       this.filterState.careerQuery = this.initialCareer;
     } else {
-      // Valeur initiale de la maquette
       this.filterState.careerQuery = 'Peintre décorateur';
     }
     this.onFilterChanged();
   }
 
+  ngAfterViewInit(): void {
+    // Initialisation sécurisée de la vraie carte Leaflet
+    this.ensureLeaflet(() => {
+      this.initLeafletMap();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.map) {
+      this.map.remove();
+      this.map = null;
+    }
+  }
+
+  private ensureLeaflet(callback: () => void): void {
+    if (typeof L !== 'undefined') {
+      callback();
+      return;
+    }
+    // Injection dynamique si le script CDN prend quelques millisecondes à se charger
+    const interval = setInterval(() => {
+      if (typeof L !== 'undefined') {
+        clearInterval(interval);
+        callback();
+      }
+    }, 100);
+    setTimeout(() => clearInterval(interval), 4000);
+  }
+
+  private initLeafletMap(): void {
+    const el = document.getElementById('real-leaflet-map');
+    if (!el || typeof L === 'undefined' || this.map) return;
+
+    // Création de la carte Leaflet centrée sur Nice
+    this.map = L.map('real-leaflet-map', {
+      zoomControl: false,
+      attributionControl: false
+    }).setView([43.7102, 7.2620], 12);
+
+    // 1. Couche Satellite Hybride (Esri World Imagery + labels)
+    const esriSatellite = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { maxZoom: 19 }
+    );
+    const esriLabels = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+      { maxZoom: 19 }
+    );
+    this.satelliteLayerGroup = L.layerGroup([esriSatellite, esriLabels]);
+
+    // 2. Couche Plan des rues vectoriel (CartoDB Voyager)
+    this.osmLayer = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      { maxZoom: 19 }
+    );
+
+    // Activer la vue satellite par défaut (comme sur la capture)
+    this.satelliteLayerGroup.addTo(this.map);
+
+    // Groupe pour les marqueurs
+    this.markersLayer = L.layerGroup().addTo(this.map);
+
+    // Ajout des marqueurs réels
+    this.updateMapMarkers();
+  }
+
+  private updateMapMarkers(): void {
+    if (!this.map || !this.markersLayer || typeof L === 'undefined') return;
+
+    this.markersLayer.clearLayers();
+
+    const bounds: [number, number][] = [];
+
+    this.filteredOpportunities.forEach((opp) => {
+      const lat = opp.coordinates.lat;
+      const lng = opp.coordinates.lng;
+      bounds.push([lat, lng]);
+
+      // Définir la couleur et l'icône selon la catégorie
+      const color =
+        opp.category === 'FORMATION'
+          ? '#7C3AED'
+          : opp.category === 'ACCOMPAGNEMENT'
+          ? '#059669'
+          : '#2563EB';
+
+      const iconEmoji =
+        opp.category === 'FORMATION'
+          ? '🎓'
+          : opp.category === 'ACCOMPAGNEMENT'
+          ? '🤝'
+          : '🏢';
+
+      const customIcon = L.divIcon({
+        className: 'custom-leaflet-marker',
+        html: `
+          <div style="
+            background: ${color};
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 2.5px solid #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.2s;
+          " onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
+            ${iconEmoji}
+          </div>
+        `,
+        iconSize: [34, 34],
+        iconAnchor: [17, 17],
+        popupAnchor: [0, -18]
+      });
+
+      const marker = L.marker([lat, lng], { icon: customIcon });
+
+      // Popup au clic avec design riche
+      const popupContent = `
+        <div style="font-family: inherit; width: 220px; padding: 12px; background: #FFFFFF; border-radius: 16px;">
+          <div style="display: inline-block; background: ${color}15; color: ${color}; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 999px; margin-bottom: 6px;">
+            ${opp.subType}
+          </div>
+          <h4 style="font-size: 13px; font-weight: 800; color: #0F1035; margin: 0 0 4px 0; line-height: 1.2;">
+            ${opp.name}
+          </h4>
+          <p style="font-size: 11px; color: #6B7280; margin: 0 0 6px 0;">
+            📍 ${opp.city} · ${opp.distanceKm} km
+          </p>
+          <div style="font-size: 11px; color: #42466B; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+            ${opp.headline}
+          </div>
+          <button id="btn-popup-${opp.id}" style="
+            width: 100%;
+            background: #7C3AED;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 10px;
+            padding: 6px 0;
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+          ">
+            Voir la fiche →
+          </button>
+        </div>
+      `;
+
+      marker.bindPopup(popupContent);
+
+      marker.on('popupopen', () => {
+        const btn = document.getElementById(`btn-popup-${opp.id}`);
+        if (btn) {
+          btn.onclick = () => {
+            this.openDetailModal(opp);
+          };
+        }
+      });
+
+      marker.on('click', () => {
+        this.hoveredOpportunityId = opp.id;
+      });
+
+      this.markersLayer.addLayer(marker);
+    });
+
+    // Ajuster le cadrage si des marqueurs existent et si "Toutes les zones" est actif
+    if (this.selectedZoneId === 'ALL' && bounds.length > 0 && this.map) {
+      try {
+        this.map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+      } catch {
+        // Fallback cadrage doux
+      }
+    }
+  }
+
+  toggleMapLayer(): void {
+    if (!this.map) return;
+    if (this.currentMapLayer === 'satellite') {
+      this.map.removeLayer(this.satelliteLayerGroup);
+      this.osmLayer.addTo(this.map);
+      this.currentMapLayer = 'streets';
+    } else {
+      this.map.removeLayer(this.osmLayer);
+      this.satelliteLayerGroup.addTo(this.map);
+      this.currentMapLayer = 'satellite';
+    }
+  }
+
+  recenterMap(): void {
+    if (!this.map) return;
+    this.map.flyTo([43.7102, 7.2620], 13, { duration: 1.2 });
+  }
+
+  zoomIn(): void {
+    if (this.map) this.map.zoomIn();
+  }
+
+  zoomOut(): void {
+    if (this.map) this.map.zoomOut();
+  }
+
+  selectZone(zone: LocalZone): void {
+    this.selectedZoneId = zone.id;
+    this.selectedZoneLabel = zone.label;
+
+    if (zone.id === 'ALL') {
+      this.filterState.city = 'Toutes';
+    } else if (zone.id === 'NICE') {
+      this.filterState.city = 'Nice';
+    } else if (zone.id === 'CANNES') {
+      this.filterState.city = 'Cannes';
+    } else if (zone.id === 'ANTIBES') {
+      this.filterState.city = 'Antibes';
+    } else if (zone.id === 'GRASSE') {
+      this.filterState.city = 'Grasse';
+    }
+
+    this.onFilterChanged();
+
+    if (this.map) {
+      this.map.flyTo([zone.lat, zone.lng], zone.zoom, { duration: 1.2 });
+    }
+  }
+
+  focusOnMap(opp: LocalOpportunity): void {
+    if (this.map) {
+      this.map.flyTo([opp.coordinates.lat, opp.coordinates.lng], 15, { duration: 1.0 });
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+  }
+
+  onHoverCard(opp: LocalOpportunity): void {
+    this.hoveredOpportunityId = opp.id;
+  }
+
   onFilterChanged(): void {
     this.filteredOpportunities = filterOpportunities(this.allOpportunities, this.filterState);
+    if (this.map) {
+      this.updateMapMarkers();
+    }
+  }
+
+  onCityChanged(): void {
+    if (this.filterState.city === 'Toutes') {
+      this.selectedZoneId = 'ALL';
+      this.selectedZoneLabel = 'Alpes-Maritimes (06)';
+      if (this.map) this.map.flyTo([43.68, 7.15], 11);
+    } else {
+      const matchZone = this.zones.find((z) =>
+        z.label.toLowerCase().includes(this.filterState.city.toLowerCase())
+      );
+      if (matchZone) {
+        this.selectedZoneId = matchZone.id;
+        this.selectedZoneLabel = matchZone.label;
+        if (this.map) this.map.flyTo([matchZone.lat, matchZone.lng], matchZone.zoom);
+      }
+    }
+    this.onFilterChanged();
   }
 
   getCategoryLabel(category?: string): string {
@@ -726,11 +957,12 @@ export class LocalDiscoveryComponent implements OnInit {
       category: 'ALL',
       sortBy: 'relevance'
     };
+    this.selectedZoneId = 'NICE';
+    this.selectedZoneLabel = 'Nice Baie des Anges';
     this.onFilterChanged();
-  }
-
-  triggerSearchAnimation(): void {
-    this.onFilterChanged();
+    if (this.map) {
+      this.map.flyTo([43.7102, 7.2620], 12);
+    }
   }
 
   toggleFavorite(opp: LocalOpportunity): void {
@@ -745,15 +977,20 @@ export class LocalDiscoveryComponent implements OnInit {
     this.selectedOpportunity = null;
   }
 
-  zoomIn(): void {
-    if (this.zoomLevel < 1.6) {
-      this.zoomLevel = Number((this.zoomLevel + 0.15).toFixed(2));
+  getDefaultImage(opp: LocalOpportunity): string {
+    if (opp.category === 'FORMATION') {
+      return 'assets/visuals/institutions/cfa-btp.jpg';
     }
+    if (opp.category === 'ACCOMPAGNEMENT') {
+      return 'assets/visuals/institutions/mission-locale.jpg';
+    }
+    return 'assets/visuals/institutions/atelier-decors.jpg';
   }
 
-  zoomOut(): void {
-    if (this.zoomLevel > 0.85) {
-      this.zoomLevel = Number((this.zoomLevel - 0.15).toFixed(2));
+  onImageError(event: Event, opp: LocalOpportunity): void {
+    const imgEl = event.target as HTMLImageElement;
+    if (imgEl) {
+      imgEl.src = this.getDefaultImage(opp);
     }
   }
 

@@ -21,32 +21,21 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
       <!-- BANNIÈRE HERO MON COACH IA                                         -->
       <!-- ================================================================== -->
       <div class="rounded-[28px] bg-gradient-to-r from-[#5B21B6] via-[#7C3AED] to-[#9333EA] text-white p-6 sm:p-7 shadow-lg relative overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10">
-          <div class="md:col-span-8 flex items-start gap-4 sm:gap-5">
-            <!-- Robot 3D -->
-            <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-inner backdrop-blur-sm text-3xl sm:text-4xl">
-              🤖
-            </div>
-            <div class="space-y-2">
-              <div class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
-                <span>✨ Assistant pédagogique IA</span>
-              </div>
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
-                Mon Coach IA
-              </h2>
-              <p class="text-xs sm:text-sm text-[#E7E8FB] max-w-2xl leading-relaxed">
-                Ton assistant pour trouver les bons mots, préparer tes contacts et communiquer avec les professionnels.
-              </p>
-            </div>
+        <div class="relative z-10 flex items-start gap-4 sm:gap-5">
+          <!-- Robot 3D -->
+          <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-inner backdrop-blur-sm text-3xl sm:text-4xl">
+            🤖
           </div>
-
-          <div class="md:col-span-4 flex justify-center md:justify-end">
-            <img
-              src="assets/visuals/hero-boy-backpack.png"
-              alt="Jeune accompagné"
-              class="h-32 sm:h-40 object-contain drop-shadow-xl"
-              onerror="this.style.display='none'"
-            />
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
+              <span>✨ Assistant pédagogique IA</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+              Mon Coach IA
+            </h2>
+            <p class="text-xs sm:text-sm text-[#E7E8FB] max-w-2xl leading-relaxed">
+              Ton assistant pour trouver les bons mots, préparer tes contacts et communiquer avec les professionnels.
+            </p>
           </div>
         </div>
       </div>

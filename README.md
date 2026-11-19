@@ -16,6 +16,16 @@ Projet réalisé à Nice les 18, 19 et 20 novembre 2026, sur le thème **« L'or
 
 ## Lancer le projet
 
+Avec le Makefile :
+
+```bash
+make          # installe les dépendances et lance la WebApp sur http://localhost:4200
+make dev      # stack complète : Postgres/Redis (Docker) + DB + API + Worker + Web + Landing
+make help     # toutes les commandes
+```
+
+Ou manuellement :
+
 ```bash
 cp .env.example .env && npm install
 docker-compose -f compose.dev.yaml up -d

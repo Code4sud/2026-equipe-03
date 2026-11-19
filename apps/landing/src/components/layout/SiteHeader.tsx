@@ -1,6 +1,7 @@
 import React from 'react';
-import { MAIN_NAVIGATION, SITE_CONFIG } from '@/config/site';
+import { SITE_CONFIG } from '@/config/site';
 import { Container } from '@/components/ui/Container';
+import { DesktopNavigation } from './DesktopNavigation';
 import { MobileNavigation } from './MobileNavigation';
 
 export function SiteHeader() {
@@ -25,22 +26,6 @@ export function SiteHeader() {
           </div>
         </a>
 
-        <nav aria-label="Navigation principale" className="hidden lg:flex items-center gap-1">
-          {MAIN_NAVIGATION.map((item, idx) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={
-                idx === 0
-                  ? 'min-h-10 inline-flex items-center rounded-full bg-[#F3EFFE] px-3.5 py-1.5 text-xs font-extrabold text-[#6D28D9] border-b-2 border-[#6D28D9]'
-                  : 'min-h-10 inline-flex items-center rounded-full px-3 py-1.5 text-xs font-bold text-[#0F1035] hover:bg-[#F5F2FF] hover:text-[#6D28D9] transition'
-              }
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
         <div className="hidden lg:flex items-center gap-2.5">
           <a
             href={SITE_CONFIG.counselorAppUrl}
@@ -54,6 +39,7 @@ export function SiteHeader() {
           >
             Découvrir la démonstration
           </a>
+          <DesktopNavigation />
         </div>
 
         <MobileNavigation />

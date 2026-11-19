@@ -6,7 +6,7 @@ Avec: Bastien Ozil, Mathilde Poirier, Saidou Yaya Diallo, Enzo Sarfati, Farimzha
 
 ## Le projet
 
-- Problème: le Le jeune ou l'étudiant repart avec plusieurs pages de graphiques et le souvenir d'un entretien de 15 minutes.Une semaine plus tard, il ne lui en reste presque rien.
+- Problème: Le jeune ou l'étudiant repart avec plusieurs pages de graphiques et le souvenir d'un entretien de 15 minutes.Une semaine plus tard, il ne lui en reste presque rien.
 - Solution: Nous fesont en sorte que cet entretien sois uen porte d'entre vers un travail qui lui convient en rendant bien plus interactif et utile cette démarche.
 - Pour les jeune de 15 à 25 ans.
 

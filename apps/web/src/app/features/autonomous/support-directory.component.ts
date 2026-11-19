@@ -5,6 +5,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import {
   INITIAL_SUPPORT_RESOURCES,
@@ -14,7 +15,7 @@ import {
 @Component({
   selector: 'app-support-directory',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="space-y-8 animate-fadeIn">
       <!-- ================================================================== -->
@@ -26,7 +27,7 @@ import {
         <div class="max-w-3xl space-y-3 relative z-10">
           <div class="flex items-center gap-2">
             <span class="inline-block rounded-full bg-white/20 text-white px-3.5 py-1 text-xs font-black tracking-wide uppercase">
-              🏛️ Annuaire d'Orientation
+              <mb-icon name="landmark"></mb-icon> Annuaire d'Orientation
             </span>
             <span class="text-xs text-[#E7E8FB]/80 hidden sm:inline">• Services publics gratuits & bienveillants</span>
           </div>
@@ -72,7 +73,7 @@ import {
                 : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:bg-[#F8FAFC] font-semibold'"
               class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
             >
-              <span>🏫</span>
+              <span><mb-icon name="school"></mb-icon></span>
               <span>Mon établissement</span>
             </button>
             <button
@@ -83,7 +84,7 @@ import {
                 : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:bg-[#F8FAFC] font-semibold'"
               class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
             >
-              <span>🤝</span>
+              <span><mb-icon name="handshake"></mb-icon></span>
               <span>Mission Locale</span>
             </button>
             <button
@@ -94,7 +95,7 @@ import {
                 : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:bg-[#F8FAFC] font-semibold'"
               class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
             >
-              <span>🏛️</span>
+              <span><mb-icon name="landmark"></mb-icon></span>
               <span>CIO</span>
             </button>
             <button
@@ -105,7 +106,7 @@ import {
                 : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:bg-[#F8FAFC] font-semibold'"
               class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
             >
-              <span>🇫🇷</span>
+              <span><mb-icon name="flag"></mb-icon></span>
               <span>Portails officiels</span>
             </button>
           </div>
@@ -135,7 +136,7 @@ import {
               <span
                 class="rounded-full bg-blue-50 border border-blue-200 text-blue-800 px-3 py-0.5 text-xs font-black flex items-center gap-1.5"
               >
-                <span>{{ res.icon }}</span>
+                <span><mb-icon [name]="res.icon"></mb-icon></span>
                 <span>{{ res.categoryLabel }}</span>
               </span>
               <span class="rounded-full bg-emerald-50 text-emerald-700 px-2.5 py-0.5 text-[10px] font-bold">
@@ -148,7 +149,7 @@ import {
                 {{ res.name }}
               </h3>
               <p *ngIf="res.address" class="text-xs text-[#6B7280]">
-                📍 {{ res.address }}, {{ res.postalCode }} {{ res.city }}
+                <mb-icon name="map-pin"></mb-icon> {{ res.address }}, {{ res.postalCode }} {{ res.city }}
               </p>
             </div>
 
@@ -158,8 +159,8 @@ import {
 
             <!-- Contact direct -->
             <div *ngIf="res.phone || res.email" class="rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] p-3 text-xs text-[#334155] space-y-1">
-              <p *ngIf="res.phone" class="font-bold">📞 Téléphone : <span class="text-[#0F1035]">{{ res.phone }}</span></p>
-              <p *ngIf="res.email" class="font-medium truncate">✉️ Email : <span class="text-[#3B82F6]">{{ res.email }}</span></p>
+              <p *ngIf="res.phone" class="font-bold"><mb-icon name="phone"></mb-icon> Téléphone : <span class="text-[#0F1035]">{{ res.phone }}</span></p>
+              <p *ngIf="res.email" class="font-medium truncate"><mb-icon name="mail"></mb-icon> Email : <span class="text-[#3B82F6]">{{ res.email }}</span></p>
             </div>
           </div>
 
@@ -184,7 +185,7 @@ import {
       >
         <div class="space-y-1.5 max-w-xl text-center md:text-left">
           <div class="flex items-center justify-center md:justify-start gap-2">
-            <span class="text-2xl">💼</span>
+            <span class="text-2xl"><mb-icon name="briefcase"></mb-icon></span>
             <h3 class="text-lg sm:text-xl font-black text-[#0F1035]">
               Tu as déjà une idée de métier en tête ?
             </h3>

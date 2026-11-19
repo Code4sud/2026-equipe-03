@@ -6,6 +6,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import {
   IMMERSION_STEPS,
@@ -21,7 +22,7 @@ import {
 @Component({
   selector: 'app-immersion-pro',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="space-y-6">
       <!-- ================================================================== -->
@@ -34,14 +35,14 @@ import {
 
         <div class="flex items-center gap-5 relative z-10 max-w-2xl">
           <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-3xl bg-gradient-to-br from-[#7C3AED] to-[#9333EA] text-white flex items-center justify-center text-3xl sm:text-4xl shadow-lg shrink-0 ring-4 ring-white/60">
-            💼
+            <mb-icon name="briefcase"></mb-icon>
           </div>
           <div class="space-y-1">
             <div class="flex items-center gap-2">
               <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0F1035] tracking-tight">
                 Mon immersion pro
               </h2>
-              <span class="text-2xl">✨</span>
+              <span class="text-2xl"><mb-icon name="sparkles"></mb-icon></span>
             </div>
             <p class="text-sm sm:text-base text-[#42466B] font-medium leading-relaxed">
               Découvre un métier sur le terrain grâce à un stage d’observation et vis une expérience concrète en entreprise.
@@ -52,13 +53,14 @@ import {
         <!-- Visuel illustratif adolescent & rouleau de peinture (Maquette) -->
         <div class="relative z-10 shrink-0 hidden md:flex items-center justify-center">
           <div class="relative group cursor-pointer" (click)="goToStep(2)">
-            <img
-              src="assets/visuals/career-peintre.png"
-              alt="Peintre décorateur"
-              class="h-28 w-28 object-cover rounded-2xl shadow-md border-2 border-white rotate-3 group-hover:rotate-0 transition duration-200"
-            />
+            <div
+              aria-hidden="true"
+              class="h-28 w-28 rounded-2xl shadow-md border-2 border-white rotate-3 group-hover:rotate-0 transition duration-200 bg-gradient-to-br from-[#EDE9FE] to-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-5xl"
+            >
+              <mb-icon name="palette"></mb-icon>
+            </div>
             <div class="absolute -bottom-2 -left-3 rounded-full bg-white px-3 py-1 text-xs font-black text-[#7C3AED] shadow border border-[#E4E0F5] flex items-center gap-1.5 whitespace-nowrap">
-              <span>🎨</span>
+              <span><mb-icon name="palette"></mb-icon></span>
               <span>{{ project.careerTitle }}</span>
             </div>
           </div>
@@ -95,12 +97,12 @@ import {
             >
               <div class="flex items-center gap-1 text-xs font-black">
                 <span class="text-sm" [ngSwitch]="s.number">
-                  <span *ngSwitchCase="1">👓</span>
-                  <span *ngSwitchCase="2">📅</span>
-                  <span *ngSwitchCase="3">🏢</span>
-                  <span *ngSwitchCase="4">✈️</span>
-                  <span *ngSwitchCase="5">⛑️</span>
-                  <span *ngSwitchCase="6">☑️</span>
+                  <span *ngSwitchCase="1"><mb-icon name="glasses"></mb-icon></span>
+                  <span *ngSwitchCase="2"><mb-icon name="calendar"></mb-icon></span>
+                  <span *ngSwitchCase="3"><mb-icon name="building-2"></mb-icon></span>
+                  <span *ngSwitchCase="4"><mb-icon name="plane"></mb-icon></span>
+                  <span *ngSwitchCase="5"><mb-icon name="hard-hat"></mb-icon></span>
+                  <span *ngSwitchCase="6"><mb-icon name="square-check"></mb-icon></span>
                 </span>
                 <span *ngIf="s.number < project.currentStep && project.currentStep !== s.number" class="text-xs text-emerald-600 font-bold">✓</span>
                 <span *ngIf="project.currentStep === s.number" class="text-xs font-black ml-0.5">{{ s.number }}</span>
@@ -160,11 +162,12 @@ import {
                 <span class="text-[11px] font-semibold text-[#6B7280]">p. {{ c.pageNumber }}</span>
               </div>
               <div class="flex items-start gap-3">
-                <img
-                  [src]="c.imageUrl"
-                  [alt]="c.titleFr"
-                  class="h-16 w-16 rounded-2xl object-cover shrink-0 border border-[#E4E0F5]"
-                />
+                <div
+                  aria-hidden="true"
+                  class="h-16 w-16 rounded-2xl shrink-0 border border-[#E4E0F5] bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-3xl"
+                >
+                  <mb-icon name="briefcase"></mb-icon>
+                </div>
                 <div>
                   <h4 class="text-base font-black text-[#0F1035] leading-snug">{{ c.titleFr }}</h4>
                   <p class="text-xs text-[#6B7280] font-medium mt-0.5">Zone {{ c.jobZone }} • {{ c.educationLevel }}</p>
@@ -181,7 +184,7 @@ import {
                 class="text-xl p-1 shrink-0"
                 title="Favori"
               >
-                {{ c.isFavorite ? '❤️' : '🤍' }}
+                <mb-icon [name]="'heart'" [filled]="!!(c.isFavorite)"></mb-icon>
               </button>
               <button
                 type="button"
@@ -189,7 +192,7 @@ import {
                 class="rounded-full bg-[#F3EFFE] text-[#7C3AED] hover:bg-[#E9D5FF] py-2 px-3 text-xs font-extrabold transition shrink-0"
                 title="Consulter la fiche détaillée du métier"
               >
-                🔍 Fiche
+                <mb-icon name="search"></mb-icon> Fiche
               </button>
               <button
                 type="button"
@@ -211,11 +214,12 @@ import {
         <div class="lg:col-span-5 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-6">
           <!-- En-tête avec vignette du rouleau de peinture -->
           <div class="flex items-center gap-3.5 pb-4 border-b border-[#F0EDFA]">
-            <img
-              [src]="project.careerImage || 'assets/visuals/career-peintre.png'"
-              [alt]="project.careerTitle"
-              class="h-14 w-14 rounded-2xl object-cover shadow-sm border border-[#E4E0F5] shrink-0"
-            />
+            <div
+              aria-hidden="true"
+              class="h-14 w-14 rounded-2xl shadow-sm border border-[#E4E0F5] shrink-0 bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-3xl"
+            >
+              <mb-icon name="briefcase"></mb-icon>
+            </div>
             <div>
               <span class="text-xs font-semibold text-[#6B7280] block">Préparer mon immersion pour</span>
               <h3 class="text-xl sm:text-2xl font-black text-[#0F1035] leading-tight">
@@ -228,7 +232,7 @@ import {
           <div class="space-y-3">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="text-lg">📋</span>
+                <span class="text-lg"><mb-icon name="clipboard-list"></mb-icon></span>
                 <h4 class="text-sm font-black text-[#0F1035]">Les activités à observer</h4>
               </div>
               <span class="h-5 w-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
@@ -275,7 +279,7 @@ import {
         <!-- Colonne Centrale : « Mon kit d'immersion » (4 colonnes) -->
         <div class="lg:col-span-4 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-5">
           <div class="flex items-center gap-2.5 pb-3 border-b border-[#F0EDFA]">
-            <span class="text-2xl">📦</span>
+            <span class="text-2xl"><mb-icon name="package"></mb-icon></span>
             <div>
               <h3 class="text-lg font-black text-[#0F1035]">Mon kit d'immersion</h3>
               <p class="text-xs text-[#6B7280]">Documents prêts pour ton stage</p>
@@ -307,7 +311,7 @@ import {
           <div class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED]/50 p-4 transition flex items-center justify-between gap-3 bg-[#FAF8FF]">
             <div class="flex items-center gap-3">
               <div class="h-10 w-10 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-base shrink-0">
-                📓
+                <mb-icon name="notebook"></mb-icon>
               </div>
               <div>
                 <h4 class="text-xs sm:text-sm font-black text-[#0F1035]">Carnet d'observation</h4>
@@ -328,7 +332,7 @@ import {
           <div class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED]/50 p-4 transition flex items-center justify-between gap-3 bg-[#FAF8FF]">
             <div class="flex items-center gap-3">
               <div class="h-10 w-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-base shrink-0">
-                💬
+                <mb-icon name="message-circle"></mb-icon>
               </div>
               <div>
                 <h4 class="text-xs sm:text-sm font-black text-[#0F1035]">Exemple de message de contact</h4>
@@ -355,7 +359,7 @@ import {
         <!-- Colonne Droite : « Mon objectif » (3 colonnes) -->
         <div class="lg:col-span-3 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-5">
           <div class="flex items-center gap-2 pb-3 border-b border-[#F0EDFA]">
-            <span class="text-2xl">🎯</span>
+            <span class="text-2xl"><mb-icon name="target"></mb-icon></span>
             <h3 class="text-lg font-black text-[#0F1035]">Mon objectif</h3>
           </div>
 
@@ -366,7 +370,7 @@ import {
           <!-- Illustration Checklist avec crayon (Fidèle à la maquette) -->
           <div class="rounded-2xl bg-gradient-to-br from-[#FAF8FF] to-[#F3EFFE] border border-[#E4E0F5] p-4 text-center space-y-3">
             <div class="inline-flex items-center justify-center h-20 w-20 rounded-2xl bg-white shadow-sm border border-[#DDD6FE]">
-              <span class="text-4xl">📋</span>
+              <span class="text-4xl"><mb-icon name="clipboard-list"></mb-icon></span>
             </div>
             <div class="space-y-1 text-left text-xs">
               <div class="flex items-center gap-1.5 text-emerald-700 font-bold">
@@ -494,7 +498,7 @@ import {
               (click)="saveDraft()"
               class="rounded-full bg-white border border-[#D8DCF0] text-[#0F1035] px-4 py-2 text-xs font-extrabold hover:bg-[#F3EFFE]"
             >
-              💾 Enregistrer le brouillon
+              <mb-icon name="save"></mb-icon> Enregistrer le brouillon
             </button>
             <div class="flex items-center gap-2">
               <button
@@ -502,7 +506,7 @@ import {
                 (click)="downloadDoc('MESSAGE')"
                 class="rounded-full border border-[#7C3AED] text-[#7C3AED] px-4 py-2 text-xs font-bold hover:bg-[#F3EFFE]"
               >
-                📄 Télécharger la lettre
+                <mb-icon name="file-text"></mb-icon> Télécharger la lettre
               </button>
               <button
                 type="button"
@@ -518,7 +522,7 @@ import {
         <!-- Guide & Conseils -->
         <div class="lg:col-span-4 rounded-[26px] bg-[#FAF8FF] border border-[#E4E0F5] p-5 space-y-4">
           <div class="flex items-center gap-2">
-            <span class="text-xl">💡</span>
+            <span class="text-xl"><mb-icon name="lightbulb"></mb-icon></span>
             <h4 class="text-sm font-black text-[#0F1035]">Conseils de ton conseiller</h4>
           </div>
           <p class="text-xs text-[#42466B] leading-relaxed">
@@ -706,7 +710,7 @@ import {
               (click)="downloadDoc('REVIEW')"
               class="rounded-full border border-[#7C3AED] text-[#7C3AED] px-4 py-2 text-xs font-bold hover:bg-[#F3EFFE]"
             >
-              📄 Télécharger le bilan (PDF)
+              <mb-icon name="file-text"></mb-icon> Télécharger le bilan (PDF)
             </button>
             <button
               type="button"

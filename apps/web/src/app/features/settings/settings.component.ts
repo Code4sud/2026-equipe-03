@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,15 +13,15 @@ export interface UserProfileData {
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="max-w-4xl mx-auto space-y-6 pb-14">
       <!-- ================================================================== -->
       <!-- EN-TÊTE : MES PARAMÈTRES (Fidèle à la maquette Espace Jeune)        -->
       <!-- ================================================================== -->
       <div class="flex items-center gap-3.5">
-        <div class="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-2xl font-bold border border-[#E9D5FF] shrink-0 shadow-2xs">
-          ⚙️
+        <div class="h-11 w-11 sm:h-12 sm:w-12 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-xl sm:text-2xl font-bold border border-[#E9D5FF] shrink-0 shadow-2xs">
+          <mb-icon name="settings"></mb-icon>
         </div>
         <div>
           <h1 class="text-2xl sm:text-3xl font-black text-[#0F1035] tracking-tight">
@@ -60,7 +61,7 @@ export interface UserProfileData {
                 title="Modifier ma photo"
                 aria-label="Modifier ma photo"
               >
-                📷
+                <mb-icon name="camera"></mb-icon>
               </button>
             </div>
 
@@ -90,7 +91,7 @@ export interface UserProfileData {
                 (click)="fileInput.click()"
                 class="w-full rounded-full border-2 border-[#7C3AED] text-[#7C3AED] font-extrabold text-xs px-4 py-2 hover:bg-[#F5F3FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
               >
-                <span>📷</span>
+                <span><mb-icon name="camera"></mb-icon></span>
                 <span>Modifier ma photo</span>
               </button>
 
@@ -173,7 +174,7 @@ export interface UserProfileData {
               </label>
               <div class="relative">
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">
-                  ✉️
+                  <mb-icon name="mail"></mb-icon>
                 </span>
                 <input
                   type="email"
@@ -248,7 +249,7 @@ export interface UserProfileData {
           >
             <div class="flex items-center gap-4 min-w-0">
               <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                🔒
+                <mb-icon name="lock"></mb-icon>
               </div>
               <div class="min-w-0">
                 <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -258,6 +259,7 @@ export interface UserProfileData {
                   Modifier mon mot de passe et sécuriser mon compte
                 </p>
               </div>
+            </div>
             </div>
             <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'SECURITY'">
               ›
@@ -421,7 +423,7 @@ export interface UserProfileData {
           >
             <div class="flex items-center gap-4 min-w-0">
               <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                🔔
+                <mb-icon name="bell"></mb-icon>
               </div>
               <div class="min-w-0">
                 <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -497,7 +499,7 @@ export interface UserProfileData {
           >
             <div class="flex items-center gap-4 min-w-0">
               <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                ♿
+                <mb-icon name="accessibility"></mb-icon>
               </div>
               <div class="min-w-0">
                 <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -507,6 +509,7 @@ export interface UserProfileData {
                   Adapter l’affichage, la taille du texte et les options de lecture
                 </p>
               </div>
+            </div>
             </div>
             <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'ACCESSIBILITY'">
               ›
@@ -646,7 +649,7 @@ export interface UserProfileData {
           >
             <div class="flex items-center gap-4 min-w-0">
               <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                🛡️
+                <mb-icon name="shield-check"></mb-icon>
               </div>
               <div class="min-w-0">
                 <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">

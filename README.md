@@ -16,15 +16,53 @@ Projet réalisé à Nice les 18, 19 et 20 novembre 2026, sur le thème **« L'or
 
 ## Lancer le projet
 
-Avec le Makefile :
+**Prérequis :** Node.js ≥ 20 et npm. Docker est nécessaire uniquement pour la base de données, l'API et le worker (`make dev`, `make infra`, `make docker-up`).
+
+### Avec le Makefile (recommandé)
 
 ```bash
-make          # installe les dépendances et lance la WebApp sur http://localhost:4200
-make dev      # stack complète : Postgres/Redis (Docker) + DB + API + Worker + Web + Landing
-make help     # toutes les commandes
+make          # installe les dépendances si besoin, puis lance la WebApp + la Landing
+make help     # affiche toutes les commandes disponibles
 ```
 
-Ou manuellement :
+Une fois lancé : Landing page sur http://localhost:3001 · WebApp (Espace Jeune & Conseiller) sur http://localhost:4200. `Ctrl+C` arrête tout.
+
+**Lancer une partie du projet**
+
+| Commande | Ce qu'elle fait |
+|---|---|
+| `make` (ou `make front`) | WebApp (:4200) + Landing (:3001) en parallèle |
+| `make web` | WebApp Angular seule (:4200) |
+| `make landing` | Landing Next.js seule (:3001) |
+| `make api` | API NestJS (nécessite `make infra db`) |
+| `make worker` | Worker BullMQ (nécessite `make infra`) |
+| `make dev` | Stack complète : Postgres/Redis (Docker) + base de données + API + Worker + WebApp + Landing |
+
+**Infrastructure & base de données**
+
+| Commande | Ce qu'elle fait |
+|---|---|
+| `make infra` | Démarre Postgres + Redis (`compose.dev.yaml`) |
+| `make infra-down` (ou `make stop`) | Arrête Postgres + Redis |
+| `make db` | Prisma : génération du client, migrations et données de démo |
+| `make docker-up` | Lance toute la stack en conteneurs (`compose.yaml`) |
+| `make docker-down` | Arrête la stack conteneurisée |
+| `make docker-logs` | Suit les logs des conteneurs |
+
+**Installation, qualité & build**
+
+| Commande | Ce qu'elle fait |
+|---|---|
+| `make check` | Vérifie les versions de Node et npm |
+| `make install` | Installe les dépendances npm du monorepo |
+| `make env` | Crée `.env` à partir de `.env.example` s'il n'existe pas |
+| `make build` | Build de la Landing + de la WebApp dans `./dist` |
+| `make test` | Lance les tests Vitest |
+| `make typecheck` | Vérifie les types de tous les workspaces |
+| `make clean` | Supprime `node_modules`, `dist` et les caches de build |
+| `make re` | Nettoie tout, réinstalle et relance WebApp + Landing |
+
+### Sans Makefile (manuellement)
 
 ```bash
 cp .env.example .env && npm install

@@ -12,6 +12,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import { JourneyMode } from '../../shared/autonomous-data';
 import { UIEpisode } from '../../shared/restitution-data';
@@ -69,7 +70,7 @@ export interface UIHexacoItem {
 @Component({
   selector: 'app-report-overview',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="space-y-6">
 
@@ -85,11 +86,11 @@ export interface UIHexacoItem {
           <!-- Texte et icône livre -->
           <div class="md:col-span-8 flex items-start gap-4 sm:gap-5">
             <div class="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-inner backdrop-blur-sm text-2xl sm:text-3xl">
-              📖
+              <mb-icon name="book-open"></mb-icon>
             </div>
             <div class="space-y-2">
               <div class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
-                <span>✨ Restitution certifiée</span>
+                <span><mb-icon name="sparkles"></mb-icon> Restitution certifiée</span>
                 <span>•</span>
                 <span>Rdv {{ rdvNumber }}</span>
               </div>
@@ -116,7 +117,7 @@ export interface UIHexacoItem {
             : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
           class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
         >
-          <span>💼</span>
+          <span><mb-icon name="briefcase"></mb-icon></span>
           <span>Comprendre mon bilan</span>
         </button>
 
@@ -128,7 +129,7 @@ export interface UIHexacoItem {
             : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
           class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
         >
-          <span>🎧</span>
+          <span><mb-icon name="headphones"></mb-icon></span>
           <span>J'écoute mon bilan</span>
           <span class="rounded-full bg-white/20 text-[10px] px-1.5 py-0.2 font-extrabold">6</span>
         </button>
@@ -141,7 +142,7 @@ export interface UIHexacoItem {
             : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
           class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
         >
-          <span>📊</span>
+          <span><mb-icon name="chart-column"></mb-icon></span>
           <span>Mes résultats</span>
         </button>
 
@@ -153,7 +154,7 @@ export interface UIHexacoItem {
             : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
           class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
         >
-          <span>🧭</span>
+          <span><mb-icon name="compass"></mb-icon></span>
           <span>Je prépare la suite</span>
         </button>
       </div>
@@ -172,7 +173,7 @@ export interface UIHexacoItem {
               <!-- En-tête -->
               <div class="flex items-center justify-between">
                 <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F1035] flex items-center gap-2.5">
-                  <span class="text-amber-400 text-xl">✨</span>
+                  <span class="text-amber-400 text-xl"><mb-icon name="sparkles"></mb-icon></span>
                   <span>Ton bilan en quelques mots</span>
                 </h3>
               </div>
@@ -193,13 +194,13 @@ export interface UIHexacoItem {
                   <div class="w-8 h-2 bg-[#7C3AED] rounded-full mb-1"></div>
                   <div class="space-y-1 w-full px-1">
                     <div class="h-1.5 bg-[#A855F7]/30 rounded-full flex items-center px-0.5">
-                      <span class="text-[8px] text-emerald-600 font-bold">✔</span>
+                      <span class="text-[8px] text-emerald-600 font-bold">✓</span>
                     </div>
                     <div class="h-1.5 bg-[#A855F7]/30 rounded-full flex items-center px-0.5">
-                      <span class="text-[8px] text-emerald-600 font-bold">✔</span>
+                      <span class="text-[8px] text-emerald-600 font-bold">✓</span>
                     </div>
                     <div class="h-1.5 bg-[#A855F7]/30 rounded-full flex items-center px-0.5">
-                      <span class="text-[8px] text-emerald-600 font-bold">✔</span>
+                      <span class="text-[8px] text-emerald-600 font-bold">✓</span>
                     </div>
                   </div>
                 </div>
@@ -247,7 +248,7 @@ export interface UIHexacoItem {
 
             <!-- Note rassurante au bas -->
             <div class="pt-3 border-t border-[#F0EDFA] flex items-center gap-2 text-xs text-[#555A8A]">
-              <span class="text-[#7C3AED] text-sm">💡</span>
+              <span class="text-[#7C3AED] text-sm"><mb-icon name="lightbulb"></mb-icon></span>
               <p>Ce sont des pistes de réflexion, à discuter avec ton conseiller.</p>
             </div>
           </div>
@@ -257,7 +258,7 @@ export interface UIHexacoItem {
             <div>
               <div class="flex items-center justify-between mb-1">
                 <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F1035] flex items-center gap-2.5">
-                  <span class="text-[#7C3AED]">🎧</span>
+                  <span class="text-[#7C3AED]"><mb-icon name="headphones"></mb-icon></span>
                   <span>J'écoute mon bilan</span>
                 </h3>
                 <span class="text-xs font-bold text-[#7C3AED] bg-[#F5F3FF] px-2.5 py-1 rounded-full">
@@ -286,7 +287,7 @@ export interface UIHexacoItem {
                         : 'bg-white text-[#7C3AED] border border-[#E4E0F5]'"
                       class="h-8 w-8 rounded-full flex items-center justify-center shrink-0 text-xs font-bold transition"
                     >
-                      {{ (selectedEpisodeIndex === idx && isPlaying) ? '⏸' : '▶' }}
+                      <mb-icon [name]="(selectedEpisodeIndex === idx && isPlaying) ? 'pause' : 'play'"></mb-icon>
                     </button>
                     <div class="min-w-0">
                       <p class="text-xs sm:text-[13px] font-black text-[#0F1035] truncate">
@@ -312,7 +313,7 @@ export interface UIHexacoItem {
                 (click)="toggleAudioPlay()"
                 class="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white text-[#6D28D9] flex items-center justify-center font-black text-sm shadow-md transition hover:scale-105 active:scale-95 shrink-0"
               >
-                {{ isPlaying ? '⏸' : '▶' }}
+                <mb-icon [name]="isPlaying ? 'pause' : 'play'"></mb-icon>
               </button>
 
               <!-- Titre et Barre de progression -->
@@ -349,7 +350,7 @@ export interface UIHexacoItem {
                   class="rounded-xl bg-white text-[#6D28D9] hover:bg-[#F5F3FF] px-2.5 py-1 text-xs font-black shadow-xs flex items-center gap-1 transition"
                   title="Afficher la transcription"
                 >
-                  <span>📄</span>
+                  <span><mb-icon name="file-text"></mb-icon></span>
                   <span class="hidden sm:inline">Transcription</span>
                 </button>
               </div>
@@ -363,7 +364,7 @@ export interface UIHexacoItem {
         <div class="rounded-[28px] bg-[#F8F7FF] border border-[#E4E0F5] p-5 sm:p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div class="space-y-0.5">
             <h4 class="text-lg font-black text-[#0F1035] flex items-center gap-2">
-              <span class="text-[#7C3AED]">🧭</span>
+              <span class="text-[#7C3AED]"><mb-icon name="compass"></mb-icon></span>
               <span>Et maintenant ?</span>
             </h4>
             <p class="text-xs text-[#555A8A]">
@@ -378,7 +379,7 @@ export interface UIHexacoItem {
               (click)="onNavigate('IMMERSION_PRO')"
               class="rounded-xl bg-white border border-[#E4E0F5] hover:border-[#7C3AED] text-[#0F1035] hover:text-[#7C3AED] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
             >
-              <span>💼</span>
+              <span><mb-icon name="briefcase"></mb-icon></span>
               <span>Préparer une immersion</span>
             </button>
 
@@ -387,7 +388,7 @@ export interface UIHexacoItem {
               (click)="onNavigate('MES_QUESTIONS')"
               class="rounded-xl bg-white border border-[#E4E0F5] hover:border-[#7C3AED] text-[#0F1035] hover:text-[#7C3AED] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
             >
-              <span>✨</span>
+              <span><mb-icon name="sparkles"></mb-icon></span>
               <span>Poser mes questions</span>
             </button>
 
@@ -398,7 +399,7 @@ export interface UIHexacoItem {
               (click)="onNavigate('MES_QUESTIONS')"
               class="rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] hover:bg-[#D1FAE5] text-[#065F46] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
             >
-              <span>👥</span>
+              <span><mb-icon name="users"></mb-icon></span>
               <span>Échanger avec mon conseiller</span>
             </button>
 
@@ -408,7 +409,7 @@ export interface UIHexacoItem {
               (click)="onNavigate('ANNUAIRE_SUPPORT')"
               class="rounded-xl bg-[#EEF2FF] border border-[#C7D2FE] hover:bg-[#E0E7FF] text-[#4338CA] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
             >
-              <span>🏛️</span>
+              <span><mb-icon name="landmark"></mb-icon></span>
               <span>Trouver un accompagnement</span>
             </button>
           </div>
@@ -425,7 +426,7 @@ export interface UIHexacoItem {
           <div class="lg:col-span-7 rounded-[28px] bg-gradient-to-br from-[#161144] via-[#3B1278] to-[#6D28D9] text-white p-6 sm:p-7 shadow-xl space-y-5">
             <div class="flex items-center justify-between gap-2">
               <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
-                🎙️ Épisode {{ currentEpisode?.episodeNumber || 1 }} sur {{ audioEpisodes.length }}
+                <mb-icon name="mic"></mb-icon> Épisode {{ currentEpisode?.episodeNumber || 1 }} sur {{ audioEpisodes.length }}
               </span>
               <span class="text-xs text-[#DDD6FE]">
                 ~ 2 min par thème
@@ -445,7 +446,7 @@ export interface UIHexacoItem {
                   (click)="toggleAudioPlay()"
                   class="h-12 w-12 rounded-full bg-white text-[#6D28D9] flex items-center justify-center font-black text-lg shadow-lg transition hover:scale-105 active:scale-95 shrink-0"
                 >
-                  {{ isPlaying ? '⏸' : '▶' }}
+                  <mb-icon [name]="isPlaying ? 'pause' : 'play'"></mb-icon>
                 </button>
 
                 <!-- Onde sonore -->
@@ -471,7 +472,7 @@ export interface UIHexacoItem {
             <!-- Références documentaires vérifiées -->
             <div class="rounded-xl bg-white/10 p-3.5 space-y-2 border border-white/15">
               <span class="text-xs font-extrabold text-[#E9D5FF] flex items-center gap-1.5">
-                <span>📖</span>
+                <span><mb-icon name="book-open"></mb-icon></span>
                 <span>Sources vérifiables du rapport :</span>
               </span>
               <div class="space-y-1">
@@ -490,7 +491,7 @@ export interface UIHexacoItem {
           <div class="lg:col-span-5 space-y-4">
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                <span>🎧</span>
+                <span><mb-icon name="headphones"></mb-icon></span>
                 <span>Choisir un épisode</span>
               </h4>
               <div class="space-y-2">
@@ -523,7 +524,7 @@ export interface UIHexacoItem {
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center justify-between">
                 <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                  <span>📄</span>
+                  <span><mb-icon name="file-text"></mb-icon></span>
                   <span>Transcription textuelle</span>
                 </h4>
                 <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
@@ -547,7 +548,7 @@ export interface UIHexacoItem {
         <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div class="space-y-1">
             <h3 class="text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span>📊</span>
+              <span><mb-icon name="chart-column"></mb-icon></span>
               <span>Résultats officiels du rapport Rdv {{ rdvNumber }}</span>
             </h3>
             <p class="text-xs text-[#555A8A]">
@@ -555,7 +556,7 @@ export interface UIHexacoItem {
             </p>
           </div>
           <span class="text-xs font-bold text-[#7C3AED] bg-[#F5F3FF] border border-[#E4E0F5] px-3 py-1.5 rounded-full shrink-0">
-            🔒 Données certifiées
+            <mb-icon name="lock"></mb-icon> Données certifiées
           </span>
         </div>
 
@@ -566,7 +567,7 @@ export interface UIHexacoItem {
             <div>
               <div class="flex items-center justify-between">
                 <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                  <span>🎯</span>
+                  <span><mb-icon name="target"></mb-icon></span>
                   <span>Centres d'intérêt (RIASEC)</span>
                 </h4>
                 <span class="text-[11px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">Page 4</span>
@@ -623,7 +624,7 @@ export interface UIHexacoItem {
             <div>
               <div class="flex items-center justify-between">
                 <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                  <span>⭐</span>
+                  <span><mb-icon name="star"></mb-icon></span>
                   <span>Aptitudes cognitives</span>
                 </h4>
                 <span class="text-[11px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">Page 5</span>
@@ -639,7 +640,7 @@ export interface UIHexacoItem {
                 class="p-2.5 rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] flex items-center justify-between text-xs font-bold text-[#0F1035]"
               >
                 <div class="flex items-center gap-2">
-                  <span>{{ apt.icon }}</span>
+                  <span><mb-icon [name]="apt.icon"></mb-icon></span>
                   <span>{{ apt.title }}</span>
                 </div>
                 <span class="text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md font-extrabold">
@@ -659,7 +660,7 @@ export interface UIHexacoItem {
             <div>
               <div class="flex items-center justify-between">
                 <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                  <span>👥</span>
+                  <span><mb-icon name="users"></mb-icon></span>
                   <span>Personnalité (HEXACO)</span>
                 </h4>
                 <span class="text-[11px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">Page 6</span>
@@ -676,7 +677,7 @@ export interface UIHexacoItem {
               >
                 <div class="flex items-center justify-between text-xs font-extrabold text-[#0F1035]">
                   <span class="flex items-center gap-1.5">
-                    <span>{{ h.icon }}</span>
+                    <span><mb-icon [name]="h.icon"></mb-icon></span>
                     <span>{{ h.name }}</span>
                   </span>
                   <span class="text-[10px] text-[#7C3AED]">Page 6</span>
@@ -700,7 +701,7 @@ export interface UIHexacoItem {
         <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4">
           <div class="space-y-1">
             <h3 class="text-xl font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span>🧭</span>
+              <span><mb-icon name="compass"></mb-icon></span>
               <span>Construire la suite de ton parcours</span>
             </h3>
             <p class="text-xs sm:text-sm text-[#555A8A]">
@@ -713,7 +714,7 @@ export interface UIHexacoItem {
             <div class="rounded-2xl bg-gradient-to-br from-[#FAF5FF] to-white border border-[#E4E0F5] p-5 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="h-10 w-10 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-xl">
-                  💼
+                  <mb-icon name="briefcase"></mb-icon>
                 </div>
                 <h4 class="text-base font-extrabold text-[#0F1035]">Immersion Pro</h4>
                 <p class="text-xs text-[#555A8A] leading-relaxed">
@@ -733,7 +734,7 @@ export interface UIHexacoItem {
             <div class="rounded-2xl bg-gradient-to-br from-[#EFF6FF] to-white border border-[#E4E0F5] p-5 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="h-10 w-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl">
-                  💬
+                  <mb-icon name="message-circle"></mb-icon>
                 </div>
                 <h4 class="text-base font-extrabold text-[#0F1035]">Mes questions</h4>
                 <p class="text-xs text-[#555A8A] leading-relaxed">
@@ -753,7 +754,7 @@ export interface UIHexacoItem {
             <div class="rounded-2xl bg-gradient-to-br from-[#ECFDF5] to-white border border-[#E4E0F5] p-5 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="h-10 w-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
-                  🏛️
+                  <mb-icon name="landmark"></mb-icon>
                 </div>
                 <h4 class="text-base font-extrabold text-[#0F1035]">Structures d'aide</h4>
                 <p class="text-xs text-[#555A8A] leading-relaxed">
@@ -788,7 +789,7 @@ export interface UIHexacoItem {
       >
         <div class="flex items-center justify-between border-b border-[#F0EDFA] pb-3">
           <div class="flex items-center gap-2.5">
-            <span class="text-2xl">📄</span>
+            <span class="text-2xl"><mb-icon name="file-text"></mb-icon></span>
             <div>
               <h3 class="text-lg font-extrabold text-[#0F1035]">
                 Transcription — {{ currentEpisode?.title }}
@@ -863,17 +864,17 @@ export class ReportOverviewComponent implements OnInit, OnDestroy {
   private timerInterval: any = null;
 
   aptitudesList: UIAptitudeItem[] = [
-    { id: 'apt-1', title: 'Flexibilité des catégories', description: 'Capacité à changer de point de vue', icon: '☆', pdfPage: 5, tag: 'Observé' },
-    { id: 'apt-2', title: 'Partage du temps', description: 'Gestion de plusieurs sollicitations', icon: '⏱️', pdfPage: 5, tag: 'Observé' },
-    { id: 'apt-3', title: 'Mémorisation visuelle', description: 'Retenir et manipuler des formes', icon: '🧠', pdfPage: 5, tag: 'Observé' },
-    { id: 'apt-4', title: 'Raisonnement déductif', description: 'Déduire une règle logique', icon: '💡', pdfPage: 5, tag: 'Observé' }
+    { id: 'apt-1', title: 'Flexibilité des catégories', description: 'Capacité à changer de point de vue', icon: 'star', pdfPage: 5, tag: 'Observé' },
+    { id: 'apt-2', title: 'Partage du temps', description: 'Gestion de plusieurs sollicitations', icon: 'timer', pdfPage: 5, tag: 'Observé' },
+    { id: 'apt-3', title: 'Mémorisation visuelle', description: 'Retenir et manipuler des formes', icon: 'brain', pdfPage: 5, tag: 'Observé' },
+    { id: 'apt-4', title: 'Raisonnement déductif', description: 'Déduire une règle logique', icon: 'lightbulb', pdfPage: 5, tag: 'Observé' }
   ];
 
   hexacoList: UIHexacoItem[] = [
-    { id: 'h-1', name: 'Ouvert à l’expérience', description: 'Curiosité culturelle et sensibilité créative', icon: '💡', color: '#D97706', pdfPage: 6 },
-    { id: 'h-2', name: 'Agréabilité', description: 'Recherche de coopération et climat harmonieux', icon: '🤝', color: '#059669', pdfPage: 6 },
-    { id: 'h-3', name: 'Extraversion', description: 'Goût pour le partage et l’énergie d’équipe', icon: '💬', color: '#7C3AED', pdfPage: 6 },
-    { id: 'h-4', name: 'Humilité-honnêteté', description: 'Transparence et authenticité dans les relations', icon: '⚖️', color: '#2563EB', pdfPage: 6 }
+    { id: 'h-1', name: 'Ouvert à l’expérience', description: 'Curiosité culturelle et sensibilité créative', icon: 'lightbulb', color: '#D97706', pdfPage: 6 },
+    { id: 'h-2', name: 'Agréabilité', description: 'Recherche de coopération et climat harmonieux', icon: 'handshake', color: '#059669', pdfPage: 6 },
+    { id: 'h-3', name: 'Extraversion', description: 'Goût pour le partage et l’énergie d’équipe', icon: 'message-circle', color: '#7C3AED', pdfPage: 6 },
+    { id: 'h-4', name: 'Humilité-honnêteté', description: 'Transparence et authenticité dans les relations', icon: 'scale', color: '#2563EB', pdfPage: 6 }
   ];
 
   get currentEpisode(): UIEpisode | undefined {

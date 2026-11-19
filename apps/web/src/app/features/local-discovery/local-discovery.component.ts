@@ -6,6 +6,7 @@
 // ============================================================================
 
 import { CommonModule } from '@angular/common';
+import { MbIconComponent, mbIconSvg } from '../../shared/ui/mb-icon.component';
 import {
   AfterViewInit,
   Component,
@@ -40,7 +41,7 @@ export interface LocalZone {
 @Component({
   selector: 'app-local-discovery',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   styles: [`
     :host ::ng-deep .leaflet-div-icon {
       background: transparent !important;
@@ -75,7 +76,7 @@ export interface LocalZone {
           <div class="flex items-center gap-2.5">
             <h1 class="text-2xl sm:text-3xl font-extrabold text-[#0F1035] tracking-tight flex items-center gap-2">
               <span>Autour de moi</span>
-              <span class="text-xl sm:text-2xl text-[#7C3AED]">✨</span>
+              <span class="text-xl sm:text-2xl text-[#7C3AED]"><mb-icon name="sparkles"></mb-icon></span>
             </h1>
           </div>
           <p class="text-xs sm:text-sm text-[#6B7280] mt-1">
@@ -97,7 +98,7 @@ export interface LocalZone {
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           <!-- Recherche par mot-clé / métier -->
           <div class="md:col-span-5 relative">
-            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">🔍</span>
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]"><mb-icon name="search"></mb-icon></span>
             <input
               type="text"
               [(ngModel)]="filterState.careerQuery"
@@ -117,7 +118,7 @@ export interface LocalZone {
 
           <!-- Ville / Territoire -->
           <div class="md:col-span-3 relative">
-            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">📍</span>
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]"><mb-icon name="map-pin"></mb-icon></span>
             <select
               [(ngModel)]="filterState.city"
               (ngModelChange)="onCityChanged()"
@@ -134,7 +135,7 @@ export interface LocalZone {
 
           <!-- Rayon -->
           <div class="md:col-span-2 relative">
-            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">🎯</span>
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
             <select
               [(ngModel)]="filterState.radiusKm"
               (ngModelChange)="onFilterChanged()"
@@ -155,7 +156,7 @@ export interface LocalZone {
               (click)="onFilterChanged()"
               class="w-full rounded-2xl bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-extrabold text-xs sm:text-sm py-2.5 sm:py-3 shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>🔍</span>
+              <span><mb-icon name="search"></mb-icon></span>
               <span>Rechercher</span>
             </button>
           </div>
@@ -184,7 +185,7 @@ export interface LocalZone {
               : 'bg-[#F8F7FF] text-[#42466B] hover:bg-[#F3EFFE] border border-[#E4E0F5] font-semibold'"
             class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5"
           >
-            <span>🎓</span>
+            <span><mb-icon name="graduation-cap"></mb-icon></span>
             <span>Formations ({{ counts.formations }})</span>
           </button>
 
@@ -197,7 +198,7 @@ export interface LocalZone {
               : 'bg-[#F8F7FF] text-[#42466B] hover:bg-[#F3EFFE] border border-[#E4E0F5] font-semibold'"
             class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5"
           >
-            <span>🤝</span>
+            <span><mb-icon name="handshake"></mb-icon></span>
             <span>Organismes ({{ counts.organismes }})</span>
           </button>
 
@@ -210,7 +211,7 @@ export interface LocalZone {
               : 'bg-[#F8F7FF] text-[#42466B] hover:bg-[#F3EFFE] border border-[#E4E0F5] font-semibold'"
             class="rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5"
           >
-            <span>🏢</span>
+            <span><mb-icon name="building-2"></mb-icon></span>
             <span>Entreprises & immersions ({{ counts.entreprises }})</span>
           </button>
         </div>
@@ -229,7 +230,7 @@ export interface LocalZone {
               : 'bg-white text-[#42466B] hover:bg-[#F8F7FF] border border-[#E4E0F5] font-semibold'"
             class="rounded-xl px-3 py-1.5 text-xs whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 shadow-2xs"
           >
-            <span>📍</span>
+            <span><mb-icon name="map-pin"></mb-icon></span>
             <span>{{ zone.label }}</span>
           </button>
         </div>
@@ -274,7 +275,7 @@ export interface LocalZone {
               [title]="currentMapLayer === 'satellite' ? 'Passer en vue Plan des rues' : 'Passer en vue Satellite Hybride'"
               class="h-10 w-10 rounded-2xl bg-white/95 backdrop-blur-md text-[#0F1035] hover:bg-white shadow-lg border border-white/40 flex items-center justify-center text-base font-bold transition hover:scale-105 active:scale-95 cursor-pointer"
             >
-              {{ currentMapLayer === 'satellite' ? '🗺️' : '🛰️' }}
+              <mb-icon [name]="currentMapLayer === 'satellite' ? 'map' : 'satellite'"></mb-icon>
             </button>
 
             <!-- Bouton de recentrage / géolocalisation -->
@@ -284,7 +285,7 @@ export interface LocalZone {
               title="Recentrer sur Nice"
               class="h-10 w-10 rounded-2xl bg-white/95 backdrop-blur-md text-[#0F1035] hover:bg-white shadow-lg border border-white/40 flex items-center justify-center text-base font-bold transition hover:scale-105 active:scale-95 cursor-pointer"
             >
-              🎯
+              <mb-icon name="target"></mb-icon>
             </button>
 
             <!-- Zoom In -->
@@ -359,7 +360,7 @@ export interface LocalZone {
           *ngIf="filteredOpportunities.length === 0"
           class="bg-white rounded-3xl p-8 text-center border border-[#E4E0F5] shadow-sm space-y-3"
         >
-          <div class="text-4xl">🔍</div>
+          <div class="text-4xl"><mb-icon name="search"></mb-icon></div>
           <h3 class="text-base font-bold text-[#0F1035]">Aucune opportunité trouvée pour cette recherche</h3>
           <p class="text-xs text-[#42466B] max-w-md mx-auto">
             Essaie d’élargir le rayon, de choisir une autre ville ou de réinitialiser le filtre métier.
@@ -412,13 +413,13 @@ export interface LocalZone {
                   class="absolute top-2.5 right-2.5 h-8 w-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-sm shadow-md hover:bg-white transition"
                   [title]="item.isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'"
                 >
-                  <span *ngIf="item.isFavorite" class="text-pink-500">❤️</span>
-                  <span *ngIf="!item.isFavorite" class="text-gray-400">🤍</span>
+                  <span *ngIf="item.isFavorite" class="text-pink-500"><mb-icon name="heart" [filled]="true"></mb-icon></span>
+                  <span *ngIf="!item.isFavorite" class="text-gray-400"><mb-icon name="heart"></mb-icon></span>
                 </button>
 
                 <!-- Badge distance en bas à gauche -->
                 <div class="absolute bottom-2.5 left-2.5 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-md">
-                  📍 {{ item.city }} · {{ item.distanceKm }} km
+                  <mb-icon name="map-pin"></mb-icon> {{ item.city }} · {{ item.distanceKm }} km
                 </div>
               </div>
 
@@ -448,7 +449,7 @@ export interface LocalZone {
                 class="text-xs font-bold text-gray-500 hover:text-[#7C3AED] flex items-center gap-1"
                 title="Situer sur la carte"
               >
-                <span>🎯</span>
+                <span><mb-icon name="target"></mb-icon></span>
                 <span>Situer</span>
               </button>
 
@@ -627,7 +628,7 @@ export interface LocalZone {
                   *ngFor="let d of selectedOpportunity.diplomas"
                   class="text-xs font-bold px-3 py-1 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 flex items-center gap-1 shadow-2xs"
                 >
-                  <span>🎓</span>
+                  <mb-icon name="graduation-cap"></mb-icon>
                   <span>{{ d }}</span>
                 </span>
               </div>
@@ -638,7 +639,7 @@ export interface LocalZone {
               <!-- Contact direct -->
               <div class="bg-white p-4 rounded-2xl border border-[#E4E0F5] space-y-2 shadow-2xs">
                 <span class="font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span>📞</span>
+                  <mb-icon name="phone"></mb-icon>
                   <span>Contact direct & Candidature</span>
                 </span>
                 <div class="space-y-1.5 text-xs">
@@ -671,7 +672,7 @@ export interface LocalZone {
               <!-- Accès, Transports & Google Maps -->
               <div class="bg-white p-4 rounded-2xl border border-[#E4E0F5] space-y-2 shadow-2xs">
                 <span class="font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span>🚊</span>
+                  <mb-icon name="bus"></mb-icon>
                   <span>Accès & Transports</span>
                 </span>
                 <p class="text-[#42466B] font-medium leading-relaxed">
@@ -708,14 +709,7 @@ export interface LocalZone {
               (click)="toggleFavorite(selectedOpportunity)"
               class="w-full sm:w-auto px-4 py-2.5 rounded-2xl border border-gray-300 bg-white text-xs font-bold text-gray-700 hover:bg-gray-50 flex items-center justify-center gap-2 transition cursor-pointer shadow-2xs"
             >
-              <span *ngIf="selectedOpportunity.isFavorite" class="text-rose-500 font-extrabold flex items-center gap-1.5">
-                <span>❤️</span>
-                <span>Dans mes favoris</span>
-              </span>
-              <span *ngIf="!selectedOpportunity.isFavorite" class="flex items-center gap-1.5">
-                <span>🤍</span>
-                <span>Ajouter aux favoris</span>
-              </span>
+              <span><mb-icon [name]="'heart'" [filled]="!!(selectedOpportunity.isFavorite)"></mb-icon> {{ selectedOpportunity.isFavorite ? 'Dans mes favoris' : 'Ajouter aux favoris' }}</span>
             </button>
 
             <div class="flex items-center gap-2 w-full sm:w-auto">
@@ -725,9 +719,8 @@ export interface LocalZone {
                 (click)="onOpenCoachIA(selectedOpportunity)"
                 class="flex-1 sm:flex-none px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#8B3DFF] to-[#6D28D9] text-white text-xs font-extrabold shadow-md hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>✨</span>
-                <span>Mon Coach IA</span>
-                <span class="opacity-90 font-medium">(Préparer ma demande)</span>
+                <span class="flex items-center gap-1.5"><mb-icon name="sparkles"></mb-icon> Mon Coach IA</span>
+                <span class="hidden sm:inline opacity-90 font-medium">(Préparer ma demande)</span>
               </button>
 
               <!-- Passerelle Immersion Pro si entreprise -->
@@ -737,8 +730,7 @@ export interface LocalZone {
                 (click)="onChooseForImmersion(selectedOpportunity)"
                 class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-[#0F1035] text-white text-xs font-extrabold hover:bg-black active:scale-95 transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
               >
-                <span>💼</span>
-                <span>Stage Immersion</span>
+                <span class="flex items-center gap-1.5"><mb-icon name="briefcase"></mb-icon> Immersion</span>
               </button>
             </div>
           </div>
@@ -885,12 +877,13 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
           ? '#059669'
           : '#2563EB';
 
-      const iconEmoji =
+      const iconSvg = mbIconSvg(
         opp.category === 'FORMATION'
-          ? '🎓'
+          ? 'graduation-cap'
           : opp.category === 'ACCOMPAGNEMENT'
-          ? '🤝'
-          : '🏢';
+          ? 'handshake'
+          : 'building-2'
+      );
 
       const customIcon = L.divIcon({
         className: 'custom-leaflet-marker',
@@ -911,7 +904,7 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
             cursor: pointer;
             transition: transform 0.2s;
           " onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-            ${iconEmoji}
+            ${iconSvg}
           </div>
         `,
         iconSize: [34, 34],
@@ -931,7 +924,7 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
             ${opp.name}
           </h4>
           <p style="font-size: 11px; color: #6B7280; margin: 0 0 6px 0;">
-            📍 ${opp.city} · ${opp.distanceKm} km
+            ${mbIconSvg('map-pin')} ${opp.city} · ${opp.distanceKm} km
           </p>
           <div style="font-size: 11px; color: #42466B; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
             ${opp.headline}

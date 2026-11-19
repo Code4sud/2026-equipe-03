@@ -19,6 +19,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { MbIconComponent } from './shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import { ImmersionProComponent } from './features/immersion/immersion-pro.component';
 import { JourneyChoiceModalComponent } from './features/autonomous/journey-choice-modal.component';
@@ -148,7 +149,7 @@ export interface VoicePersona {
   tone: VoiceTone;
   pitch: number;
   rate: number;
-  avatarEmoji: string;
+  avatarIcon: string;
   previewSample: string;
   description: string;
 }
@@ -171,7 +172,7 @@ export const VOICE_PERSONAS: VoicePersona[] = [
     tone: 'WARM',
     pitch: 1.05,
     rate: 1.0,
-    avatarEmoji: '🌸',
+    avatarIcon: 'flower-2',
     previewSample: "Bonjour ! Je suis Amélie. Découvrons ensemble les pistes passionnantes et positives de ton bilan d'orientation !",
     description: 'Voix bienveillante et naturelle, parfaite pour une restitution rassurante et décontractée.'
   },
@@ -183,7 +184,7 @@ export const VOICE_PERSONAS: VoicePersona[] = [
     tone: 'CALM',
     pitch: 0.92,
     rate: 0.95,
-    avatarEmoji: '🧭',
+    avatarIcon: 'compass',
     previewSample: "Bonjour. Je suis Thomas. Prenons le temps d'analyser posément tes talents et tes domaines d'intérêt.",
     description: 'Voix posée et calme, idéale pour explorer les options méthodiquement sans aucune pression.'
   },
@@ -195,7 +196,7 @@ export const VOICE_PERSONAS: VoicePersona[] = [
     tone: 'DYNAMIC',
     pitch: 1.14,
     rate: 1.06,
-    avatarEmoji: '⚡',
+    avatarIcon: 'zap',
     previewSample: "Salut ! Je suis Camille. C'est parti pour explorer 22 superbes opportunités professionnelles !",
     description: "Voix énergique et motivante, pleine d'enthousiasme pour te projeter vers l'avenir."
   },
@@ -207,7 +208,7 @@ export const VOICE_PERSONAS: VoicePersona[] = [
     tone: 'PEDAGOGICAL',
     pitch: 0.98,
     rate: 0.96,
-    avatarEmoji: '🎓',
+    avatarIcon: 'graduation-cap',
     previewSample: "Bonjour. Je suis Nicolas. Passons en revue de manière claire et structurée chaque axe de ton rapport.",
     description: 'Voix claire et didactique, parfaite pour bien comprendre la méthode RIASEC et HEXACO.'
   }
@@ -217,7 +218,7 @@ export const TONE_OPTIONS: ToneOption[] = [
   {
     id: 'WARM',
     label: 'Chaleureuse',
-    icon: '💛',
+    icon: 'heart',
     pitchOffset: 0.05,
     rateMultiplier: 1.0,
     description: 'Bienveillante, douce et valorisante'
@@ -225,7 +226,7 @@ export const TONE_OPTIONS: ToneOption[] = [
   {
     id: 'CALM',
     label: 'Posée',
-    icon: '🌿',
+    icon: 'leaf',
     pitchOffset: -0.06,
     rateMultiplier: 0.93,
     description: 'Calme, sereine et rassurante'
@@ -233,7 +234,7 @@ export const TONE_OPTIONS: ToneOption[] = [
   {
     id: 'DYNAMIC',
     label: 'Dynamique',
-    icon: '🚀',
+    icon: 'rocket',
     pitchOffset: 0.09,
     rateMultiplier: 1.06,
     description: 'Énergique, stimulante et entraînante'
@@ -241,7 +242,7 @@ export const TONE_OPTIONS: ToneOption[] = [
   {
     id: 'PEDAGOGICAL',
     label: 'Pédagogique',
-    icon: '📚',
+    icon: 'library',
     pitchOffset: 0.0,
     rateMultiplier: 0.98,
     description: 'Claire, structurée et explicative'
@@ -251,7 +252,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
+  imports: [MbIconComponent, 
     CommonModule,
     FormsModule,
     ImmersionProComponent,
@@ -382,7 +383,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <svg *ngSwitchCase="'MES_QUESTIONS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                   <svg *ngSwitchCase="'MES_DOCUMENTS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
                   <svg *ngSwitchCase="'PARAMETRES_JEUNE'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  <span *ngSwitchDefault class="text-sm">{{ item.icon }}</span>
+                  <span *ngSwitchDefault class="text-sm"><mb-icon [name]="item.icon"></mb-icon></span>
                 </span>
                 <span class="truncate">{{ item.label }}</span>
               </span>
@@ -416,7 +417,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <svg *ngSwitchCase="'SUIVI_RDV'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                   <svg *ngSwitchCase="'STATISTIQUES'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                   <svg *ngSwitchCase="'PARAMETRES'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  <span *ngSwitchDefault class="text-sm">{{ item.icon }}</span>
+                  <span *ngSwitchDefault class="text-sm"><mb-icon [name]="item.icon"></mb-icon></span>
                 </span>
                 <span class="truncate">{{ item.label }}</span>
               </span>
@@ -439,7 +440,7 @@ export const TONE_OPTIONS: ToneOption[] = [
             class="rounded-2xl bg-gradient-to-br from-[#8B3DFF]/35 to-[#581C87]/45 border border-[#A855F7]/35 p-3 text-left space-y-1.5 shadow-md backdrop-blur-sm cursor-pointer hover:border-[#A855F7]/60 transition group mb-2"
           >
             <div class="flex items-center gap-2.5">
-              <span class="text-2xl group-hover:scale-110 transition flex-shrink-0">🎯</span>
+              <span class="text-2xl group-hover:scale-110 transition flex-shrink-0"><mb-icon name="target"></mb-icon></span>
               <div class="min-w-0">
                 <p class="text-xs font-black text-white group-hover:text-purple-200 transition">
                   Passe à l'action !
@@ -550,14 +551,14 @@ export const TONE_OPTIONS: ToneOption[] = [
                 </div>
                 <div *ngIf="activeYoungTab === 'AUTOUR_DE_MOI'" class="flex items-center gap-2">
                   <div class="flex items-center gap-2 text-xs sm:text-[13px] font-bold text-[#6D28D9]">
-                    <span class="text-base">🏠</span>
+                    <span class="text-base"><mb-icon name="house"></mb-icon></span>
                     <span>&gt;</span>
                     <span class="text-[#0F1035] font-extrabold">Autour de moi</span>
                   </div>
                 </div>
                 <div *ngIf="activeYoungTab === 'MON_BILAN'">
                   <div class="flex items-center gap-2">
-                    <span class="text-xl">💼</span>
+                    <span class="text-xl"><mb-icon name="briefcase"></mb-icon></span>
                     <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
                       Mon bilan d'orientation
                     </h1>
@@ -733,7 +734,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         [class]="notif.badgeBg"
                         class="h-9 w-9 rounded-xl flex items-center justify-center shrink-0 text-sm font-extrabold"
                       >
-                        {{ notif.icon }}
+                        <mb-icon [name]="notif.icon"></mb-icon>
                       </span>
                       <div class="min-w-0 flex-1">
                         <div class="flex items-center justify-between gap-2">
@@ -822,8 +823,8 @@ export const TONE_OPTIONS: ToneOption[] = [
                       (click)="isJourneyChoiceModalOpen = true; isProfileMenuOpen = false"
                       class="w-full text-left px-3 py-2 rounded-xl hover:bg-[#F3EFFE] text-[#7C3AED] font-extrabold text-xs flex items-center justify-between"
                     >
-                      <span>Mode : {{ journeyMode === 'AUTONOMOUS' ? '🧭 Autonome' : '🤝 Accompagné' }}</span>
-                      <span class="text-xs">🔄</span>
+                      <span>Mode : <mb-icon [name]="journeyMode === 'AUTONOMOUS' ? 'compass' : 'handshake'"></mb-icon> {{ journeyMode === 'AUTONOMOUS' ? 'Autonome' : 'Accompagné' }}</span>
+                      <span class="text-xs"><mb-icon name="refresh-cw"></mb-icon></span>
                     </button>
                   </div>
                   <button
@@ -831,7 +832,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     (click)="openSettingsFromProfileMenu()"
                     class="w-full text-left rounded-xl px-3 py-2 hover:bg-[#F5F2FF] text-[#0F1035] flex items-center gap-2.5"
                   >
-                    <span>⚙️</span>
+                    <span><mb-icon name="settings"></mb-icon></span>
                     <span>Paramètres &amp; Confidentialité</span>
                   </button>
                   <button
@@ -839,7 +840,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     (click)="logout(); isProfileMenuOpen = false"
                     class="w-full text-left rounded-xl px-3 py-2 hover:bg-red-50 text-red-600 font-extrabold flex items-center gap-2.5 border-t border-[#F0EDFA] mt-1 pt-2"
                   >
-                    <span>🚪</span>
+                    <span><mb-icon name="door-open"></mb-icon></span>
                     <span>Se déconnecter</span>
                   </button>
                 </div>
@@ -868,7 +869,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               *ngIf="restitutionStatus !== 'PUBLISHED'"
               class="rounded-3xl bg-white border-2 border-[#F59E0B] p-8 text-center shadow-sm space-y-4 my-6"
             >
-              <div class="text-4xl">⏳</div>
+              <div class="text-4xl"><mb-icon name="hourglass"></mb-icon></div>
               <h2 class="text-2xl font-extrabold text-[#0F1035]">
                 Ta restitution est en cours de vérification par ton conseiller
               </h2>
@@ -954,7 +955,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           (click)="selectYoungTab('MES_DOCUMENTS')"
                           class="rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white px-5 py-2.5 text-sm font-bold flex items-center gap-2"
                         >
-                          <span>📄</span>
+                          <span><mb-icon name="file-text"></mb-icon></span>
                           <span>Voir mon rapport</span>
                         </button>
                       </div>
@@ -975,7 +976,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="selectYoungTab('MON_BILAN')"
                         class="w-full rounded-full bg-white/95 text-[#0F1035] px-5 py-2.5 text-sm font-extrabold shadow flex items-center gap-3 hover:translate-x-1 transition"
                       >
-                        <span class="text-[#7C3AED]">📊</span>
+                        <span class="text-[#7C3AED]"><mb-icon name="chart-column"></mb-icon></span>
                         <span>Mes aptitudes</span>
                       </button>
                       <button
@@ -983,7 +984,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="selectYoungTab('EXPLORER_METIERS')"
                         class="w-full rounded-full bg-white/95 text-[#0F1035] px-5 py-2.5 text-sm font-extrabold shadow flex items-center gap-3 hover:translate-x-1 transition rotate-1"
                       >
-                        <span class="text-[#EC4899]">💼</span>
+                        <span class="text-[#EC4899]"><mb-icon name="briefcase"></mb-icon></span>
                         <span>Des métiers à découvrir ({{ careers.length }})</span>
                       </button>
                       <button
@@ -991,7 +992,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="selectYoungTab('MON_PARCOURS')"
                         class="w-full rounded-full bg-white/95 text-[#0F1035] px-5 py-2.5 text-sm font-extrabold shadow flex items-center gap-3 hover:translate-x-1 transition"
                       >
-                        <span class="text-[#7C3AED]">🎯</span>
+                        <span class="text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
                         <span>Mes prochaines étapes</span>
                       </button>
                     </div>
@@ -1006,7 +1007,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
                     <div class="space-y-4 flex-1">
                       <h3 class="text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
-                        <span class="text-[#7C3AED]">🎯</span>
+                        <span class="text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
                         <span>Mon parcours d’exploration</span>
                       </h3>
                       <div class="grid grid-cols-4 gap-2 text-center text-xs">
@@ -1038,7 +1039,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <!-- Mon prochain rendez-vous -->
                   <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
                     <h3 class="text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
-                      <span class="text-[#7C3AED]">📅</span>
+                      <span class="text-[#7C3AED]"><mb-icon name="calendar"></mb-icon></span>
                       <span>Mon prochain rendez-vous</span>
                     </h3>
                     <div class="flex flex-wrap items-center justify-between gap-4">
@@ -1050,7 +1051,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
                         <div class="space-y-1 text-xs sm:text-sm">
                           <p class="font-extrabold text-[#0F1035]">Échange avec mon conseiller</p>
-                          <p class="text-[#42466B]">🕒 14h30 – 15h30 • 📍 Centre des Possibles (Nice)</p>
+                          <p class="text-[#42466B]"><mb-icon name="clock"></mb-icon> 14h30 – 15h30 • <mb-icon name="map-pin"></mb-icon> Centre des Possibles (Nice)</p>
                         </div>
                       </div>
                       <button
@@ -1121,11 +1122,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div *ngIf="selectedCareerDetail" class="space-y-6">
                   <!-- Bannière illustrée du métier -->
                   <div class="relative rounded-[28px] overflow-hidden bg-[#1B1B62] text-white shadow-lg">
-                    <img
-                      [src]="selectedCareerDetail.imageUrl"
-                      [alt]="selectedCareerDetail.titleFr"
-                      class="w-full h-56 object-cover opacity-55"
-                    />
+                    <div aria-hidden="true" class="w-full h-56 bg-gradient-to-br from-[#4C1D95] to-[#7C3AED]"></div>
                     <div class="absolute inset-0 bg-gradient-to-r from-[#0F1035]/90 via-[#1B1B62]/70 to-transparent p-6 sm:p-8 flex flex-wrap items-center justify-between gap-4">
                       <div class="space-y-2 max-w-xl">
                         <span class="inline-block rounded-full bg-[#F3E8FF] text-[#6D28D9] px-3.5 py-1 text-xs font-extrabold">
@@ -1141,14 +1138,14 @@ export const TONE_OPTIONS: ToneOption[] = [
                           (click)="selectedCareerDetail.isFavorite = !selectedCareerDetail.isFavorite"
                           class="rounded-full bg-white text-[#0F1035] px-5 py-2 text-xs font-extrabold shadow"
                         >
-                          {{ selectedCareerDetail.isFavorite ? '💗 Retiré / Ajouté aux favoris' : '♡ Ajouter aux favoris' }}
+                          {{ selectedCareerDetail.isFavorite ? 'Retiré / Ajouté aux favoris' : '♡ Ajouter aux favoris' }}
                         </button>
                         <button
                           type="button"
                           (click)="startImmersionForCareer(selectedCareerDetail)"
                           class="rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-[#7C3AED] text-white px-5 py-2 text-xs font-black shadow-lg hover:scale-105 transition flex items-center gap-1.5 justify-center"
                         >
-                          <span>💼</span>
+                          <span><mb-icon name="briefcase"></mb-icon></span>
                           <span>Démarrer mon immersion pro →</span>
                         </button>
                         <button
@@ -1165,16 +1162,16 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <!-- Barre des 5 sous-onglets de la fiche métier -->
                   <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-xs font-extrabold">
                     <span class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white py-2.5 px-4 text-center shadow">
-                      🛡️ Vue d’ensemble
+                      <mb-icon name="shield-check"></mb-icon> Vue d’ensemble
                     </span>
                     <span class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center">
-                      💰 Salaire &amp; Marché
+                      <mb-icon name="coins"></mb-icon> Salaire &amp; Marché
                     </span>
                     <span class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center">
-                      💼 Conditions réelles
+                      <mb-icon name="briefcase"></mb-icon> Conditions réelles
                     </span>
                     <span class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center">
-                      🎓 Formation &amp; Accès
+                      <mb-icon name="graduation-cap"></mb-icon> Formation &amp; Accès
                     </span>
                     <a
                       [href]="getMetiers360Url(selectedCareerDetail)"
@@ -1183,7 +1180,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       title="Vivre une immersion en réalité virtuelle sur Métiers360 (nouvel onglet)"
                       class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center hover:bg-[#F3EFFE] hover:border-[#7C3AED] transition cursor-pointer"
                     >
-                      🤝 Immersion Pro <span class="text-[#7C3AED]">↗</span>
+                      <mb-icon name="handshake"></mb-icon> Immersion Pro <span class="text-[#7C3AED]">↗</span>
                     </a>
                   </div>
 
@@ -1194,7 +1191,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <!-- 1. Missions principales -->
                       <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
                         <div class="flex items-center justify-between">
-                          <h3 class="text-lg font-extrabold text-[#0F1035]">🎯 Les missions principales (Rapport p. {{ selectedCareerDetail.pageNumber }})</h3>
+                          <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="target"></mb-icon> Les missions principales (Rapport p. {{ selectedCareerDetail.pageNumber }})</h3>
                           <span class="rounded-full bg-[#EDE9FE] px-3 py-1 text-xs font-bold text-[#6D28D9]">Zone {{ selectedCareerDetail.jobZone }}</span>
                         </div>
                         <p class="text-sm text-[#31355B] leading-relaxed">
@@ -1206,7 +1203,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3.5">
                         <div class="flex items-center justify-between">
                           <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                            <span class="text-[#10B981]">💰</span>
+                            <span class="text-[#10B981]"><mb-icon name="coins"></mb-icon></span>
                             <span>Salaire &amp; Rémunération indicative</span>
                           </h4>
                           <span class="rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 text-[11px] font-black">
@@ -1216,7 +1213,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                           <div class="rounded-2xl bg-[#F0FDF4] border border-emerald-200 p-3.5 space-y-1">
-                            <span class="text-[11px] font-bold text-emerald-700 block">🟢 Débutant</span>
+                            <span class="text-[11px] font-bold text-emerald-700 block"><mb-icon name="circle" [filled]="true"></mb-icon> Débutant</span>
                             <strong class="text-sm sm:text-base font-black text-[#0F1035] block leading-tight">
                               {{ getCareerSalary(selectedCareerDetail).starter }}
                             </strong>
@@ -1224,7 +1221,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           </div>
 
                           <div class="rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] p-3.5 space-y-1">
-                            <span class="text-[11px] font-bold text-blue-700 block">🔵 Confirmé / Artisan</span>
+                            <span class="text-[11px] font-bold text-blue-700 block"><mb-icon name="circle" [filled]="true"></mb-icon> Confirmé / Artisan</span>
                             <strong class="text-sm sm:text-base font-black text-[#0F1035] block leading-tight">
                               {{ getCareerSalary(selectedCareerDetail).experienced }}
                             </strong>
@@ -1232,7 +1229,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           </div>
 
                           <div class="rounded-2xl bg-[#FAF5FF] border border-purple-200 p-3.5 space-y-1">
-                            <span class="text-[11px] font-bold text-purple-700 block">🟣 Annuel médian</span>
+                            <span class="text-[11px] font-bold text-purple-700 block"><mb-icon name="circle" [filled]="true"></mb-icon> Annuel médian</span>
                             <strong class="text-sm sm:text-base font-black text-[#0F1035] block leading-tight">
                               {{ getCareerSalary(selectedCareerDetail).median }}
                             </strong>
@@ -1241,14 +1238,14 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <p class="text-[11px] text-[#555A8A] leading-relaxed bg-[#F8F7FF] rounded-xl p-3 border border-[#E4E0F5]">
-                          ℹ️ <strong>Bon à savoir :</strong> {{ getCareerSalary(selectedCareerDetail).note }}
+                          <mb-icon name="info"></mb-icon> <strong>Bon à savoir :</strong> {{ getCareerSalary(selectedCareerDetail).note }}
                         </p>
                       </div>
 
                       <!-- 3. Conditions de travail détaillées -->
                       <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
                         <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                          <span class="text-[#7C3AED]">💼</span>
+                          <span class="text-[#7C3AED]"><mb-icon name="briefcase"></mb-icon></span>
                           <span>Conditions de travail</span>
                         </h4>
                         <ul class="space-y-2 text-xs text-[#31355B] leading-relaxed">
@@ -1262,7 +1259,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <div class="rounded-[26px] bg-gradient-to-br from-[#FAF5FF] to-[#F3EFFE] border-2 border-[#D8CEFF] p-6 shadow-sm space-y-3">
                         <div class="flex items-center justify-between gap-2 flex-wrap">
                           <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                            <span class="text-[#7C3AED]">🧠</span>
+                            <span class="text-[#7C3AED]"><mb-icon name="brain"></mb-icon></span>
                             <span>Faculté d’adaptation — Atout de ton profil</span>
                           </h4>
                           <span class="rounded-full bg-[#7C3AED] text-white px-3 py-0.5 text-[11px] font-extrabold shadow-xs">
@@ -1272,13 +1269,13 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                         <div class="rounded-xl bg-white/80 border border-[#D8CEFF] p-3.5 text-xs text-[#31355B] leading-relaxed space-y-2">
                           <p class="font-bold text-[#5B21B6]">
-                            🎯 {{ getCareerAdaptationFaculty(selectedCareerDetail).cognitiveLink }}
+                            <mb-icon name="target"></mb-icon> {{ getCareerAdaptationFaculty(selectedCareerDetail).cognitiveLink }}
                           </p>
                           <p>
                             {{ getCareerAdaptationFaculty(selectedCareerDetail).concreteRole }}
                           </p>
                           <p class="text-[11px] text-[#555A8A] italic">
-                            💡 {{ getCareerAdaptationFaculty(selectedCareerDetail).advice }}
+                            <mb-icon name="lightbulb"></mb-icon> {{ getCareerAdaptationFaculty(selectedCareerDetail).advice }}
                           </p>
                         </div>
 
@@ -1296,7 +1293,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="lg:col-span-5 space-y-5">
                       <!-- Pourquoi ce métier peut t'intéresser -->
                       <div class="rounded-[26px] bg-[#F3EFFE] border border-[#D8CEFF] p-6 space-y-2">
-                        <h3 class="text-base font-extrabold text-[#0F1035]">✨ Pourquoi ce métier peut t’intéresser ?</h3>
+                        <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="sparkles"></mb-icon> Pourquoi ce métier peut t’intéresser ?</h3>
                         <p class="text-xs sm:text-sm text-[#31355B] leading-relaxed">
                           Il correspond à tes centres d'intérêt du Rapport Rdv {{ rdvNumber }} (profil RIASEC : <strong>Artistique</strong>, <strong>Entreprenant</strong>, <strong>Réaliste</strong>) et figure parmi les propositions de la <strong>Zone {{ selectedCareerDetail.jobZone }}</strong> (page {{ selectedCareerDetail.pageNumber }}).
                         </p>
@@ -1306,7 +1303,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
                         <div class="flex items-center justify-between">
                           <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                            <span class="text-[#7C3AED]">🎓</span>
+                            <span class="text-[#7C3AED]"><mb-icon name="graduation-cap"></mb-icon></span>
                             <span>Accessibilité de la formation</span>
                           </h3>
                           <span class="rounded-full bg-emerald-100 text-emerald-800 px-2.5 py-0.5 text-[10px] font-black">
@@ -1315,7 +1312,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <div class="rounded-xl bg-[#F0FDF4] border border-emerald-200 p-3 text-xs text-emerald-900 font-bold">
-                          ✔ {{ getCareerTrainingAccessibility(selectedCareerDetail).accessLevel }}
+                          ✓ {{ getCareerTrainingAccessibility(selectedCareerDetail).accessLevel }}
                         </div>
 
                         <div class="space-y-1.5 text-xs text-[#31355B]">
@@ -1340,7 +1337,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                       <!-- Évolutions de carrière -->
                       <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
-                        <h3 class="text-base font-extrabold text-[#0F1035]">📈 Évolutions possibles</h3>
+                        <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="trending-up"></mb-icon> Évolutions possibles</h3>
                         <div class="flex flex-wrap items-center gap-1.5 text-xs font-extrabold">
                           <span class="rounded-full bg-[#7C3AED] text-white px-3 py-1.5">{{ selectedCareerDetail.titleFr }}</span>
                           <span class="text-[#7C3AED]">→</span>
@@ -1355,12 +1352,12 @@ export const TONE_OPTIONS: ToneOption[] = [
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                           <div>
                             <span class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-0.5 text-[10px] font-extrabold text-[#E9D5FF] border border-white/25">
-                              🤝 Immersion &amp; Découverte terrain
+                              <mb-icon name="handshake"></mb-icon> Immersion &amp; Découverte terrain
                             </span>
                             <h3 class="text-lg sm:text-xl font-black mt-1">Rencontrer un professionnel du secteur</h3>
                           </div>
                           <span class="rounded-full bg-amber-400 text-amber-950 px-2.5 py-1 text-[10px] font-black shrink-0 flex items-center gap-1 shadow">
-                            <span>🔒</span>
+                            <span><mb-icon name="lock"></mb-icon></span>
                             <span>Validation conseiller requise</span>
                           </span>
                         </div>
@@ -1372,7 +1369,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         <!-- Cadre de validation obligatoire du conseiller -->
                         <div class="rounded-2xl bg-white/10 border border-white/20 p-3.5 space-y-1.5 backdrop-blur-sm text-xs">
                           <div class="flex items-start gap-2 text-white">
-                            <span class="text-sm">👩‍💼</span>
+                            <span class="text-sm"><mb-icon name="user-round"></mb-icon></span>
                             <div>
                               <strong class="text-white block font-extrabold">Accompagnement supervisé par Sarah Dupont</strong>
                               <span class="text-[#DDD6FE] leading-relaxed block mt-0.5 text-[11px]">
@@ -1389,7 +1386,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           rel="noopener noreferrer"
                           class="w-full rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white py-2.5 px-4 text-xs font-black transition flex items-center justify-center gap-2"
                         >
-                          <span>🥽</span>
+                          <span><mb-icon name="glasses"></mb-icon></span>
                           <span>Vivre une immersion VR 360° sur Métiers360</span>
                           <span>↗</span>
                         </a>
@@ -1401,7 +1398,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                             (click)="requestProContact(selectedCareerDetail)"
                             class="w-full rounded-full bg-gradient-to-r from-[#F59E0B] to-[#F97316] hover:brightness-110 text-white py-3 px-4 text-xs font-black shadow-lg transition flex items-center justify-center gap-2 transform active:scale-95 cursor-pointer"
                           >
-                            <span>🤝</span>
+                            <span><mb-icon name="handshake"></mb-icon></span>
                             <span>Demander une mise en relation avec un pro</span>
                             <span>→</span>
                           </button>
@@ -1412,7 +1409,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                         <div *ngIf="careerProContactRequested[selectedCareerDetail.id]" class="rounded-2xl bg-emerald-500/25 border-2 border-emerald-400 p-3.5 text-xs text-emerald-100 flex items-center justify-between gap-3 animate-fadeIn">
                           <div class="flex items-center gap-2">
-                            <span class="text-lg">✅</span>
+                            <span class="text-lg"><mb-icon name="circle-check"></mb-icon></span>
                             <div>
                               <strong class="text-white block font-black">Demande transmise avec succès !</strong>
                               <span class="text-emerald-200 text-[11px]">Sarah Dupont examinera cette opportunité lors de ton prochain RDV (mardi 18 nov).</span>
@@ -1427,7 +1424,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <!-- Barre inférieure "En résumé" + Boutons d'action -->
                   <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm flex flex-wrap items-center justify-between gap-4">
                     <div class="flex items-center gap-3.5">
-                      <span class="h-10 w-10 rounded-2xl bg-[#F3EFFE] text-[#6D28D9] flex items-center justify-center font-bold">📄</span>
+                      <span class="h-10 w-10 rounded-2xl bg-[#F3EFFE] text-[#6D28D9] flex items-center justify-center font-bold"><mb-icon name="file-text"></mb-icon></span>
                       <div class="text-xs sm:text-sm">
                         <strong class="text-[#0F1035]">En résumé :</strong>
                         <span class="text-[#42466B] ml-1.5">
@@ -1443,7 +1440,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         [class]="careerProContactRequested[selectedCareerDetail.id] ? 'bg-emerald-50 text-emerald-800 border-emerald-300' : 'bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100'"
                         class="rounded-full border px-4 py-2.5 text-xs font-extrabold transition flex items-center gap-1.5"
                       >
-                        <span>🤝</span>
+                        <span><mb-icon name="handshake"></mb-icon></span>
                         <span>{{ careerProContactRequested[selectedCareerDetail.id] ? 'Mise en relation demandée' : 'Mise en relation pro' }}</span>
                       </button>
                       <button
@@ -1451,21 +1448,21 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="prefillQuestionWithCareer(selectedCareerDetail)"
                         class="rounded-full border-2 border-[#7C3AED] text-[#6D28D9] px-5 py-2.5 text-xs font-extrabold hover:bg-[#F3EFFE]"
                       >
-                        💬 Poser une question
+                        <mb-icon name="message-circle"></mb-icon> Poser une question
                       </button>
                       <button
                         type="button"
                         (click)="startImmersionForCareer(selectedCareerDetail)"
                         class="rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow"
                       >
-                        💼 Préparer mon immersion en entreprise
+                        <mb-icon name="briefcase"></mb-icon> Préparer mon immersion en entreprise
                       </button>
                       <button
                         type="button"
                         (click)="selectedCareerDetail.isFavorite = true; selectYoungTab('MON_PARCOURS')"
                         class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow"
                       >
-                        🗺️ Ajouter à mon parcours
+                        <mb-icon name="map"></mb-icon> Ajouter à mon parcours
                       </button>
                     </div>
                   </div>
@@ -1487,10 +1484,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                       </p>
                     </div>
                     <div class="lg:col-span-5 grid grid-cols-2 gap-2 text-xs font-extrabold text-[#0F1035]">
-                      <div class="rounded-full bg-white px-4 py-2">✔ 1. Découvrir</div>
-                      <div class="rounded-full bg-white px-4 py-2">✔ 2. Explorer</div>
-                      <div class="rounded-full bg-white px-4 py-2">✔ 3. Réfléchir</div>
-                      <div class="rounded-full bg-white px-4 py-2">✔ 4. Agir</div>
+                      <div class="rounded-full bg-white px-4 py-2">✓ 1. Découvrir</div>
+                      <div class="rounded-full bg-white px-4 py-2">✓ 2. Explorer</div>
+                      <div class="rounded-full bg-white px-4 py-2">✓ 3. Réfléchir</div>
+                      <div class="rounded-full bg-white px-4 py-2">✓ 4. Agir</div>
                     </div>
                   </div>
                 </div>
@@ -1498,7 +1495,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   <!-- Timeline verticale 1..4 -->
                   <div class="lg:col-span-7 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                    <h3 class="text-xl font-extrabold text-[#0F1035]">✨ Mes étapes d’exploration</h3>
+                    <h3 class="text-xl font-extrabold text-[#0F1035]"><mb-icon name="sparkles"></mb-icon> Mes étapes d’exploration</h3>
 
                     <div
                       (click)="selectYoungTab('MON_BILAN')"
@@ -1561,12 +1558,12 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="lg:col-span-5 space-y-6">
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex items-center justify-between gap-4">
                       <div class="space-y-2">
-                        <h3 class="text-lg font-extrabold text-[#0F1035]">🎯 Ma progression</h3>
+                        <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="target"></mb-icon> Ma progression</h3>
                         <ul class="space-y-1.5 text-xs font-bold text-[#31355B]">
-                          <li>✅ Bilan découvert</li>
-                          <li>✅ Métiers explorés</li>
-                          <li>⬜ Questions notées ({{ questions.length }})</li>
-                          <li>⬜ Rendez-vous préparé</li>
+                          <li><mb-icon name="circle-check"></mb-icon> Bilan découvert</li>
+                          <li><mb-icon name="circle-check"></mb-icon> Métiers explorés</li>
+                          <li><mb-icon name="square"></mb-icon> Questions notées ({{ questions.length }})</li>
+                          <li><mb-icon name="square"></mb-icon> Rendez-vous préparé</li>
                         </ul>
                       </div>
                       <div class="h-28 w-28 rounded-full border-8 border-[#EDE9FE] border-t-[#7C3AED] border-r-[#7C3AED] flex flex-col items-center justify-center">
@@ -1577,7 +1574,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
                       <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-extrabold text-[#0F1035]">💗 Mes métiers favoris ({{ favoriteCareers.length }})</h3>
+                        <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="heart" [filled]="true"></mb-icon> Mes métiers favoris ({{ favoriteCareers.length }})</h3>
                         <button type="button" (click)="selectYoungTab('EXPLORER_METIERS')" class="text-xs font-bold text-[#6D28D9]">
                           Voir tout →
                         </button>
@@ -1588,7 +1585,9 @@ export const TONE_OPTIONS: ToneOption[] = [
                           (click)="openCareerDetail(fav)"
                           class="rounded-xl border border-[#E4E0F5] overflow-hidden bg-[#F8F7FF] cursor-pointer"
                         >
-                          <img [src]="fav.imageUrl" [alt]="fav.titleFr" class="w-full h-16 object-cover" />
+                          <div aria-hidden="true" class="w-full h-16 bg-gradient-to-br from-[#EDE9FE] to-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-2xl">
+                            <mb-icon name="briefcase"></mb-icon>
+                          </div>
                           <div class="p-2 text-[11px] font-extrabold text-[#0F1035] truncate">{{ fav.titleFr }}</div>
                         </div>
                       </div>
@@ -1612,9 +1611,9 @@ export const TONE_OPTIONS: ToneOption[] = [
                       </p>
                     </div>
                     <div class="lg:col-span-4 space-y-2 text-xs font-extrabold text-[#0F1035]">
-                      <div class="rounded-full bg-white px-4 py-2">📅 Noter mes questions</div>
-                      <div class="rounded-full bg-white px-4 py-2">🗂️ Organiser mes idées</div>
-                      <div class="rounded-full bg-white px-4 py-2">👥 Préparer le rendez-vous</div>
+                      <div class="rounded-full bg-white px-4 py-2"><mb-icon name="calendar"></mb-icon> Noter mes questions</div>
+                      <div class="rounded-full bg-white px-4 py-2"><mb-icon name="folders"></mb-icon> Organiser mes idées</div>
+                      <div class="rounded-full bg-white px-4 py-2"><mb-icon name="users"></mb-icon> Préparer le rendez-vous</div>
                     </div>
                   </div>
                 </div>
@@ -1622,7 +1621,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   <!-- Liste checklist des questions + Formulaire d'ajout -->
                   <div class="lg:col-span-7 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-5">
-                    <h3 class="text-xl font-extrabold text-[#0F1035]">💬 Mes questions ({{ questions.length }})</h3>
+                    <h3 class="text-xl font-extrabold text-[#0F1035]"><mb-icon name="message-circle"></mb-icon> Mes questions ({{ questions.length }})</h3>
 
                     <div class="space-y-2.5">
                       <div
@@ -1673,7 +1672,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="lg:col-span-5 space-y-6">
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
                       <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-extrabold text-[#0F1035]">📅 Mon prochain rendez-vous</h3>
+                        <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="calendar"></mb-icon> Mon prochain rendez-vous</h3>
                         <span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-2.5 py-0.5 text-xs font-extrabold">Confirmé</span>
                       </div>
                       <div class="flex items-center gap-4">
@@ -1684,14 +1683,14 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
                         <div class="text-xs space-y-1">
                           <p class="font-extrabold text-sm text-[#0F1035]">Échange avec mon conseiller</p>
-                          <p class="text-[#42466B]">🕒 14h30 – 15h30</p>
-                          <p class="text-[#42466B]">📍 Centre des Possibles</p>
+                          <p class="text-[#42466B]"><mb-icon name="clock"></mb-icon> 14h30 – 15h30</p>
+                          <p class="text-[#42466B]"><mb-icon name="map-pin"></mb-icon> Centre des Possibles</p>
                         </div>
                       </div>
                     </div>
 
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
-                      <h3 class="text-lg font-extrabold text-[#0F1035]">📝 Mes notes &amp; idées</h3>
+                      <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="notebook-pen"></mb-icon> Mes notes &amp; idées</h3>
                       <textarea
                         [(ngModel)]="personalNotes"
                         maxlength="500"
@@ -1722,7 +1721,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   <div class="lg:col-span-8 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                    <h3 class="text-xl font-extrabold text-[#0F1035]">📄 Mes documents (4)</h3>
+                    <h3 class="text-xl font-extrabold text-[#0F1035]"><mb-icon name="file-text"></mb-icon> Mes documents (4)</h3>
 
                     <div class="space-y-3">
                       <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex items-center justify-between gap-4">
@@ -1797,7 +1796,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                   <div class="lg:col-span-4 space-y-6">
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
-                      <h3 class="text-base font-extrabold text-[#0F1035]">💼 Mon espace personnel</h3>
+                      <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="briefcase"></mb-icon> Mon espace personnel</h3>
                       <div class="flex justify-between text-xs font-bold text-[#42466B]">
                         <span>24 Mo utilisés sur 100 Mo</span>
                         <span>24 %</span>
@@ -1811,7 +1810,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3.5">
                       <div class="flex items-center justify-between">
                         <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                          <span>🧭</span>
+                          <span><mb-icon name="compass"></mb-icon></span>
                           <span>Mode d'accompagnement</span>
                         </h3>
                         <span
@@ -1831,27 +1830,27 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="isJourneyChoiceModalOpen = true"
                         class="w-full rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white py-2 px-4 text-xs font-black shadow-xs hover:opacity-95 transition text-center flex items-center justify-center gap-1.5"
                       >
-                        <span>🔄</span>
+                        <span><mb-icon name="refresh-cw"></mb-icon></span>
                         <span>Changer de mode d'accompagnement</span>
                       </button>
                     </div>
 
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
-                      <h3 class="text-base font-extrabold text-[#0F1035]">📚 Ressources d’orientation</h3>
+                      <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="library"></mb-icon> Ressources d’orientation</h3>
                       <ul class="space-y-2 text-xs font-bold text-[#0F1035]">
                         <li>
                           <a href="https://www.orientation-regionsud.fr" target="_blank" rel="noopener" class="block rounded-xl bg-[#F8F7FF] p-3 hover:bg-[#F3EFFE]">
-                            🌐 Base Région Sud (orientation-regionsud.fr) ↗
+                            <mb-icon name="globe"></mb-icon> Base Région Sud (orientation-regionsud.fr) ↗
                           </a>
                         </li>
                         <li>
                           <a href="https://www.onisep.fr" target="_blank" rel="noopener" class="block rounded-xl bg-[#F8F7FF] p-3 hover:bg-[#F3EFFE]">
-                            📘 Guide des métiers ONISEP ↗
+                            <mb-icon name="book-open"></mb-icon> Guide des métiers ONISEP ↗
                           </a>
                         </li>
                         <li>
                           <a href="https://www.metiers360.com" target="_blank" rel="noopener" class="block rounded-xl bg-[#F8F7FF] p-3 hover:bg-[#F3EFFE]">
-                            🥽 Vidéos VR Métiers 360° (Agora) ↗
+                            <mb-icon name="glasses"></mb-icon> Vidéos VR Métiers 360° (Agora) ↗
                           </a>
                         </li>
                       </ul>
@@ -2038,10 +2037,18 @@ export const TONE_OPTIONS: ToneOption[] = [
                     >
                       <div class="flex items-center gap-3 min-w-0">
                         <img
+                          *ngIf="hasAvatar(d.avatarUrl); else dossierListInitials"
                           [src]="d.avatarUrl"
                           [alt]="d.name"
+                          (error)="markAvatarFailed(d.avatarUrl)"
                           class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shadow-sm flex-shrink-0"
                         />
+                        <ng-template #dossierListInitials>
+                          <span
+                            [attr.aria-label]="d.name"
+                            class="h-10 w-10 rounded-full bg-[#EDE9FE] text-[#6D28D9] ring-2 ring-purple-100 shadow-sm flex-shrink-0 flex items-center justify-center text-sm font-extrabold"
+                          >{{ getInitials(d.name) }}</span>
+                        </ng-template>
                         <div class="truncate">
                           <span class="font-extrabold text-[#0F1035] text-sm block leading-tight">{{ d.name }}</span>
                           <span class="text-xs text-[#6B7280] block">{{ d.age }} • {{ d.rdv }}</span>
@@ -2118,7 +2125,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
-                        ✍️
+                        <mb-icon name="pen-line"></mb-icon>
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">02. Entretien</span>
                       <span class="text-[9px] text-[#7C3AED] font-bold truncate w-full">Fiche saisie</span>
@@ -2132,7 +2139,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
-                        ⚡
+                        <mb-icon name="zap"></mb-icon>
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">03. Rapprochement</span>
                       <span class="text-[9px] text-purple-700 font-bold truncate w-full">Sélection IA</span>
@@ -2146,7 +2153,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 text-xs">
-                        🔍
+                        <mb-icon name="search"></mb-icon>
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">04. Métiers</span>
                       <span class="text-[9px] text-emerald-700 font-bold truncate w-full">22 validés</span>
@@ -2160,7 +2167,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
-                        🎧
+                        <mb-icon name="headphones"></mb-icon>
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">05. Épisodes</span>
                       <span class="text-[9px] text-purple-700 font-bold truncate w-full">6 pistes</span>
@@ -2174,7 +2181,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold mb-1 text-xs">
-                        🚀
+                        <mb-icon name="rocket"></mb-icon>
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">06. Publication</span>
                       <span class="text-[9px] text-green-700 font-bold truncate w-full">Publié jeune</span>
@@ -2394,7 +2401,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#F0EDFA]">
                   <div class="flex items-center gap-3">
                     <div class="h-10 w-10 rounded-2xl bg-gradient-to-br from-[#7C3AED] to-[#9333EA] text-white flex items-center justify-center text-lg shadow-sm">
-                      💼
+                      <mb-icon name="briefcase"></mb-icon>
                     </div>
                     <div>
                       <div class="flex items-center gap-2">
@@ -2413,7 +2420,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     (click)="activePortal = 'YOUNG'; selectYoungTab('IMMERSION_PRO')"
                     class="rounded-full bg-[#F3EFFE] text-[#7C3AED] hover:bg-[#E9D5FF] px-4 py-2 text-xs font-extrabold transition flex items-center gap-1.5"
                   >
-                    <span>👀</span>
+                    <span><mb-icon name="eye"></mb-icon></span>
                     <span>Voir comme le jeune</span>
                   </button>
                 </div>
@@ -2422,25 +2429,23 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] p-4.5 space-y-4">
                   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div class="flex items-center gap-3">
-                      <img
-                        src="assets/visuals/career-peintre.png"
-                        alt="Peintre décorateur"
-                        class="h-12 w-12 rounded-xl object-cover border border-[#E4E0F5]"
-                      />
+                      <div aria-hidden="true" class="h-12 w-12 shrink-0 rounded-xl border border-[#E4E0F5] bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-2xl">
+                        <mb-icon name="palette"></mb-icon>
+                      </div>
                       <div>
                         <div class="flex items-center gap-2">
                           <strong class="text-sm font-black text-[#0F1035]">Emma D. (16 ans)</strong>
                           <span class="text-xs text-[#6B7280]">• Dossier Rdv 2187</span>
                         </div>
                         <span class="text-xs font-bold text-[#7C3AED] block mt-0.5">
-                          🎨 Peintre décorateur (Zone 1 • p. 8) chez Atelier Décors & Patines Riviera (Nice)
+                          <mb-icon name="palette"></mb-icon> Peintre décorateur (Zone 1 • p. 8) chez Atelier Décors & Patines Riviera (Nice)
                         </span>
                       </div>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-2">
                       <span class="rounded-full bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1 text-xs font-bold flex items-center gap-1">
-                        <span>⏳</span>
+                        <span><mb-icon name="hourglass"></mb-icon></span>
                         <span>Étape 2/6 : Préparation & Convention</span>
                       </span>
                       <span class="rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 text-xs font-bold">
@@ -2504,7 +2509,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <tr *ngFor="let d of counselorDossiers" class="hover:bg-[#FAF9FF] transition">
                         <td class="py-3.5 pr-4 font-extrabold text-[#0F1035]">
                           <div class="flex items-center gap-3">
-                            <img [src]="d.avatarUrl" [alt]="d.name" class="h-9 w-9 rounded-full object-cover ring-2 ring-purple-100 shadow-2xs flex-shrink-0" />
+                            <img
+                              *ngIf="hasAvatar(d.avatarUrl); else dossierTableInitials"
+                              [src]="d.avatarUrl"
+                              [alt]="d.name"
+                              (error)="markAvatarFailed(d.avatarUrl)"
+                              class="h-9 w-9 rounded-full object-cover ring-2 ring-purple-100 shadow-2xs flex-shrink-0"
+                            />
+                            <ng-template #dossierTableInitials>
+                              <span
+                                [attr.aria-label]="d.name"
+                                class="h-9 w-9 rounded-full bg-[#EDE9FE] text-[#6D28D9] ring-2 ring-purple-100 shadow-2xs flex-shrink-0 flex items-center justify-center text-xs font-extrabold"
+                              >{{ getInitials(d.name) }}</span>
+                            </ng-template>
                             <div>
                               <span class="block leading-tight">{{ d.name }}</span>
                               <span class="text-xs text-[#6B7280] font-normal">{{ d.age }}</span>
@@ -2589,7 +2606,19 @@ export const TONE_OPTIONS: ToneOption[] = [
               <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-7 shadow-lg space-y-5">
                 <div class="flex flex-wrap items-center justify-between gap-4">
                   <div class="flex items-center gap-3.5">
-                    <img src="assets/visuals/avatar-emma.png" alt="Emma D." class="h-14 w-14 rounded-2xl object-cover ring-2 ring-white/30 shadow-md" />
+                    <img
+                      *ngIf="hasAvatar('assets/visuals/avatar-emma.png'); else emmaHeaderInitials"
+                      src="assets/visuals/avatar-emma.png"
+                      alt="Emma D."
+                      (error)="markAvatarFailed('assets/visuals/avatar-emma.png')"
+                      class="h-14 w-14 rounded-2xl object-cover ring-2 ring-white/30 shadow-md"
+                    />
+                    <ng-template #emmaHeaderInitials>
+                      <span
+                        aria-label="Emma D."
+                        class="h-14 w-14 rounded-2xl bg-white/20 ring-2 ring-white/30 shadow-md flex items-center justify-center text-xl font-black text-white"
+                      >{{ getInitials('Emma D.') }}</span>
+                    </ng-template>
                     <div>
                       <div class="flex items-center gap-2">
                         <h2 class="text-xl sm:text-2xl font-black text-white">Dossier Emma D. (16 ans)</h2>
@@ -2640,7 +2669,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   >
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] font-mono tracking-wider uppercase opacity-80">Étape 01</span>
-                      <span class="text-xs">📄</span>
+                      <span class="text-xs"><mb-icon name="file-text"></mb-icon></span>
                     </div>
                     <div class="text-xs leading-tight font-extrabold">01. Importer</div>
                     <span class="text-[10px] text-emerald-300 font-extrabold">PDF 17p vérifié</span>
@@ -2656,7 +2685,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   >
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] font-mono tracking-wider uppercase opacity-80">Étape 02</span>
-                      <span class="text-xs">✍️</span>
+                      <span class="text-xs"><mb-icon name="pen-line"></mb-icon></span>
                     </div>
                     <div class="text-xs leading-tight font-extrabold">02. Entretien</div>
                     <span class="text-[10px] text-purple-200 font-extrabold">Fiche structurée</span>
@@ -2672,7 +2701,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   >
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] font-mono tracking-wider uppercase opacity-80">Étape 03</span>
-                      <span class="text-xs">⚡</span>
+                      <span class="text-xs"><mb-icon name="zap"></mb-icon></span>
                     </div>
                     <div class="text-xs leading-tight font-extrabold">03. Sélection IA</div>
                     <span class="text-[10px] text-purple-200 font-extrabold">Rapprochement</span>
@@ -2688,7 +2717,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   >
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] font-mono tracking-wider uppercase opacity-80">Étape 04</span>
-                      <span class="text-xs">🎯</span>
+                      <span class="text-xs"><mb-icon name="target"></mb-icon></span>
                     </div>
                     <div class="text-xs leading-tight font-extrabold">04. Métiers</div>
                     <span class="text-[10px] text-emerald-300 font-extrabold">22 validés</span>
@@ -2704,7 +2733,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   >
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] font-mono tracking-wider uppercase opacity-80">Étape 05</span>
-                      <span class="text-xs">🎧</span>
+                      <span class="text-xs"><mb-icon name="headphones"></mb-icon></span>
                     </div>
                     <div class="text-xs leading-tight font-extrabold">05. Épisodes</div>
                     <span class="text-[10px] text-pink-200 font-extrabold">6 épisodes</span>
@@ -2720,7 +2749,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   >
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] font-mono tracking-wider uppercase opacity-80">Étape 06</span>
-                      <span class="text-xs">🚀</span>
+                      <span class="text-xs"><mb-icon name="rocket"></mb-icon></span>
                     </div>
                     <div class="text-xs leading-tight font-extrabold">06. Publication</div>
                     <span class="text-[10px] text-emerald-300 font-extrabold">Espace jeune</span>
@@ -2891,7 +2920,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     </div>
 
                     <div class="rounded-2xl bg-gradient-to-br from-[#FAF8FF] to-[#EDE9FE] border border-purple-100 p-4 flex items-center gap-4">
-                      <img src="assets/visuals/ai-robot-assistant.png" alt="Assistant" class="h-16 w-auto object-contain flex-shrink-0" />
+                      <mb-icon name="bot" class="text-5xl text-[#7C3AED] flex-shrink-0"></mb-icon>
                       <div class="text-xs">
                         <strong class="text-[#0F1035] block font-extrabold">Garantie Zéro-Hallucination</strong>
                         <p class="text-[#6B7280] mt-0.5 leading-relaxed">
@@ -2963,7 +2992,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="pb-4 border-b border-[#F0EDFA] flex flex-wrap items-center justify-between gap-3">
                     <div>
                       <h2 class="text-xl font-black text-[#0F1035] flex items-center gap-2">
-                        <span>✍️</span>
+                        <span><mb-icon name="pen-line"></mb-icon></span>
                         <span>02. Renseigner l'entretien — Compte rendu structuré</span>
                       </h2>
                       <p class="text-xs sm:text-sm text-[#42466B] mt-0.5">
@@ -3056,7 +3085,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           *ngFor="let mot of interviewForm.motivations; let i = index"
                           class="inline-flex items-center gap-1.5 rounded-full bg-blue-50 text-blue-800 px-3.5 py-1 text-xs font-bold"
                         >
-                          <span>💡 {{ mot }}</span>
+                          <span><mb-icon name="lightbulb"></mb-icon> {{ mot }}</span>
                           <button type="button" (click)="removeMotivation(i)" class="text-blue-700 hover:text-black font-black">×</button>
                         </span>
                       </div>
@@ -3087,7 +3116,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           *ngFor="let res of interviewForm.reservations; let i = index"
                           class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 text-amber-800 px-3.5 py-1 text-xs font-bold border border-amber-200"
                         >
-                          <span>⚠️ {{ res }}</span>
+                          <span><mb-icon name="triangle-alert"></mb-icon> {{ res }}</span>
                           <button type="button" (click)="removeReservation(i)" class="text-amber-700 hover:text-black font-black">×</button>
                         </span>
                       </div>
@@ -3203,7 +3232,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <!-- Carte Méthodologie et Règles Non-Négociables -->
                 <div class="rounded-[26px] bg-gradient-to-br from-[#FAF8FF] to-[#EDE9FE] border border-purple-200 p-6 space-y-3">
                   <div class="flex items-center gap-2">
-                    <span class="text-[#7C3AED] text-lg font-black">⚙️</span>
+                    <span class="text-[#7C3AED] text-lg font-black"><mb-icon name="settings"></mb-icon></span>
                     <h3 class="text-base font-black text-[#0F1035]">Règles du moteur de rapprochement déterministe</h3>
                   </div>
                   <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-[#31355B]">
@@ -3309,7 +3338,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#F0EDFA]">
                     <div>
                       <h2 class="text-xl font-black text-[#0F1035] flex items-center gap-2">
-                        <span>🎯</span>
+                        <span><mb-icon name="target"></mb-icon></span>
                         <span>04. Valider les 22 métiers (Contrôle psychologue)</span>
                       </h2>
                       <p class="text-xs text-[#42466B]">
@@ -3433,7 +3462,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     class="rounded-full bg-gradient-to-r from-[#EC4899] to-[#9333EA] text-white px-5 py-2 text-xs font-black shadow hover:opacity-95 transition flex items-center gap-2 cursor-pointer"
                   >
                     <span *ngIf="isGeneratingPiperAudio" class="h-3.5 w-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                    <span>⚡ Générer l'audio des 6 épisodes (Piper TTS)</span>
+                    <span><mb-icon name="zap"></mb-icon> Générer l'audio des 6 épisodes (Piper TTS)</span>
                   </button>
                 </div>
 
@@ -3536,7 +3565,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-6">
                   <div class="pb-3 border-b border-[#F0EDFA]">
                     <h2 class="text-xl font-black text-[#0F1035] flex items-center gap-2">
-                      <span>🚀</span>
+                      <span><mb-icon name="rocket"></mb-icon></span>
                       <span>06. Contrôle final et publication au jeune</span>
                     </h2>
                     <p class="text-xs text-[#42466B] mt-0.5">
@@ -3606,7 +3635,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="publishRestitutionToYoung()"
                         class="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 text-xs sm:text-sm font-black shadow-md transition cursor-pointer"
                       >
-                        {{ isRestitutionPublishedToYoung ? '✓ Restitution publiée' : '🚀 Publier la restitution' }}
+                        {{ isRestitutionPublishedToYoung ? '✓ Restitution publiée' : 'Publier la restitution' }}
                       </button>
                       <button
                         type="button"
@@ -3634,7 +3663,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
                     class="rounded-full px-5 py-2.5 text-xs sm:text-sm font-extrabold transition"
                   >
-                    📅 Mon agenda (Semaine du 16 au 22 nov. 2026)
+                    <mb-icon name="calendar"></mb-icon> Mon agenda (Semaine du 16 au 22 nov. 2026)
                   </button>
                   <button
                     type="button"
@@ -3644,12 +3673,12 @@ export const TONE_OPTIONS: ToneOption[] = [
                       : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
                     class="rounded-full px-5 py-2.5 text-xs sm:text-sm font-extrabold transition"
                   >
-                    📋 Mes rendez-vous (Tableau de suivi)
+                    <mb-icon name="clipboard-list"></mb-icon> Mes rendez-vous (Tableau de suivi)
                   </button>
                 </div>
                 <button
                   type="button"
-                  (click)="statusBanner = '📅 Nouveau créneau d’échange programmé au Centre des Possibles (Salle 2).'"
+                  (click)="statusBanner = 'Nouveau créneau d’échange programmé au Centre des Possibles (Salle 2).'"
                   class="rounded-full bg-[#6328E8] text-white px-5 py-2.5 text-xs font-extrabold shadow"
                 >
                   + Nouveau rendez-vous
@@ -3662,7 +3691,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <!-- Grille agenda hebdomadaire -->
                   <div class="lg:col-span-7 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
                     <div class="flex items-center justify-between">
-                      <h2 class="text-lg font-extrabold text-[#0F1035]">📅 Semaine du 16 au 22 nov. 2026</h2>
+                      <h2 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="calendar"></mb-icon> Semaine du 16 au 22 nov. 2026</h2>
                       <span class="rounded-full bg-[#F3EFFE] text-[#6D28D9] px-3 py-1 text-xs font-extrabold">Aujourd’hui</span>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2.5 text-center text-xs">
@@ -3699,13 +3728,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                       </div>
                       <span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-3 py-1 text-xs font-extrabold">✓ Rendez-vous confirmé</span>
                     </div>
-                    <p class="text-xs text-[#42466B]">📅 Mer. 18 nov. 2026 • 🕒 14h00 – 15h00 (1 h)</p>
+                    <p class="text-xs text-[#42466B]"><mb-icon name="calendar"></mb-icon> Mer. 18 nov. 2026 • <mb-icon name="clock"></mb-icon> 14h00 – 15h00 (1 h)</p>
                     <div class="flex flex-wrap gap-2">
-                      <button type="button" (click)="activeCounselorTab = 'VALIDATIONS_PUBLICATIONS'" class="rounded-full bg-[#7C3AED] text-white px-4 py-1.5 text-xs font-extrabold">📄 Préparer l’échange</button>
-                      <button type="button" (click)="rdvSubView = 'LISTE'" class="rounded-full bg-[#F4F2FF] text-[#6D28D9] px-4 py-1.5 text-xs font-extrabold">✏️ Voir tous les RDV</button>
+                      <button type="button" (click)="activeCounselorTab = 'VALIDATIONS_PUBLICATIONS'" class="rounded-full bg-[#7C3AED] text-white px-4 py-1.5 text-xs font-extrabold"><mb-icon name="file-text"></mb-icon> Préparer l’échange</button>
+                      <button type="button" (click)="rdvSubView = 'LISTE'" class="rounded-full bg-[#F4F2FF] text-[#6D28D9] px-4 py-1.5 text-xs font-extrabold"><mb-icon name="pencil"></mb-icon> Voir tous les RDV</button>
                     </div>
                     <div class="space-y-2 pt-3 border-t border-[#F0EDFA] text-xs font-bold text-[#31355B]">
-                      <p class="text-[#0F1035] font-extrabold">✨ Préparation du rendez-vous :</p>
+                      <p class="text-[#0F1035] font-extrabold"><mb-icon name="sparkles"></mb-icon> Préparation du rendez-vous :</p>
                       <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-[#22C55E]" /> Consulter le bilan Rdv {{ rdvNumber }} et la synthèse</label>
                       <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-[#22C55E]" /> Relire les points clés (intérêts, aptitudes, 22 pistes)</label>
                       <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-[#22C55E]" /> Identifier les {{ questions.length }} questions à approfondir</label>
@@ -3763,7 +3792,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                 <!-- Rendez-vous du jour -->
                 <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <h3 class="text-base font-extrabold text-[#0F1035]">📅 Rendez-vous du jour — Mer. 18 nov. 2026</h3>
+                  <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="calendar"></mb-icon> Rendez-vous du jour — Mer. 18 nov. 2026</h3>
                   <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex flex-wrap items-center justify-between gap-4">
                     <div class="flex items-center gap-4">
                       <div class="rounded-xl bg-[#EDE9FE] text-[#6D28D9] px-3.5 py-2 text-xs font-extrabold">
@@ -3775,13 +3804,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                       </div>
                     </div>
                     <div class="flex items-center gap-3">
-                      <span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-3 py-1 text-xs font-extrabold">⏳ À venir</span>
+                      <span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-3 py-1 text-xs font-extrabold"><mb-icon name="hourglass"></mb-icon> À venir</span>
                       <button
                         type="button"
                         (click)="activeCounselorTab = 'VALIDATIONS_PUBLICATIONS'"
                         class="rounded-full bg-[#6328E8] text-white px-4 py-2 text-xs font-extrabold shadow"
                       >
-                        📁 Ouvrir le dossier
+                        <mb-icon name="folder"></mb-icon> Ouvrir le dossier
                       </button>
                     </div>
                   </div>
@@ -3789,7 +3818,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                 <!-- Prochains rendez-vous -->
                 <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <h3 class="text-base font-extrabold text-[#0F1035]">📋 Prochains rendez-vous</h3>
+                  <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="clipboard-list"></mb-icon> Prochains rendez-vous</h3>
                   <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs">
                       <thead>
@@ -3806,7 +3835,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           <td class="py-3">Jeu. 19 nov. 14:00 – 15:00</td>
                           <td class="py-3">Lucas M.</td>
                           <td class="py-3 text-[#42466B]">Point d’avancement</td>
-                          <td class="py-3"><span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-2.5 py-1 text-[11px] font-extrabold">⏳ À venir</span></td>
+                          <td class="py-3"><span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-2.5 py-1 text-[11px] font-extrabold"><mb-icon name="hourglass"></mb-icon> À venir</span></td>
                           <td class="py-3 text-right"><button type="button" (click)="activeCounselorTab = 'DOSSIERS_JEUNES'" class="text-[#6D28D9] font-extrabold hover:underline">Voir →</button></td>
                         </tr>
                         <tr>
@@ -3882,7 +3911,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeYoungTab === 'ACCUEIL' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🏠</span>
+              <span class="text-base leading-none"><mb-icon name="house"></mb-icon></span>
               <span class="mt-0.5">Accueil</span>
             </button>
             <button
@@ -3891,7 +3920,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeYoungTab === 'MON_BILAN' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🎧</span>
+              <span class="text-base leading-none"><mb-icon name="headphones"></mb-icon></span>
               <span class="mt-0.5">Bilan</span>
             </button>
             <button
@@ -3900,7 +3929,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="(activeYoungTab === 'IMMERSION_PRO' || activeYoungTab === 'EXPLORER_METIERS') ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">💼</span>
+              <span class="text-base leading-none"><mb-icon name="briefcase"></mb-icon></span>
               <span class="mt-0.5">Immersion</span>
             </button>
             <button
@@ -3909,7 +3938,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeYoungTab === 'MON_PARCOURS' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🗺️</span>
+              <span class="text-base leading-none"><mb-icon name="map"></mb-icon></span>
               <span class="mt-0.5">Parcours</span>
             </button>
             <button
@@ -3929,7 +3958,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="(activeYoungTab === 'ACCUEIL_AUTONOME' || activeYoungTab === 'ACCUEIL') ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🏠</span>
+              <span class="text-base leading-none"><mb-icon name="house"></mb-icon></span>
               <span class="mt-0.5">Accueil</span>
             </button>
             <button
@@ -3938,7 +3967,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="(activeYoungTab === 'CATALOGUE_METIERS' || activeYoungTab === 'EXPLORER_METIERS') ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🔍</span>
+              <span class="text-base leading-none"><mb-icon name="search"></mb-icon></span>
               <span class="mt-0.5">Métiers</span>
             </button>
             <button
@@ -3947,7 +3976,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeYoungTab === 'IMMERSION_PRO' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">💼</span>
+              <span class="text-base leading-none"><mb-icon name="briefcase"></mb-icon></span>
               <span class="mt-0.5">Immersion</span>
             </button>
             <button
@@ -3956,7 +3985,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeYoungTab === 'ANNUAIRE_SUPPORT' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🏛️</span>
+              <span class="text-base leading-none"><mb-icon name="landmark"></mb-icon></span>
               <span class="mt-0.5">Aide</span>
             </button>
             <button
@@ -3976,7 +4005,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeCounselorTab === 'TABLEAU_DE_BORD' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🏠</span>
+              <span class="text-base leading-none"><mb-icon name="house"></mb-icon></span>
               <span class="mt-0.5">Accueil</span>
             </button>
             <button
@@ -3985,7 +4014,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeCounselorTab === 'DOSSIERS_JEUNES' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">👥</span>
+              <span class="text-base leading-none"><mb-icon name="users"></mb-icon></span>
               <span class="mt-0.5">Dossiers</span>
             </button>
             <button
@@ -3994,7 +4023,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeCounselorTab === 'IMPORTER_RAPPORT' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">⬆️</span>
+              <span class="text-base leading-none"><mb-icon name="upload"></mb-icon></span>
               <span class="mt-0.5">Import</span>
             </button>
             <button
@@ -4003,7 +4032,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               [class]="activeCounselorTab === 'VALIDATIONS_PUBLICATIONS' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">✅</span>
+              <span class="text-base leading-none"><mb-icon name="circle-check"></mb-icon></span>
               <span class="mt-0.5">Valider</span>
             </button>
             <button
@@ -4026,7 +4055,7 @@ export const TONE_OPTIONS: ToneOption[] = [
             <div class="flex items-start justify-between gap-3 pb-3 border-b border-[#F0EDFA]">
               <div class="flex items-center gap-3">
                 <span class="h-10 w-10 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl font-black shrink-0">
-                  📖
+                  <mb-icon name="book-open"></mb-icon>
                 </span>
                 <div>
                   <h3 class="text-lg sm:text-xl font-extrabold text-[#0F1035]">C'est quoi une « Zone » ?</h3>
@@ -4084,7 +4113,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 </div>
               </div>
               <p class="text-xs bg-[#FEF3C7] rounded-xl p-3 border border-[#FDE68A] text-[#92400E]">
-                💡 <strong>À retenir :</strong> Une Zone 1 n’a pas « moins de valeur » qu’une Zone 5 ! Elle représente simplement un chemin d’accès plus court et direct vers l’emploi et l’autonomie.
+                <mb-icon name="lightbulb"></mb-icon> <strong>À retenir :</strong> Une Zone 1 n’a pas « moins de valeur » qu’une Zone 5 ! Elle représente simplement un chemin d’accès plus court et direct vers l’emploi et l’autonomie.
               </p>
             </div>
 
@@ -4225,7 +4254,7 @@ export class AppComponent implements OnInit {
   youngNotifications = [
     {
       id: 'yn-1',
-      icon: '🎧',
+      icon: 'headphones',
       badgeBg: 'bg-[#EDE9FE] text-[#6D28D9]',
       title: 'Restitution Rdv 2187 disponible',
       message: 'Sarah Dupont a vérifié et validé ta restitution audio et tes 22 pistes de métiers.',
@@ -4235,7 +4264,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'yn-2',
-      icon: '💬',
+      icon: 'message-circle',
       badgeBg: 'bg-[#DCFCE7] text-[#15803D]',
       title: 'Réponse à ta question',
       message: 'Ta conseillère a répondu sur les formations de Peintre décorateur (CAP / Bac pro).',
@@ -4245,7 +4274,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'yn-3',
-      icon: '📅',
+      icon: 'calendar',
       badgeBg: 'bg-[#DBEAFE] text-[#1D4ED8]',
       title: 'Prochain échange confirmé',
       message: 'Mercredi 18 nov. à 14h30 au Centre des Possibles (Nice).',
@@ -4258,7 +4287,7 @@ export class AppComponent implements OnInit {
   counselorNotifications = [
     {
       id: 'cn-1',
-      icon: '⏳',
+      icon: 'hourglass',
       badgeBg: 'bg-[#FEF3C7] text-[#B45309]',
       title: 'Restitution en attente de validation',
       message: 'Le dossier de Lucas M. est prêt à être contrôlé avant publication.',
@@ -4268,7 +4297,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'cn-2',
-      icon: '💬',
+      icon: 'message-circle',
       badgeBg: 'bg-[#EDE9FE] text-[#6D28D9]',
       title: '5 questions préparées par Emma D.',
       message: 'Dossier Rdv 2187 — Emma a noté ses questions pour l’entretien de suivi.',
@@ -4278,7 +4307,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'cn-3',
-      icon: '✅',
+      icon: 'circle-check',
       badgeBg: 'bg-[#DCFCE7] text-[#15803D]',
       title: 'Rapport Rdv 2187 publié',
       message: '17 pages vérifiées • 22 métiers indexés • Synthèse vocale Piper TTS active.',
@@ -4329,26 +4358,26 @@ export class AppComponent implements OnInit {
   get currentYoungNavItems(): { id: YoungTab; label: string; icon: string; badge?: string }[] {
     if (this.journeyMode === 'AUTONOMOUS') {
       return [
-        { id: 'ACCUEIL_AUTONOME', label: 'Accueil', icon: '🏠' },
-        { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
-        { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: '📍', badge: '06' },
-        { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
-        { id: 'COACH_IA', label: 'Mon Coach IA', icon: '✨', badge: 'Nouveau' },
-        { id: 'CATALOGUE_METIERS', label: 'Explorer les métiers', icon: '🔍', badge: '721' },
-        { id: 'ANNUAIRE_SUPPORT', label: 'Trouver de l’aide', icon: '🏛️' },
-        { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
+        { id: 'ACCUEIL_AUTONOME', label: 'Accueil', icon: 'house' },
+        { id: 'MON_BILAN', label: 'Mon bilan', icon: 'headphones' },
+        { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: 'map-pin', badge: '06' },
+        { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: 'briefcase', badge: 'Nouveau' },
+        { id: 'COACH_IA', label: 'Mon Coach IA', icon: 'sparkles', badge: 'Nouveau' },
+        { id: 'CATALOGUE_METIERS', label: 'Explorer les métiers', icon: 'search', badge: '721' },
+        { id: 'ANNUAIRE_SUPPORT', label: 'Trouver de l’aide', icon: 'landmark' },
+        { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: 'settings' }
       ];
     }
     return [
-      { id: 'ACCUEIL', label: 'Accueil', icon: '🏠' },
-      { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
-      { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: '📍', badge: '06' },
-      { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
-      { id: 'COACH_IA', label: 'Mon Coach IA', icon: '✨', badge: 'Nouveau' },
-      { id: 'MON_PARCOURS', label: 'Mon parcours', icon: '🗺️' },
-      { id: 'MES_QUESTIONS', label: 'Mes questions', icon: '💬' },
-      { id: 'MES_DOCUMENTS', label: 'Mes documents', icon: '📁' },
-      { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
+      { id: 'ACCUEIL', label: 'Accueil', icon: 'house' },
+      { id: 'MON_BILAN', label: 'Mon bilan', icon: 'headphones' },
+      { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: 'map-pin', badge: '06' },
+      { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: 'briefcase', badge: 'Nouveau' },
+      { id: 'COACH_IA', label: 'Mon Coach IA', icon: 'sparkles', badge: 'Nouveau' },
+      { id: 'MON_PARCOURS', label: 'Mon parcours', icon: 'map' },
+      { id: 'MES_QUESTIONS', label: 'Mes questions', icon: 'message-circle' },
+      { id: 'MES_DOCUMENTS', label: 'Mes documents', icon: 'folder' },
+      { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: 'settings' }
     ];
   }
 
@@ -4379,22 +4408,48 @@ export class AppComponent implements OnInit {
   isDraftSavedSuccess = false;
 
   youngNavItems: { id: YoungTab; label: string; icon: string; badge?: string }[] = [
-    { id: 'ACCUEIL', label: 'Accueil', icon: '🏠' },
-    { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
-    { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
-    { id: 'MON_PARCOURS', label: 'Mon parcours', icon: '🗺️' },
-    { id: 'MES_QUESTIONS', label: 'Mes questions', icon: '💬' },
-    { id: 'MES_DOCUMENTS', label: 'Mes documents', icon: '📁' },
-    { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
+    { id: 'ACCUEIL', label: 'Accueil', icon: 'house' },
+    { id: 'MON_BILAN', label: 'Mon bilan', icon: 'headphones' },
+    { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: 'briefcase', badge: 'Nouveau' },
+    { id: 'MON_PARCOURS', label: 'Mon parcours', icon: 'map' },
+    { id: 'MES_QUESTIONS', label: 'Mes questions', icon: 'message-circle' },
+    { id: 'MES_DOCUMENTS', label: 'Mes documents', icon: 'folder' },
+    { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: 'settings' }
   ];
 
   counselorNavItems: { id: CounselorTab; label: string; icon: string; badge?: string }[] = [
-    { id: 'TABLEAU_DE_BORD', label: 'Tableau de bord', icon: '🏠' },
-    { id: 'DOSSIERS_JEUNES', label: 'Dossiers jeunes', icon: '👥', badge: '4' },
-    { id: 'IMPORTER_RAPPORT', label: 'Importer un rapport', icon: '⬆️' },
-    { id: 'SUIVI_RDV', label: 'Suivi & rendez-vous', icon: '📅' },
-    { id: 'PARAMETRES', label: 'Paramètres', icon: '⚙️' }
+    { id: 'TABLEAU_DE_BORD', label: 'Tableau de bord', icon: 'house' },
+    { id: 'DOSSIERS_JEUNES', label: 'Dossiers jeunes', icon: 'users', badge: '4' },
+    { id: 'IMPORTER_RAPPORT', label: 'Importer un rapport', icon: 'upload' },
+    { id: 'SUIVI_RDV', label: 'Suivi & rendez-vous', icon: 'calendar' },
+    { id: 'PARAMETRES', label: 'Paramètres', icon: 'settings' }
   ];
+
+  /** Photos de profil qui n'ont pas pu être chargées (fichier absent, URL cassée…). */
+  private failedAvatars = new Set<string>();
+
+  /** Vrai si le jeune a une photo de profil utilisable. */
+  hasAvatar(url?: string | null): boolean {
+    return !!url && !this.failedAvatars.has(url);
+  }
+
+  /** Appelé quand une photo ne se charge pas : on bascule sur les initiales. */
+  markAvatarFailed(url?: string | null): void {
+    if (url) {
+      this.failedAvatars.add(url);
+    }
+  }
+
+  /** Initiales d'un nom, ex. « Emma D. » -> « ED », « Aïcha » -> « A ». */
+  getInitials(name: string): string {
+    return name
+      .split(/\s+/)
+      .map(part => part.replace(/[^\p{L}]/gu, '').charAt(0))
+      .filter(Boolean)
+      .slice(0, 2)
+      .join('')
+      .toUpperCase();
+  }
 
   counselorDossiers = [
     {
@@ -5025,7 +5080,7 @@ export class AppComponent implements OnInit {
   questions: UIQuestion[] = [
     {
       id: 'q-1',
-      tagLabel: '📅 Métiers',
+      tagLabel: 'Métiers',
       tagColor: 'bg-[#EDE9FE] text-[#6D28D9]',
       relatedTopic: 'Peintre décorateur (p. 8)',
       questionText: 'Quelles formations pour devenir peintre décorateur ?',
@@ -5034,7 +5089,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'q-2',
-      tagLabel: '🎓 Parcours',
+      tagLabel: 'Parcours',
       tagColor: 'bg-[#DBEAFE] text-[#1D4ED8]',
       relatedTopic: 'Barista (p. 8)',
       questionText: 'Existe-t-il des stages pour découvrir le métier de barista ?',
@@ -5043,7 +5098,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'q-3',
-      tagLabel: '🌱 Conditions',
+      tagLabel: 'Conditions',
       tagColor: 'bg-[#DCFCE7] text-[#15803D]',
       relatedTopic: 'Guide touristique (p. 12)',
       questionText: 'Quelles sont les conditions de travail d’un guide touristique ?',
@@ -5052,7 +5107,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'q-4',
-      tagLabel: '📊 Compétences',
+      tagLabel: 'Compétences',
       tagColor: 'bg-[#FCE7F3] text-[#BE185D]',
       relatedTopic: 'Technicien du son (p. 12)',
       questionText: 'Quelles compétences dois-je encore développer ?',
@@ -5061,7 +5116,7 @@ export class AppComponent implements OnInit {
     },
     {
       id: 'q-5',
-      tagLabel: '🎯 Suite',
+      tagLabel: 'Suite',
       tagColor: 'bg-[#FFEDD5] text-[#C2410C]',
       relatedTopic: 'Prochaines étapes',
       questionText: 'Quelles sont les prochaines étapes après ce bilan ?',
@@ -5489,42 +5544,42 @@ export class AppComponent implements OnInit {
     const title = career.titleFr.toLowerCase();
     if (title.includes('peintre')) {
       return [
-        '📍 Lieux d’exercice : en atelier de décoration, sur chantiers de rénovation ou neufs (intérieurs et extérieurs).',
-        '🕒 Rythme & Horaires : horaires réguliers de journée (du lundi au vendredi, environ 35h/semaine).',
-        '🦺 Sécurité & Équipements (EPI) : port obligatoire du masque respiratoire, gants, lunettes de protection et chaussures de sécurité.',
-        '🚗 Mobilité : déplacements fréquents dans le département selon les chantiers (véhicule d’entreprise souvent mis à disposition).',
-        '👥 Travail d’équipe : collaboration étroite avec d’autres corps d’état (menuisiers, architectes d’intérieur, clients particuliers).'
+        'Lieux d’exercice : en atelier de décoration, sur chantiers de rénovation ou neufs (intérieurs et extérieurs).',
+        'Rythme & Horaires : horaires réguliers de journée (du lundi au vendredi, environ 35h/semaine).',
+        'Sécurité & Équipements (EPI) : port obligatoire du masque respiratoire, gants, lunettes de protection et chaussures de sécurité.',
+        'Mobilité : déplacements fréquents dans le département selon les chantiers (véhicule d’entreprise souvent mis à disposition).',
+        'Travail d’équipe : collaboration étroite avec d’autres corps d’état (menuisiers, architectes d’intérieur, clients particuliers).'
       ];
     } else if (title.includes('son') || title.includes('radio')) {
       return [
-        '📍 Lieux d’exercice : régies son, studios d’enregistrement, salles de spectacle ou extérieurs événementiels.',
-        '🕒 Rythme & Horaires : plannings modulables et décalés selon les représentations et tournages (soirs et week-ends fréquents).',
-        '🎧 Ergonomie & Équipements : écoute prolongée au casque, consoles numériques et logiciels spécialisés.',
-        '👥 Travail d’équipe : coopération permanente avec les artistes, réalisateurs et musiciens.'
+        'Lieux d’exercice : régies son, studios d’enregistrement, salles de spectacle ou extérieurs événementiels.',
+        'Rythme & Horaires : plannings modulables et décalés selon les représentations et tournages (soirs et week-ends fréquents).',
+        'Ergonomie & Équipements : écoute prolongée au casque, consoles numériques et logiciels spécialisés.',
+        'Travail d’équipe : coopération permanente avec les artistes, réalisateurs et musiciens.'
       ];
     }
 
     switch (career.jobZone) {
       case 1:
         return [
-          '📍 Lieux d’exercice : en atelier, en magasin ou sur site d’intervention.',
-          '🕒 Rythme & Horaires : horaires réguliers de journée, plannings généralement stables.',
-          '🦺 Posture & Gestes : travail actif avec manipulations concrètes de matières et outils.',
-          '👥 Environnement : encadrement par un chef d’équipe ou tuteur d’apprentissage.'
+          'Lieux d’exercice : en atelier, en magasin ou sur site d’intervention.',
+          'Rythme & Horaires : horaires réguliers de journée, plannings généralement stables.',
+          'Posture & Gestes : travail actif avec manipulations concrètes de matières et outils.',
+          'Environnement : encadrement par un chef d’équipe ou tuteur d’apprentissage.'
         ];
       case 2:
       case 3:
         return [
-          '📍 Lieux d’exercice : environnement mixte (atelier, studio, bureau ou contact clientèle).',
-          '🕒 Rythme & Horaires : rythme régulier avec temps de préparation technique et logistique.',
-          '🛡️ Sécurité & Qualité : application des normes de sécurité et de conformité métier.',
-          '👥 Collaboration : travail en équipe pluridisciplinaire et autonomie croissante.'
+          'Lieux d’exercice : environnement mixte (atelier, studio, bureau ou contact clientèle).',
+          'Rythme & Horaires : rythme régulier avec temps de préparation technique et logistique.',
+          'Sécurité & Qualité : application des normes de sécurité et de conformité métier.',
+          'Collaboration : travail en équipe pluridisciplinaire et autonomie croissante.'
         ];
       default:
         return [
-          '📍 Lieux d’exercice : locaux professionnels, bureaux d’études ou établissements recevant du public.',
-          '🕒 Rythme & Horaires : gestion de projets, réunions d’équipe et interventions programmées.',
-          '👥 Responsabilité : animation de groupes, encadrement ou accompagnement individualisé.'
+          'Lieux d’exercice : locaux professionnels, bureaux d’études ou établissements recevant du public.',
+          'Rythme & Horaires : gestion de projets, réunions d’équipe et interventions programmées.',
+          'Responsabilité : animation de groupes, encadrement ou accompagnement individualisé.'
         ];
     }
   }
@@ -5640,7 +5695,7 @@ export class AppComponent implements OnInit {
     this.statusBanner = `Demande de mise en relation pour "${career.titleFr}" transmise à ton conseiller Sarah Dupont pour validation.`;
     this.questions.unshift({
       id: `q-pro-${Date.now()}`,
-      tagLabel: '🤝 Immersion Pro',
+      tagLabel: 'Immersion Pro',
       tagColor: 'bg-[#EDE9FE] text-[#6D28D9]',
       relatedTopic: `Métier : ${career.titleFr}`,
       questionText: `Demande de mise en relation avec un professionnel du secteur ${career.titleFr} (Zone ${career.jobZone}). Soumis à la validation du conseiller.`,
@@ -5756,7 +5811,7 @@ export class AppComponent implements OnInit {
   }
 
   prefillQuestionWithCareer(career: UICareer): void {
-    this.newQuestionTopic = '📅 Métiers';
+    this.newQuestionTopic = 'Métiers';
     this.newQuestionText = `Comment explorer la piste ${career.titleFr} (Zone ${career.jobZone}, page ${career.pageNumber}) ?`;
     this.selectedCareerDetail = null;
     this.activeYoungTab = 'MES_QUESTIONS';
@@ -5766,7 +5821,7 @@ export class AppComponent implements OnInit {
     if (!this.newQuestionText.trim()) return;
     this.questions.unshift({
       id: `q-${Date.now()}`,
-      tagLabel: this.newQuestionTopic.trim() || '💬 Question',
+      tagLabel: this.newQuestionTopic.trim() || 'Question',
       tagColor: 'bg-[#EDE9FE] text-[#6D28D9]',
       relatedTopic: 'Dossier Rdv 2187',
       questionText: this.newQuestionText.trim(),
@@ -5775,7 +5830,7 @@ export class AppComponent implements OnInit {
     });
     this.newQuestionTopic = '';
     this.newQuestionText = '';
-    this.statusBanner = '✔ Ta question a bien été ajoutée à ta liste pour ton conseiller.';
+    this.statusBanner = '✓ Ta question a bien été ajoutée à ta liste pour ton conseiller.';
   }
 
   onCounselorEditClaim(claim: UIClaim): void {
@@ -5788,7 +5843,7 @@ export class AppComponent implements OnInit {
   regenerateAIDraft(): void {
     const unverified = this.facts.filter((f) => !f.isVerified);
     if (unverified.length > 0) {
-      this.statusBanner = `⛔ Blocage de sécurité : ${unverified.length} fait(s) ne sont pas cochés comme "Vérifié".`;
+      this.statusBanner = `Blocage de sécurité : ${unverified.length} fait(s) ne sont pas cochés comme "Vérifié".`;
       return;
     }
     this.restitutionVersion += 1;
@@ -5800,26 +5855,26 @@ export class AppComponent implements OnInit {
   approveCurrentRestitution(): void {
     this.restitutionStatus = 'APPROVED';
     this.claims.forEach((c) => (c.reviewStatus = 'APPROVED'));
-    this.statusBanner = `✔ Script v${this.restitutionVersion} validé par le professionnel. Vous pouvez lancer la synthèse vocale Piper TTS.`;
+    this.statusBanner = `✓ Script v${this.restitutionVersion} validé par le professionnel. Vous pouvez lancer la synthèse vocale Piper TTS.`;
   }
 
   triggerPiperAudio(): void {
     if (this.restitutionStatus !== 'APPROVED' && this.restitutionStatus !== 'READY') {
-      this.statusBanner = '⛔ Validez d’abord le script (étape 2) avant la synthèse vocale.';
+      this.statusBanner = 'Validez d’abord le script (étape 2) avant la synthèse vocale.';
       return;
     }
     this.audioReady = true;
     this.restitutionStatus = 'READY';
-    this.statusBanner = `🎙️ Audio WAV généré par Piper TTS pour la version v${this.restitutionVersion}.`;
+    this.statusBanner = `Audio WAV généré par Piper TTS pour la version v${this.restitutionVersion}.`;
   }
 
   confirmPublishToYoung(): void {
     if (!this.audioReady) {
-      this.statusBanner = '⛔ L’audio doit être généré pour la version actuelle avant publication.';
+      this.statusBanner = 'L’audio doit être généré pour la version actuelle avant publication.';
       return;
     }
     this.restitutionStatus = 'PUBLISHED';
-    this.statusBanner = `🚀 Restitution v${this.restitutionVersion} publiée dans l’Espace Jeune !`;
+    this.statusBanner = `Restitution v${this.restitutionVersion} publiée dans l’Espace Jeune !`;
   }
 
   runSecuritySimulation(kind: 'CROSS_TENANT' | 'UNASSIGNED_COUNSELOR' | 'HALLUCINATION_BLOCK'): void {

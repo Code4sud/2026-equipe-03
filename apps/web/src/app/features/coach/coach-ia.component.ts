@@ -5,6 +5,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 
 export type CoachToolKind = 'EMAIL' | 'CALL_SCRIPT' | 'FOLLOWUP' | 'TRAINING';
@@ -13,7 +14,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
 @Component({
   selector: 'app-coach-ia',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="space-y-6">
 
@@ -24,11 +25,11 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
         <div class="relative z-10 flex items-start gap-4 sm:gap-5">
           <!-- Robot 3D -->
           <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-inner backdrop-blur-sm text-3xl sm:text-4xl">
-            🤖
+            <mb-icon name="bot"></mb-icon>
           </div>
           <div class="space-y-2">
             <div class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
-              <span>✨ Assistant pédagogique IA</span>
+              <span><mb-icon name="sparkles"></mb-icon> Assistant pédagogique IA</span>
             </div>
             <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
               Mon Coach IA
@@ -88,7 +89,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
             [class]="selectedTool === 'EMAIL' ? 'bg-[#7C3AED] text-white' : 'bg-[#F3E8FF] text-[#7C3AED]'"
             class="h-10 w-10 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 transition"
           >
-            ✉️
+            <mb-icon name="mail"></mb-icon>
           </div>
           <div>
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035]">Rédiger un email</h4>
@@ -111,7 +112,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
             [class]="selectedTool === 'CALL_SCRIPT' ? 'bg-[#7C3AED] text-white' : 'bg-[#EFF6FF] text-blue-600'"
             class="h-10 w-10 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 transition"
           >
-            📞
+            <mb-icon name="phone"></mb-icon>
           </div>
           <div>
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035]">Préparer un appel</h4>
@@ -134,7 +135,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
             [class]="selectedTool === 'FOLLOWUP' ? 'bg-[#7C3AED] text-white' : 'bg-[#FEF3C7] text-amber-700'"
             class="h-10 w-10 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 transition"
           >
-            ⏱️
+            <mb-icon name="message-circle"></mb-icon>
           </div>
           <div>
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035]">Préparer une relance</h4>
@@ -157,7 +158,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
             [class]="selectedTool === 'TRAINING' ? 'bg-[#7C3AED] text-white' : 'bg-[#ECFDF5] text-emerald-700'"
             class="h-10 w-10 rounded-xl flex items-center justify-center text-lg font-bold shrink-0 transition"
           >
-            🎯
+            <mb-icon name="mic"></mb-icon>
           </div>
           <div>
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035]">S'entraîner à l'oral</h4>
@@ -173,11 +174,11 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
       <!-- ================================================================== -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-        <!-- COLONNE GAUCHE (4/12) : FORMULAIRE DE PARAMÈTRES -->
+        <!-- COLONNE GAUCHE (4/12) : FORMULAIRE DE PARAMÉTRAGE -->
         <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
           <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
             <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span class="text-[#7C3AED]">⚙️</span>
+              <span class="text-[#7C3AED]"><mb-icon name="mail"></mb-icon></span>
               {{ selectedTool === 'EMAIL' ? 'Créer mon email de demande' : selectedTool === 'CALL_SCRIPT' ? 'Préparer mon appel' : selectedTool === 'FOLLOWUP' ? 'Préparer ma relance' : 'Paramétrer ma simulation' }}
             </h3>
           </div>
@@ -189,7 +190,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
                 <span>Métier à découvrir <span class="text-red-500">*</span></span>
               </label>
               <div class="relative">
-                <span class="absolute left-3 top-2.5 text-sm text-[#7C3AED]">🔨</span>
+                <span class="absolute left-3 top-2.5 text-sm text-[#7C3AED]"><mb-icon name="hammer"></mb-icon></span>
                 <select
                   [(ngModel)]="selectedCareer"
                   (ngModelChange)="onParamChange()"
@@ -213,7 +214,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
                 Entreprise <span class="text-[#8E92BC] font-normal">(facultatif)</span>
               </label>
               <div class="relative">
-                <span class="absolute left-3 top-2.5 text-sm text-[#7C3AED]">🏢</span>
+                <span class="absolute left-3 top-2.5 text-sm text-[#7C3AED]"><mb-icon name="building-2"></mb-icon></span>
                 <input
                   type="text"
                   [(ngModel)]="companyName"
@@ -230,7 +231,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
                 Période souhaitée <span class="text-[#8E92BC] font-normal">(facultatif)</span>
               </label>
               <div class="relative">
-                <span class="absolute left-3 top-2.5 text-sm text-[#7C3AED]">📅</span>
+                <span class="absolute left-3 top-2.5 text-sm text-[#7C3AED]"><mb-icon name="calendar"></mb-icon></span>
                 <input
                   type="text"
                   [(ngModel)]="periodName"
@@ -279,7 +280,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
               [disabled]="isGenerating"
               class="w-full rounded-2xl bg-gradient-to-r from-[#6328E8] via-[#7C3AED] to-[#9333EA] text-white font-extrabold text-xs sm:text-sm py-3 px-4 shadow-md hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2 mt-4 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span *ngIf="!isGenerating">✨</span>
+              <span *ngIf="!isGenerating"><mb-icon name="sparkles"></mb-icon></span>
               <span *ngIf="isGenerating" class="inline-block animate-spin">⏳</span>
               <span>{{ isGenerating ? 'Génération IA en cours...' : (ollamaConnected ? 'Générer avec Ollama IA' : 'Générer mon message') }}</span>
             </button>
@@ -291,7 +292,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
           <div class="space-y-3">
             <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
               <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                <span class="text-[#7C3AED]">✨</span>
+                <span class="text-[#7C3AED]"><mb-icon name="sparkles"></mb-icon></span>
                 <span>Proposition de message</span>
               </h3>
               <span
@@ -343,7 +344,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
               <!-- Illustration enveloppe -->
               <div class="flex justify-end pt-2">
                 <div class="h-10 w-10 rounded-xl bg-purple-100 flex items-center justify-center text-xl shadow-xs">
-                  {{ selectedTool === 'CALL_SCRIPT' ? '📞' : selectedTool === 'FOLLOWUP' ? '⏱️' : selectedTool === 'TRAINING' ? '🎯' : '✉️' }}
+                  <mb-icon name="mail"></mb-icon>
                 </div>
               </div>
             </div>
@@ -356,7 +357,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
               (click)="isEditingMessage = !isEditingMessage"
               class="rounded-xl border border-[#D8DCF0] hover:border-[#7C3AED] px-3 py-1.5 text-xs font-extrabold text-[#0F1035] transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
             >
-              <span>✏️</span>
+              <span><mb-icon name="pencil"></mb-icon></span>
               <span>Modifier</span>
             </button>
 
@@ -365,7 +366,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
               (click)="copyToClipboard()"
               class="rounded-xl border border-[#D8DCF0] hover:border-[#7C3AED] px-3 py-1.5 text-xs font-extrabold text-[#0F1035] transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
             >
-              <span>📋</span>
+              <span><mb-icon name="clipboard-list"></mb-icon></span>
               <span>{{ copyToast ? 'Copié !' : 'Copier le texte' }}</span>
             </button>
 
@@ -374,8 +375,8 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
               (click)="downloadPdf()"
               class="rounded-xl border border-[#D8DCF0] hover:border-[#7C3AED] px-3 py-1.5 text-xs font-extrabold text-[#0F1035] transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
             >
-              <span>⬇️</span>
-              <span>Télécharger</span>
+              <span><mb-icon name="download"></mb-icon></span>
+              <span>Télécharger (PDF)</span>
             </button>
 
             <button
@@ -383,7 +384,7 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
               (click)="saveToImmersion()"
               class="rounded-xl bg-[#EDE9FE] hover:bg-[#DDD6FE] text-[#6D28D9] font-extrabold text-xs px-3 py-1.5 transition ml-auto flex items-center gap-1.5 cursor-pointer"
             >
-              <span>💼</span>
+              <span><mb-icon name="briefcase"></mb-icon></span>
               <span>Lier à mon immersion</span>
             </button>
           </div>
@@ -394,33 +395,33 @@ export type MessageStyle = 'SIMPLE_NATUREL' | 'FORMEL';
           <!-- 💡 Conseils du coach -->
           <div class="rounded-[28px] bg-[#F8F7FF] border border-[#E4E0F5] p-5 shadow-sm space-y-3">
             <h4 class="text-sm font-black text-[#0F1035] flex items-center gap-2">
-              <span class="text-[#7C3AED]">💡</span>
+              <span class="text-amber-500"><mb-icon name="lightbulb"></mb-icon></span>
               <span>Conseils du coach</span>
             </h4>
             <ul class="space-y-2 text-xs font-bold text-[#31355B]">
               <li class="flex items-center gap-2 text-emerald-700">
-                <span class="text-emerald-500">✔</span>
+                <span class="text-emerald-500">✓</span>
                 <span>Sois clair(e) sur ton objectif.</span>
               </li>
               <li class="flex items-center gap-2 text-emerald-700">
-                <span class="text-emerald-500">✔</span>
+                <span class="text-emerald-500">✓</span>
                 <span>Reste poli(e) et courtois(e).</span>
               </li>
               <li class="flex items-center gap-2 text-emerald-700">
-                <span class="text-emerald-500">✔</span>
+                <span class="text-emerald-500">✓</span>
                 <span>Indique une période réaliste.</span>
               </li>
               <li class="flex items-center gap-2 text-emerald-700">
-                <span class="text-emerald-500">✔</span>
+                <span class="text-emerald-500">✓</span>
                 <span>Propose un échange si besoin.</span>
               </li>
             </ul>
           </div>
 
-          <!-- 🎯 Et ensuite ? -->
+          <!-- Et ensuite ? -->
           <div class="rounded-[28px] bg-[#F8F7FF] border border-[#E4E0F5] p-5 shadow-sm space-y-3">
             <h4 class="text-sm font-black text-[#0F1035] flex items-center gap-2">
-              <span class="text-[#7C3AED]">🎯</span>
+              <span class="text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
               <span>Et ensuite ?</span>
             </h4>
             <p class="text-[11px] text-[#64748B]">Tu peux :</p>

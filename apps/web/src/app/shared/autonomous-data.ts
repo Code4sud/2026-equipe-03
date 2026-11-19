@@ -54,13 +54,13 @@ export const INTEREST_CATEGORIES_CONFIG: Array<{
   icon: string;
   colorClass: string;
 }> = [
-  { id: 'ALL', label: 'Tous les métiers', icon: '✨', colorClass: 'bg-purple-100 text-purple-800' },
-  { id: 'CREATIVE', label: 'Créer / Artistique', icon: '🎨', colorClass: 'bg-pink-100 text-pink-800' },
-  { id: 'CRAFT', label: 'Bricoler / Construire', icon: '🔨', colorClass: 'bg-amber-100 text-amber-800' },
-  { id: 'CARE', label: 'Aider / Accompagner', icon: '🤝', colorClass: 'bg-emerald-100 text-emerald-800' },
-  { id: 'ORGANIZATION', label: 'Organiser / Gérer', icon: '📊', colorClass: 'bg-blue-100 text-blue-800' },
-  { id: 'DIGITAL', label: 'Numérique', icon: '💻', colorClass: 'bg-indigo-100 text-indigo-800' },
-  { id: 'NATURE', label: 'Nature / Environnement', icon: '🌿', colorClass: 'bg-teal-100 text-teal-800' }
+  { id: 'ALL', label: 'Tous les métiers', icon: 'sparkles', colorClass: 'bg-purple-100 text-purple-800' },
+  { id: 'CREATIVE', label: 'Créer / Artistique', icon: 'palette', colorClass: 'bg-pink-100 text-pink-800' },
+  { id: 'CRAFT', label: 'Bricoler / Construire', icon: 'hammer', colorClass: 'bg-amber-100 text-amber-800' },
+  { id: 'CARE', label: 'Aider / Accompagner', icon: 'handshake', colorClass: 'bg-emerald-100 text-emerald-800' },
+  { id: 'ORGANIZATION', label: 'Organiser / Gérer', icon: 'chart-column', colorClass: 'bg-blue-100 text-blue-800' },
+  { id: 'DIGITAL', label: 'Numérique', icon: 'laptop', colorClass: 'bg-indigo-100 text-indigo-800' },
+  { id: 'NATURE', label: 'Nature / Environnement', icon: 'leaf', colorClass: 'bg-teal-100 text-teal-800' }
 ];
 
 export const INITIAL_SUPPORT_RESOURCES: UISupportResource[] = [
@@ -78,7 +78,7 @@ export const INITIAL_SUPPORT_RESOURCES: UISupportResource[] = [
     websiteUrl: 'https://www.ac-nice.fr/orientation',
     isOfficialPublicService: true,
     badgeLabel: 'Service Public Gratuit',
-    icon: '🏛️'
+    icon: 'landmark'
   },
   {
     id: 'supp-cio-nice-valrose',
@@ -94,7 +94,7 @@ export const INITIAL_SUPPORT_RESOURCES: UISupportResource[] = [
     websiteUrl: 'https://www.ac-nice.fr/orientation',
     isOfficialPublicService: true,
     badgeLabel: 'Service Public Gratuit',
-    icon: '🎓'
+    icon: 'graduation-cap'
   },
   {
     id: 'supp-ml-nice',
@@ -110,7 +110,7 @@ export const INITIAL_SUPPORT_RESOURCES: UISupportResource[] = [
     websiteUrl: 'https://www.missionlocale-nice.org',
     isOfficialPublicService: true,
     badgeLabel: '16–25 ans',
-    icon: '🤝'
+    icon: 'handshake'
   },
   {
     id: 'supp-school-college-lycee',
@@ -123,7 +123,7 @@ export const INITIAL_SUPPORT_RESOURCES: UISupportResource[] = [
     websiteUrl: 'https://www.education.gouv.fr/orientation-college-lycee',
     isOfficialPublicService: true,
     badgeLabel: 'Collège / Lycée',
-    icon: '🏫'
+    icon: 'school'
   },
   {
     id: 'supp-1jeune1solution',
@@ -134,7 +134,7 @@ export const INITIAL_SUPPORT_RESOURCES: UISupportResource[] = [
     websiteUrl: 'https://www.1jeune1solution.gouv.fr',
     isOfficialPublicService: true,
     badgeLabel: 'Portail Officiel',
-    icon: '🇫🇷'
+    icon: 'flag'
   },
   {
     id: 'supp-immersion-facilee',
@@ -145,18 +145,18 @@ export const INITIAL_SUPPORT_RESOURCES: UISupportResource[] = [
     websiteUrl: 'https://immersion-facilee.beta.gouv.fr',
     isOfficialPublicService: true,
     badgeLabel: 'Convention PMSMP',
-    icon: '💼'
+    icon: 'briefcase'
   }
 ];
 
 export function mapCategoryIcon(category: CareerInterestFilter): string {
   switch (category) {
-    case 'CREATIVE': return '🎨';
-    case 'CRAFT': return '🔨';
-    case 'CARE': return '🤝';
-    case 'ORGANIZATION': return '📊';
-    case 'DIGITAL': return '💻';
-    case 'NATURE': return '🌿';
-    default: return '💼';
+    case 'CREATIVE': return 'palette';
+    case 'CRAFT': return 'hammer';
+    case 'CARE': return 'handshake';
+    case 'ORGANIZATION': return 'chart-column';
+    case 'DIGITAL': return 'laptop';
+    case 'NATURE': return 'leaf';
+    default: return 'briefcase';
   }
 }

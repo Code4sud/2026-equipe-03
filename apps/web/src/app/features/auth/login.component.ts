@@ -8,6 +8,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 
 export type AuthProfileType = 'YOUNG' | 'COUNSELOR';
@@ -22,7 +23,7 @@ export interface LoginSuccessEvent {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="min-h-screen w-full flex flex-col lg:flex-row bg-[#F4F2FF] text-[#0F1035] font-sans">
 
@@ -125,7 +126,7 @@ export interface LoginSuccessEvent {
           <!-- Carte 1 : Je comprends mon bilan -->
           <div class="rounded-2xl bg-white/95 p-3 sm:p-4 text-center text-[#0F1035] shadow-lg border border-white/50 flex flex-col items-center justify-between space-y-1 backdrop-blur-sm">
             <div class="h-9 w-9 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg shadow-2xs">
-              📊
+              <mb-icon name="chart-column"></mb-icon>
             </div>
             <h4 class="text-xs sm:text-[13px] font-extrabold text-[#0F1035] leading-tight">
               Je comprends<br/>mon bilan
@@ -138,7 +139,7 @@ export interface LoginSuccessEvent {
           <!-- Carte 2 : Je découvre des métiers -->
           <div class="rounded-2xl bg-white/95 p-3 sm:p-4 text-center text-[#0F1035] shadow-lg border border-white/50 flex flex-col items-center justify-between space-y-1 backdrop-blur-sm">
             <div class="h-9 w-9 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-lg shadow-2xs">
-              🧭
+              <mb-icon name="compass"></mb-icon>
             </div>
             <h4 class="text-xs sm:text-[13px] font-extrabold text-[#0F1035] leading-tight">
               Je découvre<br/>des métiers
@@ -151,7 +152,7 @@ export interface LoginSuccessEvent {
           <!-- Carte 3 : Je réalise des immersions -->
           <div class="rounded-2xl bg-white/95 p-3 sm:p-4 text-center text-[#0F1035] shadow-lg border border-white/50 flex flex-col items-center justify-between space-y-1 backdrop-blur-sm">
             <div class="h-9 w-9 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-lg shadow-2xs">
-              🚀
+              <mb-icon name="rocket"></mb-icon>
             </div>
             <h4 class="text-xs sm:text-[13px] font-extrabold text-[#0F1035] leading-tight">
               Je réalise<br/>des immersions
@@ -189,7 +190,7 @@ export interface LoginSuccessEvent {
                 : 'text-[#42466B] hover:text-[#0F1035]'"
               class="py-2.5 px-3 rounded-full transition flex items-center justify-center gap-2"
             >
-              <span>🎓</span>
+              <span><mb-icon name="graduation-cap"></mb-icon></span>
               <span>Je suis jeune</span>
             </button>
 
@@ -201,7 +202,7 @@ export interface LoginSuccessEvent {
                 : 'text-[#42466B] hover:text-[#0F1035]'"
               class="py-2.5 px-3 rounded-full transition flex items-center justify-center gap-2"
             >
-              <span>👥</span>
+              <span><mb-icon name="users"></mb-icon></span>
               <span>Je suis conseiller</span>
             </button>
           </div>
@@ -211,7 +212,7 @@ export interface LoginSuccessEvent {
 
             <!-- Message d'erreur éventuel -->
             <div *ngIf="errorMessage" class="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-bold flex items-center gap-2">
-              <span>⚠️</span>
+              <span><mb-icon name="triangle-alert"></mb-icon></span>
               <span>{{ errorMessage }}</span>
             </div>
 
@@ -222,7 +223,7 @@ export interface LoginSuccessEvent {
                 <span class="text-red-500">*</span>
               </label>
               <div class="relative">
-                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-base text-[#7C3AED]">✉️</span>
+                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-base text-[#7C3AED]"><mb-icon name="mail"></mb-icon></span>
                 <input
                   id="email"
                   type="email"
@@ -242,7 +243,7 @@ export interface LoginSuccessEvent {
                 <span class="text-red-500">*</span>
               </label>
               <div class="relative">
-                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-base text-[#7C3AED]">🔒</span>
+                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-base text-[#7C3AED]"><mb-icon name="lock"></mb-icon></span>
                 <input
                   id="password"
                   [type]="showPassword ? 'text' : 'password'"
@@ -259,7 +260,7 @@ export interface LoginSuccessEvent {
                   class="absolute right-3 top-1/2 -translate-y-1/2 text-base text-[#64748B] hover:text-[#7C3AED] transition p-1"
                   [title]="showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'"
                 >
-                  {{ showPassword ? '👁️' : '👁️‍🗨️' }}
+                  <mb-icon [name]="showPassword ? 'eye' : 'eye-off'"></mb-icon>
                 </button>
               </div>
             </div>
@@ -309,7 +310,7 @@ export interface LoginSuccessEvent {
             (click)="onRegisterYoung()"
             class="w-full rounded-full border-2 border-[#7C3AED] text-[#7C3AED] hover:bg-[#F5F3FF] font-black text-xs sm:text-sm py-3 transition flex items-center justify-center gap-2 shadow-2xs"
           >
-            <span>👤+</span>
+            <span><mb-icon name="user-plus"></mb-icon></span>
             <span>Créer mon compte jeune</span>
           </button>
 
@@ -329,14 +330,14 @@ export interface LoginSuccessEvent {
                 (click)="fillDemoCredentials('YOUNG')"
                 class="px-2.5 py-1 rounded-lg bg-[#FAF5FF] border border-[#E9D5FF] text-[11px] font-bold text-[#7C3AED] hover:bg-[#F3E8FF] transition"
               >
-                🎓 Emma D. (Jeune)
+                <mb-icon name="graduation-cap"></mb-icon> Emma D. (Jeune)
               </button>
               <button
                 type="button"
                 (click)="fillDemoCredentials('COUNSELOR')"
                 class="px-2.5 py-1 rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] text-[11px] font-bold text-blue-700 hover:bg-[#DBEAFE] transition"
               >
-                👥 Sophie Martin (Conseillère)
+                <mb-icon name="users"></mb-icon> Sophie Martin (Conseillère)
               </button>
             </div>
           </div>

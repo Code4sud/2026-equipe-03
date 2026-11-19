@@ -33,6 +33,7 @@ import { LoginComponent, LoginSuccessEvent } from './features/auth/login.compone
 import { LocalDiscoveryComponent } from './features/local-discovery/local-discovery.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { ExplorationDashboardComponent } from './features/exploration/exploration-dashboard.component';
+import { QuestionsPageComponent } from './features/questions/questions-page.component';
 import { CounselorSettingsComponent, CounselorProfileData } from './features/settings/counselor-settings.component';
 import {
   JourneyMode,
@@ -266,6 +267,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     CoachIaComponent,
     LocalDiscoveryComponent,
     ExplorationDashboardComponent,
+    QuestionsPageComponent,
     SettingsComponent,
     CounselorSettingsComponent,
     LoginComponent
@@ -1486,113 +1488,13 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 5 : MES QUESTIONS (Maquette "Tableau de bord _ Mes questions.webp") -->
+              <!-- VUE JEUNE 5 : MES QUESTIONS (Maquette officielle complète)  -->
               <!-- ========================================================== -->
-              <div *ngIf="activeYoungTab === 'MES_QUESTIONS'" class="space-y-6">
-                <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#7C3AED] text-white p-6 sm:p-8 shadow-lg">
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                    <div class="lg:col-span-8 space-y-2">
-                      <h2 class="text-2xl sm:text-3xl font-extrabold">
-                        Prépare ton échange avec <span class="inline-block rounded-2xl bg-[#EC4899] px-3 py-0.5">ton conseiller !</span>
-                      </h2>
-                      <p class="text-sm text-[#E7E8FB]">
-                        Rassemble ici toutes tes questions, tes idées et tes points à clarifier sur ton bilan Rdv {{ rdvNumber }} et les métiers.
-                      </p>
-                    </div>
-                    <div class="lg:col-span-4 space-y-2 text-xs font-extrabold text-[#0F1035]">
-                      <div class="rounded-full bg-white px-4 py-2"><mb-icon name="calendar"></mb-icon> Noter mes questions</div>
-                      <div class="rounded-full bg-white px-4 py-2"><mb-icon name="folders"></mb-icon> Organiser mes idées</div>
-                      <div class="rounded-full bg-white px-4 py-2"><mb-icon name="users"></mb-icon> Préparer le rendez-vous</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <!-- Liste checklist des questions + Formulaire d'ajout -->
-                  <div class="lg:col-span-7 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-5">
-                    <h3 class="text-xl font-extrabold text-[#0F1035]"><mb-icon name="message-circle"></mb-icon> Mes questions ({{ questions.length }})</h3>
-
-                    <div class="space-y-2.5">
-                      <div
-                        *ngFor="let q of questions"
-                        class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3.5 space-y-2"
-                      >
-                        <div class="flex items-center gap-3">
-                          <input type="checkbox" [(ngModel)]="q.checked" class="h-4 w-4 accent-[#7C3AED] rounded" />
-                          <span [class]="q.tagColor" class="rounded-full px-3 py-0.5 text-xs font-extrabold">
-                            {{ q.tagLabel }}
-                          </span>
-                          <span class="text-sm font-bold text-[#0F1035] flex-1">{{ q.questionText }}</span>
-                        </div>
-                        <div *ngIf="q.counselorReply" class="ml-7 p-2.5 rounded-xl bg-white border-l-4 border-[#7C3AED] text-xs text-[#31355B]">
-                          <strong>Réponse du conseiller :</strong> {{ q.counselorReply }}
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Ajout d'une nouvelle question -->
-                    <form (ngSubmit)="submitYoungQuestion()" class="pt-3 border-t border-[#F0EDFA] flex flex-wrap gap-2">
-                      <input
-                        type="text"
-                        [(ngModel)]="newQuestionTopic"
-                        name="topic"
-                        placeholder="Catégorie (ex: Métiers, Parcours…)"
-                        class="w-40 rounded-xl bg-[#F4F2FF] border border-[#D8DCF0] px-3 py-2 text-xs font-semibold"
-                        required
-                      />
-                      <input
-                        type="text"
-                        [(ngModel)]="newQuestionText"
-                        name="text"
-                        placeholder="Écris ta nouvelle question pour ton conseiller…"
-                        class="flex-1 rounded-xl bg-[#F4F2FF] border border-[#D8DCF0] px-3.5 py-2 text-xs font-semibold"
-                        required
-                      />
-                      <button
-                        type="submit"
-                        class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white px-5 py-2 text-xs font-extrabold shadow"
-                      >
-                        + Ajouter une question
-                      </button>
-                    </form>
-                  </div>
-
-                  <!-- Prochain RDV + Mes notes & idées (0/500) -->
-                  <div class="lg:col-span-5 space-y-6">
-                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                      <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="calendar"></mb-icon> Mon prochain rendez-vous</h3>
-                        <span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-2.5 py-0.5 text-xs font-extrabold">Confirmé</span>
-                      </div>
-                      <div class="flex items-center gap-4">
-                        <div class="rounded-2xl bg-[#F3EFFE] px-4 py-2.5 text-center">
-                          <span class="text-[11px] font-bold text-[#6D28D9] block">MER</span>
-                          <span class="text-2xl font-black text-[#0F1035]">18</span>
-                          <span class="text-[11px] font-bold text-[#42466B] block">NOV</span>
-                        </div>
-                        <div class="text-xs space-y-1">
-                          <p class="font-extrabold text-sm text-[#0F1035]">Échange avec mon conseiller</p>
-                          <p class="text-[#42466B]"><mb-icon name="clock"></mb-icon> 14h30 – 15h30</p>
-                          <p class="text-[#42466B]"><mb-icon name="map-pin"></mb-icon> Centre des Possibles</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
-                      <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="notebook-pen"></mb-icon> Mes notes &amp; idées</h3>
-                      <textarea
-                        [(ngModel)]="personalNotes"
-                        maxlength="500"
-                        rows="4"
-                        placeholder="Mes réflexions, idées, envies, points à discuter…"
-                        class="w-full rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3.5 text-xs text-[#0F1035]"
-                      ></textarea>
-                      <div class="text-right text-[11px] text-[#42466B]">
-                        {{ personalNotes.length }} / 500
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div *ngIf="activeYoungTab === 'MES_QUESTIONS'">
+                <app-questions-page
+                  [youngDisplayName]="'Emma D.'"
+                  (navigate)="selectYoungTab($any($event))"
+                ></app-questions-page>
               </div>
 
               <!-- ========================================================== -->

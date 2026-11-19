@@ -2,7 +2,7 @@
 
 Projet réalisé à Nice les 18, 19 et 20 novembre 2026, sur le thème **« L'orientation et l'employabilité grâce à l'IA »**, organisé par [Code4Sud](https://code4sud.fr).
 
-Avec: Bastien Ozil, Mathilde Poirier, Saidou Yaya Diallo, Enzo Sarfati, Farimzhara Dambly, William Baghdadi
+Avec: Bastien Ozil, Mathilde Poirier, Saidou Yaya Diallo, Enzo Sarfati, Farimzhara Dambly, William Baghdadi.
 
 ## Le projet
 

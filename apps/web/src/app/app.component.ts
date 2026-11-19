@@ -32,6 +32,7 @@ import { CoachIaComponent } from './features/coach/coach-ia.component';
 import { LoginComponent, LoginSuccessEvent } from './features/auth/login.component';
 import { LocalDiscoveryComponent } from './features/local-discovery/local-discovery.component';
 import { SettingsComponent } from './features/settings/settings.component';
+import { ExplorationDashboardComponent } from './features/exploration/exploration-dashboard.component';
 import { CounselorSettingsComponent, CounselorProfileData } from './features/settings/counselor-settings.component';
 import {
   JourneyMode,
@@ -264,6 +265,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     ReportOverviewComponent,
     CoachIaComponent,
     LocalDiscoveryComponent,
+    ExplorationDashboardComponent,
     SettingsComponent,
     CounselorSettingsComponent,
     LoginComponent
@@ -1471,130 +1473,16 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 4 : MON PARCOURS (Maquette "Mon parcours d'exploration professionnelle.webp") -->
+              <!-- VUE JEUNE 4 : MON PARCOURS (Maquette officielle d'exploration) -->
               <!-- ========================================================== -->
-              <div *ngIf="activeYoungTab === 'MON_PARCOURS'" class="space-y-6">
-                <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#7C3AED] text-white p-6 sm:p-8 shadow-lg">
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                    <div class="lg:col-span-7 space-y-2">
-                      <h2 class="text-2xl sm:text-3xl font-extrabold">
-                        Ton parcours, <span class="inline-block rounded-2xl bg-[#A855F7] px-3 py-0.5">étape par étape !</span>
-                      </h2>
-                      <p class="text-sm text-[#E7E8FB]">
-                        Un chemin simple pour comprendre ton bilan Rdv {{ rdvNumber }}, explorer des métiers et préparer ton prochain échange.
-                      </p>
-                    </div>
-                    <div class="lg:col-span-5 grid grid-cols-2 gap-2 text-xs font-extrabold text-[#0F1035]">
-                      <div class="rounded-full bg-white px-4 py-2">✓ 1. Découvrir</div>
-                      <div class="rounded-full bg-white px-4 py-2">✓ 2. Explorer</div>
-                      <div class="rounded-full bg-white px-4 py-2">✓ 3. Réfléchir</div>
-                      <div class="rounded-full bg-white px-4 py-2">✓ 4. Agir</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <!-- Timeline verticale 1..4 -->
-                  <div class="lg:col-span-7 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                    <h3 class="text-xl font-extrabold text-[#0F1035]"><mb-icon name="sparkles"></mb-icon> Mes étapes d’exploration</h3>
-
-                    <div
-                      (click)="selectYoungTab('MON_BILAN')"
-                      class="rounded-2xl border border-[#E4E0F5] bg-[#F8F7FF] p-4 flex items-center justify-between cursor-pointer hover:border-[#7C3AED]"
-                    >
-                      <div class="flex items-center gap-3.5">
-                        <span class="h-8 w-8 rounded-full bg-[#22C55E] text-white font-bold flex items-center justify-center text-xs">1</span>
-                        <div>
-                          <h4 class="font-extrabold text-sm text-[#0F1035]">Découvrir mon bilan</h4>
-                          <p class="text-xs text-[#42466B]">J’ai écouté la restitution et consulté mes résultats.</p>
-                        </div>
-                      </div>
-                      <span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-3 py-1 text-xs font-extrabold">✓ Terminé</span>
-                    </div>
-
-                    <div
-                      (click)="selectYoungTab('EXPLORER_METIERS')"
-                      class="rounded-2xl border-2 border-[#7C3AED] bg-[#F3EFFE] p-4 flex items-center justify-between cursor-pointer"
-                    >
-                      <div class="flex items-center gap-3.5">
-                        <span class="h-8 w-8 rounded-full bg-[#7C3AED] text-white font-bold flex items-center justify-center text-xs">2</span>
-                        <div>
-                          <h4 class="font-extrabold text-sm text-[#0F1035]">Explorer les métiers</h4>
-                          <p class="text-xs text-[#42466B]">Je découvre les {{ careers.length }} métiers proposés dans mon bilan.</p>
-                        </div>
-                      </div>
-                      <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] px-3 py-1 text-xs font-extrabold">En cours</span>
-                    </div>
-
-                    <div
-                      (click)="selectYoungTab('MES_QUESTIONS')"
-                      class="rounded-2xl border border-[#E4E0F5] bg-[#F8F7FF] p-4 flex items-center justify-between cursor-pointer hover:border-[#7C3AED]"
-                    >
-                      <div class="flex items-center gap-3.5">
-                        <span class="h-8 w-8 rounded-full bg-[#E4E0F5] text-[#42466B] font-bold flex items-center justify-center text-xs">3</span>
-                        <div>
-                          <h4 class="font-extrabold text-sm text-[#0F1035]">Noter mes questions</h4>
-                          <p class="text-xs text-[#42466B]">Je prépare mes questions pour mon conseiller.</p>
-                        </div>
-                      </div>
-                      <span class="rounded-full bg-white border border-[#E4E0F5] text-[#42466B] px-3 py-1 text-xs font-bold">À faire</span>
-                    </div>
-
-                    <div
-                      (click)="selectYoungTab('MES_QUESTIONS')"
-                      class="rounded-2xl border border-[#E4E0F5] bg-[#F8F7FF] p-4 flex items-center justify-between cursor-pointer hover:border-[#7C3AED]"
-                    >
-                      <div class="flex items-center gap-3.5">
-                        <span class="h-8 w-8 rounded-full bg-[#E4E0F5] text-[#42466B] font-bold flex items-center justify-center text-xs">4</span>
-                        <div>
-                          <h4 class="font-extrabold text-sm text-[#0F1035]">Préparer mon prochain rendez-vous</h4>
-                          <p class="text-xs text-[#42466B]">Je fais le point et je définis mes prochaines actions.</p>
-                        </div>
-                      </div>
-                      <span class="rounded-full bg-white border border-[#E4E0F5] text-[#42466B] px-3 py-1 text-xs font-bold">À faire</span>
-                    </div>
-                  </div>
-
-                  <!-- Ma progression + Mes métiers favoris -->
-                  <div class="lg:col-span-5 space-y-6">
-                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex items-center justify-between gap-4">
-                      <div class="space-y-2">
-                        <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="target"></mb-icon> Ma progression</h3>
-                        <ul class="space-y-1.5 text-xs font-bold text-[#31355B]">
-                          <li><mb-icon name="circle-check"></mb-icon> Bilan découvert</li>
-                          <li><mb-icon name="circle-check"></mb-icon> Métiers explorés</li>
-                          <li><mb-icon name="square"></mb-icon> Questions notées ({{ questions.length }})</li>
-                          <li><mb-icon name="square"></mb-icon> Rendez-vous préparé</li>
-                        </ul>
-                      </div>
-                      <div class="h-28 w-28 rounded-full border-8 border-[#EDE9FE] border-t-[#7C3AED] border-r-[#7C3AED] flex flex-col items-center justify-center">
-                        <span class="text-2xl font-black text-[#0F1035]">2/4</span>
-                        <span class="text-[11px] text-[#42466B]">étapes</span>
-                      </div>
-                    </div>
-
-                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                      <div class="flex items-center justify-between">
-                        <h3 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="heart" [filled]="true"></mb-icon> Mes métiers favoris ({{ favoriteCareers.length }})</h3>
-                        <button type="button" (click)="selectYoungTab('EXPLORER_METIERS')" class="text-xs font-bold text-[#6D28D9]">
-                          Voir tout →
-                        </button>
-                      </div>
-                      <div class="grid grid-cols-3 gap-2.5">
-                        <div
-                          *ngFor="let fav of favoriteCareers.slice(0, 3)"
-                          (click)="openCareerDetail(fav)"
-                          class="rounded-xl border border-[#E4E0F5] overflow-hidden bg-[#F8F7FF] cursor-pointer"
-                        >
-                          <div aria-hidden="true" class="w-full h-16 bg-gradient-to-br from-[#EDE9FE] to-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-2xl">
-                            <mb-icon name="briefcase"></mb-icon>
-                          </div>
-                          <div class="p-2 text-[11px] font-extrabold text-[#0F1035] truncate">{{ fav.titleFr }}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div *ngIf="activeYoungTab === 'MON_PARCOURS'">
+                <app-exploration-dashboard
+                  [favoriteCareersCount]="favoriteCareers.length || 4"
+                  [questionsCount]="questions.length || 5"
+                  [youngDisplayName]="'Emma D.'"
+                  (navigate)="selectYoungTab($any($event))"
+                  (openCareerDetail)="handleOpenCareerByName($event)"
+                ></app-exploration-dashboard>
               </div>
 
               <!-- ========================================================== -->
@@ -5371,6 +5259,17 @@ export class AppComponent implements OnInit {
   openCareerDetail(career: UICareer): void {
     this.activeYoungTab = 'EXPLORER_METIERS';
     this.selectedCareerDetail = career;
+  }
+
+  handleOpenCareerByName(title: string): void {
+    const found = this.careers.find(c => c.titleFr.toLowerCase().includes(title.toLowerCase()));
+    if (found) {
+      this.openCareerDetail(found);
+    } else if (this.careers.length > 0) {
+      this.openCareerDetail(this.careers[0]);
+    } else {
+      this.selectYoungTab('EXPLORER_METIERS');
+    }
   }
 
   openDossierWorkflow(step: CounselorWorkflowStep = 1): void {

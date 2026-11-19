@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import React from 'react';
 import { ECOSYSTEM_BENEFITS, IMPACT_METRICS, IMPACT_PILLS } from '@/data/landing-content';
 import { SITE_CONFIG } from '@/config/site';
@@ -16,16 +17,16 @@ export function ImpactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-5">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#EAE4FF] border border-[#D3C4FF] px-4 py-1.5 text-xs font-extrabold text-[#5B21B6]">
-              <span>📊</span>
+              <span><Icon name="chart-column" /></span>
               <span>Notre approche</span>
             </span>
 
             <h2
               id="impact-title"
-              className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-[#0F1035] leading-[1.13]"
+              className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-[#0F1035] leading-[1.3]"
             >
               Un impact concret sur l’orientation,{' '}
-              <span className="inline-flex flex-wrap items-center gap-2.5">
+              <span className="mt-2 inline-flex flex-wrap items-center gap-x-2.5 gap-y-2">
                 <span>la</span>
                 <span className="inline-block rounded-2xl bg-gradient-to-r from-[#6D28D9] via-[#7935F5] to-[#9333EA] px-4 py-1 text-white shadow-cta">
                   compréhension
@@ -49,35 +50,28 @@ export function ImpactSection() {
             </div>
           </div>
 
-          {/* 4 Pills empilées à droite + Personnage comme sur la maquette L'impact concret */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
-            <div className="hidden sm:flex sm:col-span-5 justify-center">
-              <img
-                src="images/visuals/hero-girl-headphones.png"
-                alt="Jeune accompagnée avec MonBilan+"
-                className="h-72 w-auto object-cover rounded-3xl shadow-floating border-2 border-white"
-              />
-            </div>
-            <div className="sm:col-span-7 space-y-2.5">
+          {/* 4 bulles en grille 2 x 2 qui occupent toute la colonne de droite */}
+          <div className="lg:col-span-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {IMPACT_PILLS.map((pill) => (
                 <div
                   key={pill.title}
-                  className="rounded-2xl bg-white/95 border border-[#E4E0F5] px-4 py-3 shadow-card flex items-center gap-3"
+                  className="rounded-[22px] bg-white/95 border border-[#E4E0F5] p-5 shadow-card flex flex-col gap-3 hover:border-[#7935F5] transition"
                 >
                   <span
                     aria-hidden="true"
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-extrabold text-sm"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-extrabold text-base"
                   >
                     {pill.icon === 'check' && '✓'}
-                    {pill.icon === 'cap' && '🎓'}
-                    {pill.icon === 'briefcase' && '💼'}
-                    {pill.icon === 'leaf' && '🌱'}
+                    {pill.icon === 'cap' && <Icon name="graduation-cap" />}
+                    {pill.icon === 'briefcase' && <Icon name="briefcase" />}
+                    {pill.icon === 'leaf' && <Icon name="sprout" />}
                   </span>
                   <div>
-                    <p className="text-xs sm:text-sm font-extrabold text-[#0F1035]">
+                    <p className="text-sm sm:text-base font-extrabold text-[#0F1035] leading-snug">
                       {pill.title}
                     </p>
-                    <p className="text-[11px] sm:text-xs text-[#42466B]">
+                    <p className="mt-1 text-xs sm:text-sm text-[#42466B] leading-snug">
                       {pill.subtitle}
                     </p>
                   </div>
@@ -98,10 +92,10 @@ export function ImpactSection() {
                 aria-hidden="true"
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F3EFFE] text-[#6D28D9] font-extrabold text-lg"
               >
-                {metric.icon === 'users' && '🧩'}
-                {metric.icon === 'cap' && '🎓'}
-                {metric.icon === 'chart' && '📄'}
-                {metric.icon === 'target' && '🎯'}
+                {metric.icon === 'users' && <Icon name="puzzle" />}
+                {metric.icon === 'cap' && <Icon name="graduation-cap" />}
+                {metric.icon === 'chart' && <Icon name="file-text" />}
+                {metric.icon === 'target' && <Icon name="target" />}
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-extrabold text-[#0F1035]">
@@ -141,9 +135,9 @@ export function ImpactSection() {
                       aria-hidden="true"
                       className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAE4FF] text-[#6D28D9] font-bold"
                     >
-                      {card.icon === 'cap' && '🎓'}
-                      {card.icon === 'users' && '👨‍👩‍👦'}
-                      {card.icon === 'building' && '🏛️'}
+                      {card.icon === 'cap' && <Icon name="graduation-cap" />}
+                      {card.icon === 'users' && <Icon name="users" />}
+                      {card.icon === 'building' && <Icon name="landmark" />}
                     </span>
                     <h4 className="text-base font-extrabold text-[#0F1035]">
                       {card.title}

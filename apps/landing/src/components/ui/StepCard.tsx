@@ -6,16 +6,7 @@ interface StepCardProps {
   isLast?: boolean;
 }
 
-const STEP_IMAGES: Record<number, string> = {
-  1: 'images/visuals/step1-boy-laptop.png',
-  2: 'images/visuals/step2-tablet-chart.png',
-  3: 'images/visuals/step3-career-cards.png',
-  4: 'images/visuals/step4-roadmap.png'
-};
-
 export function StepCard({ step, isLast = false }: StepCardProps) {
-  const imgSrc = STEP_IMAGES[step.stepNumber];
-
   return (
     <div className="relative flex flex-col justify-between rounded-[26px] bg-white/95 border border-[#E4E0F5] p-6 shadow-card hover:border-[#7935F5] transition">
       <div>
@@ -37,19 +28,6 @@ export function StepCard({ step, isLast = false }: StepCardProps) {
           {step.description}
         </p>
       </div>
-
-      {/* Illustration extraite de la maquette Comment ça marche */}
-      {imgSrc && (
-        <div className="mt-5 pt-3 border-t border-[#F0EDFA] overflow-hidden rounded-2xl">
-          <img
-            src={imgSrc}
-            alt={step.title}
-            width={320}
-            height={160}
-            className="w-full h-36 object-cover rounded-xl"
-          />
-        </div>
-      )}
 
       {!isLast && (
         <div

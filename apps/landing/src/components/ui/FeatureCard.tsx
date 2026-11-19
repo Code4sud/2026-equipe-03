@@ -5,20 +5,7 @@ interface FeatureCardProps {
   feature: FeatureItem;
 }
 
-const FEATURE_IMAGES: Record<FeatureItem['visualKind'], string> = {
-  audio: 'images/visuals/feat-4-audio.png',
-  security: 'images/visuals/feat-8-security.png',
-  bilan: 'images/visuals/feat-1-bilan.png',
-  documents: 'images/visuals/feat-6-documents.png',
-  careers: 'images/visuals/feat-2-careers.png',
-  questions: 'images/visuals/feat-5-questions.png',
-  roadmap: 'images/visuals/feat-3-roadmap.png',
-  counselor: 'images/visuals/feat-7-counselor.png'
-};
-
 export function FeatureCard({ feature }: FeatureCardProps) {
-  const imgSrc = FEATURE_IMAGES[feature.visualKind];
-
   return (
     <article className="rounded-[26px] bg-white/95 border border-[#E4E0F5] p-6 shadow-card flex flex-col justify-between hover:border-[#7935F5] hover:-translate-y-0.5 transition">
       <div>
@@ -97,17 +84,6 @@ export function FeatureCard({ feature }: FeatureCardProps) {
         <p className="text-sm text-[#42466B] leading-relaxed">
           {feature.description}
         </p>
-      </div>
-
-      {/* Illustration originale extraite de la maquette Fonctionnalités (4x2) */}
-      <div className="mt-5 pt-3 border-t border-[#F0EDFA] overflow-hidden rounded-2xl">
-        <img
-          src={imgSrc}
-          alt={feature.title}
-          width={360}
-          height={140}
-          className="w-full h-28 object-cover rounded-xl"
-        />
       </div>
     </article>
   );

@@ -21,6 +21,18 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ImmersionProComponent } from './features/immersion/immersion-pro.component';
+import { JourneyChoiceModalComponent } from './features/autonomous/journey-choice-modal.component';
+import { AutonomousHomeComponent } from './features/autonomous/autonomous-home.component';
+import { CareerCatalogComponent } from './features/autonomous/career-catalog.component';
+import { AutonomousCareerDetailComponent } from './features/autonomous/autonomous-career-detail.component';
+import { SupportDirectoryComponent } from './features/autonomous/support-directory.component';
+import {
+  JourneyMode,
+  UICatalogCareer,
+  UISupportResource,
+  INITIAL_SUPPORT_RESOURCES
+} from './shared/autonomous-data';
+import { ONET_CAREERS_CATALOG_DATA } from './shared/onet-careers-data';
 import {
   INITIAL_AUDIO_EPISODES,
   INITIAL_CAREER_ASSESSMENTS,
@@ -41,6 +53,9 @@ import {
 
 export type YoungTab =
   | 'ACCUEIL'
+  | 'ACCUEIL_AUTONOME'
+  | 'CATALOGUE_METIERS'
+  | 'ANNUAIRE_SUPPORT'
   | 'MON_BILAN'
   | 'IMMERSION_PRO'
   | 'EXPLORER_METIERS'
@@ -228,7 +243,16 @@ export const TONE_OPTIONS: ToneOption[] = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, ImmersionProComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ImmersionProComponent,
+    JourneyChoiceModalComponent,
+    AutonomousHomeComponent,
+    CareerCatalogComponent,
+    AutonomousCareerDetailComponent,
+    SupportDirectoryComponent
+  ],
   template: `
     <div class="min-h-screen flex flex-col lg:flex-row bg-[#F4F2FF] text-[#0F1035] font-sans overflow-x-hidden">
       <!-- ================================================================== -->
@@ -349,7 +373,7 @@ export const TONE_OPTIONS: ToneOption[] = [
           <!-- MENU ESPACE JEUNE -->
           <nav *ngIf="activePortal === 'YOUNG'" aria-label="Menu Espace Jeune" class="space-y-1">
             <button
-              *ngFor="let item of youngNavItems"
+              *ngFor="let item of currentYoungNavItems"
               type="button"
               (click)="selectYoungTab(item.id)"
               [class]="(activeYoungTab === item.id || (item.id === 'IMMERSION_PRO' && activeYoungTab === 'EXPLORER_METIERS'))
@@ -360,6 +384,9 @@ export const TONE_OPTIONS: ToneOption[] = [
               <span class="flex items-center gap-3 truncate">
                 <span class="w-4 h-4 flex items-center justify-center flex-shrink-0" [ngSwitch]="item.id">
                   <svg *ngSwitchCase="'ACCUEIL'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                  <svg *ngSwitchCase="'ACCUEIL_AUTONOME'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                  <svg *ngSwitchCase="'CATALOGUE_METIERS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  <svg *ngSwitchCase="'ANNUAIRE_SUPPORT'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                   <svg *ngSwitchCase="'MON_BILAN'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
                   <svg *ngSwitchCase="'IMMERSION_PRO'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   <svg *ngSwitchCase="'MON_PARCOURS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
@@ -476,12 +503,36 @@ export const TONE_OPTIONS: ToneOption[] = [
             <!-- Titre dynamique à gauche (min-w-0 flex-1 pour ne jamais pousser le bloc droit à la ligne) -->
             <div class="min-w-0 flex-1">
               <ng-container *ngIf="activePortal === 'YOUNG'">
-                <div *ngIf="activeYoungTab === 'ACCUEIL'">
+                <div *ngIf="activeYoungTab === 'ACCUEIL' && journeyMode === 'SUPPORTED'">
                   <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
                     Bonjour Emma
                   </h1>
                   <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
                     Bienvenue sur <strong>MonBilan+</strong>, ton espace pour comprendre ton bilan (Rdv {{ rdvNumber }}) et explorer des pistes de métiers.
+                  </p>
+                </div>
+                <div *ngIf="activeYoungTab === 'ACCUEIL_AUTONOME' || (journeyMode === 'AUTONOMOUS' && activeYoungTab === 'ACCUEIL')">
+                  <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
+                    Parcours Autonome
+                  </h1>
+                  <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
+                    Explore les métiers librement, prépare une immersion et trouve un accompagnement si tu en as besoin.
+                  </p>
+                </div>
+                <div *ngIf="activeYoungTab === 'CATALOGUE_METIERS'">
+                  <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
+                    Catalogue des Métiers O*NET FR
+                  </h1>
+                  <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
+                    721 métiers officiels traduits et structurés par durée d'études et centres d'intérêt.
+                  </p>
+                </div>
+                <div *ngIf="activeYoungTab === 'ANNUAIRE_SUPPORT'">
+                  <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
+                    Trouver un accompagnement
+                  </h1>
+                  <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
+                    CIO, Mission Locale de Nice, équipes scolaires et dispositifs publics gratuits.
                   </p>
                 </div>
                 <div *ngIf="activeYoungTab === 'MON_BILAN' && !showAudioFocusSubView">
@@ -688,10 +739,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </div>
                   <div class="hidden sm:block text-left">
                     <span class="text-xs font-extrabold text-[#0F1035] block leading-tight">
-                      {{ activePortal === 'YOUNG' ? 'Emma D.' : 'Sarah Dupont' }}
+                      {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : 'Emma D.') : 'Sarah Dupont' }}
                     </span>
                     <span class="text-[11px] text-[#42466B] block leading-tight">
-                      {{ activePortal === 'YOUNG' ? 'Dossier Rdv 2187' : 'Conseillère' }}
+                      {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Sans conseiller' : 'Dossier Rdv 2187') : 'Conseillère' }}
                     </span>
                   </div>
                   <svg class="h-4 w-4 text-[#42466B] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -705,8 +756,18 @@ export const TONE_OPTIONS: ToneOption[] = [
                   class="absolute right-0 top-[calc(100%+10px)] w-60 rounded-[22px] bg-white border border-[#E2DCFA] shadow-[0_18px_45px_rgba(19,17,66,0.16)] p-2.5 z-50 space-y-1 text-xs font-bold text-[#0F1035]"
                 >
                   <div class="px-3 py-2 border-b border-[#F0EDFA]">
-                    <p class="font-extrabold text-[#0F1035]">{{ activePortal === 'YOUNG' ? 'Emma D. (Rdv 2187)' : 'Sarah Dupont' }}</p>
-                    <p class="text-[11px] text-[#42466B] font-normal">{{ activePortal === 'YOUNG' ? 'Centre des Possibles • Nice' : 'Conseillère • Nice' }}</p>
+                    <p class="font-extrabold text-[#0F1035]">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : 'Emma D. (Rdv 2187)') : 'Sarah Dupont' }}</p>
+                    <p class="text-[11px] text-[#42466B] font-normal">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours libre • Nice' : 'Centre des Possibles • Nice') : 'Conseillère • Nice' }}</p>
+                  </div>
+                  <div *ngIf="activePortal === 'YOUNG'" class="p-1 border-b border-[#F0EDFA]">
+                    <button
+                      type="button"
+                      (click)="isJourneyChoiceModalOpen = true; isProfileMenuOpen = false"
+                      class="w-full text-left px-3 py-2 rounded-xl hover:bg-[#F3EFFE] text-[#7C3AED] font-extrabold text-xs flex items-center justify-between"
+                    >
+                      <span>Mode : {{ journeyMode === 'AUTONOMOUS' ? '🧭 Autonome' : '🤝 Accompagné' }}</span>
+                      <span class="text-xs">🔄</span>
+                    </button>
                   </div>
                   <button
                     type="button"
@@ -768,9 +829,49 @@ export const TONE_OPTIONS: ToneOption[] = [
 
             <ng-container *ngIf="restitutionStatus === 'PUBLISHED'">
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 1 : ACCUEIL (Fidèle à Tableau de bord pour Emma) -->
+              <!-- VUES DU PARCOURS AUTONOME (Écrans 1, 2, 3, 6 des maquettes)-->
               <!-- ========================================================== -->
-              <div *ngIf="activeYoungTab === 'ACCUEIL'" class="space-y-6">
+              <!-- ÉCRAN 1 : ACCUEIL AUTONOME -->
+              <div *ngIf="activeYoungTab === 'ACCUEIL_AUTONOME' || (journeyMode === 'AUTONOMOUS' && activeYoungTab === 'ACCUEIL')" class="space-y-6">
+                <app-autonomous-home
+                  [favoriteCount]="catalogFavoritesCount"
+                  (navigateTo)="handleAutonomousHomeNav($event)"
+                  (openModeModal)="isJourneyChoiceModalOpen = true"
+                ></app-autonomous-home>
+              </div>
+
+              <!-- ÉCRAN 2 & 3 : CATALOGUE DES 721 MÉTIERS ET FICHE SIMPLIFIÉE -->
+              <div *ngIf="activeYoungTab === 'CATALOGUE_METIERS'" class="space-y-6">
+                <app-career-catalog
+                  *ngIf="!selectedAutonomousCareerDetail"
+                  [allCareers]="catalogCareers"
+                  (selectCareerDetail)="selectedAutonomousCareerDetail = $event"
+                  (startImmersion)="startImmersionFromCatalog($event)"
+                  (favoriteToggled)="onCatalogFavoriteToggled($event)"
+                ></app-career-catalog>
+
+                <app-autonomous-career-detail
+                  *ngIf="selectedAutonomousCareerDetail"
+                  [career]="selectedAutonomousCareerDetail"
+                  (backToCatalog)="selectedAutonomousCareerDetail = null"
+                  (startImmersion)="startImmersionFromCatalog($event)"
+                  (findSupport)="selectYoungTab('ANNUAIRE_SUPPORT')"
+                  (favoriteToggled)="onCatalogFavoriteToggled($event)"
+                ></app-autonomous-career-detail>
+              </div>
+
+              <!-- ÉCRAN 6 : ANNUAIRE DES STRUCTURES D'ACCOMPAGNEMENT -->
+              <div *ngIf="activeYoungTab === 'ANNUAIRE_SUPPORT'" class="space-y-6">
+                <app-support-directory
+                  [resources]="supportResources"
+                  (goToImmersion)="selectYoungTab('IMMERSION_PRO')"
+                ></app-support-directory>
+              </div>
+
+              <!-- ========================================================== -->
+              <!-- VUE JEUNE 1 : ACCUEIL ACCOMPAGNÉ (Fidèle à Tableau de bord Emma) -->
+              <!-- ========================================================== -->
+              <div *ngIf="activeYoungTab === 'ACCUEIL' && journeyMode === 'SUPPORTED'" class="space-y-6">
                 <!-- Bannière Hero violette avec Emma au casque + 2 CTA + 4 pilules inclinées à droite -->
                 <div class="relative rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-8 shadow-lg overflow-hidden">
                   <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
@@ -2443,6 +2544,35 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <div class="w-full h-2.5 rounded-full bg-[#EDE9FE] overflow-hidden">
                         <div class="w-1/4 h-full bg-[#7C3AED] rounded-full"></div>
                       </div>
+                    </div>
+
+                    <!-- Carte Mode d'accompagnement (Parcours Autonome vs Accompagné) -->
+                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3.5">
+                      <div class="flex items-center justify-between">
+                        <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
+                          <span>🧭</span>
+                          <span>Mode d'accompagnement</span>
+                        </h3>
+                        <span
+                          [class]="journeyMode === 'AUTONOMOUS' ? 'bg-amber-100 text-amber-800 border-amber-300' : 'bg-purple-100 text-purple-800 border-purple-300'"
+                          class="rounded-full px-2.5 py-0.5 text-[10px] font-black border"
+                        >
+                          {{ journeyMode === 'AUTONOMOUS' ? 'Autonome' : 'Accompagné' }}
+                        </span>
+                      </div>
+                      <p class="text-xs text-[#42466B] leading-relaxed">
+                        {{ journeyMode === 'AUTONOMOUS'
+                          ? 'Tu avances librement à ton rythme sans conseiller référent. Tu explores 721 métiers O*NET et prépares tes immersions.'
+                          : 'Tu es accompagnée par un professionnel du Centre des Possibles et accèdes à la restitution de ton bilan Rdv 2187.' }}
+                      </p>
+                      <button
+                        type="button"
+                        (click)="isJourneyChoiceModalOpen = true"
+                        class="w-full rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white py-2 px-4 text-xs font-black shadow-xs hover:opacity-95 transition text-center flex items-center justify-center gap-1.5"
+                      >
+                        <span>🔄</span>
+                        <span>Changer de mode d'accompagnement</span>
+                      </button>
                     </div>
 
                     <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
@@ -4627,7 +4757,7 @@ export const TONE_OPTIONS: ToneOption[] = [
           aria-label="Navigation rapide mobile"
           class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-[#E4E0F5] px-2 py-1.5 shadow-[0_-4px_20px_rgba(15,16,53,0.08)]"
         >
-          <div *ngIf="activePortal === 'YOUNG'" class="grid grid-cols-5 gap-1">
+          <div *ngIf="activePortal === 'YOUNG' && journeyMode === 'SUPPORTED'" class="grid grid-cols-5 gap-1">
             <button
               type="button"
               (click)="selectYoungTab('ACCUEIL')"
@@ -4663,6 +4793,53 @@ export const TONE_OPTIONS: ToneOption[] = [
             >
               <span class="text-base leading-none">🗺️</span>
               <span class="mt-0.5">Parcours</span>
+            </button>
+            <button
+              type="button"
+              (click)="isMobileMenuOpen = true"
+              class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px] text-[#42466B] font-semibold"
+            >
+              <span class="text-base leading-none">☰</span>
+              <span class="mt-0.5">Plus</span>
+            </button>
+          </div>
+
+          <div *ngIf="activePortal === 'YOUNG' && journeyMode === 'AUTONOMOUS'" class="grid grid-cols-5 gap-1">
+            <button
+              type="button"
+              (click)="selectYoungTab('ACCUEIL_AUTONOME')"
+              [class]="(activeYoungTab === 'ACCUEIL_AUTONOME' || activeYoungTab === 'ACCUEIL') ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
+              class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
+            >
+              <span class="text-base leading-none">🏠</span>
+              <span class="mt-0.5">Accueil</span>
+            </button>
+            <button
+              type="button"
+              (click)="selectYoungTab('CATALOGUE_METIERS')"
+              [class]="(activeYoungTab === 'CATALOGUE_METIERS' || activeYoungTab === 'EXPLORER_METIERS') ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
+              class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
+            >
+              <span class="text-base leading-none">🔍</span>
+              <span class="mt-0.5">Métiers</span>
+            </button>
+            <button
+              type="button"
+              (click)="selectYoungTab('IMMERSION_PRO')"
+              [class]="activeYoungTab === 'IMMERSION_PRO' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
+              class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
+            >
+              <span class="text-base leading-none">💼</span>
+              <span class="mt-0.5">Immersion</span>
+            </button>
+            <button
+              type="button"
+              (click)="selectYoungTab('ANNUAIRE_SUPPORT')"
+              [class]="activeYoungTab === 'ANNUAIRE_SUPPORT' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
+              class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
+            >
+              <span class="text-base leading-none">🏛️</span>
+              <span class="mt-0.5">Aide</span>
             </button>
             <button
               type="button"
@@ -4803,6 +4980,13 @@ export const TONE_OPTIONS: ToneOption[] = [
           </div>
         </div>
       </div>
+      <!-- MODAL DE CHOIX DE PARCOURS (ONBOARDING) -->
+      <app-journey-choice-modal
+        [isOpen]="isJourneyChoiceModalOpen"
+        [currentMode]="journeyMode"
+        (modeSelected)="setJourneyMode($event)"
+        (closed)="isJourneyChoiceModalOpen = false"
+      ></app-journey-choice-modal>
     </div>
   `
 })
@@ -4906,6 +5090,38 @@ export class AppComponent implements OnInit {
 
   searchQuery = '';
   personalNotes = 'Je souhaite demander à mon conseiller comment faire un stage court dans le domaine du son ou de la décoration à Nice.';
+
+  // PARCOURS AUTONOME SANS CONSEILLER
+  journeyMode: JourneyMode = 'SUPPORTED';
+  isJourneyChoiceModalOpen = false;
+  catalogCareers: UICatalogCareer[] = JSON.parse(JSON.stringify(ONET_CAREERS_CATALOG_DATA));
+  supportResources: UISupportResource[] = INITIAL_SUPPORT_RESOURCES;
+  selectedAutonomousCareerDetail: UICatalogCareer | null = null;
+
+  get catalogFavoritesCount(): number {
+    return this.catalogCareers.filter((c) => c.isFavorite).length;
+  }
+
+  get currentYoungNavItems(): { id: YoungTab; label: string; icon: string; badge?: string }[] {
+    if (this.journeyMode === 'AUTONOMOUS') {
+      return [
+        { id: 'ACCUEIL_AUTONOME', label: 'Accueil', icon: '🏠' },
+        { id: 'CATALOGUE_METIERS', label: 'Explorer les métiers', icon: '🔍', badge: '721' },
+        { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
+        { id: 'ANNUAIRE_SUPPORT', label: 'Trouver de l’aide', icon: '🏛️' },
+        { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
+      ];
+    }
+    return [
+      { id: 'ACCUEIL', label: 'Accueil', icon: '🏠' },
+      { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
+      { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
+      { id: 'MON_PARCOURS', label: 'Mon parcours', icon: '🗺️' },
+      { id: 'MES_QUESTIONS', label: 'Mes questions', icon: '💬' },
+      { id: 'MES_DOCUMENTS', label: 'Mes documents', icon: '📁' },
+      { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
+    ];
+  }
 
   // MODULE IMMERSION PRO — État réactif
   immersionProject: UIImmersionProject = JSON.parse(JSON.stringify(INITIAL_IMMERSION_PROJECT));
@@ -5643,16 +5859,70 @@ export class AppComponent implements OnInit {
 
   selectYoungTab(tab: YoungTab): void {
     if (tab === 'EXPLORER_METIERS') {
-      this.activeYoungTab = 'IMMERSION_PRO';
-      this.immersionStepActive = 1;
+      if (this.journeyMode === 'AUTONOMOUS') {
+        this.activeYoungTab = 'CATALOGUE_METIERS';
+      } else {
+        this.activeYoungTab = 'IMMERSION_PRO';
+        this.immersionStepActive = 1;
+      }
     } else {
       this.activeYoungTab = tab;
     }
     this.showAudioFocusSubView = false;
     this.selectedCareerDetail = null;
+    this.selectedAutonomousCareerDetail = null;
     this.isMobileMenuOpen = false;
     this.isNotificationsOpen = false;
     this.isProfileMenuOpen = false;
+  }
+
+  setJourneyMode(mode: JourneyMode): void {
+    this.journeyMode = mode;
+    this.isJourneyChoiceModalOpen = false;
+    if (mode === 'AUTONOMOUS') {
+      this.activeYoungTab = 'ACCUEIL_AUTONOME';
+    } else {
+      this.activeYoungTab = 'ACCUEIL';
+    }
+    this.selectedCareerDetail = null;
+    this.selectedAutonomousCareerDetail = null;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  handleAutonomousHomeNav(target: 'CATALOG' | 'IMMERSION' | 'SUPPORT'): void {
+    if (target === 'CATALOG') {
+      this.selectYoungTab('CATALOGUE_METIERS');
+    } else if (target === 'IMMERSION') {
+      this.selectYoungTab('IMMERSION_PRO');
+    } else {
+      this.selectYoungTab('ANNUAIRE_SUPPORT');
+    }
+  }
+
+  startImmersionFromCatalog(career: UICatalogCareer): void {
+    if (!career) return;
+    this.immersionProject.careerId = career.id;
+    this.immersionProject.careerTitle = career.titleFr;
+    this.immersionProject.careerZone = career.jobZone;
+    this.immersionProject.careerPage = 0;
+    this.immersionProject.careerImage = career.imageUrl;
+    this.immersionProject.observationActivities = career.suggestedActivities?.length
+      ? career.suggestedActivities
+      : getDefaultActivitiesForCareer(career.titleFr);
+    this.immersionProject.preparedQuestions = career.suggestedQuestions?.length
+      ? career.suggestedQuestions
+      : getDefaultQuestionsForCareer(career.titleFr);
+    this.immersionProject.currentStep = 2;
+    this.selectedAutonomousCareerDetail = null;
+    this.selectYoungTab('IMMERSION_PRO');
+    window.scrollTo({ top: 120, behavior: 'smooth' });
+  }
+
+  onCatalogFavoriteToggled(career: UICatalogCareer): void {
+    const found = this.catalogCareers.find((c) => c.id === career.id);
+    if (found) {
+      found.isFavorite = career.isFavorite;
+    }
   }
 
   selectCounselorTab(tab: CounselorTab): void {

@@ -321,4 +321,5 @@ export * from './interview.js';
 export * from './career-matching.js';
 export * from './audio-episodes.js';
 export * from './immersion.js';
+export * from './autonomous.js';
 

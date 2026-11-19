@@ -5,12 +5,14 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Headers,
   Inject,
   Param,
   Patch,
   Post,
+  Query,
   Res
 } from '@nestjs/common';
 import type { Response } from 'express';
@@ -289,5 +291,101 @@ export class MonBilanController {
   getCounselorImmersions(@Headers() headers: Record<string, string | string[] | undefined>) {
     const actor = this.appService.resolveActorFromHeaders(headers);
     return this.appService.getCounselorImmersionOverview(actor);
+  }
+
+  // --------------------------------------------------------------------------
+  // ROUTES PARCOURS AUTONOME
+  // --------------------------------------------------------------------------
+  @Get('me/journey')
+  getJourney(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders({
+      ...headers,
+      'x-demo-role': headers['x-demo-role'] ?? 'YOUNG'
+    });
+    return this.appService.getJourneyMode(actor);
+  }
+
+  @Patch('me/journey')
+  updateJourney(
+    @Body() body: unknown,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders({
+      ...headers,
+      'x-demo-role': headers['x-demo-role'] ?? 'YOUNG'
+    });
+    return this.appService.setJourneyMode(actor, body);
+  }
+
+  @Get('careers')
+  getCatalog(
+    @Query('query') query?: string,
+    @Query('category') category?: string,
+    @Query('jobZone') jobZone?: string,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+    @Headers() headers?: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers ?? {});
+    return this.appService.getCareersCatalog(
+      actor,
+      query,
+      category,
+      jobZone ? Number(jobZone) : undefined,
+      page ? Number(page) : 1,
+      limit ? Number(limit) : 20
+    );
+  }
+
+  @Get('careers/:id')
+  getCareer(
+    @Param('id') id: string,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getCareerById(actor, id);
+  }
+
+  @Get('me/favorites')
+  getFavorites(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders({
+      ...headers,
+      'x-demo-role': headers['x-demo-role'] ?? 'YOUNG'
+    });
+    return this.appService.getUserFavorites(actor);
+  }
+
+  @Post('me/favorites')
+  addFavorite(
+    @Body() body: { careerId: string },
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders({
+      ...headers,
+      'x-demo-role': headers['x-demo-role'] ?? 'YOUNG'
+    });
+    return this.appService.toggleUserFavorite(actor, body.careerId);
+  }
+
+  @Delete('me/favorites/:careerId')
+  removeFavorite(
+    @Param('careerId') careerId: string,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders({
+      ...headers,
+      'x-demo-role': headers['x-demo-role'] ?? 'YOUNG'
+    });
+    return this.appService.toggleUserFavorite(actor, careerId);
+  }
+
+  @Get('support/resources')
+  getSupportResources(
+    @Query('category') category?: string,
+    @Query('city') city?: string,
+    @Headers() headers?: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers ?? {});
+    return this.appService.getSupportResources(actor, category, city);
   }
 }

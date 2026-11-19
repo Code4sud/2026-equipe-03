@@ -7,6 +7,8 @@
 // - Réserve méthodologique finale de la page 17
 // ============================================================================
 
+import { readFileSync, existsSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import {
   buildDeterministicEpisodes,
   buildDeterministicSourcedDraft,
@@ -24,7 +26,10 @@ import {
   DomainPartnerCompany,
   DomainImmersionApplication,
   DomainObservationEntry,
-  DomainImmersionReview
+  DomainImmersionReview,
+  DomainSupportResource,
+  DomainCareerCatalogItem,
+  mapCareerToInterestCategory
 } from '@monbilan/domain';
 
 export const DEMO_IDS = {
@@ -987,4 +992,156 @@ export function createInitialDemoState() {
     observations,
     reviews
   };
+}
+
+export const DEMO_SUPPORT_RESOURCES: DomainSupportResource[] = [
+  {
+    id: 'supp-cio-nice-centre',
+    name: "Centre d'Information et d'Orientation (CIO) Nice Centre",
+    category: 'CIO',
+    categoryLabel: "CIO & Professionnels de l'orientation",
+    description: "Service public gratuit de l'Éducation nationale pour vous conseiller dans vos choix d'orientation, d'études et de formation.",
+    address: '15 rue Delille',
+    city: 'Nice',
+    postalCode: '06000',
+    phone: '04 93 62 49 49',
+    email: 'cio-nice@ac-nice.fr',
+    websiteUrl: 'https://www.ac-nice.fr/orientation',
+    isOfficialPublicService: true,
+    badgeLabel: 'Service Public Gratuit'
+  },
+  {
+    id: 'supp-cio-nice-valrose',
+    name: "Centre d'Information et d'Orientation (CIO) Nice Valrose",
+    category: 'CIO',
+    categoryLabel: "CIO & Professionnels de l'orientation",
+    description: 'Accompagnement personnalisé pour les lycéens, étudiants et jeunes sortis du système scolaire.',
+    address: 'Campus Valrose - Bâtiment des Sciences',
+    city: 'Nice',
+    postalCode: '06108',
+    phone: '04 93 84 89 22',
+    email: 'cio-valrose@ac-nice.fr',
+    websiteUrl: 'https://www.ac-nice.fr/orientation',
+    isOfficialPublicService: true,
+    badgeLabel: 'Service Public Gratuit'
+  },
+  {
+    id: 'supp-ml-nice',
+    name: 'Mission Locale Nice Côte d’Azur',
+    category: 'MISSION_LOCALE',
+    categoryLabel: 'Mission Locale',
+    description: 'Accompagnement global des jeunes de 16 à 25 ans vers l’emploi, la formation, le logement, la citoyenneté et la santé.',
+    address: 'Hub de l’Innovation - 1-3 Bd René Cassin',
+    city: 'Nice',
+    postalCode: '06200',
+    phone: '04 93 18 35 00',
+    email: 'contact@mlnice.fr',
+    websiteUrl: 'https://www.missionlocale-nice.org',
+    isOfficialPublicService: true,
+    badgeLabel: '16–25 ans'
+  },
+  {
+    id: 'supp-school-college-lycee',
+    name: 'Équipes pédagogiques de ton Établissement Scolaire',
+    category: 'SCHOOL',
+    categoryLabel: 'Mon établissement scolaire',
+    description: 'Ton professeur principal, les Psy-EN (psychologues de l’Éducation Nationale) et le référent orientation de ton collège ou lycée t’aident à formaliser ton projet et signer tes conventions de stage.',
+    address: 'Auprès de ton secrétariat ou vie scolaire',
+    city: 'Nice & Métropole',
+    websiteUrl: 'https://www.education.gouv.fr/orientation-college-lycee',
+    isOfficialPublicService: true,
+    badgeLabel: 'Collège / Lycée'
+  },
+  {
+    id: 'supp-1jeune1solution',
+    name: '1jeune1solution (Gouvernement)',
+    category: 'NATIONAL_PORTAL',
+    categoryLabel: 'Ressources en ligne officielles',
+    description: 'Plateforme nationale officielle pour trouver un emploi, une formation, une alternance ou un accompagnement près de chez toi.',
+    websiteUrl: 'https://www.1jeune1solution.gouv.fr',
+    isOfficialPublicService: true,
+    badgeLabel: 'Portail Officiel'
+  },
+  {
+    id: 'supp-immersion-facilee',
+    name: 'Immersion Facilitée (Service Public)',
+    category: 'NATIONAL_PORTAL',
+    categoryLabel: 'Ressources en ligne officielles',
+    description: 'Trouvez facilement une entreprise accueillante pour réaliser une période de mise en situation en milieu professionnel (PMSMP) conventionnée.',
+    websiteUrl: 'https://immersion-facilee.beta.gouv.fr',
+    isOfficialPublicService: true,
+    badgeLabel: 'Convention PMSMP'
+  }
+];
+
+let cachedOnetCatalog: DomainCareerCatalogItem[] | null = null;
+
+export function loadOnetCareersCatalog(): DomainCareerCatalogItem[] {
+  if (cachedOnetCatalog) {
+    return cachedOnetCatalog;
+  }
+
+  const candidatePaths = [
+    join(process.cwd(), 'prisma/seed/onet-careers.json'),
+    join(process.cwd(), '2026-equipe-03/prisma/seed/onet-careers.json'),
+    resolve(__dirname, '../../../../../prisma/seed/onet-careers.json')
+  ];
+
+  let rawList: any[] = [];
+  for (const p of candidatePaths) {
+    try {
+      if (existsSync(p)) {
+        const text = readFileSync(p, 'utf-8');
+        rawList = JSON.parse(text);
+        break;
+      }
+    } catch {
+      // Continue to next path
+    }
+  }
+
+  if (!rawList.length) {
+    // Si fichier inaccessible, utiliser les 22 métiers vérifiés de la démo
+    const fixture = createInitialDemoState();
+    rawList = fixture.report.careers.map((c: DomainCareer) => ({
+      onetSocCode: c.id,
+      titleEn: c.titleFr,
+      titleFr: c.titleFr,
+      descriptionFr: c.description,
+      jobZone: c.jobZone,
+      jobZoneJustification: `Zone ${c.jobZone}`
+    }));
+  }
+
+  cachedOnetCatalog = rawList.map((item, index) => {
+    const cat = mapCareerToInterestCategory(item.titleFr, item.descriptionFr);
+    return {
+      id: item.onetSocCode ? `onet-${item.onetSocCode.replace(/[^a-zA-Z0-9]/g, '-')}` : `career-${index + 1}`,
+      onetSocCode: item.onetSocCode || `soc-${index + 1}`,
+      titleFr: item.titleFr,
+      titleEn: item.titleEn || item.titleFr,
+      descriptionFr: item.descriptionFr,
+      jobZone: item.jobZone || 2,
+      jobZoneJustification: item.jobZoneJustification || `Zone de préparation ${item.jobZone || 2}`,
+      category: cat.category,
+      categoryLabelFr: cat.label,
+      suggestedActivities: [
+        'Observation des activités principales et techniques employées',
+        'Échange avec le tuteur sur le quotidien et les conditions de travail',
+        'Visite des locaux et découverte des outils utilisés'
+      ],
+      suggestedQuestions: [
+        'Qu’est-ce qui vous plaît le plus dans votre quotidien ?',
+        'Quelles sont les compétences indispensables pour débuter ?',
+        'Quel parcours ou formation conseilleriez-vous à un jeune ?'
+      ],
+      suggestedPathways: [
+        `Voie professionnelle / apprentissage (Zone ${item.jobZone || 2})`,
+        'Formations certifiées RNCP / Éducation Nationale'
+      ],
+      imageUrl: 'assets/visuals/career-peintre.png'
+    };
+  });
+
+  return cachedOnetCatalog;
 }

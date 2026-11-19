@@ -28,7 +28,8 @@ import {
   UpdateImmersionProjectSchema,
   CreateApplicationSchema,
   SaveObservationEntrySchema,
-  SaveImmersionReviewSchema
+  SaveImmersionReviewSchema,
+  UpdateJourneyModeSchema
 } from '@monbilan/contracts';
 import {
   AccessActor,
@@ -46,7 +47,10 @@ import {
   DomainPartnerCompany,
   DomainImmersionApplication,
   DomainObservationEntry,
-  DomainImmersionReview
+  DomainImmersionReview,
+  JourneyMode,
+  DomainSupportResource,
+  DomainCareerCatalogItem
 } from '@monbilan/domain';
 import {
   AuditLogEntry,
@@ -54,7 +58,9 @@ import {
   DEMO_IDS,
   InMemoryQuestion,
   InMemoryReport,
-  InMemoryRestitution
+  InMemoryRestitution,
+  DEMO_SUPPORT_RESOURCES,
+  loadOnetCareersCatalog
 } from './demo-fixture.js';
 
 @Injectable()
@@ -71,6 +77,8 @@ export class MonBilanApplicationService {
   private readonly reviews: DomainImmersionReview[] = [];
   private readonly questions: InMemoryQuestion[] = [];
   private readonly auditEvents: AuditLogEntry[] = [];
+  private readonly journeyModes = new Map<string, JourneyMode>();
+  private readonly userFavorites = new Map<string, Set<string>>();
   private audioWavBuffer: Buffer;
 
   private readonly llmProvider = new OllamaLLMProvider(
@@ -1014,5 +1022,111 @@ export class MonBilanApplicationService {
           sharedReview: review?.sharedWithCounselor ?? false
         };
       });
+  }
+
+  // --------------------------------------------------------------------------
+  // PARCOURS AUTONOME — Mode de parcours, Catalogue O*NET, Favoris & Accompagnement
+  // --------------------------------------------------------------------------
+  getJourneyMode(actor: AccessActor): { journeyMode: JourneyMode; isSupported: boolean } {
+    const mode = this.journeyModes.get(actor.userId) ?? 'SUPPORTED';
+    return {
+      journeyMode: mode,
+      isSupported: mode === 'SUPPORTED'
+    };
+  }
+
+  setJourneyMode(actor: AccessActor, rawBody: unknown): { journeyMode: JourneyMode; success: boolean } {
+    const parsed = UpdateJourneyModeSchema.safeParse(rawBody);
+    if (!parsed.success) {
+      throw new BadRequestException(parsed.error.issues.map((i) => i.message).join(', '));
+    }
+    this.journeyModes.set(actor.userId, parsed.data.journeyMode);
+    this.recordAudit(actor, 'JOURNEY_MODE_UPDATED', 'UserJourney', actor.userId);
+    return {
+      journeyMode: parsed.data.journeyMode,
+      success: true
+    };
+  }
+
+  getCareersCatalog(
+    _actor: AccessActor,
+    query?: string,
+    category?: string,
+    jobZone?: number,
+    page = 1,
+    limit = 20
+  ) {
+    const all = loadOnetCareersCatalog();
+    let filtered = all;
+
+    if (query && query.trim()) {
+      const q = query.toLowerCase().trim();
+      filtered = filtered.filter(
+        (c) => c.titleFr.toLowerCase().includes(q) || c.descriptionFr.toLowerCase().includes(q)
+      );
+    }
+
+    if (category && category !== 'ALL') {
+      filtered = filtered.filter((c) => c.category === category);
+    }
+
+    if (jobZone && jobZone >= 1 && jobZone <= 5) {
+      filtered = filtered.filter((c) => c.jobZone === jobZone);
+    }
+
+    const total = filtered.length;
+    const startIndex = (page - 1) * limit;
+    const items = filtered.slice(startIndex, startIndex + limit);
+
+    return {
+      items,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit)
+    };
+  }
+
+  getCareerById(_actor: AccessActor, id: string): DomainCareerCatalogItem {
+    const all = loadOnetCareersCatalog();
+    const found = all.find((c) => c.id === id || c.onetSocCode === id);
+    if (!found) {
+      throw new NotFoundException(`Métier ${id} introuvable.`);
+    }
+    return found;
+  }
+
+  getUserFavorites(actor: AccessActor): string[] {
+    const favSet = this.userFavorites.get(actor.userId) ?? new Set<string>();
+    return Array.from(favSet);
+  }
+
+  toggleUserFavorite(actor: AccessActor, careerId: string): { careerId: string; isFavorite: boolean } {
+    if (!this.userFavorites.has(actor.userId)) {
+      this.userFavorites.set(actor.userId, new Set<string>());
+    }
+    const set = this.userFavorites.get(actor.userId)!;
+    let isFavorite: boolean;
+    if (set.has(careerId)) {
+      set.delete(careerId);
+      isFavorite = false;
+    } else {
+      set.add(careerId);
+      isFavorite = true;
+    }
+    this.recordAudit(actor, isFavorite ? 'CAREER_FAVORITED' : 'CAREER_UNFAVORITED', 'Career', careerId);
+    return { careerId, isFavorite };
+  }
+
+  getSupportResources(_actor: AccessActor, category?: string, city?: string): DomainSupportResource[] {
+    let list = DEMO_SUPPORT_RESOURCES;
+    if (category && category !== 'ALL') {
+      list = list.filter((r) => r.category === category);
+    }
+    if (city && city.trim()) {
+      const c = city.toLowerCase().trim();
+      list = list.filter((r) => !r.city || r.city.toLowerCase().includes(c));
+    }
+    return list;
   }
 }

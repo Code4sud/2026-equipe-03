@@ -19,11 +19,11 @@
   "demo": "https://code4sud.github.io/2026-equipe-03/",
   "video": "",
   "captures": [
-    "captures/showcase/02-espace-jeune-accueil.jpg",
-    "captures/showcase/03-restitution-audio-transcription.jpg",
-    "captures/showcase/04-exploration-metiers-zones.jpg",
-    "captures/showcase/05-espace-conseiller-dashboard.jpg",
-    "captures/showcase/06-validation-professionnelle.jpg",
-    "captures/showcase/01-landing-accueil.jpg"
+    "captures/01-landing-accueil.jpg",
+    "captures/02-espace-jeune-accueil.jpg",
+    "captures/03-restitution-audio-transcription.jpg",
+    "captures/04-exploration-metiers-zones.jpg",
+    "captures/05-espace-conseiller-dashboard.jpg",
+    "captures/06-validation-professionnelle.jpg"
   ]
 }

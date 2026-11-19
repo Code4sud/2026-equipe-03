@@ -452,7 +452,7 @@ export const TONE_OPTIONS: ToneOption[] = [
           <!-- Carte Profil & Se Déconnecter -->
           <div class="rounded-2xl bg-gradient-to-br from-[#241B5C]/90 to-[#171242]/90 border border-white/15 p-3 text-left space-y-2.5 shadow-lg backdrop-blur-sm">
             <div
-              (click)="activePortal === 'YOUNG' ? selectYoungTab('PARAMETRES') : selectCounselorTab('PARAMETRES')"
+              (click)="activePortal === 'YOUNG' ? selectYoungTab('PARAMETRES_JEUNE') : selectCounselorTab('PARAMETRES')"
               class="flex items-center gap-2.5 cursor-pointer group"
               title="Accéder aux paramètres du compte"
             >
@@ -460,7 +460,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               <div class="relative h-10 w-10 rounded-full overflow-hidden shrink-0 border-2 border-[#A855F7]/60 bg-gradient-to-br from-[#7C3AED] to-[#6328E8] flex items-center justify-center text-white font-black text-xs shadow-md">
                 <img
                   *ngIf="activePortal === 'YOUNG'"
-                  src="assets/visuals/profile-emma.png"
+                  [src]="userPhotoUrl"
                   alt="Photo de profil"
                   class="h-full w-full object-cover"
                   onerror="this.style.display='none'"
@@ -747,12 +747,20 @@ export const TONE_OPTIONS: ToneOption[] = [
                   [attr.aria-expanded]="isProfileMenuOpen"
                   class="rounded-full bg-white border border-[#E2DCFA] pl-1.5 pr-2.5 sm:pr-3.5 py-1.5 shadow-[0_2px_10px_rgba(109,40,217,0.06)] hover:border-[#7C3AED] transition flex items-center gap-2.5 focus:outline-none"
                 >
-                  <div class="h-9 w-9 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#6328E8] text-white font-extrabold text-xs flex items-center justify-center shadow-sm shrink-0">
-                    {{ activePortal === 'YOUNG' ? 'ED' : 'SD' }}
+                  <div class="h-9 w-9 rounded-full overflow-hidden bg-gradient-to-br from-[#7C3AED] to-[#6328E8] text-white font-extrabold text-xs flex items-center justify-center shadow-sm shrink-0">
+                    <img
+                      *ngIf="activePortal === 'YOUNG'"
+                      [src]="userPhotoUrl"
+                      alt="Emma D."
+                      class="h-full w-full object-cover"
+                      onerror="this.style.display='none'"
+                    />
+                    <span *ngIf="activePortal === 'YOUNG'">ED</span>
+                    <span *ngIf="activePortal === 'COUNSELOR'">SD</span>
                   </div>
                   <div class="hidden sm:block text-left">
                     <span class="text-xs font-extrabold text-[#0F1035] block leading-tight">
-                      {{ activePortal === 'YOUNG' ? 'Emma D.' : 'Sarah Dupont' }}
+                      {{ activePortal === 'YOUNG' ? currentUserDisplayName : 'Sarah Dupont' }}
                     </span>
                     <span class="text-[11px] text-[#42466B] block leading-tight">
                       {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours autonome' : 'Dossier Rdv 2187') : 'Conseillère' }}
@@ -768,9 +776,22 @@ export const TONE_OPTIONS: ToneOption[] = [
                   *ngIf="isProfileMenuOpen"
                   class="absolute right-0 top-[calc(100%+10px)] w-60 rounded-[22px] bg-white border border-[#E2DCFA] shadow-[0_18px_45px_rgba(19,17,66,0.16)] p-2.5 z-50 space-y-1 text-xs font-bold text-[#0F1035]"
                 >
-                  <div class="px-3 py-2 border-b border-[#F0EDFA]">
-                    <p class="font-extrabold text-[#0F1035]">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : 'Emma D. (Rdv 2187)') : 'Sarah Dupont' }}</p>
-                    <p class="text-[11px] text-[#42466B] font-normal">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours libre • Nice' : 'Centre des Possibles • Nice') : 'Conseillère • Nice' }}</p>
+                  <div class="px-3 py-2 border-b border-[#F0EDFA] flex items-center gap-2.5">
+                    <div class="h-10 w-10 rounded-full overflow-hidden bg-gradient-to-br from-[#7C3AED] to-[#6328E8] text-white font-black text-xs flex items-center justify-center shrink-0">
+                      <img
+                        *ngIf="activePortal === 'YOUNG'"
+                        [src]="userPhotoUrl"
+                        alt="Photo"
+                        class="h-full w-full object-cover"
+                        onerror="this.style.display='none'"
+                      />
+                      <span *ngIf="activePortal === 'YOUNG'">ED</span>
+                      <span *ngIf="activePortal === 'COUNSELOR'">SD</span>
+                    </div>
+                    <div class="min-w-0">
+                      <p class="font-extrabold text-[#0F1035] truncate">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : currentUserDisplayName) : 'Sarah Dupont' }}</p>
+                      <p class="text-[11px] text-[#42466B] font-normal truncate">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours libre • Nice' : 'Centre des Possibles • Nice') : 'Conseillère • Nice' }}</p>
+                    </div>
                   </div>
                   <div *ngIf="activePortal === 'YOUNG'" class="p-1 border-b border-[#F0EDFA]">
                     <button
@@ -1821,10 +1842,13 @@ export const TONE_OPTIONS: ToneOption[] = [
               <!-- ========================================================== -->
               <div *ngIf="activeYoungTab === 'PARAMETRES_JEUNE'">
                 <app-settings
-                  [firstName]="'Emma'"
-                  [lastName]="'D.'"
-                  [email]="'emma.d@exemple.fr'"
+                  [firstName]="userFirstName"
+                  [lastName]="userLastName"
+                  [email]="currentUserEmail"
                   [speechRate]="speechRate"
+                  [photoUrl]="userPhotoUrl"
+                  (photoChange)="onUserPhotoChange($event)"
+                  (profileSave)="onUserProfileSave($event)"
                   (speechRateChange)="setSpeechRate($event)"
                   (logout)="logout()"
                 ></app-settings>
@@ -4091,7 +4115,22 @@ export class AppComponent implements OnInit {
   isAuthenticated: boolean = true;
   currentUserEmail: string = 'emma.d@monbilan.fr';
   currentUserDisplayName: string = 'Emma D.';
+  userFirstName: string = 'Emma';
+  userLastName: string = 'D.';
+  userPhotoUrl: string = 'assets/visuals/profile-emma.png';
   activePortal: 'YOUNG' | 'COUNSELOR' = 'YOUNG';
+
+  onUserPhotoChange(photo: string): void {
+    this.userPhotoUrl = photo;
+  }
+
+  onUserProfileSave(data: { firstName: string; lastName: string; email: string; photoUrl: string }): void {
+    this.userFirstName = data.firstName;
+    this.userLastName = data.lastName;
+    this.currentUserEmail = data.email;
+    this.currentUserDisplayName = `${data.firstName} ${data.lastName}`.trim();
+    this.userPhotoUrl = data.photoUrl;
+  }
 
   @HostListener('window:keydown.escape')
   handleEscapeKey(): void {
@@ -4998,8 +5037,29 @@ export class AppComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.loadBrowserVoices();
-    if (typeof window !== 'undefined' && window.location.hash === '#counselor') {
-      this.activePortal = 'COUNSELOR';
+    if (typeof window !== 'undefined') {
+      try {
+        const savedPhoto = localStorage.getItem('monbilan_user_photo');
+        if (savedPhoto) {
+          this.userPhotoUrl = savedPhoto;
+        }
+        const savedFirst = localStorage.getItem('monbilan_user_firstname');
+        const savedLast = localStorage.getItem('monbilan_user_lastname');
+        if (savedFirst) this.userFirstName = savedFirst;
+        if (savedLast) this.userLastName = savedLast;
+        if (savedFirst || savedLast) {
+          this.currentUserDisplayName = `${this.userFirstName} ${this.userLastName}`.trim();
+        }
+        const savedEmail = localStorage.getItem('monbilan_user_email');
+        if (savedEmail) {
+          this.currentUserEmail = savedEmail;
+        }
+      } catch {
+        // LocalStorage fallback
+      }
+      if (window.location.hash === '#counselor') {
+        this.activePortal = 'COUNSELOR';
+      }
     }
     await this.trySyncWithBackendApi();
   }

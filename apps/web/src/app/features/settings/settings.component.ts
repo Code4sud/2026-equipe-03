@@ -34,20 +34,29 @@ import { FormsModule } from '@angular/forms';
           <div class="md:col-span-4 flex flex-col items-center text-center space-y-3">
             <div class="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full overflow-hidden border-4 border-white shadow-lg ring-4 ring-[#EDE9FE] bg-[#F3E8FF] flex items-center justify-center">
               <img
-                src="assets/visuals/profile-emma.png"
-                alt="Emma D."
+                [src]="photoUrl"
+                [alt]="firstName + ' ' + lastName"
                 class="h-full w-full object-cover"
-                onerror="this.src='assets/visuals/avatar-emma.png'"
+                (error)="onImgError($event)"
               />
               <button
                 type="button"
-                (click)="onPhotoClick()"
-                class="absolute bottom-1 right-1 h-8 w-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs shadow-md border-2 border-white hover:bg-[#6D28D9] transition"
-                title="Modifier la photo"
+                (click)="fileInput.click()"
+                class="absolute bottom-1 right-1 h-8 w-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs shadow-md border-2 border-white hover:bg-[#6D28D9] transition cursor-pointer"
+                title="Choisir une photo depuis votre appareil"
               >
                 📷
               </button>
             </div>
+
+            <!-- Input fichier masqué pour sélection locale -->
+            <input
+              #fileInput
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/gif"
+              class="hidden"
+              (change)="onFileSelected($event)"
+            />
 
             <div class="space-y-1">
               <h3 class="text-xl font-extrabold text-[#0F1035]">
@@ -58,14 +67,34 @@ import { FormsModule } from '@angular/forms';
               </span>
             </div>
 
-            <button
-              type="button"
-              (click)="onPhotoClick()"
-              class="rounded-full border-2 border-[#7C3AED] text-[#7C3AED] font-extrabold text-xs px-4 py-2 hover:bg-[#F5F3FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
-            >
-              <span>📷</span>
-              <span>Modifier ma photo</span>
-            </button>
+            <div class="flex flex-col items-center gap-2">
+              <button
+                type="button"
+                (click)="fileInput.click()"
+                class="rounded-full border-2 border-[#7C3AED] text-[#7C3AED] font-extrabold text-xs px-4 py-2 hover:bg-[#F5F3FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+              >
+                <span>📷</span>
+                <span>Modifier ma photo</span>
+              </button>
+              <button
+                *ngIf="isCustomPhoto"
+                type="button"
+                (click)="resetPhoto()"
+                class="text-[11px] font-bold text-[#6B7280] hover:text-rose-600 transition underline cursor-pointer"
+              >
+                Rétablir la photo par défaut
+              </button>
+            </div>
+
+            <!-- Notifications / Statuts photo -->
+            <div *ngIf="photoSuccess" class="rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 animate-fade-in">
+              <span>✓</span>
+              <span>Photo mise à jour avec succès !</span>
+            </div>
+            <div *ngIf="photoError" class="rounded-xl bg-rose-50 border border-rose-200 text-rose-700 px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 animate-fade-in">
+              <span>⚠️</span>
+              <span>{{ photoError }}</span>
+            </div>
           </div>
 
           <!-- Colonne Droite : Formulaire d'informations personnelles -->
@@ -272,22 +301,96 @@ export class SettingsComponent {
   @Input() lastName = 'D.';
   @Input() email = 'emma.d@exemple.fr';
   @Input() speechRate = 1.0;
+  @Input() photoUrl = 'assets/visuals/profile-emma.png';
 
   @Output() logout = new EventEmitter<void>();
   @Output() speechRateChange = new EventEmitter<number>();
+  @Output() photoChange = new EventEmitter<string>();
+  @Output() profileSave = new EventEmitter<{ firstName: string; lastName: string; email: string; photoUrl: string }>();
 
   savedSuccess = false;
   activeSection: string | null = null;
+  photoSuccess = false;
+  photoError: string | null = null;
+  isCustomPhoto = false;
 
-  saveChanges(): void {
-    this.savedSuccess = true;
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) return;
+    const file = input.files[0];
+
+    // Validation du type de fichier
+    if (!file.type.startsWith('image/')) {
+      this.photoError = 'Format non supporté. Veuillez choisir une image (JPEG, PNG, WebP).';
+      this.photoSuccess = false;
+      return;
+    }
+
+    // Validation de la taille (max 5 Mo)
+    if (file.size > 5 * 1024 * 1024) {
+      this.photoError = 'L\'image est trop volumineuse (maximum 5 Mo).';
+      this.photoSuccess = false;
+      return;
+    }
+
+    this.photoError = null;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64 = e.target?.result as string;
+      if (base64) {
+        this.photoUrl = base64;
+        this.isCustomPhoto = true;
+        this.photoSuccess = true;
+        this.photoChange.emit(base64);
+        try {
+          localStorage.setItem('monbilan_user_photo', base64);
+        } catch {
+          // LocalStorage fallback
+        }
+        setTimeout(() => {
+          this.photoSuccess = false;
+        }, 3500);
+      }
+    };
+    reader.readAsDataURL(file);
+    input.value = '';
+  }
+
+  resetPhoto(): void {
+    this.photoUrl = 'assets/visuals/profile-emma.png';
+    this.isCustomPhoto = false;
+    this.photoError = null;
+    this.photoSuccess = true;
+    this.photoChange.emit(this.photoUrl);
+    try {
+      localStorage.removeItem('monbilan_user_photo');
+    } catch {}
     setTimeout(() => {
-      this.savedSuccess = false;
+      this.photoSuccess = false;
     }, 3000);
   }
 
-  onPhotoClick(): void {
-    alert('Modification de la photo : fonctionnalité à venir prochainement.');
+  onImgError(event: Event): void {
+    const target = event.target as HTMLImageElement;
+    target.src = 'assets/visuals/profile-emma.png';
+  }
+
+  saveChanges(): void {
+    this.savedSuccess = true;
+    this.profileSave.emit({
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      photoUrl: this.photoUrl
+    });
+    try {
+      localStorage.setItem('monbilan_user_firstname', this.firstName);
+      localStorage.setItem('monbilan_user_lastname', this.lastName);
+      localStorage.setItem('monbilan_user_email', this.email);
+    } catch {}
+    setTimeout(() => {
+      this.savedSuccess = false;
+    }, 3000);
   }
 
   toggleSection(section: string): void {

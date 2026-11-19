@@ -479,112 +479,243 @@ export interface LocalZone {
           class="bg-white w-full max-w-2xl rounded-[32px] shadow-2xl border border-[#E9E4F5] overflow-hidden flex flex-col max-h-[90vh]"
           (click)="$event.stopPropagation()"
         >
-          <!-- En-tête Modale -->
-          <div class="p-6 bg-gradient-to-r from-purple-50 via-indigo-50/50 to-pink-50 border-b border-[#E9E4F5] flex items-start justify-between gap-4">
-            <div class="space-y-1.5">
-              <div class="flex items-center gap-2">
-                <span
-                  [class]="selectedOpportunity.category === 'FORMATION'
-                    ? 'bg-purple-100 text-[#6D28D9]'
-                    : (selectedOpportunity.category === 'ACCOMPAGNEMENT' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800')"
-                  class="text-xs font-extrabold px-3 py-0.5 rounded-full"
-                >
-                  {{ getCategoryLabel(selectedOpportunity.category) }}
-                </span>
-                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white text-gray-700 border border-gray-200">
-                  {{ selectedOpportunity.subType }}
-                </span>
-              </div>
-              <h2 class="text-xl sm:text-2xl font-black text-[#0F1035]">
-                {{ selectedOpportunity.name }}
-              </h2>
-              <p class="text-xs sm:text-sm font-semibold text-purple-700 flex items-center gap-1.5">
-                <span>📍 {{ selectedOpportunity.address }}</span>
-                <span>({{ selectedOpportunity.distanceKm }} km de Nice)</span>
-              </p>
-            </div>
+          <!-- En-tête Modale avec Image Hero de l'Établissement & Badges -->
+          <div class="relative w-full h-52 sm:h-60 overflow-hidden bg-slate-900 shrink-0">
+            <img
+              [src]="selectedOpportunity.imageUrl || getDefaultImage(selectedOpportunity)"
+              [alt]="selectedOpportunity.name"
+              class="w-full h-full object-cover opacity-85"
+              (error)="onImageError($event, selectedOpportunity)"
+            />
+            <!-- Dégradé sombre pour lisibilité du titre -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1035] via-[#0F1035]/60 to-black/30"></div>
 
+            <!-- Bouton Fermer flottant en haut à droite -->
             <button
               type="button"
               (click)="closeDetailModal()"
-              class="w-9 h-9 rounded-full bg-white/80 hover:bg-white text-gray-500 hover:text-gray-900 flex items-center justify-center font-bold text-lg shadow-sm border border-gray-200 cursor-pointer"
+              class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 backdrop-blur-md text-white flex items-center justify-center font-bold text-base transition shadow-md border border-white/20 cursor-pointer z-10"
               aria-label="Fermer la fiche"
             >
               ✕
             </button>
+
+            <!-- Badges flottants en haut à gauche -->
+            <div class="absolute top-4 left-4 flex flex-wrap items-center gap-2">
+              <span
+                [class]="selectedOpportunity.category === 'FORMATION'
+                  ? 'bg-[#7C3AED] text-white shadow-purple-900/50'
+                  : (selectedOpportunity.category === 'ACCOMPAGNEMENT' ? 'bg-[#059669] text-white shadow-emerald-900/50' : 'bg-[#2563EB] text-white shadow-blue-900/50')"
+                class="text-xs font-black px-3 py-1 rounded-full shadow-lg backdrop-blur-md uppercase tracking-wide"
+              >
+                {{ getCategoryLabel(selectedOpportunity.category) }}
+              </span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full bg-white/95 text-[#0F1035] shadow-md backdrop-blur-md">
+                {{ selectedOpportunity.subType }}
+              </span>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 backdrop-blur-md">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                Vérifié 06
+              </span>
+            </div>
+
+            <!-- Titre & Localisation sur l'image en bas -->
+            <div class="absolute bottom-4 inset-x-4 sm:inset-x-6 text-white space-y-1">
+              <h2 class="text-xl sm:text-2xl font-black text-white leading-tight drop-shadow-md">
+                {{ selectedOpportunity.name }}
+              </h2>
+              <div class="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#E0E7FF]/90">
+                <span class="flex items-center gap-1">
+                  <span>📍</span>
+                  <span>{{ selectedOpportunity.address }}</span>
+                </span>
+                <span>•</span>
+                <span class="bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-md text-[11px] text-white font-bold">
+                  {{ selectedOpportunity.distanceKm }} km de Nice
+                </span>
+              </div>
+            </div>
           </div>
 
           <!-- Contenu Modale -->
-          <div class="p-6 space-y-5 overflow-y-auto min-h-0 flex-1">
-            <!-- Intitulé & description -->
-            <div class="space-y-2 bg-[#F8F7FF] p-4 rounded-2xl border border-purple-100">
-              <h3 class="text-sm font-bold text-[#0F1035]">
-                {{ selectedOpportunity.headline }}
-              </h3>
-              <p class="text-xs text-[#42466B] leading-relaxed">
-                {{ selectedOpportunity.description }}
+          <div class="p-5 sm:p-7 space-y-5 overflow-y-auto min-h-0 flex-1">
+            <!-- 1. Bloc Correspondance Rapport & Bilan -->
+            <div class="rounded-2xl bg-gradient-to-r from-[#EDE9FE] via-[#F3E8FF] to-[#FAF5FF] p-4 border border-[#DDD6FE] space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#6D28D9]">
+                  <span>🎯</span>
+                  <span>En lien direct avec ton bilan</span>
+                </span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#6D28D9] text-white">
+                  Profil vérifié
+                </span>
+              </div>
+              <p class="text-xs text-[#4C1D95] font-medium leading-relaxed">
+                Cet établissement prépare spécifiquement aux pistes métiers identifiées dans ton rapport d'orientation (Rdv 2187).
               </p>
+              <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                <span class="text-xs font-bold text-[#5B21B6]">Métiers cibles :</span>
+                <span
+                  *ngFor="let c of selectedOpportunity.targetCareers"
+                  class="rounded-lg bg-white/90 border border-[#C4B5FD] px-2.5 py-0.5 text-xs font-bold text-[#6D28D9] shadow-2xs"
+                >
+                  💼 {{ c }}
+                </span>
+              </div>
             </div>
 
-            <!-- Modalités & Diplômes -->
+            <!-- 2. Intitulé & Description pédagogique -->
+            <div class="space-y-3 bg-[#F8F7FF] p-4 sm:p-5 rounded-2xl border border-[#E4E0F5]">
+              <div class="flex items-start gap-3">
+                <div class="h-10 w-10 rounded-xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-black shrink-0">
+                  {{ selectedOpportunity.category === 'FORMATION' ? '🎓' : (selectedOpportunity.category === 'ACCOMPAGNEMENT' ? '🤝' : '🏢') }}
+                </div>
+                <div class="space-y-1 min-w-0 flex-1">
+                  <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035]">
+                    {{ selectedOpportunity.headline }}
+                  </h3>
+                  <p class="text-xs sm:text-[13px] text-[#42466B] leading-relaxed">
+                    {{ selectedOpportunity.description }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- 4 Caractéristiques clés en grille -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-[#E9E4F5]">
+                <div class="bg-white p-2.5 rounded-xl border border-[#E4E0F5] text-center">
+                  <span class="text-[10px] font-bold text-[#6B7280] block uppercase">Niveau</span>
+                  <span class="text-xs font-black text-[#0F1035] block truncate">
+                    {{ selectedOpportunity.diplomas?.[0] || 'Tous niveaux' }}
+                  </span>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-[#E4E0F5] text-center">
+                  <span class="text-[10px] font-bold text-[#6B7280] block uppercase">Rythme</span>
+                  <span class="text-xs font-black text-[#0F1035] block truncate">
+                    {{ selectedOpportunity.modalities?.[0] || 'Pratique' }}
+                  </span>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-[#E4E0F5] text-center">
+                  <span class="text-[10px] font-bold text-[#6B7280] block uppercase">Coût</span>
+                  <span class="text-xs font-black text-emerald-700 block truncate">
+                    {{ selectedOpportunity.category === 'FORMATION' ? 'Rémunéré / Gratuit' : '100% Gratuit' }}
+                  </span>
+                </div>
+                <div class="bg-white p-2.5 rounded-xl border border-[#E4E0F5] text-center">
+                  <span class="text-[10px] font-bold text-[#6B7280] block uppercase">Distance</span>
+                  <span class="text-xs font-black text-[#7C3AED] block truncate">
+                    {{ selectedOpportunity.distanceKm }} km
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Modalités & Diplômes enrichis -->
             <div *ngIf="selectedOpportunity.modalities?.length || selectedOpportunity.diplomas?.length" class="space-y-2">
-              <h4 class="text-xs font-extrabold text-[#0F1035] uppercase tracking-wider">
-                Modalités & Certifications
+              <h4 class="text-xs font-extrabold text-[#0F1035] uppercase tracking-wider flex items-center gap-1.5">
+                <span>📋</span>
+                <span>Modalités, Diplômes & Certifications</span>
               </h4>
               <div class="flex flex-wrap gap-2">
                 <span
                   *ngFor="let m of selectedOpportunity.modalities"
-                  class="text-xs font-bold px-3 py-1 rounded-xl bg-purple-50 text-[#6D28D9] border border-purple-200"
+                  class="text-xs font-bold px-3 py-1 rounded-xl bg-purple-50 text-[#6D28D9] border border-purple-200 flex items-center gap-1 shadow-2xs"
                 >
-                  ✓ {{ m }}
+                  <span class="text-emerald-500 font-extrabold">✓</span>
+                  <span>{{ m }}</span>
                 </span>
                 <span
                   *ngFor="let d of selectedOpportunity.diplomas"
-                  class="text-xs font-bold px-3 py-1 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200"
+                  class="text-xs font-bold px-3 py-1 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-200 flex items-center gap-1 shadow-2xs"
                 >
-                  🎓 {{ d }}
+                  <span>🎓</span>
+                  <span>{{ d }}</span>
                 </span>
               </div>
             </div>
 
-            <!-- Coordonnées vérifiées & Transports -->
+            <!-- 4. Coordonnées vérifiées & Transports / Itinéraire -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div class="bg-gray-50 p-3.5 rounded-2xl border border-gray-200 space-y-1.5">
-                <span class="font-bold text-gray-700 block">📞 Contact direct</span>
-                <p *ngIf="selectedOpportunity.phone" class="font-semibold text-[#0F1035]">
-                  Tél : <a [href]="'tel:' + selectedOpportunity.phone" class="text-purple-600 hover:underline">{{ selectedOpportunity.phone }}</a>
-                </p>
-                <p *ngIf="selectedOpportunity.email" class="font-semibold text-[#0F1035] truncate">
-                  Email : <a [href]="'mailto:' + selectedOpportunity.email" class="text-purple-600 hover:underline">{{ selectedOpportunity.email }}</a>
-                </p>
-                <p *ngIf="selectedOpportunity.websiteUrl">
-                  <a [href]="selectedOpportunity.websiteUrl" target="_blank" rel="noopener noreferrer" class="text-purple-600 font-bold hover:underline inline-flex items-center gap-1">
-                    <span>Visiter le site officiel</span>
-                    <span>↗</span>
-                  </a>
-                </p>
+              <!-- Contact direct -->
+              <div class="bg-white p-4 rounded-2xl border border-[#E4E0F5] space-y-2 shadow-2xs">
+                <span class="font-extrabold text-[#0F1035] flex items-center gap-1.5">
+                  <span>📞</span>
+                  <span>Contact direct & Candidature</span>
+                </span>
+                <div class="space-y-1.5 text-xs">
+                  <p *ngIf="selectedOpportunity.phone" class="font-bold text-[#0F1035] flex items-center justify-between">
+                    <span class="text-gray-500 font-normal">Téléphone :</span>
+                    <a [href]="'tel:' + selectedOpportunity.phone" class="text-purple-700 font-extrabold hover:underline">
+                      {{ selectedOpportunity.phone }}
+                    </a>
+                  </p>
+                  <p *ngIf="selectedOpportunity.email" class="font-bold text-[#0F1035] flex items-center justify-between truncate">
+                    <span class="text-gray-500 font-normal">Email :</span>
+                    <a [href]="'mailto:' + selectedOpportunity.email" class="text-purple-700 font-bold hover:underline truncate ml-2">
+                      {{ selectedOpportunity.email }}
+                    </a>
+                  </p>
+                  <p *ngIf="selectedOpportunity.websiteUrl" class="pt-1 border-t border-gray-100">
+                    <a
+                      [href]="selectedOpportunity.websiteUrl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="w-full inline-flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-purple-50 text-[#6D28D9] font-extrabold hover:bg-purple-100 transition"
+                    >
+                      <span>Visiter le site officiel</span>
+                      <span>↗</span>
+                    </a>
+                  </p>
+                </div>
               </div>
 
-              <div class="bg-gray-50 p-3.5 rounded-2xl border border-gray-200 space-y-1.5">
-                <span class="font-bold text-gray-700 block">🚌 Transports Lignes d'Azur</span>
-                <p class="text-gray-600 font-medium">
+              <!-- Accès, Transports & Google Maps -->
+              <div class="bg-white p-4 rounded-2xl border border-[#E4E0F5] space-y-2 shadow-2xs">
+                <span class="font-extrabold text-[#0F1035] flex items-center gap-1.5">
+                  <span>🚊</span>
+                  <span>Accès & Transports</span>
+                </span>
+                <p class="text-[#42466B] font-medium leading-relaxed">
                   {{ selectedOpportunity.transitInfo || 'Desservi par le réseau Métropole Nice Côte d’Azur' }}
                 </p>
-                <p class="text-[11px] text-gray-400">
-                  Source : {{ selectedOpportunity.source }}
-                </p>
+                <div class="pt-1 border-t border-gray-100 flex items-center justify-between">
+                  <span class="text-[11px] text-gray-400">Source : {{ selectedOpportunity.source }}</span>
+                  <a
+                    [href]="getGoogleMapsUrl(selectedOpportunity)"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 text-[11px] font-extrabold text-blue-600 hover:text-blue-800 hover:underline"
+                  >
+                    <span>Itinéraire Maps</span>
+                    <span>↗</span>
+                  </a>
+                </div>
               </div>
+            </div>
+
+            <!-- 5. Astuce pédagogique pour le jeune -->
+            <div class="rounded-2xl bg-amber-50/80 border border-amber-200/80 p-3.5 text-xs text-[#92400E] flex items-start gap-2.5">
+              <span class="text-base shrink-0">💡</span>
+              <p class="leading-relaxed">
+                <strong>Conseil MonBilan+ :</strong> Avant de prendre contact, clique sur <strong>Mon Coach IA</strong> ci-dessous. Tu pourras générer un message de motivation personnalisé et préparer tes questions pour un échange ou une visite !
+              </p>
             </div>
           </div>
 
-          <!-- Pied de Modale : Passerelles vers Mon Coach IA & Immersion Pro -->
-          <div class="p-4 sm:p-5 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <!-- Pied de Modale : Passerelles vers Mon Coach IA, Immersion & Favoris -->
+          <div class="p-4 sm:p-5 bg-white border-t border-[#E9E4F5] flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
             <button
               type="button"
               (click)="toggleFavorite(selectedOpportunity)"
-              class="w-full sm:w-auto px-4 py-2.5 rounded-2xl border border-gray-300 bg-white text-xs font-bold text-gray-700 hover:bg-gray-100 flex items-center justify-center gap-2 transition cursor-pointer"
+              class="w-full sm:w-auto px-4 py-2.5 rounded-2xl border border-gray-300 bg-white text-xs font-bold text-gray-700 hover:bg-gray-50 flex items-center justify-center gap-2 transition cursor-pointer shadow-2xs"
             >
-              <span>{{ selectedOpportunity.isFavorite ? '❤️ Dans mes favoris' : '🤍 Ajouter aux favoris' }}</span>
+              <span *ngIf="selectedOpportunity.isFavorite" class="text-rose-500 font-extrabold flex items-center gap-1.5">
+                <span>❤️</span>
+                <span>Dans mes favoris</span>
+              </span>
+              <span *ngIf="!selectedOpportunity.isFavorite" class="flex items-center gap-1.5">
+                <span>🤍</span>
+                <span>Ajouter aux favoris</span>
+              </span>
             </button>
 
             <div class="flex items-center gap-2 w-full sm:w-auto">
@@ -592,10 +723,11 @@ export interface LocalZone {
               <button
                 type="button"
                 (click)="onOpenCoachIA(selectedOpportunity)"
-                class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-gradient-to-r from-[#8B3DFF] to-[#6D28D9] text-white text-xs font-extrabold shadow-md hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-1.5 cursor-pointer"
+                class="flex-1 sm:flex-none px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#8B3DFF] to-[#6D28D9] text-white text-xs font-extrabold shadow-md hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>✨ Mon Coach IA</span>
-                <span class="hidden sm:inline">(Préparer ma demande)</span>
+                <span>✨</span>
+                <span>Mon Coach IA</span>
+                <span class="opacity-90 font-medium">(Préparer ma demande)</span>
               </button>
 
               <!-- Passerelle Immersion Pro si entreprise -->
@@ -603,9 +735,10 @@ export interface LocalZone {
                 *ngIf="selectedOpportunity.category === 'ENTREPRISE'"
                 type="button"
                 (click)="onChooseForImmersion(selectedOpportunity)"
-                class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-[#0F1035] text-white text-xs font-extrabold hover:bg-black active:scale-95 transition flex items-center justify-center gap-1.5 cursor-pointer"
+                class="flex-1 sm:flex-none px-4 py-2.5 rounded-2xl bg-[#0F1035] text-white text-xs font-extrabold hover:bg-black active:scale-95 transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
               >
-                <span>💼 Immersion</span>
+                <span>💼</span>
+                <span>Stage Immersion</span>
               </button>
             </div>
           </div>
@@ -978,6 +1111,7 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   getDefaultImage(opp: LocalOpportunity): string {
+    if (opp.imageUrl) return opp.imageUrl;
     if (opp.category === 'FORMATION') {
       return 'assets/visuals/institutions/cfa-btp.jpg';
     }
@@ -985,6 +1119,13 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
       return 'assets/visuals/institutions/mission-locale.jpg';
     }
     return 'assets/visuals/institutions/atelier-decors.jpg';
+  }
+
+  getGoogleMapsUrl(opp: LocalOpportunity): string {
+    if (opp.coordinates?.lat && opp.coordinates?.lng) {
+      return `https://www.google.com/maps/dir/?api=1&destination=${opp.coordinates.lat},${opp.coordinates.lng}`;
+    }
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(opp.name + ' ' + opp.address)}`;
   }
 
   onImageError(event: Event, opp: LocalOpportunity): void {

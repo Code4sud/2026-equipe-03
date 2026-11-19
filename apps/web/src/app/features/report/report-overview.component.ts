@@ -75,38 +75,7 @@ export interface UIHexacoItem {
     <div class="space-y-6">
 
       <!-- ================================================================== -->
-      <!-- BANNIÈRE HERO : « Découvre ce que dit ton bilan »                    -->
-      <!-- ================================================================== -->
-      <div class="rounded-[28px] bg-gradient-to-r from-[#5B21B6] via-[#7C3AED] to-[#9333EA] text-white p-6 sm:p-7 shadow-lg relative overflow-hidden">
-        <!-- Décorations lumineuses en arrière-plan -->
-        <div class="absolute -right-16 -top-16 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-        <div class="absolute left-1/3 -bottom-20 w-80 h-80 bg-[#C084FC]/20 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10">
-          <!-- Texte et icône livre -->
-          <div class="md:col-span-8 flex items-start gap-4 sm:gap-5">
-            <div class="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-inner backdrop-blur-sm text-2xl sm:text-3xl">
-              <mb-icon name="book-open"></mb-icon>
-            </div>
-            <div class="space-y-2">
-              <div class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
-                <span><mb-icon name="sparkles"></mb-icon> Restitution certifiée</span>
-                <span>•</span>
-                <span>Rdv {{ rdvNumber }}</span>
-              </div>
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight">
-                Découvre ce que dit ton bilan
-              </h2>
-              <p class="text-xs sm:text-sm text-[#E7E8FB] max-w-2xl leading-relaxed">
-                Une restitution claire et personnalisée pour comprendre tes résultats, explorer des métiers et préparer la suite.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ================================================================== -->
-      <!-- NAVIGATION INTERNE : 4 ONGLET CLAIRS                               -->
+      <!-- NAVIGATION INTERNE : 3 ONGLETS CONFORMES À LA MAQUETTE             -->
       <!-- ================================================================== -->
       <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1 scrollbar-none">
         <button
@@ -115,9 +84,9 @@ export interface UIHexacoItem {
           [class]="activeSubTab === 'COMPRENDRE'
             ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow-md font-extrabold'
             : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
-          class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
+          class="rounded-full px-5 sm:px-6 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs cursor-pointer"
         >
-          <span><mb-icon name="briefcase"></mb-icon></span>
+          <span><mb-icon name="sliders"></mb-icon></span>
           <span>Comprendre mon bilan</span>
         </button>
 
@@ -127,14 +96,12 @@ export interface UIHexacoItem {
           [class]="activeSubTab === 'AUDIO'
             ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow-md font-extrabold'
             : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
-          class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
+          class="rounded-full px-5 sm:px-6 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs cursor-pointer"
         >
           <span><mb-icon name="headphones"></mb-icon></span>
           <span>J'écoute mon bilan</span>
-          <span class="rounded-full bg-white/20 text-[10px] px-1.5 py-0.2 font-extrabold">6</span>
+          <span class="rounded-full bg-[#F5F3FF] text-[#6328E8] text-[11px] px-2 py-0.5 font-black border border-[#DDD6FE]">6</span>
         </button>
-
-
 
         <button
           type="button"
@@ -142,42 +109,51 @@ export interface UIHexacoItem {
           [class]="activeSubTab === 'SUITE'
             ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow-md font-extrabold'
             : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
-          class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
+          class="rounded-full px-5 sm:px-6 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs cursor-pointer"
         >
-          <span><mb-icon name="compass"></mb-icon></span>
+          <span><mb-icon name="target"></mb-icon></span>
           <span>Je prépare la suite</span>
         </button>
       </div>
 
       <!-- ================================================================== -->
-      <!-- VUE 1 : COMPRENDRE MON BILAN (Vue Principale fidèle au Mockup)       -->
+      <!-- VUE 1 : COMPRENDRE MON BILAN (Vue Principale 2 Colonnes 50% / 50%) -->
       <!-- ================================================================== -->
       <div *ngIf="activeSubTab === 'COMPRENDRE'" class="space-y-6">
 
-        <!-- GRILLE PRINCIPALE SUPÉRIEURE (2 Colonnes) -->
+        <!-- GRILLE 2 COLONNES (50% / 50%) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
 
-          <!-- COLONNE GAUCHE (6/12) : « Ton bilan en quelques mots » avec Ollama IA -->
-          <div class="lg:col-span-6 xl:col-span-6 rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm flex flex-col justify-between space-y-5">
-            <div class="space-y-4">
-              <!-- En-tête avec badge d'inférence locale Ollama -->
-              <div class="flex flex-wrap items-center justify-between gap-2">
-                <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F1035] flex items-center gap-2.5">
+          <!-- ============================================================== -->
+          <!-- COLONNE GAUCHE (6/12) : Mon bilan en quelques mots             -->
+          <!-- ============================================================== -->
+          <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
+
+            <!-- CARTE 1 : MON BILAN EN QUELQUES MOTS -->
+            <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-5">
+              
+              <!-- En-tête avec titre et badge IA éthique -->
+              <div class="space-y-2">
+                <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F1035] flex items-center gap-2">
                   <span class="text-amber-400 text-xl"><mb-icon name="sparkles"></mb-icon></span>
-                  <span>Ton bilan en quelques mots</span>
+                  <span>Mon bilan en quelques mots</span>
                 </h3>
-                <span
-                  class="text-[11px] font-bold px-2.5 py-1 rounded-full border flex items-center gap-1.5 transition"
-                  [ngClass]="ollamaConnected
-                    ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                    : 'bg-purple-50 text-purple-700 border-purple-200'"
-                >
-                  <mb-icon name="sparkles"></mb-icon>
-                  <span>{{ ollamaConnected ? 'Ollama IA (' + ollamaModel + ')' : 'Rapport certifié 2187' }}</span>
-                </span>
+                
+                <div>
+                  <button
+                    type="button"
+                    (click)="toggleAIInfoModal()"
+                    class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0] hover:bg-[#D1FAE5] transition cursor-pointer shadow-2xs"
+                    title="En savoir plus sur l'assistance par IA"
+                  >
+                    <span>🌿</span>
+                    <span>Explication assistée par IA</span>
+                    <span class="text-[11px] font-normal text-[#059669]">ⓘ</span>
+                  </button>
+                </div>
               </div>
 
-              <!-- Filtres de vulgarisation en 1 clic (Éviter les mots complexes) -->
+              <!-- 3 Segments pills (Filtres de vulgarisation) -->
               <div class="flex items-center gap-1.5 p-1 bg-[#F8F7FF] rounded-2xl border border-[#E4E0F5] text-xs font-bold">
                 <button
                   type="button"
@@ -185,7 +161,7 @@ export interface UIHexacoItem {
                   [class]="aiMode === 'SIMPLE'
                     ? 'bg-[#7C3AED] text-white shadow-xs'
                     : 'text-[#42466B] hover:text-[#0F1035]'"
-                  class="flex-1 py-1.5 px-2 rounded-xl transition text-center cursor-pointer"
+                  class="flex-1 py-2 px-3 rounded-xl transition text-center cursor-pointer font-bold"
                 >
                   🌟 En clair &amp; simple
                 </button>
@@ -195,9 +171,9 @@ export interface UIHexacoItem {
                   [class]="aiMode === 'PARENTS'
                     ? 'bg-[#7C3AED] text-white shadow-xs'
                     : 'text-[#42466B] hover:text-[#0F1035]'"
-                  class="flex-1 py-1.5 px-2 rounded-xl transition text-center cursor-pointer"
+                  class="flex-1 py-2 px-3 rounded-xl transition text-center cursor-pointer font-bold"
                 >
-                  🏠 Pour mes proches
+                  👥 Pour mes proches
                 </button>
                 <button
                   type="button"
@@ -205,50 +181,58 @@ export interface UIHexacoItem {
                   [class]="aiMode === 'WORK'
                     ? 'bg-[#7C3AED] text-white shadow-xs'
                     : 'text-[#42466B] hover:text-[#0F1035]'"
-                  class="flex-1 py-1.5 px-2 rounded-xl transition text-center cursor-pointer"
+                  class="flex-1 py-2 px-3 rounded-xl transition text-center cursor-pointer font-bold"
                 >
                   💼 Dans la vraie vie
                 </button>
               </div>
 
-              <!-- Bloc texte d'explication (Généré par Ollama ou Fallback certifié) -->
-              <div class="rounded-2xl bg-[#FAFAFC] border border-[#E4E0F5] p-4 text-xs sm:text-[13px] text-[#31355B] space-y-3 relative overflow-hidden leading-relaxed">
-                <!-- Spinner si Ollama génère -->
-                <div *ngIf="isGeneratingAI" class="py-6 flex flex-col items-center justify-center gap-2 text-center animate-fadeIn">
-                  <div class="h-8 w-8 rounded-full border-3 border-[#7C3AED] border-t-transparent animate-spin"></div>
-                  <p class="font-extrabold text-[#7C3AED] text-xs">Ollama reformule ton bilan sans jargon...</p>
+              <!-- Synthèse structurée certifiée du Rapport 2187 (Zéro invention) -->
+              <div class="space-y-3 pt-1">
+                <p class="text-xs sm:text-sm font-bold text-[#0F1035]">
+                  {{ synthesisIntro }}
+                </p>
+
+                <!-- Point 1 -->
+                <div class="flex items-start gap-3">
+                  <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    1
+                  </span>
+                  <p class="text-xs sm:text-sm text-[#1E1B4B] leading-relaxed">
+                    {{ synthesisPoint1 }}
+                  </p>
                 </div>
 
-                <!-- Texte d'explication sans jargon -->
-                <div *ngIf="!isGeneratingAI" class="space-y-2 whitespace-pre-line text-[#1E1B4B]">
-                  {{ aiExplanationText }}
+                <!-- Point 2 -->
+                <div class="flex items-start gap-3">
+                  <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    2
+                  </span>
+                  <p class="text-xs sm:text-sm text-[#1E1B4B] leading-relaxed">
+                    {{ synthesisPoint2 }}
+                  </p>
                 </div>
 
-                <!-- Actions d'écoute et de régénération IA -->
-                <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#F0EDFA]">
-                  <button
-                    type="button"
-                    (click)="generateAIExplanation()"
-                    [disabled]="isGeneratingAI"
-                    class="rounded-xl border border-[#D8DCF0] hover:border-[#7C3AED] bg-white px-3 py-1.5 text-xs font-extrabold text-[#0F1035] hover:text-[#7C3AED] transition flex items-center gap-1.5 shadow-2xs cursor-pointer disabled:opacity-50"
-                  >
-                    <mb-icon name="sparkles"></mb-icon>
-                    <span>{{ ollamaConnected ? 'Réexpliquer avec Ollama IA' : 'Actualiser l\'explication' }}</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    (click)="toggleSpeechAI()"
-                    [class]="isSpeakingAI ? 'bg-rose-50 text-rose-700 border-rose-200' : 'bg-purple-50 text-[#6D28D9] border-purple-200'"
-                    class="rounded-xl border px-3 py-1.5 text-xs font-extrabold transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
-                  >
-                    <mb-icon [name]="isSpeakingAI ? 'pause' : 'volume-2'"></mb-icon>
-                    <span>{{ isSpeakingAI ? 'Arrêter la voix' : 'Écouter l\'explication' }}</span>
-                  </button>
+                <!-- Point 3 -->
+                <div class="flex items-start gap-3">
+                  <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                    3
+                  </span>
+                  <p class="text-xs sm:text-sm text-[#1E1B4B] leading-relaxed">
+                    {{ synthesisPoint3 }}
+                  </p>
                 </div>
               </div>
 
-              <!-- 4 Repères à pastilles vertes (cliquables avec détail interactif) -->
+              <!-- Encadré lavande « En bref » -->
+              <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 text-xs sm:text-[13px] text-[#31355B] leading-relaxed flex items-start gap-2.5">
+                <span class="text-base shrink-0 mt-0.5">💡</span>
+                <p>
+                  <strong>En bref :</strong> {{ synthesisEnBref }}
+                </p>
+              </div>
+
+              <!-- 4 Repères à pastilles (Accès direct aux rubriques) -->
               <div class="space-y-2">
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                   <button
@@ -272,7 +256,7 @@ export interface UIHexacoItem {
                     class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
                     <span>✓</span>
-                    <span class="truncate">Tes aptitudes</span>
+                    <span class="truncate">Aptitudes</span>
                   </button>
 
                   <button
@@ -284,24 +268,24 @@ export interface UIHexacoItem {
                     class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
                     <span>✓</span>
-                    <span class="truncate">Ta personnalité</span>
+                    <span class="truncate">Personnalité</span>
                   </button>
 
                   <button
                     type="button"
                     (click)="onExploreCareers()"
-                    class="rounded-xl bg-[#FAF5FF] border border-[#DDD6FE] p-2 text-center text-xs font-extrabold text-[#6D28D9] hover:bg-[#F3E8FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                    class="rounded-xl bg-[#FAF5FF] border border-[#DDD6FE] p-2 text-center text-xs font-extrabold text-[#7C3AED] hover:bg-[#F3E8FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
                     <span>🚀</span>
                     <span class="truncate">{{ careers.length }} métiers</span>
                   </button>
                 </div>
 
-                <!-- Volet de détail interactif sans jargon -->
+                <!-- Volet déroulant interactif certifié (sans jargon) -->
                 <div *ngIf="activeDetailCard === 'RIASEC'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
                   <p class="font-black text-[#0F1035] flex items-center justify-between">
                     <span>🎨 Tes centres d'intérêt réels (p. 4 du rapport) :</span>
-                    <span class="text-[10px] text-gray-400 font-normal">Clique à nouveau pour fermer</span>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
                   </p>
                   <p>• <strong>Artistique (dominant)</strong> : Tu aimes créer, concevoir et inventer sans être enfermée dans une routine.</p>
                   <p>• <strong>Entreprenant (fort)</strong> : Tu as de l'énergie pour proposer des idées et mener des projets.</p>
@@ -311,7 +295,7 @@ export interface UIHexacoItem {
                 <div *ngIf="activeDetailCard === 'APTITUDES'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
                   <p class="font-black text-[#0F1035] flex items-center justify-between">
                     <span>💡 Tes aptitudes observées (p. 5 du rapport) :</span>
-                    <span class="text-[10px] text-gray-400 font-normal">Sans note scolaire éliminatoire</span>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
                   </p>
                   <p>• <strong>Flexibilité mentale</strong> : Tu t'adaptes rapidement quand la consigne ou la situation change.</p>
                   <p>• <strong>Mémoire visuelle</strong> : Tu retiens facilement les images, schémas et agencements d'espace.</p>
@@ -322,155 +306,161 @@ export interface UIHexacoItem {
                 <div *ngIf="activeDetailCard === 'HEXACO'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
                   <p class="font-black text-[#0F1035] flex items-center justify-between">
                     <span>🤝 Ta personnalité au travail (p. 6 du rapport) :</span>
-                    <span class="text-[10px] text-gray-400 font-normal">Chaque profil a ses forces</span>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
                   </p>
                   <p>• <strong>Curiosité &amp; Ouverture</strong> : Tu t'intéresses à ce qui est nouveau et créatif.</p>
                   <p>• <strong>Esprit d'équipe &amp; Agréabilité</strong> : Tu privilégies la bonne entente et l'écoute mutuelle.</p>
                   <p>• <strong>Sincérité &amp; Humilité</strong> : Tu apprécies la franchise et le respect mutuel.</p>
                 </div>
               </div>
+            </div>
 
-              <!-- Bloc « Pose une question simple sur ton bilan » -->
-              <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3.5 space-y-2.5">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                    <mb-icon name="message-circle"></mb-icon>
-                    <span>Une question sur ton bilan ?</span>
+            <!-- CARTE 2 : UNE QUESTION SUR TON BILAN ? -->
+            <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4">
+              <div class="space-y-1">
+                <h4 class="text-base sm:text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
+                  <span class="text-[#7C3AED]"><mb-icon name="message-circle"></mb-icon></span>
+                  <span>Une question sur ton bilan ?</span>
+                </h4>
+              </div>
+
+              <!-- 3 suggestions de questions en 1 clic -->
+              <div class="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  (click)="askPredefinedQuestion(1)"
+                  class="rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] hover:border-[#7C3AED] hover:bg-[#F3E8FF] px-3 py-1.5 text-xs font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
+                >
+                  🎨 Dominante artistique ?
+                </button>
+                <button
+                  type="button"
+                  (click)="askPredefinedQuestion(2)"
+                  class="rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] hover:border-[#7C3AED] hover:bg-[#F3E8FF] px-3 py-1.5 text-xs font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
+                >
+                  ❓ Pas de notes ?
+                </button>
+                <button
+                  type="button"
+                  (click)="askPredefinedQuestion(3)"
+                  class="rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] hover:border-[#7C3AED] hover:bg-[#F3E8FF] px-3 py-1.5 text-xs font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
+                >
+                  📈 Résultats évolutifs ?
+                </button>
+              </div>
+
+              <!-- Champ de saisie et bouton Demander -->
+              <div class="flex items-center gap-2">
+                <input
+                  type="text"
+                  [(ngModel)]="userBilanQuestion"
+                  (keyup.enter)="askBilanQuestion(userBilanQuestion)"
+                  placeholder="Pose ta question (ex. : Quel métier me correspond le plus ?)"
+                  class="flex-1 bg-[#F8F7FF] border border-[#E4E0F5] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:bg-white"
+                />
+                <button
+                  type="button"
+                  (click)="askBilanQuestion(userBilanQuestion)"
+                  [disabled]="isAnsweringQuestion || !userBilanQuestion.trim()"
+                  class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-extrabold transition cursor-pointer disabled:opacity-40 flex items-center gap-2 shadow-xs shrink-0"
+                >
+                  <span>{{ isAnsweringQuestion ? '...' : 'Demander' }}</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Réponse bienveillante de l'IA (ou fallback déterministe certifié) -->
+              <div *ngIf="aiQuestionAnswer" class="p-4 rounded-2xl bg-[#F8F7FF] border border-[#DDD6FE] text-xs sm:text-sm text-[#1E1B4B] space-y-2 animate-fadeIn shadow-xs">
+                <div class="flex items-center justify-between text-xs font-extrabold text-[#7C3AED]">
+                  <span class="flex items-center gap-1.5">
+                    <mb-icon name="sparkles"></mb-icon>
+                    <span>Réponse certifiée · Rapport Rdv {{ rdvNumber }}</span>
                   </span>
-                  <span class="text-[10px] text-purple-700 font-bold">Sans jargon</span>
+                  <button type="button" (click)="aiQuestionAnswer = null" class="text-gray-400 hover:text-gray-600 font-bold text-sm">✕</button>
                 </div>
-
-                <!-- Questions fréquentes en 1 clic -->
-                <div class="flex flex-wrap gap-1.5">
-                  <button
-                    type="button"
-                    (click)="askPredefinedQuestion(1)"
-                    class="rounded-lg bg-white border border-[#E4E0F5] hover:border-[#7C3AED] px-2.5 py-1 text-[11px] font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
-                  >
-                    🎨 Dominante Artistique ?
-                  </button>
-                  <button
-                    type="button"
-                    (click)="askPredefinedQuestion(2)"
-                    class="rounded-lg bg-white border border-[#E4E0F5] hover:border-[#7C3AED] px-2.5 py-1 text-[11px] font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
-                  >
-                    ❓ Pas de notes ?
-                  </button>
-                  <button
-                    type="button"
-                    (click)="askPredefinedQuestion(3)"
-                    class="rounded-lg bg-white border border-[#E4E0F5] hover:border-[#7C3AED] px-2.5 py-1 text-[11px] font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
-                  >
-                    🌱 Résultats évolutifs ?
-                  </button>
-                </div>
-
-                <!-- Champ de question libre -->
-                <div class="flex items-center gap-2 pt-1">
-                  <input
-                    type="text"
-                    [(ngModel)]="userBilanQuestion"
-                    (keyup.enter)="askBilanQuestion(userBilanQuestion)"
-                    placeholder="Pose ta question (ex: Quel métier me correspond le plus ?)"
-                    class="flex-1 bg-white border border-[#E4E0F5] rounded-xl px-3 py-1.5 text-xs font-semibold text-[#0F1035] focus:outline-none focus:ring-1 focus:ring-[#7C3AED]"
-                  />
-                  <button
-                    type="button"
-                    (click)="askBilanQuestion(userBilanQuestion)"
-                    [disabled]="isAnsweringQuestion || !userBilanQuestion.trim()"
-                    class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-3 py-1.5 text-xs font-extrabold transition cursor-pointer disabled:opacity-40"
-                  >
-                    {{ isAnsweringQuestion ? '...' : 'Demander' }}
-                  </button>
-                </div>
-
-                <!-- Réponse de l'IA sans invention -->
-                <div *ngIf="aiQuestionAnswer" class="p-3 rounded-xl bg-white border border-[#DDD6FE] text-xs text-[#1E1B4B] space-y-1 animate-fadeIn shadow-xs">
-                  <div class="flex items-center justify-between text-[11px] font-extrabold text-[#7C3AED]">
-                    <span>💡 Réponse du Coach MonBilan+ :</span>
-                    <button type="button" (click)="aiQuestionAnswer = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
-                  </div>
-                  <p class="leading-relaxed">{{ aiQuestionAnswer }}</p>
-                </div>
+                <p class="leading-relaxed">{{ aiQuestionAnswer }}</p>
               </div>
             </div>
 
-            <!-- Note rassurante au bas -->
-            <div class="pt-3 border-t border-[#F0EDFA] flex items-center gap-2 text-xs text-[#555A8A]">
-              <span class="text-[#7C3AED] text-sm"><mb-icon name="lightbulb"></mb-icon></span>
-              <p>Ce bilan valorise tes forces réelles. Aucun algorithme ne remplace ton échange avec ton conseiller.</p>
-            </div>
           </div>
 
-          <!-- COLONNE DROITE (6/12) : « J'écoute mon bilan » (Épisodes + Lecteur compact) -->
-          <div class="lg:col-span-6 xl:col-span-6 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-col justify-between space-y-4">
-            <div>
-              <div class="flex items-center justify-between mb-1">
-                <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F1035] flex items-center gap-2.5">
-                  <span class="text-[#7C3AED]"><mb-icon name="headphones"></mb-icon></span>
-                  <span>J'écoute mon bilan</span>
-                </h3>
-                <span class="text-xs font-bold text-[#7C3AED] bg-[#F5F3FF] px-2.5 py-1 rounded-full">
-                  6 épisodes sourcés
-                </span>
-              </div>
-              <p class="text-xs text-[#64748B] mb-3">
-                Des explications audio courtes et simples.
-              </p>
+          <!-- ============================================================== -->
+          <!-- COLONNE DROITE (6/12) : J'écoute mon bilan & Lecteur Docké    -->
+          <!-- ============================================================== -->
+          <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
 
-              <!-- Liste des 6 Épisodes thématiques -->
-              <div class="space-y-1.5 max-h-[260px] overflow-y-auto pr-1">
-                <div
-                  *ngFor="let ep of audioEpisodes; let idx = index"
-                  (click)="selectAndPlayEpisode(idx)"
-                  [class]="selectedEpisodeIndex === idx
-                    ? 'bg-[#F5F3FF] border-2 border-[#7C3AED] shadow-xs'
-                    : 'bg-[#FAFAFC] hover:bg-[#F3F0FE] border border-transparent'"
-                  class="p-2.5 rounded-2xl flex items-center justify-between gap-3 transition cursor-pointer"
-                >
-                  <div class="flex items-center gap-3 min-w-0">
-                    <button
-                      type="button"
-                      [class]="selectedEpisodeIndex === idx && isPlaying
-                        ? 'bg-[#7C3AED] text-white shadow-md'
-                        : 'bg-white text-[#7C3AED] border border-[#E4E0F5]'"
-                      class="h-8 w-8 rounded-full flex items-center justify-center shrink-0 text-xs font-bold transition"
-                    >
-                      <mb-icon [name]="(selectedEpisodeIndex === idx && isPlaying) ? 'pause' : 'play'"></mb-icon>
-                    </button>
-                    <div class="min-w-0">
-                      <p class="text-xs sm:text-[13px] font-black text-[#0F1035] truncate">
-                        {{ ep.title }}
-                      </p>
-                      <p class="text-[11px] text-[#64748B] truncate">
-                        {{ ep.subtitle }}
-                      </p>
-                    </div>
-                  </div>
-                  <span class="text-[11px] font-bold text-[#64748B] shrink-0 bg-white px-2 py-0.5 rounded-md border border-[#E4E0F5]">
-                    ~ 2 min
+            <!-- CARTE DES 6 ÉPISODES AUDIO -->
+            <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F1035] flex items-center gap-2.5">
+                    <span class="text-[#7C3AED]"><mb-icon name="headphones"></mb-icon></span>
+                    <span>J'écoute mon bilan</span>
+                  </h3>
+                  <span class="text-xs font-bold text-[#7C3AED] bg-[#F5F3FF] border border-[#DDD6FE] px-3 py-1 rounded-full">
+                    6 épisodes
                   </span>
+                </div>
+                <p class="text-xs sm:text-sm text-[#64748B] mb-4">
+                  Des explications audio courtes et simples, issues de ton rapport.
+                </p>
+
+                <!-- Liste des 6 chapitres thématiques sans coupure -->
+                <div class="space-y-2.5">
+                  <div
+                    *ngFor="let ep of audioEpisodes; let idx = index"
+                    (click)="selectAndPlayEpisode(idx)"
+                    [class]="selectedEpisodeIndex === idx
+                      ? 'bg-[#F5F3FF] border-2 border-[#7C3AED] shadow-xs'
+                      : 'bg-white hover:bg-[#FAFAFC] border border-[#E4E0F5]'"
+                    class="p-3.5 rounded-2xl flex items-center justify-between gap-3 transition cursor-pointer"
+                  >
+                    <div class="flex items-center gap-3 min-w-0">
+                      <button
+                        type="button"
+                        [class]="selectedEpisodeIndex === idx && isPlaying
+                          ? 'bg-[#7C3AED] text-white shadow-md'
+                          : 'bg-white text-[#7C3AED] border border-[#E4E0F5]'"
+                        class="h-9 w-9 rounded-full flex items-center justify-center shrink-0 text-xs font-bold transition"
+                      >
+                        <mb-icon [name]="(selectedEpisodeIndex === idx && isPlaying) ? 'pause' : 'play'"></mb-icon>
+                      </button>
+                      <div class="min-w-0">
+                        <p class="text-xs sm:text-sm font-extrabold text-[#0F1035] truncate">
+                          {{ ep.title }}
+                        </p>
+                        <p class="text-[11px] sm:text-xs text-[#64748B] truncate">
+                          {{ ep.subtitle }}
+                        </p>
+                      </div>
+                    </div>
+                    <span class="text-[11px] font-bold text-[#64748B] shrink-0 bg-white px-2.5 py-1 rounded-md border border-[#E4E0F5]">
+                      ~ 2 min
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- LECTEUR AUDIO COMPACT DOCKÉ EN BAS DE CARTE -->
-            <div class="rounded-2xl bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#8B5CF6] text-white p-3.5 shadow-md flex items-center justify-between gap-3 sm:gap-4">
+            <!-- LECTEUR AUDIO PREMIUM DOCKÉ EN BAS DE LA COLONNE DROITE -->
+            <div class="rounded-2xl bg-gradient-to-r from-[#6328E8] via-[#7C3AED] to-[#9333EA] text-white p-3.5 sm:p-4 shadow-lg flex items-center justify-between gap-3 sm:gap-4">
               <!-- Bouton Play/Pause blanc -->
               <button
                 type="button"
                 (click)="toggleAudioPlay()"
-                class="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white text-[#6D28D9] flex items-center justify-center font-black text-sm shadow-md transition hover:scale-105 active:scale-95 shrink-0"
+                class="h-11 w-11 rounded-full bg-white text-[#6328E8] flex items-center justify-center font-black text-sm shadow-md transition hover:scale-105 active:scale-95 shrink-0 cursor-pointer"
               >
                 <mb-icon [name]="isPlaying ? 'pause' : 'play'"></mb-icon>
               </button>
 
-              <!-- Titre et Barre de progression -->
+              <!-- Titre et Barre de progression blanche -->
               <div class="flex-1 min-w-0 space-y-1">
                 <div class="flex items-center justify-between text-xs font-extrabold text-white">
-                  <span class="truncate">{{ currentEpisode?.title || 'Comprendre mon bilan' }}</span>
+                  <span class="truncate">{{ currentEpisodeTitle }}</span>
                   <span class="text-[11px] text-[#DDD6FE] font-mono shrink-0 ml-2">
-                    {{ formatTime(audioProgressSec) }} / {{ formatTime(audioDurationSec) }}
+                    {{ formattedCurrentTime }} / {{ formattedDuration }}
                   </span>
                 </div>
                 <!-- Barre de progression interactive -->
@@ -487,7 +477,7 @@ export interface UIHexacoItem {
                 <button
                   type="button"
                   (click)="cyclePlaybackRate()"
-                  class="rounded-lg bg-white/15 hover:bg-white/25 text-white px-2 py-1 text-xs font-bold transition"
+                  class="rounded-lg bg-white/15 hover:bg-white/25 text-white px-2.5 py-1.5 text-xs font-bold transition cursor-pointer"
                   title="Vitesse de lecture"
                 >
                   {{ playbackRate }}x
@@ -496,7 +486,7 @@ export interface UIHexacoItem {
                 <button
                   type="button"
                   (click)="showTranscriptModal = true"
-                  class="rounded-xl bg-white text-[#6D28D9] hover:bg-[#F5F3FF] px-2.5 py-1 text-xs font-black shadow-xs flex items-center gap-1 transition"
+                  class="rounded-xl bg-white text-[#6328E8] hover:bg-[#F5F3FF] px-3 py-1.5 text-xs font-black shadow-xs flex items-center gap-1.5 transition cursor-pointer"
                   title="Afficher la transcription"
                 >
                   <span><mb-icon name="file-text"></mb-icon></span>
@@ -504,65 +494,11 @@ export interface UIHexacoItem {
                 </button>
               </div>
             </div>
+
           </div>
+
         </div>
 
-
-
-        <!-- RANGÉE INFÉRIEURE COMPLÈTE : « ET MAINTENANT ? » -->
-        <div class="rounded-[28px] bg-[#F8F7FF] border border-[#E4E0F5] p-5 sm:p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div class="space-y-0.5">
-            <h4 class="text-lg font-black text-[#0F1035] flex items-center gap-2">
-              <span class="text-[#7C3AED]"><mb-icon name="compass"></mb-icon></span>
-              <span>Et maintenant ?</span>
-            </h4>
-            <p class="text-xs text-[#555A8A]">
-              Poursuis ton exploration et passe à l'action.
-            </p>
-          </div>
-
-          <!-- 3 Boutons d'action concrets -->
-          <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              (click)="onNavigate('IMMERSION_PRO')"
-              class="rounded-xl bg-white border border-[#E4E0F5] hover:border-[#7C3AED] text-[#0F1035] hover:text-[#7C3AED] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
-            >
-              <span><mb-icon name="briefcase"></mb-icon></span>
-              <span>Préparer une immersion</span>
-            </button>
-
-            <button
-              type="button"
-              (click)="onNavigate('MES_QUESTIONS')"
-              class="rounded-xl bg-white border border-[#E4E0F5] hover:border-[#7C3AED] text-[#0F1035] hover:text-[#7C3AED] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
-            >
-              <span><mb-icon name="sparkles"></mb-icon></span>
-              <span>Poser mes questions</span>
-            </button>
-
-            <!-- Échanger avec mon conseiller si accompagné, ou Trouver un accompagnement si autonome -->
-            <button
-              *ngIf="journeyMode === 'SUPPORTED'"
-              type="button"
-              (click)="onNavigate('MES_QUESTIONS')"
-              class="rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] hover:bg-[#D1FAE5] text-[#065F46] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
-            >
-              <span><mb-icon name="users"></mb-icon></span>
-              <span>Échanger avec mon conseiller</span>
-            </button>
-
-            <button
-              *ngIf="journeyMode === 'AUTONOMOUS'"
-              type="button"
-              (click)="onNavigate('ANNUAIRE_SUPPORT')"
-              class="rounded-xl bg-[#EEF2FF] border border-[#C7D2FE] hover:bg-[#E0E7FF] text-[#4338CA] px-4 py-2.5 text-xs font-extrabold shadow-2xs transition flex items-center gap-2"
-            >
-              <span><mb-icon name="landmark"></mb-icon></span>
-              <span>Trouver un accompagnement</span>
-            </button>
-          </div>
-        </div>
       </div>
 
       <!-- ================================================================== -->
@@ -831,6 +767,63 @@ export interface UIHexacoItem {
             class="rounded-xl bg-[#7C3AED] text-white px-5 py-2 text-xs font-bold hover:bg-[#6D28D9] transition"
           >
             Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- MODAL ASSISTANCE IA RESPONSABLE & ÉTHIQUE                            -->
+    <!-- ==================================================================== -->
+    <div
+      *ngIf="showAIInfoModal"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+      (click)="showAIInfoModal = false"
+    >
+      <div
+        class="w-full max-w-lg rounded-[28px] bg-white p-6 sm:p-7 shadow-2xl space-y-4"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="flex items-center justify-between border-b border-[#F0EDFA] pb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">🌿</span>
+            <h3 class="text-lg font-extrabold text-[#0F1035]">
+              Explication assistée par IA
+            </h3>
+          </div>
+          <button
+            type="button"
+            (click)="showAIInfoModal = false"
+            class="h-9 w-9 rounded-full bg-[#F3EFFE] text-[#6D28D9] flex items-center justify-center font-bold hover:bg-[#E9D5FF] transition cursor-pointer"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="space-y-3 text-xs sm:text-sm text-[#31355B] leading-relaxed">
+          <p class="font-bold text-[#0F1035]">
+            Cette synthèse facilite la lecture de ton rapport. Elle ne remplace pas l'interprétation de ton conseiller.
+          </p>
+          <div class="p-3.5 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] space-y-2 text-xs">
+            <div class="flex items-center gap-2 text-[#7C3AED] font-extrabold">
+              <mb-icon name="sparkles"></mb-icon>
+              <span>IA Souveraine &amp; Responsable (Ollama Qwen 2.5)</span>
+            </div>
+            <p class="text-[#42466B]">
+              • <strong>Zéro fuite :</strong> L'intelligence artificielle s'exécute localement sur ta machine, aucune donnée personnelle n'est envoyée dans le cloud.<br/>
+              • <strong>Zéro hallucination :</strong> L'IA a interdiction stricte d'inventer des scores ou des conclusions non présentes dans ton rapport certifié Rdv {{ rdvNumber }}.<br/>
+              • <strong>Langage accessible :</strong> Les termes techniques sont traduits en phrases claires et bienveillantes.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-[#F0EDFA] flex justify-end">
+          <button
+            type="button"
+            (click)="showAIInfoModal = false"
+            class="rounded-xl bg-[#7C3AED] text-white px-5 py-2 text-xs font-bold hover:bg-[#6D28D9] transition cursor-pointer"
+          >
+            J'ai compris
           </button>
         </div>
       </div>
@@ -1225,5 +1218,71 @@ RÈGLES STRICTES :
 
   onNavigate(tab: string): void {
     this.navigateTab.emit(tab);
+  }
+
+  // --------------------------------------------------------------------------
+  // GETTERS PÉDAGOGIQUES ET LABELS (Éviter toute expression complexe dans le template)
+  // --------------------------------------------------------------------------
+  showAIInfoModal: boolean = false;
+
+  toggleAIInfoModal(): void {
+    this.showAIInfoModal = !this.showAIInfoModal;
+  }
+
+  get currentEpisodeTitle(): string {
+    return this.currentEpisode?.title || 'Comprendre mon bilan';
+  }
+
+  get formattedCurrentTime(): string {
+    return this.formatTime(this.audioProgressSec);
+  }
+
+  get formattedDuration(): string {
+    return this.formatTime(this.audioDurationSec);
+  }
+
+  get synthesisIntro(): string {
+    if (this.aiMode === 'PARENTS') {
+      return "Ce document valorise les points d'appui réels observés lors du bilan :";
+    } else if (this.aiMode === 'WORK') {
+      return "En milieu professionnel et en équipe, tes repères au travail :";
+    }
+    return "Ton bilan d'orientation met en valeur trois forces motrices :";
+  }
+
+  get synthesisPoint1(): string {
+    if (this.aiMode === 'PARENTS') {
+      return "Une vive sensibilité créative et artistique (Profil Artistique).";
+    } else if (this.aiMode === 'WORK') {
+      return "Imaginer des solutions visuelles et créatives originales (ton profil Artistique).";
+    }
+    return "Une vive imagination et le besoin d'inventer (ton profil Artistique).";
+  }
+
+  get synthesisPoint2(): string {
+    if (this.aiMode === 'PARENTS') {
+      return "L'envie de porter des projets et de prendre des initiatives (Entreprenant).";
+    } else if (this.aiMode === 'WORK') {
+      return "Proposer des idées avec énergie et stimuler la dynamique d'équipe (Entreprenant).";
+    }
+    return "L'envie de lancer des projets et de prendre des initiatives (Entreprenant).";
+  }
+
+  get synthesisPoint3(): string {
+    if (this.aiMode === 'PARENTS') {
+      return "Le goût des réalisations concrètes et des actions de terrain (Réaliste).";
+    } else if (this.aiMode === 'WORK') {
+      return "Mener des tâches tangibles avec précision et bon sens pratique (Réaliste).";
+    }
+    return "Le besoin de concret et de voir les résultats réels de ton travail (Réaliste).";
+  }
+
+  get synthesisEnBref(): string {
+    if (this.aiMode === 'PARENTS') {
+      return "ce bilan n'est pas un classement scolaire avec des notes. C'est une boussole d'orientation bienveillante qui met en valeur ses forces réelles et 22 pistes de métiers concrets pour préparer sereinement son avenir.";
+    } else if (this.aiMode === 'WORK') {
+      return "tes exercices pratiques révèlent une excellente mémoire visuelle et une grande adaptabilité face aux imprévus. Les 22 métiers conseillés valorisent ces atouts concrets sur le terrain.";
+    }
+    return "tu as un profil créatif, dynamique et orienté vers l'action. Tes exercices pratiques montrent une bonne mémoire visuelle et une grande adaptabilité. Les 22 métiers proposés sont des pistes pour t'épanouir, sans note scolaire ni pression.";
   }
 }

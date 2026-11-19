@@ -512,7 +512,7 @@ export const TONE_OPTIONS: ToneOption[] = [
       <!-- ================================================================== -->
       <div class="flex-1 flex flex-col min-w-0 lg:ml-[280px] min-h-dvh overflow-y-auto">
         <!-- TOPBAR (Titre / Salutation à gauche + Recherche, Cloche SVG & Profil alignés à droite) -->
-        <header class="bg-white/90 backdrop-blur-md border-b border-[#E4E0F5] px-4 sm:px-6 lg:px-8 py-3.5 sticky top-0 z-30">
+        <header *ngIf="activeYoungTab !== 'MON_BILAN' || activePortal === 'COUNSELOR'" class="bg-white/90 backdrop-blur-md border-b border-[#E4E0F5] px-4 sm:px-6 lg:px-8 py-3.5 sticky top-0 z-30">
           <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             <!-- Titre dynamique à gauche (min-w-0 flex-1 pour ne jamais pousser le bloc droit à la ligne) -->
             <div class="min-w-0 flex-1">

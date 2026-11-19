@@ -18,7 +18,7 @@
 // ============================================================================
 
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ImmersionProComponent } from './features/immersion/immersion-pro.component';
 import { JourneyChoiceModalComponent } from './features/autonomous/journey-choice-modal.component';
@@ -28,6 +28,7 @@ import { AutonomousCareerDetailComponent } from './features/autonomous/autonomou
 import { SupportDirectoryComponent } from './features/autonomous/support-directory.component';
 import { ReportOverviewComponent } from './features/report/report-overview.component';
 import { CoachIaComponent } from './features/coach/coach-ia.component';
+import { LoginComponent, LoginSuccessEvent } from './features/auth/login.component';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -256,10 +257,19 @@ export const TONE_OPTIONS: ToneOption[] = [
     AutonomousCareerDetailComponent,
     SupportDirectoryComponent,
     ReportOverviewComponent,
-    CoachIaComponent
+    CoachIaComponent,
+    LoginComponent
   ],
   template: `
-    <div class="min-h-screen flex flex-col lg:flex-row bg-[#F4F2FF] text-[#0F1035] font-sans overflow-x-hidden">
+    <!-- Page de Connexion Premium (Maquette officielle) -->
+    <app-login
+      *ngIf="!isAuthenticated"
+      (loginSuccess)="onLoginSuccess($event)"
+      (registerYoung)="onRegisterYoung()"
+    ></app-login>
+
+    <!-- Shell Applicatif Protégé (Authentifié) -->
+    <div *ngIf="isAuthenticated" class="min-h-screen flex flex-col lg:flex-row bg-[#F4F2FF] text-[#0F1035] font-sans overflow-x-hidden">
       <!-- ================================================================== -->
       <!-- BARRE SUPÉRIEURE MOBILE & TABLETTE (< lg)                          -->
       <!-- ================================================================== -->
@@ -274,25 +284,11 @@ export const TONE_OPTIONS: ToneOption[] = [
         </a>
 
         <div class="flex items-center gap-2">
-          <!-- Switcher compact Jeune / Conseiller sur mobile -->
-          <div class="flex bg-white/10 p-0.5 rounded-xl border border-white/15 text-[11px] font-bold">
-            <button
-              type="button"
-              (click)="switchPortal('YOUNG')"
-              [class]="activePortal === 'YOUNG' ? 'bg-[#7C3AED] text-white shadow' : 'text-[#E7E8FB]'"
-              class="py-1.5 px-2.5 rounded-lg transition"
-            >
-              🎧 Jeune
-            </button>
-            <button
-              type="button"
-              (click)="switchPortal('COUNSELOR')"
-              [class]="activePortal === 'COUNSELOR' ? 'bg-[#7C3AED] text-white shadow' : 'text-[#E7E8FB]'"
-              class="py-1.5 px-2.5 rounded-lg transition"
-            >
-              🩺 Conseiller
-            </button>
-          </div>
+          <!-- Badge de rôle strict sur mobile (sans bascule non autorisée) -->
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-3 py-1.5 text-xs font-bold text-[#C4B5FD]">
+            <span class="h-1.5 w-1.5 rounded-full" [ngClass]="activePortal === 'YOUNG' ? 'bg-[#10B981]' : 'bg-[#38BDF8]'"></span>
+            {{ activePortal === 'YOUNG' ? 'Espace Jeune' : 'Espace Conseiller' }}
+          </span>
 
           <!-- Bouton Hamburger Tiroir Mobile -->
           <button
@@ -320,11 +316,10 @@ export const TONE_OPTIONS: ToneOption[] = [
       <!-- ================================================================== -->
       <aside
         [class]="isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
-        class="fixed lg:sticky top-0 left-0 z-50 lg:z-20 h-screen w-[280px] max-w-[85vw] lg:w-[270px] xl:w-[285px] shrink-0 bg-gradient-to-b from-[#131142] via-[#1B1659] to-[#120E38] text-white flex flex-col justify-between overflow-y-auto border-r border-white/10 transition-transform duration-200 ease-out shadow-2xl lg:shadow-none"
+        class="fixed inset-y-0 left-0 z-40 w-[280px] max-w-[85vw] lg:w-[280px] shrink-0 h-dvh bg-gradient-to-b from-[#131142] via-[#1B1659] to-[#120E38] text-white flex flex-col justify-between overflow-hidden border-r border-white/10 transition-transform duration-200 ease-out shadow-2xl lg:shadow-none"
       >
-        <!-- Partie haute : Logo + Switcher + Menu de navigation -->
-        <div class="p-4 sm:p-5 space-y-4 relative z-10">
-          <!-- En-tête Logo MonBilan+ (Logo officiel Landing Page) -->
+        <!-- En-tête / Logo (Fixe, shrink-0) -->
+        <div class="p-4 sm:p-5 shrink-0 border-b border-white/10 space-y-3">
           <div class="flex items-center justify-between">
             <a href="../" class="group flex flex-col gap-1.5 w-full focus:outline-none" title="Retour à la landing page MonBilan+">
               <div class="rounded-xl bg-white px-3 py-1.5 shadow-sm group-hover:shadow-md transition flex items-center justify-center">
@@ -336,8 +331,8 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
               <div class="flex items-center justify-between px-1">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-2 py-0.5 text-[11px] font-bold text-[#C4B5FD]">
-                  <span class="h-1.5 w-1.5 rounded-full bg-[#E0349B]"></span>
-                  {{ activePortal === 'YOUNG' ? 'Espace jeune' : 'Espace conseiller' }}
+                  <span class="h-1.5 w-1.5 rounded-full" [ngClass]="activePortal === 'YOUNG' ? 'bg-[#10B981]' : 'bg-[#38BDF8]'"></span>
+                  {{ activePortal === 'YOUNG' ? 'Espace Jeune' : 'Espace Conseiller' }}
                 </span>
                 <span class="text-[11px] text-[#A78BFA] group-hover:text-white transition flex items-center gap-1">
                   <span>Accueil</span>
@@ -354,26 +349,10 @@ export const TONE_OPTIONS: ToneOption[] = [
               ✕
             </button>
           </div>
+        </div>
 
-          <!-- Switcher rapide Jeune / Conseiller -->
-          <div class="grid grid-cols-2 gap-1 bg-white/10 p-1 rounded-xl border border-white/15 text-xs font-bold">
-            <button
-              type="button"
-              (click)="switchPortal('YOUNG')"
-              [class]="activePortal === 'YOUNG' ? 'bg-[#7C3AED] text-white shadow' : 'text-[#E7E8FB] hover:text-white'"
-              class="py-1.5 px-2 rounded-lg transition text-center"
-            >
-              🎧 Jeune
-            </button>
-            <button
-              type="button"
-              (click)="switchPortal('COUNSELOR')"
-              [class]="activePortal === 'COUNSELOR' ? 'bg-[#7C3AED] text-white shadow' : 'text-[#E7E8FB] hover:text-white'"
-              class="py-1.5 px-2 rounded-lg transition text-center"
-            >
-              🩺 Conseiller
-            </button>
-          </div>
+        <!-- Navigation défilable indépendamment (min-h-0 flex-1 overflow-y-auto overscroll-contain) -->
+        <div class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain p-4 space-y-1">
 
           <!-- MENU ESPACE JEUNE -->
           <nav *ngIf="activePortal === 'YOUNG'" aria-label="Menu Espace Jeune" class="space-y-1">
@@ -502,7 +481,7 @@ export const TONE_OPTIONS: ToneOption[] = [
       <!-- ================================================================== -->
       <!-- ZONE PRINCIPALE (TOPBAR + CONTENU DE LA VUE ACTIVE)                -->
       <!-- ================================================================== -->
-      <div class="flex-1 flex flex-col min-w-0">
+      <div class="flex-1 flex flex-col min-w-0 lg:ml-[280px] min-h-dvh overflow-y-auto">
         <!-- TOPBAR (Titre / Salutation à gauche + Recherche, Cloche SVG & Profil alignés à droite) -->
         <header class="bg-white/90 backdrop-blur-md border-b border-[#E4E0F5] px-4 sm:px-6 lg:px-8 py-3.5 sticky top-0 z-30">
           <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
@@ -787,11 +766,11 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </button>
                   <button
                     type="button"
-                    (click)="switchPortal(activePortal === 'YOUNG' ? 'COUNSELOR' : 'YOUNG'); isProfileMenuOpen = false"
-                    class="w-full text-left rounded-xl px-3 py-2 hover:bg-[#F5F2FF] text-[#6D28D9] flex items-center gap-2.5"
+                    (click)="logout(); isProfileMenuOpen = false"
+                    class="w-full text-left rounded-xl px-3 py-2 hover:bg-red-50 text-red-600 font-extrabold flex items-center gap-2.5 border-t border-[#F0EDFA] mt-1 pt-2"
                   >
-                    <span>🔄</span>
-                    <span>Basculer vers {{ activePortal === 'YOUNG' ? 'Espace Conseiller' : 'Espace Jeune' }}</span>
+                    <span>🚪</span>
+                    <span>Se déconnecter</span>
                   </button>
                 </div>
               </div>
@@ -4305,7 +4284,43 @@ export const TONE_OPTIONS: ToneOption[] = [
   `
 })
 export class AppComponent implements OnInit {
+  isAuthenticated: boolean = true;
+  currentUserEmail: string = 'emma.d@monbilan.fr';
+  currentUserDisplayName: string = 'Emma D.';
   activePortal: 'YOUNG' | 'COUNSELOR' = 'YOUNG';
+
+  @HostListener('window:keydown.escape')
+  handleEscapeKey(): void {
+    if (this.isMobileMenuOpen) {
+      this.isMobileMenuOpen = false;
+    }
+    if (this.isProfileMenuOpen) {
+      this.isProfileMenuOpen = false;
+    }
+  }
+
+  onLoginSuccess(event: LoginSuccessEvent): void {
+    this.isAuthenticated = true;
+    this.activePortal = event.role;
+    this.currentUserEmail = event.email;
+    this.currentUserDisplayName = event.displayName;
+    if (event.role === 'YOUNG') {
+      this.selectYoungTab('ACCUEIL');
+    } else {
+      this.selectCounselorTab('TABLEAU_DE_BORD');
+    }
+  }
+
+  logout(): void {
+    this.isAuthenticated = false;
+  }
+
+  onRegisterYoung(): void {
+    this.isAuthenticated = true;
+    this.activePortal = 'YOUNG';
+    this.journeyMode = 'AUTONOMOUS';
+    this.selectYoungTab('ACCUEIL_AUTONOME');
+  }
   activeYoungTab: YoungTab = 'ACCUEIL';
   activeCounselorTab: CounselorTab = 'TABLEAU_DE_BORD';
 

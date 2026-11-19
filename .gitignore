@@ -1,7 +1,32 @@
+# Variables d'environnement et secrets
 .env
 .env.*
+!.env.example
+*.pem
+*.key
+
+# Dépendances et artefacts de build
 node_modules/
 dist/
+build/
+out/
+.next/
+.angular/
+coverage/
+*.tsbuildinfo
+
+# Python / Outils locaux
 __pycache__/
 .venv/
+
+# Système
 .DS_Store
+
+# Stockage privé, bases locales et fichiers sensibles (RGPD / Hackathon)
+storage/
+uploads/
+.data/
+*.sqlite
+*.db
+*rapport-des-possibles*.pdf
+projets/data/Rapports*

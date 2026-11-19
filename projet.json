@@ -1,10 +1,29 @@
 {
   "nom": "MonBilan+",
-  "pitch": "Une interface et un rapport qui fais sens pour les jeunes et leurs proches",
-  "description": "Un jeune peut repartir avec un rapport des possibles et un bon entretien, s'il ne suis pas ou lit peu, le rapport finit oublié dans un coin\n\nDeuxième paragraphe : comment ça marche, et ce que vous avez construit en trois jours.\n\nNous fesont en sorte que cet entretien sois une porte d'entrée vers un travail qui lui convient en rendant bien plus interactif et utile cette démarche.",
+  "pitch": "Ton bilan d'orientation, enfin facile à comprendre. MonBilan+ transforme ton rapport d'orientation en une expérience audio et interactive, avec des explications simples et des pistes à explorer avec ton conseiller.",
+  "description": "À l'issue de son parcours au Centre des Possibles, chaque jeune repart avec un rapport PDF dense de 17 pages (modèles RIASEC, aptitudes cognitives, personnalité HEXACO et 5 zones de métiers) et le souvenir d'un entretien de 15 minutes. Une semaine plus tard, l'essentiel est souvent oublié ou finit dans un coin, en particulier chez les jeunes fâchés avec l'écrit.\n\nMonBilan+ intervient après la production du rapport (sans remplacer les évaluations ni le psychologue) pour transformer ce bilan en une expérience audio et interactive, sous la signature « Comprends ton bilan. Explore tes possibles. » Les restitutions sont systématiquement vérifiées et validées par un professionnel avant d'être mises à disposition du jeune. Le jeune peut écouter sa restitution vocale (Piper TTS), lire la transcription accessible, comprendre ses résultats existants avec des références vérifiables aux pages du rapport (ex. Rdv 2187), explorer les 22 métiers proposés dans ses 5 zones de préparation et noter ses questions pour son conseiller.",
   "ecoles": ["42nice", "Centrale Méditerranée"],
-  "stack": ["HTML", "JavaScript"],
-  "demo": "",
+  "stack": [
+    "Next.js",
+    "Angular",
+    "Tailwind CSS",
+    "NestJS",
+    "TypeScript",
+    "PostgreSQL RLS",
+    "Prisma",
+    "Redis / BullMQ",
+    "Ollama / Qwen",
+    "Piper TTS",
+    "Docker"
+  ],
+  "demo": "https://code4sud.github.io/2026-equipe-03/",
   "video": "",
-  "captures": []
+  "captures": [
+    "captures/showcase/02-espace-jeune-accueil.jpg",
+    "captures/showcase/03-restitution-audio-transcription.jpg",
+    "captures/showcase/04-exploration-metiers-zones.jpg",
+    "captures/showcase/05-espace-conseiller-dashboard.jpg",
+    "captures/showcase/06-validation-professionnelle.jpg",
+    "captures/showcase/01-landing-accueil.jpg"
+  ]
 }

@@ -1,0 +1,30 @@
+name: MonBilan+ CI (Quality, Security & Multi-Tenant Tests)
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feat/**]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Vérifier l'absence de Rapports des Possibles réels ou secrets
+        run: |
+          if git ls-files | grep -iE "rapport-des-possibles-[0-9]+\.pdf"; then
+            echo "ERREUR CRITIQUE : Un Rapport des Possibles du Centre a été commité !"
+            exit 1
+          fi
+      - name: Installer les dépendances
+        run: npm install
+      - name: Générer le client Prisma
+        run: npx prisma generate
+      - name: Exécuter les tests unitaires, d'isolation Multi-Tenant et Zéro-Hallucination
+        run: npm test
+      - name: Construire la démonstration Angular pour GitHub Pages (./dist)
+        run: npm run build

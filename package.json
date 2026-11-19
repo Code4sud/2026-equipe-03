@@ -1,0 +1,46 @@
+{
+  "name": "monbilan-plus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MonBilan+ — Plateforme de restitution accessible, audio et vérifiable des Rapports des Possibles (Équipe 03)",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build:landing && npm run build:web",
+    "build:landing": "npm --workspace=@monbilan/landing run build",
+    "build:web": "npm --workspace=@monbilan/web run build",
+    "build:all": "npm --workspaces --if-present run build",
+    "dev:landing": "npm --workspace=@monbilan/landing run dev",
+    "dev:api": "npm --workspace=@monbilan/api run dev",
+    "dev:worker": "npm --workspace=@monbilan/worker run dev",
+    "dev:web": "npm --workspace=@monbilan/web run start",
+    "db:generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate deploy",
+    "db:seed": "npx tsx prisma/seed/index.ts",
+    "db:setup": "npm run db:generate && npm run db:migrate && npm run db:seed",
+    "test": "vitest run",
+    "test:unit": "vitest run packages/ tests/security/",
+    "test:tenancy": "vitest run tests/tenancy/",
+    "lint": "tsc --build --dry",
+    "typecheck": "npm --workspaces --if-present run typecheck"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "prisma": "^6.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.0.1",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}

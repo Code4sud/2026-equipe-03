@@ -1,0 +1,50 @@
+/* ==========================================================================
+ * MonBilan+ — Design System Tokens (Section 2.3 & 10)
+ * Mode clair par défaut (:root), Mode sombre immersif ([data-theme="dark"])
+ * ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --mb-brand-navy: #1b1b62;
+  --mb-brand-primary: #5d62ea;
+  --mb-brand-violet: #7935f5;
+  --mb-brand-pink: #e0349b;
+  --mb-brand-cosmic: #9940c4;
+  --mb-bg: #f8faff;
+  --mb-surface: #ffffff;
+  --mb-surface-soft: #e7e8fb;
+  --mb-text: #1b1b62;
+  --mb-text-secondary: #42466b;
+  --mb-border: #d8dcf0;
+  --mb-focus: #1b1b62;
+  --mb-success: #1f7a53;
+  --mb-success-bg: #e7f6ef;
+  --mb-warning: #b55318;
+  --mb-warning-bg: #fef2ea;
+  --mb-danger: #c63622;
+  --mb-danger-bg: #fdeCE9;
+  --mb-radius-sm: 8px;
+  --mb-radius-md: 12px;
+  --mb-radius-lg: 20px;
+  --mb-radius-xl: 28px;
+  --mb-shadow-card: 0 8px 30px rgb(27 27 98 / 7%);
+  --mb-font-sans: "Plus Jakarta Sans", Arial, sans-serif;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --mb-bg: #11113a;
+  --mb-surface: #1b1b62;
+  --mb-surface-soft: #262b61;
+  --mb-text: #ffffff;
+  --mb-text-secondary: #e7e8fb;
+  --mb-border: #5156a0;
+  --mb-focus: #ffffff;
+  --mb-success: #5ce0a8;
+  --mb-success-bg: rgb(56 166 120 / 20%);
+  --mb-warning: #ffb07c;
+  --mb-warning-bg: rgb(227 118 54 / 20%);
+  --mb-danger: #ff8f7e;
+  --mb-danger-bg: rgb(235 97 76 / 20%);
+  --mb-shadow-card: 0 10px 32px rgb(0 0 0 / 35%);
+}

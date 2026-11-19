@@ -1,0 +1,481 @@
+// ============================================================================
+// MonBilan+ — Schéma Prisma Multi-Tenant (PostgreSQL + Row-Level Security)
+// ============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_ADMIN_URL")
+}
+
+enum Role {
+  PLATFORM_ADMIN
+  TENANT_ADMIN
+  COUNSELOR
+  YOUNG
+}
+
+enum ReportStatus {
+  UPLOADED
+  EXTRACTING
+  EXTRACTION_REVIEW
+  DRAFTING
+  DRAFT_REVIEW
+  APPROVED
+  AUDIO_GENERATING
+  READY
+  PUBLISHED
+  FAILED
+  REJECTED
+  SUPERSEDED
+}
+
+enum FactCategory {
+  METADATA
+  RIASEC_INTEREST
+  COGNITIVE_APTITUDE
+  HEXACO_PERSONALITY
+  PSYCHOMOTOR
+  CAREER_ZONE
+}
+
+enum ExtractionConfidence {
+  EXACT_TEXT
+  REQUIRES_HUMAN_REVIEW
+  HUMAN_VERIFIED
+}
+
+enum ClaimKind {
+  PERSONAL_FACT
+  CAREER_LINK
+  PEDAGOGICAL_TIP
+  PARENT_SUMMARY
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  EDITED
+  REJECTED
+}
+
+enum AudienceMode {
+  YOUNG
+  PARENTS
+}
+
+enum CareerAssessmentStatus {
+  TO_DEEPEN
+  TO_EXPLORE
+  DEFERRED
+  NEEDS_REVIEW
+}
+
+// 1. Établissement (Tenant)
+model Tenant {
+  id          String   @id @default(uuid()) @db.Uuid
+  slug        String   @unique
+  name        String
+  isActive    Boolean  @default(true) @map("is_active")
+  settings    Json     @default("{}")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  memberships   Membership[]
+  youngProfiles YoungProfile[]
+  assignments   Assignment[]
+  reports       Report[]
+  restitutions  Restitution[]
+  audioAssets   AudioAsset[]
+  audioEpisodes AudioEpisode[]
+  interviewSummaries InterviewSummary[]
+  questions     Question[]
+  auditEvents   AuditEvent[]
+
+  @@map("tenants")
+}
+
+// 2. Utilisateur (Identité globale pouvant appartenir à plusieurs établissements)
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  displayName  String   @map("display_name")
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  memberships   Membership[]
+  youngProfiles YoungProfile[]
+  assignments   Assignment[]
+
+  @@map("users")
+}
+
+// 3. Adhésion d'un utilisateur à un établissement (Membership)
+model Membership {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  role      Role
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, userId])
+  @@index([tenantId, role])
+  @@map("memberships")
+}
+
+// 4. Profil Jeune (YoungProfile — minimisation RGPD : pseudonyme/code RDV)
+model YoungProfile {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  userId          String?  @map("user_id") @db.Uuid
+  externalRdvCode String   @map("external_rdv_code")
+  displayName     String   @map("display_name")
+  ageRange        String   @default("16-25") @map("age_range")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  tenant      Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user        User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  assignments Assignment[]
+  reports     Report[]
+  questions   Question[]
+  interviewSummaries InterviewSummary[]
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, externalRdvCode])
+  @@index([tenantId])
+  @@map("young_profiles")
+}
+
+// 5. Affectation d'un conseiller à un dossier jeune (ABAC intra-tenant)
+model Assignment {
+  id             String   @id @default(uuid()) @db.Uuid
+  tenantId       String   @map("tenant_id") @db.Uuid
+  counselorId    String   @map("counselor_id") @db.Uuid
+  youngProfileId String   @map("young_profile_id") @db.Uuid
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  tenant       Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  counselor    User         @relation(fields: [counselorId], references: [id], onDelete: Cascade)
+  youngProfile YoungProfile @relation(fields: [tenantId, youngProfileId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, counselorId, youngProfileId])
+  @@index([tenantId, counselorId])
+  @@map("assignments")
+}
+
+// 6. Rapport des Possibles (Report)
+model Report {
+  id             String       @id @default(uuid()) @db.Uuid
+  tenantId       String       @map("tenant_id") @db.Uuid
+  youngProfileId String       @map("young_profile_id") @db.Uuid
+  rdvNumber      String       @map("rdv_number")
+  reportDate     String       @map("report_date")
+  storageKey     String       @map("storage_key")
+  fileSha256     String       @map("file_sha256")
+  pageCount      Int          @default(17) @map("page_count")
+  status         ReportStatus @default(UPLOADED)
+  reviewedById   String?      @map("reviewed_by_id") @db.Uuid
+  reviewedAt     DateTime?    @map("reviewed_at")
+  version        Int          @default(1)
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+
+  tenant        Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  youngProfile  YoungProfile    @relation(fields: [tenantId, youngProfileId], references: [tenantId, id], onDelete: Cascade)
+  sections      ReportSection[]
+  facts         ReportFact[]
+  reportCareers ReportCareer[]
+  restitutions  Restitution[]
+  interviewSummary InterviewSummary?
+
+  @@unique([tenantId, id])
+  @@index([tenantId, youngProfileId])
+  @@index([tenantId, status])
+  @@map("reports")
+}
+
+// 7. Section du Rapport
+model ReportSection {
+  id        String       @id @default(uuid()) @db.Uuid
+  tenantId  String       @map("tenant_id") @db.Uuid
+  reportId  String       @map("report_id") @db.Uuid
+  category  FactCategory
+  title     String
+  pageStart Int          @map("page_start")
+  pageEnd   Int          @map("page_end")
+  createdAt DateTime     @default(now()) @map("created_at")
+
+  report Report       @relation(fields: [tenantId, reportId], references: [tenantId, id], onDelete: Cascade)
+  facts  ReportFact[]
+
+  @@unique([tenantId, id])
+  @@index([tenantId, reportId])
+  @@map("report_sections")
+}
+
+// 8. Fait Extrait du Rapport (ReportFact — preuve documentaire granulaire)
+model ReportFact {
+  id             String               @id @default(uuid()) @db.Uuid
+  tenantId       String               @map("tenant_id") @db.Uuid
+  reportId       String               @map("report_id") @db.Uuid
+  sectionId      String?              @map("section_id") @db.Uuid
+  category       FactCategory
+  factKey        String               @map("fact_key")
+  label          String
+  rankOrder      Int?                 @map("rank_order")
+  numericScore   Float?               @map("numeric_score")
+  maxScore       Float?               @map("max_score")
+  rawExcerpt     String               @map("raw_excerpt")
+  pageNumber     Int                  @map("page_number")
+  confidence     ExtractionConfidence @default(EXACT_TEXT)
+  isVerified     Boolean              @default(false) @map("is_verified")
+  verifiedById   String?              @map("verified_by_id") @db.Uuid
+  createdAt      DateTime             @default(now()) @map("created_at")
+  updatedAt      DateTime             @updatedAt @map("updated_at")
+
+  report       Report         @relation(fields: [tenantId, reportId], references: [tenantId, id], onDelete: Cascade)
+  section      ReportSection? @relation(fields: [tenantId, sectionId], references: [tenantId, id], onDelete: SetNull)
+  claimSources ClaimSource[]
+
+  @@unique([tenantId, id])
+  @@index([tenantId, reportId, category])
+  @@map("report_facts")
+}
+
+// 9. Restitution Pédagogique Versionnée (Restitution)
+model Restitution {
+  id              String       @id @default(uuid()) @db.Uuid
+  tenantId        String       @map("tenant_id") @db.Uuid
+  reportId        String       @map("report_id") @db.Uuid
+  version         Int          @default(1)
+  status          ReportStatus @default(DRAFT_REVIEW)
+  youngScript     String       @map("young_script")
+  parentsSummary  String       @map("parents_summary")
+  scriptHash      String       @map("script_hash")
+  approvedById    String?      @map("approved_by_id") @db.Uuid
+  approvedAt      DateTime?    @map("approved_at")
+  publishedById   String?      @map("published_by_id") @db.Uuid
+  publishedAt     DateTime?    @map("published_at")
+  createdAt       DateTime     @default(now()) @map("created_at")
+  updatedAt       DateTime     @updatedAt @map("updated_at")
+
+  tenant      Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  report      Report       @relation(fields: [tenantId, reportId], references: [tenantId, id], onDelete: Cascade)
+  claims      Claim[]
+  audioAssets AudioAsset[]
+  episodes    AudioEpisode[]
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, reportId, version])
+  @@index([tenantId, reportId, status])
+  @@map("restitutions")
+}
+
+// 10. Affirmation Sourcée (Claim)
+model Claim {
+  id            String       @id @default(uuid()) @db.Uuid
+  tenantId      String       @map("tenant_id") @db.Uuid
+  restitutionId String       @map("restitution_id") @db.Uuid
+  kind          ClaimKind
+  audience      AudienceMode @default(YOUNG)
+  displayOrder  Int          @map("display_order")
+  text          String
+  reviewStatus  ReviewStatus @default(PENDING) @map("review_status")
+  reviewerNote  String?      @map("reviewer_note")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  restitution Restitution   @relation(fields: [tenantId, restitutionId], references: [tenantId, id], onDelete: Cascade)
+  sources     ClaimSource[]
+
+  @@unique([tenantId, id])
+  @@index([tenantId, restitutionId])
+  @@map("claims")
+}
+
+// 11. Lien de Preuve entre une Affirmation et un Fait Extrait (ClaimSource)
+model ClaimSource {
+  id         String   @id @default(uuid()) @db.Uuid
+  tenantId   String   @map("tenant_id") @db.Uuid
+  claimId    String   @map("claim_id") @db.Uuid
+  factId     String   @map("fact_id") @db.Uuid
+  pageNumber Int      @map("page_number")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  claim Claim      @relation(fields: [tenantId, claimId], references: [tenantId, id], onDelete: Cascade)
+  fact  ReportFact @relation(fields: [tenantId, factId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, claimId, factId])
+  @@index([tenantId, claimId])
+  @@map("claim_sources")
+}
+
+// 12. Artefact Audio Versionné (AudioAsset)
+model AudioAsset {
+  id            String       @id @default(uuid()) @db.Uuid
+  tenantId      String       @map("tenant_id") @db.Uuid
+  restitutionId String       @map("restitution_id") @db.Uuid
+  audience      AudienceMode @default(YOUNG)
+  scriptHash    String       @map("script_hash")
+  storageKey    String       @map("storage_key")
+  mimeType      String       @default("audio/wav") @map("mime_type")
+  durationSec   Int          @default(0) @map("duration_sec")
+  isInvalidated Boolean      @default(false) @map("is_invalidated")
+  createdAt     DateTime     @default(now()) @map("created_at")
+
+  tenant      Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  restitution Restitution @relation(fields: [tenantId, restitutionId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, id])
+  @@index([tenantId, restitutionId])
+  @@map("audio_assets")
+}
+
+// 13. Référentiel Global des Métiers O*NET FR (Career — Lecture seule, non tenant-scopé)
+model Career {
+  id                   String   @id @default(uuid()) @db.Uuid
+  onetSocCode          String   @unique @map("onet_soc_code")
+  titleEn              String   @map("title_en")
+  titleFr              String   @map("title_fr")
+  descriptionFr        String   @map("description_fr")
+  jobZone              Int      @map("job_zone")
+  jobZoneJustification String   @map("job_zone_justification")
+  createdAt            DateTime @default(now()) @map("created_at")
+
+  reportCareers ReportCareer[]
+
+  @@index([jobZone])
+  @@index([titleFr])
+  @@map("careers")
+}
+
+// 14. Métier Proposé dans un Rapport (ReportCareer — Tenant-scopé)
+model ReportCareer {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  reportId    String   @map("report_id") @db.Uuid
+  careerId    String?  @map("career_id") @db.Uuid
+  jobZone     Int      @map("job_zone")
+  rankInZone  Int      @map("rank_in_zone")
+  titleFr     String   @map("title_fr")
+  description String
+  pageNumber  Int      @map("page_number")
+  isFavorite  Boolean  @default(false) @map("is_favorite")
+  youngNote   String?  @map("young_note")
+  assessmentStatus     CareerAssessmentStatus @default(TO_EXPLORE) @map("assessment_status")
+  assessmentRationale  String?                @map("assessment_rationale")
+  counselorNotes       String?                @map("counselor_notes")
+  isAssessmentVerified Boolean                @default(false) @map("is_assessment_verified")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  report Report  @relation(fields: [tenantId, reportId], references: [tenantId, id], onDelete: Cascade)
+  career Career? @relation(fields: [careerId], references: [id], onDelete: SetNull)
+
+  @@unique([tenantId, id])
+  @@index([tenantId, reportId, jobZone])
+  @@map("report_careers")
+}
+
+// 15. Carnet de Questions du Jeune pour son Conseiller (Question)
+model Question {
+  id             String    @id @default(uuid()) @db.Uuid
+  tenantId       String    @map("tenant_id") @db.Uuid
+  youngProfileId String    @map("young_profile_id") @db.Uuid
+  reportId       String?   @map("report_id") @db.Uuid
+  relatedTopic   String    @map("related_topic")
+  questionText   String    @map("question_text")
+  counselorReply String?   @map("counselor_reply")
+  answeredAt     DateTime? @map("answered_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
+
+  tenant       Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  youngProfile YoungProfile @relation(fields: [tenantId, youngProfileId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, id])
+  @@index([tenantId, youngProfileId])
+  @@map("questions")
+}
+
+// 16. Journal d'Audit & Traçabilité Sécurité (AuditEvent — sans PII brut)
+model AuditEvent {
+  id         String   @id @default(uuid()) @db.Uuid
+  tenantId   String   @map("tenant_id") @db.Uuid
+  actorId    String?  @map("actor_id") @db.Uuid
+  actorRole  String?  @map("actor_role")
+  action     String
+  entityType String   @map("entity_type")
+  entityId   String   @map("entity_id")
+  metadata   Json     @default("{}")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, createdAt])
+  @@index([tenantId, entityType, entityId])
+  @@map("audit_events")
+}
+
+// 17. Compte Rendu Structuré de l'Entretien avec le Conseiller/Psychologue
+model InterviewSummary {
+  id                      String   @id @default(uuid()) @db.Uuid
+  tenantId                String   @map("tenant_id") @db.Uuid
+  reportId                String   @unique @map("report_id") @db.Uuid
+  youngProfileId          String   @map("young_profile_id") @db.Uuid
+  interviewDate           DateTime @default(now()) @map("interview_date")
+  counselorName           String   @map("counselor_name")
+  interviewGoal           String   @map("interview_goal")
+  summary                 String
+  expressedInterests      String[] @map("expressed_interests")
+  explicitCareers         String[] @map("explicit_careers")
+  motivations             String[]
+  reservations            String[]
+  professionalConclusions String[] @map("professional_conclusions")
+  createdAt               DateTime @default(now()) @map("created_at")
+  updatedAt               DateTime @updatedAt @map("updated_at")
+
+  tenant       Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  report       Report       @relation(fields: [tenantId, reportId], references: [tenantId, id], onDelete: Cascade)
+  youngProfile YoungProfile @relation(fields: [tenantId, youngProfileId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, id])
+  @@unique([tenantId, reportId])
+  @@map("interview_summaries")
+}
+
+// 18. Épisode Audio Thématique Calibré (AudioEpisode — Restitution Augmentée)
+model AudioEpisode {
+  id                   String   @id @default(uuid()) @db.Uuid
+  tenantId             String   @map("tenant_id") @db.Uuid
+  restitutionId        String   @map("restitution_id") @db.Uuid
+  topicKey             String   @map("topic_key")
+  title                String
+  wordCount            Int      @map("word_count")
+  estimatedDurationSec Int      @map("estimated_duration_sec")
+  scriptText           String   @map("script_text")
+  scriptHash           String   @map("script_hash")
+  audioReady           Boolean  @default(false) @map("audio_ready")
+  audioStorageKey      String?  @map("audio_storage_key")
+  sourceCitations      Json     @default("[]") @map("source_citations")
+  transcript           Json     @default("[]")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  tenant      Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  restitution Restitution @relation(fields: [tenantId, restitutionId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, restitutionId, topicKey])
+  @@index([tenantId, restitutionId])
+  @@map("audio_episodes")
+}

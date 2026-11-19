@@ -1,0 +1,51 @@
+# ==============================================================================
+# MonBilan+ — Infrastructure Locale de Développement (PostgreSQL RLS + Redis)
+# Optimisé pour macOS Apple Silicon (Ollama natif sur l'hôte via port 11434)
+# ==============================================================================
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: monbilan-postgres-dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: monbilan_owner
+      POSTGRES_PASSWORD: local_dev_owner_pwd
+      POSTGRES_DB: monbilan_plus
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./infrastructure/docker/postgres/init-rls-role.sql:/docker-entrypoint-initdb.d/01-init-rls-role.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U monbilan_owner -d monbilan_plus"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - monbilan_internal
+
+  redis:
+    image: redis:7-alpine
+    container_name: monbilan-redis-dev
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_dev_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - monbilan_internal
+
+volumes:
+  postgres_dev_data:
+  redis_dev_data:
+
+networks:
+  monbilan_internal:
+    driver: bridge

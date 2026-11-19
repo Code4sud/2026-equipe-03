@@ -34,6 +34,7 @@ import { LocalDiscoveryComponent } from './features/local-discovery/local-discov
 import { SettingsComponent } from './features/settings/settings.component';
 import { ExplorationDashboardComponent } from './features/exploration/exploration-dashboard.component';
 import { QuestionsPageComponent } from './features/questions/questions-page.component';
+import { DocumentsPageComponent } from './features/documents/documents-page.component';
 import { CounselorSettingsComponent, CounselorProfileData } from './features/settings/counselor-settings.component';
 import {
   JourneyMode,
@@ -268,6 +269,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     LocalDiscoveryComponent,
     ExplorationDashboardComponent,
     QuestionsPageComponent,
+    DocumentsPageComponent,
     SettingsComponent,
     CounselorSettingsComponent,
     LoginComponent
@@ -1501,156 +1503,17 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 6 : MES DOCUMENTS (Maquette "Tableau de bord _ Mes documents.webp") -->
+              <!-- VUE JEUNE 6 : MES DOCUMENTS (Maquette officielle "Mes documents") -->
               <!-- ========================================================== -->
-              <div *ngIf="activeYoungTab === 'MES_DOCUMENTS'" class="space-y-6">
-                <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#7C3AED] text-white p-6 sm:p-8 shadow-lg">
-                  <h2 class="text-2xl sm:text-3xl font-extrabold">
-                    Tous mes documents <span class="inline-block rounded-2xl bg-[#EC4899] px-3 py-0.5">au même endroit !</span>
-                  </h2>
-                  <p class="text-sm text-[#E7E8FB] mt-2">
-                    Consulte, télécharge et conserve les documents de ton bilan d’orientation Rdv {{ rdvNumber }} en toute simplicité.
-                  </p>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <div class="lg:col-span-8 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                    <h3 class="text-xl font-extrabold text-[#0F1035]"><mb-icon name="file-text"></mb-icon> Mes documents (4)</h3>
-
-                    <div class="space-y-3">
-                      <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                          <span class="h-11 w-11 rounded-2xl bg-[#FEE2E2] text-[#DC2626] font-extrabold text-xs flex items-center justify-center">PDF</span>
-                          <div>
-                            <h4 class="font-extrabold text-sm text-[#0F1035]">Rapport d’orientation — Rdv {{ rdvNumber }}</h4>
-                            <p class="text-xs text-[#42466B]">Mon bilan complet (résultats RIASEC, aptitudes, HEXACO et 22 métiers) • PDF • 17 pages • {{ reportDate }}</p>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          (click)="selectYoungTab('MON_BILAN')"
-                          class="rounded-full bg-white border border-[#D8DCF0] px-4 py-1.5 text-xs font-extrabold text-[#6D28D9]"
-                        >
-                          Consulter
-                        </button>
-                      </div>
-
-                      <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                          <span class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] font-extrabold text-xs flex items-center justify-center">WAV</span>
-                          <div>
-                            <h4 class="font-extrabold text-sm text-[#0F1035]">Restitution audio</h4>
-                            <p class="text-xs text-[#42466B]">Explication vocale de mon bilan (écoute ≈ 6 min) • Piper TTS</p>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          (click)="openAudioRestitutionView()"
-                          class="rounded-full bg-[#7C3AED] text-white px-4 py-1.5 text-xs font-extrabold"
-                        >
-                          ▶ Écouter
-                        </button>
-                      </div>
-
-                      <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                          <span class="h-11 w-11 rounded-2xl bg-[#DBEAFE] text-[#1D4ED8] font-extrabold text-xs flex items-center justify-center">DOC</span>
-                          <div>
-                            <h4 class="font-extrabold text-sm text-[#0F1035]">Synthèse de mes résultats</h4>
-                            <p class="text-xs text-[#42466B]">Mes centres d’intérêt, aptitudes et points clés vérifiés par mon conseiller</p>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          (click)="selectYoungTab('MON_BILAN')"
-                          class="rounded-full bg-white border border-[#D8DCF0] px-4 py-1.5 text-xs font-extrabold text-[#6D28D9]"
-                        >
-                          Ouvrir
-                        </button>
-                      </div>
-
-                      <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3.5">
-                          <span class="h-11 w-11 rounded-2xl bg-[#DCFCE7] text-[#15803D] font-extrabold text-xs flex items-center justify-center">✓</span>
-                          <div>
-                            <h4 class="font-extrabold text-sm text-[#0F1035]">Mes notes et réflexions</h4>
-                            <p class="text-xs text-[#42466B]">Mes idées, questions ({{ questions.length }}) et prochaines actions</p>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          (click)="selectYoungTab('MES_QUESTIONS')"
-                          class="rounded-full bg-white border border-[#D8DCF0] px-4 py-1.5 text-xs font-extrabold text-[#6D28D9]"
-                        >
-                          Éditer
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="lg:col-span-4 space-y-6">
-                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
-                      <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="briefcase"></mb-icon> Mon espace personnel</h3>
-                      <div class="flex justify-between text-xs font-bold text-[#42466B]">
-                        <span>24 Mo utilisés sur 100 Mo</span>
-                        <span>24 %</span>
-                      </div>
-                      <div class="w-full h-2.5 rounded-full bg-[#EDE9FE] overflow-hidden">
-                        <div class="w-1/4 h-full bg-[#7C3AED] rounded-full"></div>
-                      </div>
-                    </div>
-
-                    <!-- Carte Mode d'accompagnement (Parcours Autonome vs Accompagné) -->
-                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3.5">
-                      <div class="flex items-center justify-between">
-                        <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                          <span><mb-icon name="compass"></mb-icon></span>
-                          <span>Mode d'accompagnement</span>
-                        </h3>
-                        <span
-                          [class]="journeyMode === 'AUTONOMOUS' ? 'bg-amber-100 text-amber-800 border-amber-300' : 'bg-purple-100 text-purple-800 border-purple-300'"
-                          class="rounded-full px-2.5 py-0.5 text-[10px] font-black border"
-                        >
-                          {{ journeyMode === 'AUTONOMOUS' ? 'Autonome' : 'Accompagné' }}
-                        </span>
-                      </div>
-                      <p class="text-xs text-[#42466B] leading-relaxed">
-                        {{ journeyMode === 'AUTONOMOUS'
-                          ? 'Tu avances librement à ton rythme sans conseiller référent. Tu explores 721 métiers O*NET et prépares tes immersions.'
-                          : 'Tu es accompagnée par un professionnel du Centre des Possibles et accèdes à la restitution de ton bilan Rdv 2187.' }}
-                      </p>
-                      <button
-                        type="button"
-                        (click)="isJourneyChoiceModalOpen = true"
-                        class="w-full rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white py-2 px-4 text-xs font-black shadow-xs hover:opacity-95 transition text-center flex items-center justify-center gap-1.5"
-                      >
-                        <span><mb-icon name="refresh-cw"></mb-icon></span>
-                        <span>Changer de mode d'accompagnement</span>
-                      </button>
-                    </div>
-
-                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
-                      <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="library"></mb-icon> Ressources d’orientation</h3>
-                      <ul class="space-y-2 text-xs font-bold text-[#0F1035]">
-                        <li>
-                          <a href="https://www.orientation-regionsud.fr" target="_blank" rel="noopener" class="block rounded-xl bg-[#F8F7FF] p-3 hover:bg-[#F3EFFE]">
-                            <mb-icon name="globe"></mb-icon> Base Région Sud (orientation-regionsud.fr) ↗
-                          </a>
-                        </li>
-                        <li>
-                          <a href="https://www.onisep.fr" target="_blank" rel="noopener" class="block rounded-xl bg-[#F8F7FF] p-3 hover:bg-[#F3EFFE]">
-                            <mb-icon name="book-open"></mb-icon> Guide des métiers ONISEP ↗
-                          </a>
-                        </li>
-                        <li>
-                          <a href="https://www.metiers360.com" target="_blank" rel="noopener" class="block rounded-xl bg-[#F8F7FF] p-3 hover:bg-[#F3EFFE]">
-                            <mb-icon name="glasses"></mb-icon> Vidéos VR Métiers 360° (Agora) ↗
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+              <div *ngIf="activeYoungTab === 'MES_DOCUMENTS'">
+                <app-documents-page
+                  [rdvNumber]="rdvNumber"
+                  [reportDate]="reportDate"
+                  [questionsCount]="questions.length"
+                  (viewBilan)="selectYoungTab('MON_BILAN')"
+                  (playAudio)="openAudioRestitutionView()"
+                  (editNotes)="selectYoungTab('MES_QUESTIONS')"
+                ></app-documents-page>
               </div>
 
               <!-- ========================================================== -->

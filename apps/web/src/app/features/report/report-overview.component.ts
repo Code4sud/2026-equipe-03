@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { JourneyMode } from '../../shared/autonomous-data';
 import { UIEpisode } from '../../shared/restitution-data';
 
-export type ReportSubTab = 'COMPRENDRE' | 'AUDIO' | 'RESULTATS' | 'SUITE';
+export type ReportSubTab = 'COMPRENDRE' | 'AUDIO' | 'SUITE';
 
 export interface UICareer {
   id: string;
@@ -134,17 +134,7 @@ export interface UIHexacoItem {
           <span class="rounded-full bg-white/20 text-[10px] px-1.5 py-0.2 font-extrabold">6</span>
         </button>
 
-        <button
-          type="button"
-          (click)="setSubTab('RESULTATS')"
-          [class]="activeSubTab === 'RESULTATS'
-            ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow-md font-extrabold'
-            : 'bg-white text-[#42466B] hover:text-[#0F1035] hover:bg-[#F5F3FF] border border-[#E4E0F5] font-bold'"
-          class="rounded-full px-5 py-2.5 text-xs sm:text-sm transition flex items-center gap-2 whitespace-nowrap shadow-xs"
-        >
-          <span><mb-icon name="chart-column"></mb-icon></span>
-          <span>Mes résultats</span>
-        </button>
+
 
         <button
           type="button"
@@ -539,160 +529,7 @@ export interface UIHexacoItem {
         </div>
       </div>
 
-      <!-- ================================================================== -->
-      <!-- VUE 3 : MES RÉSULTATS (RIASEC sans +Activer, Aptitudes, HEXACO)     -->
-      <!-- ================================================================== -->
-      <div *ngIf="activeSubTab === 'RESULTATS'" class="space-y-6">
 
-        <!-- En-tête explicatif -->
-        <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div class="space-y-1">
-            <h3 class="text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span><mb-icon name="chart-column"></mb-icon></span>
-              <span>Résultats officiels du rapport Rdv {{ rdvNumber }}</span>
-            </h3>
-            <p class="text-xs text-[#555A8A]">
-              Ces résultats ont été établis par les psychologues du Centre des Possibles et ne sont pas modifiables.
-            </p>
-          </div>
-          <span class="text-xs font-bold text-[#7C3AED] bg-[#F5F3FF] border border-[#E4E0F5] px-3 py-1.5 rounded-full shrink-0">
-            <mb-icon name="lock"></mb-icon> Données certifiées
-          </span>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-          <!-- 1. RIASEC (Col 1..4) -->
-          <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-            <div>
-              <div class="flex items-center justify-between">
-                <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                  <span><mb-icon name="target"></mb-icon></span>
-                  <span>Centres d'intérêt (RIASEC)</span>
-                </h4>
-                <span class="text-[11px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">Page 4</span>
-              </div>
-              <p class="text-xs text-[#64748B] mt-1">
-                Classement officiel issu de tes réponses au questionnaire.
-              </p>
-            </div>
-
-            <!-- Liste sans bouton "+ Activer" : affichage respectueux et fidèle -->
-            <div class="space-y-2">
-              <div
-                *ngFor="let r of riasecOrderedDisplay"
-                [class]="r.selected
-                  ? 'border-2 border-[#7C3AED] bg-[#FDF4FF]'
-                  : 'border border-[#E4E0F5] bg-[#FAFAFC]'"
-                class="p-3 rounded-2xl flex items-center justify-between transition"
-              >
-                <div class="flex items-center gap-3">
-                  <span
-                    [class]="r.badgeClass"
-                    class="h-7 w-7 rounded-full text-white font-black flex items-center justify-center text-xs shrink-0"
-                  >
-                    {{ r.letter }}
-                  </span>
-                  <div>
-                    <p class="text-xs font-black text-[#0F1035]">{{ r.letter }} – {{ r.name }}</p>
-                    <p class="text-[10px] text-[#64748B]">{{ r.keywords }}</p>
-                  </div>
-                </div>
-
-                <span
-                  *ngIf="r.selected"
-                  class="text-[10px] font-black bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full"
-                >
-                  Dominante
-                </span>
-                <span
-                  *ngIf="!r.selected"
-                  class="text-[10px] font-medium text-[#94A3B8]"
-                >
-                  Secondaire
-                </span>
-              </div>
-            </div>
-
-            <p class="text-[11px] text-[#64748B] italic pt-2 border-t border-[#F0EDFA]">
-              Note : Aucun score chiffré réducteur n'est attribué.
-            </p>
-          </div>
-
-          <!-- 2. APTITUDES (Col 5..8) -->
-          <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-            <div>
-              <div class="flex items-center justify-between">
-                <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                  <span><mb-icon name="star"></mb-icon></span>
-                  <span>Aptitudes cognitives</span>
-                </h4>
-                <span class="text-[11px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">Page 5</span>
-              </div>
-              <p class="text-xs text-[#64748B] mt-1">
-                9 fonctions observées lors des jeux au Centre des Possibles.
-              </p>
-            </div>
-
-            <div class="space-y-2">
-              <div
-                *ngFor="let apt of aptitudesList"
-                class="p-2.5 rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] flex items-center justify-between text-xs font-bold text-[#0F1035]"
-              >
-                <div class="flex items-center gap-2">
-                  <span><mb-icon [name]="apt.icon"></mb-icon></span>
-                  <span>{{ apt.title }}</span>
-                </div>
-                <span class="text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md font-extrabold">
-                  {{ apt.tag }}
-                </span>
-              </div>
-            </div>
-
-            <!-- Réserve méthodologique explicite -->
-            <div class="rounded-xl bg-[#FFFBEB] border border-[#FDE68A] p-3 text-[11px] text-[#78350F] leading-relaxed">
-              <strong>Réserve méthodologique (p. 5) :</strong> Ces résultats représentent une photo prise le jour du test et ne constituent en aucun cas une limite figée de ton potentiel.
-            </div>
-          </div>
-
-          <!-- 3. HEXACO (Col 9..12) -->
-          <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-            <div>
-              <div class="flex items-center justify-between">
-                <h4 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                  <span><mb-icon name="users"></mb-icon></span>
-                  <span>Personnalité (HEXACO)</span>
-                </h4>
-                <span class="text-[11px] font-bold text-[#7C3AED] bg-[#F5F3FF] px-2 py-0.5 rounded-md">Page 6</span>
-              </div>
-              <p class="text-xs text-[#64748B] mt-1">
-                6 dimensions personnelles explorées au travail.
-              </p>
-            </div>
-
-            <div class="space-y-2">
-              <div
-                *ngFor="let h of hexacoList"
-                class="p-2.5 rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] space-y-1"
-              >
-                <div class="flex items-center justify-between text-xs font-extrabold text-[#0F1035]">
-                  <span class="flex items-center gap-1.5">
-                    <span><mb-icon [name]="h.icon"></mb-icon></span>
-                    <span>{{ h.name }}</span>
-                  </span>
-                  <span class="text-[10px] text-[#7C3AED]">Page 6</span>
-                </div>
-                <p class="text-[11px] text-[#64748B] leading-tight">{{ h.description }}</p>
-              </div>
-            </div>
-
-            <!-- Rappel bienveillant -->
-            <div class="rounded-xl bg-[#F5F3FF] border border-[#E4E0F5] p-3 text-[11px] text-[#4C1D95] leading-relaxed">
-              <strong>Principe clé (p. 6) :</strong> Aucun profil n'est bon ou mauvais. Chaque façon d'être apporte des forces adaptées à différents métiers.
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- ================================================================== -->
       <!-- VUE 4 : JE PRÉPARE LA SUITE                                        -->
@@ -901,7 +738,13 @@ export class ReportOverviewComponent implements OnInit, OnDestroy {
   }
 
   goToResultSection(dimension: 'RIASEC' | 'APTITUDES' | 'HEXACO'): void {
-    this.activeSubTab = 'RESULTATS';
+    if (dimension === 'RIASEC') {
+      this.selectAndPlayEpisode(1);
+    } else if (dimension === 'APTITUDES') {
+      this.selectAndPlayEpisode(2);
+    } else {
+      this.selectAndPlayEpisode(3);
+    }
   }
 
   selectAndPlayEpisode(idx: number): void {

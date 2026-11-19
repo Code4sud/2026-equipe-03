@@ -3400,8 +3400,8 @@ export class AppComponent implements OnInit {
   counselorFirstName: string = 'Sophie';
   counselorLastName: string = 'Martin';
   counselorDisplayName: string = 'Sophie Martin';
-  counselorEmail: string = 'sophie.martin@centre-possibles.fr';
-  counselorRoleTitle: string = 'Conseiller d\'orientation';
+  counselorEmail: string = 'sophie.martin@centre-des-possibles.fr';
+  counselorRoleTitle: string = 'Conseillère d\'orientation';
   counselorOrganization: string = 'Centre des Possibles';
   counselorPhotoUrl: string = 'assets/visuals/profile-counselor.png';
 

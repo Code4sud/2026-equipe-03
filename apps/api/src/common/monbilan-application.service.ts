@@ -1220,8 +1220,8 @@ export class MonBilanApplicationService {
       firstName: isCounselor ? 'Sophie' : 'Emma',
       lastName: isCounselor ? 'Martin' : 'D.',
       displayName: isCounselor ? 'Sophie Martin' : 'Emma D.',
-      email: isCounselor ? 'sophie.martin@centre-possibles.fr' : 'emma.d@monbilan.fr',
-      roleTitle: isCounselor ? 'Conseiller d\'orientation' : 'Jeune accompagné',
+      email: isCounselor ? 'sophie.martin@centre-des-possibles.fr' : 'emma.d@monbilan.fr',
+      roleTitle: isCounselor ? 'Conseillère d\'orientation' : 'Jeune accompagné',
       photoUrl: isCounselor ? 'assets/visuals/profile-counselor.png' : 'assets/visuals/profile-emma.png',
       isEmailVerified: true,
       lastLoginAt: new Date().toISOString()

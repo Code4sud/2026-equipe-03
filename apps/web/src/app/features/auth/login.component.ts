@@ -395,7 +395,7 @@ export class LoginComponent implements OnInit {
       this.email = 'emma.d@monbilan.fr';
       this.password = 'demo1234';
     } else {
-      this.email = 'sophie.martin@centre-possibles.fr';
+      this.email = 'sophie.martin@centre-des-possibles.fr';
       this.password = 'demo1234';
     }
   }

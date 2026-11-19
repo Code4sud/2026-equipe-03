@@ -22,10 +22,10 @@ export function ImpactSection() {
 
             <h2
               id="impact-title"
-              className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-[#0F1035] leading-[1.13]"
+              className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-[#0F1035] leading-[1.3]"
             >
               Un impact concret sur l’orientation,{' '}
-              <span className="inline-flex flex-wrap items-center gap-2.5">
+              <span className="mt-2 inline-flex flex-wrap items-center gap-x-2.5 gap-y-2">
                 <span>la</span>
                 <span className="inline-block rounded-2xl bg-gradient-to-r from-[#6D28D9] via-[#7935F5] to-[#9333EA] px-4 py-1 text-white shadow-cta">
                   compréhension
@@ -49,24 +49,17 @@ export function ImpactSection() {
             </div>
           </div>
 
-          {/* 4 Pills empilées à droite + Personnage comme sur la maquette L'impact concret */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-12 gap-4 items-center">
-            <div className="hidden sm:flex sm:col-span-5 justify-center">
-              <img
-                src="images/visuals/hero-girl-headphones.png"
-                alt="Jeune accompagnée avec MonBilan+"
-                className="h-72 w-auto object-cover rounded-3xl shadow-floating border-2 border-white"
-              />
-            </div>
-            <div className="sm:col-span-7 space-y-2.5">
+          {/* 4 bulles en grille 2 x 2 qui occupent toute la colonne de droite */}
+          <div className="lg:col-span-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {IMPACT_PILLS.map((pill) => (
                 <div
                   key={pill.title}
-                  className="rounded-2xl bg-white/95 border border-[#E4E0F5] px-4 py-3 shadow-card flex items-center gap-3"
+                  className="rounded-[22px] bg-white/95 border border-[#E4E0F5] p-5 shadow-card flex flex-col gap-3 hover:border-[#7935F5] transition"
                 >
                   <span
                     aria-hidden="true"
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-extrabold text-sm"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-extrabold text-base"
                   >
                     {pill.icon === 'check' && '✓'}
                     {pill.icon === 'cap' && '🎓'}
@@ -74,10 +67,10 @@ export function ImpactSection() {
                     {pill.icon === 'leaf' && '🌱'}
                   </span>
                   <div>
-                    <p className="text-xs sm:text-sm font-extrabold text-[#0F1035]">
+                    <p className="text-sm sm:text-base font-extrabold text-[#0F1035] leading-snug">
                       {pill.title}
                     </p>
-                    <p className="text-[11px] sm:text-xs text-[#42466B]">
+                    <p className="mt-1 text-xs sm:text-sm text-[#42466B] leading-snug">
                       {pill.subtitle}
                     </p>
                   </div>

@@ -14,7 +14,7 @@ export function HeroSection() {
       {/* Bandeau : texte à gauche (aligné sur le Container) + zone violette des bulles collée au bord droit */}
       <div className="relative z-10 flex flex-col lg:flex-row">
           {/* Colonne gauche : Badge, Titre, Sous-titre, 2 CTA et 3 garanties */}
-          <div className="px-4 sm:px-6 lg:w-[62%] lg:self-center lg:pr-10 lg:pl-[max(2rem,calc((100%_-_80rem)/2_+_2rem))] space-y-6">
+          <div className="px-4 sm:px-6 lg:w-[62%] xl:w-[66%] lg:self-center lg:pr-10 lg:pl-[max(2rem,calc((100%_-_80rem)/2_+_2rem))] space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-[#EAE4FF] border border-[#D3C4FF] px-4 py-1.5 text-xs sm:text-sm font-extrabold text-[#3B1D8F] shadow-sm">
               <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-[#7935F5] text-white text-[11px]">
                 ★
@@ -24,10 +24,10 @@ export function HeroSection() {
 
             <h1
               id="hero-title"
-              className="text-4xl sm:text-5xl lg:text-[56px] xl:text-[64px] font-extrabold tracking-tight text-[#0F1035] leading-[1.12]"
+              className="text-4xl sm:text-5xl lg:text-[clamp(34px,3.4vw,48px)] font-extrabold tracking-tight text-[#0F1035] leading-[1.3]"
             >
               Ton bilan d’orientation,{' '}
-              <span className="mt-1 inline-flex flex-wrap items-center gap-2.5">
+              <span className="mt-2 inline-flex flex-wrap lg:flex-nowrap lg:whitespace-nowrap items-center gap-x-2.5 gap-y-2">
                 <span>enfin</span>
                 <span className="inline-block rounded-2xl bg-gradient-to-r from-[#7935F5] via-[#8B3DFF] to-[#A855F7] px-4 py-1 text-white shadow-cta">
                   facile à comprendre.
@@ -77,7 +77,7 @@ export function HeroSection() {
 
           {/* Colonne droite : 3 cartes blanches flottantes inclinées */}
           {/* Zone violette : de la ligne jusqu'au bord droit, bulles centrées dedans */}
-          <div className="relative mt-8 lg:-mt-12 lg:w-[38%] px-4 sm:px-6 lg:py-12 flex flex-col sm:flex-row items-center justify-center lg:rounded-bl-[180px] lg:bg-gradient-to-bl lg:from-[#A855F7]/35 lg:via-[#C084FC]/20 lg:to-transparent">
+          <div className="relative mt-8 lg:-mt-12 lg:w-[38%] xl:w-[34%] px-4 sm:px-6 lg:py-12 flex flex-col sm:flex-row items-center justify-center lg:rounded-bl-[180px] lg:bg-gradient-to-bl lg:from-[#A855F7]/35 lg:via-[#C084FC]/20 lg:to-transparent">
             {/* Grille mobile (< sm) des 3 cartes repères pour éviter tout chevauchement sur smartphone */}
             <div className="grid grid-cols-1 gap-2.5 w-full mt-4 sm:hidden">
               <div className="rounded-2xl bg-white p-3.5 shadow-card border border-[#E4E0F5] flex items-center justify-between">

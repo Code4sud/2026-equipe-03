@@ -157,89 +157,248 @@ export interface UIHexacoItem {
         <!-- GRILLE PRINCIPALE SUPÉRIEURE (2 Colonnes) -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
 
-          <!-- COLONNE GAUCHE (7/12) : « Ton bilan en quelques mots » -->
-          <div class="lg:col-span-6 xl:col-span-6 rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm flex flex-col justify-between space-y-6">
+          <!-- COLONNE GAUCHE (6/12) : « Ton bilan en quelques mots » avec Ollama IA -->
+          <div class="lg:col-span-6 xl:col-span-6 rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm flex flex-col justify-between space-y-5">
             <div class="space-y-4">
-              <!-- En-tête -->
-              <div class="flex items-center justify-between">
+              <!-- En-tête avec badge d'inférence locale Ollama -->
+              <div class="flex flex-wrap items-center justify-between gap-2">
                 <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F1035] flex items-center gap-2.5">
                   <span class="text-amber-400 text-xl"><mb-icon name="sparkles"></mb-icon></span>
                   <span>Ton bilan en quelques mots</span>
                 </h3>
+                <span
+                  class="text-[11px] font-bold px-2.5 py-1 rounded-full border flex items-center gap-1.5 transition"
+                  [ngClass]="ollamaConnected
+                    ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
+                    : 'bg-purple-50 text-purple-700 border-purple-200'"
+                >
+                  <mb-icon name="sparkles"></mb-icon>
+                  <span>{{ ollamaConnected ? 'Ollama IA (' + ollamaModel + ')' : 'Rapport certifié 2187' }}</span>
+                </span>
               </div>
 
-              <!-- Texte de synthèse pédagogique -->
-              <div class="flex items-start gap-4">
-                <p class="text-sm sm:text-base text-[#31355B] leading-relaxed flex-1">
-                  Ton rapport met en avant des centres d'intérêt
-                  <strong class="text-[#8B5CF6] font-extrabold">artistiques</strong>,
-                  <strong class="text-[#10B981] font-extrabold">réalistes</strong> et
-                  <strong class="text-[#F97316] font-extrabold">sociaux</strong>.
-                  Il présente aussi tes aptitudes, des éléments de ta personnalité et propose
-                  <strong class="text-[#7C3AED] font-extrabold">{{ careers.length }} métiers</strong> à explorer.
-                </p>
+              <!-- Filtres de vulgarisation en 1 clic (Éviter les mots complexes) -->
+              <div class="flex items-center gap-1.5 p-1 bg-[#F8F7FF] rounded-2xl border border-[#E4E0F5] text-xs font-bold">
+                <button
+                  type="button"
+                  (click)="selectAIMode('SIMPLE')"
+                  [class]="aiMode === 'SIMPLE'
+                    ? 'bg-[#7C3AED] text-white shadow-xs'
+                    : 'text-[#42466B] hover:text-[#0F1035]'"
+                  class="flex-1 py-1.5 px-2 rounded-xl transition text-center cursor-pointer"
+                >
+                  🌟 En clair &amp; simple
+                </button>
+                <button
+                  type="button"
+                  (click)="selectAIMode('PARENTS')"
+                  [class]="aiMode === 'PARENTS'
+                    ? 'bg-[#7C3AED] text-white shadow-xs'
+                    : 'text-[#42466B] hover:text-[#0F1035]'"
+                  class="flex-1 py-1.5 px-2 rounded-xl transition text-center cursor-pointer"
+                >
+                  🏠 Pour mes proches
+                </button>
+                <button
+                  type="button"
+                  (click)="selectAIMode('WORK')"
+                  [class]="aiMode === 'WORK'
+                    ? 'bg-[#7C3AED] text-white shadow-xs'
+                    : 'text-[#42466B] hover:text-[#0F1035]'"
+                  class="flex-1 py-1.5 px-2 rounded-xl transition text-center cursor-pointer"
+                >
+                  💼 Dans la vraie vie
+                </button>
+              </div>
 
-                <!-- Illustration 3D Bloc-notes / Checklist -->
-                <div class="h-20 w-16 sm:h-24 sm:w-20 rounded-2xl bg-gradient-to-br from-[#EDE9FE] to-[#F5F3FF] border-2 border-[#C084FC]/40 flex flex-col items-center justify-center p-2 shadow-inner shrink-0 text-center">
-                  <div class="w-8 h-2 bg-[#7C3AED] rounded-full mb-1"></div>
-                  <div class="space-y-1 w-full px-1">
-                    <div class="h-1.5 bg-[#A855F7]/30 rounded-full flex items-center px-0.5">
-                      <span class="text-[8px] text-emerald-600 font-bold">✓</span>
-                    </div>
-                    <div class="h-1.5 bg-[#A855F7]/30 rounded-full flex items-center px-0.5">
-                      <span class="text-[8px] text-emerald-600 font-bold">✓</span>
-                    </div>
-                    <div class="h-1.5 bg-[#A855F7]/30 rounded-full flex items-center px-0.5">
-                      <span class="text-[8px] text-emerald-600 font-bold">✓</span>
-                    </div>
-                  </div>
+              <!-- Bloc texte d'explication (Généré par Ollama ou Fallback certifié) -->
+              <div class="rounded-2xl bg-[#FAFAFC] border border-[#E4E0F5] p-4 text-xs sm:text-[13px] text-[#31355B] space-y-3 relative overflow-hidden leading-relaxed">
+                <!-- Spinner si Ollama génère -->
+                <div *ngIf="isGeneratingAI" class="py-6 flex flex-col items-center justify-center gap-2 text-center animate-fadeIn">
+                  <div class="h-8 w-8 rounded-full border-3 border-[#7C3AED] border-t-transparent animate-spin"></div>
+                  <p class="font-extrabold text-[#7C3AED] text-xs">Ollama reformule ton bilan sans jargon...</p>
+                </div>
+
+                <!-- Texte d'explication sans jargon -->
+                <div *ngIf="!isGeneratingAI" class="space-y-2 whitespace-pre-line text-[#1E1B4B]">
+                  {{ aiExplanationText }}
+                </div>
+
+                <!-- Actions d'écoute et de régénération IA -->
+                <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#F0EDFA]">
+                  <button
+                    type="button"
+                    (click)="generateAIExplanation()"
+                    [disabled]="isGeneratingAI"
+                    class="rounded-xl border border-[#D8DCF0] hover:border-[#7C3AED] bg-white px-3 py-1.5 text-xs font-extrabold text-[#0F1035] hover:text-[#7C3AED] transition flex items-center gap-1.5 shadow-2xs cursor-pointer disabled:opacity-50"
+                  >
+                    <mb-icon name="sparkles"></mb-icon>
+                    <span>{{ ollamaConnected ? 'Réexpliquer avec Ollama IA' : 'Actualiser l\'explication' }}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    (click)="toggleSpeechAI()"
+                    [class]="isSpeakingAI ? 'bg-rose-50 text-rose-700 border-rose-200' : 'bg-purple-50 text-[#6D28D9] border-purple-200'"
+                    class="rounded-xl border px-3 py-1.5 text-xs font-extrabold transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                  >
+                    <mb-icon [name]="isSpeakingAI ? 'pause' : 'volume-2'"></mb-icon>
+                    <span>{{ isSpeakingAI ? 'Arrêter la voix' : 'Écouter l\'explication' }}</span>
+                  </button>
                 </div>
               </div>
 
-              <!-- 4 Repères à pastilles vertes -->
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
-                <button
-                  type="button"
-                  (click)="goToResultSection('RIASEC')"
-                  class="rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] p-2.5 text-center text-xs font-bold text-[#065F46] hover:bg-[#D1FAE5] transition flex items-center justify-center gap-1.5 shadow-2xs"
-                >
-                  <span class="text-emerald-600 font-black">✓</span>
-                  <span class="truncate">Tes centres d'intérêt</span>
-                </button>
+              <!-- 4 Repères à pastilles vertes (cliquables avec détail interactif) -->
+              <div class="space-y-2">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                  <button
+                    type="button"
+                    (click)="toggleDetailCard('RIASEC')"
+                    [class]="activeDetailCard === 'RIASEC'
+                      ? 'bg-[#10B981] text-white border-emerald-600 shadow-sm'
+                      : 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46] hover:bg-[#D1FAE5]'"
+                    class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  >
+                    <span>✓</span>
+                    <span class="truncate">Centres d'intérêt</span>
+                  </button>
 
-                <button
-                  type="button"
-                  (click)="goToResultSection('APTITUDES')"
-                  class="rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] p-2.5 text-center text-xs font-bold text-[#065F46] hover:bg-[#D1FAE5] transition flex items-center justify-center gap-1.5 shadow-2xs"
-                >
-                  <span class="text-emerald-600 font-black">✓</span>
-                  <span class="truncate">Tes aptitudes</span>
-                </button>
+                  <button
+                    type="button"
+                    (click)="toggleDetailCard('APTITUDES')"
+                    [class]="activeDetailCard === 'APTITUDES'
+                      ? 'bg-[#10B981] text-white border-emerald-600 shadow-sm'
+                      : 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46] hover:bg-[#D1FAE5]'"
+                    class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  >
+                    <span>✓</span>
+                    <span class="truncate">Tes aptitudes</span>
+                  </button>
 
-                <button
-                  type="button"
-                  (click)="goToResultSection('HEXACO')"
-                  class="rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] p-2.5 text-center text-xs font-bold text-[#065F46] hover:bg-[#D1FAE5] transition flex items-center justify-center gap-1.5 shadow-2xs"
-                >
-                  <span class="text-emerald-600 font-black">✓</span>
-                  <span class="truncate">Ta personnalité</span>
-                </button>
+                  <button
+                    type="button"
+                    (click)="toggleDetailCard('HEXACO')"
+                    [class]="activeDetailCard === 'HEXACO'
+                      ? 'bg-[#10B981] text-white border-emerald-600 shadow-sm'
+                      : 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46] hover:bg-[#D1FAE5]'"
+                    class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  >
+                    <span>✓</span>
+                    <span class="truncate">Ta personnalité</span>
+                  </button>
 
-                <button
-                  type="button"
-                  (click)="onExploreCareers()"
-                  class="rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] p-2.5 text-center text-xs font-bold text-[#065F46] hover:bg-[#D1FAE5] transition flex items-center justify-center gap-1.5 shadow-2xs"
-                >
-                  <span class="text-emerald-600 font-black">✓</span>
-                  <span class="truncate">{{ careers.length }} métiers</span>
-                </button>
+                  <button
+                    type="button"
+                    (click)="onExploreCareers()"
+                    class="rounded-xl bg-[#FAF5FF] border border-[#DDD6FE] p-2 text-center text-xs font-extrabold text-[#6D28D9] hover:bg-[#F3E8FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                  >
+                    <span>🚀</span>
+                    <span class="truncate">{{ careers.length }} métiers</span>
+                  </button>
+                </div>
+
+                <!-- Volet de détail interactif sans jargon -->
+                <div *ngIf="activeDetailCard === 'RIASEC'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
+                  <p class="font-black text-[#0F1035] flex items-center justify-between">
+                    <span>🎨 Tes centres d'intérêt réels (p. 4 du rapport) :</span>
+                    <span class="text-[10px] text-gray-400 font-normal">Clique à nouveau pour fermer</span>
+                  </p>
+                  <p>• <strong>Artistique (dominant)</strong> : Tu aimes créer, concevoir et inventer sans être enfermée dans une routine.</p>
+                  <p>• <strong>Entreprenant (fort)</strong> : Tu as de l'énergie pour proposer des idées et mener des projets.</p>
+                  <p>• <strong>Réaliste (présent)</strong> : Tu as besoin d'actions concrètes et de voir le résultat de tes efforts.</p>
+                </div>
+
+                <div *ngIf="activeDetailCard === 'APTITUDES'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
+                  <p class="font-black text-[#0F1035] flex items-center justify-between">
+                    <span>💡 Tes aptitudes observées (p. 5 du rapport) :</span>
+                    <span class="text-[10px] text-gray-400 font-normal">Sans note scolaire éliminatoire</span>
+                  </p>
+                  <p>• <strong>Flexibilité mentale</strong> : Tu t'adaptes rapidement quand la consigne ou la situation change.</p>
+                  <p>• <strong>Mémoire visuelle</strong> : Tu retiens facilement les images, schémas et agencements d'espace.</p>
+                  <p>• <strong>Partage du temps</strong> : Tu sais mener plusieurs petites tâches de front sans paniquer.</p>
+                  <p>• <strong>Logique déductive</strong> : Tu rassembles les indices pour trouver la solution logique.</p>
+                </div>
+
+                <div *ngIf="activeDetailCard === 'HEXACO'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
+                  <p class="font-black text-[#0F1035] flex items-center justify-between">
+                    <span>🤝 Ta personnalité au travail (p. 6 du rapport) :</span>
+                    <span class="text-[10px] text-gray-400 font-normal">Chaque profil a ses forces</span>
+                  </p>
+                  <p>• <strong>Curiosité &amp; Ouverture</strong> : Tu t'intéresses à ce qui est nouveau et créatif.</p>
+                  <p>• <strong>Esprit d'équipe &amp; Agréabilité</strong> : Tu privilégies la bonne entente et l'écoute mutuelle.</p>
+                  <p>• <strong>Sincérité &amp; Humilité</strong> : Tu apprécies la franchise et le respect mutuel.</p>
+                </div>
+              </div>
+
+              <!-- Bloc « Pose une question simple sur ton bilan » -->
+              <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3.5 space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-1.5">
+                    <mb-icon name="message-circle"></mb-icon>
+                    <span>Une question sur ton bilan ?</span>
+                  </span>
+                  <span class="text-[10px] text-purple-700 font-bold">Sans jargon</span>
+                </div>
+
+                <!-- Questions fréquentes en 1 clic -->
+                <div class="flex flex-wrap gap-1.5">
+                  <button
+                    type="button"
+                    (click)="askPredefinedQuestion(1)"
+                    class="rounded-lg bg-white border border-[#E4E0F5] hover:border-[#7C3AED] px-2.5 py-1 text-[11px] font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
+                  >
+                    🎨 Dominante Artistique ?
+                  </button>
+                  <button
+                    type="button"
+                    (click)="askPredefinedQuestion(2)"
+                    class="rounded-lg bg-white border border-[#E4E0F5] hover:border-[#7C3AED] px-2.5 py-1 text-[11px] font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
+                  >
+                    ❓ Pas de notes ?
+                  </button>
+                  <button
+                    type="button"
+                    (click)="askPredefinedQuestion(3)"
+                    class="rounded-lg bg-white border border-[#E4E0F5] hover:border-[#7C3AED] px-2.5 py-1 text-[11px] font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
+                  >
+                    🌱 Résultats évolutifs ?
+                  </button>
+                </div>
+
+                <!-- Champ de question libre -->
+                <div class="flex items-center gap-2 pt-1">
+                  <input
+                    type="text"
+                    [(ngModel)]="userBilanQuestion"
+                    (keyup.enter)="askBilanQuestion(userBilanQuestion)"
+                    placeholder="Pose ta question (ex: Quel métier me correspond le plus ?)"
+                    class="flex-1 bg-white border border-[#E4E0F5] rounded-xl px-3 py-1.5 text-xs font-semibold text-[#0F1035] focus:outline-none focus:ring-1 focus:ring-[#7C3AED]"
+                  />
+                  <button
+                    type="button"
+                    (click)="askBilanQuestion(userBilanQuestion)"
+                    [disabled]="isAnsweringQuestion || !userBilanQuestion.trim()"
+                    class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-3 py-1.5 text-xs font-extrabold transition cursor-pointer disabled:opacity-40"
+                  >
+                    {{ isAnsweringQuestion ? '...' : 'Demander' }}
+                  </button>
+                </div>
+
+                <!-- Réponse de l'IA sans invention -->
+                <div *ngIf="aiQuestionAnswer" class="p-3 rounded-xl bg-white border border-[#DDD6FE] text-xs text-[#1E1B4B] space-y-1 animate-fadeIn shadow-xs">
+                  <div class="flex items-center justify-between text-[11px] font-extrabold text-[#7C3AED]">
+                    <span>💡 Réponse du Coach MonBilan+ :</span>
+                    <button type="button" (click)="aiQuestionAnswer = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
+                  </div>
+                  <p class="leading-relaxed">{{ aiQuestionAnswer }}</p>
+                </div>
               </div>
             </div>
 
             <!-- Note rassurante au bas -->
             <div class="pt-3 border-t border-[#F0EDFA] flex items-center gap-2 text-xs text-[#555A8A]">
               <span class="text-[#7C3AED] text-sm"><mb-icon name="lightbulb"></mb-icon></span>
-              <p>Ce sont des pistes de réflexion, à discuter avec ton conseiller.</p>
+              <p>Ce bilan valorise tes forces réelles. Aucun algorithme ne remplace ton échange avec ton conseiller.</p>
             </div>
           </div>
 
@@ -723,9 +882,224 @@ export class ReportOverviewComponent implements OnInit, OnDestroy {
     return Math.min(100, Math.max(0, (this.audioProgressSec / this.audioDurationSec) * 100));
   }
 
-  ngOnInit(): void {
+  // --------------------------------------------------------------------------
+  // IA SOUVERAINE & VULGARISATION PÉDAGOGIQUE (OLLAMA QWEN 2.5)
+  // --------------------------------------------------------------------------
+  ollamaConnected: boolean = false;
+  ollamaModel: string = 'qwen2.5:3b';
+  isGeneratingAI: boolean = false;
+  aiMode: 'SIMPLE' | 'PARENTS' | 'WORK' = 'SIMPLE';
+  activeDetailCard: 'RIASEC' | 'APTITUDES' | 'HEXACO' | null = null;
+  aiExplanationText: string = '';
+  isSpeakingAI: boolean = false;
+
+  // Questions interactives sur le bilan
+  userBilanQuestion: string = '';
+  isAnsweringQuestion: boolean = false;
+  aiQuestionAnswer: string | null = null;
+  selectedPredefinedQuestion: string | null = null;
+
+  async ngOnInit(): Promise<void> {
     if (this.currentEpisode) {
       this.audioDurationSec = this.currentEpisode.targetDurationSec || 120;
+    }
+    this.aiExplanationText = this.getFallbackExplanation('SIMPLE');
+    await this.checkOllama();
+  }
+
+  async checkOllama(): Promise<void> {
+    if (typeof window === 'undefined') return;
+    try {
+      const res = await fetch('http://localhost:11434/api/tags', { method: 'GET' });
+      if (res.ok) {
+        const data = await res.json();
+        this.ollamaConnected = true;
+        if (data.models && data.models.length > 0) {
+          const found = data.models.find((m: any) => m.name && m.name.toLowerCase().includes('qwen'));
+          this.ollamaModel = found ? found.name : data.models[0].name;
+        }
+      }
+    } catch {
+      this.ollamaConnected = false;
+    }
+  }
+
+  async selectAIMode(mode: 'SIMPLE' | 'PARENTS' | 'WORK'): Promise<void> {
+    this.aiMode = mode;
+    this.stopSpeakingAI();
+    await this.generateAIExplanation();
+  }
+
+  toggleDetailCard(card: 'RIASEC' | 'APTITUDES' | 'HEXACO'): void {
+    this.activeDetailCard = this.activeDetailCard === card ? null : card;
+  }
+
+  getFallbackExplanation(mode: 'SIMPLE' | 'PARENTS' | 'WORK'): string {
+    if (mode === 'SIMPLE') {
+      return `Ton bilan d'orientation met en valeur trois forces motrices :
+1. Une vive imagination et le besoin d'inventer (ton profil Artistique).
+2. L'envie de lancer des projets et de prendre des initiatives (Entreprenant).
+3. Le besoin de concret et de voir les résultats réels de ton travail (Réaliste).
+
+Dans les exercices pratiques, tes forces observées sont une excellente mémoire visuelle et une grande adaptabilité. Les 22 métiers conseillés sont des pistes pour t'épanouir, sans note scolaire ni pression !`;
+    } else if (mode === 'PARENTS') {
+      return `Ce document n'est pas un bulletin scolaire avec des notes, mais une boussole d'orientation réalisée avec une psychologue du Centre des Possibles.
+
+Il révèle une personnalité créative, curieuse et motivée par des réalisations concrètes. Les tests montrent une excellente mémoire visuelle et une forte capacité à s'adapter au changement. Les 22 métiers proposés sont des pistes réelles pour construire sereinement un projet d'avenir qui a du sens.`;
+    } else {
+      return `En entreprise ou au sein d'une équipe, tes atouts professionnels sont évidents :
+- Tu visualises très vite le résultat final d'un projet et tu apportes des idées originales.
+- Tu as de l'énergie pour proposer des solutions et tu n'as pas peur de prendre des initiatives.
+- Tu travailles avec franchise et tu t'épanouis dans un climat d'équipe bienveillant.
+
+Les métiers conseillés (designer, paysagiste, multimédia...) valorisent tous cette alliance de créativité et de sens pratique.`;
+    }
+  }
+
+  async generateAIExplanation(): Promise<void> {
+    this.isGeneratingAI = true;
+    const fallback = this.getFallbackExplanation(this.aiMode);
+
+    if (!this.ollamaConnected) {
+      setTimeout(() => {
+        this.aiExplanationText = fallback;
+        this.isGeneratingAI = false;
+      }, 350);
+      return;
+    }
+
+    const modePrompt = this.aiMode === 'SIMPLE'
+      ? 'Explique le bilan en 2 à 3 petits paragraphes simples, chaleureux et encourageants pour une jeune de 16 ans, sans aucun mot compliqué ni jargon.'
+      : this.aiMode === 'PARENTS'
+      ? 'Explique ce bilan simplement de façon à ce qu un jeune puisse le lire à ses parents pour valoriser son potentiel et son avenir.'
+      : 'Explique concrètement comment ces aptitudes et ces traits s expriment dans la vraie vie en milieu professionnel.';
+
+    const prompt = `Tu es le conseiller d'orientation bienveillant de MonBilan+.
+RÈGLES ABSOLUES :
+- ZÉRO INVENTION, ZÉRO HALLUCINATION.
+- Base-toi UNIQUEMENT sur les données certifiées du rapport Rdv ${this.rdvNumber} :
+  * Intérêts RIASEC : Dominante Artistique (A, création, originalité), Entreprenant (E, projets, initiatives), Réaliste (R, concret).
+  * Aptitudes observées (p. 5) : Flexibilité d'esprit (s'adapte vite), Mémoire visuelle (sens du détail), Partage du temps (polyvalence), Logique déductive.
+  * Personnalité HEXACO (p. 6) : Curiosité, esprit d'équipe, sincérité.
+  * Métiers : ${this.careers.length} métiers conseillés.
+- INTERDICTION de mots compliqués (pas de "psychométrie", "scores stanines", "facteurs latents").
+- Phrases courtes, directes, valorisantes.
+${modePrompt}`;
+
+    try {
+      const res = await fetch('http://localhost:11434/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: this.ollamaModel,
+          prompt,
+          stream: false,
+          options: { temperature: 0.2 }
+        })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        this.aiExplanationText = data.response?.trim() || fallback;
+      } else {
+        this.aiExplanationText = fallback;
+      }
+    } catch {
+      this.aiExplanationText = fallback;
+    } finally {
+      this.isGeneratingAI = false;
+    }
+  }
+
+  toggleSpeechAI(): void {
+    if (this.isSpeakingAI) {
+      this.stopSpeakingAI();
+    } else {
+      this.startSpeakingAI();
+    }
+  }
+
+  startSpeakingAI(): void {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    this.stopAudio();
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(this.aiExplanationText);
+    utterance.lang = 'fr-FR';
+    utterance.rate = 1.0;
+    utterance.onend = () => { this.isSpeakingAI = false; };
+    utterance.onerror = () => { this.isSpeakingAI = false; };
+    this.isSpeakingAI = true;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  stopSpeakingAI(): void {
+    this.isSpeakingAI = false;
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+  }
+
+  async askBilanQuestion(questionText: string): Promise<void> {
+    if (!questionText || !questionText.trim()) return;
+    this.selectedPredefinedQuestion = questionText;
+    this.isAnsweringQuestion = true;
+    this.aiQuestionAnswer = null;
+
+    const lower = questionText.toLowerCase();
+    let fallback = `Dans ton rapport Rdv ${this.rdvNumber}, chaque observation t'aide à te situer pour explorer les ${this.careers.length} métiers conseillés, sans jamais te juger !`;
+    if (lower.includes('artistique')) {
+      fallback = `La dominante Artistique (p. 4) signifie que tu as besoin de créer, d'imaginer et d'apporter ta touche personnelle. C'est une force recherchée dans les métiers de la création, du visuel et du design !`;
+    } else if (lower.includes('note') || lower.includes('chiffr')) {
+      fallback = `C'est une règle d'or du Centre des Possibles (p. 5) : un bilan d'orientation n'est pas un examen scolaire. Il observe tes forces et tes motivations, sans note éliminatoire.`;
+    } else if (lower.includes('évoluer') || lower.includes('changer')) {
+      fallback = `Oui, totalement ! La page 5 précise que ce bilan est une photographie à un instant T. Au fil de tes découvertes et de tes stages, tes aptitudes continueront à grandir avec toi.`;
+    }
+
+    if (!this.ollamaConnected) {
+      setTimeout(() => {
+        this.aiQuestionAnswer = fallback;
+        this.isAnsweringQuestion = false;
+      }, 300);
+      return;
+    }
+
+    const prompt = `Tu es le conseiller d'orientation bienveillant de MonBilan+.
+Question posée par Emma (16 ans) sur son bilan Rdv ${this.rdvNumber} : "${questionText}".
+RÈGLES STRICTES :
+- Réponds en 2 phrases simples, claires et positives.
+- Aucun mot compliqué, pas de jargon.
+- Zéro invention : base-toi uniquement sur le rapport certifié du Centre des Possibles (Dominante Artistique/Entreprenante, 22 métiers, aptitudes sans notes scolaires).`;
+
+    try {
+      const res = await fetch('http://localhost:11434/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: this.ollamaModel,
+          prompt,
+          stream: false,
+          options: { temperature: 0.1 }
+        })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        this.aiQuestionAnswer = data.response?.trim() || fallback;
+      } else {
+        this.aiQuestionAnswer = fallback;
+      }
+    } catch {
+      this.aiQuestionAnswer = fallback;
+    } finally {
+      this.isAnsweringQuestion = false;
+    }
+  }
+
+  askPredefinedQuestion(id: number): void {
+    if (id === 1) {
+      this.askBilanQuestion('C\'est quoi la dominante Artistique ?');
+    } else if (id === 2) {
+      this.askBilanQuestion('Pourquoi il n\'y a pas de notes chiffrées ?');
+    } else {
+      this.askBilanQuestion('Est-ce que mes résultats peuvent changer ?');
     }
   }
 

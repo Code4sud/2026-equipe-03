@@ -1,7 +1,7 @@
 {
   "nom": "MonBilan+",
   "pitch": "Une interface et un rapport qui fais sens pour les jeunes et leurs proches",
-  "description": "Un jeune peut repartir avec un rapport des possibles et un bon entretien, s'il ne suis pas ou lit peu, le rapport finit oublié dans un coin\n\nDeuxième paragraphe : comment ça marche, et ce que vous avez construit en trois jours.\n\nNous fesont en sorte que cet entretien sois uen porte d'entre vers un travail qui lui convient en rendant bien plus interactif et utile cette démarche.",
+  "description": "Un jeune peut repartir avec un rapport des possibles et un bon entretien, s'il ne suis pas ou lit peu, le rapport finit oublié dans un coin\n\nDeuxième paragraphe : comment ça marche, et ce que vous avez construit en trois jours.\n\nNous fesont en sorte que cet entretien sois une porte d'entrée vers un travail qui lui convient en rendant bien plus interactif et utile cette démarche.",
   "ecoles": ["42nice", "Centrale Méditerranée"],
   "stack": ["HTML", "JavaScript"],
   "demo": "",

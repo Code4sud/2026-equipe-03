@@ -16,7 +16,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8). Poste de plus haute responsabilite exigeant des etudes superieures longues et une experience etendue de la direction.",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -44,7 +44,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -72,7 +72,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8). L'administration d'etablissements scolaires requiert generalement un master et plusieurs annees d'enseignement.",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -100,7 +100,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8). L'administration de l'enseignement superieur requiert generalement un master ou un doctorat.",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -128,7 +128,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -156,7 +156,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -184,7 +184,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -212,7 +212,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -240,7 +240,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -268,7 +268,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -296,7 +296,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -324,7 +324,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -352,7 +352,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -380,7 +380,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -408,7 +408,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -436,7 +436,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -464,7 +464,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -492,7 +492,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -520,7 +520,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -548,7 +548,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -576,7 +576,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -604,7 +604,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -632,7 +632,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -660,7 +660,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -688,7 +688,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -716,7 +716,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -744,7 +744,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -772,7 +772,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -800,7 +800,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -828,7 +828,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -856,7 +856,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -884,7 +884,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -912,7 +912,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -940,7 +940,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8). Profession juridique exigeant un diplome de droit (equivalent J.D.) et un examen du barreau.",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -968,7 +968,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -996,7 +996,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1024,7 +1024,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1052,7 +1052,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1080,7 +1080,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1108,7 +1108,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1136,7 +1136,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1164,7 +1164,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1192,7 +1192,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1220,7 +1220,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1248,7 +1248,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1276,7 +1276,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1304,7 +1304,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1332,7 +1332,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1360,7 +1360,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1388,7 +1388,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1416,7 +1416,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1444,7 +1444,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1472,7 +1472,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1500,7 +1500,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1528,7 +1528,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1556,7 +1556,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1584,7 +1584,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1612,7 +1612,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1640,7 +1640,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1668,7 +1668,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1696,7 +1696,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1724,7 +1724,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1752,7 +1752,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1780,7 +1780,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1808,7 +1808,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1836,7 +1836,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1864,7 +1864,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1892,7 +1892,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1920,7 +1920,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1948,7 +1948,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -1976,7 +1976,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2004,7 +2004,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2032,7 +2032,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2060,7 +2060,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2088,7 +2088,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2116,7 +2116,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2144,7 +2144,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2172,7 +2172,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2200,7 +2200,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2228,7 +2228,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2256,7 +2256,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2284,7 +2284,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2312,7 +2312,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2340,7 +2340,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2368,7 +2368,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2396,7 +2396,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2424,7 +2424,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2452,7 +2452,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2480,7 +2480,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2508,7 +2508,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 5 - Preparation extensive. Exige des etudes superieures longues (master, doctorat, diplome de medecine ou de droit) et une experience approfondie, souvent superieure a cinq ans (SVP >= 8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2536,7 +2536,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2564,7 +2564,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2592,7 +2592,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2620,7 +2620,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2648,7 +2648,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2676,7 +2676,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2704,7 +2704,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2732,7 +2732,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2760,7 +2760,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2788,7 +2788,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2816,7 +2816,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2844,7 +2844,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2872,7 +2872,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2900,7 +2900,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2928,7 +2928,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2956,7 +2956,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -2984,7 +2984,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3012,7 +3012,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3040,7 +3040,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3068,7 +3068,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3096,7 +3096,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3124,7 +3124,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3152,7 +3152,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3180,7 +3180,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3208,7 +3208,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3236,7 +3236,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3264,7 +3264,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3292,7 +3292,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3320,7 +3320,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3348,7 +3348,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3376,7 +3376,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3404,7 +3404,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3432,7 +3432,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3460,7 +3460,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3488,7 +3488,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3516,7 +3516,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3544,7 +3544,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3572,7 +3572,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3600,7 +3600,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3628,7 +3628,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3656,7 +3656,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3684,7 +3684,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3712,7 +3712,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3740,7 +3740,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3768,7 +3768,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8). Cite par O*NET comme exemple de Zone 4 (preparation considerable).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3796,7 +3796,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3824,7 +3824,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3852,7 +3852,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3880,7 +3880,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3908,7 +3908,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3936,7 +3936,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3964,7 +3964,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -3992,7 +3992,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4020,7 +4020,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4048,7 +4048,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4076,7 +4076,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4104,7 +4104,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4132,7 +4132,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4160,7 +4160,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4188,7 +4188,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4216,7 +4216,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4244,7 +4244,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4272,7 +4272,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4300,7 +4300,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4328,7 +4328,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4356,7 +4356,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4384,7 +4384,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4412,7 +4412,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4440,7 +4440,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4468,7 +4468,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4496,7 +4496,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4524,7 +4524,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4552,7 +4552,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4580,7 +4580,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4608,7 +4608,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4636,7 +4636,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4664,7 +4664,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4692,7 +4692,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4720,7 +4720,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4748,7 +4748,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4776,7 +4776,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4804,7 +4804,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4832,7 +4832,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4860,7 +4860,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4888,7 +4888,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4916,7 +4916,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4944,7 +4944,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -4972,7 +4972,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5000,7 +5000,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5028,7 +5028,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5056,7 +5056,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5084,7 +5084,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5112,7 +5112,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5140,7 +5140,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5168,7 +5168,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5196,7 +5196,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5224,7 +5224,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5252,7 +5252,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5280,7 +5280,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5308,7 +5308,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5336,7 +5336,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5364,7 +5364,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5392,7 +5392,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5420,7 +5420,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5448,7 +5448,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5476,7 +5476,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5504,7 +5504,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5532,7 +5532,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5560,7 +5560,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5588,7 +5588,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5616,7 +5616,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5644,7 +5644,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5672,7 +5672,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5700,7 +5700,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5728,7 +5728,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5756,7 +5756,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5784,7 +5784,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5812,7 +5812,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5840,7 +5840,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5868,7 +5868,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5896,7 +5896,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5924,7 +5924,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5952,7 +5952,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -5980,7 +5980,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6008,7 +6008,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6036,7 +6036,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6064,7 +6064,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6092,7 +6092,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6120,7 +6120,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6148,7 +6148,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6176,7 +6176,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6204,7 +6204,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6232,7 +6232,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6260,7 +6260,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6288,7 +6288,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6316,7 +6316,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6344,7 +6344,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6372,7 +6372,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6400,7 +6400,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6428,7 +6428,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6456,7 +6456,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6484,7 +6484,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6512,7 +6512,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6540,7 +6540,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6568,7 +6568,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6596,7 +6596,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6624,7 +6624,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6652,7 +6652,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6680,7 +6680,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6708,7 +6708,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6736,7 +6736,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6764,7 +6764,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6792,7 +6792,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6820,7 +6820,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6848,7 +6848,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6876,7 +6876,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6904,7 +6904,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6932,7 +6932,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6960,7 +6960,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -6988,7 +6988,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7016,7 +7016,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7044,7 +7044,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7072,7 +7072,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7100,7 +7100,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7128,7 +7128,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7156,7 +7156,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7184,7 +7184,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7212,7 +7212,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7240,7 +7240,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7268,7 +7268,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7296,7 +7296,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7324,7 +7324,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7352,7 +7352,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7380,7 +7380,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7408,7 +7408,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7436,7 +7436,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7464,7 +7464,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7492,7 +7492,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7520,7 +7520,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7548,7 +7548,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7576,7 +7576,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7604,7 +7604,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7632,7 +7632,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7660,7 +7660,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7688,7 +7688,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7716,7 +7716,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7744,7 +7744,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7772,7 +7772,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7800,7 +7800,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7828,7 +7828,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7856,7 +7856,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7884,7 +7884,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7912,7 +7912,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7940,7 +7940,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7968,7 +7968,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -7996,7 +7996,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8). Cite par O*NET comme exemple de Zone 4 (preparation considerable).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8024,7 +8024,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8052,7 +8052,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8080,7 +8080,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8108,7 +8108,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 4 - Preparation considerable. Requiert le plus souvent un diplome de niveau licence (bac+3/4) et plusieurs annees d'experience professionnelle connexe (SVP 7 a <8).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8136,7 +8136,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8164,7 +8164,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8192,7 +8192,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7). Cite par O*NET comme exemple de Zone 3 (preparation moyenne).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8220,7 +8220,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8248,7 +8248,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8276,7 +8276,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8304,7 +8304,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8332,7 +8332,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8360,7 +8360,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8388,7 +8388,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8416,7 +8416,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8444,7 +8444,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8472,7 +8472,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8500,7 +8500,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8528,7 +8528,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8556,7 +8556,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8584,7 +8584,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8612,7 +8612,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8640,7 +8640,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8668,7 +8668,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8696,7 +8696,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8724,7 +8724,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8752,7 +8752,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8780,7 +8780,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8808,7 +8808,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8836,7 +8836,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8864,7 +8864,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8892,7 +8892,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8920,7 +8920,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8948,7 +8948,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -8976,7 +8976,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9004,7 +9004,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9032,7 +9032,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9060,7 +9060,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9088,7 +9088,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9116,7 +9116,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9144,7 +9144,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9172,7 +9172,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9200,7 +9200,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9228,7 +9228,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9256,7 +9256,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9284,7 +9284,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9312,7 +9312,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9340,7 +9340,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9368,7 +9368,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9396,7 +9396,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9424,7 +9424,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9452,7 +9452,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9480,7 +9480,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9508,7 +9508,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9536,7 +9536,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9564,7 +9564,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9592,7 +9592,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9620,7 +9620,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9648,7 +9648,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9676,7 +9676,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9704,7 +9704,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9732,7 +9732,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9760,7 +9760,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9788,7 +9788,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9816,7 +9816,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9844,7 +9844,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9872,7 +9872,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9900,7 +9900,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9928,7 +9928,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9956,7 +9956,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -9984,7 +9984,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10012,7 +10012,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10040,7 +10040,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10068,7 +10068,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10096,7 +10096,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10124,7 +10124,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10152,7 +10152,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10180,7 +10180,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7). O*NET classe les infirmiers diplomes en Zone 3 (diplome de niveau associate/bac+2 suffisant).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10208,7 +10208,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10236,7 +10236,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10264,7 +10264,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10292,7 +10292,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10320,7 +10320,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10348,7 +10348,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10376,7 +10376,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10404,7 +10404,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10432,7 +10432,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10460,7 +10460,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10488,7 +10488,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10516,7 +10516,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10544,7 +10544,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10572,7 +10572,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10600,7 +10600,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10628,7 +10628,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10656,7 +10656,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10684,7 +10684,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10712,7 +10712,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10740,7 +10740,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10768,7 +10768,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10796,7 +10796,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10824,7 +10824,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10852,7 +10852,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10880,7 +10880,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10908,7 +10908,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10936,7 +10936,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10964,7 +10964,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -10992,7 +10992,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11020,7 +11020,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11048,7 +11048,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7). Cite par O*NET comme exemple de Zone 3 (formation professionnelle et licence).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11076,7 +11076,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11104,7 +11104,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11132,7 +11132,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11160,7 +11160,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11188,7 +11188,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11216,7 +11216,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11244,7 +11244,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11272,7 +11272,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11300,7 +11300,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11328,7 +11328,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11356,7 +11356,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11384,7 +11384,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11412,7 +11412,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11440,7 +11440,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11468,7 +11468,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11496,7 +11496,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11524,7 +11524,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11552,7 +11552,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11580,7 +11580,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11608,7 +11608,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11636,7 +11636,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11664,7 +11664,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11692,7 +11692,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11720,7 +11720,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11748,7 +11748,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7). Cite par O*NET comme exemple de Zone 3 (preparation moyenne).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11776,7 +11776,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11804,7 +11804,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11832,7 +11832,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11860,7 +11860,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11888,7 +11888,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11916,7 +11916,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11944,7 +11944,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -11972,7 +11972,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12000,7 +12000,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12028,7 +12028,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12056,7 +12056,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7). Cite par O*NET comme exemple de Zone 3 : apprentissage de 3-4 ans et examen de licence.",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12084,7 +12084,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12112,7 +12112,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12140,7 +12140,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12168,7 +12168,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12196,7 +12196,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12224,7 +12224,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12252,7 +12252,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12280,7 +12280,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12308,7 +12308,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12336,7 +12336,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12364,7 +12364,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12392,7 +12392,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12420,7 +12420,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12448,7 +12448,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12476,7 +12476,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12504,7 +12504,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12532,7 +12532,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12560,7 +12560,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12588,7 +12588,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12616,7 +12616,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12644,7 +12644,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12672,7 +12672,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12700,7 +12700,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12728,7 +12728,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12756,7 +12756,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12784,7 +12784,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12812,7 +12812,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12840,7 +12840,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12868,7 +12868,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12896,7 +12896,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12924,7 +12924,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12952,7 +12952,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -12980,7 +12980,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13008,7 +13008,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13036,7 +13036,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13064,7 +13064,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13092,7 +13092,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13120,7 +13120,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13148,7 +13148,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13176,7 +13176,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13204,7 +13204,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13232,7 +13232,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13260,7 +13260,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13288,7 +13288,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13316,7 +13316,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13344,7 +13344,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13372,7 +13372,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13400,7 +13400,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13428,7 +13428,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13456,7 +13456,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13484,7 +13484,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13512,7 +13512,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13540,7 +13540,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13568,7 +13568,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13596,7 +13596,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13624,7 +13624,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13652,7 +13652,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13680,7 +13680,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13708,7 +13708,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13736,7 +13736,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13764,7 +13764,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13792,7 +13792,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13820,7 +13820,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13848,7 +13848,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13876,7 +13876,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13904,7 +13904,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13932,7 +13932,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 3 - Preparation moyenne. Necessite une formation professionnelle/technique (type CAP, BP, BTS, DUT, diplome de niveau bac+2 ou apprentissage) et une experience connexe d'environ un a deux ans (SVP 6 a <7).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13960,7 +13960,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -13988,7 +13988,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14016,7 +14016,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14044,7 +14044,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14072,7 +14072,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14100,7 +14100,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14128,7 +14128,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14156,7 +14156,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14184,7 +14184,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14212,7 +14212,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14240,7 +14240,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14268,7 +14268,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14296,7 +14296,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14324,7 +14324,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14352,7 +14352,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14380,7 +14380,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14408,7 +14408,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14436,7 +14436,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14464,7 +14464,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14492,7 +14492,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14520,7 +14520,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14548,7 +14548,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14576,7 +14576,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14604,7 +14604,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14632,7 +14632,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14660,7 +14660,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14688,7 +14688,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14716,7 +14716,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6). Cite par O*NET comme exemple de Zone 1-2 (tres peu de preparation).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14744,7 +14744,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14772,7 +14772,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14800,7 +14800,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14828,7 +14828,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14856,7 +14856,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14884,7 +14884,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14912,7 +14912,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14940,7 +14940,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14968,7 +14968,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -14996,7 +14996,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15024,7 +15024,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15052,7 +15052,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15080,7 +15080,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15108,7 +15108,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15136,7 +15136,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15164,7 +15164,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15192,7 +15192,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15220,7 +15220,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15248,7 +15248,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6). Cite par O*NET comme exemple de Zone 1-2 (tres peu de preparation).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15276,7 +15276,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15304,7 +15304,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15332,7 +15332,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15360,7 +15360,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15388,7 +15388,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15416,7 +15416,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15444,7 +15444,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15472,7 +15472,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15500,7 +15500,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15528,7 +15528,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15556,7 +15556,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15584,7 +15584,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15612,7 +15612,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15640,7 +15640,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15668,7 +15668,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15696,7 +15696,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15724,7 +15724,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15752,7 +15752,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15780,7 +15780,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15808,7 +15808,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15836,7 +15836,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15864,7 +15864,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15892,7 +15892,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15920,7 +15920,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15948,7 +15948,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -15976,7 +15976,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16004,7 +16004,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16032,7 +16032,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16060,7 +16060,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16088,7 +16088,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6). Cite par O*NET comme exemple de Zone 1-2 : benefice d'une formation sur le tas.",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16116,7 +16116,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16144,7 +16144,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16172,7 +16172,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16200,7 +16200,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16228,7 +16228,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16256,7 +16256,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16284,7 +16284,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16312,7 +16312,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16340,7 +16340,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16368,7 +16368,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16396,7 +16396,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16424,7 +16424,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16452,7 +16452,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16480,7 +16480,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16508,7 +16508,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16536,7 +16536,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16564,7 +16564,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16592,7 +16592,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16620,7 +16620,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16648,7 +16648,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16676,7 +16676,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16704,7 +16704,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16732,7 +16732,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16760,7 +16760,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16788,7 +16788,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16816,7 +16816,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16844,7 +16844,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16872,7 +16872,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16900,7 +16900,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16928,7 +16928,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16956,7 +16956,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -16984,7 +16984,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17012,7 +17012,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17040,7 +17040,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17068,7 +17068,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17096,7 +17096,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17124,7 +17124,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17152,7 +17152,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17180,7 +17180,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17208,7 +17208,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17236,7 +17236,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17264,7 +17264,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17292,7 +17292,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17320,7 +17320,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17348,7 +17348,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17376,7 +17376,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17404,7 +17404,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17432,7 +17432,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17460,7 +17460,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17488,7 +17488,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17516,7 +17516,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17544,7 +17544,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17572,7 +17572,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17600,7 +17600,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17628,7 +17628,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17656,7 +17656,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17684,7 +17684,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17712,7 +17712,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17740,7 +17740,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17768,7 +17768,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17796,7 +17796,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17824,7 +17824,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17852,7 +17852,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17880,7 +17880,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17908,7 +17908,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17936,7 +17936,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17964,7 +17964,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -17992,7 +17992,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18020,7 +18020,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18048,7 +18048,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18076,7 +18076,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18104,7 +18104,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18132,7 +18132,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18160,7 +18160,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18188,7 +18188,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18216,7 +18216,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18244,7 +18244,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18272,7 +18272,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18300,7 +18300,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18328,7 +18328,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18356,7 +18356,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18384,7 +18384,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18412,7 +18412,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18440,7 +18440,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18468,7 +18468,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18496,7 +18496,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18524,7 +18524,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18552,7 +18552,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18580,7 +18580,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "DIGITAL",
     "categoryLabelFr": "Numérique",
-    "categoryIcon": "💻",
+    "categoryIcon": "laptop",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18608,7 +18608,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18636,7 +18636,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18664,7 +18664,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18692,7 +18692,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18720,7 +18720,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18748,7 +18748,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18776,7 +18776,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18804,7 +18804,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18832,7 +18832,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18860,7 +18860,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18888,7 +18888,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18916,7 +18916,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18944,7 +18944,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -18972,7 +18972,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19000,7 +19000,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19028,7 +19028,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19056,7 +19056,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19084,7 +19084,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19112,7 +19112,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19140,7 +19140,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19168,7 +19168,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19196,7 +19196,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19224,7 +19224,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19252,7 +19252,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19280,7 +19280,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19308,7 +19308,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19336,7 +19336,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19364,7 +19364,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19392,7 +19392,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19420,7 +19420,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19448,7 +19448,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19476,7 +19476,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19504,7 +19504,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19532,7 +19532,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19560,7 +19560,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19588,7 +19588,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19616,7 +19616,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19644,7 +19644,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19672,7 +19672,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19700,7 +19700,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19728,7 +19728,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19756,7 +19756,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19784,7 +19784,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 2 - Un peu de preparation. Un diplome de fin d'etudes secondaires suffit generalement ; experience limitee et formation sur le tas de quelques mois a un an (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19812,7 +19812,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19840,7 +19840,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19868,7 +19868,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19896,7 +19896,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6). Cite par O*NET comme exemple de Zone 1-2 (tres peu de preparation).",
     "category": "CARE",
     "categoryLabelFr": "Aider / Accompagner",
-    "categoryIcon": "🤝",
+    "categoryIcon": "handshake",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19924,7 +19924,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19952,7 +19952,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -19980,7 +19980,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -20008,7 +20008,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "NATURE",
     "categoryLabelFr": "Nature / Environnement",
-    "categoryIcon": "🌿",
+    "categoryIcon": "leaf",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -20036,7 +20036,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -20064,7 +20064,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -20092,7 +20092,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CREATIVE",
     "categoryLabelFr": "Créer / Artistique",
-    "categoryIcon": "🎨",
+    "categoryIcon": "palette",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -20120,7 +20120,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -20148,7 +20148,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "CRAFT",
     "categoryLabelFr": "Bricoler / Construire",
-    "categoryIcon": "🔨",
+    "categoryIcon": "hammer",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",
@@ -20176,7 +20176,7 @@ export const ONET_CAREERS_CATALOG_DATA: UICatalogCareer[] = [
     "jobZoneJustification": "Zone 1 - Tres peu de preparation. Aucun ou un simple diplome de fin d'etudes secondaires suffit ; tres peu d'experience prealable et formation sur le tas de quelques jours a quelques mois (SVP < 6).",
     "category": "ORGANIZATION",
     "categoryLabelFr": "Organiser / Gérer",
-    "categoryIcon": "📊",
+    "categoryIcon": "chart-column",
     "suggestedActivities": [
       "Observation des activités principales et techniques employées",
       "Échange avec le professionnel sur le quotidien et les conditions de travail",

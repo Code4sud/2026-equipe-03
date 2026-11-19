@@ -5,11 +5,12 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 
 @Component({
   selector: 'app-autonomous-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [MbIconComponent, CommonModule],
   template: `
     <div class="space-y-8 animate-fadeIn">
       <!-- ================================================================== -->
@@ -25,7 +26,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         <div class="max-w-3xl space-y-3 relative z-10">
           <div class="flex items-center gap-2">
             <span class="inline-block rounded-full bg-white/20 text-white px-3.5 py-1 text-xs font-black tracking-wide uppercase">
-              🧭 Parcours Autonome
+              <mb-icon name="compass"></mb-icon> Parcours Autonome
             </span>
             <span class="text-xs text-[#E7E8FB]/80 hidden sm:inline">• À ton rythme & sans pression</span>
           </div>
@@ -44,7 +45,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
               (click)="navigateTo.emit('CATALOG')"
               class="rounded-full bg-white text-[#1B1B62] hover:bg-[#F3EFFE] px-6 py-3 text-xs sm:text-sm font-extrabold shadow-md hover:shadow-lg transition flex items-center gap-2"
             >
-              <span>🔍</span>
+              <span><mb-icon name="search"></mb-icon></span>
               <span>Explorer les 721 métiers</span>
             </button>
             <button
@@ -52,7 +53,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
               (click)="navigateTo.emit('SUPPORT')"
               class="rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 px-5 py-3 text-xs sm:text-sm font-extrabold transition flex items-center gap-2"
             >
-              <span>🏛️</span>
+              <span><mb-icon name="landmark"></mb-icon></span>
               <span>Besoin d’aide locale ?</span>
             </button>
           </div>
@@ -71,7 +72,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
             <div
               class="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#7C3AED] to-[#9333EA] text-white flex items-center justify-center text-3xl shadow-md group-hover:scale-105 transition"
             >
-              🎨
+              <mb-icon name="palette"></mb-icon>
             </div>
             <div class="space-y-1.5">
               <span class="text-xs font-bold text-[#7C3AED] uppercase tracking-wider block">Étape 1</span>
@@ -112,7 +113,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
             <div
               class="h-14 w-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center text-3xl shadow-md group-hover:scale-105 transition"
             >
-              💼
+              <mb-icon name="briefcase"></mb-icon>
             </div>
             <div class="space-y-1.5">
               <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block">Étape 2</span>
@@ -152,7 +153,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
             <div
               class="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center text-3xl shadow-md group-hover:scale-105 transition"
             >
-              🏛️
+              <mb-icon name="landmark"></mb-icon>
             </div>
             <div class="space-y-1.5">
               <span class="text-xs font-bold text-blue-700 uppercase tracking-wider block">Ressources</span>
@@ -192,7 +193,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         class="rounded-2xl bg-[#FAF8FF] border border-[#DDD6FE] p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4"
       >
         <div class="flex items-center gap-4 text-xs sm:text-sm text-[#42466B]">
-          <span class="text-2xl shrink-0">ℹ️</span>
+          <span class="text-2xl shrink-0"><mb-icon name="info"></mb-icon></span>
           <div>
             <strong class="text-[#0F1035] font-extrabold block">Liberté et bienveillance :</strong>
             <span>
@@ -206,7 +207,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
           (click)="openModeModal.emit()"
           class="shrink-0 rounded-full bg-white border border-[#D8DCF0] hover:border-[#7C3AED] text-[#7C3AED] px-4 py-2 text-xs font-bold transition shadow-xs flex items-center gap-1.5"
         >
-          <span>🔄</span>
+          <span><mb-icon name="refresh-cw"></mb-icon></span>
           <span>Changer de mode</span>
         </button>
       </div>

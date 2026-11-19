@@ -5,12 +5,13 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { JourneyMode } from '../../shared/autonomous-data';
 
 @Component({
   selector: 'app-journey-choice-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [MbIconComponent, CommonModule],
   template: `
     <div
       *ngIf="isOpen"
@@ -47,7 +48,7 @@ import { JourneyMode } from '../../shared/autonomous-data';
           >
             <div class="space-y-3">
               <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[#7C3AED] to-[#9333EA] text-white flex items-center justify-center text-2xl shadow-sm">
-                🤝
+                <mb-icon name="handshake"></mb-icon>
               </div>
               <div>
                 <span class="text-xs font-bold text-[#7C3AED] uppercase tracking-wider block">Option A</span>
@@ -76,7 +77,7 @@ import { JourneyMode } from '../../shared/autonomous-data';
           >
             <div class="space-y-3">
               <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center text-2xl shadow-sm">
-                🧭
+                <mb-icon name="compass"></mb-icon>
               </div>
               <div>
                 <span class="text-xs font-bold text-amber-700 uppercase tracking-wider block">Option B</span>
@@ -101,7 +102,7 @@ import { JourneyMode } from '../../shared/autonomous-data';
         <!-- Note de réassurance RGPD -->
         <div class="text-center pt-1">
           <p class="text-xs text-[#6B7280]">
-            🔒 Aucune obligation d’import de bilan. Tes données et favoris restent strictement confidentiels.
+            <mb-icon name="lock"></mb-icon> Aucune obligation d’import de bilan. Tes données et favoris restent strictement confidentiels.
           </p>
         </div>
       </div>

@@ -5,6 +5,7 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import {
   CareerInterestFilter,
@@ -15,7 +16,7 @@ import {
 @Component({
   selector: 'app-career-catalog',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="space-y-6 animate-fadeIn">
       <!-- ================================================================== -->
@@ -42,7 +43,7 @@ import {
         <div class="w-full md:w-80">
           <div class="relative">
             <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#6B7280]">
-              🔍
+              <mb-icon name="search"></mb-icon>
             </span>
             <input
               type="text"
@@ -67,7 +68,7 @@ import {
             : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:border-[#7C3AED]/40 hover:bg-[#FAF8FF] font-bold'"
           class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
         >
-          <span>{{ cat.icon }}</span>
+          <span><mb-icon [name]="cat.icon"></mb-icon></span>
           <span>{{ cat.label }}</span>
         </button>
 
@@ -80,7 +81,7 @@ import {
             : 'bg-white text-rose-600 border border-rose-200 hover:bg-rose-50 font-bold'"
           class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5 ml-auto"
         >
-          <span>{{ showOnlyFavorites ? '❤️' : '🤍' }}</span>
+          <span><mb-icon [name]="'heart'" [filled]="!!(showOnlyFavorites)"></mb-icon></span>
           <span>Mes favoris ({{ favoriteCount }})</span>
         </button>
       </div>
@@ -152,7 +153,7 @@ import {
               <span
                 class="rounded-full bg-[#FAF8FF] border border-[#E4E0F5] px-2.5 py-0.5 text-[11px] font-bold text-[#6D28D9] flex items-center gap-1"
               >
-                <span>{{ career.categoryIcon }}</span>
+                <span><mb-icon [name]="career.categoryIcon"></mb-icon></span>
                 <span>{{ career.categoryLabelFr }}</span>
               </span>
 
@@ -163,7 +164,7 @@ import {
                 class="text-xl p-1 transition transform cursor-pointer"
                 title="Ajouter aux favoris"
               >
-                {{ career.isFavorite ? '❤️' : '🤍' }}
+                <mb-icon [name]="'heart'" [filled]="!!(career.isFavorite)"></mb-icon>
               </button>
             </div>
 
@@ -193,7 +194,7 @@ import {
               (click)="selectCareerDetail.emit(career)"
               class="rounded-full bg-[#F3EFFE] text-[#7C3AED] hover:bg-[#E9D5FF] px-3.5 py-2 text-xs font-black transition"
             >
-              🔍 Fiche
+              <mb-icon name="search"></mb-icon> Fiche
             </button>
 
             <button
@@ -201,7 +202,7 @@ import {
               (click)="startImmersion.emit(career)"
               class="flex-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-white hover:opacity-95 px-3.5 py-2 text-xs font-black shadow-xs transition text-center truncate flex items-center justify-center gap-1.5"
             >
-              <span>💼</span>
+              <span><mb-icon name="briefcase"></mb-icon></span>
               <span>Immersion Pro →</span>
             </button>
           </div>
@@ -235,7 +236,7 @@ import {
       <ng-template #emptyState>
         <div class="rounded-3xl bg-white border border-[#E4E0F5] p-12 text-center space-y-4">
           <div class="h-16 w-16 mx-auto rounded-3xl bg-[#FAF8FF] text-[#7C3AED] flex items-center justify-center text-3xl">
-            🔍
+            <mb-icon name="search"></mb-icon>
           </div>
           <div class="space-y-1">
             <h3 class="text-lg font-black text-[#0F1035]">Aucun métier ne correspond à ces critères</h3>

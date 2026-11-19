@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [MbIconComponent, CommonModule, FormsModule],
   template: `
     <div class="max-w-4xl mx-auto space-y-6 pb-12">
       <!-- ================================================================== -->
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
       <!-- ================================================================== -->
       <div class="flex items-center gap-3.5">
         <div class="h-11 w-11 sm:h-12 sm:w-12 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-xl sm:text-2xl font-bold border border-[#E9D5FF] shrink-0 shadow-2xs">
-          ⚙️
+          <mb-icon name="settings"></mb-icon>
         </div>
         <div>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F1035] tracking-tight">
@@ -45,7 +46,7 @@ import { FormsModule } from '@angular/forms';
                 class="absolute bottom-1 right-1 h-8 w-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs shadow-md border-2 border-white hover:bg-[#6D28D9] transition"
                 title="Modifier la photo"
               >
-                📷
+                <mb-icon name="camera"></mb-icon>
               </button>
             </div>
 
@@ -63,7 +64,7 @@ import { FormsModule } from '@angular/forms';
               (click)="onPhotoClick()"
               class="rounded-full border-2 border-[#7C3AED] text-[#7C3AED] font-extrabold text-xs px-4 py-2 hover:bg-[#F5F3FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
             >
-              <span>📷</span>
+              <span><mb-icon name="camera"></mb-icon></span>
               <span>Modifier ma photo</span>
             </button>
           </div>
@@ -102,7 +103,7 @@ import { FormsModule } from '@angular/forms';
               </label>
               <div class="relative">
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">
-                  ✉️
+                  <mb-icon name="mail"></mb-icon>
                 </span>
                 <input
                   type="email"
@@ -142,7 +143,7 @@ import { FormsModule } from '@angular/forms';
         >
           <div class="flex items-center gap-4">
             <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg shrink-0 shadow-2xs">
-              🔒
+              <mb-icon name="lock"></mb-icon>
             </div>
             <div>
               <h4 class="text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
@@ -163,7 +164,7 @@ import { FormsModule } from '@angular/forms';
         >
           <div class="flex items-center gap-4">
             <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg shrink-0 shadow-2xs">
-              🔔
+              <mb-icon name="bell"></mb-icon>
             </div>
             <div>
               <h4 class="text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
@@ -184,7 +185,7 @@ import { FormsModule } from '@angular/forms';
         >
           <div class="flex items-center gap-4">
             <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg shrink-0 shadow-2xs">
-              ♿
+              <mb-icon name="accessibility"></mb-icon>
             </div>
             <div>
               <h4 class="text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
@@ -238,7 +239,7 @@ import { FormsModule } from '@angular/forms';
         >
           <div class="flex items-center gap-4">
             <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg shrink-0 shadow-2xs">
-              🛡️
+              <mb-icon name="shield-check"></mb-icon>
             </div>
             <div>
               <h4 class="text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">

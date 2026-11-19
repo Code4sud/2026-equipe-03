@@ -5,12 +5,13 @@
 
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { UICatalogCareer } from '../../shared/autonomous-data';
 
 @Component({
   selector: 'app-autonomous-career-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [MbIconComponent, CommonModule],
   template: `
     <div *ngIf="career" class="space-y-6 animate-fadeIn">
       <!-- ================================================================== -->
@@ -23,7 +24,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
           <div class="space-y-2 max-w-2xl">
             <div class="flex flex-wrap items-center gap-2">
               <span class="rounded-full bg-white/20 text-white px-3 py-1 text-xs font-black">
-                {{ career.categoryIcon }} {{ career.categoryLabelFr }}
+                <mb-icon [name]="career.categoryIcon"></mb-icon> {{ career.categoryLabelFr }}
               </span>
               <span class="rounded-full bg-purple-400/30 text-purple-100 border border-purple-300/30 px-3 py-1 text-xs font-bold">
                 Zone {{ career.jobZone }} ({{ getZoneLabel(career.jobZone) }})
@@ -46,7 +47,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
               (click)="startImmersion.emit(career)"
               class="rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-[#7C3AED] text-white px-6 py-3 text-xs font-black shadow-lg hover:scale-105 transition flex items-center justify-center gap-2"
             >
-              <span>💼</span>
+              <span><mb-icon name="briefcase"></mb-icon></span>
               <span>Préparer une immersion →</span>
             </button>
 
@@ -55,7 +56,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
               (click)="toggleFavorite(career)"
               class="rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/30 px-5 py-2.5 text-xs font-extrabold transition flex items-center justify-center gap-2"
             >
-              <span>{{ career.isFavorite ? '❤️ Dans mes favoris' : '🤍 Ajouter aux favoris' }}</span>
+              <span><mb-icon [name]="'heart'" [filled]="!!(career.isFavorite)"></mb-icon> {{ career.isFavorite ? 'Dans mes favoris' : 'Ajouter aux favoris' }}</span>
             </button>
 
             <button
@@ -78,7 +79,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
           <!-- Ce que fait ce professionnel -->
           <div class="rounded-3xl bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-3">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">🎯</span>
+              <span class="text-2xl"><mb-icon name="target"></mb-icon></span>
               <h3 class="text-lg font-black text-[#0F1035]">Ce que fait ce professionnel</h3>
             </div>
             <p class="text-xs sm:text-sm text-[#42466B] leading-relaxed">
@@ -89,7 +90,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
           <!-- Les activités principales -->
           <div class="rounded-3xl bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">📋</span>
+              <span class="text-2xl"><mb-icon name="clipboard-list"></mb-icon></span>
               <h3 class="text-lg font-black text-[#0F1035]">Les activités principales à observer</h3>
             </div>
             <div class="space-y-2.5">
@@ -108,7 +109,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
           <!-- Les questions utiles pour une rencontre pro -->
           <div class="rounded-3xl bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4">
             <div class="flex items-center gap-3">
-              <span class="text-2xl">💬</span>
+              <span class="text-2xl"><mb-icon name="message-circle"></mb-icon></span>
               <h3 class="text-lg font-black text-[#0F1035]">Les questions à poser lors d'une rencontre</h3>
             </div>
             <p class="text-xs text-[#6B7280]">
@@ -119,7 +120,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
                 *ngFor="let q of career.suggestedQuestions"
                 class="rounded-2xl bg-amber-50/60 border border-amber-200 p-3.5 flex items-start gap-3 text-xs sm:text-sm text-amber-950"
               >
-                <span class="text-base shrink-0">💡</span>
+                <span class="text-base shrink-0"><mb-icon name="lightbulb"></mb-icon></span>
                 <span class="font-medium leading-relaxed">« {{ q }} »</span>
               </div>
             </div>
@@ -131,7 +132,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
           <!-- Les parcours et durées possibles -->
           <div class="rounded-3xl bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
             <h4 class="text-sm font-black text-[#0F1035] uppercase tracking-wider flex items-center gap-2">
-              <span>🎓</span>
+              <span><mb-icon name="graduation-cap"></mb-icon></span>
               <span>Voies d'accès vérifiées</span>
             </h4>
             <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 space-y-2 text-xs text-[#42466B]">
@@ -148,7 +149,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
           <!-- Besoin d'un coup de main ? -->
           <div class="rounded-3xl bg-gradient-to-br from-[#FAF8FF] to-[#EDE9FE] border border-[#DDD6FE] p-6 shadow-sm space-y-3">
             <div class="flex items-center gap-2 text-[#7C3AED]">
-              <span class="text-xl">🤝</span>
+              <span class="text-xl"><mb-icon name="handshake"></mb-icon></span>
               <h4 class="text-sm font-black uppercase tracking-wider">Besoin d'un coup de main ?</h4>
             </div>
             <p class="text-xs text-[#42466B] leading-relaxed">

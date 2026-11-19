@@ -892,9 +892,11 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
       attributionControl: false
     }).setView([43.705, 7.265], 13);
 
-    // Fond de carte clair et lisible comme sur la Maquette 1 (CartoDB Voyager)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19
+    // Fond de carte OpenStreetMap France (haute résolution, net, gratuit et sans clé d'API requise)
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      subdomains: ['a', 'b', 'c'],
+      attribution: '© OpenStreetMap France | Données © Contributeurs OpenStreetMap'
     }).addTo(this.map);
 
     this.markersLayer = L.layerGroup().addTo(this.map);

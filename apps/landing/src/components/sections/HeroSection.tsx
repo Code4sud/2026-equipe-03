@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import React from 'react';
 import { HERO_PILLARS } from '@/data/landing-content';
 import { SITE_CONFIG } from '@/config/site';
@@ -68,7 +69,7 @@ export function HeroSection() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#DCFCE7] text-[#16A34A] text-xs">
-                  🛡️
+                  <Icon name="shield-check" />
                 </span>
                 <span>Sécurisé (RGPD)</span>
               </li>
@@ -81,15 +82,15 @@ export function HeroSection() {
             {/* Grille mobile (< sm) des 3 cartes repères pour éviter tout chevauchement sur smartphone */}
             <div className="grid grid-cols-1 gap-2.5 w-full mt-4 sm:hidden">
               <div className="rounded-2xl bg-white p-3.5 shadow-card border border-[#E4E0F5] flex items-center justify-between">
-                <span className="font-extrabold text-xs text-[#0F1035]">📋 Mon bilan</span>
+                <span className="font-extrabold text-xs text-[#0F1035]"><Icon name="clipboard-list" /> Mon bilan</span>
                 <span className="text-[11px] font-bold text-[#1B1B62]">Intérêts • Aptitudes • Personnalité</span>
               </div>
               <div className="rounded-2xl bg-white p-3.5 shadow-card border border-[#E4E0F5] flex items-center justify-between">
-                <span className="font-extrabold text-xs text-[#0F1035]">💼 Métiers du bilan</span>
+                <span className="font-extrabold text-xs text-[#0F1035]"><Icon name="briefcase" /> Métiers du bilan</span>
                 <span className="text-[11px] font-bold text-[#1B1B62]">Peintre • Technicien son • Radio</span>
               </div>
               <div className="rounded-2xl bg-white p-3.5 shadow-card border border-[#E4E0F5] flex items-center justify-between">
-                <span className="font-extrabold text-xs text-[#0F1035]">🔗 Mon parcours</span>
+                <span className="font-extrabold text-xs text-[#0F1035]"><Icon name="link" /> Mon parcours</span>
                 <span className="text-[11px] font-bold text-[#1B1B62]">Formations • Étapes • Questions</span>
               </div>
             </div>
@@ -100,7 +101,7 @@ export function HeroSection() {
             <div className="absolute left-0 top-0 z-10 w-[225px] rounded-[22px] bg-white p-4 shadow-floating border border-[#E4E0F5] -rotate-3">
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3EFFE] text-[#6D28D9] text-sm font-bold">
-                  📋
+                  <Icon name="clipboard-list" />
                 </span>
                 <span className="text-base font-extrabold text-[#0F1035]">Mon bilan</span>
               </div>
@@ -130,26 +131,26 @@ export function HeroSection() {
             <div className="absolute left-4 bottom-0 z-30 w-[240px] rounded-[22px] bg-white p-4 shadow-floating border border-[#E4E0F5] -rotate-2">
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3EFFE] text-[#6D28D9] text-sm font-bold">
-                  💼
+                  <Icon name="briefcase" />
                 </span>
                 <span className="text-sm font-extrabold text-[#0F1035]">Métiers du bilan</span>
               </div>
               <ul className="space-y-2 text-xs font-bold text-[#1B1B62]">
                 <li className="flex items-center gap-2.5">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FFEDD5] text-[#EA580C]">
-                    🎨
+                    <Icon name="palette" />
                   </span>
                   <span>Peintre décorateur</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9]">
-                    🎧
+                    <Icon name="headphones" />
                   </span>
                   <span>Technicien du son</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#D1FAE5] text-[#059669]">
-                    📻
+                    <Icon name="radio" />
                   </span>
                   <span>Animateur Radio</span>
                 </li>
@@ -160,7 +161,7 @@ export function HeroSection() {
             <div className="absolute right-0 top-[115px] z-20 w-[200px] rounded-[22px] bg-white p-4 shadow-floating border border-[#E4E0F5] rotate-3">
               <div className="flex items-center gap-2 mb-2.5">
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3EFFE] text-[#6D28D9] text-sm font-bold">
-                  🔗
+                  <Icon name="link" />
                 </span>
                 <span className="text-sm font-extrabold text-[#0F1035]">Mon parcours</span>
               </div>

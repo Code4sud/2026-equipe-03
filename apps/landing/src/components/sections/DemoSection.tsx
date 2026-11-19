@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
 import { SITE_CONFIG } from '@/config/site';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -40,7 +41,7 @@ export function DemoSection() {
                 : 'bg-white text-[#1B1B62] border border-[#D8DCF0] hover:bg-[#F3EFFE]'
             }`}
           >
-            🎧 1. Espace Jeune (6 rubriques &amp; Audio)
+            <Icon name="headphones" /> 1. Espace Jeune (6 rubriques &amp; Audio)
           </button>
 
           <button
@@ -54,7 +55,7 @@ export function DemoSection() {
                 : 'bg-white text-[#1B1B62] border border-[#D8DCF0] hover:bg-[#F3EFFE]'
             }`}
           >
-            🧭 2. Les 22 métiers proposés (Zones 1 à 5)
+            <Icon name="compass" /> 2. Les 22 métiers proposés (Zones 1 à 5)
           </button>
 
           <button
@@ -68,7 +69,7 @@ export function DemoSection() {
                 : 'bg-white text-[#1B1B62] border border-[#D8DCF0] hover:bg-[#F3EFFE]'
             }`}
           >
-            🩺 3. Espace Conseiller (8 rubriques métier)
+            <Icon name="stethoscope" /> 3. Espace Conseiller (8 rubriques métier)
           </button>
         </div>
 
@@ -83,7 +84,7 @@ export function DemoSection() {
               </span>
             </div>
             <span className="rounded-full bg-[#38A678]/25 border border-[#38A678] px-3 py-0.5 text-xs font-bold text-[#A7F3D0]">
-              ✔ Restitution validée par un professionnel
+              ✓ Restitution validée par un professionnel
             </span>
           </div>
 
@@ -118,7 +119,7 @@ export function DemoSection() {
                     <div className="flex items-center justify-between text-xs font-bold">
                       <span className="text-[#6D28D9]">RÉSERVE MÉTHODOLOGIQUE DU RAPPORT (PAGE 17)</span>
                       <span className="rounded bg-[#EAE4FF] px-2.5 py-0.5 text-[#4C1D95]">
-                        📄 Rapport Rdv 2187 — p. 5 &amp; p. 17
+                        <Icon name="file-text" /> Rapport Rdv 2187 — p. 5 &amp; p. 17
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm italic text-[#0F1035]">

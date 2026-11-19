@@ -7,6 +7,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MbIconComponent } from './mb-icon.component';
 
 // ----------------------------------------------------------------------------
 // 1. MbButton — Zone tactile min-h-11 (44px), variantes primary/secondary/text/danger
@@ -135,7 +136,7 @@ export class MbBadgeComponent {
 @Component({
   selector: 'mb-source-link',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MbIconComponent],
   template: `
     <button
       type="button"
@@ -143,7 +144,7 @@ export class MbBadgeComponent {
       class="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-[var(--mb-surface-soft)] text-[var(--mb-text)] border border-[var(--mb-border)] hover:border-[var(--mb-brand-primary)] text-xs font-semibold transition"
       [attr.aria-label]="'Voir la preuve page ' + pageNumber + ' : ' + label"
     >
-      <span aria-hidden="true">📄</span>
+      <span aria-hidden="true"><mb-icon name="file-text"></mb-icon></span>
       <span>Rapport p. {{ pageNumber }} — {{ label }}</span>
     </button>
   `
@@ -161,7 +162,7 @@ export class MbSourceLinkComponent {
 @Component({
   selector: 'mb-audio-player',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MbIconComponent],
   template: `
     <section
       aria-label="Lecteur audio de ta restitution et transcription"
@@ -198,7 +199,7 @@ export class MbSourceLinkComponent {
           (click)="togglePlay.emit()"
           class="min-h-11 px-6 py-2.5 rounded-full bg-[var(--mb-brand-primary)] hover:bg-[var(--mb-brand-violet)] text-white font-bold text-sm border border-white transition"
         >
-          {{ isPlaying ? '⏸ Mettre en pause' : '▶ Écouter mon bilan' }}
+          <mb-icon [name]="isPlaying ? 'pause' : 'play'"></mb-icon> {{ isPlaying ? 'Mettre en pause' : 'Écouter mon bilan' }}
         </button>
 
         <button
@@ -207,7 +208,7 @@ export class MbSourceLinkComponent {
           (click)="stop.emit()"
           class="min-h-11 px-4 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-sm border border-white/30"
         >
-          ⏹ Arrêter
+          <mb-icon name="square" [filled]="true"></mb-icon> Arrêter
         </button>
 
         <button
@@ -258,7 +259,7 @@ export class MbAudioPlayerComponent {
 @Component({
   selector: 'mb-career-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MbIconComponent],
   template: `
     <article
       class="rounded-lg p-6 bg-[var(--mb-surface)] border border-[var(--mb-border)] shadow-card flex flex-col justify-between h-full space-y-4"
@@ -269,7 +270,7 @@ export class MbAudioPlayerComponent {
             Zone {{ jobZone }} — Préparation : {{ zoneDurationLabel }}
           </span>
           <span class="text-xs font-semibold text-[var(--mb-text-secondary)]">
-            📄 Rapport p. {{ pageNumber }}
+            <mb-icon name="file-text"></mb-icon> Rapport p. {{ pageNumber }}
           </span>
         </div>
 
@@ -355,13 +356,13 @@ export class MbProgressComponent {
 @Component({
   selector: 'mb-empty-state',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MbIconComponent],
   template: `
     <div
       role="status"
       class="rounded-lg p-8 bg-[var(--mb-surface)] border border-[var(--mb-border)] shadow-card text-center max-w-xl mx-auto my-6 space-y-4"
     >
-      <div class="text-3xl" aria-hidden="true">{{ icon }}</div>
+      <mb-icon [name]="icon" class="text-3xl text-[var(--mb-brand-primary)]"></mb-icon>
       <h3 class="text-xl font-bold text-[var(--mb-text)]">{{ title }}</h3>
       <p class="text-base text-[var(--mb-text-secondary)] leading-relaxed">{{ description }}</p>
       <div *ngIf="actionLabel" class="pt-2">
@@ -377,7 +378,7 @@ export class MbProgressComponent {
   `
 })
 export class MbEmptyStateComponent {
-  @Input() icon = '📋';
+  @Input() icon = 'clipboard-list';
   @Input() title = '';
   @Input() description = '';
   @Input() actionLabel?: string;
@@ -437,7 +438,7 @@ export class MbDialogComponent {
 @Component({
   selector: 'mb-form-field',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, MbIconComponent, FormsModule],
   template: `
     <div class="space-y-1.5">
       <label [for]="fieldId" class="block text-sm font-bold text-[var(--mb-text)]">
@@ -447,7 +448,7 @@ export class MbDialogComponent {
       <ng-content></ng-content>
       <p *ngIf="hint && !error" class="text-xs text-[var(--mb-text-secondary)]">{{ hint }}</p>
       <p *ngIf="error" role="alert" class="text-xs font-semibold text-[var(--mb-danger)]">
-        ⚠ {{ error }}
+        <mb-icon name="triangle-alert"></mb-icon> {{ error }}
       </p>
     </div>
   `

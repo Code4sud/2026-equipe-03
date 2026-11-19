@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import React from 'react';
 import { DEPLOYMENT_MODES } from '@/data/landing-content';
 import { SITE_CONFIG } from '@/config/site';
@@ -5,11 +6,11 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
 const INSTITUTIONAL_ECOSYSTEM = [
-  { label: 'Centre des Possibles', icon: '⭐' },
-  { label: 'Métropole Nice Côte d’Azur', icon: '🏛️' },
-  { label: 'Université Côte d’Azur', icon: '🎓' },
-  { label: 'Académie de Nice', icon: '📘' },
-  { label: 'Hackathon Code4Sud', icon: '💻' }
+  { label: 'Centre des Possibles', icon: 'star' },
+  { label: 'Métropole Nice Côte d’Azur', icon: 'landmark' },
+  { label: 'Université Côte d’Azur', icon: 'graduation-cap' },
+  { label: 'Académie de Nice', icon: 'book-open' },
+  { label: 'Hackathon Code4Sud', icon: 'laptop' }
 ];
 
 export function DeploymentModesSection() {
@@ -52,10 +53,10 @@ export function DeploymentModesSection() {
                         : 'bg-[#F3EFFE] text-[#6D28D9]'
                     }`}
                   >
-                    {mode.icon === 'user' && '🎧'}
-                    {mode.icon === 'cap' && '🩺'}
-                    {mode.icon === 'building' && '📄'}
-                    {mode.icon === 'users' && '⚙️'}
+                    {mode.icon === 'user' && <Icon name="headphones" />}
+                    {mode.icon === 'cap' && <Icon name="stethoscope" />}
+                    {mode.icon === 'building' && <Icon name="file-text" />}
+                    {mode.icon === 'users' && <Icon name="settings" />}
                   </div>
                   <div>
                     <h3
@@ -146,7 +147,7 @@ export function DeploymentModesSection() {
                   className="flex items-center gap-2.5 text-xs font-bold text-[#1B1B62]"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#F3EFFE] text-base">
-                    {actor.icon}
+                    <Icon name={actor.icon} />
                   </span>
                   <span>{actor.label}</span>
                 </div>

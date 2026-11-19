@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import React from 'react';
 import { ECOSYSTEM_BENEFITS, IMPACT_METRICS, IMPACT_PILLS } from '@/data/landing-content';
 import { SITE_CONFIG } from '@/config/site';
@@ -16,7 +17,7 @@ export function ImpactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-5">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#EAE4FF] border border-[#D3C4FF] px-4 py-1.5 text-xs font-extrabold text-[#5B21B6]">
-              <span>📊</span>
+              <span><Icon name="chart-column" /></span>
               <span>Notre approche</span>
             </span>
 
@@ -62,9 +63,9 @@ export function ImpactSection() {
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-extrabold text-base"
                   >
                     {pill.icon === 'check' && '✓'}
-                    {pill.icon === 'cap' && '🎓'}
-                    {pill.icon === 'briefcase' && '💼'}
-                    {pill.icon === 'leaf' && '🌱'}
+                    {pill.icon === 'cap' && <Icon name="graduation-cap" />}
+                    {pill.icon === 'briefcase' && <Icon name="briefcase" />}
+                    {pill.icon === 'leaf' && <Icon name="sprout" />}
                   </span>
                   <div>
                     <p className="text-sm sm:text-base font-extrabold text-[#0F1035] leading-snug">
@@ -91,10 +92,10 @@ export function ImpactSection() {
                 aria-hidden="true"
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F3EFFE] text-[#6D28D9] font-extrabold text-lg"
               >
-                {metric.icon === 'users' && '🧩'}
-                {metric.icon === 'cap' && '🎓'}
-                {metric.icon === 'chart' && '📄'}
-                {metric.icon === 'target' && '🎯'}
+                {metric.icon === 'users' && <Icon name="puzzle" />}
+                {metric.icon === 'cap' && <Icon name="graduation-cap" />}
+                {metric.icon === 'chart' && <Icon name="file-text" />}
+                {metric.icon === 'target' && <Icon name="target" />}
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-extrabold text-[#0F1035]">
@@ -134,9 +135,9 @@ export function ImpactSection() {
                       aria-hidden="true"
                       className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EAE4FF] text-[#6D28D9] font-bold"
                     >
-                      {card.icon === 'cap' && '🎓'}
-                      {card.icon === 'users' && '👨‍👩‍👦'}
-                      {card.icon === 'building' && '🏛️'}
+                      {card.icon === 'cap' && <Icon name="graduation-cap" />}
+                      {card.icon === 'users' && <Icon name="users" />}
+                      {card.icon === 'building' && <Icon name="landmark" />}
                     </span>
                     <h4 className="text-base font-extrabold text-[#0F1035]">
                       {card.title}

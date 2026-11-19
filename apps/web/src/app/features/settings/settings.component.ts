@@ -260,7 +260,6 @@ export interface UserProfileData {
                 </p>
               </div>
             </div>
-            </div>
             <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'SECURITY'">
               ›
             </span>
@@ -509,7 +508,6 @@ export interface UserProfileData {
                   Adapter l’affichage, la taille du texte et les options de lecture
                 </p>
               </div>
-            </div>
             </div>
             <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'ACCESSIBILITY'">
               ›

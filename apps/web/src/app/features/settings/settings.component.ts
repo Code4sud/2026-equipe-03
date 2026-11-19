@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -10,1196 +9,1132 @@ export interface UserProfileData {
   photoUrl: string;
 }
 
+export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCES' | 'PRIVACY';
+
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [MbIconComponent, CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   template: `
-    <div class="max-w-4xl mx-auto space-y-6 pb-14">
+    <div class="space-y-6 pb-14">
       <!-- ================================================================== -->
-      <!-- EN-TÊTE : MES PARAMÈTRES (Fidèle à la maquette Espace Jeune)        -->
+      <!-- 5 ONGLETS DE NAVIGATION HORIZONTALE (Pillules blanches / violettes)-->
       <!-- ================================================================== -->
-      <div class="flex items-center gap-3.5">
-        <div class="h-11 w-11 sm:h-12 sm:w-12 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-xl sm:text-2xl font-bold border border-[#E9D5FF] shrink-0 shadow-2xs">
-          <mb-icon name="settings"></mb-icon>
-        </div>
-        <div>
-          <h1 class="text-2xl sm:text-3xl font-black text-[#0F1035] tracking-tight">
-            Mes paramètres
-          </h1>
-          <p class="text-xs sm:text-sm text-[#42466B] mt-0.5 font-medium">
-            Personnalise ton expérience et garde le contrôle sur tes informations.
-          </p>
-        </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
+        <!-- 1. Mon profil -->
+        <button
+          type="button"
+          (click)="activeTab = 'PROFILE'"
+          [ngClass]="activeTab === 'PROFILE'
+            ? 'bg-[#7C3AED] text-white shadow-md font-black ring-2 ring-[#7C3AED]/20'
+            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 font-bold'"
+          class="flex items-center justify-center gap-2 rounded-2xl px-3 sm:px-4 py-3 text-xs sm:text-sm transition-all shadow-xs cursor-pointer"
+        >
+          <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <span class="truncate">Mon profil</span>
+        </button>
+
+        <!-- 2. Sécurité -->
+        <button
+          type="button"
+          (click)="activeTab = 'SECURITY'"
+          [ngClass]="activeTab === 'SECURITY'
+            ? 'bg-[#7C3AED] text-white shadow-md font-black ring-2 ring-[#7C3AED]/20'
+            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 font-bold'"
+          class="flex items-center justify-center gap-2 rounded-2xl px-3 sm:px-4 py-3 text-xs sm:text-sm transition-all shadow-xs cursor-pointer"
+        >
+          <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          <span class="truncate">Sécurité</span>
+        </button>
+
+        <!-- 3. Notifications -->
+        <button
+          type="button"
+          (click)="activeTab = 'NOTIFICATIONS'"
+          [ngClass]="activeTab === 'NOTIFICATIONS'
+            ? 'bg-[#7C3AED] text-white shadow-md font-black ring-2 ring-[#7C3AED]/20'
+            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 font-bold'"
+          class="flex items-center justify-center gap-2 rounded-2xl px-3 sm:px-4 py-3 text-xs sm:text-sm transition-all shadow-xs cursor-pointer"
+        >
+          <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+          <span class="truncate">Notifications</span>
+        </button>
+
+        <!-- 4. Préférences -->
+        <button
+          type="button"
+          (click)="activeTab = 'PREFERENCES'"
+          [ngClass]="activeTab === 'PREFERENCES'
+            ? 'bg-[#7C3AED] text-white shadow-md font-black ring-2 ring-[#7C3AED]/20'
+            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 font-bold'"
+          class="flex items-center justify-center gap-2 rounded-2xl px-3 sm:px-4 py-3 text-xs sm:text-sm transition-all shadow-xs cursor-pointer"
+        >
+          <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          </svg>
+          <span class="truncate">Préférences</span>
+        </button>
+
+        <!-- 5. Confidentialité -->
+        <button
+          type="button"
+          (click)="activeTab = 'PRIVACY'"
+          [ngClass]="activeTab === 'PRIVACY'
+            ? 'bg-[#7C3AED] text-white shadow-md font-black ring-2 ring-[#7C3AED]/20'
+            : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 font-bold'"
+          class="flex items-center justify-center gap-2 rounded-2xl px-3 sm:px-4 py-3 text-xs sm:text-sm transition-all shadow-xs cursor-pointer col-span-2 sm:col-span-1"
+        >
+          <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <span class="truncate">Confidentialité</span>
+        </button>
       </div>
 
       <!-- ================================================================== -->
-      <!-- CARTE PRINCIPALE : PROFIL & IDENTITÉ (Fidèle à la maquette)        -->
+      <!-- GRILLE PRINCIPALE (Col Gauche 8 cols / Col Droite Raccourcis 4)    -->
       <!-- ================================================================== -->
-      <div class="rounded-[28px] sm:rounded-[32px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          
-          <!-- Colonne Gauche : Photo de profil + Nom + Actions -->
-          <div class="md:col-span-4 flex flex-col items-center text-center space-y-3">
-            <div class="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full overflow-hidden border-4 border-white shadow-lg ring-4 ring-[#EDE9FE] bg-[#F3E8FF] flex items-center justify-center shrink-0">
-              <img
-                *ngIf="photoUrl"
-                [src]="photoUrl"
-                [alt]="firstName + ' ' + lastName"
-                class="h-full w-full object-cover transition duration-200"
-                (error)="onImgError()"
-              />
-              <span *ngIf="!photoUrl" class="text-2xl font-black text-[#7C3AED]">
-                {{ getInitials() }}
-              </span>
-
-              <!-- Badge caméra cliquable -->
-              <button
-                type="button"
-                (click)="fileInput.click()"
-                class="absolute bottom-1 right-1 h-8 w-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs shadow-md border-2 border-white hover:bg-[#6D28D9] transition cursor-pointer"
-                title="Modifier ma photo"
-                aria-label="Modifier ma photo"
-              >
-                <mb-icon name="camera"></mb-icon>
-              </button>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- ================================================================ -->
+        <!-- COLONNE GAUCHE (8 Cols) : Contenu de l'onglet actif              -->
+        <!-- ================================================================ -->
+        <div class="lg:col-span-8 space-y-6">
+          <!-- ============================================================== -->
+          <!-- ONGLET 1 : MON PROFIL                                          -->
+          <!-- ============================================================== -->
+          <div *ngIf="activeTab === 'PROFILE'" class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
+              <svg class="h-5 w-5 text-[#7C3AED]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Mon profil</h3>
             </div>
 
-            <!-- Input fichier masqué pour sélection locale -->
-            <input
-              #fileInput
-              type="file"
-              accept="image/png,image/jpeg,image/webp"
-              class="hidden"
-              (change)="onFileSelected($event)"
-            />
+            <!-- Bloc Photo + Identité + Actions d'image -->
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              <!-- Avatar Rond Grand Format avec bouton caméra -->
+              <div class="relative h-28 w-28 sm:h-32 sm:w-32 rounded-full overflow-hidden border-4 border-white shadow-md ring-4 ring-purple-100 bg-purple-50 flex items-center justify-center shrink-0">
+                <img
+                  *ngIf="photoUrl"
+                  [src]="photoUrl"
+                  [alt]="firstName + ' ' + lastName"
+                  class="h-full w-full object-cover"
+                  (error)="onImgError()"
+                />
+                <span *ngIf="!photoUrl" class="text-3xl font-black text-[#7C3AED]">
+                  {{ getInitials() }}
+                </span>
 
-            <!-- Titre et badge Espace Jeune -->
-            <div class="space-y-1">
-              <h2 class="text-xl font-black text-[#0F1035]">
-                {{ firstName }} {{ lastName }}
-              </h2>
-              <span class="inline-block rounded-full bg-[#F3E8FF] text-[#6D28D9] px-3.5 py-1 text-xs font-bold border border-[#E9D5FF]/60">
-                Espace Jeune
-              </span>
-            </div>
-
-            <!-- Boutons d'actions sur la photo -->
-            <div class="flex flex-col items-center gap-2 pt-1 w-full max-w-[200px]">
-              <button
-                type="button"
-                (click)="fileInput.click()"
-                class="w-full rounded-full border-2 border-[#7C3AED] text-[#7C3AED] font-extrabold text-xs px-4 py-2 hover:bg-[#F5F3FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
-              >
-                <span><mb-icon name="camera"></mb-icon></span>
-                <span>Modifier ma photo</span>
-              </button>
-
-              <div class="flex items-center gap-2 w-full">
+                <!-- Bouton Badge Caméra -->
                 <button
                   type="button"
-                  (click)="openCropModal()"
-                  class="flex-1 rounded-xl border border-[#D8DCF0] bg-white hover:bg-[#F8F7FF] text-[#0F1035] font-extrabold text-[11px] py-1.5 transition flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
+                  (click)="fileInput.click()"
+                  class="absolute bottom-1 right-1 h-8 w-8 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs shadow-md border-2 border-white hover:bg-[#6D28D9] transition cursor-pointer"
+                  title="Modifier ma photo"
+                  aria-label="Modifier ma photo"
                 >
-                  <span>⛶</span>
-                  <span>Recadrer</span>
-                </button>
-
-                <button
-                  type="button"
-                  (click)="removePhoto()"
-                  class="flex-1 rounded-xl border border-rose-200 bg-rose-50/50 hover:bg-rose-100/60 text-rose-600 font-extrabold text-[11px] py-1.5 transition flex items-center justify-center gap-1 cursor-pointer"
-                >
-                  <span>🗑</span>
-                  <span>Effacer</span>
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
                 </button>
               </div>
 
-              <button
-                *ngIf="isCustomPhoto"
-                type="button"
-                (click)="resetPhoto()"
-                class="text-[11px] font-bold text-[#6B7280] hover:text-[#7C3AED] transition underline cursor-pointer pt-0.5"
-              >
-                Rétablir la photo par défaut
-              </button>
+              <!-- Input fichier masqué -->
+              <input
+                #fileInput
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                class="hidden"
+                (change)="onFileSelected($event)"
+              />
+
+              <!-- Nom, Badge Espace Jeune, Référence Dossier & Boutons -->
+              <div class="flex-1 space-y-3 text-center sm:text-left">
+                <div class="space-y-1.5">
+                  <h4 class="text-2xl font-black text-[#0F1035] leading-tight">
+                    {{ firstName }} {{ lastName }}
+                  </h4>
+
+                  <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F3E8FF] text-[#6D28D9] border border-[#E9D5FF] px-3 py-0.5 text-xs font-bold">
+                      <span class="h-1.5 w-1.5 rounded-full bg-[#10B981]"></span>
+                      Espace Jeune
+                    </span>
+                    <span class="inline-flex items-center gap-1 text-xs font-semibold text-gray-500">
+                      <span>📁</span>
+                      <span>Dossier Rdv {{ rdvNumber }}</span>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Boutons : Modifier ma photo + Recadrer -->
+                <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 pt-1">
+                  <button
+                    type="button"
+                    (click)="fileInput.click()"
+                    class="rounded-full border-2 border-[#7C3AED] text-[#7C3AED] hover:bg-purple-50 font-black text-xs px-4 py-2 transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                  >
+                    <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    </svg>
+                    <span>Modifier ma photo</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    (click)="openCropModal()"
+                    class="rounded-full border border-gray-300 hover:border-gray-400 bg-white text-gray-700 font-bold text-xs px-4 py-2 transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                  >
+                    <span>⛶</span>
+                    <span>Recadrer</span>
+                  </button>
+
+                  <button
+                    *ngIf="photoUrl"
+                    type="button"
+                    (click)="removePhoto()"
+                    class="text-xs font-semibold text-rose-600 hover:underline px-2 py-1 cursor-pointer"
+                  >
+                    Supprimer
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <!-- Notifications d'état photo -->
-            <div *ngIf="photoSuccess" class="rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 animate-fadeIn">
-              <span>✓</span>
-              <span>Photo mise à jour avec succès !</span>
-            </div>
-            <div *ngIf="photoError" class="rounded-xl bg-rose-50 border border-rose-200 text-rose-700 px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 animate-fadeIn">
-              <span>⚠️</span>
-              <span>{{ photoError }}</span>
-            </div>
-          </div>
-
-          <!-- Colonne Droite : Formulaire d'informations personnelles -->
-          <div class="md:col-span-8 space-y-4">
-            <!-- Prénom & Nom -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Formulaire Prénom & Nom affiché -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div>
-                <label class="block text-xs font-bold text-[#42466B] mb-1.5">
+                <label class="block text-xs font-black text-[#0F1035] mb-1.5">
                   Prénom <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   [(ngModel)]="firstName"
                   (ngModelChange)="onFieldChange()"
-                  class="w-full rounded-2xl bg-white border border-[#E4E0F5] px-4 py-3 text-sm font-semibold text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition shadow-2xs"
+                  class="w-full rounded-2xl bg-white border border-[#E4E0F5] px-4 py-3 text-sm font-semibold text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition"
                   placeholder="Emma"
                 />
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-[#42466B] mb-1.5">
-                  Nom <span class="text-red-500">*</span>
+                <label class="block text-xs font-black text-[#0F1035] mb-1.5">
+                  Nom affiché <span class="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
                   [(ngModel)]="lastName"
                   (ngModelChange)="onFieldChange()"
-                  class="w-full rounded-2xl bg-white border border-[#E4E0F5] px-4 py-3 text-sm font-semibold text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition shadow-2xs"
+                  class="w-full rounded-2xl bg-white border border-[#E4E0F5] px-4 py-3 text-sm font-semibold text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition"
                   placeholder="D."
                 />
               </div>
             </div>
 
-            <!-- Adresse email -->
+            <!-- Adresse email avec bouton Modifier ouvrant la modale dédiée -->
             <div>
-              <label class="block text-xs font-bold text-[#42466B] mb-1.5">
+              <label class="block text-xs font-black text-[#0F1035] mb-1.5">
                 Adresse email <span class="text-red-500">*</span>
               </label>
-              <div class="relative">
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">
-                  <mb-icon name="mail"></mb-icon>
-                </span>
-                <input
-                  type="email"
-                  [(ngModel)]="email"
-                  (ngModelChange)="onFieldChange()"
-                  class="w-full rounded-2xl bg-white border border-[#E4E0F5] pl-11 pr-4 py-3 text-sm font-semibold text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 focus:border-[#7C3AED] transition shadow-2xs"
-                  placeholder="emma.d@exemple.fr"
-                />
+              <div class="flex items-center gap-2">
+                <div class="relative flex-1">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </span>
+                  <input
+                    type="email"
+                    [value]="email"
+                    readonly
+                    class="w-full rounded-2xl bg-gray-50 border border-[#E4E0F5] pl-11 pr-4 py-3 text-sm font-semibold text-[#0F1035] cursor-default select-all"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  (click)="openEmailModal()"
+                  class="rounded-2xl border border-gray-300 hover:border-[#7C3AED] bg-white text-gray-800 hover:text-[#7C3AED] font-black text-xs px-4 py-3 transition flex items-center gap-1.5 shadow-2xs shrink-0 cursor-pointer"
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
+                  <span>Modifier</span>
+                </button>
               </div>
             </div>
 
-            <!-- Établissement de rattachement (Lecture seule avec cadenas) -->
-            <div>
-              <label class="block text-xs font-bold text-[#42466B] mb-1.5 flex items-center justify-between">
-                <span>Établissement d'orientation</span>
-                <span class="text-[11px] font-semibold text-gray-400 flex items-center gap-1">
+            <!-- Bloc Mon accompagnement (Lecture seule, sécurisé) -->
+            <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 sm:p-5 flex items-start sm:items-center justify-between gap-4">
+              <div class="flex items-start sm:items-center gap-3.5">
+                <div class="h-10 w-10 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center shrink-0">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h5 class="text-sm font-black text-[#0F1035]">Mon accompagnement</h5>
+                  <p class="text-xs font-bold text-gray-700 mt-0.5">
+                    Centre des Possibles — Métropole Nice Côte d'Azur
+                  </p>
+                  <p class="text-[11px] text-gray-400 mt-0.5">
+                    Dossier Rdv {{ rdvNumber }} • Accompagnement par un professionnel
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-1.5 shrink-0 self-start sm:self-center">
+                <span class="rounded-full bg-white border border-gray-200 text-gray-500 px-2.5 py-1 text-[11px] font-bold flex items-center gap-1">
                   <span>🔒</span>
                   <span>Non modifiable</span>
                 </span>
-              </label>
-              <div class="relative">
-                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-500">
-                  🏛️
-                </span>
-                <input
-                  type="text"
-                  value="Centre des Possibles — Métropole Nice Côte d'Azur (Rdv 2187)"
-                  readonly
-                  class="w-full rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] pl-11 pr-11 py-3 text-sm font-bold text-[#31355B] cursor-not-allowed select-none shadow-2xs"
-                />
-                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400">
-                  🔒
-                </span>
               </div>
             </div>
 
-            <!-- Bouton Enregistrer les modifications -->
-            <div class="flex items-center gap-3 pt-2">
+            <!-- Bouton Enregistrer les modifications + Badge confirmation -->
+            <div class="flex flex-wrap items-center gap-3 pt-2 border-t border-gray-100">
               <button
                 type="button"
                 (click)="saveChanges()"
-                [disabled]="isSaving"
-                class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 shadow-md hover:shadow-lg transition flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                [disabled]="isSaving || !hasUnsavedChanges"
+                class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-black text-xs sm:text-sm px-6 py-3 shadow-md hover:shadow-lg transition flex items-center gap-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <span *ngIf="!isSaving">✓</span>
                 <span *ngIf="isSaving" class="inline-block animate-spin">⏳</span>
                 <span>Enregistrer les modifications</span>
               </button>
 
-              <span *ngIf="savedSuccess" class="text-xs font-bold text-emerald-600 flex items-center gap-1 animate-fadeIn">
+              <span
+                *ngIf="savedSuccess && !hasUnsavedChanges"
+                class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 text-xs font-bold animate-fadeIn"
+              >
                 <span>✓</span>
-                <span>Modifications enregistrées avec succès !</span>
+                <span>Modifications enregistrées</span>
               </span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- ================================================================== -->
-      <!-- LISTE DES 4 RUBRIQUES ACCORDÉON (Fidèle à la maquette)             -->
-      <!-- ================================================================== -->
-      <div class="space-y-3.5">
-        
-        <!-- ================================================================ -->
-        <!-- 1. SÉCURITÉ ET MOT DE PASSE                                       -->
-        <!-- ================================================================ -->
-        <div class="rounded-2xl sm:rounded-[24px] bg-white border border-[#E4E0F5] shadow-xs overflow-hidden transition-all duration-200">
-          <button
-            type="button"
-            (click)="toggleSection('SECURITY')"
-            class="w-full p-4.5 sm:p-5 flex items-center justify-between gap-3 text-left hover:bg-[#FBF9FF] transition focus:outline-none cursor-pointer"
-          >
-            <div class="flex items-center gap-4 min-w-0">
-              <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                <mb-icon name="lock"></mb-icon>
-              </div>
-              <div class="min-w-0">
-                <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
-                  Sécurité et mot de passe
-                </h3>
-                <p class="text-xs text-[#6B7280] truncate mt-0.5">
-                  Modifier mon mot de passe et sécuriser mon compte
-                </p>
-              </div>
+          <!-- ============================================================== -->
+          <!-- ONGLET 2 : SÉCURITÉ                                            -->
+          <!-- ============================================================== -->
+          <div *ngIf="activeTab === 'SECURITY'" class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
+              <svg class="h-5 w-5 text-[#7C3AED]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Sécurité de ton compte</h3>
             </div>
-            <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'SECURITY'">
-              ›
-            </span>
-          </button>
 
-          <!-- Contenu dépliable Sécurité -->
-          <div *ngIf="activeSection === 'SECURITY'" class="p-5 sm:p-6 border-t border-[#F0EDFA] bg-[#FAF8FF]/60 space-y-5 animate-fadeIn">
-            <!-- Formulaire de changement de mot de passe -->
-            <div class="space-y-4 bg-white p-5 rounded-2xl border border-[#E4E0F5]">
-              <h4 class="font-extrabold text-sm text-[#0F1035] flex items-center gap-2">
-                <span>🔑</span>
-                <span>Changer mon mot de passe</span>
-              </h4>
+            <div class="space-y-4">
+              <h4 class="text-sm font-black text-[#0F1035]">Modifier mon mot de passe</h4>
 
-              <div class="space-y-3 text-xs">
+              <div>
+                <label class="block text-xs font-bold text-gray-700 mb-1">Mot de passe actuel</label>
+                <input
+                  type="password"
+                  [(ngModel)]="currentPassword"
+                  class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#7C3AED]"
+                  placeholder="••••••••"
+                />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block font-bold text-[#42466B] mb-1">Mot de passe actuel</label>
-                  <div class="relative">
-                    <input
-                      [type]="showPassword ? 'text' : 'password'"
-                      [(ngModel)]="currentPassword"
-                      class="w-full rounded-xl border border-[#E4E0F5] px-3.5 py-2.5 font-mono focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30"
-                      placeholder="••••••••••••"
-                    />
-                    <button
-                      type="button"
-                      (click)="showPassword = !showPassword"
-                      class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer"
-                    >
-                      {{ showPassword ? '🙈' : '👁️' }}
-                    </button>
-                  </div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1">Nouveau mot de passe</label>
+                  <input
+                    type="password"
+                    [(ngModel)]="newPassword"
+                    class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#7C3AED]"
+                    placeholder="Min. 8 caractères"
+                  />
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label class="block font-bold text-[#42466B] mb-1">Nouveau mot de passe</label>
-                    <input
-                      [type]="showPassword ? 'text' : 'password'"
-                      [(ngModel)]="newPassword"
-                      (ngModelChange)="checkPasswordStrength()"
-                      class="w-full rounded-xl border border-[#E4E0F5] px-3.5 py-2.5 font-mono focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30"
-                      placeholder="Au moins 8 caractères"
-                    />
-                  </div>
-
-                  <div>
-                    <label class="block font-bold text-[#42466B] mb-1">Confirmer le mot de passe</label>
-                    <input
-                      [type]="showPassword ? 'text' : 'password'"
-                      [(ngModel)]="confirmPassword"
-                      class="w-full rounded-xl border border-[#E4E0F5] px-3.5 py-2.5 font-mono focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30"
-                      placeholder="Répéter le mot de passe"
-                    />
-                  </div>
-                </div>
-
-                <!-- Indicateur de force du mot de passe -->
-                <div *ngIf="newPassword" class="space-y-1.5 pt-1">
-                  <div class="flex items-center justify-between text-[11px] font-bold">
-                    <span>Force du mot de passe :</span>
-                    <span [ngClass]="pwdStrengthColor">{{ pwdStrengthLabel }}</span>
-                  </div>
-                  <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                    <div
-                      class="h-full transition-all duration-300"
-                      [style.width]="pwdStrengthPercent + '%'"
-                      [ngClass]="pwdStrengthBg"
-                    ></div>
-                  </div>
-                  <div class="flex flex-wrap gap-2 text-[10px] text-gray-500 pt-1">
-                    <span [class.text-emerald-600]="newPassword.length >= 8">✓ 8+ car.</span>
-                    <span [class.text-emerald-600]="hasUpperCase">✓ Majuscule</span>
-                    <span [class.text-emerald-600]="hasNumber">✓ Chiffre</span>
-                    <span [class.text-emerald-600]="hasSpecialChar">✓ Symbole</span>
-                  </div>
+                <div>
+                  <label class="block text-xs font-bold text-gray-700 mb-1">Confirmer le nouveau mot de passe</label>
+                  <input
+                    type="password"
+                    [(ngModel)]="confirmPassword"
+                    class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#7C3AED]"
+                    placeholder="Confirme ton mot de passe"
+                  />
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 pt-2">
-                <button
-                  type="button"
-                  (click)="updatePassword()"
-                  class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-extrabold text-xs px-4 py-2.5 transition shadow-2xs cursor-pointer"
-                >
-                  Mettre à jour le mot de passe
-                </button>
-                <span *ngIf="passwordSuccess" class="text-xs font-bold text-emerald-600 flex items-center gap-1">
-                  ✓ Mot de passe modifié avec succès !
-                </span>
-                <span *ngIf="passwordError" class="text-xs font-bold text-rose-600 flex items-center gap-1">
-                  ⚠️ {{ passwordError }}
-                </span>
-              </div>
-            </div>
-
-            <!-- Sessions actives réelles -->
-            <div class="space-y-3 bg-white p-5 rounded-2xl border border-[#E4E0F5]">
-              <div class="flex items-center justify-between">
-                <h4 class="font-extrabold text-sm text-[#0F1035] flex items-center gap-2">
-                  <span>💻</span>
-                  <span>Sessions actives</span>
-                </h4>
-                <button
-                  type="button"
-                  (click)="revokeOtherSessions()"
-                  class="text-xs font-bold text-rose-600 hover:underline cursor-pointer"
-                >
-                  Déconnecter les autres appareils
-                </button>
-              </div>
-
-              <div class="space-y-2 text-xs">
-                <div class="flex items-center justify-between p-3 rounded-xl bg-[#F8F7FF] border border-[#E4E0F5]">
-                  <div class="flex items-center gap-3">
-                    <span class="text-base">💻</span>
-                    <div>
-                      <p class="font-extrabold text-[#0F1035]">Navigateur actuel — Chrome 128 (macOS)</p>
-                      <p class="text-[11px] text-gray-500">Nice, France • IP 192.168.1.42 • Actif maintenant</p>
-                    </div>
-                  </div>
-                  <span class="rounded-full bg-emerald-100 text-emerald-700 px-2 py-0.5 text-[10px] font-black">
-                    Cette session
-                  </span>
-                </div>
-
-                <div *ngIf="hasOtherSession" class="flex items-center justify-between p-3 rounded-xl bg-white border border-[#E4E0F5]">
-                  <div class="flex items-center gap-3">
-                    <span class="text-base">📱</span>
-                    <div>
-                      <p class="font-extrabold text-[#0F1035]">iPhone 15 Pro — Safari Mobile</p>
-                      <p class="text-[11px] text-gray-500">Nice, France • Dernière activité il y a 3 heures</p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    (click)="hasOtherSession = false; revokeNotice = 'Session mobile déconnectée.'"
-                    class="text-[11px] font-bold text-gray-500 hover:text-rose-600 cursor-pointer"
-                  >
-                    Déconnecter
-                  </button>
-                </div>
-
-                <div *ngIf="revokeNotice" class="text-xs font-bold text-emerald-600 pt-1">
-                  ✓ {{ revokeNotice }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ================================================================ -->
-        <!-- 2. NOTIFICATIONS                                                  -->
-        <!-- ================================================================ -->
-        <div class="rounded-2xl sm:rounded-[24px] bg-white border border-[#E4E0F5] shadow-xs overflow-hidden transition-all duration-200">
-          <button
-            type="button"
-            (click)="toggleSection('NOTIFICATIONS')"
-            class="w-full p-4.5 sm:p-5 flex items-center justify-between gap-3 text-left hover:bg-[#FBF9FF] transition focus:outline-none cursor-pointer"
-          >
-            <div class="flex items-center gap-4 min-w-0">
-              <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                <mb-icon name="bell"></mb-icon>
-              </div>
-              <div class="min-w-0">
-                <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
-                  Notifications
-                </h3>
-                <p class="text-xs text-[#6B7280] truncate mt-0.5">
-                  Choisir les alertes et rappels que je souhaite recevoir
-                </p>
-              </div>
-            </div>
-            <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'NOTIFICATIONS'">
-              ›
-            </span>
-          </button>
-
-          <!-- Contenu dépliable Notifications -->
-          <div *ngIf="activeSection === 'NOTIFICATIONS'" class="p-5 sm:p-6 border-t border-[#F0EDFA] bg-[#FAF8FF]/60 space-y-3.5 text-xs animate-fadeIn">
-            <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white border border-[#E4E0F5] cursor-pointer hover:border-[#7C3AED]/40 transition">
-              <div>
-                <p class="font-extrabold text-sm text-[#0F1035]">Rappels de rendez-vous avec mon conseiller</p>
-                <p class="text-gray-500 text-[11px] mt-0.5">Reçois un rappel 24h avant chaque échange au Centre des Possibles.</p>
-              </div>
-              <input type="checkbox" [(ngModel)]="notifAppointments" class="h-4 w-4 accent-[#7C3AED] cursor-pointer" />
-            </label>
-
-            <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white border border-[#E4E0F5] cursor-pointer hover:border-[#7C3AED]/40 transition">
-              <div>
-                <p class="font-extrabold text-sm text-[#0F1035]">Nouvelles opportunités &amp; immersions locales</p>
-                <p class="text-gray-500 text-[11px] mt-0.5">Sois alerté(e) lorsqu'une entreprise ou formation correspondant à ton bilan est ajoutée à Nice.</p>
-              </div>
-              <input type="checkbox" [(ngModel)]="notifOpportunities" class="h-4 w-4 accent-[#7C3AED] cursor-pointer" />
-            </label>
-
-            <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white border border-[#E4E0F5] cursor-pointer hover:border-[#7C3AED]/40 transition">
-              <div>
-                <p class="font-extrabold text-sm text-[#0F1035]">Conseils et suggestions du Coach IA</p>
-                <p class="text-gray-500 text-[11px] mt-0.5">Suggestions pédagogiques pour t'aider à formuler tes questions ou préparer un contact.</p>
-              </div>
-              <input type="checkbox" [(ngModel)]="notifCoach" class="h-4 w-4 accent-[#7C3AED] cursor-pointer" />
-            </label>
-
-            <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white border border-[#E4E0F5] cursor-pointer hover:border-[#7C3AED]/40 transition">
-              <div>
-                <p class="font-extrabold text-sm text-[#0F1035]">Synthèse et actualités par email</p>
-                <p class="text-gray-500 text-[11px] mt-0.5">Un récapitulatif par email de tes découvertes et démarches en cours.</p>
-              </div>
-              <input type="checkbox" [(ngModel)]="notifEmailDigest" class="h-4 w-4 accent-[#7C3AED] cursor-pointer" />
-            </label>
-
-            <div class="pt-2 flex items-center gap-3">
               <button
                 type="button"
-                (click)="saveNotifPreferences()"
-                class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-extrabold text-xs px-4 py-2.5 transition shadow-2xs cursor-pointer"
+                (click)="changePassword()"
+                class="rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 py-2.5 text-xs font-black shadow-sm transition"
               >
-                Enregistrer mes préférences
+                Mettre à jour mon mot de passe
               </button>
-              <span *ngIf="notifSavedSuccess" class="text-xs font-bold text-emerald-600">
-                ✓ Préférences de notification enregistrées !
-              </span>
+
+              <div *ngIf="passwordMsg" class="rounded-xl p-3 text-xs font-bold" [ngClass]="passwordSuccess ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-rose-50 text-rose-700 border border-rose-200'">
+                {{ passwordMsg }}
+              </div>
+            </div>
+
+            <!-- Sessions et appareils -->
+            <div class="border-t pt-5 border-gray-100 space-y-3">
+              <h4 class="text-sm font-black text-[#0F1035]">Sessions actives</h4>
+              <div class="rounded-2xl bg-gray-50 border border-gray-200 p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="text-xl">💻</span>
+                  <div>
+                    <p class="text-xs font-bold text-gray-900">Navigateur Web (Session actuelle)</p>
+                    <p class="text-[11px] text-gray-500">Connecté depuis Nice, France • IP sécurisée</p>
+                  </div>
+                </div>
+                <span class="rounded-full bg-emerald-100 text-emerald-800 px-2 py-0.5 text-[10px] font-bold">Actif</span>
+              </div>
+
+              <button
+                type="button"
+                (click)="logout.emit()"
+                class="text-xs font-bold text-rose-600 hover:underline flex items-center gap-1.5"
+              >
+                <span>🚪</span>
+                <span>Se déconnecter de tous les appareils</span>
+              </button>
             </div>
           </div>
-        </div>
 
-        <!-- ================================================================ -->
-        <!-- 3. ACCESSIBILITÉ ET PRÉFÉRENCES                                   -->
-        <!-- ================================================================ -->
-        <div class="rounded-2xl sm:rounded-[24px] bg-white border border-[#E4E0F5] shadow-xs overflow-hidden transition-all duration-200">
-          <button
-            type="button"
-            (click)="toggleSection('ACCESSIBILITY')"
-            class="w-full p-4.5 sm:p-5 flex items-center justify-between gap-3 text-left hover:bg-[#FBF9FF] transition focus:outline-none cursor-pointer"
-          >
-            <div class="flex items-center gap-4 min-w-0">
-              <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                <mb-icon name="accessibility"></mb-icon>
-              </div>
-              <div class="min-w-0">
-                <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
-                  Accessibilité et préférences
-                </h3>
-                <p class="text-xs text-[#6B7280] truncate mt-0.5">
-                  Adapter l’affichage, la taille du texte et les options de lecture
-                </p>
-              </div>
-            </div>
-            <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'ACCESSIBILITY'">
-              ›
-            </span>
-          </button>
-
-          <!-- Contenu dépliable Accessibilité -->
-          <div *ngIf="activeSection === 'ACCESSIBILITY'" class="p-5 sm:p-6 border-t border-[#F0EDFA] bg-[#FAF8FF]/60 space-y-4 text-xs animate-fadeIn">
-            
-            <!-- Thème clair / sombre -->
-            <div class="p-4 bg-white rounded-2xl border border-[#E4E0F5] space-y-2">
-              <label class="block font-extrabold text-sm text-[#0F1035]">Mode d'affichage</label>
-              <div class="grid grid-cols-2 gap-3 pt-1">
-                <button
-                  type="button"
-                  (click)="theme = 'light'"
-                  [class]="theme === 'light' ? 'bg-[#EDE9FE] border-[#7C3AED] text-[#6D28D9] font-black shadow-xs' : 'bg-white border-[#E4E0F5] text-gray-700 font-bold'"
-                  class="p-2.5 rounded-xl border text-xs transition cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <span>☀️</span>
-                  <span>Thème clair</span>
-                </button>
-                <button
-                  type="button"
-                  (click)="theme = 'dark'"
-                  [class]="theme === 'dark' ? 'bg-[#7C3AED] text-white font-extrabold shadow-sm' : 'bg-white border-[#E4E0F5] text-gray-700 font-bold'"
-                  class="p-2.5 rounded-xl border text-xs transition cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <span>🌙</span>
-                  <span>Thème sombre</span>
-                </button>
-              </div>
+          <!-- ============================================================== -->
+          <!-- ONGLET 3 : NOTIFICATIONS                                       -->
+          <!-- ============================================================== -->
+          <div *ngIf="activeTab === 'NOTIFICATIONS'" class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
+              <svg class="h-5 w-5 text-[#7C3AED]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+              <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Mes notifications</h3>
             </div>
 
-            <!-- Taille de la police -->
-            <div class="p-4 bg-white rounded-2xl border border-[#E4E0F5] space-y-2">
-              <label class="block font-extrabold text-sm text-[#0F1035]">Taille du texte</label>
-              <div class="grid grid-cols-3 gap-2.5 pt-1">
-                <button
-                  type="button"
-                  (click)="fontSize = 'sm'"
-                  [class]="fontSize === 'sm' ? 'bg-[#EDE9FE] text-[#6D28D9] font-black border border-[#7C3AED]' : 'bg-white border border-[#E4E0F5] text-gray-700 font-bold'"
-                  class="py-2 rounded-xl text-xs transition cursor-pointer"
-                >
-                  Compacte (A-)
-                </button>
-                <button
-                  type="button"
-                  (click)="fontSize = 'base'"
-                  [class]="fontSize === 'base' ? 'bg-[#EDE9FE] text-[#6D28D9] font-black border border-[#7C3AED]' : 'bg-white border border-[#E4E0F5] text-gray-700 font-bold'"
-                  class="py-2 rounded-xl text-xs transition cursor-pointer"
-                >
-                  Normale (A)
-                </button>
-                <button
-                  type="button"
-                  (click)="fontSize = 'lg'"
-                  [class]="fontSize === 'lg' ? 'bg-[#EDE9FE] text-[#6D28D9] font-black border border-[#7C3AED]' : 'bg-white border border-[#E4E0F5] text-gray-700 font-bold'"
-                  class="py-2 rounded-xl text-xs transition cursor-pointer"
-                >
-                  Grande (A+)
-                </button>
-              </div>
+            <p class="text-xs text-gray-500">
+              Choisis les alertes et rappels que tu souhaites recevoir pour ton accompagnement.
+            </p>
+
+            <div class="space-y-4">
+              <!-- 1. Réponses du conseiller -->
+              <label class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 hover:bg-gray-50 cursor-pointer transition">
+                <div class="pr-4">
+                  <span class="text-xs font-bold text-gray-900">Nouvelle réponse du conseiller</span>
+                  <p class="text-[11px] text-gray-500">Être notifiée quand Sophie M. répond à l’une de tes questions.</p>
+                </div>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="notifCounselorReply"
+                  (ngModelChange)="persistNotifPrefs()"
+                  class="h-5 w-5 rounded text-[#7C3AED] focus:ring-[#7C3AED]"
+                />
+              </label>
+
+              <!-- 2. Document publié -->
+              <label class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 hover:bg-gray-50 cursor-pointer transition">
+                <div class="pr-4">
+                  <span class="text-xs font-bold text-gray-900">Document ou synthèse validée</span>
+                  <p class="text-[11px] text-gray-500">Alerte lors de la mise à disposition d'un nouveau document dans ta bibliothèque.</p>
+                </div>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="notifDocPublished"
+                  (ngModelChange)="persistNotifPrefs()"
+                  class="h-5 w-5 rounded text-[#7C3AED] focus:ring-[#7C3AED]"
+                />
+              </label>
+
+              <!-- 3. Rappels de rendez-vous -->
+              <label class="flex items-center justify-between p-4 rounded-2xl border border-gray-200 hover:bg-gray-50 cursor-pointer transition">
+                <div class="pr-4">
+                  <span class="text-xs font-bold text-gray-900">Rappels avant rendez-vous</span>
+                  <p class="text-[11px] text-gray-500">Recevoir un rappel 24h avant ton entretien au Centre des Possibles.</p>
+                </div>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="notifAppointments"
+                  (ngModelChange)="persistNotifPrefs()"
+                  class="h-5 w-5 rounded text-[#7C3AED] focus:ring-[#7C3AED]"
+                />
+              </label>
+            </div>
+          </div>
+
+          <!-- ============================================================== -->
+          <!-- ONGLET 4 : PRÉFÉRENCES (Accessibilité & Audio)                  -->
+          <!-- ============================================================== -->
+          <div *ngIf="activeTab === 'PREFERENCES'" class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
+              <svg class="h-5 w-5 text-[#7C3AED]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              </svg>
+              <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Accessibilité et préférences</h3>
             </div>
 
             <!-- Vitesse de lecture audio -->
-            <div class="p-4 bg-white rounded-2xl border border-[#E4E0F5] space-y-2">
+            <div class="space-y-3">
               <div class="flex items-center justify-between">
                 <div>
-                  <label class="block font-extrabold text-sm text-[#0F1035]">Vitesse de lecture audio par défaut</label>
-                  <p class="text-gray-500 text-[11px]">Pour les restitutions audio de ton bilan et des métiers.</p>
+                  <h4 class="text-xs font-black text-gray-900">Vitesse de lecture audio préférée</h4>
+                  <p class="text-[11px] text-gray-500">Pour l'écoute vocale de ton bilan d'orientation</p>
                 </div>
-                <div class="flex gap-1.5">
-                  <button
-                    *ngFor="let rate of [0.85, 1.0, 1.15, 1.25]"
-                    type="button"
-                    (click)="onSpeechRateChange(rate)"
-                    [class]="speechRate === rate ? 'bg-[#7C3AED] text-white shadow-xs font-black' : 'bg-white text-[#0F1035] border border-[#E4E0F5] font-bold'"
-                    class="rounded-xl px-2.5 py-1.5 text-xs transition cursor-pointer"
-                  >
-                    {{ rate }}x
-                  </button>
-                </div>
+                <span class="rounded-full bg-purple-100 text-[#7C3AED] px-3 py-1 text-xs font-black">
+                  {{ speechRate }}x
+                </span>
               </div>
-            </div>
 
-            <!-- Voix de synthèse -->
-            <div class="p-4 bg-white rounded-2xl border border-[#E4E0F5] space-y-2">
-              <label class="block font-extrabold text-sm text-[#0F1035]">Voix de lecture préférée</label>
-              <div class="grid grid-cols-2 gap-3 pt-1">
+              <div class="flex items-center gap-2">
                 <button
+                  *ngFor="let rate of [0.8, 1.0, 1.2, 1.4]"
                   type="button"
-                  (click)="setVoice('amelie')"
-                  [class]="activeVoice === 'amelie' ? 'bg-[#EDE9FE] border-[#7C3AED] text-[#6D28D9] font-black' : 'bg-white border-[#E4E0F5] text-gray-700 font-bold'"
-                  class="p-2.5 rounded-xl border text-xs transition cursor-pointer flex items-center gap-2"
+                  (click)="updateSpeechRate(rate)"
+                  [ngClass]="speechRate === rate ? 'bg-[#7C3AED] text-white font-black' : 'bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold'"
+                  class="rounded-xl px-4 py-2 text-xs transition"
                 >
-                  <span>🌸</span>
-                  <div class="text-left">
-                    <p class="font-bold">Amélie</p>
-                    <p class="text-[10px] text-gray-500">Chaleureuse &amp; douce</p>
-                  </div>
-                </button>
-                <button
-                  type="button"
-                  (click)="setVoice('thomas')"
-                  [class]="activeVoice === 'thomas' ? 'bg-[#EDE9FE] border-[#7C3AED] text-[#6D28D9] font-black' : 'bg-white border-[#E4E0F5] text-gray-700 font-bold'"
-                  class="p-2.5 rounded-xl border text-xs transition cursor-pointer flex items-center gap-2"
-                >
-                  <span>🎙️</span>
-                  <div class="text-left">
-                    <p class="font-bold">Thomas</p>
-                    <p class="text-[10px] text-gray-500">Clair &amp; structuré</p>
-                  </div>
+                  {{ rate }}x
                 </button>
               </div>
             </div>
 
-            <!-- Réduction des animations -->
-            <label class="flex items-center justify-between p-3.5 rounded-2xl bg-white border border-[#E4E0F5] cursor-pointer">
-              <div>
-                <p class="font-extrabold text-sm text-[#0F1035]">Réduction des animations</p>
-                <p class="text-gray-500 text-[11px]">Conformité accessibilité WCAG 2.2 AA.</p>
+            <!-- Taille du texte -->
+            <div class="border-t pt-4 border-gray-100 space-y-3">
+              <h4 class="text-xs font-black text-gray-900">Taille du texte</h4>
+              <div class="grid grid-cols-3 gap-3">
+                <button
+                  type="button"
+                  (click)="setTextSize('STANDARD')"
+                  [ngClass]="textSize === 'STANDARD' ? 'border-[#7C3AED] bg-purple-50 text-[#7C3AED] font-black' : 'border-gray-200 text-gray-700 font-bold'"
+                  class="rounded-xl border p-3 text-xs text-center transition"
+                >
+                  Standard
+                </button>
+                <button
+                  type="button"
+                  (click)="setTextSize('LARGE')"
+                  [ngClass]="textSize === 'LARGE' ? 'border-[#7C3AED] bg-purple-50 text-[#7C3AED] font-black' : 'border-gray-200 text-gray-700 font-bold'"
+                  class="rounded-xl border p-3 text-xs text-center transition"
+                >
+                  Agrandie (+15%)
+                </button>
+                <button
+                  type="button"
+                  (click)="setTextSize('XL')"
+                  [ngClass]="textSize === 'XL' ? 'border-[#7C3AED] bg-purple-50 text-[#7C3AED] font-black' : 'border-gray-200 text-gray-700 font-bold'"
+                  class="rounded-xl border p-3 text-xs text-center transition"
+                >
+                  Très grande (+30%)
+                </button>
               </div>
-              <input type="checkbox" [(ngModel)]="reduceMotion" class="h-4 w-4 accent-[#7C3AED] cursor-pointer" />
-            </label>
+            </div>
+
+            <!-- Contraste renforcé & Animations -->
+            <div class="border-t pt-4 border-gray-100 space-y-3">
+              <label class="flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer">
+                <div>
+                  <span class="text-xs font-bold text-gray-900">Contraste renforcé (WCAG AAA)</span>
+                  <p class="text-[11px] text-gray-500">Accentue les bordures et les contrastes de texte.</p>
+                </div>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="highContrast"
+                  (ngModelChange)="toggleHighContrast()"
+                  class="h-5 w-5 rounded text-[#7C3AED]"
+                />
+              </label>
+
+              <label class="flex items-center justify-between p-3 rounded-xl border border-gray-200 hover:bg-gray-50 cursor-pointer">
+                <div>
+                  <span class="text-xs font-bold text-gray-900">Réduire les animations</span>
+                  <p class="text-[11px] text-gray-500">Désactive les transitions et mouvements visuels.</p>
+                </div>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="reducedMotion"
+                  (ngModelChange)="toggleReducedMotion()"
+                  class="h-5 w-5 rounded text-[#7C3AED]"
+                />
+              </label>
+            </div>
           </div>
-        </div>
 
-        <!-- ================================================================ -->
-        <!-- 4. CONFIDENTIALITÉ ET COMPTE                                      -->
-        <!-- ================================================================ -->
-        <div class="rounded-2xl sm:rounded-[24px] bg-white border border-[#E4E0F5] shadow-xs overflow-hidden transition-all duration-200">
-          <button
-            type="button"
-            (click)="toggleSection('PRIVACY')"
-            class="w-full p-4.5 sm:p-5 flex items-center justify-between gap-3 text-left hover:bg-[#FBF9FF] transition focus:outline-none cursor-pointer"
-          >
-            <div class="flex items-center gap-4 min-w-0">
-              <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                <mb-icon name="shield-check"></mb-icon>
-              </div>
-              <div class="min-w-0">
-                <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
-                  Confidentialité et compte
-                </h3>
-                <p class="text-xs text-[#6B7280] truncate mt-0.5">
-                  Gérer mes données personnelles et mon compte
-                </p>
-              </div>
+          <!-- ============================================================== -->
+          <!-- ONGLET 5 : CONFIDENTIALITÉ                                     -->
+          <!-- ============================================================== -->
+          <div *ngIf="activeTab === 'PRIVACY'" class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
+              <svg class="h-5 w-5 text-[#7C3AED]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Confidentialité et données</h3>
             </div>
-            <span class="text-[#7C3AED] font-black text-xl transition-transform" [class.rotate-90]="activeSection === 'PRIVACY'">
-              ›
-            </span>
-          </button>
 
-          <!-- Contenu dépliable Confidentialité -->
-          <div *ngIf="activeSection === 'PRIVACY'" class="p-5 sm:p-6 border-t border-[#F0EDFA] bg-[#FAF8FF]/60 space-y-4 text-xs animate-fadeIn">
-            <div class="p-4 rounded-2xl bg-white border border-[#E4E0F5] space-y-2">
-              <h4 class="font-extrabold text-sm text-[#0F1035] flex items-center gap-2">
-                <span>🔐</span>
-                <span>Protection et souveraineté de tes données (RGPD)</span>
-              </h4>
-              <p class="text-[#42466B] leading-relaxed">
-                Toutes tes données d'orientation sont strictement confidentielles, hébergées en France et protégées par le secret professionnel du Centre des Possibles. Aucune donnée n'est vendue ni utilisée à des fins publicitaires.
+            <div class="rounded-2xl bg-purple-50/70 border border-purple-200 p-4 text-xs text-[#5B21B6] space-y-2">
+              <p class="font-bold">🛡️ Engagement Souveraineté & RGPD Région Sud</p>
+              <p class="text-[11px] leading-relaxed">
+                Toutes tes données sont hébergées en France de façon chiffrée. Seuls ton conseiller référent et toi y ont accès. Tu conserves la pleine propriété de tes bilans et notes.
               </p>
             </div>
 
-            <!-- Actions RGPD réelles -->
-            <div class="flex flex-wrap gap-2.5">
-              <button
-                type="button"
-                (click)="exportUserData()"
-                class="rounded-xl border border-[#D8DCF0] bg-white hover:bg-[#F8F7FF] text-[#0F1035] font-extrabold text-xs px-4 py-2.5 transition flex items-center gap-2 shadow-2xs cursor-pointer"
-              >
-                <span>📥</span>
-                <span>Exporter mes données personnelles (JSON RGPD)</span>
-              </button>
-
-              <button
-                type="button"
-                (click)="downloadBilanPdf()"
-                class="rounded-xl border border-[#D8DCF0] bg-white hover:bg-[#F8F7FF] text-[#0F1035] font-extrabold text-xs px-4 py-2.5 transition flex items-center gap-2 shadow-2xs cursor-pointer"
-              >
-                <span>📄</span>
-                <span>Télécharger la synthèse de mon bilan (PDF)</span>
-              </button>
-            </div>
-
-            <div *ngIf="exportNotice" class="text-xs font-bold text-emerald-600">
-              ✓ {{ exportNotice }}
-            </div>
-
-            <!-- Zone Danger / Suppression de compte -->
-            <div class="pt-3 border-t border-[#F0EDFA] space-y-2">
-              <div class="flex items-center justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between p-4 rounded-2xl border border-gray-200">
                 <div>
-                  <p class="font-extrabold text-rose-600">Supprimer mon compte</p>
-                  <p class="text-[11px] text-gray-500">Suppression définitive de ton profil et de tes préférences.</p>
+                  <h5 class="text-xs font-black text-gray-900">Télécharger mes données (Export RGPD)</h5>
+                  <p class="text-[11px] text-gray-500">Récupère une archive JSON contenant ton profil, tes questions et tes bilans.</p>
                 </div>
                 <button
                   type="button"
-                  (click)="showDeleteModal = true"
-                  class="rounded-xl border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-600 font-extrabold text-xs px-3.5 py-2 transition cursor-pointer"
+                  (click)="exportMyData()"
+                  class="rounded-xl border border-gray-300 hover:border-[#7C3AED] px-4 py-2 text-xs font-black text-gray-700 hover:text-[#7C3AED] transition"
                 >
-                  Supprimer mon compte
+                  Télécharger
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between p-4 rounded-2xl border border-rose-200 bg-rose-50/30">
+                <div>
+                  <h5 class="text-xs font-black text-rose-700">Suppression de mon compte</h5>
+                  <p class="text-[11px] text-gray-500">Demande l'effacement de tes données personnelles conformément au RGPD.</p>
+                </div>
+                <button
+                  type="button"
+                  (click)="requestAccountDeletion()"
+                  class="rounded-xl bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 text-xs font-black transition"
+                >
+                  Demander l'effacement
                 </button>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- ================================================================ -->
+        <!-- COLONNE DROITE (4 Cols) : 4 Cartes Raccourcis vers autres rubriques-->
+        <!-- ================================================================ -->
+        <div class="lg:col-span-4 space-y-3.5">
+          <!-- 1. Sécurité de ton compte -->
+          <div
+            (click)="activeTab = 'SECURITY'"
+            [ngClass]="activeTab === 'SECURITY' ? 'ring-2 ring-[#7C3AED] bg-purple-50/50' : 'bg-white hover:bg-purple-50/30'"
+            class="rounded-[24px] border border-[#E4E0F5] p-5 shadow-sm transition-all cursor-pointer flex items-center justify-between gap-3 group"
+          >
+            <div class="flex items-center gap-3.5 min-w-0">
+              <div class="h-10 w-10 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center shrink-0">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-sm font-black text-[#0F1035] group-hover:text-[#7C3AED] transition">Sécurité de ton compte</h4>
+                <p class="text-[11px] text-gray-500 line-clamp-2 mt-0.5">
+                  Modifie ton mot de passe et gère tes sessions de connexion.
+                </p>
+              </div>
+            </div>
+            <span class="text-gray-400 group-hover:text-[#7C3AED] font-black transition">›</span>
+          </div>
+
+          <!-- 2. Mes notifications -->
+          <div
+            (click)="activeTab = 'NOTIFICATIONS'"
+            [ngClass]="activeTab === 'NOTIFICATIONS' ? 'ring-2 ring-[#7C3AED] bg-purple-50/50' : 'bg-white hover:bg-purple-50/30'"
+            class="rounded-[24px] border border-[#E4E0F5] p-5 shadow-sm transition-all cursor-pointer flex items-center justify-between gap-3 group"
+          >
+            <div class="flex items-center gap-3.5 min-w-0">
+              <div class="h-10 w-10 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center shrink-0">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-sm font-black text-[#0F1035] group-hover:text-[#7C3AED] transition">Mes notifications</h4>
+                <p class="text-[11px] text-gray-500 line-clamp-2 mt-0.5">
+                  Choisis les alertes et rappels que tu souhaites recevoir.
+                </p>
+              </div>
+            </div>
+            <span class="text-gray-400 group-hover:text-[#7C3AED] font-black transition">›</span>
+          </div>
+
+          <!-- 3. Accessibilité et préférences -->
+          <div
+            (click)="activeTab = 'PREFERENCES'"
+            [ngClass]="activeTab === 'PREFERENCES' ? 'ring-2 ring-[#7C3AED] bg-purple-50/50' : 'bg-white hover:bg-purple-50/30'"
+            class="rounded-[24px] border border-[#E4E0F5] p-5 shadow-sm transition-all cursor-pointer flex items-center justify-between gap-3 group"
+          >
+            <div class="flex items-center gap-3.5 min-w-0">
+              <div class="h-10 w-10 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center shrink-0">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-sm font-black text-[#0F1035] group-hover:text-[#7C3AED] transition">Accessibilité et préférences</h4>
+                <p class="text-[11px] text-gray-500 line-clamp-2 mt-0.5">
+                  Adapte l'affichage, la taille du texte et les options de lecture.
+                </p>
+              </div>
+            </div>
+            <span class="text-gray-400 group-hover:text-[#7C3AED] font-black transition">›</span>
+          </div>
+
+          <!-- 4. Confidentialité et données -->
+          <div
+            (click)="activeTab = 'PRIVACY'"
+            [ngClass]="activeTab === 'PRIVACY' ? 'ring-2 ring-[#7C3AED] bg-purple-50/50' : 'bg-white hover:bg-purple-50/30'"
+            class="rounded-[24px] border border-[#E4E0F5] p-5 shadow-sm transition-all cursor-pointer flex items-center justify-between gap-3 group"
+          >
+            <div class="flex items-center gap-3.5 min-w-0">
+              <div class="h-10 w-10 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center shrink-0">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-sm font-black text-[#0F1035] group-hover:text-[#7C3AED] transition">Confidentialité et données</h4>
+                <p class="text-[11px] text-gray-500 line-clamp-2 mt-0.5">
+                  Consulte tes données, gère les partages et exerce tes droits.
+                </p>
+              </div>
+            </div>
+            <span class="text-gray-400 group-hover:text-[#7C3AED] font-black transition">›</span>
+          </div>
+        </div>
       </div>
 
       <!-- ================================================================== -->
-      <!-- BOUTON DÉCONNEXION (Fidèle à la maquette : bandeau rose pâle)       -->
-      <!-- ================================================================== -->
-      <button
-        type="button"
-        (click)="onLogoutClick()"
-        class="w-full rounded-2xl border border-rose-200 bg-gradient-to-r from-rose-50/70 to-rose-100/40 p-4 sm:p-5 flex items-center justify-between text-rose-600 hover:bg-rose-100/70 transition shadow-xs cursor-pointer group focus:outline-none"
-        title="Se déconnecter de la session jeune"
-      >
-        <div class="flex items-center gap-3 font-extrabold text-sm sm:text-base">
-          <span class="text-lg group-hover:-translate-x-1 transition-transform">↪</span>
-          <span>Déconnexion</span>
-        </div>
-        <span class="text-rose-500 font-bold group-hover:translate-x-1 transition-transform text-base sm:text-lg">
-          →
-        </span>
-      </button>
-
-      <!-- ================================================================== -->
-      <!-- MODALE DE RECADRAGE DE LA PHOTO                                     -->
+      <!-- MODALE MODIFICATION EMAIL SÉCURISÉE                                -->
       <!-- ================================================================== -->
       <div
-        *ngIf="showCropModal"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Recadrer la photo"
+        *ngIf="isEmailModalOpen"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4"
+        (click)="closeEmailModal()"
       >
-        <div class="bg-white rounded-3xl p-6 sm:p-7 max-w-md w-full shadow-2xl border border-[#E4E0F5] space-y-5">
-          <div class="flex items-center justify-between pb-3 border-b border-[#F0EDFA]">
-            <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span>⛶</span>
-              <span>Ajuster et recadrer ma photo</span>
-            </h3>
+        <div
+          class="relative w-full max-w-md rounded-[28px] bg-white shadow-2xl p-6 sm:p-7 space-y-5"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="flex items-center justify-between border-b pb-3 border-gray-100">
+            <h3 class="font-black text-base text-[#0F1035]">Modifier mon adresse email</h3>
             <button
               type="button"
-              (click)="showCropModal = false"
-              class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-sm cursor-pointer"
+              (click)="closeEmailModal()"
+              class="h-8 w-8 rounded-lg bg-gray-100 text-gray-600 text-sm font-bold flex items-center justify-center hover:bg-gray-200"
             >
               ✕
             </button>
           </div>
 
-          <!-- Aperçu avec zoom -->
-          <div class="flex flex-col items-center gap-4 py-2">
-            <div class="h-36 w-36 rounded-full overflow-hidden border-4 border-[#7C3AED] shadow-xl bg-gray-100 flex items-center justify-center">
-              <img
-                [src]="photoUrl"
-                alt="Aperçu"
-                [style.transform]="'scale(' + zoomLevel + ')'"
-                class="h-full w-full object-cover transition-transform duration-100"
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-bold text-gray-500 mb-1">Adresse email actuelle</label>
+              <input
+                type="text"
+                [value]="email"
+                readonly
+                class="w-full rounded-xl bg-gray-100 border border-gray-200 px-3.5 py-2.5 text-xs font-semibold text-gray-600 cursor-not-allowed"
               />
             </div>
 
+            <div>
+              <label class="block text-xs font-black text-gray-800 mb-1">Nouvelle adresse email</label>
+              <input
+                type="email"
+                [(ngModel)]="newEmailInput"
+                class="w-full rounded-xl border border-gray-300 px-3.5 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#7C3AED]"
+                placeholder="nouvelle.adresse@exemple.fr"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-black text-gray-800 mb-1">Mot de passe de confirmation</label>
+              <input
+                type="password"
+                [(ngModel)]="emailConfirmPassword"
+                class="w-full rounded-xl border border-gray-300 px-3.5 py-2.5 text-xs font-semibold focus:outline-none focus:border-[#7C3AED]"
+                placeholder="••••••••"
+              />
+            </div>
+
+            <div *ngIf="emailModalError" class="rounded-xl bg-rose-50 border border-rose-200 text-rose-700 p-2.5 text-xs font-bold">
+              {{ emailModalError }}
+            </div>
+
+            <div *ngIf="emailModalSuccess" class="rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 p-2.5 text-xs font-bold">
+              Un email de confirmation a été envoyé à {{ newEmailInput }}. Veuillez vérifier votre boîte.
+            </div>
+          </div>
+
+          <div class="flex items-center justify-end gap-3 pt-3 border-t border-gray-100">
+            <button
+              type="button"
+              (click)="closeEmailModal()"
+              class="rounded-xl border border-gray-300 px-4 py-2 text-xs font-bold text-gray-700 hover:bg-gray-50"
+            >
+              Annuler
+            </button>
+            <button
+              type="button"
+              (click)="confirmEmailChange()"
+              class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 py-2 text-xs font-black shadow-sm"
+            >
+              Valider le changement
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================== -->
+      <!-- MODALE RECADRAGE PHOTO AVEC ZOOM ET ROTATION                      -->
+      <!-- ================================================================== -->
+      <div
+        *ngIf="isCropModalOpen"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4"
+        (click)="closeCropModal()"
+      >
+        <div
+          class="relative w-full max-w-md rounded-[28px] bg-white shadow-2xl p-6 sm:p-7 space-y-5"
+          (click)="$event.stopPropagation()"
+        >
+          <div class="flex items-center justify-between border-b pb-3 border-gray-100">
+            <h3 class="font-black text-base text-[#0F1035]">Recadrer la photo</h3>
+            <button
+              type="button"
+              (click)="closeCropModal()"
+              class="h-8 w-8 rounded-lg bg-gray-100 text-gray-600 text-sm font-bold flex items-center justify-center hover:bg-gray-200"
+            >
+              ✕
+            </button>
+          </div>
+
+          <!-- Zone de prévisualisation circulaire -->
+          <div class="flex flex-col items-center justify-center py-4 bg-gray-50 rounded-2xl">
+            <div class="relative h-44 w-44 rounded-full overflow-hidden border-4 border-[#7C3AED] shadow-inner bg-purple-100 flex items-center justify-center">
+              <img
+                *ngIf="photoUrl"
+                [src]="photoUrl"
+                alt="Aperçu recadrage"
+                [style.transform]="'scale(' + cropZoom / 100 + ')'"
+                class="h-full w-full object-cover transition-transform duration-100"
+              />
+              <span *ngIf="!photoUrl" class="text-3xl font-black text-[#7C3AED]">{{ getInitials() }}</span>
+            </div>
+
             <!-- Curseur de zoom -->
-            <div class="w-full space-y-1.5 px-4">
-              <div class="flex justify-between text-xs font-bold text-[#42466B]">
+            <div class="w-full max-w-xs mt-5 space-y-1">
+              <div class="flex items-center justify-between text-xs font-bold text-gray-600">
                 <span>Zoom</span>
-                <span>{{ zoomLevel.toFixed(1) }}x</span>
+                <span>{{ cropZoom }}%</span>
               </div>
               <input
                 type="range"
-                min="1"
-                max="2.5"
-                step="0.1"
-                [(ngModel)]="zoomLevel"
-                class="w-full accent-[#7C3AED] cursor-pointer"
+                min="80"
+                max="200"
+                step="5"
+                [(ngModel)]="cropZoom"
+                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#7C3AED]"
               />
             </div>
           </div>
 
-          <div class="flex items-center justify-end gap-2 pt-2 border-t border-[#F0EDFA]">
+          <div class="flex items-center justify-end gap-3 pt-2">
             <button
               type="button"
-              (click)="showCropModal = false"
-              class="px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-gray-100 transition cursor-pointer"
+              (click)="closeCropModal()"
+              class="rounded-xl border border-gray-300 px-4 py-2 text-xs font-bold text-gray-700 hover:bg-gray-50"
             >
               Annuler
             </button>
             <button
               type="button"
               (click)="applyCrop()"
-              class="px-5 py-2 rounded-xl text-xs font-extrabold bg-[#7C3AED] hover:bg-[#6D28D9] text-white shadow-sm transition cursor-pointer"
+              class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 py-2 text-xs font-black shadow-sm"
             >
-              Confirmer
+              Appliquer le recadrage
             </button>
           </div>
         </div>
       </div>
-
-      <!-- ================================================================== -->
-      <!-- MODALE DE SÉCURITÉ : SUPPRESSION DE COMPTE                         -->
-      <!-- ================================================================== -->
-      <div
-        *ngIf="showDeleteModal"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn"
-        role="dialog"
-        aria-modal="true"
-      >
-        <div class="bg-white rounded-3xl p-6 sm:p-7 max-w-md w-full shadow-2xl border border-rose-200 space-y-4">
-          <div class="h-12 w-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl font-bold mx-auto">
-            ⚠️
-          </div>
-          <div class="text-center space-y-1.5">
-            <h3 class="text-base font-extrabold text-[#0F1035]">Supprimer définitivement mon compte ?</h3>
-            <p class="text-xs text-[#42466B]">
-              Cette action est irréversible. Toutes tes données de restitution, tes favoris et tes notes seront supprimés.
-            </p>
-          </div>
-          <div class="flex items-center justify-center gap-3 pt-2">
-            <button
-              type="button"
-              (click)="showDeleteModal = false"
-              class="px-4 py-2.5 rounded-xl text-xs font-bold bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer"
-            >
-              Annuler
-            </button>
-            <button
-              type="button"
-              (click)="confirmDeleteAccount()"
-              class="px-5 py-2.5 rounded-xl text-xs font-extrabold bg-rose-600 hover:bg-rose-700 text-white cursor-pointer shadow-sm"
-            >
-              Oui, supprimer mon compte
-            </button>
-          </div>
-        </div>
-      </div>
-
     </div>
   `
 })
 export class SettingsComponent implements OnInit {
   @Input() firstName = 'Emma';
   @Input() lastName = 'D.';
-  @Input() email = 'emma.d@exemple.fr';
+  @Input() email = 'emma.d@monbilan.fr';
   @Input() speechRate = 1.0;
-  @Input() photoUrl = 'assets/visuals/profile-emma.png';
-  @Input() activeVoice = 'amelie';
+  @Input() photoUrl = '';
+  @Input() rdvNumber = '2187';
 
-  @Output() logout = new EventEmitter<void>();
-  @Output() speechRateChange = new EventEmitter<number>();
-  @Output() voiceChange = new EventEmitter<string>();
   @Output() photoChange = new EventEmitter<string>();
   @Output() profileSave = new EventEmitter<UserProfileData>();
+  @Output() speechRateChange = new EventEmitter<number>();
+  @Output() logout = new EventEmitter<void>();
 
+  activeTab: SettingsTab = 'PROFILE';
+
+  // Détection des modifications
+  initialFirstName = '';
+  initialLastName = '';
+  hasUnsavedChanges = false;
   isSaving = false;
   savedSuccess = false;
-  activeSection: string | null = null;
-  photoSuccess = false;
-  photoError: string | null = null;
-  isCustomPhoto = false;
 
-  // Mot de passe
+  // Sécurité (Mot de passe)
   currentPassword = '';
   newPassword = '';
   confirmPassword = '';
-  showPassword = false;
+  passwordMsg = '';
   passwordSuccess = false;
-  passwordError: string | null = null;
-  hasOtherSession = true;
-  revokeNotice: string | null = null;
-
-  // Indicateur force mot de passe
-  pwdStrengthPercent = 0;
-  pwdStrengthLabel = 'Faible';
-  pwdStrengthColor = 'text-rose-500';
-  pwdStrengthBg = 'bg-rose-500';
-  hasUpperCase = false;
-  hasNumber = false;
-  hasSpecialChar = false;
 
   // Notifications
+  notifCounselorReply = true;
+  notifDocPublished = true;
   notifAppointments = true;
-  notifOpportunities = true;
-  notifCoach = true;
-  notifEmailDigest = false;
-  notifSavedSuccess = false;
 
-  // Préférences
-  theme: 'light' | 'dark' = 'light';
-  fontSize: 'sm' | 'base' | 'lg' = 'base';
-  reduceMotion = false;
+  // Préférences & Accessibilité
+  textSize: 'STANDARD' | 'LARGE' | 'XL' = 'STANDARD';
+  highContrast = false;
+  reducedMotion = false;
 
-  // Modales
-  showCropModal = false;
-  zoomLevel = 1.0;
-  showDeleteModal = false;
-  exportNotice: string | null = null;
+  // Modale Email
+  isEmailModalOpen = false;
+  newEmailInput = '';
+  emailConfirmPassword = '';
+  emailModalError = '';
+  emailModalSuccess = false;
+
+  // Modale Recadrage
+  isCropModalOpen = false;
+  cropZoom = 100;
 
   ngOnInit(): void {
-    if (typeof window !== 'undefined') {
-      try {
-        const storedPhoto = localStorage.getItem('monbilan_user_photo');
-        if (storedPhoto) {
-          this.photoUrl = storedPhoto;
-          this.isCustomPhoto = true;
-        }
-        const storedTheme = localStorage.getItem('monbilan_user_theme');
-        if (storedTheme === 'dark' || storedTheme === 'light') {
-          this.theme = storedTheme;
-        }
-        const storedFont = localStorage.getItem('monbilan_user_fontsize');
-        if (storedFont === 'sm' || storedFont === 'base' || storedFont === 'lg') {
-          this.fontSize = storedFont;
-        }
-      } catch {
-        // fallback
-      }
-    }
+    this.initialFirstName = this.firstName;
+    this.initialLastName = this.lastName;
+    this.loadPersistedPreferences();
   }
 
   getInitials(): string {
-    const f = (this.firstName || 'E').trim().charAt(0).toUpperCase();
-    const l = (this.lastName || 'D').trim().charAt(0).toUpperCase();
-    return `${f}${l}`;
-  }
-
-  onFieldChange(): void {
-    this.savedSuccess = false;
-  }
-
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (!input.files || input.files.length === 0) return;
-    const file = input.files[0];
-
-    // Validation du type de fichier
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    if (!allowedTypes.includes(file.type)) {
-      this.photoError = 'Format non supporté. Veuillez choisir un fichier JPG, PNG ou WebP.';
-      this.photoSuccess = false;
-      return;
-    }
-
-    // Validation de la taille (max 2 Mo)
-    if (file.size > 2 * 1024 * 1024) {
-      this.photoError = 'L\'image est trop volumineuse (maximum 2 Mo).';
-      this.photoSuccess = false;
-      return;
-    }
-
-    this.photoError = null;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const base64 = e.target?.result as string;
-      if (base64) {
-        this.photoUrl = base64;
-        this.isCustomPhoto = true;
-        this.photoSuccess = true;
-        this.photoChange.emit(base64);
-        try {
-          localStorage.setItem('monbilan_user_photo', base64);
-        } catch {}
-        setTimeout(() => {
-          this.photoSuccess = false;
-        }, 3500);
-      }
-    };
-    reader.readAsDataURL(file);
-    input.value = '';
-  }
-
-  openCropModal(): void {
-    this.zoomLevel = 1.0;
-    this.showCropModal = true;
-  }
-
-  applyCrop(): void {
-    this.showCropModal = false;
-    this.photoSuccess = true;
-    setTimeout(() => {
-      this.photoSuccess = false;
-    }, 3000);
-  }
-
-  removePhoto(): void {
-    this.photoUrl = '';
-    this.isCustomPhoto = false;
-    this.photoError = null;
-    this.photoSuccess = true;
-    this.photoChange.emit('');
-    try {
-      localStorage.removeItem('monbilan_user_photo');
-    } catch {}
-    setTimeout(() => {
-      this.photoSuccess = false;
-    }, 3000);
-  }
-
-  resetPhoto(): void {
-    this.photoUrl = 'assets/visuals/profile-emma.png';
-    this.isCustomPhoto = false;
-    this.photoError = null;
-    this.photoSuccess = true;
-    this.photoChange.emit(this.photoUrl);
-    try {
-      localStorage.removeItem('monbilan_user_photo');
-    } catch {}
-    setTimeout(() => {
-      this.photoSuccess = false;
-    }, 3000);
+    const f = this.firstName ? this.firstName.charAt(0).toUpperCase() : '';
+    const l = this.lastName ? this.lastName.charAt(0).toUpperCase() : '';
+    return f + l || 'ED';
   }
 
   onImgError(): void {
-    this.photoUrl = 'assets/visuals/profile-emma.png';
+    this.photoUrl = '';
+  }
+
+  onFieldChange(): void {
+    this.hasUnsavedChanges =
+      this.firstName !== this.initialFirstName ||
+      this.lastName !== this.initialLastName;
+    this.savedSuccess = false;
   }
 
   saveChanges(): void {
+    if (!this.hasUnsavedChanges) return;
+
     this.isSaving = true;
     setTimeout(() => {
       this.isSaving = false;
       this.savedSuccess = true;
+      this.initialFirstName = this.firstName;
+      this.initialLastName = this.lastName;
+      this.hasUnsavedChanges = false;
+
       this.profileSave.emit({
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
         photoUrl: this.photoUrl
       });
-      try {
-        localStorage.setItem('monbilan_user_firstname', this.firstName);
-        localStorage.setItem('monbilan_user_lastname', this.lastName);
-        localStorage.setItem('monbilan_user_email', this.email);
-      } catch {}
-      setTimeout(() => {
-        this.savedSuccess = false;
-      }, 3500);
     }, 400);
   }
 
-  toggleSection(section: string): void {
-    this.activeSection = this.activeSection === section ? null : section;
-  }
+  // Gestion Photo
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const validTypes = ['image/png', 'image/jpeg', 'image/webp'];
+      if (!validTypes.includes(file.type)) {
+        alert('Veuillez sélectionner un fichier image valide (PNG, JPEG ou WebP).');
+        return;
+      }
 
-  checkPasswordStrength(): void {
-    const pwd = this.newPassword || '';
-    this.hasUpperCase = /[A-Z]/.test(pwd);
-    this.hasNumber = /[0-9]/.test(pwd);
-    this.hasSpecialChar = /[^A-Za-z0-9]/.test(pwd);
-
-    let score = 0;
-    if (pwd.length >= 8) score += 25;
-    if (this.hasUpperCase) score += 25;
-    if (this.hasNumber) score += 25;
-    if (this.hasSpecialChar) score += 25;
-
-    this.pwdStrengthPercent = score;
-
-    if (score <= 25) {
-      this.pwdStrengthLabel = 'Faible';
-      this.pwdStrengthColor = 'text-rose-500';
-      this.pwdStrengthBg = 'bg-rose-500';
-    } else if (score <= 50) {
-      this.pwdStrengthLabel = 'Moyen';
-      this.pwdStrengthColor = 'text-amber-500';
-      this.pwdStrengthBg = 'bg-amber-500';
-    } else if (score <= 75) {
-      this.pwdStrengthLabel = 'Bon';
-      this.pwdStrengthColor = 'text-blue-500';
-      this.pwdStrengthBg = 'bg-blue-500';
-    } else {
-      this.pwdStrengthLabel = 'Excellent';
-      this.pwdStrengthColor = 'text-emerald-500';
-      this.pwdStrengthBg = 'bg-emerald-500';
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.photoUrl = e.target?.result as string;
+        this.photoChange.emit(this.photoUrl);
+      };
+      reader.readAsDataURL(file);
     }
   }
 
-  updatePassword(): void {
-    this.passwordError = null;
-    this.passwordSuccess = false;
+  removePhoto(): void {
+    this.photoUrl = '';
+    this.photoChange.emit('');
+  }
 
+  openCropModal(): void {
+    this.cropZoom = 100;
+    this.isCropModalOpen = true;
+  }
+
+  closeCropModal(): void {
+    this.isCropModalOpen = false;
+  }
+
+  applyCrop(): void {
+    this.isCropModalOpen = false;
+  }
+
+  // Modale Email
+  openEmailModal(): void {
+    this.newEmailInput = '';
+    this.emailConfirmPassword = '';
+    this.emailModalError = '';
+    this.emailModalSuccess = false;
+    this.isEmailModalOpen = true;
+  }
+
+  closeEmailModal(): void {
+    this.isEmailModalOpen = false;
+  }
+
+  confirmEmailChange(): void {
+    if (!this.newEmailInput || !this.newEmailInput.includes('@')) {
+      this.emailModalError = 'Veuillez saisir une adresse email valide.';
+      return;
+    }
+    if (!this.emailConfirmPassword) {
+      this.emailModalError = 'Veuillez renseigner votre mot de passe pour confirmer.';
+      return;
+    }
+
+    this.emailModalError = '';
+    this.emailModalSuccess = true;
+    setTimeout(() => {
+      this.email = this.newEmailInput;
+      this.isEmailModalOpen = false;
+      this.profileSave.emit({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        photoUrl: this.photoUrl
+      });
+    }, 1200);
+  }
+
+  // Sécurité (Mot de passe)
+  changePassword(): void {
     if (!this.currentPassword) {
-      this.passwordError = 'Veuillez saisir votre mot de passe actuel.';
+      this.passwordSuccess = false;
+      this.passwordMsg = 'Veuillez indiquer votre mot de passe actuel.';
       return;
     }
     if (!this.newPassword || this.newPassword.length < 8) {
-      this.passwordError = 'Le nouveau mot de passe doit comporter au moins 8 caractères.';
+      this.passwordSuccess = false;
+      this.passwordMsg = 'Le nouveau mot de passe doit comporter au moins 8 caractères.';
       return;
     }
     if (this.newPassword !== this.confirmPassword) {
-      this.passwordError = 'Les nouveaux mots de passe ne correspondent pas.';
+      this.passwordSuccess = false;
+      this.passwordMsg = 'Les deux mots de passe ne correspondent pas.';
       return;
     }
 
     this.passwordSuccess = true;
+    this.passwordMsg = 'Votre mot de passe a été mis à jour avec succès.';
     this.currentPassword = '';
     this.newPassword = '';
     this.confirmPassword = '';
-    setTimeout(() => {
-      this.passwordSuccess = false;
-    }, 4000);
   }
 
-  revokeOtherSessions(): void {
-    this.hasOtherSession = false;
-    this.revokeNotice = 'Toutes les autres sessions ont été déconnectées avec succès.';
-    setTimeout(() => {
-      this.revokeNotice = null;
-    }, 4000);
-  }
-
-  saveNotifPreferences(): void {
-    this.notifSavedSuccess = true;
+  // Notifications
+  persistNotifPrefs(): void {
     try {
-      localStorage.setItem('monbilan_notifs', JSON.stringify({
-        appointments: this.notifAppointments,
-        opportunities: this.notifOpportunities,
-        coach: this.notifCoach,
-        digest: this.notifEmailDigest
+      localStorage.setItem('mb_notifs', JSON.stringify({
+        counselor: this.notifCounselorReply,
+        docs: this.notifDocPublished,
+        appointments: this.notifAppointments
       }));
     } catch {}
-    setTimeout(() => {
-      this.notifSavedSuccess = false;
-    }, 3500);
   }
 
-  onSpeechRateChange(rate: number): void {
+  // Préférences & Accessibilité
+  updateSpeechRate(rate: number): void {
     this.speechRate = rate;
     this.speechRateChange.emit(rate);
   }
 
-  setVoice(voiceId: string): void {
-    this.activeVoice = voiceId;
-    this.voiceChange.emit(voiceId);
+  setTextSize(size: 'STANDARD' | 'LARGE' | 'XL'): void {
+    this.textSize = size;
+    try {
+      localStorage.setItem('mb_text_size', size);
+    } catch {}
   }
 
-  exportUserData(): void {
-    const data = {
-      plateforme: 'MonBilan+',
-      version: '1.0.0',
-      exportDate: new Date().toISOString(),
-      profil: {
-        prenom: this.firstName,
-        nom: this.lastName,
-        email: this.email,
-        etablissement: 'Centre des Possibles — Métropole Nice Côte d\'Azur',
-        dossier: 'Rdv 2187',
-        mode: 'ACCOMPAGNE'
-      },
-      bilanSynthese: {
-        riasec: [
-          { code: 'A', nom: 'Artistique', rang: 1, verifie: true },
-          { code: 'E', nom: 'Entreprenant', rang: 2, verifie: true },
-          { code: 'R', nom: 'Réaliste', rang: 3, verifie: true }
-        ],
-        hexacoDominantes: ['Émotivité', 'Ouvert à l\'expérience', 'Agréabilité'],
-        metiersConseilles: 22
-      },
-      garantiesRGPD: {
-        droitDacces: 'Conforme art. 15 RGPD',
-        rectification: 'Conforme art. 16 RGPD',
-        portabilite: 'Conforme art. 20 RGPD',
-        hebergement: 'France (Souverain)'
-      }
-    };
+  toggleHighContrast(): void {
+    try {
+      localStorage.setItem('mb_high_contrast', String(this.highContrast));
+    } catch {}
+  }
 
+  toggleReducedMotion(): void {
+    try {
+      localStorage.setItem('mb_reduced_motion', String(this.reducedMotion));
+    } catch {}
+  }
+
+  private loadPersistedPreferences(): void {
+    try {
+      const savedNotifs = localStorage.getItem('mb_notifs');
+      if (savedNotifs) {
+        const parsed = JSON.parse(savedNotifs);
+        this.notifCounselorReply = parsed.counselor ?? true;
+        this.notifDocPublished = parsed.docs ?? true;
+        this.notifAppointments = parsed.appointments ?? true;
+      }
+      const savedTextSize = localStorage.getItem('mb_text_size') as any;
+      if (savedTextSize) this.textSize = savedTextSize;
+      const savedContrast = localStorage.getItem('mb_high_contrast');
+      if (savedContrast) this.highContrast = savedContrast === 'true';
+      const savedMotion = localStorage.getItem('mb_reduced_motion');
+      if (savedMotion) this.reducedMotion = savedMotion === 'true';
+    } catch {}
+  }
+
+  // Confidentialité RGPD
+  exportMyData(): void {
+    const data = {
+      profile: {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        rdvCode: this.rdvNumber
+      },
+      establishment: 'Centre des Possibles — Métropole Nice Côte d\'Azur',
+      counselor: 'Sophie Martin',
+      exportDate: new Date().toISOString()
+    };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `monbilan-donnees-${this.firstName.toLowerCase()}-${this.lastName.toLowerCase()}.json`;
+    a.download = `Donnees_MonBilan_Rdv_${this.rdvNumber}.json`;
     a.click();
     URL.revokeObjectURL(url);
-
-    this.exportNotice = 'Export RGPD téléchargé avec succès !';
-    setTimeout(() => {
-      this.exportNotice = null;
-    }, 4000);
   }
 
-  downloadBilanPdf(): void {
-    window.open('assets/documents/restitution-synthese-2187.pdf', '_blank');
-  }
-
-  confirmDeleteAccount(): void {
-    this.showDeleteModal = false;
-    this.logout.emit();
-  }
-
-  onLogoutClick(): void {
-    this.logout.emit();
+  requestAccountDeletion(): void {
+    const confirmed = confirm(
+      'Attention : cette action transmettra une demande d\'effacement de vos données d\'orientation auprès de votre établissement (Centre des Possibles). Souhaitez-vous continuer ?'
+    );
+    if (confirmed) {
+      alert('Votre demande d\'effacement a bien été prise en compte et transmise au délégué à la protection des données.');
+    }
   }
 }

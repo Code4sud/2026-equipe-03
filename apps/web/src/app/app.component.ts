@@ -642,7 +642,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <span class="truncate">Mes paramètres</span>
                   </h1>
                   <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
-                    Personnalise ton expérience et garde le contrôle sur tes informations.
+                    Gère ton profil, tes préférences et la confidentialité de tes données.
                   </p>
                 </div>
               </ng-container>
@@ -1488,6 +1488,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   [email]="currentUserEmail"
                   [speechRate]="speechRate"
                   [photoUrl]="userPhotoUrl"
+                  [rdvNumber]="rdvNumber"
                   (photoChange)="onUserPhotoChange($event)"
                   (profileSave)="onUserProfileSave($event)"
                   (speechRateChange)="setSpeechRate($event)"

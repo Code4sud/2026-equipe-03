@@ -80,4 +80,5 @@ export type LLMGeneratedDraft = z.infer<typeof LLMGeneratedDraftSchema>;
 export * from './interview.dto.js';
 export * from './career-matching.dto.js';
 export * from './audio-episodes.dto.js';
+export * from './immersion.dto.js';
 

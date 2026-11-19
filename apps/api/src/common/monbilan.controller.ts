@@ -211,4 +211,83 @@ export class MonBilanController {
     });
     return this.appService.createYoungQuestion(actor, body);
   }
+
+  // --------------------------------------------------------------------------
+  // ROUTES IMMERSION PRO
+  // --------------------------------------------------------------------------
+  @Get('immersions')
+  getImmersions(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getImmersionProjects(actor);
+  }
+
+  @Post('immersions')
+  createImmersion(
+    @Body() body: unknown,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.createImmersionProject(actor, body);
+  }
+
+  @Get('immersions/:id')
+  getImmersion(
+    @Param('id') id: string,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getImmersionProject(actor, id);
+  }
+
+  @Patch('immersions/:id')
+  updateImmersion(
+    @Param('id') id: string,
+    @Body() body: unknown,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.updateImmersionProject(actor, id, body);
+  }
+
+  @Get('companies')
+  getCompanies(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getPartnerCompanies(actor);
+  }
+
+  @Post('immersions/:id/applications')
+  createApplication(
+    @Param('id') id: string,
+    @Body() body: unknown,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.createApplication(actor, id, body);
+  }
+
+  @Post('immersions/:id/journal')
+  saveJournal(
+    @Param('id') id: string,
+    @Body() body: unknown,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.saveObservationEntry(actor, id, body);
+  }
+
+  @Post('immersions/:id/review')
+  saveReview(
+    @Param('id') id: string,
+    @Body() body: unknown,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.saveImmersionReview(actor, id, body);
+  }
+
+  @Get('counselor/immersions')
+  getCounselorImmersions(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getCounselorImmersionOverview(actor);
+  }
 }

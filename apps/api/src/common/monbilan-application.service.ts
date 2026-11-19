@@ -23,7 +23,12 @@ import {
   UpdateCareerAssessmentSchema,
   UpdateClaimInputSchema,
   UpdateEpisodeScriptSchema,
-  VerifyFactInputSchema
+  VerifyFactInputSchema,
+  CreateImmersionProjectSchema,
+  UpdateImmersionProjectSchema,
+  CreateApplicationSchema,
+  SaveObservationEntrySchema,
+  SaveImmersionReviewSchema
 } from '@monbilan/contracts';
 import {
   AccessActor,
@@ -36,7 +41,12 @@ import {
   matchCareersWithInterview,
   PolicyAction,
   shouldInvalidateAudio,
-  verifyGeneratedClaims
+  verifyGeneratedClaims,
+  DomainImmersionProject,
+  DomainPartnerCompany,
+  DomainImmersionApplication,
+  DomainObservationEntry,
+  DomainImmersionReview
 } from '@monbilan/domain';
 import {
   AuditLogEntry,
@@ -54,6 +64,11 @@ export class MonBilanApplicationService {
   private readonly interviews = new Map<string, DomainInterviewSummary>();
   private readonly careerAssessments = new Map<string, CareerAssessment[]>();
   private readonly episodes = new Map<string, DomainAudioEpisode[]>();
+  private readonly immersionProjects: DomainImmersionProject[] = [];
+  private readonly partnerCompanies: DomainPartnerCompany[] = [];
+  private readonly applications: DomainImmersionApplication[] = [];
+  private readonly observations: DomainObservationEntry[] = [];
+  private readonly reviews: DomainImmersionReview[] = [];
   private readonly questions: InMemoryQuestion[] = [];
   private readonly auditEvents: AuditLogEntry[] = [];
   private audioWavBuffer: Buffer;
@@ -85,6 +100,11 @@ export class MonBilanApplicationService {
     this.questions.push(...initial.questions);
     this.auditEvents.push(...initial.auditEvents);
     this.audioWavBuffer = initial.fallbackWavBuffer;
+    this.immersionProjects.push(...(initial.immersionProjects ?? []));
+    this.partnerCompanies.push(...(initial.partnerCompanies ?? []));
+    this.applications.push(...(initial.applications ?? []));
+    this.observations.push(...(initial.observations ?? []));
+    this.reviews.push(...(initial.reviews ?? []));
   }
 
   // --------------------------------------------------------------------------
@@ -811,5 +831,188 @@ export class MonBilanApplicationService {
 
   getAudioBuffer(): Buffer {
     return this.audioWavBuffer;
+  }
+
+  // --------------------------------------------------------------------------
+  // MODULE IMMERSION PRO — API & GESTION DU PARCOURS EN 6 ÉTAPES
+  // --------------------------------------------------------------------------
+  getImmersionProjects(actor: AccessActor): DomainImmersionProject[] {
+    return this.immersionProjects.filter((p) => p.tenantId === actor.activeTenantId);
+  }
+
+  getImmersionProject(actor: AccessActor, id: string): DomainImmersionProject {
+    const project = this.immersionProjects.find((p) => p.id === id && p.tenantId === actor.activeTenantId);
+    if (!project) {
+      throw new NotFoundException(`Immersion project ${id} not found.`);
+    }
+    return project;
+  }
+
+  createImmersionProject(actor: AccessActor, rawBody: unknown): DomainImmersionProject {
+    const parsed = CreateImmersionProjectSchema.safeParse(rawBody);
+    if (!parsed.success) {
+      throw new BadRequestException(parsed.error.issues.map((i) => i.message).join(', '));
+    }
+
+    const newProject: DomainImmersionProject = {
+      id: `imm-${Date.now()}`,
+      tenantId: actor.activeTenantId,
+      youngProfileId: actor.ownYoungProfileId ?? DEMO_IDS.YOUNG_PROFILE_LEO,
+      careerId: parsed.data.careerId,
+      careerTitle: parsed.data.careerTitle,
+      step: 1,
+      status: 'PREPARING',
+      targetDate: parsed.data.targetDate,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    this.immersionProjects.unshift(newProject);
+    this.recordAudit(actor, 'IMMERSION_PROJECT_CREATED', 'ImmersionProject', newProject.id);
+    return newProject;
+  }
+
+  updateImmersionProject(
+    actor: AccessActor,
+    id: string,
+    rawBody: unknown
+  ): DomainImmersionProject {
+    const project = this.getImmersionProject(actor, id);
+    const parsed = UpdateImmersionProjectSchema.safeParse(rawBody);
+    if (!parsed.success) {
+      throw new BadRequestException(parsed.error.issues.map((i) => i.message).join(', '));
+    }
+
+    if (parsed.data.step !== undefined) project.step = parsed.data.step;
+    if (parsed.data.status !== undefined) project.status = parsed.data.status;
+    if (parsed.data.selectedCompany !== undefined) project.selectedCompany = parsed.data.selectedCompany;
+    if (parsed.data.companyContact !== undefined) project.companyContact = parsed.data.companyContact;
+    if (parsed.data.targetDate !== undefined) project.targetDate = parsed.data.targetDate;
+    if (parsed.data.notes !== undefined) project.notes = parsed.data.notes;
+    project.updatedAt = new Date().toISOString();
+
+    this.recordAudit(actor, 'IMMERSION_PROJECT_UPDATED', 'ImmersionProject', project.id);
+    return project;
+  }
+
+  getPartnerCompanies(actor: AccessActor): DomainPartnerCompany[] {
+    return this.partnerCompanies.filter((c) => c.tenantId === actor.activeTenantId);
+  }
+
+  createApplication(
+    actor: AccessActor,
+    projectId: string,
+    rawBody: unknown
+  ): DomainImmersionApplication {
+    const project = this.getImmersionProject(actor, projectId);
+    const parsed = CreateApplicationSchema.safeParse(rawBody);
+    if (!parsed.success) {
+      throw new BadRequestException(parsed.error.issues.map((i) => i.message).join(', '));
+    }
+
+    const application: DomainImmersionApplication = {
+      id: `app-${Date.now()}`,
+      projectId: project.id,
+      companyName: parsed.data.companyName,
+      careerTitle: parsed.data.careerTitle,
+      targetPeriod: parsed.data.targetPeriod,
+      messageBody: parsed.data.messageBody,
+      status: 'DRAFT',
+      counselorHelp: parsed.data.counselorHelp,
+      createdAt: new Date().toISOString()
+    };
+
+    this.applications.unshift(application);
+    project.step = Math.max(project.step, 4);
+    project.status = 'APPLICATION_PENDING';
+    project.selectedCompany = parsed.data.companyName;
+    this.recordAudit(actor, 'IMMERSION_APPLICATION_CREATED', 'ImmersionApplication', application.id);
+    return application;
+  }
+
+  saveObservationEntry(
+    actor: AccessActor,
+    projectId: string,
+    rawBody: unknown
+  ): DomainObservationEntry {
+    const project = this.getImmersionProject(actor, projectId);
+    const parsed = SaveObservationEntrySchema.safeParse(rawBody);
+    if (!parsed.success) {
+      throw new BadRequestException(parsed.error.issues.map((i) => i.message).join(', '));
+    }
+
+    const entry: DomainObservationEntry = {
+      id: `obs-${Date.now()}`,
+      projectId: project.id,
+      dayNumber: parsed.data.dayNumber,
+      discoveredText: parsed.data.discoveredText,
+      surprisedText: parsed.data.surprisedText,
+      questionText: parsed.data.questionText,
+      createdAt: new Date().toISOString()
+    };
+
+    this.observations.unshift(entry);
+    project.step = Math.max(project.step, 5);
+    project.status = 'IN_PROGRESS';
+    this.recordAudit(actor, 'IMMERSION_OBSERVATION_SAVED', 'ObservationEntry', entry.id);
+    return entry;
+  }
+
+  saveImmersionReview(
+    actor: AccessActor,
+    projectId: string,
+    rawBody: unknown
+  ): DomainImmersionReview {
+    const project = this.getImmersionProject(actor, projectId);
+    const parsed = SaveImmersionReviewSchema.safeParse(rawBody);
+    if (!parsed.success) {
+      throw new BadRequestException(parsed.error.issues.map((i) => i.message).join(', '));
+    }
+
+    const review: DomainImmersionReview = {
+      id: `rev-${Date.now()}`,
+      projectId: project.id,
+      careerTitle: project.careerTitle,
+      companyName: project.selectedCompany,
+      likedAspects: parsed.data.likedAspects,
+      dislikedAspects: parsed.data.dislikedAspects,
+      surprises: parsed.data.surprises,
+      wantToPursue: parsed.data.wantToPursue,
+      questionsToAsk: parsed.data.questionsToAsk,
+      sharedWithCounselor: parsed.data.sharedWithCounselor
+    };
+
+    const existingIdx = this.reviews.findIndex((r) => r.projectId === projectId);
+    if (existingIdx >= 0) {
+      this.reviews[existingIdx] = review;
+    } else {
+      this.reviews.unshift(review);
+    }
+
+    project.step = 6;
+    project.status = 'COMPLETED';
+    this.recordAudit(actor, 'IMMERSION_REVIEW_SAVED', 'ImmersionReview', review.id);
+    return review;
+  }
+
+  getCounselorImmersionOverview(actor: AccessActor) {
+    if (actor.role !== 'COUNSELOR' && actor.role !== 'TENANT_ADMIN' && actor.role !== 'PLATFORM_ADMIN') {
+      throw new ForbiddenException('Accès réservé aux professionnels de l’orientation.');
+    }
+
+    return this.immersionProjects
+      .filter((p) => p.tenantId === actor.activeTenantId)
+      .map((p) => {
+        const app = this.applications.find((a) => a.projectId === p.id);
+        const review = this.reviews.find((r) => r.projectId === p.id);
+        return {
+          ...p,
+          youngName: 'Emma D.',
+          applicationStatus: app?.status ?? 'DRAFT',
+          counselorHelpRequested: app?.counselorHelp ?? false,
+          hasReview: Boolean(review),
+          sharedReview: review?.sharedWithCounselor ?? false
+        };
+      });
   }
 }

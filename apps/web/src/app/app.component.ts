@@ -20,6 +20,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ImmersionProComponent } from './features/immersion/immersion-pro.component';
 import {
   INITIAL_AUDIO_EPISODES,
   INITIAL_CAREER_ASSESSMENTS,
@@ -27,10 +28,21 @@ import {
   UICareerAssessment,
   UIEpisode
 } from './shared/restitution-data';
+import {
+  IMMERSION_STEPS,
+  INITIAL_IMMERSION_PROJECT,
+  PARTNER_COMPANIES_DATA,
+  UIImmersionProject,
+  UIImmersionStep,
+  UIPartnerCompany,
+  getDefaultActivitiesForCareer,
+  getDefaultQuestionsForCareer
+} from './shared/immersion-data';
 
 export type YoungTab =
   | 'ACCUEIL'
   | 'MON_BILAN'
+  | 'IMMERSION_PRO'
   | 'EXPLORER_METIERS'
   | 'MON_PARCOURS'
   | 'MES_QUESTIONS'
@@ -216,7 +228,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ImmersionProComponent],
   template: `
     <div class="min-h-screen flex flex-col lg:flex-row bg-[#F4F2FF] text-[#0F1035] font-sans overflow-x-hidden">
       <!-- ================================================================== -->
@@ -340,22 +352,30 @@ export const TONE_OPTIONS: ToneOption[] = [
               *ngFor="let item of youngNavItems"
               type="button"
               (click)="selectYoungTab(item.id)"
-              [class]="activeYoungTab === item.id
+              [class]="(activeYoungTab === item.id || (item.id === 'IMMERSION_PRO' && activeYoungTab === 'EXPLORER_METIERS'))
                 ? 'bg-gradient-to-r from-[#8B3DFF] to-[#A855F7] text-white shadow-md font-extrabold'
                 : 'text-[#E7E8FB]/85 hover:bg-white/10 hover:text-white font-medium'"
-              class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs sm:text-[13px] transition text-left"
+              class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs sm:text-[13px] transition text-left"
             >
-              <span class="w-4 h-4 flex items-center justify-center flex-shrink-0" [ngSwitch]="item.id">
-                <svg *ngSwitchCase="'ACCUEIL'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                <svg *ngSwitchCase="'MON_BILAN'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
-                <svg *ngSwitchCase="'EXPLORER_METIERS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                <svg *ngSwitchCase="'MON_PARCOURS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                <svg *ngSwitchCase="'MES_QUESTIONS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                <svg *ngSwitchCase="'MES_DOCUMENTS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-                <svg *ngSwitchCase="'PARAMETRES_JEUNE'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                <span *ngSwitchDefault class="text-sm">{{ item.icon }}</span>
+              <span class="flex items-center gap-3 truncate">
+                <span class="w-4 h-4 flex items-center justify-center flex-shrink-0" [ngSwitch]="item.id">
+                  <svg *ngSwitchCase="'ACCUEIL'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                  <svg *ngSwitchCase="'MON_BILAN'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                  <svg *ngSwitchCase="'IMMERSION_PRO'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <svg *ngSwitchCase="'MON_PARCOURS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                  <svg *ngSwitchCase="'MES_QUESTIONS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                  <svg *ngSwitchCase="'MES_DOCUMENTS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                  <svg *ngSwitchCase="'PARAMETRES_JEUNE'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <span *ngSwitchDefault class="text-sm">{{ item.icon }}</span>
+                </span>
+                <span class="truncate">{{ item.label }}</span>
               </span>
-              <span class="truncate">{{ item.label }}</span>
+              <span
+                *ngIf="item.badge"
+                class="rounded-full bg-emerald-400/25 border border-emerald-300/40 text-emerald-300 font-extrabold px-1.5 py-0.2 text-[9px] uppercase tracking-wider ml-1"
+              >
+                {{ item.badge }}
+              </span>
             </button>
           </nav>
 
@@ -485,26 +505,26 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <span class="font-medium text-[#42466B]">Mon bilan &gt;</span> Restitution audio
                   </h1>
                 </div>
-                <div *ngIf="activeYoungTab === 'EXPLORER_METIERS' && !selectedCareerDetail">
-                  <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] flex items-center gap-2.5 truncate">
-                    <svg class="h-6 w-6 text-[#7C3AED] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                    <span class="truncate">Explorer les métiers</span>
-                  </h1>
-                  <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
-                    Découvre les {{ careers.length }} métiers proposés dans ton bilan Rdv {{ rdvNumber }} et enregistre ceux qui t’intéressent.
-                  </p>
-                </div>
-                <div *ngIf="activeYoungTab === 'EXPLORER_METIERS' && selectedCareerDetail" class="flex items-center gap-3">
+                <div *ngIf="activeYoungTab === 'IMMERSION_PRO' || activeYoungTab === 'EXPLORER_METIERS'" class="flex items-center gap-3">
                   <button
+                    *ngIf="immersionStepActive > 1"
                     type="button"
-                    (click)="selectedCareerDetail = null"
-                    class="h-10 w-10 shrink-0 rounded-full bg-white border border-[#D8DCF0] flex items-center justify-center font-bold text-[#1B1B62] hover:bg-[#F3EFFE]"
+                    (click)="immersionStepActive = immersionStepActive - 1"
+                    class="h-9 w-9 shrink-0 rounded-full bg-white border border-[#D8DCF0] flex items-center justify-center font-bold text-[#1B1B62] hover:bg-[#F3EFFE] transition shadow-xs"
+                    title="Revenir à l’étape précédente"
                   >
                     ←
                   </button>
-                  <h1 class="text-lg sm:text-2xl font-extrabold text-[#0F1035] truncate">
-                    <span class="font-medium text-[#42466B]">Explorer les métiers &gt;</span> {{ selectedCareerDetail.titleFr }}
-                  </h1>
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-2 text-xs sm:text-[13px] font-bold text-[#6D28D9]">
+                      <button type="button" (click)="immersionStepActive = 1" class="hover:underline">Immersion Pro</button>
+                      <span class="text-[#A78BFA]">&gt;</span>
+                      <span class="text-[#0F1035] font-extrabold truncate">Mon projet d'immersion</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1 mt-0.5">
+                      Découvre un métier sur le terrain grâce à un stage d'observation et vis une expérience concrète en entreprise.
+                    </p>
+                  </div>
                 </div>
                 <div *ngIf="activeYoungTab === 'MON_PARCOURS'">
                   <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] flex items-center gap-2.5 truncate">
@@ -1722,310 +1742,18 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 3 : EXPLORER LES MÉTIERS + FICHE PEINTRE DÉCORATEUR-->
+              <!-- VUE JEUNE 3 : IMMERSION PRO (Conforme à la maquette & cahier des charges) -->
               <!-- ========================================================== -->
-              <div *ngIf="activeYoungTab === 'EXPLORER_METIERS'" class="space-y-6">
-                <!--Liste des métiers (Maquette "Explorer les métiers avec MonBilan+.webp") -->
-                <div *ngIf="!selectedCareerDetail" class="space-y-6">
-                  <!-- Pilules de filtre hautes (Statuts entretien + Favoris + Zones) -->
-                  <div class="flex flex-wrap gap-2">
-                    <button
-                      type="button"
-                      (click)="careerFilterInExplorer = 'ALL'; selectedZone = 0; showOnlyFavorites = false"
-                      [class]="careerFilterInExplorer === 'ALL' && selectedZone === 0 && !showOnlyFavorites
-                        ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow'
-                        : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
-                      class="rounded-full px-4 py-2 text-xs sm:text-sm font-extrabold transition cursor-pointer"
-                    >
-                      📄 Tous les 22 métiers
-                    </button>
-                    <button
-                      type="button"
-                      (click)="careerFilterInExplorer = 'TO_DEEPEN'; selectedZone = 0; showOnlyFavorites = false"
-                      [class]="careerFilterInExplorer === 'TO_DEEPEN'
-                        ? 'bg-emerald-600 text-white shadow ring-2 ring-emerald-300'
-                        : 'bg-white text-emerald-800 border border-emerald-200'"
-                      class="rounded-full px-4 py-2 text-xs sm:text-sm font-extrabold transition cursor-pointer"
-                    >
-                      ★ À approfondir ({{ countToDeepen }})
-                    </button>
-                    <button
-                      type="button"
-                      (click)="careerFilterInExplorer = 'TO_EXPLORE'; selectedZone = 0; showOnlyFavorites = false"
-                      [class]="careerFilterInExplorer === 'TO_EXPLORE'
-                        ? 'bg-[#7C3AED] text-white shadow ring-2 ring-purple-300'
-                        : 'bg-white text-[#6D28D9] border border-[#DDD6FE]'"
-                      class="rounded-full px-4 py-2 text-xs sm:text-sm font-extrabold transition cursor-pointer"
-                    >
-                      🧭 À explorer ({{ countToExplore }})
-                    </button>
-                    <button
-                      type="button"
-                      (click)="careerFilterInExplorer = 'DEFERRED'; selectedZone = 0; showOnlyFavorites = false"
-                      [class]="careerFilterInExplorer === 'DEFERRED'
-                        ? 'bg-amber-600 text-white shadow ring-2 ring-amber-300'
-                        : 'bg-white text-amber-800 border border-amber-200'"
-                      class="rounded-full px-4 py-2 text-xs sm:text-sm font-extrabold transition cursor-pointer"
-                    >
-                      ⏳ Différés ({{ countDeferred }})
-                    </button>
-                    <button
-                      type="button"
-                      (click)="showOnlyFavorites = true; careerFilterInExplorer = 'ALL'"
-                      [class]="showOnlyFavorites
-                        ? 'bg-gradient-to-r from-[#EC4899] to-[#9333EA] text-white shadow'
-                        : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
-                      class="rounded-full px-4 py-2 text-xs sm:text-sm font-extrabold transition cursor-pointer"
-                    >
-                      💗 Mes favoris ({{ favoriteCareers.length }})
-                    </button>
-                  </div>
-
-                  <!-- Bannière "Des pistes de métiers à explorer, sans pression !" + Carte "À retenir absolument" -->
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    <!-- Bannière gauche (sans le nombre maximum de métiers) -->
-                    <div class="lg:col-span-7 rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#7C3AED] text-white p-6 sm:p-8 shadow-lg flex flex-col justify-between space-y-3">
-                      <div class="space-y-2.5">
-                        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
-                          🧭 Pistes professionnelles du Centre des Possibles
-                        </span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold leading-tight">
-                          Des pistes de métiers<br />
-                          à explorer, <span class="inline-block rounded-2xl bg-gradient-to-r from-[#EC4899] to-[#F43F5E] px-3.5 py-0.5 mt-1">sans pression !</span>
-                        </h2>
-                        <p class="text-xs sm:text-sm text-[#E7E8FB] leading-relaxed">
-                          Explore les métiers suggérés dans ton rapport d’orientation, comprends leurs missions et imagine ton parcours d'avenir pas à pas.
-                        </p>
-                      </div>
-                      <div class="pt-2 text-xs text-[#DDD6FE] flex items-center gap-2">
-                        <span>💡</span>
-                        <span>Découvre chaque fiche pour voir le salaire, les conditions de travail et demander une immersion pro.</span>
-                      </div>
-                    </div>
-
-                    <!-- Carte "À retenir absolument" (haute visibilité, lisible et incontournable) -->
-                    <div class="lg:col-span-5 rounded-[28px] bg-gradient-to-br from-[#FFFDF5] via-[#FFFBEB] to-[#FEF3C7] border-2 border-[#F59E0B] p-6 shadow-md flex flex-col justify-between space-y-3.5 relative overflow-hidden">
-                      <!-- En-tête avec badge d'importance -->
-                      <div class="flex items-center justify-between gap-2">
-                        <div class="flex items-center gap-2.5">
-                          <span class="h-8 w-8 rounded-xl bg-[#F59E0B] text-white flex items-center justify-center text-base font-black shadow-xs shrink-0">
-                            💡
-                          </span>
-                          <h3 class="text-lg font-black text-[#78350F] tracking-tight">
-                            À retenir absolument
-                          </h3>
-                        </div>
-                        <span class="rounded-full bg-[#F59E0B]/20 text-[#92400E] border border-[#F59E0B]/40 px-3 py-0.5 text-[11px] font-black uppercase tracking-wider shrink-0">
-                          Important
-                        </span>
-                      </div>
-
-                      <!-- 3 Principes clés agrandis et ultra-lisibles -->
-                      <ul class="space-y-2.5 text-xs sm:text-sm font-bold text-[#451A03]">
-                        <li class="flex items-start gap-2.5 bg-white/85 rounded-xl p-2.5 border border-[#FDE68A] shadow-2xs">
-                          <span class="text-[#16A34A] text-base shrink-0 font-black">✔</span>
-                          <div>
-                            <strong class="text-[#78350F] block font-black">Ce sont des pistes, pas des décisions définitives</strong>
-                            <span class="text-[11px] text-[#78350F]/90 font-medium leading-tight block mt-0.5">
-                              Rien n'est figé ni obligatoire. Ces propositions ouvrent ta réflexion sans obligation de choix immédiat.
-                            </span>
-                          </div>
-                        </li>
-                        <li class="flex items-start gap-2.5 bg-white/85 rounded-xl p-2.5 border border-[#FDE68A] shadow-2xs">
-                          <span class="text-[#16A34A] text-base shrink-0 font-black">✔</span>
-                          <div>
-                            <strong class="text-[#78350F] block font-black">Tu es libre d'explorer plusieurs voies (Zones 1 à 5)</strong>
-                            <span class="text-[11px] text-[#78350F]/90 font-medium leading-tight block mt-0.5">
-                              Toutes les durées d'études sont envisageables : filières courtes en apprentissage ou parcours plus longs.
-                            </span>
-                          </div>
-                        </li>
-                        <li class="flex items-start gap-2.5 bg-white/85 rounded-xl p-2.5 border border-[#FDE68A] shadow-2xs">
-                          <span class="text-[#16A34A] text-base shrink-0 font-black">✔</span>
-                          <div>
-                            <strong class="text-[#78350F] block font-black">Rien ne se fait sans toi : parles-en avec ton conseiller</strong>
-                            <span class="text-[11px] text-[#78350F]/90 font-medium leading-tight block mt-0.5">
-                              Sarah Dupont adapte chaque démarche à tes souhaits et tes réalités au Centre des Possibles.
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <!-- Colonne gauche "Filtrer les métiers" + Grille 3 colonnes à droite (Fidèle à la maquette Explorer les métiers) -->
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                    <!-- Bouton accordéon des filtres sur mobile (< lg) -->
-                    <div class="lg:hidden">
-                      <button
-                        type="button"
-                        (click)="showMobileCareerFilters = !showMobileCareerFilters"
-                        class="w-full rounded-2xl bg-white border border-[#E4E0F5] px-4 py-3 shadow-sm flex items-center justify-between text-xs font-extrabold text-[#0F1035]"
-                      >
-                        <span>⏳ Filtrer les métiers ({{ selectedZone === 0 ? 'Toutes les zones' : 'Zone ' + selectedZone }})</span>
-                        <span class="text-[#7C3AED]">{{ showMobileCareerFilters ? '▲ Masquer' : '▼ Afficher les filtres' }}</span>
-                      </button>
-                    </div>
-
-                    <!-- Colonne latérale de filtres avec DÉFINITION EXPLICITE DE LA ZONE -->
-                    <div
-                      [class.hidden]="!showMobileCareerFilters"
-                      class="lg:block lg:col-span-3 rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-5"
-                    >
-                      <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                        <span class="text-[#7C3AED]">⏳</span>
-                        <span>Filtrer les métiers</span>
-                      </h3>
-
-                      <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                          <p class="text-xs font-extrabold uppercase tracking-wider text-[#42466B]">Zone de préparation</p>
-                          <button
-                            type="button"
-                            (click)="showZoneDefinitionModal = !showZoneDefinitionModal"
-                            class="text-[11px] font-black text-[#7C3AED] hover:underline flex items-center gap-0.5 cursor-pointer"
-                          >
-                            <span>ℹ️ C’est quoi ?</span>
-                          </button>
-                        </div>
-
-                        <!-- ENCART DE DÉFINITION CLAIRE DE LA ZONE DANS CE CONTEXTE -->
-                        <div class="rounded-2xl bg-gradient-to-br from-[#F5F2FF] to-[#EDE9FE] border border-[#DDD6FE] p-3.5 space-y-2 text-xs">
-                          <div class="flex items-center gap-1.5 font-black text-[#5B21B6]">
-                            <span>📖</span>
-                            <span>Définition d'une « Zone » :</span>
-                          </div>
-                          <p class="text-[#31355B] text-[11px] leading-relaxed">
-                            Dans ton rapport, une <strong>Zone de préparation</strong> (issue de la classification internationale O*NET) désigne <strong>le temps estimé et le niveau de formation</strong> nécessaires pour exercer le métier :
-                          </p>
-                          <div class="space-y-1 text-[11px] text-[#4C1D95] pt-1.5 border-t border-[#D8CEFF]">
-                            <div class="flex items-baseline justify-between">
-                              <span class="font-bold">Zone 1 :</span>
-                              <span class="text-[#31355B]">0 à 6 mois (accès direct/rapide)</span>
-                            </div>
-                            <div class="flex items-baseline justify-between">
-                              <span class="font-bold">Zone 2 :</span>
-                              <span class="text-[#31355B]">3 mois à 2 ans (CAP, Bac Pro)</span>
-                            </div>
-                            <div class="flex items-baseline justify-between">
-                              <span class="font-bold">Zone 3 :</span>
-                              <span class="text-[#31355B]">1 à 4 ans (BTS, Bac+2)</span>
-                            </div>
-                            <div class="flex items-baseline justify-between">
-                              <span class="font-bold">Zone 4 :</span>
-                              <span class="text-[#31355B]">2 à 6 ans (Licence, Bac+3/4)</span>
-                            </div>
-                            <div class="flex items-baseline justify-between">
-                              <span class="font-bold">Zone 5 :</span>
-                              <span class="text-[#31355B]">4 à 10 ans (Master, Bac+5+)</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="space-y-1.5 text-xs font-semibold text-[#31355B] pt-1">
-                          <label class="flex items-center gap-2 cursor-pointer hover:text-[#6D28D9]">
-                            <input type="radio" name="zoneFilter" [checked]="selectedZone === 0" (change)="selectedZone = 0" class="accent-[#7C3AED]" />
-                            <span>Toutes les zones</span>
-                          </label>
-                          <label *ngFor="let z of [1, 2, 3, 4, 5]" class="flex items-center gap-2 cursor-pointer hover:text-[#6D28D9]">
-                            <input type="radio" name="zoneFilter" [checked]="selectedZone === z" (change)="selectedZone = z" class="accent-[#7C3AED]" />
-                            <span>Zone {{ z }} ({{ getZoneDurationLabel(z) }})</span>
-                          </label>
-                        </div>
-                      </div>
-
-                      <div class="pt-3 border-t border-[#F0EDFA] space-y-2">
-                        <p class="text-xs font-extrabold uppercase tracking-wider text-[#42466B]">Affichage</p>
-                        <label class="flex items-center gap-2 text-xs font-semibold text-[#31355B] cursor-pointer">
-                          <input type="checkbox" [(ngModel)]="showOnlyFavorites" class="accent-[#EC4899] rounded" />
-                          <span>Mes favoris uniquement ({{ favoriteCareers.length }})</span>
-                        </label>
-                      </div>
-
-                      <button
-                        type="button"
-                        (click)="selectedZone = 0; showOnlyFavorites = false; searchQuery = ''"
-                        class="w-full rounded-full border border-[#D8DCF0] bg-[#F8F7FF] hover:bg-[#F3EFFE] py-2 text-xs font-extrabold text-[#6D28D9] transition"
-                      >
-                        ↻ Réinitialiser
-                      </button>
-                    </div>
-
-                    <!-- Grille des cartes métiers à droite -->
-                    <div class="lg:col-span-9 space-y-4">
-                      <div class="flex items-center justify-between">
-                        <h3 class="text-xl font-extrabold text-[#0F1035]">
-                          {{ filteredCareersByStatus.length }} métier(s) affiché(s) sur les 22 de ton bilan
-                        </h3>
-                        <span class="text-xs font-bold text-[#6D28D9]">Rapport Rdv {{ rdvNumber }} • Pages 8 à 16</span>
-                      </div>
-
-                      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                        <article
-                          *ngFor="let career of filteredCareersByStatus"
-                          (click)="openCareerDetail(career)"
-                          class="group rounded-[26px] bg-white border border-[#E4E0F5] overflow-hidden shadow-sm hover:shadow-md hover:border-[#7C3AED] transition cursor-pointer flex flex-col justify-between"
-                        >
-                          <div>
-                            <div class="relative h-32 w-full bg-[#EDE9FE] overflow-hidden">
-                              <img [src]="career.imageUrl" [alt]="career.titleFr" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
-                              <button
-                                type="button"
-                                (click)="$event.stopPropagation(); career.isFavorite = !career.isFavorite"
-                                class="absolute top-3 right-3 h-9 w-9 rounded-full bg-white/95 shadow flex items-center justify-center text-base"
-                              >
-                                {{ career.isFavorite ? '💗' : '♡' }}
-                              </button>
-                              <span class="absolute bottom-2.5 left-3 rounded-full bg-[#F3E8FF] text-[#6D28D9] px-3 py-0.5 text-[11px] font-extrabold shadow-sm">
-                                {{ career.sectorTag }}
-                              </span>
-                            </div>
-
-                            <div class="p-4 space-y-1.5">
-                              <div class="flex items-center justify-between text-[11px] text-[#42466B] font-bold">
-                                <span>Zone {{ career.jobZone }} ({{ getZoneDurationLabel(career.jobZone) }})</span>
-                                <span class="text-[#6D28D9]">Rapport p. {{ career.pageNumber }}</span>
-                              </div>
-                              <div class="flex items-center justify-between gap-1 pt-0.5">
-                                <h4 class="text-base font-extrabold text-[#0F1035] group-hover:text-[#6D28D9] truncate">
-                                  {{ career.titleFr }}
-                                </h4>
-                                <span
-                                  *ngIf="getAssessmentForCareer(career.titleFr)?.finalStatus === 'TO_DEEPEN'"
-                                  class="shrink-0 rounded-full bg-emerald-100 text-emerald-800 px-2 py-0.5 text-[10px] font-black"
-                                >
-                                  ★ À approfondir
-                                </span>
-                                <span
-                                  *ngIf="getAssessmentForCareer(career.titleFr)?.finalStatus === 'DEFERRED'"
-                                  class="shrink-0 rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 text-[10px] font-black"
-                                >
-                                  Différé
-                                </span>
-                                <span
-                                  *ngIf="getAssessmentForCareer(career.titleFr)?.finalStatus === 'TO_EXPLORE'"
-                                  class="shrink-0 rounded-full bg-[#EDE9FE] text-[#6D28D9] px-2 py-0.5 text-[10px] font-extrabold"
-                                >
-                                  À explorer
-                                </span>
-                              </div>
-                              <p class="text-xs text-[#42466B] line-clamp-2 leading-relaxed">
-                                {{ career.shortSummary }}
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="px-4 pb-3.5 pt-2 border-t border-[#F0EDFA] flex items-center justify-between text-xs font-bold text-[#31355B]">
-                            <span class="truncate pr-2">🎓 {{ career.educationLevel }}</span>
-                            <span class="h-7 w-7 shrink-0 rounded-full bg-[#F3EFFE] text-[#6D28D9] flex items-center justify-center font-black">
-                              ›
-                            </span>
-                          </div>
-                        </article>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div *ngIf="activeYoungTab === 'IMMERSION_PRO' || activeYoungTab === 'EXPLORER_METIERS'" class="space-y-6">
+                <!-- Parcours Immersion Pro en 6 étapes (Maquette) -->
+                <app-immersion-pro
+                  *ngIf="!selectedCareerDetail"
+                  [careers]="careers"
+                  [careerAssessments]="careerAssessments"
+                  [project]="immersionProject"
+                  (careerSelected)="startImmersionForCareer($event)"
+                  (viewDetail)="selectedCareerDetail = $event"
+                ></app-immersion-pro>
 
                 <!-- FICHE MÉTIER DÉTAILLÉE (Maquette "Découvrir le métier de peintre décorateur.webp") -->
                 <div *ngIf="selectedCareerDetail" class="space-y-6">
@@ -2055,10 +1783,18 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </button>
                         <button
                           type="button"
+                          (click)="startImmersionForCareer(selectedCareerDetail)"
+                          class="rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-[#7C3AED] text-white px-5 py-2 text-xs font-black shadow-lg hover:scale-105 transition flex items-center gap-1.5 justify-center"
+                        >
+                          <span>💼</span>
+                          <span>Démarrer mon immersion pro →</span>
+                        </button>
+                        <button
+                          type="button"
                           (click)="selectedCareerDetail = null"
                           class="rounded-full bg-[#7C3AED] text-white border border-white/40 px-5 py-2 text-xs font-extrabold shadow"
                         >
-                          ↗ Voir les autres métiers du bilan
+                          ↗ Retour à mon immersion pro
                         </button>
                       </div>
                     </div>
@@ -2354,6 +2090,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                         class="rounded-full border-2 border-[#7C3AED] text-[#6D28D9] px-5 py-2.5 text-xs font-extrabold hover:bg-[#F3EFFE]"
                       >
                         💬 Poser une question
+                      </button>
+                      <button
+                        type="button"
+                        (click)="startImmersionForCareer(selectedCareerDetail)"
+                        class="rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2.5 text-xs sm:text-sm font-extrabold shadow"
+                      >
+                        💼 Préparer mon immersion en entreprise
                       </button>
                       <button
                         type="button"
@@ -3368,6 +3111,86 @@ export const TONE_OPTIONS: ToneOption[] = [
                       </svg>
                     </div>
                     <span class="text-[11px] text-[#6B7280] block text-center">Progression continue • +3 dossiers cette semaine</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Carte Suivi des Immersions Pro en entreprise (Module Immersion Pro) -->
+              <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-5">
+                <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#F0EDFA]">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-2xl bg-gradient-to-br from-[#7C3AED] to-[#9333EA] text-white flex items-center justify-center text-lg shadow-sm">
+                      💼
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Suivi des immersions pro en entreprise</h3>
+                        <span class="rounded-full bg-purple-50 text-[#7C3AED] px-2.5 py-0.5 text-xs font-bold border border-purple-200">
+                          1 immersion en cours
+                        </span>
+                      </div>
+                      <p class="text-xs text-[#6B7280]">
+                        Supervisez les stages d'observation terrain (PMSMP), validez les conventions et accompagnez les débriefings.
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    (click)="activePortal = 'YOUNG'; selectYoungTab('IMMERSION_PRO')"
+                    class="rounded-full bg-[#F3EFFE] text-[#7C3AED] hover:bg-[#E9D5FF] px-4 py-2 text-xs font-extrabold transition flex items-center gap-1.5"
+                  >
+                    <span>👀</span>
+                    <span>Voir comme le jeune</span>
+                  </button>
+                </div>
+
+                <!-- Immersion active d'Emma D. -->
+                <div class="rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] p-4.5 space-y-4">
+                  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                      <img
+                        src="assets/visuals/career-peintre.png"
+                        alt="Peintre décorateur"
+                        class="h-12 w-12 rounded-xl object-cover border border-[#E4E0F5]"
+                      />
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <strong class="text-sm font-black text-[#0F1035]">Emma D. (16 ans)</strong>
+                          <span class="text-xs text-[#6B7280]">• Dossier Rdv 2187</span>
+                        </div>
+                        <span class="text-xs font-bold text-[#7C3AED] block mt-0.5">
+                          🎨 Peintre décorateur (Zone 1 • p. 8) chez Atelier Décors & Patines Riviera (Nice)
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="rounded-full bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1 text-xs font-bold flex items-center gap-1">
+                        <span>⏳</span>
+                        <span>Étape 2/6 : Préparation & Convention</span>
+                      </span>
+                      <span class="rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 text-xs font-bold">
+                        ✓ Éligible PMSMP (1-3 jours)
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-xs">
+                    <div class="rounded-xl bg-white border border-[#E4E0F5] p-3 space-y-1">
+                      <span class="text-[10px] font-bold text-[#6B7280] uppercase">Entreprise d'accueil</span>
+                      <p class="font-extrabold text-[#0F1035]">Atelier Décors & Patines Riviera</p>
+                      <p class="text-[11px] text-[#42466B]">Nice Centre • Contact : Laurent M.</p>
+                    </div>
+                    <div class="rounded-xl bg-white border border-[#E4E0F5] p-3 space-y-1">
+                      <span class="text-[10px] font-bold text-[#6B7280] uppercase">Statut administratif</span>
+                      <p class="font-extrabold text-amber-700">Convention à éditer</p>
+                      <p class="text-[11px] text-[#42466B]">Assurance responsabilité civile validée</p>
+                    </div>
+                    <div class="rounded-xl bg-white border border-[#E4E0F5] p-3 space-y-1">
+                      <span class="text-[10px] font-bold text-[#6B7280] uppercase">Objectif entretien</span>
+                      <p class="font-extrabold text-[#0F1035]">Confirmer intérêt Artistique / Réaliste</p>
+                      <p class="text-[11px] text-[#42466B]">Tester l'habileté manuelle et la précision</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -4825,12 +4648,12 @@ export const TONE_OPTIONS: ToneOption[] = [
             </button>
             <button
               type="button"
-              (click)="selectYoungTab('EXPLORER_METIERS')"
-              [class]="activeYoungTab === 'EXPLORER_METIERS' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
+              (click)="selectYoungTab('IMMERSION_PRO')"
+              [class]="(activeYoungTab === 'IMMERSION_PRO' || activeYoungTab === 'EXPLORER_METIERS') ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
             >
-              <span class="text-base leading-none">🧭</span>
-              <span class="mt-0.5">Métiers</span>
+              <span class="text-base leading-none">💼</span>
+              <span class="mt-0.5">Immersion</span>
             </button>
             <button
               type="button"
@@ -5084,14 +4907,32 @@ export class AppComponent implements OnInit {
   searchQuery = '';
   personalNotes = 'Je souhaite demander à mon conseiller comment faire un stage court dans le domaine du son ou de la décoration à Nice.';
 
-  youngNavItems: { id: YoungTab; label: string; icon: string }[] = [
+  // MODULE IMMERSION PRO — État réactif
+  immersionProject: UIImmersionProject = JSON.parse(JSON.stringify(INITIAL_IMMERSION_PROJECT));
+  immersionSteps: UIImmersionStep[] = IMMERSION_STEPS;
+  partnerCompanies: UIPartnerCompany[] = PARTNER_COMPANIES_DATA;
+  immersionStepActive: number = 2; // Étape 2 en cours par défaut (conforme à la capture)
+  newObservationActivityInput = '';
+  newQuestionToAskInput = '';
+  newCustomCompanyName = '';
+  newCustomCompanyCity = '';
+  newCustomCompanyContact = '';
+  newJournalDiscovered = '';
+  newJournalSurprised = '';
+  newJournalQuestion = '';
+  companySearchTerm = '';
+  companySectorFilter = 'ALL';
+  isReviewSharedSuccess = false;
+  isDraftSavedSuccess = false;
+
+  youngNavItems: { id: YoungTab; label: string; icon: string; badge?: string }[] = [
     { id: 'ACCUEIL', label: 'Accueil', icon: '🏠' },
     { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
-    { id: 'EXPLORER_METIERS', label: 'Explorer les métiers', icon: '🧭' },
+    { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
     { id: 'MON_PARCOURS', label: 'Mon parcours', icon: '🗺️' },
     { id: 'MES_QUESTIONS', label: 'Mes questions', icon: '💬' },
     { id: 'MES_DOCUMENTS', label: 'Mes documents', icon: '📁' },
-    { id: 'PARAMETRES_JEUNE', label: 'Paramètres & Mobile', icon: '⚙️' }
+    { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
   ];
 
   counselorNavItems: { id: CounselorTab; label: string; icon: string; badge?: string }[] = [
@@ -5801,7 +5642,12 @@ export class AppComponent implements OnInit {
   }
 
   selectYoungTab(tab: YoungTab): void {
-    this.activeYoungTab = tab;
+    if (tab === 'EXPLORER_METIERS') {
+      this.activeYoungTab = 'IMMERSION_PRO';
+      this.immersionStepActive = 1;
+    } else {
+      this.activeYoungTab = tab;
+    }
     this.showAudioFocusSubView = false;
     this.selectedCareerDetail = null;
     this.isMobileMenuOpen = false;
@@ -5814,6 +5660,21 @@ export class AppComponent implements OnInit {
     this.isMobileMenuOpen = false;
     this.isNotificationsOpen = false;
     this.isProfileMenuOpen = false;
+  }
+
+  startImmersionForCareer(career: any): void {
+    if (!career) return;
+    this.immersionProject.careerId = career.id;
+    this.immersionProject.careerTitle = career.titleFr;
+    this.immersionProject.careerZone = career.jobZone;
+    this.immersionProject.careerPage = career.pageNumber;
+    this.immersionProject.careerImage = career.imageUrl;
+    this.immersionProject.observationActivities = getDefaultActivitiesForCareer(career.titleFr);
+    this.immersionProject.preparedQuestions = getDefaultQuestionsForCareer(career.titleFr);
+    this.immersionProject.currentStep = 2;
+    this.selectedCareerDetail = null;
+    this.activeYoungTab = 'IMMERSION_PRO';
+    window.scrollTo({ top: 120, behavior: 'smooth' });
   }
 
   get currentNotifications(): Array<{

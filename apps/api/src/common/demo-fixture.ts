@@ -19,7 +19,12 @@ import {
   DomainInterviewSummary,
   matchCareersWithInterview,
   ReportLifecycleStatus,
-  UserRole
+  UserRole,
+  DomainImmersionProject,
+  DomainPartnerCompany,
+  DomainImmersionApplication,
+  DomainObservationEntry,
+  DomainImmersionReview
 } from '@monbilan/domain';
 
 export const DEMO_IDS = {
@@ -854,6 +859,119 @@ export function createInitialDemoState() {
     }
   ];
 
+  const partnerCompanies: DomainPartnerCompany[] = [
+    {
+      id: 'comp-01',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      name: 'Atelier Décors & Patines Riviera',
+      sector: 'Peinture, finitions & décors intérieurs',
+      city: 'Nice Centre (Libération)',
+      distanceKm: 2,
+      address: '14 rue Vernier, 06000 Nice',
+      contactEmail: 'contact@decors-riviera.fr',
+      contactPhone: '04 93 88 12 40',
+      verifiedPartner: true,
+      careersOffered: ['Peintre décorateur', 'Plaquiste']
+    },
+    {
+      id: 'comp-02',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      name: 'Studio Riviera Son & Acoustique',
+      sector: 'Audiovisuel, régie de spectacle & enregistrement',
+      city: 'Nice Port',
+      distanceKm: 4,
+      address: '8 quai des Deux-Emmanuels, 06300 Nice',
+      contactEmail: 'stages@studioriviera.fr',
+      contactPhone: '04 93 55 90 12',
+      verifiedPartner: true,
+      careersOffered: ['Technicien du son', 'Régisseur son']
+    },
+    {
+      id: 'comp-03',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      name: 'Café Fika & Torréfaction Artisanale',
+      sector: 'Caféterie spécialisée & hôtellerie-restauration',
+      city: 'Vieux-Nice',
+      distanceKm: 3,
+      address: '5 rue de la Préfecture, 06300 Nice',
+      contactEmail: 'bonjour@cafefika-nice.fr',
+      verifiedPartner: true,
+      careersOffered: ['Barista', 'Cuisinier en restauration rapide']
+    },
+    {
+      id: 'comp-04',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      name: 'Azur Découverte & Patrimoine',
+      sector: 'Tourisme, médiation culturelle & visites guidées',
+      city: 'Nice (Promenade des Anglais)',
+      distanceKm: 3,
+      address: '22 Promenade des Anglais, 06000 Nice',
+      contactEmail: 'mediation@azur-decouverte.org',
+      verifiedPartner: true,
+      careersOffered: ['Guide touristique', 'Agent d’escale ferroviaire']
+    }
+  ];
+
+  const immersionProjects: DomainImmersionProject[] = [
+    {
+      id: 'imm-emma-1',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      youngProfileId: DEMO_IDS.YOUNG_PROFILE_LEO,
+      careerId: 'c-z1-1',
+      careerTitle: 'Peintre décorateur',
+      step: 2,
+      status: 'PREPARING',
+      selectedCompany: 'Atelier Décors & Patines Riviera',
+      companyContact: 'M. Laurent B. (Artisan décorateur)',
+      targetDate: 'Vacances scolaires (stage 3 jours)',
+      notes: 'Découverte atelier artisanale validée par Sophie V. lors de l’entretien.',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+  ];
+
+  const applications: DomainImmersionApplication[] = [
+    {
+      id: 'app-01',
+      projectId: 'imm-emma-1',
+      companyName: 'Atelier Décors & Patines Riviera',
+      careerTitle: 'Peintre décorateur',
+      targetPeriod: 'Stage d’observation de 3 jours (vacances d’automne)',
+      messageBody: `Bonjour,\n\nJe m'appelle Emma D. et je suis accompagnée par le Centre des Possibles au Hub de l'Innovation à Nice.\n\nDans le cadre de mon projet d'orientation, je souhaite découvrir sur le terrain le métier de Peintre décorateur. J'admire les réalisations et le savoir-faire de votre atelier.\n\nSerait-il possible de m'accueillir pour un stage d'observation conventionné de 3 jours ?\n\nBien cordialement,\nEmma D.`,
+      status: 'DRAFT',
+      counselorHelp: true,
+      createdAt: new Date().toISOString()
+    }
+  ];
+
+  const observations: DomainObservationEntry[] = [
+    {
+      id: 'obs-01',
+      projectId: 'imm-emma-1',
+      dayNumber: 1,
+      discoveredText: 'Préparation des enduits à la chaux et ponçage fin des boiseries anciennes.',
+      surprisedText: 'La précision du geste pour rechampir sans ruban de masquage !',
+      questionText: 'Combien de temps faut-il pour maîtriser la technique du faux marbre ?',
+      createdAt: new Date().toISOString()
+    }
+  ];
+
+  const reviews: DomainImmersionReview[] = [
+    {
+      id: 'rev-01',
+      projectId: 'imm-emma-1',
+      careerTitle: 'Peintre décorateur',
+      companyName: 'Atelier Décors & Patines Riviera',
+      likedAspects: 'Le mélange des couleurs, la créativité et le contact avec les belles matières.',
+      dislikedAspects: 'L’odeur forte de certains solvants au tout début.',
+      surprises: 'Il y a beaucoup de technique et de chimie dans les mélanges, pas seulement du dessin.',
+      wantToPursue: true,
+      questionsToAsk: 'Existe-t-il une alternance en CAP ou Bac Pro Peintre applicateur de revêtements près de Nice ?',
+      sharedWithCounselor: true,
+      counselorNotes: 'Projet très positif. Rapprochement avec le CFA de Carros à envisager.'
+    }
+  ];
+
   return {
     report,
     restitution,
@@ -862,6 +980,11 @@ export function createInitialDemoState() {
     interview,
     assessments,
     episodes,
-    fallbackWavBuffer: createCleanToneWavBuffer(4)
+    fallbackWavBuffer: createCleanToneWavBuffer(4),
+    partnerCompanies,
+    immersionProjects,
+    applications,
+    observations,
+    reviews
   };
 }

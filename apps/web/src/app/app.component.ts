@@ -428,35 +428,8 @@ export const TONE_OPTIONS: ToneOption[] = [
           </nav>
         </div>
 
-        <!-- Partie basse de la Sidebar : Épurée, compacte et sans coupure -->
-        <div class="hidden lg:block p-3.5 pt-0 shrink-0">
-          <!-- Carte Conseiller -->
-          <div
-            *ngIf="activePortal === 'COUNSELOR'"
-            class="rounded-2xl bg-gradient-to-br from-[#2D1B69]/90 to-[#182352]/90 border border-[#60A5FA]/30 p-3 text-left space-y-2 shadow-lg backdrop-blur-sm"
-          >
-            <div class="flex items-center justify-between">
-              <span class="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-amber-300">
-                <span>⭐</span>
-                <span>Centre des Possibles</span>
-              </span>
-              <span class="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 px-1.5 py-0.5 text-[9px] font-bold text-emerald-300">
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-                Validé
-              </span>
-            </div>
-            <p class="text-[11px] text-[#E7E8FB]/90 leading-tight">
-              Validation humaine obligatoire. Aucun algorithme ne remplace le conseiller.
-            </p>
-            <a
-              href="../"
-              class="flex items-center justify-center gap-1.5 w-full rounded-xl bg-white text-[#1B1B62] py-1.5 text-xs font-extrabold hover:bg-[#F3EFFE] transition shadow-xs"
-            >
-              <span>Voir la page d’accueil</span>
-              <span>→</span>
-            </a>
-          </div>
-
+        <!-- Partie basse de la Sidebar : Profil utilisateur & Déconnexion (Fidèle à la maquette) -->
+        <div class="p-3.5 pt-0 shrink-0 space-y-2">
           <!-- Carte Jeune Passe à l'action (Mockup Officiel) -->
           <div
             *ngIf="activePortal === 'YOUNG'"
@@ -474,6 +447,52 @@ export const TONE_OPTIONS: ToneOption[] = [
                 </p>
               </div>
             </div>
+          </div>
+
+          <!-- Carte Profil & Se Déconnecter -->
+          <div class="rounded-2xl bg-gradient-to-br from-[#241B5C]/90 to-[#171242]/90 border border-white/15 p-3 text-left space-y-2.5 shadow-lg backdrop-blur-sm">
+            <div
+              (click)="activePortal === 'YOUNG' ? selectYoungTab('PARAMETRES') : selectCounselorTab('PARAMETRES')"
+              class="flex items-center gap-2.5 cursor-pointer group"
+              title="Accéder aux paramètres du compte"
+            >
+              <!-- Photo de profil -->
+              <div class="relative h-10 w-10 rounded-full overflow-hidden shrink-0 border-2 border-[#A855F7]/60 bg-gradient-to-br from-[#7C3AED] to-[#6328E8] flex items-center justify-center text-white font-black text-xs shadow-md">
+                <img
+                  *ngIf="activePortal === 'YOUNG'"
+                  src="assets/visuals/profile-emma.png"
+                  alt="Photo de profil"
+                  class="h-full w-full object-cover"
+                  onerror="this.style.display='none'"
+                />
+                <span *ngIf="activePortal === 'YOUNG'">ED</span>
+                <span *ngIf="activePortal === 'COUNSELOR'">SD</span>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-xs font-black text-white group-hover:text-purple-200 transition truncate leading-tight">
+                  {{ activePortal === 'YOUNG' ? currentUserDisplayName : 'Sarah Dupont' }}
+                </p>
+                <div class="flex items-center gap-1.5 mt-0.5">
+                  <span class="h-1.5 w-1.5 rounded-full" [ngClass]="activePortal === 'YOUNG' ? 'bg-[#10B981]' : 'bg-[#38BDF8]'"></span>
+                  <span class="text-[10px] font-bold text-[#C4B5FD] truncate">
+                    {{ activePortal === 'YOUNG' ? 'Espace Jeune' : 'Espace Conseiller' }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bouton Se déconnecter -->
+            <button
+              type="button"
+              (click)="logout()"
+              class="flex items-center justify-center gap-2 w-full rounded-xl bg-white/10 hover:bg-rose-500/25 text-[#F1F0FB] hover:text-white border border-white/10 hover:border-rose-400/40 py-2 text-xs font-extrabold transition shadow-xs cursor-pointer group"
+              title="Se déconnecter de la session"
+            >
+              <svg class="h-4 w-4 text-[#F1F0FB] group-hover:text-rose-200 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              </svg>
+              <span>Se déconnecter</span>
+            </button>
           </div>
         </div>
       </aside>

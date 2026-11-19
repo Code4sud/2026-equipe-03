@@ -415,5 +415,38 @@ export class MonBilanController {
     }
     return opp;
   }
+
+  // --------------------------------------------------------------------------
+  // Profil Utilisateur, Paramètres & Sécurité
+  // --------------------------------------------------------------------------
+  @Get('users/me')
+  getCurrentUserProfile(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getUserProfile(actor);
+  }
+
+  @Patch('users/me')
+  updateCurrentUserProfile(
+    @Body() body: Record<string, any>,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.updateUserProfile(actor, body);
+  }
+
+  @Post('auth/change-password')
+  changeUserPassword(
+    @Body() body: Record<string, any>,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.changePassword(actor, body);
+  }
+
+  @Get('auth/sessions')
+  getUserSessions(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getUserSessions(actor);
+  }
 }
 

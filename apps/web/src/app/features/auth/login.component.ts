@@ -336,7 +336,7 @@ export interface LoginSuccessEvent {
                 (click)="fillDemoCredentials('COUNSELOR')"
                 class="px-2.5 py-1 rounded-lg bg-[#EFF6FF] border border-[#BFDBFE] text-[11px] font-bold text-blue-700 hover:bg-[#DBEAFE] transition"
               >
-                👥 Sarah Dupont (Conseillère)
+                👥 Sophie Martin (Conseillère)
               </button>
             </div>
           </div>
@@ -375,9 +375,9 @@ export class LoginComponent implements OnInit {
       this.isLoading = false;
 
       // Détection stricte du rôle
-      const isCounselor = this.selectedProfile === 'COUNSELOR' || this.email.includes('conseil') || this.email.includes('sarah');
+      const isCounselor = this.selectedProfile === 'COUNSELOR' || this.email.includes('conseil') || this.email.includes('sarah') || this.email.includes('sophie');
       const role: AuthProfileType = isCounselor ? 'COUNSELOR' : 'YOUNG';
-      const displayName = role === 'COUNSELOR' ? 'Sarah Dupont' : 'Emma D.';
+      const displayName = role === 'COUNSELOR' ? 'Sophie Martin' : 'Emma D.';
 
       this.loginSuccess.emit({
         role,
@@ -394,7 +394,7 @@ export class LoginComponent implements OnInit {
       this.email = 'emma.d@monbilan.fr';
       this.password = 'demo1234';
     } else {
-      this.email = 'sarah.dupont@centre-possibles.fr';
+      this.email = 'sophie.martin@centre-possibles.fr';
       this.password = 'demo1234';
     }
   }

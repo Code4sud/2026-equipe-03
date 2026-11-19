@@ -31,6 +31,7 @@ import { CoachIaComponent } from './features/coach/coach-ia.component';
 import { LoginComponent, LoginSuccessEvent } from './features/auth/login.component';
 import { LocalDiscoveryComponent } from './features/local-discovery/local-discovery.component';
 import { SettingsComponent } from './features/settings/settings.component';
+import { CounselorSettingsComponent, CounselorProfileData } from './features/settings/counselor-settings.component';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -263,6 +264,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     CoachIaComponent,
     LocalDiscoveryComponent,
     SettingsComponent,
+    CounselorSettingsComponent,
     LoginComponent
   ],
   template: `
@@ -465,12 +467,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                   class="h-full w-full object-cover"
                   onerror="this.style.display='none'"
                 />
+                <img
+                  *ngIf="activePortal === 'COUNSELOR' && counselorPhotoUrl"
+                  [src]="counselorPhotoUrl"
+                  alt="Sophie Martin"
+                  class="h-full w-full object-cover"
+                  onerror="this.style.display='none'"
+                />
                 <span *ngIf="activePortal === 'YOUNG'">ED</span>
-                <span *ngIf="activePortal === 'COUNSELOR'">SD</span>
+                <span *ngIf="activePortal === 'COUNSELOR' && !counselorPhotoUrl">{{ getCounselorInitials() }}</span>
               </div>
               <div class="min-w-0 flex-1">
                 <p class="text-xs font-black text-white group-hover:text-purple-200 transition truncate leading-tight">
-                  {{ activePortal === 'YOUNG' ? currentUserDisplayName : 'Sarah Dupont' }}
+                  {{ activePortal === 'YOUNG' ? currentUserDisplayName : counselorDisplayName }}
                 </p>
                 <div class="flex items-center gap-1.5 mt-0.5">
                   <span class="h-1.5 w-1.5 rounded-full" [ngClass]="activePortal === 'YOUNG' ? 'bg-[#10B981]' : 'bg-[#38BDF8]'"></span>
@@ -755,15 +764,22 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="h-full w-full object-cover"
                       onerror="this.style.display='none'"
                     />
+                    <img
+                      *ngIf="activePortal === 'COUNSELOR' && counselorPhotoUrl"
+                      [src]="counselorPhotoUrl"
+                      alt="Sophie Martin"
+                      class="h-full w-full object-cover"
+                      onerror="this.style.display='none'"
+                    />
                     <span *ngIf="activePortal === 'YOUNG'">ED</span>
-                    <span *ngIf="activePortal === 'COUNSELOR'">SD</span>
+                    <span *ngIf="activePortal === 'COUNSELOR' && !counselorPhotoUrl">{{ getCounselorInitials() }}</span>
                   </div>
                   <div class="hidden sm:block text-left">
                     <span class="text-xs font-extrabold text-[#0F1035] block leading-tight">
-                      {{ activePortal === 'YOUNG' ? currentUserDisplayName : 'Sarah Dupont' }}
+                      {{ activePortal === 'YOUNG' ? currentUserDisplayName : counselorDisplayName }}
                     </span>
                     <span class="text-[11px] text-[#42466B] block leading-tight">
-                      {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours autonome' : 'Dossier Rdv 2187') : 'Conseillère' }}
+                      {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours autonome' : 'Dossier Rdv 2187') : 'Conseiller' }}
                     </span>
                   </div>
                   <svg class="h-4 w-4 text-[#42466B] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -785,12 +801,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                         class="h-full w-full object-cover"
                         onerror="this.style.display='none'"
                       />
+                      <img
+                        *ngIf="activePortal === 'COUNSELOR' && counselorPhotoUrl"
+                        [src]="counselorPhotoUrl"
+                        alt="Photo"
+                        class="h-full w-full object-cover"
+                        onerror="this.style.display='none'"
+                      />
                       <span *ngIf="activePortal === 'YOUNG'">ED</span>
-                      <span *ngIf="activePortal === 'COUNSELOR'">SD</span>
+                      <span *ngIf="activePortal === 'COUNSELOR' && !counselorPhotoUrl">{{ getCounselorInitials() }}</span>
                     </div>
                     <div class="min-w-0">
-                      <p class="font-extrabold text-[#0F1035] truncate">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : currentUserDisplayName) : 'Sarah Dupont' }}</p>
-                      <p class="text-[11px] text-[#42466B] font-normal truncate">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours libre • Nice' : 'Centre des Possibles • Nice') : 'Conseillère • Nice' }}</p>
+                      <p class="font-extrabold text-[#0F1035] truncate">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : currentUserDisplayName) : counselorDisplayName }}</p>
+                      <p class="text-[11px] text-[#42466B] font-normal truncate">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours libre • Nice' : 'Centre des Possibles • Nice') : 'Conseiller • Nice' }}</p>
                     </div>
                   </div>
                   <div *ngIf="activePortal === 'YOUNG'" class="p-1 border-b border-[#F0EDFA]">
@@ -3828,44 +3851,18 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
             </div>
 
-            <!-- VUE CONSEILLER 8 : PARAMÈTRES & SÉCURITÉ RLS (Maquette "Paramètres MonBilan+ — Vue générale.webp") -->
-            <div *ngIf="activeCounselorTab === 'PARAMETRES'" class="space-y-6">
-              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <h3 class="text-lg font-extrabold text-[#0F1035]">🏛️ Informations de l’organisation (Tenant actif)</h3>
-                  <div class="space-y-3 text-xs">
-                    <div>
-                      <label class="font-bold text-[#42466B] block mb-1">Nom de l’établissement</label>
-                      <input type="text" value="Centre des Possibles — Métropole Nice Côte d'Azur" readonly class="w-full rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] px-3.5 py-2 font-bold" />
-                    </div>
-                    <div>
-                      <label class="font-bold text-[#42466B] block mb-1">Contact</label>
-                      <input type="text" value="info@centredespossibles.org • 61-63 av. Simone Veil, 06200 Nice" readonly class="w-full rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] px-3.5 py-2" />
-                    </div>
-                  </div>
-                </div>
-
-                <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <h3 class="text-lg font-extrabold text-[#0F1035]">🛡️ Sécurité Multi-Tenant (RLS) &amp; Vérificateur IA</h3>
-                  <p class="text-xs text-[#42466B]">
-                    Testez en direct les barrières de sécurité implémentées dans l’architecture MonBilan+ :
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <button type="button" (click)="runSecuritySimulation('CROSS_TENANT')" class="rounded-full bg-[#F3EFFE] text-[#6D28D9] px-4 py-2 text-xs font-extrabold">
-                      1. Tester Isolation Cross-Tenant (RLS)
-                    </button>
-                    <button type="button" (click)="runSecuritySimulation('UNASSIGNED_COUNSELOR')" class="rounded-full bg-[#F3EFFE] text-[#6D28D9] px-4 py-2 text-xs font-extrabold">
-                      2. Tester Affectation Dossier (ABAC)
-                    </button>
-                    <button type="button" (click)="runSecuritySimulation('HALLUCINATION_BLOCK')" class="rounded-full bg-[#FCE7F3] text-[#BE185D] px-4 py-2 text-xs font-extrabold">
-                      3. Tester Rejet Zéro-Hallucination
-                    </button>
-                  </div>
-                  <div *ngIf="securityTestResult" class="p-3.5 rounded-xl bg-[#131142] text-white font-mono text-xs">
-                    {{ securityTestResult }}
-                  </div>
-                </div>
-              </div>
+            <!-- VUE CONSEILLER 8 : PARAMÈTRES (Fidèle à la maquette officielle Espace Conseiller) -->
+            <div *ngIf="activeCounselorTab === 'PARAMETRES'">
+              <app-counselor-settings
+                [firstName]="counselorFirstName"
+                [lastName]="counselorLastName"
+                [email]="counselorEmail"
+                [roleTitle]="counselorRoleTitle"
+                [organization]="counselorOrganization"
+                [photoUrl]="counselorPhotoUrl"
+                (profileSave)="onCounselorProfileSave($event)"
+                (logout)="logout()"
+              ></app-counselor-settings>
             </div>
           </ng-container>
         </main>
@@ -4118,6 +4115,15 @@ export class AppComponent implements OnInit {
   userFirstName: string = 'Emma';
   userLastName: string = 'D.';
   userPhotoUrl: string = 'assets/visuals/profile-emma.png';
+
+  counselorFirstName: string = 'Sophie';
+  counselorLastName: string = 'Martin';
+  counselorDisplayName: string = 'Sophie Martin';
+  counselorEmail: string = 'sophie.martin@centre-possibles.fr';
+  counselorRoleTitle: string = 'Conseiller d\'orientation';
+  counselorOrganization: string = 'Centre des Possibles';
+  counselorPhotoUrl: string = 'assets/visuals/profile-counselor.png';
+
   activePortal: 'YOUNG' | 'COUNSELOR' = 'YOUNG';
 
   onUserPhotoChange(photo: string): void {
@@ -4130,6 +4136,32 @@ export class AppComponent implements OnInit {
     this.currentUserEmail = data.email;
     this.currentUserDisplayName = `${data.firstName} ${data.lastName}`.trim();
     this.userPhotoUrl = data.photoUrl;
+  }
+
+  getCounselorInitials(): string {
+    const f = (this.counselorFirstName || 'S').trim().charAt(0).toUpperCase();
+    const l = (this.counselorLastName || 'M').trim().charAt(0).toUpperCase();
+    return `${f}${l}`;
+  }
+
+  onCounselorProfileSave(data: CounselorProfileData): void {
+    this.counselorFirstName = data.firstName;
+    this.counselorLastName = data.lastName;
+    this.counselorEmail = data.email;
+    this.counselorRoleTitle = data.roleTitle;
+    this.counselorOrganization = data.organization;
+    this.counselorPhotoUrl = data.photoUrl;
+    this.counselorDisplayName = `${data.firstName} ${data.lastName}`.trim();
+
+    try {
+      localStorage.setItem('monbilan_counselor_firstname', data.firstName);
+      localStorage.setItem('monbilan_counselor_lastname', data.lastName);
+      localStorage.setItem('monbilan_counselor_email', data.email);
+      localStorage.setItem('monbilan_counselor_role', data.roleTitle);
+      localStorage.setItem('monbilan_counselor_photo', data.photoUrl);
+    } catch {
+      // localStorage fallback
+    }
   }
 
   @HostListener('window:keydown.escape')
@@ -4145,11 +4177,13 @@ export class AppComponent implements OnInit {
   onLoginSuccess(event: LoginSuccessEvent): void {
     this.isAuthenticated = true;
     this.activePortal = event.role;
-    this.currentUserEmail = event.email;
-    this.currentUserDisplayName = event.displayName;
     if (event.role === 'YOUNG') {
+      this.currentUserEmail = event.email;
+      this.currentUserDisplayName = event.displayName;
       this.selectYoungTab('ACCUEIL');
     } else {
+      this.counselorEmail = event.email;
+      this.counselorDisplayName = event.displayName;
       this.selectCounselorTab('TABLEAU_DE_BORD');
     }
   }
@@ -4358,7 +4392,8 @@ export class AppComponent implements OnInit {
     { id: 'TABLEAU_DE_BORD', label: 'Tableau de bord', icon: '🏠' },
     { id: 'DOSSIERS_JEUNES', label: 'Dossiers jeunes', icon: '👥', badge: '4' },
     { id: 'IMPORTER_RAPPORT', label: 'Importer un rapport', icon: '⬆️' },
-    { id: 'SUIVI_RDV', label: 'Suivi & rendez-vous', icon: '📅' }
+    { id: 'SUIVI_RDV', label: 'Suivi & rendez-vous', icon: '📅' },
+    { id: 'PARAMETRES', label: 'Paramètres', icon: '⚙️' }
   ];
 
   counselorDossiers = [
@@ -5054,6 +5089,26 @@ export class AppComponent implements OnInit {
         if (savedEmail) {
           this.currentUserEmail = savedEmail;
         }
+
+        const savedCounselorFirst = localStorage.getItem('monbilan_counselor_firstname');
+        const savedCounselorLast = localStorage.getItem('monbilan_counselor_lastname');
+        if (savedCounselorFirst) this.counselorFirstName = savedCounselorFirst;
+        if (savedCounselorLast) this.counselorLastName = savedCounselorLast;
+        if (savedCounselorFirst || savedCounselorLast) {
+          this.counselorDisplayName = `${this.counselorFirstName} ${this.counselorLastName}`.trim();
+        }
+        const savedCounselorEmail = localStorage.getItem('monbilan_counselor_email');
+        if (savedCounselorEmail) {
+          this.counselorEmail = savedCounselorEmail;
+        }
+        const savedCounselorRole = localStorage.getItem('monbilan_counselor_role');
+        if (savedCounselorRole) {
+          this.counselorRoleTitle = savedCounselorRole;
+        }
+        const savedCounselorPhoto = localStorage.getItem('monbilan_counselor_photo');
+        if (savedCounselorPhoto) {
+          this.counselorPhotoUrl = savedCounselorPhoto;
+        }
       } catch {
         // LocalStorage fallback
       }
@@ -5247,7 +5302,7 @@ export class AppComponent implements OnInit {
       case 'STATISTIQUES':
         return 'Suivez l’activité et l’avancement des restitutions de votre structure.';
       case 'PARAMETRES':
-        return 'Configurez votre compte, votre structure et testez la sécurité Multi-Tenant RLS.';
+        return 'Gérez votre profil professionnel, votre sécurité et vos préférences.';
     }
   }
 
@@ -5288,7 +5343,7 @@ export class AppComponent implements OnInit {
       case 'STATISTIQUES':
         return 'Statistiques & impact';
       case 'PARAMETRES':
-        return 'Paramètres & Sécurité RLS';
+        return 'Mes paramètres';
     }
   }
 

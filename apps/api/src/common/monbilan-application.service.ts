@@ -1195,4 +1195,117 @@ export class MonBilanApplicationService {
   getLocalOpportunityById(id: string): DomainLocalOpportunity | undefined {
     return DEMO_LOCAL_OPPORTUNITIES.find((item) => item.id === id);
   }
+
+  // --------------------------------------------------------------------------
+  // Gestion Utilisateur & Paramètres (Profil, Sécurité, Sessions)
+  // --------------------------------------------------------------------------
+  getUserProfile(actor: AccessActor) {
+    const isCounselor = actor.role === 'COUNSELOR';
+    return {
+      userId: actor.userId,
+      role: actor.role,
+      tenantId: actor.activeTenantId,
+      organization: 'Centre des Possibles',
+      firstName: isCounselor ? 'Sophie' : 'Emma',
+      lastName: isCounselor ? 'Martin' : 'D.',
+      displayName: isCounselor ? 'Sophie Martin' : 'Emma D.',
+      email: isCounselor ? 'sophie.martin@centre-possibles.fr' : 'emma.d@monbilan.fr',
+      roleTitle: isCounselor ? 'Conseiller d\'orientation' : 'Jeune accompagné',
+      photoUrl: isCounselor ? 'assets/visuals/profile-counselor.png' : 'assets/visuals/profile-emma.png',
+      isEmailVerified: true,
+      lastLoginAt: new Date().toISOString()
+    };
+  }
+
+  updateUserProfile(
+    actor: AccessActor,
+    payload: {
+      firstName?: string;
+      lastName?: string;
+      email?: string;
+      roleTitle?: string;
+      photoUrl?: string;
+      role?: string;
+      tenantId?: string;
+      organization?: string;
+    }
+  ) {
+    // RÈGLE DE SÉCURITÉ ABSOLUE : Rejet strict de modification de rôle ou d'organisation
+    if (payload.role && payload.role !== actor.role) {
+      throw new Error('FORBIDDEN_ROLE_MODIFICATION: Le rôle utilisateur ne peut pas être modifié depuis les paramètres.');
+    }
+    if (payload.tenantId && payload.tenantId !== actor.activeTenantId) {
+      throw new Error('FORBIDDEN_TENANT_MODIFICATION: Le rattachement organisationnel est strictement immuable.');
+    }
+    if (payload.organization && payload.organization !== 'Centre des Possibles') {
+      throw new Error('FORBIDDEN_ORGANIZATION_MODIFICATION: L’établissement de rattachement ne peut être modifié que par un administrateur.');
+    }
+
+    const current = this.getUserProfile(actor);
+    const updated = {
+      ...current,
+      firstName: payload.firstName?.trim() || current.firstName,
+      lastName: payload.lastName?.trim() || current.lastName,
+      email: payload.email?.trim().toLowerCase() || current.email,
+      roleTitle: actor.role === 'COUNSELOR' ? (payload.roleTitle?.trim() || current.roleTitle) : current.roleTitle,
+      photoUrl: payload.photoUrl || current.photoUrl,
+      updatedAt: new Date().toISOString()
+    };
+    updated.displayName = `${updated.firstName} ${updated.lastName}`.trim();
+
+    return {
+      success: true,
+      message: 'Profil mis à jour avec succès.',
+      profile: updated
+    };
+  }
+
+  changePassword(
+    _actor: AccessActor,
+    payload: {
+      currentPassword?: string;
+      newPassword?: string;
+      confirmPassword?: string;
+    }
+  ) {
+    if (!payload.currentPassword) {
+      throw new Error('Le mot de passe actuel est obligatoire.');
+    }
+    if (!payload.newPassword || payload.newPassword.length < 8) {
+      throw new Error('Le nouveau mot de passe doit contenir au moins 8 caractères.');
+    }
+    if (payload.newPassword !== payload.confirmPassword) {
+      throw new Error('Les mots de passe saisis ne sont pas identiques.');
+    }
+
+    return {
+      success: true,
+      message: 'Mot de passe modifié avec succès. Vos sessions sont sécurisées.',
+      updatedAt: new Date().toISOString()
+    };
+  }
+
+  getUserSessions(actor: AccessActor) {
+    return {
+      userId: actor.userId,
+      sessions: [
+        {
+          id: 'sess-current',
+          device: 'MacBook Pro — macOS (Chrome 128)',
+          ip: '192.168.1.42',
+          location: 'Nice, France (Métropole Côte d\'Azur)',
+          isCurrent: true,
+          lastActive: 'À l\'instant'
+        },
+        {
+          id: 'sess-mobile',
+          device: 'iPhone 15 Pro — iOS 18 (Safari Mobile)',
+          ip: '90.84.142.12',
+          location: 'Nice, France',
+          isCurrent: false,
+          lastActive: 'Il y a 3 heures'
+        }
+      ]
+    };
+  }
 }

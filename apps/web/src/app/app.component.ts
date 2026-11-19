@@ -2065,9 +2065,15 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <span class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center">
                       🎓 Formation &amp; Accès
                     </span>
-                    <span class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center">
-                      🤝 Immersion Pro
-                    </span>
+                    <a
+                      [href]="getMetiers360Url(selectedCareerDetail)"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Vivre une immersion en réalité virtuelle sur Métiers360 (nouvel onglet)"
+                      class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center hover:bg-[#F3EFFE] hover:border-[#7C3AED] transition cursor-pointer"
+                    >
+                      🤝 Immersion Pro <span class="text-[#7C3AED]">↗</span>
+                    </a>
                   </div>
 
                   <!-- Grille 2 colonnes de la fiche métier -->
@@ -2264,6 +2270,18 @@ export const TONE_OPTIONS: ToneOption[] = [
                             </div>
                           </div>
                         </div>
+
+                        <!-- Immersion VR Métiers360 (accessible sans validation) -->
+                        <a
+                          [href]="getMetiers360Url(selectedCareerDetail)"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="w-full rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white py-2.5 px-4 text-xs font-black transition flex items-center justify-center gap-2"
+                        >
+                          <span>🥽</span>
+                          <span>Vivre une immersion VR 360° sur Métiers360</span>
+                          <span>↗</span>
+                        </a>
 
                         <!-- Bouton d'action ou confirmation de demande -->
                         <div *ngIf="!careerProContactRequested[selectedCareerDetail.id]" class="pt-1">
@@ -6164,6 +6182,33 @@ export class AppComponent implements OnInit {
       concreteRole: `Sur le terrain, chaque projet, support ou environnement est différent. Ta faculté d’adaptation te permet d’ajuster rapidement tes techniques, de trouver des solutions créatives face aux imprévus et de comprendre immédiatement les attentes précises de tes interlocuteurs.`,
       advice: `Cette souplesse d’esprit et cette agilité face à la nouveauté — mises en valeur dans ton rapport du Centre des Possibles — feront de toi une personne précieuse et autonome au sein de toute équipe.`
     };
+  }
+
+  /** Lien vers les expériences VR Métiers360 du secteur le plus proche du métier. */
+  getMetiers360Url(career: UICareer | null): string {
+    const base = 'https://www.metiers360.com/catalogue';
+    if (!career) return `${base}/experiences`;
+    const tag = (career.sectorTag || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '');
+    const mapping: Array<[RegExp, string]> = [
+      [/restauration|alimentaire/, 'restauration'],
+      [/tourisme|sport/, 'tourisme-et-loisirs'],
+      [/nature|agricult/, 'nature-et-espaces-verts'],
+      [/numerique|audiovisuel|medias|communication/, 'numerique'],
+      [/chantier|construction|batiment/, 'construction'],
+      [/logistique|transport/, 'transport-et-mobilite'],
+      [/energie|environnement/, 'energies'],
+      [/education|enfance/, 'petite-enfance-et-education'],
+      [/accompagnement|social/, 'accompagnement-social'],
+      [/soin|sante|bien-etre/, 'autonomie'],
+      [/commerce|vente/, 'commerce-et-vente'],
+      [/industri/, 'production-industrielle'],
+      [/art|artisanat/, 'artisanat-d-art'],
+    ];
+    const match = mapping.find(([re]) => re.test(tag));
+    return match ? `${base}/secteur/${match[1]}` : `${base}/experiences`;
   }
 
   requestProContact(career: UICareer): void {

@@ -13,7 +13,8 @@ import {
   Patch,
   Post,
   Query,
-  Res
+  Res,
+  NotFoundException
 } from '@nestjs/common';
 import type { Response } from 'express';
 import { DEMO_IDS } from './demo-fixture.js';
@@ -388,4 +389,31 @@ export class MonBilanController {
     const actor = this.appService.resolveActorFromHeaders(headers ?? {});
     return this.appService.getSupportResources(actor, category, city);
   }
+
+  @Get('local/opportunities')
+  getLocalOpportunities(
+    @Query('career') career?: string,
+    @Query('city') city?: string,
+    @Query('radiusKm') radiusKm?: string,
+    @Query('category') category?: 'ALL' | 'FORMATION' | 'ACCOMPAGNEMENT' | 'ENTREPRISE',
+    @Query('sort') sort?: 'relevance' | 'distance' | 'name'
+  ) {
+    return this.appService.getLocalOpportunities({
+      career,
+      city,
+      radiusKm: radiusKm ? Number(radiusKm) : 25,
+      category: category ?? 'ALL',
+      sort: sort ?? 'relevance'
+    });
+  }
+
+  @Get('local/opportunities/:id')
+  getLocalOpportunityById(@Param('id') id: string) {
+    const opp = this.appService.getLocalOpportunityById(id);
+    if (!opp) {
+      throw new NotFoundException(`Opportunity with id ${id} not found`);
+    }
+    return opp;
+  }
 }
+

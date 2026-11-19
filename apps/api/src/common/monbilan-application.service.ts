@@ -29,7 +29,8 @@ import {
   CreateApplicationSchema,
   SaveObservationEntrySchema,
   SaveImmersionReviewSchema,
-  UpdateJourneyModeSchema
+  UpdateJourneyModeSchema,
+  LocalOpportunitiesQueryParams
 } from '@monbilan/contracts';
 import {
   AccessActor,
@@ -50,7 +51,9 @@ import {
   DomainImmersionReview,
   JourneyMode,
   DomainSupportResource,
-  DomainCareerCatalogItem
+  DomainCareerCatalogItem,
+  DomainLocalOpportunity,
+  DomainCategoryCounts
 } from '@monbilan/domain';
 import {
   AuditLogEntry,
@@ -60,7 +63,8 @@ import {
   InMemoryReport,
   InMemoryRestitution,
   DEMO_SUPPORT_RESOURCES,
-  loadOnetCareersCatalog
+  loadOnetCareersCatalog,
+  DEMO_LOCAL_OPPORTUNITIES
 } from './demo-fixture.js';
 
 @Injectable()
@@ -1128,5 +1132,67 @@ export class MonBilanApplicationService {
       list = list.filter((r) => !r.city || r.city.toLowerCase().includes(c));
     }
     return list;
+  }
+
+  getLocalOpportunities(params: LocalOpportunitiesQueryParams): {
+    items: DomainLocalOpportunity[];
+    total: number;
+    counts: DomainCategoryCounts;
+  } {
+    let list = [...DEMO_LOCAL_OPPORTUNITIES];
+
+    if (params.category && params.category !== 'ALL') {
+      list = list.filter((item) => item.category === params.category);
+    }
+
+    if (params.career && params.career.trim()) {
+      const q = params.career.toLowerCase().trim();
+      list = list.filter(
+        (item) =>
+          item.name.toLowerCase().includes(q) ||
+          item.headline.toLowerCase().includes(q) ||
+          item.description.toLowerCase().includes(q) ||
+          item.targetCareers.some((c) => c.toLowerCase().includes(q))
+      );
+    }
+
+    if (params.radiusKm && params.radiusKm > 0) {
+      list = list.filter((item) => item.distanceKm <= params.radiusKm!);
+    }
+
+    if (params.sort === 'distance') {
+      list.sort((a, b) => a.distanceKm - b.distanceKm);
+    } else if (params.sort === 'name') {
+      list.sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+    } else {
+      if (params.career && params.career.trim()) {
+        const q = params.career.toLowerCase().trim();
+        list.sort((a, b) => {
+          const aDirect = a.targetCareers.some((c) => c.toLowerCase().includes(q)) ? 1 : 0;
+          const bDirect = b.targetCareers.some((c) => c.toLowerCase().includes(q)) ? 1 : 0;
+          if (aDirect !== bDirect) return bDirect - aDirect;
+          return a.distanceKm - b.distanceKm;
+        });
+      } else {
+        list.sort((a, b) => a.distanceKm - b.distanceKm);
+      }
+    }
+
+    const counts: DomainCategoryCounts = {
+      total: DEMO_LOCAL_OPPORTUNITIES.length,
+      formations: DEMO_LOCAL_OPPORTUNITIES.filter((i) => i.category === 'FORMATION').length,
+      organismes: DEMO_LOCAL_OPPORTUNITIES.filter((i) => i.category === 'ACCOMPAGNEMENT').length,
+      entreprises: DEMO_LOCAL_OPPORTUNITIES.filter((i) => i.category === 'ENTREPRISE').length
+    };
+
+    return {
+      items: list,
+      total: list.length,
+      counts
+    };
+  }
+
+  getLocalOpportunityById(id: string): DomainLocalOpportunity | undefined {
+    return DEMO_LOCAL_OPPORTUNITIES.find((item) => item.id === id);
   }
 }

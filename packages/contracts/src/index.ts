@@ -82,4 +82,5 @@ export * from './career-matching.dto.js';
 export * from './audio-episodes.dto.js';
 export * from './immersion.dto.js';
 export * from './autonomous.dto.js';
+export * from './local-discovery.dto.js';
 

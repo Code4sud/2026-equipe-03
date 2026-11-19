@@ -29,6 +29,7 @@ import { SupportDirectoryComponent } from './features/autonomous/support-directo
 import { ReportOverviewComponent } from './features/report/report-overview.component';
 import { CoachIaComponent } from './features/coach/coach-ia.component';
 import { LoginComponent, LoginSuccessEvent } from './features/auth/login.component';
+import { LocalDiscoveryComponent } from './features/local-discovery/local-discovery.component';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -59,6 +60,7 @@ export type YoungTab =
   | 'ACCUEIL_AUTONOME'
   | 'CATALOGUE_METIERS'
   | 'ANNUAIRE_SUPPORT'
+  | 'AUTOUR_DE_MOI'
   | 'MON_BILAN'
   | 'IMMERSION_PRO'
   | 'COACH_IA'
@@ -258,6 +260,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     SupportDirectoryComponent,
     ReportOverviewComponent,
     CoachIaComponent,
+    LocalDiscoveryComponent,
     LoginComponent
   ],
   template: `
@@ -371,6 +374,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <svg *ngSwitchCase="'ACCUEIL_AUTONOME'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                   <svg *ngSwitchCase="'CATALOGUE_METIERS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                   <svg *ngSwitchCase="'ANNUAIRE_SUPPORT'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                  <svg *ngSwitchCase="'AUTOUR_DE_MOI'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   <svg *ngSwitchCase="'MON_BILAN'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
                   <svg *ngSwitchCase="'IMMERSION_PRO'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   <svg *ngSwitchCase="'COACH_IA'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
@@ -455,25 +459,23 @@ export const TONE_OPTIONS: ToneOption[] = [
             </a>
           </div>
 
-          <!-- Carte Jeune -->
+          <!-- Carte Jeune Passe à l'action (Mockup Officiel) -->
           <div
             *ngIf="activePortal === 'YOUNG'"
-            class="rounded-2xl bg-gradient-to-br from-[#7C3AED]/30 to-[#3B1D8F]/40 border border-white/15 p-3 text-center space-y-1 shadow-md"
+            (click)="selectYoungTab('AUTOUR_DE_MOI')"
+            class="rounded-2xl bg-gradient-to-br from-[#8B3DFF]/35 to-[#581C87]/45 border border-[#A855F7]/35 p-3 text-left space-y-1.5 shadow-md backdrop-blur-sm cursor-pointer hover:border-[#A855F7]/60 transition group mb-2"
           >
-            <div class="flex items-center justify-center gap-1 text-xs font-black text-white">
-              <span>✨</span>
-              <span>Mon orientation, ma voie !</span>
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl group-hover:scale-110 transition flex-shrink-0">🎯</span>
+              <div class="min-w-0">
+                <p class="text-xs font-black text-white group-hover:text-purple-200 transition">
+                  Passe à l'action !
+                </p>
+                <p class="text-[10px] text-[#E7E8FB]/80 leading-tight">
+                  Trouve une formation, un organisme ou une immersion près de toi.
+                </p>
+              </div>
             </div>
-            <p class="text-[10px] text-[#C4B5FD] font-medium leading-tight">
-              Dossier Rdv {{ rdvNumber }} • Centre des Possibles
-            </p>
-            <a
-              href="../"
-              class="inline-flex items-center justify-center gap-1 text-[11px] font-bold text-white/80 hover:text-white pt-0.5 transition"
-            >
-              <span>Retour à l’accueil</span>
-              <span>↗</span>
-            </a>
           </div>
         </div>
       </aside>
@@ -519,6 +521,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
                     CIO, Mission Locale de Nice, équipes scolaires et dispositifs publics gratuits.
                   </p>
+                </div>
+                <div *ngIf="activeYoungTab === 'AUTOUR_DE_MOI'" class="flex items-center gap-2">
+                  <div class="flex items-center gap-2 text-xs sm:text-[13px] font-bold text-[#6D28D9]">
+                    <span class="text-base">🏠</span>
+                    <span>&gt;</span>
+                    <span class="text-[#0F1035] font-extrabold">Autour de moi</span>
+                  </div>
                 </div>
                 <div *ngIf="activeYoungTab === 'MON_BILAN'">
                   <div class="flex items-center gap-2">
@@ -1123,6 +1132,17 @@ export const TONE_OPTIONS: ToneOption[] = [
                   (navigateTab)="selectYoungTab($any($event))"
                   (exploreCareers)="selectYoungTab('IMMERSION_PRO')"
                 ></app-report-overview>
+              </div>
+
+              <!-- ========================================================== -->
+              <!-- VUE JEUNE : AUTOUR DE MOI (Découverte territoriale Nice 06) -->
+              <!-- ========================================================== -->
+              <div *ngIf="activeYoungTab === 'AUTOUR_DE_MOI'">
+                <app-local-discovery
+                  [initialCareer]="selectedLocalCareer"
+                  (navigateToCoach)="handleLocalToCoach($event)"
+                  (navigateToImmersion)="handleLocalToImmersion($event)"
+                ></app-local-discovery>
               </div>
 
               <!-- ========================================================== -->
@@ -4426,6 +4446,24 @@ export class AppComponent implements OnInit {
   catalogCareers: UICatalogCareer[] = JSON.parse(JSON.stringify(ONET_CAREERS_CATALOG_DATA));
   supportResources: UISupportResource[] = INITIAL_SUPPORT_RESOURCES;
   selectedAutonomousCareerDetail: UICatalogCareer | null = null;
+  selectedLocalCareer: string = 'Peintre décorateur';
+
+  handleLocalToCoach(event: { establishmentName: string; career: string }): void {
+    this.selectedLocalCareer = event.career;
+    this.activeYoungTab = 'COACH_IA';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  handleLocalToImmersion(event: { companyName: string; career: string }): void {
+    if (this.immersionProject) {
+      this.immersionProject.customCompanyName = event.companyName;
+      this.immersionProject.careerTitle = event.career;
+      this.immersionProject.currentStep = 3;
+    }
+    this.immersionStepActive = 3;
+    this.activeYoungTab = 'IMMERSION_PRO';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   get catalogFavoritesCount(): number {
     return this.catalogCareers.filter((c) => c.isFavorite).length;
@@ -4436,6 +4474,7 @@ export class AppComponent implements OnInit {
       return [
         { id: 'ACCUEIL_AUTONOME', label: 'Accueil', icon: '🏠' },
         { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
+        { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: '📍', badge: '06' },
         { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
         { id: 'COACH_IA', label: 'Mon Coach IA', icon: '✨', badge: 'Nouveau' },
         { id: 'CATALOGUE_METIERS', label: 'Explorer les métiers', icon: '🔍', badge: '721' },
@@ -4446,6 +4485,7 @@ export class AppComponent implements OnInit {
     return [
       { id: 'ACCUEIL', label: 'Accueil', icon: '🏠' },
       { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
+      { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: '📍', badge: '06' },
       { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
       { id: 'COACH_IA', label: 'Mon Coach IA', icon: '✨', badge: 'Nouveau' },
       { id: 'MON_PARCOURS', label: 'Mon parcours', icon: '🗺️' },

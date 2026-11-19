@@ -25,6 +25,7 @@ import { ImmersionProComponent } from './features/immersion/immersion-pro.compon
 import { JourneyChoiceModalComponent } from './features/autonomous/journey-choice-modal.component';
 import { AutonomousHomeComponent } from './features/autonomous/autonomous-home.component';
 import { CareerCatalogComponent } from './features/autonomous/career-catalog.component';
+import { AutonomousDiscoveryStepperComponent } from './features/autonomous/autonomous-discovery-stepper.component';
 import { AutonomousCareerDetailComponent } from './features/autonomous/autonomous-career-detail.component';
 import { SupportDirectoryComponent } from './features/autonomous/support-directory.component';
 import { ReportOverviewComponent } from './features/report/report-overview.component';
@@ -264,6 +265,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     JourneyChoiceModalComponent,
     AutonomousHomeComponent,
     CareerCatalogComponent,
+    AutonomousDiscoveryStepperComponent,
     AutonomousCareerDetailComponent,
     SupportDirectoryComponent,
     ReportOverviewComponent,
@@ -548,10 +550,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                 </div>
                 <div *ngIf="activeYoungTab === 'CATALOGUE_METIERS'">
                   <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
-                    Catalogue des Métiers O*NET FR
+                    Découvrir des métiers
                   </h1>
                   <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
-                    721 métiers officiels traduits et structurés par durée d'études et centres d'intérêt.
+                    Explore les activités et les métiers sans pression, à ton propre rythme.
                   </p>
                 </div>
                 <div *ngIf="activeYoungTab === 'ANNUAIRE_SUPPORT'">
@@ -911,24 +913,52 @@ export const TONE_OPTIONS: ToneOption[] = [
                 ></app-autonomous-home>
               </div>
 
-              <!-- ÉCRAN 2 & 3 : CATALOGUE DES 721 MÉTIERS ET FICHE SIMPLIFIÉE -->
+              <!-- PARCOURS AUTONOME EN 3 ÉTAPES & CATALOGUE O*NET -->
               <div *ngIf="activeYoungTab === 'CATALOGUE_METIERS'" class="space-y-6">
-                <app-career-catalog
-                  *ngIf="!selectedAutonomousCareerDetail"
-                  [allCareers]="catalogCareers"
-                  (selectCareerDetail)="selectedAutonomousCareerDetail = $event"
-                  (startImmersion)="startImmersionFromCatalog($event)"
-                  (favoriteToggled)="onCatalogFavoriteToggled($event)"
-                ></app-career-catalog>
+                <!-- VUE 1 : STEPPER EN 3 ÉTAPES (Maquettes 1, 2, 3 officielles) -->
+                <ng-container *ngIf="autonomousViewMode === 'STEPPER'">
+                  <app-autonomous-discovery-stepper
+                    [currentFavorites]="favoriteCareerIds"
+                    (navigateToLocal)="handleDiscoveryLocal($event)"
+                    (navigateToCoach)="handleDiscoveryCoach($event)"
+                    (navigateToImmersion)="startImmersionFromCatalog($event)"
+                    (openFullCatalog)="autonomousViewMode = 'CATALOG'"
+                    (goHome)="selectYoungTab('ACCUEIL')"
+                    (favoriteToggled)="onCatalogFavoriteToggled($event)"
+                  ></app-autonomous-discovery-stepper>
+                </ng-container>
 
-                <app-autonomous-career-detail
-                  *ngIf="selectedAutonomousCareerDetail"
-                  [career]="selectedAutonomousCareerDetail"
-                  (backToCatalog)="selectedAutonomousCareerDetail = null"
-                  (startImmersion)="startImmersionFromCatalog($event)"
-                  (findSupport)="selectYoungTab('ANNUAIRE_SUPPORT')"
-                  (favoriteToggled)="onCatalogFavoriteToggled($event)"
-                ></app-autonomous-career-detail>
+                <!-- VUE 2 : CATALOGUE COMPLET DES 721 MÉTIERS ET FICHE -->
+                <ng-container *ngIf="autonomousViewMode === 'CATALOG'">
+                  <div class="flex items-center justify-between pb-2">
+                    <button
+                      type="button"
+                      (click)="autonomousViewMode = 'STEPPER'"
+                      class="rounded-full bg-[#EDE9FE] hover:bg-purple-200 text-[#7C3AED] px-4 py-2 text-xs font-extrabold transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                    >
+                      <span>←</span>
+                      <span>Retour au parcours guidé en 3 étapes</span>
+                    </button>
+                    <span class="text-xs text-[#6B7280]">Catalogue complet O*NET FR</span>
+                  </div>
+
+                  <app-career-catalog
+                    *ngIf="!selectedAutonomousCareerDetail"
+                    [allCareers]="catalogCareers"
+                    (selectCareerDetail)="selectedAutonomousCareerDetail = $event"
+                    (startImmersion)="startImmersionFromCatalog($event)"
+                    (favoriteToggled)="onCatalogFavoriteToggled($event)"
+                  ></app-career-catalog>
+
+                  <app-autonomous-career-detail
+                    *ngIf="selectedAutonomousCareerDetail"
+                    [career]="selectedAutonomousCareerDetail"
+                    (backToCatalog)="selectedAutonomousCareerDetail = null"
+                    (startImmersion)="startImmersionFromCatalog($event)"
+                    (findSupport)="selectYoungTab('ANNUAIRE_SUPPORT')"
+                    (favoriteToggled)="onCatalogFavoriteToggled($event)"
+                  ></app-autonomous-career-detail>
+                </ng-container>
               </div>
 
               <!-- ÉCRAN 6 : ANNUAIRE DES STRUCTURES D'ACCOMPAGNEMENT -->
@@ -1076,6 +1106,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               <div *ngIf="activeYoungTab === 'COACH_IA'" class="space-y-6">
                 <app-coach-ia
                   [youngDisplayName]="'Emma D.'"
+                  [initialChatMessage]="coachInitialMessage"
                   (saveImmersion)="onSaveImmersionMessage($event)"
                 ></app-coach-ia>
               </div>
@@ -3585,6 +3616,24 @@ export class AppComponent implements OnInit {
   supportResources: UISupportResource[] = INITIAL_SUPPORT_RESOURCES;
   selectedAutonomousCareerDetail: UICatalogCareer | null = null;
   selectedLocalCareer: string = 'Peintre décorateur';
+  autonomousViewMode: 'STEPPER' | 'CATALOG' = 'STEPPER';
+  coachInitialMessage: string = '';
+
+  handleDiscoveryLocal(careerQuery: string): void {
+    this.selectedLocalCareer = careerQuery;
+    this.selectYoungTab('AUTOUR_DE_MOI');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  handleDiscoveryCoach(event: { careerTitle: string; prompt: string }): void {
+    this.coachInitialMessage = event.prompt;
+    this.selectYoungTab('COACH_IA');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  get favoriteCareerIds(): string[] {
+    return this.catalogCareers.filter((c) => c.isFavorite).map((c) => c.id);
+  }
 
   handleLocalToCoach(event: { establishmentName: string; career: string }): void {
     this.selectedLocalCareer = event.career;
@@ -3615,7 +3664,7 @@ export class AppComponent implements OnInit {
         { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: 'map-pin', badge: '06' },
         { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: 'briefcase', badge: 'Nouveau' },
         { id: 'COACH_IA', label: 'Mon Coach IA', icon: 'sparkles', badge: 'Nouveau' },
-        { id: 'CATALOGUE_METIERS', label: 'Explorer les métiers', icon: 'search', badge: '721' },
+        { id: 'CATALOGUE_METIERS', label: 'Découvrir des métiers', icon: 'search' },
         { id: 'ANNUAIRE_SUPPORT', label: 'Trouver de l’aide', icon: 'landmark' },
         { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: 'settings' }
       ];

@@ -1288,6 +1288,8 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
 })
 export class CoachIaComponent implements OnInit, OnDestroy {
   @Input() youngDisplayName: string = 'Emma D.';
+  @Input() initialChatMessage: string = '';
+  @Input() initialTab?: CoachActiveTab;
   @Output() saveImmersion = new EventEmitter<string>();
 
   activeTab: CoachActiveTab = 'TRAINING'; // Par défaut sur l'entraînement
@@ -1340,6 +1342,13 @@ export class CoachIaComponent implements OnInit, OnDestroy {
   ollamaModel: string = 'qwen2.5:3b';
 
   async ngOnInit(): Promise<void> {
+    if (this.initialTab) {
+      this.activeTab = this.initialTab;
+    }
+    if (this.initialChatMessage) {
+      this.activeTab = 'CHAT';
+      this.chatInputText = this.initialChatMessage;
+    }
     this.initImmersionDataLink();
     this.generateMessage();
     this.updateFollowupMessage();

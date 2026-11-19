@@ -80,6 +80,14 @@ export interface UICareer {
   evolutions?: string[];
 }
 
+export interface ImmersionResource {
+  icon: string;
+  title: string;
+  description: string;
+  cta: string;
+  url?: string;
+}
+
 export interface UIClaim {
   id: string;
   kind: 'PERSONAL_FACT' | 'CAREER_LINK' | 'PEDAGOGICAL_TIP';
@@ -2053,9 +2061,14 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                   <!-- Barre des 5 sous-onglets de la fiche métier -->
                   <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-xs font-extrabold">
-                    <span class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white py-2.5 px-4 text-center shadow">
+                    <button
+                      type="button"
+                      (click)="careerDetailSection = 'OVERVIEW'"
+                      [ngClass]="careerDetailSection === 'OVERVIEW' ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow' : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:bg-[#F3EFFE]'"
+                      class="rounded-full py-2.5 px-4 text-center transition cursor-pointer"
+                    >
                       🛡️ Vue d’ensemble
-                    </span>
+                    </button>
                     <span class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center">
                       💰 Salaire &amp; Marché
                     </span>
@@ -2065,19 +2078,18 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <span class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center">
                       🎓 Formation &amp; Accès
                     </span>
-                    <a
-                      [href]="getMetiers360Url(selectedCareerDetail)"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Vivre une immersion en réalité virtuelle sur Métiers360 (nouvel onglet)"
-                      class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center hover:bg-[#F3EFFE] hover:border-[#7C3AED] transition cursor-pointer"
+                    <button
+                      type="button"
+                      (click)="careerDetailSection = 'IMMERSION'"
+                      [ngClass]="careerDetailSection === 'IMMERSION' ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow' : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:bg-[#F3EFFE]'"
+                      class="rounded-full py-2.5 px-4 text-center transition cursor-pointer"
                     >
-                      🤝 Immersion Pro <span class="text-[#7C3AED]">↗</span>
-                    </a>
+                      🤝 Immersion Pro
+                    </button>
                   </div>
 
                   <!-- Grille 2 colonnes de la fiche métier -->
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                  <div *ngIf="careerDetailSection === 'OVERVIEW'" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <!-- Colonne gauche : Missions, Salaire, Conditions, Faculté d'adaptation -->
                     <div class="lg:col-span-7 space-y-5">
                       <!-- 1. Missions principales -->
@@ -2271,17 +2283,16 @@ export const TONE_OPTIONS: ToneOption[] = [
                           </div>
                         </div>
 
-                        <!-- Immersion VR Métiers360 (accessible sans validation) -->
-                        <a
-                          [href]="getMetiers360Url(selectedCareerDetail)"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="w-full rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white py-2.5 px-4 text-xs font-black transition flex items-center justify-center gap-2"
+                        <!-- Accès à la page Immersion Pro (VR Métiers360, etc.) -->
+                        <button
+                          type="button"
+                          (click)="careerDetailSection = 'IMMERSION'"
+                          class="w-full rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white py-2.5 px-4 text-xs font-black transition flex items-center justify-center gap-2 cursor-pointer"
                         >
                           <span>🥽</span>
-                          <span>Vivre une immersion VR 360° sur Métiers360</span>
-                          <span>↗</span>
-                        </a>
+                          <span>Découvrir le métier en réalité virtuelle</span>
+                          <span>→</span>
+                        </button>
 
                         <!-- Bouton d'action ou confirmation de demande -->
                         <div *ngIf="!careerProContactRequested[selectedCareerDetail.id]" class="pt-1">
@@ -2310,6 +2321,113 @@ export const TONE_OPTIONS: ToneOption[] = [
                           <span class="rounded-full bg-emerald-400 text-emerald-950 px-2 py-0.5 text-[10px] font-black shrink-0">En attente</span>
                         </div>
                       </div>
+                    </div>
+                  </div>
+
+                  <!-- ========================================================== -->
+                  <!-- SOUS-PAGE : IMMERSION PRO (VR Métiers360 + ressources)      -->
+                  <!-- ========================================================== -->
+                  <div *ngIf="careerDetailSection === 'IMMERSION'" class="space-y-6 animate-fadeIn">
+                    <!-- En-tête -->
+                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                      <div class="space-y-1 max-w-2xl">
+                        <h3 class="text-xl font-extrabold text-[#0F1035]">🤝 Immersion Pro — {{ selectedCareerDetail.titleFr }}</h3>
+                        <p class="text-sm text-[#42466B] leading-relaxed">
+                          Plonge dans le quotidien du métier avant de te lancer : expériences en réalité virtuelle, ressources pour découvrir le terrain et mise en relation avec un professionnel.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        (click)="careerDetailSection = 'OVERVIEW'"
+                        class="rounded-full border-2 border-[#7C3AED] text-[#6D28D9] px-5 py-2 text-xs font-extrabold hover:bg-[#F3EFFE] cursor-pointer"
+                      >
+                        ← Retour à la vue d’ensemble
+                      </button>
+                    </div>
+
+                    <!-- Carte principale : Métiers360 -->
+                    <div class="rounded-[26px] bg-gradient-to-br from-[#1E144F] via-[#3B177D] to-[#6D28D9] text-white p-6 sm:p-8 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                      <div class="lg:col-span-8 space-y-3">
+                        <span class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-0.5 text-[10px] font-extrabold text-[#E9D5FF] border border-white/25">
+                          🥽 Réalité virtuelle 360°
+                        </span>
+                        <h4 class="text-2xl font-black">Vis le métier en immersion avec Métiers360</h4>
+                        <p class="text-sm text-[#E7E8FB] leading-relaxed">
+                          Métiers360 propose des vidéos immersives tournées chez de vrais professionnels. Mets-toi à leur place, observe les gestes et l’environnement de travail, avec un casque VR ou directement sur ton écran.
+                        </p>
+                        <p class="text-xs text-[#DDD6FE]">
+                          Secteur conseillé pour ce métier : <strong class="text-white">{{ getMetiers360SectorLabel(selectedCareerDetail) }}</strong>
+                        </p>
+                      </div>
+                      <div class="lg:col-span-4 flex flex-col gap-2.5">
+                        <a
+                          [href]="getMetiers360Url(selectedCareerDetail)"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="rounded-full bg-gradient-to-r from-[#F59E0B] to-[#F97316] hover:brightness-110 text-white py-3 px-5 text-xs font-black shadow-lg transition flex items-center justify-center gap-2"
+                        >
+                          <span>🥽</span>
+                          <span>Lancer l’expérience</span>
+                          <span>↗</span>
+                        </a>
+                        <a
+                          href="https://www.metiers360.com/catalogue/experiences"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="rounded-full bg-white/15 hover:bg-white/25 border border-white/30 text-white py-2.5 px-5 text-xs font-extrabold transition text-center"
+                        >
+                          Voir tout le catalogue ↗
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- Autres ressources d'immersion (liste extensible dans getImmersionResources) -->
+                    <div class="space-y-3">
+                      <h4 class="text-base font-extrabold text-[#0F1035]">📚 Autres façons de découvrir le métier</h4>
+                      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div
+                          *ngFor="let res of getImmersionResources(selectedCareerDetail)"
+                          class="rounded-[22px] bg-white border border-[#E4E0F5] p-5 shadow-sm flex flex-col gap-3"
+                        >
+                          <div class="flex items-center gap-2.5">
+                            <span class="h-10 w-10 rounded-2xl bg-[#F3EFFE] flex items-center justify-center text-lg">{{ res.icon }}</span>
+                            <strong class="text-sm text-[#0F1035]">{{ res.title }}</strong>
+                          </div>
+                          <p class="text-xs text-[#42466B] leading-relaxed flex-1">{{ res.description }}</p>
+                          <a
+                            *ngIf="res.url"
+                            [href]="res.url"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="rounded-full border-2 border-[#7C3AED] text-[#6D28D9] px-4 py-2 text-xs font-extrabold hover:bg-[#F3EFFE] text-center"
+                          >
+                            {{ res.cta }} ↗
+                          </a>
+                          <span *ngIf="!res.url" class="rounded-full bg-[#F3EFFE] text-[#6D28D9] px-4 py-2 text-xs font-extrabold text-center">
+                            {{ res.cta }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Mise en relation avec un pro (validation conseiller) -->
+                    <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                      <div class="space-y-1 max-w-2xl">
+                        <h4 class="text-base font-extrabold text-[#0F1035]">👩‍💼 Envie d’aller sur le terrain ?</h4>
+                        <p class="text-xs text-[#42466B] leading-relaxed">
+                          Après l’immersion virtuelle, tu peux demander une observation d’un jour ou un stage PMSMP d’une semaine. La demande est validée par Sarah Dupont lors de ton prochain rendez-vous.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        (click)="requestProContact(selectedCareerDetail)"
+                        [disabled]="careerProContactRequested[selectedCareerDetail.id]"
+                        [ngClass]="careerProContactRequested[selectedCareerDetail.id] ? 'bg-emerald-50 text-emerald-800 border-emerald-300' : 'bg-amber-50 text-amber-900 border-amber-300 hover:bg-amber-100 cursor-pointer'"
+                        class="rounded-full border px-5 py-2.5 text-xs font-extrabold transition flex items-center gap-1.5"
+                      >
+                        <span>{{ careerProContactRequested[selectedCareerDetail.id] ? '✅' : '🤝' }}</span>
+                        <span>{{ careerProContactRequested[selectedCareerDetail.id] ? 'Demande transmise — en attente' : 'Demander une mise en relation' }}</span>
+                      </button>
                     </div>
                   </div>
 
@@ -5064,6 +5182,7 @@ export class AppComponent implements OnInit {
   showDetailedResultsSubView = false;
   rdvSubView: 'AGENDA' | 'LISTE' = 'AGENDA';
   selectedCareerDetail: UICareer | null = null;
+  careerDetailSection: 'OVERVIEW' | 'IMMERSION' = 'OVERVIEW';
   careerProContactRequested: { [careerId: string]: boolean } = {};
   showOnlyFavorites = false;
   activeChapterIndex = 1;
@@ -5891,6 +6010,7 @@ export class AppComponent implements OnInit {
   openCareerDetail(career: UICareer): void {
     this.activeYoungTab = 'EXPLORER_METIERS';
     this.selectedCareerDetail = career;
+    this.careerDetailSection = 'OVERVIEW';
   }
 
   openDossierWorkflow(step: CounselorWorkflowStep = 1): void {
@@ -6184,31 +6304,67 @@ export class AppComponent implements OnInit {
     };
   }
 
-  /** Lien vers les expériences VR Métiers360 du secteur le plus proche du métier. */
-  getMetiers360Url(career: UICareer | null): string {
-    const base = 'https://www.metiers360.com/catalogue';
-    if (!career) return `${base}/experiences`;
+  /** Secteur Métiers360 le plus proche du métier (Métiers360 n'expose pas d'URL par métier). */
+  private getMetiers360Sector(career: UICareer | null): { slug: string; label: string } | null {
+    if (!career) return null;
     const tag = (career.sectorTag || '')
       .toLowerCase()
       .normalize('NFD')
       .replace(/[̀-ͯ]/g, '');
-    const mapping: Array<[RegExp, string]> = [
-      [/restauration|alimentaire/, 'restauration'],
-      [/tourisme|sport/, 'tourisme-et-loisirs'],
-      [/nature|agricult/, 'nature-et-espaces-verts'],
-      [/numerique|audiovisuel|medias|communication/, 'numerique'],
-      [/chantier|construction|batiment/, 'construction'],
-      [/logistique|transport/, 'transport-et-mobilite'],
-      [/energie|environnement/, 'energies'],
-      [/education|enfance/, 'petite-enfance-et-education'],
-      [/accompagnement|social/, 'accompagnement-social'],
-      [/soin|sante|bien-etre/, 'autonomie'],
-      [/commerce|vente/, 'commerce-et-vente'],
-      [/industri/, 'production-industrielle'],
-      [/art|artisanat/, 'artisanat-d-art'],
+    const mapping: Array<[RegExp, string, string]> = [
+      [/restauration|alimentaire/, 'restauration', 'Restauration'],
+      [/tourisme|sport/, 'tourisme-et-loisirs', 'Tourisme et loisirs'],
+      [/nature|agricult/, 'nature-et-espaces-verts', 'Nature et espaces verts'],
+      [/numerique|audiovisuel|medias|communication/, 'numerique', 'Numérique'],
+      [/chantier|construction|batiment/, 'construction', 'Construction'],
+      [/logistique|transport/, 'transport-et-mobilite', 'Transport et mobilité'],
+      [/energie|environnement/, 'energies', 'Énergies'],
+      [/education|enfance/, 'petite-enfance-et-education', 'Petite enfance et éducation'],
+      [/accompagnement|social/, 'accompagnement-social', 'Accompagnement social'],
+      [/soin|sante|bien-etre/, 'autonomie', 'Autonomie'],
+      [/commerce|vente/, 'commerce-et-vente', 'Commerce et vente'],
+      [/industri/, 'production-industrielle', 'Production industrielle'],
+      [/art|artisanat/, 'artisanat-d-art', 'Artisanat d’art'],
     ];
     const match = mapping.find(([re]) => re.test(tag));
-    return match ? `${base}/secteur/${match[1]}` : `${base}/experiences`;
+    return match ? { slug: match[1], label: match[2] } : null;
+  }
+
+  getMetiers360Url(career: UICareer | null): string {
+    const base = 'https://www.metiers360.com/catalogue';
+    const sector = this.getMetiers360Sector(career);
+    return sector ? `${base}/secteur/${sector.slug}` : `${base}/experiences`;
+  }
+
+  getMetiers360SectorLabel(career: UICareer | null): string {
+    return this.getMetiers360Sector(career)?.label ?? 'Toutes les expériences';
+  }
+
+  /** Ressources affichées sur la page Immersion Pro — ajoute simplement une entrée pour enrichir la page. */
+  getImmersionResources(career: UICareer | null): ImmersionResource[] {
+    const title = career?.titleFr ?? 'ce métier';
+    return [
+      {
+        icon: '📖',
+        title: 'Fiche métier ONISEP',
+        description: `Missions, formations et débouchés officiels pour ${title}, sur le site de l’ONISEP.`,
+        cta: 'Consulter l’ONISEP',
+        url: 'https://www.onisep.fr',
+      },
+      {
+        icon: '🏢',
+        title: 'Trouver une entreprise d’accueil',
+        description: 'Immersion Facilitée recense les entreprises prêtes à accueillir un stage d’observation (PMSMP) près de chez toi.',
+        cta: 'Chercher une immersion',
+        url: 'https://immersion-facile.beta.gouv.fr/',
+      },
+      {
+        icon: '💬',
+        title: 'Préparer tes questions',
+        description: 'Note ce que tu as aimé ou non pendant l’immersion VR pour en parler avec ton conseiller au prochain rendez-vous.',
+        cta: 'À aborder en RDV',
+      },
+    ];
   }
 
   requestProContact(career: UICareer): void {

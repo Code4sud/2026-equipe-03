@@ -328,22 +328,25 @@ export const TONE_OPTIONS: ToneOption[] = [
       <!-- ================================================================== -->
       <aside
         [class]="isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
-        class="fixed inset-y-0 left-0 z-40 w-[280px] max-w-[85vw] lg:w-[280px] shrink-0 h-dvh bg-gradient-to-b from-[#131142] via-[#1B1659] to-[#120E38] text-white flex flex-col justify-between overflow-hidden border-r border-white/10 transition-transform duration-200 ease-out shadow-2xl lg:shadow-none"
+        class="fixed top-0 lg:top-[var(--c4s-bandeau-height,38px)] bottom-0 left-0 z-40 w-[280px] max-w-[85vw] lg:w-[280px] shrink-0 h-dvh lg:h-[calc(100dvh-var(--c4s-bandeau-height,38px))] bg-gradient-to-b from-[#131142] via-[#1B1659] to-[#120E38] text-white flex flex-col justify-between overflow-hidden border-r border-white/10 transition-transform duration-200 ease-out shadow-2xl lg:shadow-none"
       >
         <!-- En-tête / Logo (Fixe, shrink-0) -->
-        <div class="p-4 sm:p-5 shrink-0 border-b border-white/10 space-y-3">
+        <div class="px-5 pt-5 pb-4 shrink-0 border-b border-white/10">
           <div class="flex items-center justify-between">
-            <a href="../" class="group flex flex-col gap-1.5 w-full focus:outline-none" title="Retour à la landing page MonBilan+">
-              <div class="rounded-xl bg-white px-3 py-1.5 shadow-sm group-hover:shadow-md transition flex items-center justify-center">
+            <a href="../" class="group flex flex-col items-center gap-3 w-full focus:outline-none" title="Retour à la landing page MonBilan+">
+              <!-- Cartouche Blanc Logo -->
+              <div class="w-full rounded-2xl bg-white px-5 py-2.5 shadow-sm border border-white/20 flex items-center justify-center transition-all group-hover:shadow-md">
                 <img
                   src="assets/logo.png"
                   alt="MonBilan+"
-                  class="h-8 w-auto object-contain"
+                  class="h-7 sm:h-8 w-auto max-w-[190px] object-contain"
                 />
               </div>
-              <div class="px-1">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-2.5 py-0.5 text-[11px] font-bold text-[#C4B5FD]">
-                  <span class="h-1.5 w-1.5 rounded-full" [ngClass]="activePortal === 'YOUNG' ? 'bg-[#10B981]' : 'bg-[#38BDF8]'"></span>
+
+              <!-- Badge Pilule Espace Jeune / Conseiller -->
+              <div class="w-full flex items-center justify-start">
+                <span class="inline-flex items-center gap-2 rounded-full bg-[#201B4B] border border-white/15 px-3 py-1 text-xs font-bold text-white shadow-xs">
+                  <span class="h-2 w-2 rounded-full" [ngClass]="activePortal === 'YOUNG' ? 'bg-[#10B981]' : 'bg-[#38BDF8]'"></span>
                   {{ activePortal === 'YOUNG' ? 'Espace Jeune' : 'Espace Conseiller' }}
                 </span>
               </div>

@@ -44,6 +44,16 @@ html {
   scrollbar-color: rgba(124, 58, 237, 0.3) transparent;
 }
 
+/* Hauteur standard du bandeau officiel Hackathon Azuréen (#c4s-bandeau) */
+:root {
+  --c4s-bandeau-height: 38px;
+}
+
+#c4s-bandeau {
+  height: var(--c4s-bandeau-height) !important;
+  box-sizing: border-box !important;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

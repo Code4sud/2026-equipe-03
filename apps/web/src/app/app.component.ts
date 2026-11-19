@@ -939,70 +939,32 @@ export const TONE_OPTIONS: ToneOption[] = [
               <!-- VUE JEUNE 1 : ACCUEIL ACCOMPAGNÉ (Fidèle à Tableau de bord Emma) -->
               <!-- ========================================================== -->
               <div *ngIf="activeYoungTab === 'ACCUEIL' && journeyMode === 'SUPPORTED'" class="space-y-6">
-                <!-- Bannière Hero violette avec Emma au casque + 2 CTA + 4 pilules inclinées à droite -->
+                <!-- Bannière Hero violette avec Emma au casque + 2 CTA -->
                 <div class="relative rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-8 shadow-lg overflow-hidden">
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10">
-                    <div class="lg:col-span-7 space-y-4">
-                      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
-                        Découvre ton bilan,<br />
-                        <span class="inline-block rounded-2xl bg-gradient-to-r from-[#EC4899] to-[#A855F7] px-3.5 py-0.5 mt-1">explore tes possibles !</span>
-                      </h2>
-                      <p class="text-sm text-[#E7E8FB] leading-relaxed max-w-xl">
-                        Écoute ta restitution, comprends tes résultats et découvre des métiers qui s’y rapportent (Rapport Rdv {{ rdvNumber }}).
-                      </p>
-                      <div class="flex flex-wrap items-center gap-3 pt-1">
-                        <button
-                          type="button"
-                          (click)="openAudioRestitutionView()"
-                          class="rounded-full bg-gradient-to-r from-[#EC4899] to-[#D946EF] hover:opacity-95 text-white px-5 py-2.5 text-sm font-extrabold shadow-md flex items-center gap-2"
-                        >
-                          <span>▶</span>
-                          <span>Écouter mon bilan (≈ 6 min)</span>
-                        </button>
-                        <button
-                          type="button"
-                          (click)="selectYoungTab('MES_DOCUMENTS')"
-                          class="rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white px-5 py-2.5 text-sm font-bold flex items-center gap-2"
-                        >
-                          <span><mb-icon name="file-text"></mb-icon></span>
-                          <span>Voir mon rapport</span>
-                        </button>
-                      </div>
-                    </div>
-
-                    <!-- 4 pilules blanches inclinées à droite -->
-                    <div class="lg:col-span-5 space-y-2.5">
+                  <div class="relative z-10 max-w-2xl space-y-4">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
+                      Découvre ton bilan,<br />
+                      <span class="inline-block rounded-2xl bg-gradient-to-r from-[#EC4899] to-[#A855F7] px-3.5 py-0.5 mt-1">explore tes possibles !</span>
+                    </h2>
+                    <p class="text-sm text-[#E7E8FB] leading-relaxed max-w-xl">
+                      Écoute ta restitution, comprends tes résultats et découvre des métiers qui s’y rapportent (Rapport Rdv {{ rdvNumber }}).
+                    </p>
+                    <div class="flex flex-wrap items-center gap-3 pt-1">
                       <button
                         type="button"
-                        (click)="selectYoungTab('MON_BILAN')"
-                        class="w-full rounded-full bg-white/95 text-[#0F1035] px-5 py-2.5 text-sm font-extrabold shadow flex items-center gap-3 hover:translate-x-1 transition -rotate-1"
+                        (click)="openAudioRestitutionView()"
+                        class="rounded-full bg-gradient-to-r from-[#EC4899] to-[#D946EF] hover:opacity-95 text-white px-5 py-2.5 text-sm font-extrabold shadow-md flex items-center gap-2"
                       >
-                        <span class="text-[#EC4899]">♡</span>
-                        <span>Mes intérêts (RIASEC)</span>
+                        <span>▶</span>
+                        <span>Écouter mon bilan (≈ 6 min)</span>
                       </button>
                       <button
                         type="button"
-                        (click)="selectYoungTab('MON_BILAN')"
-                        class="w-full rounded-full bg-white/95 text-[#0F1035] px-5 py-2.5 text-sm font-extrabold shadow flex items-center gap-3 hover:translate-x-1 transition"
+                        (click)="selectYoungTab('MES_DOCUMENTS')"
+                        class="rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white px-5 py-2.5 text-sm font-bold flex items-center gap-2"
                       >
-                        <span class="text-[#7C3AED]"><mb-icon name="chart-column"></mb-icon></span>
-                        <span>Mes aptitudes</span>
-                      </button>
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('EXPLORER_METIERS')"
-                        class="w-full rounded-full bg-white/95 text-[#0F1035] px-5 py-2.5 text-sm font-extrabold shadow flex items-center gap-3 hover:translate-x-1 transition rotate-1"
-                      >
-                        <span class="text-[#EC4899]"><mb-icon name="briefcase"></mb-icon></span>
-                        <span>Des métiers à découvrir ({{ careers.length }})</span>
-                      </button>
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('MON_PARCOURS')"
-                        class="w-full rounded-full bg-white/95 text-[#0F1035] px-5 py-2.5 text-sm font-extrabold shadow flex items-center gap-3 hover:translate-x-1 transition"
-                      >
-                        <span class="text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
-                        <span>Mes prochaines étapes</span>
+                        <span><mb-icon name="file-text"></mb-icon></span>
+                        <span>Voir mon rapport</span>
                       </button>
                     </div>
                   </div>

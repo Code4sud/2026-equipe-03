@@ -289,20 +289,20 @@ export const TONE_OPTIONS: ToneOption[] = [
         [class]="isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
         class="fixed lg:sticky top-0 left-0 z-50 lg:z-20 h-screen w-[280px] max-w-[85vw] lg:w-[270px] xl:w-[285px] shrink-0 bg-gradient-to-b from-[#131142] via-[#1B1659] to-[#120E38] text-white flex flex-col justify-between overflow-y-auto border-r border-white/10 transition-transform duration-200 ease-out shadow-2xl lg:shadow-none"
       >
-        <!-- Partie haute : Logo + Menu de navigation -->
-        <div class="p-5 space-y-6 relative z-10">
+        <!-- Partie haute : Logo + Switcher + Menu de navigation -->
+        <div class="p-4 sm:p-5 space-y-4 relative z-10">
           <!-- En-tête Logo MonBilan+ (Logo officiel Landing Page) -->
           <div class="flex items-center justify-between">
-            <a href="../" class="group flex flex-col gap-2 w-full focus:outline-none" title="Retour à la landing page MonBilan+">
-              <div class="rounded-2xl bg-white px-3.5 py-2 shadow-sm group-hover:shadow-md transition flex items-center justify-center">
+            <a href="../" class="group flex flex-col gap-1.5 w-full focus:outline-none" title="Retour à la landing page MonBilan+">
+              <div class="rounded-xl bg-white px-3 py-1.5 shadow-sm group-hover:shadow-md transition flex items-center justify-center">
                 <img
                   src="assets/logo.png"
                   alt="MonBilan+"
-                  class="h-9 sm:h-10 w-auto object-contain"
+                  class="h-8 w-auto object-contain"
                 />
               </div>
               <div class="flex items-center justify-between px-1">
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-2.5 py-0.5 text-xs font-bold text-[#C4B5FD]">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 px-2 py-0.5 text-[11px] font-bold text-[#C4B5FD]">
                   <span class="h-1.5 w-1.5 rounded-full bg-[#E0349B]"></span>
                   {{ activePortal === 'YOUNG' ? 'Espace jeune' : 'Espace conseiller' }}
                 </span>
@@ -323,12 +323,12 @@ export const TONE_OPTIONS: ToneOption[] = [
           </div>
 
           <!-- Switcher rapide Jeune / Conseiller -->
-          <div class="grid grid-cols-2 gap-1.5 bg-white/10 p-1 rounded-2xl border border-white/15 text-xs font-bold">
+          <div class="grid grid-cols-2 gap-1 bg-white/10 p-1 rounded-xl border border-white/15 text-xs font-bold">
             <button
               type="button"
               (click)="switchPortal('YOUNG')"
               [class]="activePortal === 'YOUNG' ? 'bg-[#7C3AED] text-white shadow' : 'text-[#E7E8FB] hover:text-white'"
-              class="py-2 px-2.5 rounded-xl transition text-center"
+              class="py-1.5 px-2 rounded-lg transition text-center"
             >
               🎧 Jeune
             </button>
@@ -336,65 +336,65 @@ export const TONE_OPTIONS: ToneOption[] = [
               type="button"
               (click)="switchPortal('COUNSELOR')"
               [class]="activePortal === 'COUNSELOR' ? 'bg-[#7C3AED] text-white shadow' : 'text-[#E7E8FB] hover:text-white'"
-              class="py-2 px-2.5 rounded-xl transition text-center"
+              class="py-1.5 px-2 rounded-lg transition text-center"
             >
               🩺 Conseiller
             </button>
           </div>
 
           <!-- MENU ESPACE JEUNE -->
-          <nav *ngIf="activePortal === 'YOUNG'" aria-label="Menu Espace Jeune" class="space-y-1.5">
+          <nav *ngIf="activePortal === 'YOUNG'" aria-label="Menu Espace Jeune" class="space-y-1">
             <button
               *ngFor="let item of youngNavItems"
               type="button"
               (click)="selectYoungTab(item.id)"
               [class]="activeYoungTab === item.id
-                ? 'bg-gradient-to-r from-[#8B3DFF] to-[#A855F7] text-white shadow-lg font-extrabold'
-                : 'text-[#E7E8FB]/85 hover:bg-white/10 hover:text-white font-semibold'"
-              class="w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm transition text-left"
+                ? 'bg-gradient-to-r from-[#8B3DFF] to-[#A855F7] text-white shadow-md font-extrabold'
+                : 'text-[#E7E8FB]/85 hover:bg-white/10 hover:text-white font-medium'"
+              class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs sm:text-[13px] transition text-left"
             >
-              <span class="w-5 h-5 flex items-center justify-center flex-shrink-0" [ngSwitch]="item.id">
-                <svg *ngSwitchCase="'ACCUEIL'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                <svg *ngSwitchCase="'MON_BILAN'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
-                <svg *ngSwitchCase="'EXPLORER_METIERS'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                <svg *ngSwitchCase="'MON_PARCOURS'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
-                <svg *ngSwitchCase="'MES_QUESTIONS'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                <svg *ngSwitchCase="'MES_DOCUMENTS'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
-                <svg *ngSwitchCase="'PARAMETRES_JEUNE'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                <span *ngSwitchDefault class="text-base">{{ item.icon }}</span>
+              <span class="w-4 h-4 flex items-center justify-center flex-shrink-0" [ngSwitch]="item.id">
+                <svg *ngSwitchCase="'ACCUEIL'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <svg *ngSwitchCase="'MON_BILAN'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                <svg *ngSwitchCase="'EXPLORER_METIERS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                <svg *ngSwitchCase="'MON_PARCOURS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <svg *ngSwitchCase="'MES_QUESTIONS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                <svg *ngSwitchCase="'MES_DOCUMENTS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                <svg *ngSwitchCase="'PARAMETRES_JEUNE'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span *ngSwitchDefault class="text-sm">{{ item.icon }}</span>
               </span>
-              <span>{{ item.label }}</span>
+              <span class="truncate">{{ item.label }}</span>
             </button>
           </nav>
 
-          <!-- MENU ESPACE CONSEILLER (8 entrées des maquettes avec icônes vectorielles) -->
+          <!-- MENU ESPACE CONSEILLER -->
           <nav *ngIf="activePortal === 'COUNSELOR'" aria-label="Menu Espace Conseiller" class="space-y-1">
             <button
               *ngFor="let item of counselorNavItems"
               type="button"
               (click)="selectCounselorTab(item.id)"
               [class]="(activeCounselorTab === item.id || (item.id === 'IMPORTER_RAPPORT' && (activeCounselorTab === 'VERIFICATION_DONNEES' || activeCounselorTab === 'VALIDATIONS_PUBLICATIONS')))
-                ? 'bg-gradient-to-r from-[#8B3DFF] to-[#A855F7] text-white shadow-lg font-extrabold'
-                : 'text-[#E7E8FB]/85 hover:bg-white/10 hover:text-white font-semibold'"
-              class="w-full flex items-center justify-between px-4 py-2.5 rounded-2xl text-sm transition text-left"
+                ? 'bg-gradient-to-r from-[#8B3DFF] to-[#A855F7] text-white shadow-md font-extrabold'
+                : 'text-[#E7E8FB]/85 hover:bg-white/10 hover:text-white font-medium'"
+              class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs sm:text-[13px] transition text-left"
             >
-              <span class="flex items-center gap-3">
-                <span class="w-5 h-5 flex items-center justify-center flex-shrink-0" [ngSwitch]="item.id">
-                  <svg *ngSwitchCase="'TABLEAU_DE_BORD'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                  <svg *ngSwitchCase="'DOSSIERS_JEUNES'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-                  <svg *ngSwitchCase="'IMPORTER_RAPPORT'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                  <svg *ngSwitchCase="'VERIFICATION_DONNEES'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-                  <svg *ngSwitchCase="'VALIDATIONS_PUBLICATIONS'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                  <svg *ngSwitchCase="'SUIVI_RDV'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                  <svg *ngSwitchCase="'STATISTIQUES'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                  <svg *ngSwitchCase="'PARAMETRES'" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  <span *ngSwitchDefault class="text-base">{{ item.icon }}</span>
+              <span class="flex items-center gap-3 truncate">
+                <span class="w-4 h-4 flex items-center justify-center flex-shrink-0" [ngSwitch]="item.id">
+                  <svg *ngSwitchCase="'TABLEAU_DE_BORD'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                  <svg *ngSwitchCase="'DOSSIERS_JEUNES'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                  <svg *ngSwitchCase="'IMPORTER_RAPPORT'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                  <svg *ngSwitchCase="'VERIFICATION_DONNEES'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                  <svg *ngSwitchCase="'VALIDATIONS_PUBLICATIONS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  <svg *ngSwitchCase="'SUIVI_RDV'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <svg *ngSwitchCase="'STATISTIQUES'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                  <svg *ngSwitchCase="'PARAMETRES'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  <span *ngSwitchDefault class="text-sm">{{ item.icon }}</span>
                 </span>
-                <span>{{ item.label }}</span>
+                <span class="truncate">{{ item.label }}</span>
               </span>
               <span
                 *ngIf="item.badge"
-                class="rounded-full bg-white/20 px-2 py-0.5 text-[11px] font-extrabold text-white"
+                class="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-extrabold text-white ml-1.5"
               >
                 {{ item.badge }}
               </span>
@@ -402,41 +402,54 @@ export const TONE_OPTIONS: ToneOption[] = [
           </nav>
         </div>
 
-        <!-- Partie basse de la Sidebar : Illustration du Phare & Slogan / Encart Centre des Possibles -->
-        <div class="hidden lg:block relative mt-4">
-          <img
-            src="assets/visuals/sidebar-lighthouse.png"
-            alt=""
-            class="w-full h-44 object-cover opacity-90"
-          />
-          <div class="p-5 pt-2 relative z-10 text-center">
-            <div *ngIf="activePortal === 'YOUNG'" class="space-y-1">
-              <p class="text-base font-extrabold leading-snug text-white drop-shadow">
-                Mon orientation,<br />ma voie, mes choix !
-              </p>
-              <p class="text-[11px] text-[#C4B5FD]">Dossier Rdv {{ rdvNumber }} • Centre des Possibles</p>
+        <!-- Partie basse de la Sidebar : Épurée, compacte et sans coupure -->
+        <div class="hidden lg:block p-3.5 pt-0 shrink-0">
+          <!-- Carte Conseiller -->
+          <div
+            *ngIf="activePortal === 'COUNSELOR'"
+            class="rounded-2xl bg-gradient-to-br from-[#2D1B69]/90 to-[#182352]/90 border border-[#60A5FA]/30 p-3 text-left space-y-2 shadow-lg backdrop-blur-sm"
+          >
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-amber-300">
+                <span>⭐</span>
+                <span>Centre des Possibles</span>
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 px-1.5 py-0.5 text-[9px] font-bold text-emerald-300">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                Validé
+              </span>
             </div>
-
-            <div
-              *ngIf="activePortal === 'COUNSELOR'"
-              class="rounded-2xl bg-gradient-to-br from-[#3B1D8F]/90 to-[#1E3A8A]/90 border border-[#60A5FA]/40 p-4 text-left space-y-2 shadow-lg backdrop-blur-sm"
+            <p class="text-[11px] text-[#E7E8FB]/90 leading-tight">
+              Validation humaine obligatoire. Aucun algorithme ne remplace le conseiller.
+            </p>
+            <a
+              href="../"
+              class="flex items-center justify-center gap-1.5 w-full rounded-xl bg-white text-[#1B1B62] py-1.5 text-xs font-extrabold hover:bg-[#F3EFFE] transition shadow-xs"
             >
-              <div class="flex items-center gap-2">
-                <span class="text-lg">⭐</span>
-                <span class="text-xs font-extrabold uppercase tracking-wider text-white">
-                  Centre des Possibles
-                </span>
-              </div>
-              <p class="text-xs text-[#E7E8FB] leading-relaxed">
-                Accompagner les jeunes dans leurs possibles. Validation humaine obligatoire.
-              </p>
-              <a
-                href="../"
-                class="block w-full text-center rounded-full bg-white text-[#1B1B62] py-1.5 text-xs font-extrabold hover:bg-[#F3EFFE] transition"
-              >
-                Voir la page d’accueil →
-              </a>
+              <span>Voir la page d’accueil</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          <!-- Carte Jeune -->
+          <div
+            *ngIf="activePortal === 'YOUNG'"
+            class="rounded-2xl bg-gradient-to-br from-[#7C3AED]/30 to-[#3B1D8F]/40 border border-white/15 p-3 text-center space-y-1 shadow-md"
+          >
+            <div class="flex items-center justify-center gap-1 text-xs font-black text-white">
+              <span>✨</span>
+              <span>Mon orientation, ma voie !</span>
             </div>
+            <p class="text-[10px] text-[#C4B5FD] font-medium leading-tight">
+              Dossier Rdv {{ rdvNumber }} • Centre des Possibles
+            </p>
+            <a
+              href="../"
+              class="inline-flex items-center justify-center gap-1 text-[11px] font-bold text-white/80 hover:text-white pt-0.5 transition"
+            >
+              <span>Retour à l’accueil</span>
+              <span>↗</span>
+            </a>
           </div>
         </div>
       </aside>
@@ -714,7 +727,7 @@ export const TONE_OPTIONS: ToneOption[] = [
         </div>
 
         <!-- CONTENU PRINCIPAL DÉFILANT -->
-        <main class="flex-1 p-4 sm:p-6 lg:p-8 pb-24 lg:pb-8 max-w-7xl w-full mx-auto space-y-6">
+        <main class="flex-1 p-4 sm:p-6 lg:p-8 pb-28 sm:pb-32 lg:pb-36 max-w-7xl w-full mx-auto space-y-6">
 
           <!-- ============================================================== -->
           <!-- PORTAIL 1 : ESPACE JEUNE                                       -->
@@ -3182,20 +3195,20 @@ export const TONE_OPTIONS: ToneOption[] = [
                     </span>
                   </div>
 
-                  <!-- Stepper connecté horizontalement : 6 étapes conformes MonBilan+ -->
-                  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 text-center">
+                  <!-- Stepper connecté horizontalement : 6 étapes conformes MonBilan+ (grille responsive sans dépassement) -->
+                  <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 text-center">
                     <!-- Étape 1 -->
                     <button
                       type="button"
                       (click)="openDossierWorkflow(1)"
                       [class]="counselorWorkflowStep === 1 ? 'border-2 border-[#7C3AED] bg-purple-50' : 'border border-[#E4E0F5] bg-white'"
-                      class="p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer"
+                      class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
-                      <div class="h-8 w-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 shadow-xs text-xs">
+                      <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 shadow-xs text-xs">
                         ✓
                       </div>
-                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight">01. Importer</span>
-                      <span class="text-[9px] text-emerald-700 font-bold">PDF 17p</span>
+                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">01. Importer</span>
+                      <span class="text-[9px] text-emerald-700 font-bold truncate w-full">PDF 17p</span>
                     </button>
 
                     <!-- Étape 2 -->
@@ -3203,13 +3216,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                       type="button"
                       (click)="openDossierWorkflow(2)"
                       [class]="counselorWorkflowStep === 2 ? 'border-2 border-[#7C3AED] bg-purple-50' : 'border border-[#E4E0F5] bg-white'"
-                      class="p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer"
+                      class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
-                      <div class="h-8 w-8 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
+                      <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
                         ✍️
                       </div>
-                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight">02. Entretien</span>
-                      <span class="text-[9px] text-[#7C3AED] font-bold">Fiche saisie</span>
+                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">02. Entretien</span>
+                      <span class="text-[9px] text-[#7C3AED] font-bold truncate w-full">Fiche saisie</span>
                     </button>
 
                     <!-- Étape 3 -->
@@ -3217,13 +3230,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                       type="button"
                       (click)="openDossierWorkflow(3)"
                       [class]="counselorWorkflowStep === 3 ? 'border-2 border-[#7C3AED] bg-purple-50' : 'border border-[#E4E0F5] bg-white'"
-                      class="p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer"
+                      class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
-                      <div class="h-8 w-8 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
+                      <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
                         ⚡
                       </div>
-                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight">03. Sélection IA</span>
-                      <span class="text-[9px] text-purple-700 font-bold">Rapprochement</span>
+                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">03. Rapprochement</span>
+                      <span class="text-[9px] text-purple-700 font-bold truncate w-full">Sélection IA</span>
                     </button>
 
                     <!-- Étape 4 -->
@@ -3231,13 +3244,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                       type="button"
                       (click)="openDossierWorkflow(4)"
                       [class]="counselorWorkflowStep === 4 ? 'border-2 border-[#7C3AED] bg-purple-50' : 'border border-[#E4E0F5] bg-white'"
-                      class="p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer"
+                      class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
-                      <div class="h-8 w-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 text-xs">
+                      <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 text-xs">
                         🔍
                       </div>
-                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight">04. Métiers</span>
-                      <span class="text-[9px] text-emerald-700 font-bold">22 validés</span>
+                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">04. Métiers</span>
+                      <span class="text-[9px] text-emerald-700 font-bold truncate w-full">22 validés</span>
                     </button>
 
                     <!-- Étape 5 -->
@@ -3245,13 +3258,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                       type="button"
                       (click)="openDossierWorkflow(5)"
                       [class]="counselorWorkflowStep === 5 ? 'border-2 border-[#7C3AED] bg-purple-50' : 'border border-[#E4E0F5] bg-white'"
-                      class="p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer"
+                      class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
-                      <div class="h-8 w-8 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
+                      <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
                         🎧
                       </div>
-                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight">05. Épisodes</span>
-                      <span class="text-[9px] text-purple-700 font-bold">6 pistes</span>
+                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">05. Épisodes</span>
+                      <span class="text-[9px] text-purple-700 font-bold truncate w-full">6 pistes</span>
                     </button>
 
                     <!-- Étape 6 -->
@@ -3259,13 +3272,13 @@ export const TONE_OPTIONS: ToneOption[] = [
                       type="button"
                       (click)="openDossierWorkflow(6)"
                       [class]="counselorWorkflowStep === 6 ? 'border-2 border-[#7C3AED] bg-purple-50' : 'border border-[#E4E0F5] bg-white'"
-                      class="p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer"
+                      class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
-                      <div class="h-8 w-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold mb-1 text-xs">
+                      <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold mb-1 text-xs">
                         🚀
                       </div>
-                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight">06. Publication</span>
-                      <span class="text-[9px] text-green-700 font-bold">Publié jeune</span>
+                      <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">06. Publication</span>
+                      <span class="text-[9px] text-green-700 font-bold truncate w-full">Publié jeune</span>
                     </button>
                   </div>
 

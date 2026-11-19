@@ -75,6 +75,33 @@ export interface UIHexacoItem {
     <div class="space-y-6">
 
       <!-- ================================================================== -->
+      <!-- BANNIÈRE HERO « Découvre ce que dit ton bilan » (Affichée sur Suite) -->
+      <!-- ================================================================== -->
+      <div *ngIf="activeSubTab === 'SUITE'" class="rounded-[28px] bg-gradient-to-r from-[#5B21B6] via-[#7C3AED] to-[#9333EA] text-white p-6 sm:p-7 shadow-lg relative overflow-hidden">
+        <div class="absolute -right-16 -top-16 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute left-1/3 -bottom-20 w-80 h-80 bg-[#C084FC]/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex items-center justify-between gap-6 relative z-10">
+          <div class="flex items-center gap-4 sm:gap-5">
+            <div class="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 shadow-inner backdrop-blur-sm text-2xl sm:text-3xl">
+              <mb-icon name="target"></mb-icon>
+            </div>
+            <div class="space-y-1.5">
+              <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight">
+                Découvre ce que dit ton bilan
+              </h2>
+              <p class="text-xs sm:text-sm text-[#E7E8FB] max-w-2xl leading-relaxed">
+                Une restitution claire et personnalisée pour comprendre tes résultats, explorer des métiers et préparer la suite.
+              </p>
+            </div>
+          </div>
+          <div class="hidden lg:flex items-center justify-center pr-6 text-4xl sm:text-5xl select-none">
+            🏔️🚩
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================== -->
       <!-- NAVIGATION INTERNE : 3 ONGLETS CONFORMES À LA MAQUETTE             -->
       <!-- ================================================================== -->
       <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-1 scrollbar-none">
@@ -381,6 +408,19 @@ export interface UIHexacoItem {
                   <button type="button" (click)="aiQuestionAnswer = null" class="text-gray-400 hover:text-gray-600 font-bold text-sm">✕</button>
                 </div>
                 <p class="leading-relaxed">{{ aiQuestionAnswer }}</p>
+
+                <!-- Action pour enregistrer dans "Mes questions" pour le conseiller -->
+                <div class="pt-2 border-t border-[#E4E0F5] flex flex-wrap items-center justify-between gap-2">
+                  <span class="text-[11px] text-[#555A8A]">Garder pour ton conseiller :</span>
+                  <button
+                    type="button"
+                    (click)="saveCurrentQuestionToQuestions()"
+                    class="rounded-xl bg-[#6328E8] hover:bg-[#521BC6] text-white px-3 py-1.5 text-xs font-extrabold transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                  >
+                    <span><mb-icon name="plus-circle"></mb-icon></span>
+                    <span>{{ questionAlreadySaved ? '✓ Enregistrée dans tes questions' : 'Ajouter à "Mes questions"' }}</span>
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -612,8 +652,8 @@ export interface UIHexacoItem {
                   <span><mb-icon name="file-text"></mb-icon></span>
                   <span>Transcription textuelle</span>
                 </h4>
-                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  100% Fidèle
+                <span class="text-xs font-bold text-[#7C3AED] bg-[#F5F3FF] px-2.5 py-0.5 rounded-full border border-[#DDD6FE]">
+                  Transcription de l'épisode
                 </span>
               </div>
               <div class="p-3 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] text-xs text-[#31355B] leading-relaxed max-h-48 overflow-y-auto">
@@ -627,18 +667,104 @@ export interface UIHexacoItem {
 
 
       <!-- ================================================================== -->
-      <!-- VUE 4 : JE PRÉPARE LA SUITE                                        -->
+      <!-- VUE 3 : JE PRÉPARE LA SUITE (Conforme Maquette media_1795124752587) -->
       <!-- ================================================================== -->
       <div *ngIf="activeSubTab === 'SUITE'" class="space-y-6">
+
+        <!-- SECTION 1 : LES MÉTIERS QUE JE SOUHAITE EXPLORER -->
         <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4">
-          <div class="space-y-1">
-            <h3 class="text-xl font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span><mb-icon name="compass"></mb-icon></span>
-              <span>Construire la suite de ton parcours</span>
-            </h3>
-            <p class="text-xs sm:text-sm text-[#555A8A]">
-              Ton bilan te donne des pistes. Voici les 3 manières concrètes d'avancer dès aujourd'hui.
-            </p>
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-2xl bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 text-xl font-bold">
+                <mb-icon name="briefcase"></mb-icon>
+              </div>
+              <div>
+                <h3 class="text-lg sm:text-xl font-extrabold text-[#0F1035]">Les métiers que je souhaite explorer</h3>
+                <p class="text-xs text-[#555A8A]">Des pistes issues de ton rapport pour t'aider à découvrir ce qui te correspond.</p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              (click)="onExploreCareers()"
+              class="rounded-full bg-white border border-[#E4E0F5] hover:border-[#7C3AED] hover:text-[#7C3AED] text-[#0F1035] px-4 py-2 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
+            >
+              <span>Voir toutes mes pistes métiers</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- 3 Cartes Métiers sélectionnées (Fidèles à la maquette) -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+            <!-- Métier 1 : Designer graphique -->
+            <div
+              (click)="onExploreCareers()"
+              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-4 flex items-center justify-between gap-3 shadow-2xs cursor-pointer transition group"
+            >
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="h-11 w-11 rounded-2xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 text-lg group-hover:scale-105 transition">
+                  🎨
+                </div>
+                <div class="min-w-0">
+                  <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition truncate">Designer graphique</h4>
+                  <p class="text-xs text-[#64748B] truncate">Création · Communication</p>
+                </div>
+              </div>
+              <span class="rounded-full bg-[#DCFCE7] text-[#15803D] border border-emerald-200 px-2.5 py-1 text-[11px] font-extrabold shrink-0">
+                ✓ Suivi
+              </span>
+            </div>
+
+            <!-- Métier 2 : Chef de projet -->
+            <div
+              (click)="onExploreCareers()"
+              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-4 flex items-center justify-between gap-3 shadow-2xs cursor-pointer transition group"
+            >
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="h-11 w-11 rounded-2xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] flex items-center justify-center shrink-0 text-lg group-hover:scale-105 transition">
+                  📁
+                </div>
+                <div class="min-w-0">
+                  <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition truncate">Chef de projet</h4>
+                  <p class="text-xs text-[#64748B] truncate">Organisation · Gestion</p>
+                </div>
+              </div>
+              <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] border border-purple-200 px-2.5 py-1 text-[11px] font-extrabold shrink-0">
+                ● À explorer
+              </span>
+            </div>
+
+            <!-- Métier 3 : Technicien audiovisuel -->
+            <div
+              (click)="onExploreCareers()"
+              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-4 flex items-center justify-between gap-3 shadow-2xs cursor-pointer transition group"
+            >
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="h-11 w-11 rounded-2xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 text-lg group-hover:scale-105 transition">
+                  📹
+                </div>
+                <div class="min-w-0">
+                  <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition truncate">Technicien audiovisuel</h4>
+                  <p class="text-xs text-[#64748B] truncate">Image · Production</p>
+                </div>
+              </div>
+              <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] border border-purple-200 px-2.5 py-1 text-[11px] font-extrabold shrink-0">
+                ● À explorer
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 : CONSTRUIRE LA SUITE DE TON PARCOURS -->
+        <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 text-xl font-bold">
+              <mb-icon name="compass"></mb-icon>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold text-[#0F1035]">Construire la suite de ton parcours</h3>
+              <p class="text-xs text-[#555A8A]">Ton bilan te donne des pistes. Voici 3 manières concrètes d'avancer dès aujourd'hui.</p>
+            </div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
@@ -650,15 +776,15 @@ export interface UIHexacoItem {
                 </div>
                 <h4 class="text-base font-extrabold text-[#0F1035]">Immersion Pro</h4>
                 <p class="text-xs text-[#555A8A] leading-relaxed">
-                  Prépare un stage d'observation d'une semaine pour tester un métier sur le terrain.
+                  Découvre un métier sur le terrain et prépare une immersion adaptée à ta situation.
                 </p>
               </div>
               <button
                 type="button"
                 (click)="onNavigate('IMMERSION_PRO')"
-                class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-extrabold py-2.5 px-4 transition text-center shadow-xs"
+                class="rounded-xl bg-[#6328E8] hover:bg-[#521BC6] text-white text-xs font-extrabold py-2.5 px-4 transition text-center shadow-xs cursor-pointer"
               >
-                Accéder à Immersion Pro →
+                Accéder à l'Immersion Pro →
               </button>
             </div>
 
@@ -676,13 +802,13 @@ export interface UIHexacoItem {
               <button
                 type="button"
                 (click)="onNavigate('MES_QUESTIONS')"
-                class="rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-extrabold py-2.5 px-4 transition text-center shadow-xs"
+                class="rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-extrabold py-2.5 px-4 transition text-center shadow-xs cursor-pointer"
               >
                 Ouvrir mes questions →
               </button>
             </div>
 
-            <!-- 3. Trouver de l'aide / Conseiller -->
+            <!-- 3. Structures d'aide -->
             <div class="rounded-2xl bg-gradient-to-br from-[#ECFDF5] to-white border border-[#E4E0F5] p-5 space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <div class="h-10 w-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
@@ -690,19 +816,95 @@ export interface UIHexacoItem {
                 </div>
                 <h4 class="text-base font-extrabold text-[#0F1035]">Structures d'aide</h4>
                 <p class="text-xs text-[#555A8A] leading-relaxed">
-                  CIO, Mission Locale de Nice et professionnels de l'orientation gratuits près de chez toi.
+                  CIO, Mission Locale, CFA... Des professionnels pour t'accompagner près de chez toi.
                 </p>
               </div>
               <button
                 type="button"
-                (click)="onNavigate('ANNUAIRE_SUPPORT')"
-                class="rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold py-2.5 px-4 transition text-center shadow-xs"
+                (click)="onNavigate('AUTOUR_DE_MOI')"
+                class="rounded-xl bg-[#059669] hover:bg-[#047857] text-white text-xs font-extrabold py-2.5 px-4 transition text-center shadow-xs cursor-pointer"
               >
                 Voir les structures d'aide →
               </button>
             </div>
           </div>
         </div>
+
+        <!-- SECTION 3 : MES PROCHAINES ACTIONS -->
+        <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-7 shadow-sm space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-2xl bg-[#F5F3FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 text-xl font-bold">
+                <mb-icon name="clipboard"></mb-icon>
+              </div>
+              <div>
+                <h3 class="text-lg sm:text-xl font-extrabold text-[#0F1035]">Mes prochaines actions</h3>
+                <p class="text-xs text-[#555A8A]">Retrouve ici les démarches que tu as lancées et leurs statuts.</p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              (click)="onNavigate('MON_PARCOURS')"
+              class="rounded-full bg-white border border-[#E4E0F5] hover:border-[#7C3AED] hover:text-[#7C3AED] text-[#0F1035] px-4 py-2 text-xs font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
+            >
+              <span>Voir mon parcours</span>
+              <span>→</span>
+            </button>
+          </div>
+
+          <!-- Liste des démarches datées -->
+          <div class="space-y-2.5 pt-1">
+            <!-- Action 1 -->
+            <div
+              (click)="onNavigate('IMMERSION_PRO')"
+              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 transition cursor-pointer group"
+            >
+              <div class="flex items-center gap-3.5 min-w-0">
+                <span class="text-lg shrink-0">🎨</span>
+                <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">Explorer le métier de Designer graphique</span>
+              </div>
+              <div class="flex items-center gap-4 text-xs font-bold">
+                <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] px-3 py-1 font-extrabold">En cours</span>
+                <span class="text-[#64748B] flex items-center gap-1 font-medium"><mb-icon name="calendar"></mb-icon> Ajouté le 17 nov.</span>
+                <span class="text-[#7C3AED] font-bold group-hover:translate-x-1 transition">→</span>
+              </div>
+            </div>
+
+            <!-- Action 2 -->
+            <div
+              (click)="onNavigate('MES_QUESTIONS')"
+              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 transition cursor-pointer group"
+            >
+              <div class="flex items-center gap-3.5 min-w-0">
+                <span class="text-lg shrink-0">💬</span>
+                <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">Préparer mes questions pour le conseiller</span>
+              </div>
+              <div class="flex items-center gap-4 text-xs font-bold">
+                <span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-3 py-1 font-extrabold">À faire</span>
+                <span class="text-[#64748B] flex items-center gap-1 font-medium"><mb-icon name="calendar"></mb-icon> Ajouté le 17 nov.</span>
+                <span class="text-[#7C3AED] font-bold group-hover:translate-x-1 transition">→</span>
+              </div>
+            </div>
+
+            <!-- Action 3 -->
+            <div
+              (click)="onNavigate('IMMERSION_PRO')"
+              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 transition cursor-pointer group"
+            >
+              <div class="flex items-center gap-3.5 min-w-0">
+                <span class="text-lg shrink-0">💼</span>
+                <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">Me renseigner sur une immersion</span>
+              </div>
+              <div class="flex items-center gap-4 text-xs font-bold">
+                <span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-3 py-1 font-extrabold">À faire</span>
+                <span class="text-[#64748B] flex items-center gap-1 font-medium"><mb-icon name="calendar"></mb-icon> Ajouté le 18 nov.</span>
+                <span class="text-[#7C3AED] font-bold group-hover:translate-x-1 transition">→</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -841,6 +1043,9 @@ export class ReportOverviewComponent implements OnInit, OnDestroy {
 
   @Output() navigateTab = new EventEmitter<string>();
   @Output() exploreCareers = new EventEmitter<void>();
+  @Output() saveQuestion = new EventEmitter<{ text: string; answer?: string }>();
+
+  questionAlreadySaved: boolean = false;
 
   activeSubTab: ReportSubTab = 'COMPRENDRE';
   selectedEpisodeIndex: number = 0;
@@ -1036,6 +1241,7 @@ ${modePrompt}`;
     this.selectedPredefinedQuestion = questionText;
     this.isAnsweringQuestion = true;
     this.aiQuestionAnswer = null;
+    this.questionAlreadySaved = false;
 
     const lower = questionText.toLowerCase();
     let fallback = `Dans ton rapport Rdv ${this.rdvNumber}, chaque observation t'aide à te situer pour explorer les ${this.careers.length} métiers conseillés, sans jamais te juger !`;
@@ -1084,6 +1290,13 @@ RÈGLES STRICTES :
     } finally {
       this.isAnsweringQuestion = false;
     }
+  }
+
+  saveCurrentQuestionToQuestions(): void {
+    const qText = this.selectedPredefinedQuestion || this.userBilanQuestion;
+    if (!qText || !qText.trim()) return;
+    this.saveQuestion.emit({ text: qText.trim(), answer: this.aiQuestionAnswer || undefined });
+    this.questionAlreadySaved = true;
   }
 
   askPredefinedQuestion(id: number): void {

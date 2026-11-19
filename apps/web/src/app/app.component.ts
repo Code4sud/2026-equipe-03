@@ -1080,6 +1080,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   [riasecOrderedDisplay]="riasecOrderedDisplay"
                   (navigateTab)="selectYoungTab($any($event))"
                   (exploreCareers)="selectYoungTab('IMMERSION_PRO')"
+                  (saveQuestion)="onSaveQuestionFromBilan($event)"
                 ></app-report-overview>
               </div>
 
@@ -5127,6 +5128,7 @@ export class AppComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.loadBrowserVoices();
+    this.loadPersistedQuestions();
     if (typeof window !== 'undefined') {
       try {
         const savedPhoto = localStorage.getItem('monbilan_user_photo');
@@ -5830,7 +5832,49 @@ export class AppComponent implements OnInit {
     });
     this.newQuestionTopic = '';
     this.newQuestionText = '';
+    this.persistQuestions();
     this.statusBanner = '✓ Ta question a bien été ajoutée à ta liste pour ton conseiller.';
+  }
+
+  onSaveQuestionFromBilan(evt: { text: string; answer?: string }): void {
+    if (!evt || !evt.text.trim()) return;
+    this.questions.unshift({
+      id: `q-${Date.now()}`,
+      tagLabel: 'Bilan Rdv ' + this.rdvNumber,
+      tagColor: 'bg-[#EDE9FE] text-[#6D28D9]',
+      relatedTopic: 'Mon bilan d\'orientation',
+      questionText: evt.text.trim(),
+      checked: false,
+      counselorReply: evt.answer || null
+    });
+    this.persistQuestions();
+    this.statusBanner = '✓ Ta question a bien été enregistrée dans "Mes questions" pour ton conseiller.';
+  }
+
+  persistQuestions(): void {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        localStorage.setItem('monbilan_questions_' + this.rdvNumber, JSON.stringify(this.questions));
+      } catch (e) {
+        console.warn('LocalStorage non disponible', e);
+      }
+    }
+  }
+
+  loadPersistedQuestions(): void {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        const saved = localStorage.getItem('monbilan_questions_' + this.rdvNumber);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            this.questions = parsed;
+          }
+        }
+      } catch (e) {
+        console.warn('LocalStorage parse error', e);
+      }
+    }
   }
 
   onCounselorEditClaim(claim: UIClaim): void {

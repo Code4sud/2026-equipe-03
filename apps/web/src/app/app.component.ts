@@ -26,6 +26,8 @@ import { AutonomousHomeComponent } from './features/autonomous/autonomous-home.c
 import { CareerCatalogComponent } from './features/autonomous/career-catalog.component';
 import { AutonomousCareerDetailComponent } from './features/autonomous/autonomous-career-detail.component';
 import { SupportDirectoryComponent } from './features/autonomous/support-directory.component';
+import { ReportOverviewComponent } from './features/report/report-overview.component';
+import { CoachIaComponent } from './features/coach/coach-ia.component';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -58,6 +60,7 @@ export type YoungTab =
   | 'ANNUAIRE_SUPPORT'
   | 'MON_BILAN'
   | 'IMMERSION_PRO'
+  | 'COACH_IA'
   | 'EXPLORER_METIERS'
   | 'MON_PARCOURS'
   | 'MES_QUESTIONS'
@@ -251,7 +254,9 @@ export const TONE_OPTIONS: ToneOption[] = [
     AutonomousHomeComponent,
     CareerCatalogComponent,
     AutonomousCareerDetailComponent,
-    SupportDirectoryComponent
+    SupportDirectoryComponent,
+    ReportOverviewComponent,
+    CoachIaComponent
   ],
   template: `
     <div class="min-h-screen flex flex-col lg:flex-row bg-[#F4F2FF] text-[#0F1035] font-sans overflow-x-hidden">
@@ -389,6 +394,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <svg *ngSwitchCase="'ANNUAIRE_SUPPORT'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                   <svg *ngSwitchCase="'MON_BILAN'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
                   <svg *ngSwitchCase="'IMMERSION_PRO'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <svg *ngSwitchCase="'COACH_IA'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
                   <svg *ngSwitchCase="'MON_PARCOURS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
                   <svg *ngSwitchCase="'MES_QUESTIONS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                   <svg *ngSwitchCase="'MES_DOCUMENTS'" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
@@ -535,26 +541,28 @@ export const TONE_OPTIONS: ToneOption[] = [
                     CIO, Mission Locale de Nice, équipes scolaires et dispositifs publics gratuits.
                   </p>
                 </div>
-                <div *ngIf="activeYoungTab === 'MON_BILAN' && !showAudioFocusSubView">
-                  <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] flex items-center gap-2.5 truncate">
-                    <svg class="h-6 w-6 text-[#7C3AED] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
-                    <span class="truncate">Mon bilan d’orientation</span>
-                  </h1>
+                <div *ngIf="activeYoungTab === 'MON_BILAN'">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xl">💼</span>
+                    <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
+                      Mon bilan d'orientation
+                    </h1>
+                  </div>
                   <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
-                    Découvre la restitution de ton bilan Rdv {{ rdvNumber }}, tes résultats expliqués et les sources.
+                    Dossier Rdv {{ rdvNumber }} · Rapport de 17 pages
                   </p>
                 </div>
-                <div *ngIf="activeYoungTab === 'MON_BILAN' && showAudioFocusSubView" class="flex items-center gap-3">
-                  <button
-                    type="button"
-                    (click)="showAudioFocusSubView = false"
-                    class="h-10 w-10 shrink-0 rounded-full bg-white border border-[#D8DCF0] flex items-center justify-center font-bold text-[#1B1B62] hover:bg-[#F3EFFE]"
-                  >
-                    ←
-                  </button>
-                  <h1 class="text-lg sm:text-2xl font-extrabold text-[#0F1035] truncate">
-                    <span class="font-medium text-[#42466B]">Mon bilan &gt;</span> Restitution audio
-                  </h1>
+                <div *ngIf="activeYoungTab === 'COACH_IA'" class="flex items-center gap-3">
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-2 text-xs sm:text-[13px] font-bold text-[#6D28D9]">
+                      <span>Mon Coach IA</span>
+                      <span>&gt;</span>
+                      <span class="text-[#0F1035] font-extrabold">Atelier de communication</span>
+                    </div>
+                    <p class="text-xs text-[#42466B] line-clamp-1 hidden sm:block">
+                      Ton assistant pour trouver les bons mots, préparer tes contacts et communiquer avec les professionnels.
+                    </p>
+                  </div>
                 </div>
                 <div *ngIf="activeYoungTab === 'IMMERSION_PRO' || activeYoungTab === 'EXPLORER_METIERS'" class="flex items-center gap-3">
                   <button
@@ -739,10 +747,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </div>
                   <div class="hidden sm:block text-left">
                     <span class="text-xs font-extrabold text-[#0F1035] block leading-tight">
-                      {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : 'Emma D.') : 'Sarah Dupont' }}
+                      {{ activePortal === 'YOUNG' ? 'Emma D.' : 'Sarah Dupont' }}
                     </span>
                     <span class="text-[11px] text-[#42466B] block leading-tight">
-                      {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Sans conseiller' : 'Dossier Rdv 2187') : 'Conseillère' }}
+                      {{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Parcours autonome' : 'Dossier Rdv 2187') : 'Conseillère' }}
                     </span>
                   </div>
                   <svg class="h-4 w-4 text-[#42466B] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -1122,724 +1130,30 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 2 : MON BILAN (Synthèse + Sous-vue Audio)         -->
+              <!-- VUE JEUNE 2 : MON BILAN (Refonte Premium conforme Maquette) -->
               <!-- ========================================================== -->
               <div *ngIf="activeYoungTab === 'MON_BILAN'" class="space-y-6">
-                <!-- Barre des sous-onglets de Mon bilan (fidèle aux 3 maquettes Mon bilan) -->
-                <div class="flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    (click)="showAudioFocusSubView = false; showDetailedResultsSubView = false"
-                    [class]="!showAudioFocusSubView && !showDetailedResultsSubView
-                      ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow'
-                      : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
-                    class="rounded-full px-5 py-2.5 text-xs sm:text-sm font-extrabold transition"
-                  >
-                    📄 Synthèse personnalisée
-                  </button>
-                  <button
-                    type="button"
-                    (click)="showAudioFocusSubView = false; showDetailedResultsSubView = true"
-                    [class]="showDetailedResultsSubView
-                      ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow'
-                      : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
-                    class="rounded-full px-5 py-2.5 text-xs sm:text-sm font-extrabold transition"
-                  >
-                    📊 Mes résultats détaillés (RIASEC • Aptitudes • HEXACO)
-                  </button>
-                  <button
-                    type="button"
-                    (click)="showAudioFocusSubView = true; showDetailedResultsSubView = false"
-                    [class]="showAudioFocusSubView
-                      ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow'
-                      : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
-                    class="rounded-full px-5 py-2.5 text-xs sm:text-sm font-extrabold transition"
-                  >
-                    🎧 Restitution audio &amp; Transcription
-                  </button>
-                  <button
-                    type="button"
-                    (click)="selectYoungTab('EXPLORER_METIERS')"
-                    class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] hover:border-[#7C3AED] px-5 py-2.5 text-xs sm:text-sm font-bold transition"
-                  >
-                    💼 Pistes de métiers ({{ careers.length }})
-                  </button>
-                  <button
-                    type="button"
-                    (click)="selectYoungTab('MES_DOCUMENTS')"
-                    class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] hover:border-[#7C3AED] px-5 py-2.5 text-xs sm:text-sm font-bold transition"
-                  >
-                    📖 Sources du rapport (p. 1–17)
-                  </button>
-                </div>
+                <app-report-overview
+                  [rdvNumber]="rdvNumber"
+                  [pageCount]="17"
+                  [reportDate]="reportDate"
+                  [journeyMode]="journeyMode"
+                  [careers]="careers"
+                  [audioEpisodes]="audioEpisodes"
+                  [riasecOrderedDisplay]="riasecOrderedDisplay"
+                  (navigateTab)="selectYoungTab($any($event))"
+                  (exploreCareers)="selectYoungTab('IMMERSION_PRO')"
+                ></app-report-overview>
+              </div>
 
-                <!-- SOUS-VUE 2-BIS : MES RÉSULTATS DÉTAILLÉS (Maquette "Tableau de bord MonBilan+ jeunesse.webp") -->
-                <div *ngIf="showDetailedResultsSubView && !showAudioFocusSubView" class="space-y-6">
-                  <!-- Bannière supérieure "Mes résultats d'orientation" + Carte droite Dossier 2187 -->
-                  <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-7 shadow-lg">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                      <div class="lg:col-span-8 space-y-2">
-                        <div class="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-[#E9D5FF] border border-white/20">
-                          <span>📊 Profil psychométrique complet</span>
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold">Mes résultats d’orientation</h2>
-                        <p class="text-xs sm:text-sm text-[#E7E8FB] leading-relaxed">
-                          Une synthèse de ton profil issue de ton bilan (dossier {{ rdvNumber }}) pour mieux te connaître et explorer des pistes de métiers.
-                        </p>
-                      </div>
-                      <div class="lg:col-span-4 rounded-2xl bg-white text-[#0F1035] p-4 shadow-md space-y-2 text-xs font-extrabold">
-                        <div class="flex items-center gap-2.5">
-                          <span class="text-[#7C3AED] text-base">📁</span>
-                          <span>Dossier {{ rdvNumber }}</span>
-                        </div>
-                        <div class="flex items-center gap-2.5 border-t border-[#F0EDFA] pt-2">
-                          <span class="text-[#7C3AED] text-base">🏛️</span>
-                          <span>Bilan du Centre des Possibles</span>
-                        </div>
-                        <div class="flex items-center gap-2.5 border-t border-[#F0EDFA] pt-2">
-                          <span class="text-[#7C3AED] text-base">📅</span>
-                          <span>Rapport du {{ reportDate }} (17 pages)</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Barre des 5 onglets de "Mes résultats détaillés" -->
-                  <div class="flex flex-wrap gap-2">
-                    <span class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white px-5 py-2 text-xs font-extrabold shadow">
-                      🏠 Vue d’ensemble
-                    </span>
-                    <span class="rounded-full bg-white border border-[#E4E0F5] text-[#0F1035] px-5 py-2 text-xs font-extrabold">
-                      📊 Centres d’intérêt (RIASEC, p. 4)
-                    </span>
-                    <span class="rounded-full bg-white border border-[#E4E0F5] text-[#0F1035] px-5 py-2 text-xs font-extrabold">
-                      🏆 Aptitudes (p. 5)
-                    </span>
-                    <span class="rounded-full bg-white border border-[#E4E0F5] text-[#0F1035] px-5 py-2 text-xs font-extrabold">
-                      🥞 Personnalité (HEXACO, p. 6)
-                    </span>
-                    <span class="rounded-full bg-white border border-[#E4E0F5] text-[#0F1035] px-5 py-2 text-xs font-extrabold">
-                      ⭐ Synthèse &amp; pistes (p. 8–16)
-                    </span>
-                  </div>
-
-                  <!-- Grille 3 colonnes fidèle à la maquette "Mon bilan > Mes résultats détaillés" -->
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Colonne 1 : Mon profil en un coup d'œil -->
-                    <div class="lg:col-span-4 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                      <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                        <span class="text-[#7C3AED]">🎯</span>
-                        <span>Mon profil en un coup d’œil</span>
-                      </h3>
-                      <div class="space-y-3">
-                        <div class="rounded-2xl bg-[#F4F2FF] border border-[#E4E0F5] p-4 flex items-center justify-between">
-                          <div>
-                            <p class="text-xs font-extrabold text-[#0F1035]">🧭 Centres d’intérêt (RIASEC)</p>
-                            <p class="text-[11px] text-[#42466B]">Ce qui t’attire et te motive (page 4).</p>
-                          </div>
-                          <span class="text-[#6D28D9] font-bold">›</span>
-                        </div>
-                        <div class="rounded-2xl bg-[#FFFBEB] border border-[#FDE68A] p-4 flex items-center justify-between">
-                          <div>
-                            <p class="text-xs font-extrabold text-[#0F1035]">🏆 Aptitudes cognitives</p>
-                            <p class="text-[11px] text-[#42466B]">Tes points d’appui observés à un instant T (page 5).</p>
-                          </div>
-                          <span class="text-[#B45309] font-bold">›</span>
-                        </div>
-                        <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex items-center justify-between">
-                          <div>
-                            <p class="text-xs font-extrabold text-[#0F1035]">🥞 Personnalité (HEXACO)</p>
-                            <p class="text-[11px] text-[#42466B]">Ta façon d’interagir, de t’organiser et de réagir (page 6).</p>
-                          </div>
-                          <span class="text-[#6D28D9] font-bold">›</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Colonne 2 : Mes centres d'intérêt – RIASEC (Profil issu de ton rapport dossier 2187) -->
-                    <div class="lg:col-span-4 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                      <div>
-                        <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                          <span class="text-[#7C3AED]">📊</span>
-                          <span>Mes centres d’intérêt – RIASEC</span>
-                        </h3>
-                        <p class="text-[11px] text-[#42466B]">Profil d’intérêts issu de ton rapport (dossier {{ rdvNumber }}, page 4)</p>
-                      </div>
-                      <div class="space-y-2.5">
-                        <div
-                          *ngFor="let r of riasecOrderedDisplay"
-                          (click)="toggleRiasecPreference(r)"
-                          [class]="r.selected ? r.selectedContainerClass : 'rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-2.5 flex items-center justify-between text-xs font-semibold text-[#64748B] hover:border-[#CBD5E1] transition cursor-pointer'"
-                          class="p-2.5 flex items-center justify-between text-xs transition cursor-pointer"
-                        >
-                          <div class="flex items-center gap-2.5">
-                            <span [class]="r.badgeClass" class="h-6 w-6 rounded-full text-white font-extrabold flex items-center justify-center text-[11px] shadow-2xs">
-                              {{ r.letter }}
-                            </span>
-                            <span [class]="r.selected ? 'text-[#0F1035] font-black' : 'text-[#42466B]'">{{ r.name }}</span>
-                          </div>
-                          <span *ngIf="r.selected" [class]="r.selectedBadgePillClass" class="text-[10px] font-black px-2 py-0.5 rounded-full">
-                            Dominante
-                          </span>
-                          <span *ngIf="!r.selected" class="text-[10px] font-bold text-[#9CA3AF]">
-                            Secondaire
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Colonne 3 : Mes aptitudes + Ma personnalité – HEXACO -->
-                    <div class="lg:col-span-4 space-y-5">
-                      <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
-                        <div>
-                          <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                            <span class="text-[#7C3AED]">🏆</span>
-                            <span>Mes aptitudes (page 5)</span>
-                          </h3>
-                          <p class="text-[11px] text-[#42466B]">Fonctions cognitives expliquées dans ton rapport</p>
-                        </div>
-                        <ul class="space-y-1.5 text-xs font-bold text-[#31355B]">
-                          <li>✔ Originalité &amp; Flexibilité des catégories</li>
-                          <li>✔ Raisonnement déductif &amp; inductif</li>
-                          <li>✔ Mémorisation &amp; Visualisation</li>
-                          <li>✔ Attention sélective &amp; Partage du temps</li>
-                        </ul>
-                      </div>
-
-                      <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
-                        <div>
-                          <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-                            <span class="text-[#7C3AED]">🥞</span>
-                            <span>Ma personnalité – HEXACO (page 6)</span>
-                          </h3>
-                          <p class="text-[11px] text-[#42466B]">6 dimensions personnelles explorées (page 6)</p>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 text-[11px] font-extrabold text-[#0F1035]">
-                          <span class="rounded-full bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-1">Émotivité</span>
-                          <span class="rounded-full bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-1">Ouvert à l’expérience</span>
-                          <span class="rounded-full bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-1">Agréabilité</span>
-                          <span class="rounded-full bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-1">Humilité-honnêteté</span>
-                          <span class="rounded-full bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-1">Extraversion</span>
-                          <span class="rounded-full bg-[#F8F7FF] border border-[#E4E0F5] px-3 py-1">Caractère consciencieux</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Rangée inférieure : "Ce que ces résultats t'apportent" + "Et maintenant ?" -->
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-2">
-                      <h4 class="text-base font-extrabold text-[#0F1035]">⭐ Ce que ces résultats t’apportent</h4>
-                      <ul class="space-y-1.5 text-xs font-bold text-[#31355B]">
-                        <li>✔ Mieux comprendre tes envies et ton fonctionnement.</li>
-                        <li>✔ Explorer des métiers en lien avec ton profil (22 pistes, p. 8–16).</li>
-                        <li>✔ Préparer tes échanges avec ton conseiller.</li>
-                      </ul>
-                    </div>
-                    <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
-                      <div class="space-y-1">
-                        <h4 class="text-base font-extrabold text-[#0F1035]">🎯 Et maintenant ?</h4>
-                        <p class="text-xs text-[#42466B]">Découvre les métiers proposés dans ton bilan et construis la suite de ton parcours.</p>
-                      </div>
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('EXPLORER_METIERS')"
-                        class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white px-6 py-3 text-xs font-extrabold shadow"
-                      >
-                        → Explorer les métiers
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- SOUS-VUE 2A : SYNTHÈSE PERSONNALISÉE (Maquette "Mon bilan d'orientation _ synthèse personnalisée.webp") -->
-                <div *ngIf="!showAudioFocusSubView && !showDetailedResultsSubView" class="space-y-6">
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Bannière lecteur audio & Studio Voix personnalisée -->
-                    <div class="lg:col-span-7 rounded-[28px] bg-gradient-to-br from-[#161144] via-[#3B1278] to-[#6D28D9] text-white p-6 sm:p-7 shadow-xl flex flex-col justify-between relative overflow-hidden space-y-5">
-                      <!-- En-tête -->
-                      <div class="space-y-2">
-                        <div class="flex items-center justify-between gap-2 flex-wrap">
-                          <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[#E9D5FF] border border-white/20">
-                            🎙️ Synthèse vocale naturelle haute fidélité
-                          </span>
-                          <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white border border-white/20">
-                            Dossier Rdv {{ rdvNumber }}
-                          </span>
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                          Écoute la restitution de ton bilan
-                        </h2>
-                        <p class="text-xs sm:text-sm text-[#E7E8FB] leading-relaxed">
-                          Une explication simple, valorisante et personnalisée de tes résultats et des {{ careers.length }} pistes à explorer. Personnalise la voix et la tonalité selon tes préférences !
-                        </p>
-                      </div>
-
-                      <!-- Barre de lecture audio & Onde sonore animée -->
-                      <div class="rounded-2xl bg-black/25 border border-white/20 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 backdrop-blur-sm">
-                        <div class="flex items-center gap-3">
-                          <button
-                            type="button"
-                            (click)="toggleSpeech()"
-                            class="h-12 w-12 rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] border-2 border-white flex items-center justify-center text-lg font-bold shadow-lg transition transform hover:scale-105 active:scale-95 shrink-0"
-                            [title]="isSpeaking ? 'Mettre en pause' : 'Écouter avec la voix ' + currentVoice.name"
-                          >
-                            {{ isSpeaking ? '⏸' : '▶' }}
-                          </button>
-                          <div>
-                            <div class="text-sm font-extrabold flex items-center gap-2">
-                              <span>{{ isSpeaking ? (isTestingVoice ? 'Test en direct...' : 'Lecture en cours...') : 'Prêt à écouter' }}</span>
-                              <span *ngIf="isSpeaking" class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
-                            </div>
-                            <div class="text-[11px] text-[#DDD6FE]">
-                              Voix : <strong class="text-white">{{ currentVoice.avatarEmoji }} {{ currentVoice.name }}</strong> • Tonalité <strong class="text-white">{{ currentToneOption.label }}</strong>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Onde sonore animée et interactive -->
-                        <div class="flex items-center gap-1 h-8 px-2 overflow-hidden flex-1 max-w-[200px] justify-center">
-                          <span *ngFor="let h of [3,5,4,7,6,8,5,4,7,9,6,4,7,5,3,6,8,5,4,3]; let i = index"
-                            class="w-1 rounded-full transition-all duration-150"
-                            [ngClass]="isSpeaking ? 'bg-[#38BDF8] animate-pulse' : 'bg-[#C084FC]'"
-                            [style.height.px]="isSpeaking ? ((h * 3.2) + ((i % 4) * 2)) : (h * 2.5)">
-                          </span>
-                        </div>
-
-                        <!-- Durée et Vitesse de lecture -->
-                        <div class="flex items-center gap-2 shrink-0">
-                          <span class="text-xs font-mono font-bold text-white/90">0:00 / 6:08</span>
-                          <div class="flex bg-white/10 rounded-full p-0.5 border border-white/20 text-xs font-bold">
-                            <button
-                              *ngFor="let rate of [0.85, 1, 1.15]"
-                              type="button"
-                              (click)="setSpeechRate(rate)"
-                              [class]="speechRate === rate ? 'bg-white text-[#5B21B6] shadow' : 'text-white/80 hover:text-white'"
-                              class="px-2.5 py-0.5 rounded-full transition text-[11px]"
-                            >
-                              {{ rate }}x
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Studio de personnalisation vocale (Voix & Tonalité) -->
-                      <div class="rounded-2xl bg-white/10 border border-white/20 p-4 space-y-3.5 backdrop-blur-sm">
-                        <!-- Sélecteur de voix -->
-                        <div>
-                          <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-extrabold text-white flex items-center gap-1.5">
-                              <span>🗣️</span>
-                              <span>Choisis ta voix d'écoute :</span>
-                            </span>
-                            <span class="text-[11px] text-[#E9D5FF] font-medium hidden sm:inline">
-                              Voix humaine naturelle • Qualité HD
-                            </span>
-                          </div>
-                          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                            <button
-                              *ngFor="let persona of voicePersonas"
-                              type="button"
-                              (click)="selectVoice(persona.id)"
-                              [class]="selectedVoiceId === persona.id
-                                ? 'bg-white text-[#4C1D95] font-black shadow-lg ring-2 ring-[#C084FC] scale-[1.02]'
-                                : 'bg-white/10 text-white hover:bg-white/20 font-semibold'"
-                              class="rounded-xl p-2.5 text-left transition flex flex-col gap-1 cursor-pointer"
-                            >
-                              <div class="flex items-center justify-between">
-                                <span class="text-base">{{ persona.avatarEmoji }}</span>
-                                <span class="text-[10px] uppercase font-bold opacity-75">
-                                  {{ persona.gender === 'female' ? 'Femme' : 'Homme' }}
-                                </span>
-                              </div>
-                              <strong class="text-xs leading-none">{{ persona.name }}</strong>
-                              <span class="text-[10px] leading-tight opacity-80 line-clamp-1">{{ persona.tag.split('•')[1]?.trim() || persona.tag }}</span>
-                            </button>
-                          </div>
-                        </div>
-
-                        <!-- Sélecteur de tonalité & Bouton de test -->
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 border-t border-white/15">
-                          <div class="flex items-center gap-2 flex-wrap">
-                            <span class="text-xs font-extrabold text-white flex items-center gap-1 shrink-0">
-                              <span>🎭</span>
-                              <span>Tonalité :</span>
-                            </span>
-                            <div class="flex items-center gap-1.5 flex-wrap">
-                              <button
-                                *ngFor="let opt of toneOptions"
-                                type="button"
-                                (click)="selectTone(opt.id)"
-                                [class]="selectedTone === opt.id
-                                  ? 'bg-white text-[#5B21B6] font-extrabold shadow'
-                                  : 'bg-white/15 text-white/90 hover:bg-white/25 font-medium'"
-                                class="rounded-lg px-2.5 py-1 text-xs transition flex items-center gap-1"
-                                [title]="opt.description"
-                              >
-                                <span>{{ opt.icon }}</span>
-                                <span>{{ opt.label }}</span>
-                              </button>
-                            </div>
-                          </div>
-
-                          <!-- Bouton Tester la voix en direct -->
-                          <button
-                            type="button"
-                            (click)="testSelectedVoice()"
-                            class="rounded-xl bg-gradient-to-r from-[#F59E0B] to-[#F97316] text-white hover:brightness-110 px-3.5 py-1.5 text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition shrink-0"
-                            [title]="'Écouter un extrait de 3 secondes avec ' + currentVoice.name"
-                          >
-                            <span>🎙️</span>
-                            <span>{{ isTestingVoice ? 'Test en direct...' : 'Tester cette voix' }}</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Carte "En résumé" à droite -->
-                    <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-3">
-                      <h3 class="text-xl font-extrabold text-[#0F1035] flex items-center gap-2">
-                        <span class="text-[#7C3AED]">✨</span>
-                        <span>En résumé</span>
-                      </h3>
-                      <div class="rounded-2xl bg-[#F4F2FF] p-4 text-sm text-[#31355B] leading-relaxed">
-                        Ton bilan Rdv {{ rdvNumber }} met en avant des intérêts pour les domaines <strong>artistiques</strong>, <strong>entreprenants</strong> et <strong>réalistes / pratiques</strong> (page 4). Il suggère {{ careers.length }} pistes de métiers réparties sur 5 zones de préparation, qui restent des options à explorer avec ton conseiller.
-                      </div>
-                      <button
-                        type="button"
-                        (click)="showAudioFocusSubView = true"
-                        class="text-xs font-extrabold text-[#6D28D9] underline"
-                      >
-                        Ouvrir la transcription synchronisée et les chapitres →
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Rangée centrale : "Tes centres d'intérêt (RIASEC)" + "Tes principales aptitudes" -->
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    <!-- Carte RIASEC sans jauge chiffrée : encadrement de couleur pour chaque préférence sélectionnée -->
-                    <div class="lg:col-span-7 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4 flex flex-col justify-between">
-                      <div class="space-y-1">
-                        <div class="flex items-center justify-between">
-                          <h3 class="text-xl font-extrabold text-[#0F1035] flex items-center gap-2">
-                            <span class="text-[#7C3AED]">🎯</span>
-                            <span>Tes centres d’intérêt (RIASEC)</span>
-                          </h3>
-                          <span class="rounded-full bg-[#F3EFFE] px-3 py-1 text-xs font-bold text-[#6D28D9]">
-                            Profil RIASEC • Page 4
-                          </span>
-                        </div>
-                        <p class="text-xs text-[#555A8A]">
-                          Chaque préférence retenue dans ton bilan est encadrée de sa couleur signature. Clique pour ajuster.
-                        </p>
-                      </div>
-
-                      <!-- Liste des préférences RIASEC encadrées selon la sélection -->
-                      <div class="space-y-2.5">
-                        <div
-                          *ngFor="let r of riasecOrderedDisplay"
-                          (click)="toggleRiasecPreference(r)"
-                          [class]="r.selected ? r.selectedContainerClass : 'rounded-2xl border border-[#E5E7EB] bg-[#FAFAFC] hover:bg-white hover:border-[#CBD5E1] transition shadow-2xs cursor-pointer select-none'"
-                          class="p-3 sm:p-3.5 flex items-center justify-between gap-3 transition"
-                        >
-                          <div class="flex items-center gap-3 min-w-0">
-                            <span
-                              [class]="r.badgeClass"
-                              class="h-8 w-8 rounded-full text-white font-black flex items-center justify-center shrink-0 text-sm shadow-xs"
-                            >
-                              {{ r.letter }}
-                            </span>
-                            <div class="min-w-0">
-                              <div class="flex items-center gap-2 flex-wrap">
-                                <span class="font-extrabold text-[#0F1035] text-sm">{{ r.letter }} – {{ r.name }}</span>
-                                <span
-                                  *ngIf="r.selected"
-                                  [class]="r.selectedBadgePillClass"
-                                  class="inline-flex items-center gap-1 text-[11px] font-black px-2.5 py-0.5 rounded-full"
-                                >
-                                  ✨ Retenu dans ton bilan
-                                </span>
-                              </div>
-                              <span class="text-xs text-[#555A8A] block font-medium mt-0.5 truncate">{{ r.keywords }}</span>
-                            </div>
-                          </div>
-
-                          <div class="flex items-center gap-2 shrink-0">
-                            <span
-                              *ngIf="r.selected"
-                              [class]="r.checkBadgeClass"
-                              class="h-7 w-7 rounded-full flex items-center justify-center text-xs font-black shadow-xs shrink-0"
-                              title="Préférence retenue"
-                            >
-                              ✔
-                            </span>
-                            <span
-                              *ngIf="!r.selected"
-                              class="text-[11px] font-bold text-[#8E92BC] hover:text-[#7C3AED] px-2.5 py-1 rounded-lg border border-dashed border-[#D1D5DB]"
-                            >
-                              + Activer
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="pt-2 border-t border-[#F0EDFA] flex items-center justify-between text-[11px] text-[#555A8A]">
-                        <span>💡 Sans jauge chiffrée : orientation basée sur tes affinités qualitatives.</span>
-                        <span class="font-bold text-[#6D28D9]">{{ countSelectedRiasec() }} préférence(s) sélectionnée(s)</span>
-                      </div>
-                    </div>
-
-                    <!-- Carte Aptitudes & Personnalité HEXACO (Pages 5 & 6) -->
-                    <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-col justify-between space-y-4">
-                      <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="text-xl font-extrabold text-[#0F1035] flex items-center gap-2">
-                            <span class="text-[#7C3AED]">📊</span>
-                            <span>Aptitudes &amp; Personnalité</span>
-                          </h3>
-                          <span class="text-xs font-bold text-[#6D28D9]">Pages 5 &amp; 6</span>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-2.5 text-xs font-extrabold">
-                          <div class="rounded-2xl bg-gradient-to-r from-[#FAF5FF] to-white border border-[#C084FC] p-3 flex items-center gap-2 text-[#581C87] shadow-2xs">
-                            <span class="text-[#7C3AED] text-base">☆</span>
-                            <span>Flexibilité (p. 5)</span>
-                          </div>
-                          <div class="rounded-2xl bg-gradient-to-r from-[#EFF6FF] to-white border border-[#60A5FA] p-3 flex items-center gap-2 text-[#1E3A8A] shadow-2xs">
-                            <span class="text-[#3B82F6] text-base">⏱️</span>
-                            <span>Partage du temps</span>
-                          </div>
-                          <div class="rounded-2xl bg-gradient-to-r from-[#FDF2F8] to-white border border-[#F472B6] p-3 flex items-center gap-2 text-[#831843] shadow-2xs">
-                            <span class="text-[#EC4899] text-base">🧠</span>
-                            <span>Mémorisation</span>
-                          </div>
-                          <div class="rounded-2xl bg-gradient-to-r from-[#FFFBEB] to-white border border-[#FBBF24] p-3 flex items-center gap-2 text-[#78350F] shadow-2xs">
-                            <span class="text-[#D97706] text-base">💡</span>
-                            <span>Ouverture (HEXACO)</span>
-                          </div>
-                          <div class="rounded-2xl bg-gradient-to-r from-[#ECFDF5] to-white border border-[#34D399] p-3 flex items-center gap-2 text-[#064E3B] shadow-2xs">
-                            <span class="text-[#059669] text-base">🤝</span>
-                            <span>Agréabilité (p. 6)</span>
-                          </div>
-                          <div class="rounded-2xl bg-gradient-to-r from-[#F5F3FF] to-white border border-[#A78BFA] p-3 flex items-center gap-2 text-[#4C1D95] shadow-2xs">
-                            <span class="text-[#7C3AED] text-base">💬</span>
-                            <span>Extraversion (p. 6)</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="p-3 rounded-xl bg-[#F4F2FF] text-[11px] text-[#42466B]">
-                        <strong>Note méthodologique (p. 5) :</strong> Les résultats aux jeux cognitifs représentent une image à un instant T et non une évaluation définitive.
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Rangée inférieure : "D'où viennent ces résultats ?" + Gros bouton violet "Explorer les métiers proposés par mon bilan" -->
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                    <div class="lg:col-span-7 rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm flex items-center gap-4">
-                      <span class="text-3xl">📖</span>
-                      <div class="text-xs sm:text-sm">
-                        <h4 class="font-extrabold text-[#0F1035]">D’où viennent ces résultats ?</h4>
-                        <p class="text-[#42466B]">
-                          Ils proviennent de ton rapport d’orientation Rdv {{ rdvNumber }} établi par le Centre des Possibles et validé par ton conseiller.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div class="lg:col-span-5">
-                      <button
-                        type="button"
-                        (click)="selectYoungTab('EXPLORER_METIERS')"
-                        class="w-full rounded-[26px] bg-gradient-to-r from-[#6328E8] via-[#7C3AED] to-[#9333EA] text-white p-5 font-extrabold text-base shadow-lg hover:opacity-95 transition flex items-center justify-center gap-3"
-                      >
-                        <span>🧭</span>
-                        <span>Explorer les métiers proposés par mon bilan →</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- SOUS-VUE 2B : RESTITUTION AUDIO & TRANSCRIPTION SYNCHRONISÉE (Maquette "Restitution audio personnalisée du bilan.webp") -->
-                <div *ngIf="showAudioFocusSubView" class="space-y-6">
-                  <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-7 shadow-lg">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                      <div class="lg:col-span-8 space-y-2">
-                        <h2 class="text-2xl sm:text-3xl font-extrabold">Ma restitution personnalisée</h2>
-                        <p class="text-sm text-[#E7E8FB]">
-                          Écoute la synthèse de ton bilan Rdv {{ rdvNumber }}, suis la transcription en temps réel et consulte les sources et références du rapport.
-                        </p>
-                      </div>
-                      <div class="lg:col-span-4 space-y-2 text-xs font-extrabold text-[#0F1035]">
-                        <div class="rounded-full bg-white px-4 py-2 flex items-center gap-2">
-                          <span class="text-[#7C3AED]">🎧</span>
-                          <span>Synthèse audio (≈ 6 min)</span>
-                        </div>
-                        <div class="rounded-full bg-white px-4 py-2 flex items-center gap-2">
-                          <span class="text-[#7C3AED]">📄</span>
-                          <span>Transcription interactive</span>
-                        </div>
-                        <div class="rounded-full bg-white px-4 py-2 flex items-center gap-2">
-                          <span class="text-[#7C3AED]">🔗</span>
-                          <span>Références vérifiables (p. 1–17)</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Colonne gauche : Lecteur + Chapitres de l'audio (1..6) -->
-                    <div class="lg:col-span-5 space-y-5">
-                      <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-4">
-                        <div class="flex items-center justify-between">
-                          <div>
-                            <h3 class="text-lg font-extrabold text-[#0F1035]">Écouter ma synthèse</h3>
-                            <p class="text-xs text-[#42466B]">Bilan d’orientation – Dossier {{ rdvNumber }}</p>
-                          </div>
-                          <span class="rounded-full bg-[#EDE9FE] px-2.5 py-1 text-[11px] font-extrabold text-[#6D28D9]">
-                            {{ currentToneOption.icon }} {{ currentToneOption.label }}
-                          </span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                          <button
-                            type="button"
-                            (click)="toggleSpeech()"
-                            class="h-12 w-12 rounded-full bg-[#7C3AED] text-white font-bold text-lg flex items-center justify-center shadow transition hover:bg-[#6D28D9] shrink-0"
-                            [title]="isSpeaking ? 'Mettre en pause' : 'Écouter avec ' + currentVoice.name"
-                          >
-                            {{ isSpeaking ? '⏸' : '▶' }}
-                          </button>
-                          <div class="flex-1">
-                            <audio controls [src]="audioSrcUrl" class="w-full h-9"></audio>
-                          </div>
-                          <button
-                            type="button"
-                            (click)="cycleSpeechRate()"
-                            class="rounded-full border border-[#D8DCF0] px-3 py-1 text-xs font-extrabold text-[#0F1035]"
-                          >
-                            {{ speechRate }}x
-                          </button>
-                        </div>
-                        <!-- Mini studio voix -->
-                        <div class="rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] p-3 space-y-2 text-xs">
-                          <div class="flex items-center justify-between">
-                            <span class="font-bold text-[#42466B] flex items-center gap-1.5">
-                              <span>🗣️ Voix active :</span>
-                              <strong class="text-[#0F1035]">{{ currentVoice.avatarEmoji }} {{ currentVoice.name }}</strong>
-                            </span>
-                            <span class="text-[11px] text-[#6D28D9] font-bold">
-                              {{ currentVoice.gender === 'female' ? 'Féminine' : 'Masculine' }}
-                            </span>
-                          </div>
-                          <div class="flex items-center justify-between gap-2 pt-1 border-t border-[#E4E0F5]">
-                            <span class="text-[11px] text-[#555A8A] truncate">{{ currentVoice.tag }}</span>
-                            <button
-                              type="button"
-                              (click)="testSelectedVoice()"
-                              class="text-[11px] font-extrabold text-[#6D28D9] hover:underline flex items-center gap-1 shrink-0"
-                            >
-                              <span>🎙️</span>
-                              <span>{{ isTestingVoice ? 'Test...' : 'Tester la voix' }}</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Les 6 Épisodes thématiques du bilan -->
-                      <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
-                        <div class="flex items-center justify-between">
-                          <h3 class="text-base font-extrabold text-[#0F1035]">Les 6 épisodes de mon bilan</h3>
-                          <span class="text-xs font-bold text-[#7C3AED]">≈ 2 min / épisode</span>
-                        </div>
-                        <div class="space-y-1.5 text-xs">
-                          <button
-                            *ngFor="let ep of audioEpisodes; let idx = index"
-                            type="button"
-                            (click)="selectEpisode(idx)"
-                            [class]="selectedEpisodeIndex === idx
-                              ? 'bg-[#EDE9FE] text-[#5B21B6] font-extrabold border-[#7C3AED] ring-2 ring-purple-200'
-                              : 'bg-[#F8F7FF] text-[#0F1035] font-semibold border-transparent hover:bg-[#F3EFFE]'"
-                            class="w-full rounded-xl border px-3.5 py-2.5 flex items-center justify-between transition cursor-pointer text-left"
-                          >
-                            <span class="truncate pr-2">▶ {{ ep.episodeNumber }}. {{ ep.title }}</span>
-                            <span class="font-mono text-[11px] shrink-0 text-[#6D28D9] font-bold">~2 min</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Colonne droite : Transcription synchronisée + Références vérifiables -->
-                    <div class="lg:col-span-7 space-y-5">
-                      <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                        <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
-                          <div>
-                            <div class="flex items-center gap-2">
-                              <span class="rounded bg-[#7C3AED] text-white px-2 py-0.5 text-xs font-bold">CC</span>
-                              <h3 class="text-lg font-black text-[#0F1035]">
-                                Épisode {{ currentEpisode.episodeNumber }} : {{ currentEpisode.title }}
-                              </h3>
-                            </div>
-                            <p class="text-xs text-[#6B7280] mt-0.5">
-                              {{ currentEpisode.wordCount }} mots • Synchronisé avec la voix • Sourcé pages {{ currentEpisode.sourcePages.join(', ') }}
-                            </p>
-                          </div>
-                          <span class="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full font-extrabold">
-                            ✓ Validé par Sarah Dupont
-                          </span>
-                        </div>
-
-                        <!-- Segments de transcription synchronisés -->
-                        <div class="space-y-2.5">
-                          <div
-                            *ngFor="let seg of currentEpisode.segments; let idx = index"
-                            (click)="activeAudioSegmentIndex = idx"
-                            [class]="activeAudioSegmentIndex === idx
-                              ? 'bg-[#EDE9FE] border-l-4 border-[#7C3AED]'
-                              : 'bg-[#F8F7FF] border-l-2 border-transparent hover:bg-[#F3EFFE]'"
-                            class="p-3.5 rounded-2xl cursor-pointer transition space-y-1"
-                          >
-                            <div class="flex items-center justify-between text-xs font-bold text-[#6D28D9]">
-                              <span class="font-mono">▶ [{{ seg.startMs / 1000 | number:'1.0-0' }}s – {{ seg.endMs / 1000 | number:'1.0-0' }}s]</span>
-                              <span class="text-[11px] text-[#42466B]">Preuve : Rapport p. {{ currentEpisode.sourcePages[0] }}</span>
-                            </div>
-                            <p class="text-sm text-[#0F1035] leading-relaxed font-medium">
-                              {{ seg.text }}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Références vérifiables (extrait du rapport 2187) -->
-                      <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
-                        <h3 class="text-base font-extrabold text-[#0F1035]">
-                          📖 Références vérifiables (extrait du rapport {{ rdvNumber }})
-                        </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                          <div class="rounded-2xl border border-[#E4E0F5] p-3.5 bg-[#F8F7FF] flex items-center justify-between">
-                            <div>
-                              <span class="font-extrabold text-[#EF4444] block">PDF • Rapport complet</span>
-                              <span class="text-[#42466B]">Dossier {{ rdvNumber }} (17 pages)</span>
-                            </div>
-                            <span>↗</span>
-                          </div>
-                          <div class="rounded-2xl border border-[#E4E0F5] p-3.5 bg-[#F8F7FF] flex items-center justify-between">
-                            <div>
-                              <span class="font-extrabold text-[#6D28D9] block">Résultats RIASEC &amp; Jeux</span>
-                              <span class="text-[#42466B]">Pages 4 – 5</span>
-                            </div>
-                            <span>↗</span>
-                          </div>
-                          <div class="rounded-2xl border border-[#E4E0F5] p-3.5 bg-[#F8F7FF] flex items-center justify-between">
-                            <div>
-                              <span class="font-extrabold text-[#6D28D9] block">HEXACO &amp; Zones Métiers</span>
-                              <span class="text-[#42466B]">Pages 6 – 16</span>
-                            </div>
-                            <span>↗</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <!-- ========================================================== -->
+              <!-- VUE JEUNE : MON COACH IA (Atelier de communication)         -->
+              <!-- ========================================================== -->
+              <div *ngIf="activeYoungTab === 'COACH_IA'" class="space-y-6">
+                <app-coach-ia
+                  [youngDisplayName]="'Emma D.'"
+                  (saveImmersion)="onSaveImmersionMessage($event)"
+                ></app-coach-ia>
               </div>
 
               <!-- ========================================================== -->
@@ -5106,8 +4420,10 @@ export class AppComponent implements OnInit {
     if (this.journeyMode === 'AUTONOMOUS') {
       return [
         { id: 'ACCUEIL_AUTONOME', label: 'Accueil', icon: '🏠' },
-        { id: 'CATALOGUE_METIERS', label: 'Explorer les métiers', icon: '🔍', badge: '721' },
+        { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
         { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
+        { id: 'COACH_IA', label: 'Mon Coach IA', icon: '✨', badge: 'Nouveau' },
+        { id: 'CATALOGUE_METIERS', label: 'Explorer les métiers', icon: '🔍', badge: '721' },
         { id: 'ANNUAIRE_SUPPORT', label: 'Trouver de l’aide', icon: '🏛️' },
         { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
       ];
@@ -5116,11 +4432,20 @@ export class AppComponent implements OnInit {
       { id: 'ACCUEIL', label: 'Accueil', icon: '🏠' },
       { id: 'MON_BILAN', label: 'Mon bilan', icon: '🎧' },
       { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: '💼', badge: 'Nouveau' },
+      { id: 'COACH_IA', label: 'Mon Coach IA', icon: '✨', badge: 'Nouveau' },
       { id: 'MON_PARCOURS', label: 'Mon parcours', icon: '🗺️' },
       { id: 'MES_QUESTIONS', label: 'Mes questions', icon: '💬' },
       { id: 'MES_DOCUMENTS', label: 'Mes documents', icon: '📁' },
       { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: '⚙️' }
     ];
+  }
+
+  onSaveImmersionMessage(msg: string): void {
+    if (this.immersionProject) {
+      if (this.immersionProject.applicationDraft) {
+        this.immersionProject.applicationDraft.body = msg;
+      }
+    }
   }
 
   // MODULE IMMERSION PRO — État réactif

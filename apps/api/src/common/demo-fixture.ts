@@ -113,6 +113,62 @@ export interface AuditLogEntry {
   timestamp: string;
 }
 
+export type AppointmentStatus = 'CONFIRMED' | 'PLANNED' | 'COMPLETED' | 'TO_CONFIRM' | 'CANCELLED' | 'ABSENT';
+export type AppointmentModality = 'IN_PERSON' | 'PHONE' | 'VIDEO';
+
+export interface InMemoryAppointment {
+  id: string;
+  tenantId: string;
+  counselorId: string;
+  youngProfileId: string;
+  youngName: string;
+  youngAge: string;
+  dossierRef: string;
+  title: string;
+  motif: string;
+  objectives: string[];
+  date: string; // '2026-11-18'
+  startHour: string; // '14:00'
+  endHour: string; // '15:00'
+  durationMinutes: number;
+  modality: AppointmentModality;
+  location: string;
+  meetingUrl?: string;
+  status: AppointmentStatus;
+  preparation?: {
+    checklist: { id: string; label: string; checked: boolean }[];
+    privateNotes?: string;
+  };
+  report?: {
+    topicsDiscussed: string[];
+    observations: string;
+    decisions: string[];
+    sharedSummary?: string;
+    isPublishedToYoung: boolean;
+  };
+  actions?: {
+    id: string;
+    title: string;
+    assignee: 'YOUNG' | 'COUNSELOR';
+    dueDate?: string;
+    priority: 'HIGH' | 'MEDIUM' | 'LOW';
+    status: 'TODO' | 'IN_PROGRESS' | 'DONE';
+  }[];
+}
+
+export interface InMemoryFollowUpYouth {
+  id: string;
+  youngName: string;
+  avatarUrl?: string;
+  dossierRef: string;
+  situation: 'INTERVIEW_COMPLETED' | 'PLANNED' | 'ACTION_PENDING' | 'IN_PROGRESS';
+  situationLabel: string;
+  situationBadgeClass: string;
+  nextAction: string;
+  nextActionIcon: string;
+  dueDate?: string;
+}
+
 export function createInitialFictionalLeoFacts(): DomainFact[] {
   const tenantId = DEMO_IDS.TENANT_NICE;
   const reportId = DEMO_IDS.REPORT_LEO;
@@ -977,6 +1033,322 @@ export function createInitialDemoState() {
     }
   ];
 
+  const appointments: InMemoryAppointment[] = [
+    {
+      id: 'apt-01',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: DEMO_IDS.YOUNG_PROFILE_LEO,
+      youngName: 'Emma D.',
+      youngAge: '16 ans',
+      dossierRef: 'Rdv 2187',
+      title: 'Bilan & pistes',
+      motif: 'Débriefing complet du bilan et premières pistes professionnelles.',
+      objectives: ['Restituer les résultats RIASEC et HEXACO', 'Explorer les pistes prioritaires', 'Initier le projet Immersion Pro'],
+      date: '2026-11-16',
+      startHour: '09:00',
+      endHour: '10:00',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Centre des Possibles – Salle 1',
+      status: 'COMPLETED',
+      preparation: {
+        checklist: [
+          { id: 'chk-1', label: 'Consulter le rapport de 17 pages', checked: true },
+          { id: 'chk-2', label: 'Valider les 7 faits prioritaires', checked: true }
+        ],
+        privateNotes: 'Très bon contact. Profil artistique marqué, confirme son attrait pour le terrain.'
+      },
+      report: {
+        topicsDiscussed: ['Profil RIASEC', '22 pistes', 'Immersion peintre décorateur'],
+        observations: 'Emma s\'est montrée très réceptive et motivée par les métiers concrets.',
+        decisions: ['Lancement de la recherche d\'immersion', 'Prise de contact avec Atelier Décors'],
+        sharedSummary: 'Entretien très constructif. Nous avons validé la recherche de stage découverte.',
+        isPublishedToYoung: true
+      }
+    },
+    {
+      id: 'apt-02',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-noah-p',
+      youngName: 'Noah P.',
+      youngAge: '17 ans',
+      dossierRef: 'Dossier 2192',
+      title: 'Questions & orientations',
+      motif: 'Répondre aux questions sur les passerelles Bac Pro / BTS.',
+      objectives: ['Clarifier les conditions d\'accès aux formations'],
+      date: '2026-11-16',
+      startHour: '16:00',
+      endHour: '17:00',
+      durationMinutes: 60,
+      modality: 'VIDEO',
+      location: 'Visioconférence MonBilan+',
+      status: 'CANCELLED'
+    },
+    {
+      id: 'apt-03',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-aicha-d',
+      youngName: 'Aïcha D.',
+      youngAge: '18 ans',
+      dossierRef: 'Dossier 2189',
+      title: 'Orientation post-bac',
+      motif: 'Échanger sur les candidatures Parcoursup et les ressources ONISEP.',
+      objectives: ['Valider les vœux en communication', 'Vérifier les critères de sélection'],
+      date: '2026-11-17',
+      startHour: '11:00',
+      endHour: '12:00',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Centre des Possibles – Bureau 3',
+      status: 'COMPLETED'
+    },
+    {
+      id: 'apt-04',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-mateo-r',
+      youngName: 'Matéo R.',
+      youngAge: '17 ans',
+      dossierRef: 'Dossier 2190',
+      title: 'Rdv 2187 — Analyse et approfondissement',
+      motif: 'Échanger sur les résultats du bilan et approfondir 2 métiers.',
+      objectives: [
+        'Revenir sur les intérêts et aptitudes.',
+        'Explorer les métiers identifiés.',
+        'Définir les prochaines étapes.'
+      ],
+      date: '2026-11-18',
+      startHour: '14:00',
+      endHour: '15:00',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Centre des Possibles – Salle 2',
+      status: 'CONFIRMED',
+      preparation: {
+        checklist: [
+          { id: 'c1', label: 'Consulter le bilan Rdv 2190 et la synthèse', checked: true },
+          { id: 'c2', label: 'Relire les points clés (intérêts, aptitudes, 22 pistes)', checked: true },
+          { id: 'c3', label: 'Identifier les questions à approfondir', checked: false },
+          { id: 'c4', label: 'Préparer des ressources (formations, stages, liens)', checked: false }
+        ],
+        privateNotes: 'Matéo hésite entre informatique et audiovisuel. Faire le point sur ses contraintes de transport.'
+      },
+      report: {
+        topicsDiscussed: ['Intérêts RIASEC', 'Métiers du numérique'],
+        observations: 'Discussion franche et motivée.',
+        decisions: ['Préparer une immersion d\'observation'],
+        sharedSummary: 'Échange constructif sur ton orientation.',
+        isPublishedToYoung: false
+      },
+      actions: [
+        {
+          id: 'act-01',
+          title: 'Explorer la fiche métier Développeur web',
+          assignee: 'YOUNG',
+          dueDate: '2026-11-25',
+          priority: 'HIGH',
+          status: 'IN_PROGRESS'
+        },
+        {
+          id: 'act-02',
+          title: 'Transmettre la convention d\'immersion',
+          assignee: 'COUNSELOR',
+          dueDate: '2026-11-22',
+          priority: 'HIGH',
+          status: 'TODO'
+        }
+      ]
+    },
+    {
+      id: 'apt-05',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-lucas-m',
+      youngName: 'Lucas M.',
+      youngAge: '16 ans',
+      dossierRef: 'Dossier 2188',
+      title: 'Suivi projet d\'orientation',
+      motif: 'Faire le point sur l\'entretien et les démarches en cours.',
+      objectives: ['Valider le choix de filière', 'Fixer les prochaines étapes'],
+      date: '2026-11-19',
+      startHour: '09:30',
+      endHour: '10:30',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Lycée Masséna – Salle d\'orientation',
+      status: 'PLANNED'
+    },
+    {
+      id: 'apt-06',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-sofia-k',
+      youngName: 'Sofia K.',
+      youngAge: '17 ans',
+      dossierRef: 'Dossier 2191',
+      title: 'Choix de formation',
+      motif: 'Sélection des formations après analyse des résultats.',
+      objectives: ['Comparer les lycées pro de l\'académie de Nice'],
+      date: '2026-11-20',
+      startHour: '15:00',
+      endHour: '16:00',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Centre des Possibles – Bureau 1',
+      status: 'TO_CONFIRM'
+    },
+    // Rendez-vous supplémentaires pour les compteurs KPI exacts (6 à venir, 4 réalisés)
+    {
+      id: 'apt-07',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-julien-b',
+      youngName: 'Julien B.',
+      youngAge: '18 ans',
+      dossierRef: 'Dossier 2185',
+      title: 'Bilan final',
+      motif: 'Finalisation du projet professionnel.',
+      objectives: ['Clôturer le bilan'],
+      date: '2026-11-13',
+      startHour: '14:00',
+      endHour: '15:00',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Centre des Possibles',
+      status: 'COMPLETED'
+    },
+    {
+      id: 'apt-08',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-leila-m',
+      youngName: 'Leïla M.',
+      youngAge: '16 ans',
+      dossierRef: 'Dossier 2184',
+      title: 'Restitution',
+      motif: 'Restitution du bilan initial.',
+      objectives: ['Présentation des pistes'],
+      date: '2026-11-12',
+      startHour: '10:00',
+      endHour: '11:00',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Centre des Possibles',
+      status: 'COMPLETED'
+    },
+    {
+      id: 'apt-09',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-clara-v',
+      youngName: 'Clara V.',
+      youngAge: '17 ans',
+      dossierRef: 'Dossier 2193',
+      title: 'Point d\'étape',
+      motif: 'Point sur les recherches d\'immersion.',
+      objectives: ['Revue des candidatures'],
+      date: '2026-11-23',
+      startHour: '11:00',
+      endHour: '12:00',
+      durationMinutes: 60,
+      modality: 'PHONE',
+      location: 'Entretien téléphonique',
+      status: 'CONFIRMED'
+    },
+    {
+      id: 'apt-10',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-yassine-k',
+      youngName: 'Yassine K.',
+      youngAge: '19 ans',
+      dossierRef: 'Dossier 2194',
+      title: 'Découverte métiers',
+      motif: 'Exploration des métiers de l\'hôtellerie.',
+      objectives: ['Sélection des entreprises partenaires'],
+      date: '2026-11-24',
+      startHour: '15:30',
+      endHour: '16:30',
+      durationMinutes: 60,
+      modality: 'IN_PERSON',
+      location: 'Centre des Possibles',
+      status: 'CONFIRMED'
+    },
+    {
+      id: 'apt-11',
+      tenantId: DEMO_IDS.TENANT_NICE,
+      counselorId: DEMO_IDS.COUNSELOR_SOPHIE,
+      youngProfileId: 'young-camille-l',
+      youngName: 'Camille L.',
+      youngAge: '16 ans',
+      dossierRef: 'Dossier 2195',
+      title: 'Suivi Parcoursup',
+      motif: 'Préparation des pièces du dossier.',
+      objectives: ['Relecture des projets motivés'],
+      date: '2026-11-25',
+      startHour: '10:00',
+      endHour: '11:00',
+      durationMinutes: 60,
+      modality: 'VIDEO',
+      location: 'Visioconférence MonBilan+',
+      status: 'PLANNED'
+    }
+  ];
+
+  const followUpYouths: InMemoryFollowUpYouth[] = [
+    {
+      id: 'fu-1',
+      youngName: 'Emma D.',
+      avatarUrl: 'assets/visuals/avatar-emma.png',
+      dossierRef: 'Rdv 2187',
+      situation: 'INTERVIEW_COMPLETED',
+      situationLabel: 'Entretien réalisé',
+      situationBadgeClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+      nextAction: 'Consulter le compte rendu',
+      nextActionIcon: 'file-text',
+      dueDate: undefined
+    },
+    {
+      id: 'fu-2',
+      youngName: 'Lucas M.',
+      avatarUrl: 'assets/visuals/avatar-lucas.png',
+      dossierRef: 'Dossier 2188',
+      situation: 'PLANNED',
+      situationLabel: 'Rendez-vous planifié',
+      situationBadgeClass: 'bg-amber-50 text-amber-700 border border-amber-200',
+      nextAction: 'Préparer l\'entretien',
+      nextActionIcon: 'pen-line',
+      dueDate: '19 nov. 2026'
+    },
+    {
+      id: 'fu-3',
+      youngName: 'Aïcha D.',
+      avatarUrl: 'assets/visuals/avatar-aicha.png',
+      dossierRef: 'Dossier 2189',
+      situation: 'ACTION_PENDING',
+      situationLabel: 'Action en attente',
+      situationBadgeClass: 'bg-sky-50 text-sky-700 border border-sky-200',
+      nextAction: 'Vérifier l\'avancement (ressources, candidatures)',
+      nextActionIcon: 'list-checks',
+      dueDate: '21 nov. 2026'
+    },
+    {
+      id: 'fu-4',
+      youngName: 'Matéo R.',
+      avatarUrl: 'assets/visuals/avatar-mateo.png',
+      dossierRef: 'Dossier 2190',
+      situation: 'IN_PROGRESS',
+      situationLabel: 'Dossier en cours',
+      situationBadgeClass: 'bg-purple-50 text-purple-700 border border-purple-200',
+      nextAction: 'Examiner les éléments disponibles (extraction)',
+      nextActionIcon: 'search',
+      dueDate: undefined
+    }
+  ];
+
   return {
     report,
     restitution,
@@ -990,7 +1362,9 @@ export function createInitialDemoState() {
     immersionProjects,
     applications,
     observations,
-    reviews
+    reviews,
+    appointments,
+    followUpYouths
   };
 }
 

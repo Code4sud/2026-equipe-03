@@ -448,5 +448,68 @@ export class MonBilanController {
     const actor = this.appService.resolveActorFromHeaders(headers);
     return this.appService.getUserSessions(actor);
   }
+
+  // --------------------------------------------------------------------------
+  // Routes Suivi & Rendez-vous (Espace Conseiller)
+  // --------------------------------------------------------------------------
+  @Get('appointments')
+  getAppointments(
+    @Query('date') date?: string,
+    @Query('status') status?: string,
+    @Headers() headers?: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers ?? {});
+    return this.appService.getAppointments(actor, { date, status });
+  }
+
+  @Get('appointments/:id')
+  getAppointmentById(
+    @Param('id') id: string,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getAppointmentById(actor, id);
+  }
+
+  @Post('appointments')
+  createAppointment(
+    @Body() body: any,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.createAppointment(actor, body);
+  }
+
+  @Patch('appointments/:id/status')
+  updateAppointmentStatus(
+    @Param('id') id: string,
+    @Body() body: { status: any; reason?: string },
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.updateAppointmentStatus(actor, id, body.status, body.reason);
+  }
+
+  @Patch('appointments/:id')
+  updateAppointment(
+    @Param('id') id: string,
+    @Body() body: any,
+    @Headers() headers: Record<string, string | string[] | undefined>
+  ) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.updateAppointment(actor, id, body);
+  }
+
+  @Get('counselor/follow-up/summary')
+  getFollowUpSummary(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getFollowUpSummary(actor);
+  }
+
+  @Get('counselor/follow-up/youths')
+  getFollowUpYouths(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const actor = this.appService.resolveActorFromHeaders(headers);
+    return this.appService.getFollowUpYouths(actor);
+  }
 }
 

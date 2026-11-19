@@ -37,6 +37,7 @@ import { QuestionsPageComponent } from './features/questions/questions-page.comp
 import { DocumentsPageComponent } from './features/documents/documents-page.component';
 import { CounselorSettingsComponent, CounselorProfileData } from './features/settings/counselor-settings.component';
 import { CounselorFactReviewComponent } from './features/counselor/counselor-fact-review.component';
+import { CounselorAppointmentsComponent } from './features/counselor/counselor-appointments.component';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -272,6 +273,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     QuestionsPageComponent,
     DocumentsPageComponent,
     CounselorFactReviewComponent,
+    CounselorAppointmentsComponent,
     SettingsComponent,
     CounselorSettingsComponent,
     LoginComponent
@@ -3101,213 +3103,12 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
             </div>
 
-            <!-- VUE CONSEILLER 6 : SUIVI & RENDEZ-VOUS (Maquettes "Suivi des rendez-vous MonBilan+.webp" & "Tableau de suivi des rendez-vous.webp") -->
-            <div *ngIf="activeCounselorTab === 'SUIVI_RDV'" class="space-y-6">
-              <!-- Barre de sélection entre les 2 maquettes : "Mon agenda (Vue Calendrier)" et "Mes rendez-vous (Vue Liste)" -->
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <div class="flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    (click)="rdvSubView = 'AGENDA'"
-                    [class]="rdvSubView === 'AGENDA'
-                      ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow'
-                      : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
-                    class="rounded-full px-5 py-2.5 text-xs sm:text-sm font-extrabold transition"
-                  >
-                    <mb-icon name="calendar"></mb-icon> Mon agenda (Semaine du 16 au 22 nov. 2026)
-                  </button>
-                  <button
-                    type="button"
-                    (click)="rdvSubView = 'LISTE'"
-                    [class]="rdvSubView === 'LISTE'
-                      ? 'bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white shadow'
-                      : 'bg-white text-[#0F1035] border border-[#E4E0F5]'"
-                    class="rounded-full px-5 py-2.5 text-xs sm:text-sm font-extrabold transition"
-                  >
-                    <mb-icon name="clipboard-list"></mb-icon> Mes rendez-vous (Tableau de suivi)
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  (click)="statusBanner = 'Nouveau créneau d’échange programmé au Centre des Possibles (Salle 2).'"
-                  class="rounded-full bg-[#6328E8] text-white px-5 py-2.5 text-xs font-extrabold shadow"
-                >
-                  + Nouveau rendez-vous
-                </button>
-              </div>
-
-              <!-- SOUS-VUE 6A : MON AGENDA HEBDOMADAIRE (Maquette "Suivi des rendez-vous MonBilan+.webp") -->
-              <div *ngIf="rdvSubView === 'AGENDA'" class="space-y-6">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <!-- Grille agenda hebdomadaire -->
-                  <div class="lg:col-span-7 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                    <div class="flex items-center justify-between">
-                      <h2 class="text-lg font-extrabold text-[#0F1035]"><mb-icon name="calendar"></mb-icon> Semaine du 16 au 22 nov. 2026</h2>
-                      <span class="rounded-full bg-[#F3EFFE] text-[#6D28D9] px-3 py-1 text-xs font-extrabold">Aujourd’hui</span>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2.5 text-center text-xs">
-                      <div class="p-2.5 rounded-xl bg-[#F8F7FF] space-y-3">
-                        <strong class="block text-[#0F1035]">Lun 16</strong>
-                        <div class="p-2 rounded-lg bg-[#EDE9FE] text-[#5B21B6] font-bold">09:00 Emma D. (Bilan &amp; pistes)</div>
-                        <div class="mt-10 p-2 rounded-lg bg-[#FCE7F3] text-[#BE185D] font-bold">16:00 Noah P. (Questions)</div>
-                      </div>
-                      <div class="p-2.5 rounded-xl bg-[#F8F7FF]">
-                        <strong class="block text-[#0F1035]">Mar 17</strong>
-                        <div class="mt-8 p-2 rounded-lg bg-[#FEF3C7] text-[#B45309] font-bold">11:00 Aïcha D. (Orientation)</div>
-                      </div>
-                      <div class="p-2.5 rounded-xl bg-[#EDE9FE] border border-[#7C3AED]">
-                        <strong class="block text-[#6D28D9]">Mer 18</strong>
-                        <div class="mt-12 p-2 rounded-lg bg-[#7C3AED] text-white font-bold shadow">14:00 Matéo R. / Rdv 2187</div>
-                      </div>
-                      <div class="p-2.5 rounded-xl bg-[#F8F7FF]">
-                        <strong class="block text-[#0F1035]">Jeu 19</strong>
-                        <div class="mt-2 p-2 rounded-lg bg-[#FCE7F3] text-[#BE185D] font-bold">09:00 Lucas M. (Suivi projet)</div>
-                      </div>
-                      <div class="p-2.5 rounded-xl bg-[#F8F7FF]">
-                        <strong class="block text-[#0F1035]">Ven 20</strong>
-                        <div class="mt-14 p-2 rounded-lg bg-[#DCFCE7] text-[#15803D] font-bold">15:00 Sofia K. (Choix formation)</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Fiche de préparation du RDV -->
-                  <div class="lg:col-span-5 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                    <div class="flex items-center justify-between">
-                      <div>
-                        <h3 class="text-lg font-extrabold text-[#0F1035]">Emma D. (Dossier Rdv {{ rdvNumber }})</h3>
-                        <p class="text-xs text-[#42466B]">16 ans • Centre des Possibles – Salle 2</p>
-                      </div>
-                      <span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-3 py-1 text-xs font-extrabold">✓ Rendez-vous confirmé</span>
-                    </div>
-                    <p class="text-xs text-[#42466B]"><mb-icon name="calendar"></mb-icon> Mer. 18 nov. 2026 • <mb-icon name="clock"></mb-icon> 14h00 – 15h00 (1 h)</p>
-                    <div class="flex flex-wrap gap-2">
-                      <button type="button" (click)="activeCounselorTab = 'VALIDATIONS_PUBLICATIONS'" class="rounded-full bg-[#7C3AED] text-white px-4 py-1.5 text-xs font-extrabold"><mb-icon name="file-text"></mb-icon> Préparer l’échange</button>
-                      <button type="button" (click)="rdvSubView = 'LISTE'" class="rounded-full bg-[#F4F2FF] text-[#6D28D9] px-4 py-1.5 text-xs font-extrabold"><mb-icon name="pencil"></mb-icon> Voir tous les RDV</button>
-                    </div>
-                    <div class="space-y-2 pt-3 border-t border-[#F0EDFA] text-xs font-bold text-[#31355B]">
-                      <p class="text-[#0F1035] font-extrabold"><mb-icon name="sparkles"></mb-icon> Préparation du rendez-vous :</p>
-                      <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-[#22C55E]" /> Consulter le bilan Rdv {{ rdvNumber }} et la synthèse</label>
-                      <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-[#22C55E]" /> Relire les points clés (intérêts, aptitudes, 22 pistes)</label>
-                      <label class="flex items-center gap-2"><input type="checkbox" checked class="accent-[#22C55E]" /> Identifier les {{ questions.length }} questions à approfondir</label>
-                      <label class="flex items-center gap-2"><input type="checkbox" class="accent-[#22C55E]" /> Préparer des ressources (formations, stages, liens)</label>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 4 cartes KPI hebdomadaires du bas -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <span class="text-xs font-bold text-[#42466B]">Cette semaine • Planifiés</span>
-                    <p class="text-2xl font-black text-[#0F1035] mt-1">6</p>
-                  </div>
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <span class="text-xs font-bold text-[#42466B]">Rendez-vous réalisés</span>
-                    <p class="text-2xl font-black text-[#15803D] mt-1">4</p>
-                  </div>
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <span class="text-xs font-bold text-[#42466B]">Jeunes à relancer</span>
-                    <p class="text-2xl font-black text-[#D97706] mt-1">2</p>
-                  </div>
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <span class="text-xs font-bold text-[#42466B]">Suivi post-restitution</span>
-                    <p class="text-2xl font-black text-[#6D28D9] mt-1">Actif</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SOUS-VUE 6B : TABLEAU DE SUIVI DES RENDEZ-VOUS (Maquette "Tableau de suivi des rendez-vous.webp") -->
-              <div *ngIf="rdvSubView === 'LISTE'" class="space-y-6">
-                <!-- 5 Compteurs supérieurs -->
-                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <p class="text-2xl font-black text-[#6D28D9]">1</p>
-                    <span class="text-xs font-bold text-[#42466B]">Rendez-vous aujourd’hui</span>
-                  </div>
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <p class="text-2xl font-black text-[#D97706]">3</p>
-                    <span class="text-xs font-bold text-[#42466B]">À venir</span>
-                  </div>
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <p class="text-2xl font-black text-[#15803D]">4</p>
-                    <span class="text-xs font-bold text-[#42466B]">Réalisés</span>
-                  </div>
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <p class="text-2xl font-black text-[#2563EB]">1</p>
-                    <span class="text-xs font-bold text-[#42466B]">À reprogrammer</span>
-                  </div>
-                  <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 shadow-sm">
-                    <p class="text-2xl font-black text-[#DC2626]">0</p>
-                    <span class="text-xs font-bold text-[#42466B]">Annulé</span>
-                  </div>
-                </div>
-
-                <!-- Rendez-vous du jour -->
-                <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="calendar"></mb-icon> Rendez-vous du jour — Mer. 18 nov. 2026</h3>
-                  <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex items-center gap-4">
-                      <div class="rounded-xl bg-[#EDE9FE] text-[#6D28D9] px-3.5 py-2 text-xs font-extrabold">
-                        14:30 – 15:30
-                      </div>
-                      <div>
-                        <p class="text-sm font-extrabold text-[#0F1035]">Emma D. (Dossier Rdv {{ rdvNumber }})</p>
-                        <p class="text-xs text-[#42466B]">Entretien de suivi — Échanger sur son bilan et ses {{ favoriteCareers.length }} pistes retenues</p>
-                      </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                      <span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-3 py-1 text-xs font-extrabold"><mb-icon name="hourglass"></mb-icon> À venir</span>
-                      <button
-                        type="button"
-                        (click)="activeCounselorTab = 'VALIDATIONS_PUBLICATIONS'"
-                        class="rounded-full bg-[#6328E8] text-white px-4 py-2 text-xs font-extrabold shadow"
-                      >
-                        <mb-icon name="folder"></mb-icon> Ouvrir le dossier
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Prochains rendez-vous -->
-                <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
-                  <h3 class="text-base font-extrabold text-[#0F1035]"><mb-icon name="clipboard-list"></mb-icon> Prochains rendez-vous</h3>
-                  <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
-                      <thead>
-                        <tr class="border-b border-[#E4E0F5] text-[#42466B]">
-                          <th class="pb-3 font-extrabold">Date &amp; heure</th>
-                          <th class="pb-3 font-extrabold">Jeune</th>
-                          <th class="pb-3 font-extrabold">Objet</th>
-                          <th class="pb-3 font-extrabold">Statut</th>
-                          <th class="pb-3 font-extrabold text-right">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody class="divide-y divide-[#F0EDFA] font-bold text-[#0F1035]">
-                        <tr>
-                          <td class="py-3">Jeu. 19 nov. 14:00 – 15:00</td>
-                          <td class="py-3">Lucas M.</td>
-                          <td class="py-3 text-[#42466B]">Point d’avancement</td>
-                          <td class="py-3"><span class="rounded-full bg-[#FEF3C7] text-[#B45309] px-2.5 py-1 text-[11px] font-extrabold"><mb-icon name="hourglass"></mb-icon> À venir</span></td>
-                          <td class="py-3 text-right"><button type="button" (click)="activeCounselorTab = 'DOSSIERS_JEUNES'" class="text-[#6D28D9] font-extrabold hover:underline">Voir →</button></td>
-                        </tr>
-                        <tr>
-                          <td class="py-3">Ven. 20 nov. 10:30 – 11:00</td>
-                          <td class="py-3">Aïcha D.</td>
-                          <td class="py-3 text-[#42466B]">Restitution du bilan</td>
-                          <td class="py-3"><span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-2.5 py-1 text-[11px] font-extrabold">✓ Confirmé</span></td>
-                          <td class="py-3 text-right"><button type="button" (click)="activeCounselorTab = 'DOSSIERS_JEUNES'" class="text-[#6D28D9] font-extrabold hover:underline">Voir →</button></td>
-                        </tr>
-                        <tr>
-                          <td class="py-3">Lun. 23 nov. 16:00 – 16:30</td>
-                          <td class="py-3">Matéo R.</td>
-                          <td class="py-3 text-[#42466B]">Préparation du projet</td>
-                          <td class="py-3"><span class="rounded-full bg-[#DCFCE7] text-[#15803D] px-2.5 py-1 text-[11px] font-extrabold">✓ Confirmé</span></td>
-                          <td class="py-3 text-right"><button type="button" (click)="activeCounselorTab = 'DOSSIERS_JEUNES'" class="text-[#6D28D9] font-extrabold hover:underline">Voir →</button></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+            <!-- VUE CONSEILLER 6 : SUIVI & RENDEZ-VOUS (Fidèle à la nouvelle maquette officielle) -->
+            <div *ngIf="activeCounselorTab === 'SUIVI_RDV'">
+              <app-counselor-appointments
+                (viewAllDossiers)="activeCounselorTab = 'DOSSIERS_JEUNES'"
+                (openYoungPreparation)="onOpenYoungPreparation($event)"
+              ></app-counselor-appointments>
             </div>
 
             <!-- VUE CONSEILLER 7 : STATISTIQUES -->
@@ -5669,5 +5470,11 @@ export class AppComponent implements OnInit {
       );
     }
     return list;
+  }
+
+  onOpenYoungPreparation(apt: any): void {
+    this.activeCounselorTab = 'IMPORTER_RAPPORT';
+    this.counselorWorkflowStep = 3;
+    this.statusBanner = `Ouverture de la préparation pour ${apt.youngName} (${apt.dossierRef}).`;
   }
 }

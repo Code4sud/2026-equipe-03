@@ -62,6 +62,9 @@ import {
   InMemoryQuestion,
   InMemoryReport,
   InMemoryRestitution,
+  InMemoryAppointment,
+  InMemoryFollowUpYouth,
+  AppointmentStatus,
   DEMO_SUPPORT_RESOURCES,
   loadOnetCareersCatalog,
   DEMO_LOCAL_OPPORTUNITIES
@@ -81,6 +84,8 @@ export class MonBilanApplicationService {
   private readonly reviews: DomainImmersionReview[] = [];
   private readonly questions: InMemoryQuestion[] = [];
   private readonly auditEvents: AuditLogEntry[] = [];
+  private readonly appointments: InMemoryAppointment[] = [];
+  private readonly followUpYouths: InMemoryFollowUpYouth[] = [];
   private readonly journeyModes = new Map<string, JourneyMode>();
   private readonly userFavorites = new Map<string, Set<string>>();
   private audioWavBuffer: Buffer;
@@ -117,6 +122,12 @@ export class MonBilanApplicationService {
     this.applications.push(...(initial.applications ?? []));
     this.observations.push(...(initial.observations ?? []));
     this.reviews.push(...(initial.reviews ?? []));
+    if (initial.appointments) {
+      this.appointments.push(...initial.appointments);
+    }
+    if (initial.followUpYouths) {
+      this.followUpYouths.push(...initial.followUpYouths);
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -1307,5 +1318,126 @@ export class MonBilanApplicationService {
         }
       ]
     };
+  }
+
+  // --------------------------------------------------------------------------
+  // Module Suivi & Rendez-vous
+  // --------------------------------------------------------------------------
+  getAppointments(actor: AccessActor, filters?: { date?: string; status?: string }) {
+    let list = this.appointments.filter(a => a.tenantId === actor.activeTenantId);
+    if (filters?.status) {
+      list = list.filter(a => a.status === filters.status);
+    }
+    if (filters?.date) {
+      list = list.filter(a => a.date === filters.date);
+    }
+    return list;
+  }
+
+  getAppointmentById(actor: AccessActor, id: string) {
+    const apt = this.appointments.find(a => a.id === id && a.tenantId === actor.activeTenantId);
+    if (!apt) {
+      throw new NotFoundException(`Appointment with id ${id} not found.`);
+    }
+    return apt;
+  }
+
+  createAppointment(actor: AccessActor, input: any) {
+    if (!input.youngName || !input.date || !input.startHour) {
+      throw new BadRequestException('Le nom du jeune, la date et l\'heure de début sont obligatoires.');
+    }
+
+    // Détection de chevauchement sur la même date et heure
+    const conflict = this.appointments.find(
+      a => a.tenantId === actor.activeTenantId &&
+           a.date === input.date &&
+           a.status !== 'CANCELLED' &&
+           a.startHour === input.startHour
+    );
+    if (conflict) {
+      throw new BadRequestException(`Un rendez-vous existe déjà à ${input.startHour} avec ${conflict.youngName}.`);
+    }
+
+    const duration = input.durationMinutes || 60;
+    const [startH, startM] = input.startHour.split(':').map(Number);
+    const endMinutesTotal = startH * 60 + startM + duration;
+    const endH = String(Math.floor(endMinutesTotal / 60)).padStart(2, '0');
+    const endM = String(endMinutesTotal % 60).padStart(2, '0');
+    const calculatedEndHour = `${endH}:${endM}`;
+
+    const newApt: InMemoryAppointment = {
+      id: `apt-${Date.now()}`,
+      tenantId: actor.activeTenantId,
+      counselorId: actor.userId,
+      youngProfileId: input.youngProfileId || `young-${Date.now()}`,
+      youngName: input.youngName,
+      youngAge: input.youngAge || '17 ans',
+      dossierRef: input.dossierRef || `Dossier ${Math.floor(1000 + Math.random() * 9000)}`,
+      title: input.title || input.motif || 'Entretien de suivi',
+      motif: input.motif || 'Accompagnement et suivi d\'orientation',
+      objectives: input.objectives || ['Faire le point sur le parcours'],
+      date: input.date,
+      startHour: input.startHour,
+      endHour: input.endHour || calculatedEndHour,
+      durationMinutes: duration,
+      modality: input.modality || 'IN_PERSON',
+      location: input.location || 'Centre des Possibles – Salle 2',
+      meetingUrl: input.meetingUrl,
+      status: 'CONFIRMED',
+      preparation: {
+        checklist: [
+          { id: 'c1', label: 'Consulter le bilan et les notes', checked: false },
+          { id: 'c2', label: 'Préparer les pistes à aborder', checked: false }
+        ],
+        privateNotes: input.privateNotes || ''
+      }
+    };
+
+    this.appointments.push(newApt);
+    this.recordAudit(actor, 'CREATE_APPOINTMENT', 'Appointment', newApt.id);
+    return newApt;
+  }
+
+  updateAppointmentStatus(actor: AccessActor, id: string, status: AppointmentStatus, _cancellationReason?: string) {
+    const apt = this.getAppointmentById(actor, id);
+    apt.status = status;
+    this.recordAudit(actor, 'UPDATE_APPOINTMENT_STATUS', 'Appointment', id);
+    return apt;
+  }
+
+  updateAppointment(actor: AccessActor, id: string, data: any) {
+    const apt = this.getAppointmentById(actor, id);
+    if (data.motif) apt.motif = data.motif;
+    if (data.objectives) apt.objectives = data.objectives;
+    if (data.location) apt.location = data.location;
+    if (data.date) apt.date = data.date;
+    if (data.startHour) apt.startHour = data.startHour;
+    if (data.endHour) apt.endHour = data.endHour;
+    if (data.status) apt.status = data.status;
+    if (data.preparation) apt.preparation = { ...apt.preparation, ...data.preparation };
+    if (data.report) apt.report = { ...apt.report, ...data.report };
+    if (data.actions) apt.actions = data.actions;
+
+    this.recordAudit(actor, 'UPDATE_APPOINTMENT', 'Appointment', id);
+    return apt;
+  }
+
+  getFollowUpSummary(actor: AccessActor) {
+    const counselorApts = this.appointments.filter(a => a.tenantId === actor.activeTenantId);
+    const upcoming = counselorApts.filter(a => a.status === 'CONFIRMED' || a.status === 'PLANNED' || a.status === 'TO_CONFIRM').length;
+    const completed = counselorApts.filter(a => a.status === 'COMPLETED').length;
+    const toRelaunch = 2; // Règle métier : jeunes sans échange depuis > 14 jours
+    const pendingActions = 3; // Règle métier : actions assignées en attente
+
+    return {
+      upcomingCount: upcoming,
+      completedCount: completed,
+      toRelaunchCount: toRelaunch,
+      pendingActionsCount: pendingActions
+    };
+  }
+
+  getFollowUpYouths(_actor: AccessActor) {
+    return this.followUpYouths;
   }
 }

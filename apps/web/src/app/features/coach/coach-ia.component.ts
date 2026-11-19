@@ -43,9 +43,12 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
 
         <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div class="flex items-start sm:items-center gap-4 max-w-2xl">
-            <!-- Avatar Robot Mascotte dans carré translucide -->
-            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 border border-white/20 shadow-md">
-              <span class="text-3xl sm:text-4xl">🤖</span>
+            <!-- Icône Étincelle (Sparkle) conforme à la maquette -->
+            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 border border-white/25 shadow-md">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L13.8 8.2L20 10L13.8 11.8L12 18L10.2 11.8L4 10L10.2 8.2L12 2Z" />
+                <path d="M19 16L19.9 19.1L23 20L19.9 20.9L19 24L18.1 20.9L15 20L18.1 19.1L19 16Z" opacity="0.7" />
+              </svg>
             </div>
             <div class="space-y-1">
               <div class="flex items-center gap-2">
@@ -62,12 +65,7 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
             </div>
           </div>
 
-          <!-- Robot interactif animé à droite (Mascotte officielle MonBilan+) -->
-          <div class="hidden lg:flex items-center gap-3 shrink-0 pr-2">
-            <div class="w-24 h-24 rounded-3xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-lg p-2">
-              <span class="text-5xl animate-bounce">👋🤖</span>
-            </div>
-          </div>
+
         </div>
       </div>
 
@@ -281,8 +279,14 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
               <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 sm:p-5 space-y-3">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-base shrink-0">
-                      🤖
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center shrink-0 border border-purple-200">
+                      <svg class="w-4 h-4 text-[#7C3AED]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                        <circle cx="12" cy="5" r="2"></circle>
+                        <path d="M12 7v4"></path>
+                        <circle cx="8.5" cy="16" r="1" fill="currentColor"></circle>
+                        <circle cx="15.5" cy="16" r="1" fill="currentColor"></circle>
+                      </svg>
                     </div>
                     <div>
                       <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035]">
@@ -350,8 +354,14 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
               <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 sm:p-5 space-y-3">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-base shrink-0">
-                      🤖
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center shrink-0 border border-purple-200">
+                      <svg class="w-4 h-4 text-[#7C3AED]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                        <circle cx="12" cy="5" r="2"></circle>
+                        <path d="M12 7v4"></path>
+                        <circle cx="8.5" cy="16" r="1" fill="currentColor"></circle>
+                        <circle cx="15.5" cy="16" r="1" fill="currentColor"></circle>
+                      </svg>
                     </div>
                     <div>
                       <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035]">

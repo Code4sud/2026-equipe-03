@@ -4,10 +4,10 @@ import { SITE_CONFIG } from '@/config/site';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'MonBilan+ | Comprends ton bilan. Explore tes possibles. — Équipe 03',
+  title: 'MonBilan+ | Comprends ton bilan. Explore tes possibles. Passe à l’action. — Équipe 03',
   description: SITE_CONFIG.description,
   openGraph: {
-    title: 'MonBilan+ — Restitution audio, interactive et vérifiable des Rapports des Possibles',
+    title: 'MonBilan+ — Comprends ton bilan. Explore tes possibles. Passe à l’action.',
     description: SITE_CONFIG.description,
     locale: 'fr_FR',
     type: 'website'

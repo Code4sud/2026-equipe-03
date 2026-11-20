@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   valueProposition: 'Ton bilan prend tout son sens. Ton avenir prend forme.',
   signature: 'Comprendre son bilan. Explorer ses possibles. Passer à l’action.',
   description:
-    'MonBilan+ prolonge la restitution du Rapport des Possibles grâce à des audios pédagogiques de 2 minutes, puis accompagne le jeune dans la découverte des métiers et la préparation de ses démarches.',
+    'MonBilan+ aide les jeunes à mieux se connaître et à construire leur avenir. Grâce à des audios de 2 minutes, ils comprennent leur bilan d\'orientation, explorent les métiers et passent à l\'action, à leur rythme, seuls ou accompagnés par un conseiller.',
   professionalValidationNotice:
     'Les restitutions sont vérifiées et validées par un professionnel avant d’être mises à disposition du jeune.',
   demoAppUrl: './app/index.html',

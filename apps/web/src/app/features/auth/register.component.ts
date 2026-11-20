@@ -246,7 +246,7 @@ export interface RegisterSuccessEvent {
               >
                 <div class="flex items-center gap-3.5 sm:gap-4">
                   <!-- Icône Boussole -->
-                  <div class="w-12 h-12 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
+                  <div class="w-12 h-12 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
                     <mb-icon name="compass"></mb-icon>
                   </div>
                   <div class="space-y-0.5">
@@ -278,7 +278,7 @@ export interface RegisterSuccessEvent {
               >
                 <div class="flex items-center gap-3.5 sm:gap-4">
                   <!-- Icône Groupe de personnes -->
-                  <div class="w-12 h-12 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
+                  <div class="w-12 h-12 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
                     <mb-icon name="users"></mb-icon>
                   </div>
                   <div class="space-y-0.5">
@@ -310,7 +310,7 @@ export interface RegisterSuccessEvent {
               >
                 <div class="flex items-center gap-3.5 sm:gap-4">
                   <!-- Icône Mallette -->
-                  <div class="w-12 h-12 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
+                  <div class="w-12 h-12 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl shrink-0 group-hover:scale-105 transition-transform">
                     <mb-icon name="briefcase"></mb-icon>
                   </div>
                   <div class="space-y-0.5">

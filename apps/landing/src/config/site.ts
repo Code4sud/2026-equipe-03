@@ -15,7 +15,7 @@ export const SITE_CONFIG = {
     'Les restitutions sont vérifiées et validées par un professionnel avant d’être mises à disposition du jeune.',
   demoAppUrl: './app/index.html',
   counselorAppUrl: './app/index.html#counselor',
-  registerAppUrl: './app/index.html',
+  registerAppUrl: './app/index.html#register',
   hackathonTeamNumber: '03',
   hackathonRepoUrl: 'https://github.com/Code4sud/2026-equipe-03'
 } as const;

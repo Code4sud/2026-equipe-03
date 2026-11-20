@@ -5333,9 +5333,30 @@ export class AppComponent implements OnInit {
       }
       if (window.location.hash === '#counselor') {
         this.activePortal = 'COUNSELOR';
+      } else if (window.location.hash === '#register') {
+        this.isAuthenticated = false;
+        this.authView = 'REGISTER';
+      } else if (window.location.hash === '#login') {
+        this.isAuthenticated = false;
+        this.authView = 'LOGIN';
       }
     }
     await this.trySyncWithBackendApi();
+  }
+
+  @HostListener('window:hashchange')
+  onHashChange(): void {
+    if (typeof window !== 'undefined') {
+      if (window.location.hash === '#counselor') {
+        this.activePortal = 'COUNSELOR';
+      } else if (window.location.hash === '#register') {
+        this.isAuthenticated = false;
+        this.authView = 'REGISTER';
+      } else if (window.location.hash === '#login') {
+        this.isAuthenticated = false;
+        this.authView = 'LOGIN';
+      }
+    }
   }
 
   async trySyncWithBackendApi(): Promise<void> {

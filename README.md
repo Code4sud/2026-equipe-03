@@ -7,14 +7,69 @@ Projet réalisé à Nice les 18, 19 et 20 novembre 2026, sur le thème **« L'or
 
 ## Le projet
 
-**« Comprends ton bilan. Explore tes possibles. Passe à l'action. »**  
-*MonBilan+ aide les jeunes à mieux se connaître et à construire leur avenir. Grâce à des audios de 2 minutes, ils comprennent leur bilan d'orientation, explorent les métiers et passent à l'action, à leur rythme, seuls ou accompagnés par un conseiller.*
+### Le problème
 
-- **Constat & Problème :** Au Centre des Possibles, un jeune reçoit un Rapport des Possibles de 17 pages présentant sa personnalité, ses centres d'intérêt, ses aptitudes et différentes pistes professionnelles. Malgré la richesse de ce document et l'entretien de 15 minutes avec un professionnel, certaines données restent difficiles à retenir, à comprendre ou à transformer en démarches concrètes. Le défi n'est donc pas seulement de produire un bilan : c'est de permettre au jeune de se l'approprier et de passer à l'action.
-- **Solution MonBilan+ :** Une plateforme d'orientation qui accompagne le jeune de la compréhension de ses résultats jusqu'à la construction de ses prochaines étapes. Deux expériences complémentaires :
-  1. **Comprendre son bilan** (pour les jeunes avec Rapport des Possibles) : audios courts de 2 min, vulgarisation bienveillante, transcriptions accessibles, références directes aux pages du rapport (dossier Emma Dubois, Rdv 2187), espace questions pour le conseiller, et validation obligatoire par un professionnel avant publication.
-  2. **Explorer et passer à l'action** (avec ou sans rapport préalable) : découverte sans pression des métiers, immersion professionnelle locale (Côte d'Azur / 06), annuaire de support et suivi d'objectifs.
-- **IA éthique & Supervision humaine :** L'IA est un outil pédagogique facilitant la reformulation et l'accessibilité. Elle ne réalise aucun nouveau diagnostic psychométrique et ne remplace ni le psychologue ni le conseiller. Zéro hallucination, traçabilité documentaire absolue et conformité RGPD stricte.
+Choisir son orientation est une étape importante, mais comprendre ses résultats et savoir quoi en faire reste difficile pour de nombreux jeunes.
+
+Au Centre des Possibles, un jeune peut recevoir un Rapport des Possibles de 17 pages présentant sa personnalité, ses centres d'intérêt, ses aptitudes et différentes pistes professionnelles. Malgré la richesse de ce document et l'entretien avec un professionnel, certaines informations peuvent être difficiles à retenir, à comprendre ou à transformer en démarches concrètes.
+
+**Le défi n'est donc pas seulement de produire un bilan : c'est de permettre au jeune de se l'approprier et de passer à l'action.**
+
+### Notre solution : MonBilan+
+
+MonBilan+ est une plateforme numérique d'orientation qui accompagne les jeunes de la compréhension de leurs résultats jusqu'à la construction de leurs prochaines étapes.
+
+Notre ambition : rendre l'orientation plus accessible, interactive et humaine, sans remplacer les professionnels qui accompagnent les jeunes.
+
+La plateforme s'articule autour de deux expériences complémentaires.
+
+**1. Comprendre son bilan**
+
+Pour les jeunes disposant d'un Rapport des Possibles, MonBilan+ transforme les informations du document en contenus pédagogiques accessibles :
+
+- Des épisodes audio courts, d'environ deux minutes, pour comprendre les différentes dimensions du bilan.
+- Des explications simples sur la personnalité, les centres d'intérêt, les aptitudes et les pistes professionnelles.
+- Des transcriptions accessibles pour lire ou réécouter à son rythme.
+- Des références aux pages du rapport original pour vérifier les informations présentées.
+- Un espace pour préparer ses questions et prolonger les échanges avec son conseiller.
+
+Les restitutions personnalisées sont soumises à la vérification et à la validation d'un professionnel avant leur publication.
+
+**2. Explorer et passer à l'action**
+
+MonBilan+ ne s'arrête pas à l'explication du rapport. La plateforme aide le jeune à poursuivre sa réflexion :
+
+- Découvrir des métiers et leurs caractéristiques.
+- Identifier les pistes qui éveillent sa curiosité.
+- Enregistrer ses centres d'intérêt et ses découvertes.
+- Préparer des démarches, des rencontres ou des immersions professionnelles.
+- Organiser ses prochaines étapes et suivre son parcours.
+
+Un parcours autonome permet également aux jeunes sans Rapport des Possibles de commencer à explorer les métiers et les ressources d'orientation disponibles.
+
+### Un accompagnement humain renforcé par l'IA
+
+L'intelligence artificielle intervient comme un outil pédagogique au service du jeune et du professionnel.
+
+Elle facilite la reformulation de contenus complexes, la préparation de restitutions accessibles et l'exploration des possibilités. Elle ne réalise pas de nouveau diagnostic psychométrique et ne remplace ni le psychologue ni le conseiller.
+
+Les résultats personnalisés restent fondés sur les informations du rapport original, avec une supervision humaine et des références vérifiables.
+
+### Une solution pour les jeunes et les structures
+
+Pour les jeunes, MonBilan+ rend l'orientation plus compréhensible, encourage l'autonomie et facilite le passage à l'action.
+
+Pour les conseillers, la plateforme offre un prolongement pédagogique du bilan et un support pour préparer les échanges et accompagner les démarches.
+
+Pour les structures d'orientation et d'insertion, MonBilan+ ouvre la perspective d'une meilleure continuité entre évaluation, restitution et accompagnement.
+
+### Notre démonstration
+
+Le prototype développé pendant le Hackathon Azuréen #3 présente notamment une restitution interactive fondée sur un Rapport des Possibles de démonstration, l'exploration des métiers et les espaces Jeune et Conseiller.
+
+Les données du dossier de démonstration ne représentent pas un jeune réel.
+
+**MonBilan+ — Comprends ton bilan. Explore tes possibles. Passe à l'action.**
 
 ## Lancer le projet
 

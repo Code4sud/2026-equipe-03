@@ -71,7 +71,7 @@ import { loadSavedDrafts, SavedDraft } from '../../shared/autonomous-data';
       >
         <div class="flex items-start gap-4">
           <div class="h-12 w-12 rounded-2xl bg-[#7C3AED] text-white flex items-center justify-center text-xl shrink-0 shadow-md">
-            <span>⏱️</span>
+            <span><mb-icon name="timer"></mb-icon></span>
           </div>
           <div class="space-y-1">
             <span class="text-[11px] font-black uppercase tracking-wider text-[#7C3AED] block">

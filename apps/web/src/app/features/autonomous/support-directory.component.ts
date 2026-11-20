@@ -8,6 +8,7 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import {
   INITIAL_SUPPORT_RESOURCES,
@@ -34,7 +35,7 @@ export interface SupportStep {
 @Component({
   selector: 'app-support-directory',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="max-w-4xl mx-auto space-y-6 pb-16 animate-fadeIn">
 
@@ -98,11 +99,11 @@ export interface SupportStep {
                 *ngIf="selectedNeedId === 'UNKNOWN'"
                 class="absolute top-3.5 right-3.5 h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shadow-xs"
               >
-                ✓
+                <mb-icon name="check"></mb-icon>
               </span>
 
               <div class="h-12 w-12 rounded-full bg-[#F3EFFE] text-[#7C3AED] flex items-center justify-center text-xl mb-3 group-hover:scale-105 transition">
-                🧭
+                <mb-icon name="compass"></mb-icon>
               </div>
               <h3 class="font-extrabold text-sm sm:text-base text-[#0F1035] leading-snug">
                 Je ne sais pas quoi faire
@@ -125,11 +126,11 @@ export interface SupportStep {
                 *ngIf="selectedNeedId === 'TRAINING'"
                 class="absolute top-3.5 right-3.5 h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shadow-xs"
               >
-                ✓
+                <mb-icon name="check"></mb-icon>
               </span>
 
               <div class="h-12 w-12 rounded-full bg-[#F3EFFE] text-[#7C3AED] flex items-center justify-center text-xl mb-3 group-hover:scale-105 transition">
-                🎓
+                <mb-icon name="graduation-cap"></mb-icon>
               </div>
               <h3 class="font-extrabold text-sm sm:text-base text-[#0F1035] leading-snug">
                 Je cherche une formation
@@ -152,11 +153,11 @@ export interface SupportStep {
                 *ngIf="selectedNeedId === 'JOB_INTERNSHIP'"
                 class="absolute top-3.5 right-3.5 h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shadow-xs"
               >
-                ✓
+                <mb-icon name="check"></mb-icon>
               </span>
 
               <div class="h-12 w-12 rounded-full bg-[#F3EFFE] text-[#7C3AED] flex items-center justify-center text-xl mb-3 group-hover:scale-105 transition">
-                💼
+                <mb-icon name="briefcase"></mb-icon>
               </div>
               <h3 class="font-extrabold text-sm sm:text-base text-[#0F1035] leading-snug">
                 Je cherche un stage ou un emploi
@@ -179,11 +180,11 @@ export interface SupportStep {
                 *ngIf="selectedNeedId === 'TALK'"
                 class="absolute top-3.5 right-3.5 h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shadow-xs"
               >
-                ✓
+                <mb-icon name="check"></mb-icon>
               </span>
 
               <div class="h-12 w-12 rounded-full bg-[#F3EFFE] text-[#7C3AED] flex items-center justify-center text-xl mb-3 group-hover:scale-105 transition">
-                💬
+                <mb-icon name="message-circle"></mb-icon>
               </div>
               <h3 class="font-extrabold text-sm sm:text-base text-[#0F1035] leading-snug">
                 J'aimerais parler à quelqu'un
@@ -230,7 +231,7 @@ export interface SupportStep {
 
           <div class="flex items-center gap-3">
             <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-xl font-bold border border-[#E9D5FF] shrink-0">
-              🧭
+              <mb-icon name="compass"></mb-icon>
             </div>
             <div>
               <h2 class="text-xl sm:text-2xl font-black text-[#0F1035] tracking-tight">
@@ -251,11 +252,11 @@ export interface SupportStep {
               [(ngModel)]="searchCity"
               class="rounded-full bg-white border border-[#D8DCF0] px-4 py-2 text-xs font-bold text-[#0F1035] appearance-none pr-8 cursor-pointer shadow-2xs outline-none focus:border-[#7C3AED]"
             >
-              <option value="Nice">📍 Nice</option>
-              <option value="Antibes">📍 Antibes</option>
-              <option value="Cannes">📍 Cannes</option>
-              <option value="Grasse">📍 Grasse</option>
-              <option value="ALL">📍 Tout le 06</option>
+              <option value="Nice">Nice</option>
+              <option value="Antibes">Antibes</option>
+              <option value="Cannes">Cannes</option>
+              <option value="Grasse">Grasse</option>
+              <option value="ALL">Tout le 06</option>
             </select>
             <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">▼</span>
           </div>
@@ -266,10 +267,10 @@ export interface SupportStep {
               [(ngModel)]="searchRadiusKm"
               class="rounded-full bg-white border border-[#D8DCF0] px-4 py-2 text-xs font-bold text-[#0F1035] appearance-none pr-8 cursor-pointer shadow-2xs outline-none focus:border-[#7C3AED]"
             >
-              <option [value]="5">🎯 5 km</option>
-              <option [value]="10">🎯 10 km</option>
-              <option [value]="20">🎯 20 km</option>
-              <option [value]="50">🎯 50 km</option>
+              <option [value]="5">5 km</option>
+              <option [value]="10">10 km</option>
+              <option [value]="20">20 km</option>
+              <option [value]="50">50 km</option>
             </select>
             <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 pointer-events-none">▼</span>
           </div>
@@ -281,7 +282,7 @@ export interface SupportStep {
             [class]="filterOnlyFree ? 'bg-[#EDE9FE] text-[#7C3AED] border-[#DDD6FE]' : 'bg-white text-gray-500 border-[#D8DCF0]'"
             class="rounded-full border px-4 py-2 text-xs font-black flex items-center gap-1.5 transition cursor-pointer shadow-2xs"
           >
-            <span>🏷️</span>
+            <span><mb-icon name="tag"></mb-icon></span>
             <span>Gratuit</span>
           </button>
         </div>
@@ -316,19 +317,19 @@ export interface SupportStep {
 
             <!-- Adresse & Vérification -->
             <div class="flex items-center gap-1.5 text-xs font-semibold text-[#42466B] pl-0.5">
-              <span>📍</span>
+              <span><mb-icon name="map-pin"></mb-icon></span>
               <span>{{ org.city }} — {{ org.address }}</span>
               <span class="text-emerald-600 font-extrabold flex items-center gap-0.5 ml-1">
-                <span>✓</span>
+                <span><mb-icon name="check"></mb-icon></span>
                 <span>adresse vérifiée</span>
               </span>
             </div>
 
             <!-- Tiroir Coordonnées dépliable -->
             <div *ngIf="expandedOrgId === org.id" class="p-4 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] space-y-2 text-xs text-[#0F1035] animate-fadeIn">
-              <p *ngIf="org.phone"><strong>📞 Téléphone :</strong> <a [href]="'tel:' + org.phone" class="text-[#7C3AED] font-bold hover:underline">{{ org.phone }}</a></p>
-              <p *ngIf="org.email"><strong>✉️ Email :</strong> <a [href]="'mailto:' + org.email" class="text-[#7C3AED] font-bold hover:underline">{{ org.email }}</a></p>
-              <p *ngIf="org.websiteUrl"><strong>🌐 Site officiel :</strong> <a [href]="org.websiteUrl" target="_blank" class="text-[#7C3AED] font-bold hover:underline">Visiter le site officiel ↗</a></p>
+              <p *ngIf="org.phone"><strong><mb-icon name="phone"></mb-icon> Téléphone :</strong> <a [href]="'tel:' + org.phone" class="text-[#7C3AED] font-bold hover:underline">{{ org.phone }}</a></p>
+              <p *ngIf="org.email"><strong><mb-icon name="mail"></mb-icon> Email :</strong> <a [href]="'mailto:' + org.email" class="text-[#7C3AED] font-bold hover:underline">{{ org.email }}</a></p>
+              <p *ngIf="org.websiteUrl"><strong><mb-icon name="globe"></mb-icon> Site officiel :</strong> <a [href]="org.websiteUrl" target="_blank" class="text-[#7C3AED] font-bold hover:underline">Visiter le site officiel ↗</a></p>
             </div>
 
             <!-- Deux Boutons d'action horizontaux -->
@@ -339,7 +340,7 @@ export interface SupportStep {
                 (click)="proceedToScreen3(org)"
                 class="rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-extrabold text-xs px-5 py-2.5 shadow-sm transition flex items-center gap-1.5 cursor-pointer"
               >
-                <span>💬</span>
+                <span><mb-icon name="message-circle"></mb-icon></span>
                 <span>Préparer le contact</span>
               </button>
 
@@ -349,7 +350,7 @@ export interface SupportStep {
                 (click)="toggleOrgDetails(org.id)"
                 class="rounded-full border border-[#D8DCF0] bg-white hover:bg-gray-50 text-[#0F1035] font-extrabold text-xs px-4 py-2.5 transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
               >
-                <span>📞</span>
+                <span><mb-icon name="phone"></mb-icon></span>
                 <span>{{ expandedOrgId === org.id ? 'Masquer coordonnées' : 'Coordonnées' }}</span>
               </button>
             </div>
@@ -368,7 +369,7 @@ export interface SupportStep {
           </button>
 
           <p class="text-xs text-emerald-700 font-bold flex items-center justify-center gap-1.5">
-            <span>🛡️</span>
+            <span><mb-icon name="shield-check"></mb-icon></span>
             <span>Sources vérifiées par l'Éducation nationale et les services publics</span>
           </p>
         </div>
@@ -395,7 +396,7 @@ export interface SupportStep {
 
           <div class="flex items-center gap-3">
             <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-xl font-bold border border-[#E9D5FF] shrink-0">
-              ✉️
+              <mb-icon name="mail"></mb-icon>
             </div>
             <div>
               <h2 class="text-xl sm:text-2xl font-black text-[#0F1035] tracking-tight">
@@ -419,11 +420,11 @@ export interface SupportStep {
             class="rounded-2xl bg-white border border-[#E4E0F5] p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition"
           >
             <div class="flex items-center gap-3">
-              <span class="text-lg text-[#7C3AED]">✉️</span>
+              <span class="text-lg text-[#7C3AED]"><mb-icon name="mail"></mb-icon></span>
               <span class="font-extrabold text-sm text-[#0F1035]">Écrire un email</span>
             </div>
             <span class="h-5 w-5 rounded-full flex items-center justify-center text-xs font-black" [class.bg-[#7C3AED]]="contactMode === 'EMAIL'" [class.text-white]="contactMode === 'EMAIL'" [class.border]="contactMode !== 'EMAIL'" [class.border-gray-300]="contactMode !== 'EMAIL'">
-              {{ contactMode === 'EMAIL' ? '✓' : '' }}
+              <mb-icon *ngIf="contactMode === 'EMAIL'" name="check"></mb-icon>
             </span>
           </div>
 
@@ -436,11 +437,11 @@ export interface SupportStep {
             class="rounded-2xl bg-white border border-[#E4E0F5] p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition"
           >
             <div class="flex items-center gap-3">
-              <span class="text-lg text-[#7C3AED]">📞</span>
+              <span class="text-lg text-[#7C3AED]"><mb-icon name="phone"></mb-icon></span>
               <span class="font-extrabold text-sm text-[#0F1035]">Préparer un appel</span>
             </div>
             <span class="h-5 w-5 rounded-full flex items-center justify-center text-xs font-black" [class.bg-[#7C3AED]]="contactMode === 'CALL'" [class.text-white]="contactMode === 'CALL'" [class.border]="contactMode !== 'CALL'" [class.border-gray-300]="contactMode !== 'CALL'">
-              {{ contactMode === 'CALL' ? '✓' : '' }}
+              <mb-icon *ngIf="contactMode === 'CALL'" name="check"></mb-icon>
             </span>
           </div>
 
@@ -453,11 +454,11 @@ export interface SupportStep {
             class="rounded-2xl bg-white border border-[#E4E0F5] p-4 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition"
           >
             <div class="flex items-center gap-3">
-              <span class="text-lg text-[#7C3AED]">✨</span>
+              <span class="text-lg text-[#7C3AED]"><mb-icon name="sparkles"></mb-icon></span>
               <span class="font-extrabold text-sm text-[#0F1035]">M'entraîner avec le Coach IA</span>
             </div>
             <span class="h-5 w-5 rounded-full flex items-center justify-center text-xs font-black" [class.bg-[#7C3AED]]="contactMode === 'COACH'" [class.text-white]="contactMode === 'COACH'" [class.border]="contactMode !== 'COACH'" [class.border-gray-300]="contactMode !== 'COACH'">
-              {{ contactMode === 'COACH' ? '✓' : '' }}
+              <mb-icon *ngIf="contactMode === 'COACH'" name="check"></mb-icon>
             </span>
           </div>
         </div>
@@ -468,7 +469,7 @@ export interface SupportStep {
           <!-- Si Mode EMAIL : Exemple de message (Exactement la maquette 3) -->
           <div *ngIf="contactMode === 'EMAIL'" class="space-y-3 animate-fadeIn">
             <h3 class="font-extrabold text-sm text-[#0F1035] flex items-center gap-2">
-              <span class="text-base text-[#7C3AED]">💬</span>
+              <span class="text-base text-[#7C3AED]"><mb-icon name="message-circle"></mb-icon></span>
               <span>Exemple de message</span>
             </h3>
 
@@ -483,7 +484,7 @@ export interface SupportStep {
                 (click)="copyMessage()"
                 class="rounded-full border border-[#D8DCF0] bg-white hover:bg-gray-50 text-[#0F1035] font-extrabold text-xs px-5 py-3 transition flex items-center gap-2 cursor-pointer shadow-2xs"
               >
-                <span>📋</span>
+                <span><mb-icon name="clipboard-list"></mb-icon></span>
                 <span>{{ copiedMessage ? '✓ Message copié !' : 'Copier le message' }}</span>
               </button>
 
@@ -501,7 +502,7 @@ export interface SupportStep {
           <!-- Si Mode CALL : Script téléphonique -->
           <div *ngIf="contactMode === 'CALL'" class="space-y-3 animate-fadeIn">
             <h3 class="font-extrabold text-sm text-[#0F1035] flex items-center gap-2">
-              <span class="text-base text-[#7C3AED]">📞</span>
+              <span class="text-base text-[#7C3AED]"><mb-icon name="phone"></mb-icon></span>
               <span>Script d'appel téléphonique</span>
             </h3>
 
@@ -517,7 +518,7 @@ export interface SupportStep {
                 (click)="copyCallScript()"
                 class="rounded-full border border-[#D8DCF0] bg-white hover:bg-gray-50 text-[#0F1035] font-extrabold text-xs px-5 py-3 transition flex items-center gap-2 cursor-pointer shadow-2xs"
               >
-                <span>📋</span>
+                <span><mb-icon name="clipboard-list"></mb-icon></span>
                 <span>{{ copiedCall ? '✓ Script copié !' : 'Copier le script' }}</span>
               </button>
 
@@ -526,7 +527,7 @@ export interface SupportStep {
                 [href]="'tel:' + selectedOrg.phone"
                 class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-extrabold text-xs sm:text-sm px-6 py-3 shadow-md transition inline-flex items-center gap-2"
               >
-                <span>📞 Appeler ({{ selectedOrg.phone }})</span>
+                <span><mb-icon name="phone"></mb-icon> Appeler ({{ selectedOrg.phone }})</span>
               </a>
             </div>
           </div>
@@ -534,7 +535,7 @@ export interface SupportStep {
           <!-- Si Mode COACH : Passerelle vers l'entraînement IA -->
           <div *ngIf="contactMode === 'COACH'" class="space-y-3 animate-fadeIn">
             <h3 class="font-extrabold text-sm text-[#0F1035] flex items-center gap-2">
-              <span class="text-base text-[#7C3AED]">✨</span>
+              <span class="text-base text-[#7C3AED]"><mb-icon name="sparkles"></mb-icon></span>
               <span>S'entraîner avec le Coach IA</span>
             </h3>
 
@@ -556,7 +557,7 @@ export interface SupportStep {
         <!-- Bloc « Mes démarches » avec Barre de Progression (Maquette 3 officielle) -->
         <div class="rounded-3xl bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
           <div class="flex items-center gap-2">
-            <span class="text-lg text-[#7C3AED]">📋</span>
+            <span class="text-lg text-[#7C3AED]"><mb-icon name="clipboard-list"></mb-icon></span>
             <h3 class="font-extrabold text-sm sm:text-base text-[#0F1035]">
               Mes démarches
             </h3>

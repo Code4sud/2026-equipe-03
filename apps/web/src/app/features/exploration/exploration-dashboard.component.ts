@@ -74,8 +74,8 @@ export interface ExplorationStepItem {
             placeholder="Rechercher un métier, une formation..."
             class="w-full pl-9 pr-9 py-2.5 rounded-full bg-white border border-[#E4E0F5] text-xs font-semibold text-[#0F1035] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 shadow-2xs"
           />
-          <span class="absolute left-3 top-3 text-gray-400 text-xs">🔍</span>
-          <span class="absolute right-3 top-3 text-purple-400 text-xs cursor-pointer hover:text-[#7C3AED]" (click)="onSearch()">✨</span>
+          <span class="absolute left-3 top-3 text-gray-400 text-xs"><mb-icon name="search"></mb-icon></span>
+          <span class="absolute right-3 top-3 text-purple-400 text-xs cursor-pointer hover:text-[#7C3AED]" (click)="onSearch()"><mb-icon name="sparkles"></mb-icon></span>
         </div>
       </div>
 
@@ -118,7 +118,7 @@ export interface ExplorationStepItem {
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
               <div class="w-7 h-7 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center text-sm font-bold">
-                🎯
+                <mb-icon name="target"></mb-icon>
               </div>
               <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035]">
                 Ma progression globale
@@ -144,7 +144,7 @@ export interface ExplorationStepItem {
             <!-- 1. Découvrir -->
             <div class="space-y-1.5 flex flex-col items-center">
               <div class="w-8 h-8 rounded-full bg-[#22C55E] text-white flex items-center justify-center font-bold text-xs shadow-xs">
-                ✓
+                <mb-icon name="check"></mb-icon>
               </div>
               <span class="text-[11px] font-extrabold text-[#0F1035]">Découvrir</span>
             </div>
@@ -152,7 +152,7 @@ export interface ExplorationStepItem {
             <!-- 2. Explorer -->
             <div class="space-y-1.5 flex flex-col items-center">
               <div class="w-8 h-8 rounded-full bg-[#22C55E] text-white flex items-center justify-center font-bold text-xs shadow-xs">
-                ✓
+                <mb-icon name="check"></mb-icon>
               </div>
               <span class="text-[11px] font-extrabold text-[#0F1035]">Explorer</span>
             </div>
@@ -163,7 +163,7 @@ export interface ExplorationStepItem {
                 [class]="completedStepsCount >= 3 ? 'bg-[#22C55E] text-white' : 'border-2 border-dashed border-gray-300 bg-gray-50 text-gray-400'"
                 class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
               >
-                <span>{{ completedStepsCount >= 3 ? '✓' : '♡' }}</span>
+                <span><mb-icon [name]="completedStepsCount >= 3 ? 'check' : 'heart'"></mb-icon></span>
               </div>
               <span class="text-[11px] font-medium text-gray-500">Réfléchir</span>
             </div>
@@ -174,7 +174,7 @@ export interface ExplorationStepItem {
                 [class]="completedStepsCount >= 4 ? 'bg-[#22C55E] text-white' : 'border-2 border-dashed border-gray-300 bg-gray-50 text-gray-400'"
                 class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
               >
-                <span>{{ completedStepsCount >= 4 ? '✓' : '♡' }}</span>
+                <span><mb-icon [name]="completedStepsCount >= 4 ? 'check' : 'heart'"></mb-icon></span>
               </div>
               <span class="text-[11px] font-medium text-gray-500">Agir</span>
             </div>
@@ -189,7 +189,7 @@ export interface ExplorationStepItem {
         <!-- 3.1 COLONNE GAUCHE (7/12) : MES ÉTAPES D'EXPLORATION -->
         <div class="lg:col-span-7 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
           <div class="flex items-center gap-2">
-            <span class="text-base text-[#7C3AED]">✨</span>
+            <span class="text-base text-[#7C3AED]"><mb-icon name="sparkles"></mb-icon></span>
             <h3 class="text-base sm:text-lg font-extrabold text-[#0F1035]">
               Mes étapes d'exploration
             </h3>
@@ -203,10 +203,10 @@ export interface ExplorationStepItem {
             >
               <div class="flex items-center gap-3.5">
                 <div class="w-8 h-8 rounded-full bg-[#22C55E] text-white flex items-center justify-center text-xs font-bold shrink-0">
-                  ✓
+                  <mb-icon name="check"></mb-icon>
                 </div>
                 <div class="w-9 h-9 rounded-xl bg-purple-50 text-[#7C3AED] flex items-center justify-center text-base shrink-0">
-                  📄
+                  <mb-icon name="file-text"></mb-icon>
                 </div>
                 <div>
                   <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
@@ -220,7 +220,7 @@ export interface ExplorationStepItem {
 
               <div class="flex items-center gap-2 shrink-0">
                 <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold">
-                  ✓ Terminé
+                  <mb-icon name="check"></mb-icon> Terminé
                 </span>
                 <span class="text-gray-400 group-hover:text-[#7C3AED] transition">›</span>
               </div>
@@ -236,7 +236,7 @@ export interface ExplorationStepItem {
                   2
                 </div>
                 <div class="w-9 h-9 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-base shrink-0">
-                  💼
+                  <mb-icon name="file-text"></mb-icon>
                 </div>
                 <div>
                   <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035]">
@@ -266,7 +266,7 @@ export interface ExplorationStepItem {
                   3
                 </div>
                 <div class="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-base shrink-0">
-                  💡
+                  <mb-icon name="lightbulb"></mb-icon>
                 </div>
                 <div>
                   <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
@@ -296,7 +296,7 @@ export interface ExplorationStepItem {
                   4
                 </div>
                 <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-base shrink-0">
-                  🚀
+                  <mb-icon name="rocket"></mb-icon>
                 </div>
                 <div>
                   <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
@@ -325,7 +325,7 @@ export interface ExplorationStepItem {
             <div class="flex items-start justify-between gap-4">
               <div class="space-y-2 flex-1">
                 <div class="flex items-center gap-2">
-                  <span class="text-base text-[#7C3AED]">🎯</span>
+                  <span class="text-base text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
                   <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035]">
                     Ma prochaine action
                   </h3>
@@ -364,7 +364,7 @@ export interface ExplorationStepItem {
             >
               <div class="flex items-center gap-2.5 min-w-0">
                 <div class="w-8 h-8 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-sm shrink-0">
-                  💼
+                  <mb-icon name="file-text"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h4 class="text-xs font-extrabold text-[#0F1035] truncate group-hover:text-[#7C3AED]">Mes métiers</h4>
@@ -382,7 +382,7 @@ export interface ExplorationStepItem {
             >
               <div class="flex items-center gap-2.5 min-w-0">
                 <div class="w-8 h-8 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-sm shrink-0">
-                  {{ journeyMode === 'AUTONOMOUS' ? '🏛️' : '💬' }}
+                  <mb-icon [name]="journeyMode === 'AUTONOMOUS' ? 'landmark' : 'message-circle'"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h4 class="text-xs font-extrabold text-[#0F1035] truncate group-hover:text-[#7C3AED]">
@@ -404,7 +404,7 @@ export interface ExplorationStepItem {
             >
               <div class="flex items-center gap-2.5 min-w-0">
                 <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-sm shrink-0">
-                  🎙️
+                  <mb-icon name="mic"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h4 class="text-xs font-extrabold text-[#0F1035] truncate group-hover:text-[#7C3AED]">Mes entraînements</h4>
@@ -422,7 +422,7 @@ export interface ExplorationStepItem {
             >
               <div class="flex items-center gap-2.5 min-w-0">
                 <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-sm shrink-0">
-                  📅
+                  <mb-icon name="calendar"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h4 class="text-xs font-extrabold text-[#0F1035] truncate group-hover:text-[#7C3AED]">Mes immersions</h4>
@@ -443,7 +443,7 @@ export interface ExplorationStepItem {
         <div class="lg:col-span-7 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
           <div class="flex items-center justify-between pb-1">
             <div class="flex items-center gap-2">
-              <span class="text-base text-pink-500">♡</span>
+              <span class="text-base text-pink-500"><mb-icon name="heart"></mb-icon></span>
               <h3 class="text-base sm:text-lg font-extrabold text-[#0F1035]">
                 Mes métiers favoris ({{ favoriteCareersList.length }})
               </h3>
@@ -467,7 +467,7 @@ export interface ExplorationStepItem {
               <!-- Vignette vectorielle du métier (Sans image IA) -->
               <div class="relative h-24 sm:h-28 overflow-hidden bg-gradient-to-br from-[#EDE9FE] via-[#F3E8FF] to-[#FAF5FF] flex items-center justify-center">
                 <span class="text-3xl filter drop-shadow-xs group-hover:scale-110 transition duration-300">
-                  {{ m.tag.includes('Art') ? '🎨' : (m.tag.includes('Service') ? '☕' : (m.tag.includes('Animation') ? '🎙️' : '💼')) }}
+                  <mb-icon [name]="m.tag.includes('Art') ? 'palette' : (m.tag.includes('Service') ? 'coffee' : (m.tag.includes('Animation') ? 'mic' : 'briefcase'))"></mb-icon>
                 </span>
                 <!-- Bouton Favori coeur -->
                 <button
@@ -476,7 +476,7 @@ export interface ExplorationStepItem {
                   class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-xs shadow-xs hover:scale-110 transition cursor-pointer"
                 >
                   <span [class]="m.isFavorite ? 'text-pink-500' : 'text-gray-400'">
-                    {{ m.isFavorite ? '♥' : '♡' }}
+                    <mb-icon name="heart" [filled]="m.isFavorite"></mb-icon>
                   </span>
                 </button>
               </div>
@@ -495,7 +495,7 @@ export interface ExplorationStepItem {
         <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4 flex flex-col justify-between">
           <div class="flex items-center justify-between pb-1">
             <div class="flex items-center gap-2">
-              <span class="text-base text-[#7C3AED]">📝</span>
+              <span class="text-base text-[#7C3AED]"><mb-icon name="notebook-pen"></mb-icon></span>
               <h3 class="text-base sm:text-lg font-extrabold text-[#0F1035]">
                 Mon carnet de découvertes
               </h3>
@@ -520,13 +520,13 @@ export interface ExplorationStepItem {
 
             <!-- Crayon violet stylisé en bas à droite -->
             <div class="absolute right-3 bottom-3 text-2xl select-none pointer-events-none">
-              ✏️
+              <mb-icon name="pencil"></mb-icon>
             </div>
           </div>
 
           <div class="flex items-center justify-between pt-1">
             <span class="text-[11px] text-gray-400 font-medium">
-              🔒 Note personnelle privée
+              <mb-icon name="lock"></mb-icon> Note personnelle privée
             </span>
             <button
               type="button"
@@ -545,7 +545,7 @@ export interface ExplorationStepItem {
       <div *ngIf="savedDrafts.length > 0" class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1 border-b border-[#F0EDFA]">
           <div class="flex items-center gap-2.5">
-            <span class="text-xl">✉️</span>
+            <span class="text-xl"><mb-icon name="mail"></mb-icon></span>
             <div>
               <h3 class="text-base sm:text-lg font-extrabold text-[#0F1035]">
                 Mes messages préparés ({{ savedDrafts.length }})
@@ -593,7 +593,7 @@ export interface ExplorationStepItem {
                 (click)="copyDraft(draft)"
                 class="px-3 py-1.5 rounded-full bg-white border border-[#7C3AED] text-[#7C3AED] hover:bg-purple-50 text-xs font-bold transition flex items-center gap-1 cursor-pointer"
               >
-                <span>{{ copiedDraftId === draft.id ? '✓ Copié !' : '📋 Copier le message' }}</span>
+                <mb-icon [name]="copiedDraftId === draft.id ? 'check' : 'clipboard-list'"></mb-icon><span>{{ copiedDraftId === draft.id ? 'Copié !' : 'Copier le message' }}</span>
               </button>
               <button
                 type="button"
@@ -614,11 +614,11 @@ export interface ExplorationStepItem {
         <div class="w-full max-w-lg rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-2xl space-y-4">
           <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
             <div class="flex items-center gap-2">
-              <span class="text-lg">📝</span>
+              <span class="text-lg"><mb-icon name="notebook-pen"></mb-icon></span>
               <h3 class="text-base font-extrabold text-[#0F1035]">Mon carnet de découvertes</h3>
             </div>
             <button type="button" (click)="showNotesModal = false" class="text-gray-400 hover:text-gray-600 text-lg cursor-pointer">
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 
@@ -680,7 +680,7 @@ export class ExplorationDashboardComponent implements OnInit {
       description: 'J\'ai consulté mes résultats et identifié mes points forts.',
       status: 'COMPLETED',
       statusLabel: '✓ Terminé',
-      icon: '📄',
+      icon: 'file-text',
       routeTarget: 'MON_BILAN'
     },
     {
@@ -689,7 +689,7 @@ export class ExplorationDashboardComponent implements OnInit {
       description: 'Je découvre des métiers, je compare et j\'enregistre mes favoris.',
       status: 'IN_PROGRESS',
       statusLabel: 'En cours',
-      icon: '💼',
+      icon: 'briefcase',
       routeTarget: 'IMMERSION_PRO'
     },
     {
@@ -698,7 +698,7 @@ export class ExplorationDashboardComponent implements OnInit {
       description: 'Je note mes questions, j\'échange avec le Coach IA et je prépare mon projet.',
       status: 'NOT_STARTED',
       statusLabel: 'À faire',
-      icon: '💡',
+      icon: 'lightbulb',
       routeTarget: 'COACH_IA'
     },
     {
@@ -707,7 +707,7 @@ export class ExplorationDashboardComponent implements OnInit {
       description: 'Je prépare mes démarches (entreprise, immersion) et mon prochain rendez-vous.',
       status: 'NOT_STARTED',
       statusLabel: 'À faire',
-      icon: '🚀',
+      icon: 'rocket',
       routeTarget: 'AUTOUR_DE_MOI'
     }
   ];
@@ -761,7 +761,7 @@ export class ExplorationDashboardComponent implements OnInit {
       description: 'J\'ai exploré les univers et découvert des pistes professionnelles.',
       status: 'COMPLETED',
       statusLabel: '✓ Terminé',
-      icon: '🧭',
+      icon: 'compass',
       routeTarget: 'EXPLORER_METIERS'
     };
     this.explorationSteps[2] = {
@@ -770,7 +770,7 @@ export class ExplorationDashboardComponent implements OnInit {
       description: 'J\'ai préparé mon message ou script avec le Coach IA.',
       status: this.savedDrafts.length > 0 ? 'COMPLETED' : 'IN_PROGRESS',
       statusLabel: this.savedDrafts.length > 0 ? '✓ Réalisé' : 'En cours',
-      icon: '💡',
+      icon: 'lightbulb',
       routeTarget: 'COACH_IA'
     };
     this.explorationSteps[3] = {
@@ -779,7 +779,7 @@ export class ExplorationDashboardComponent implements OnInit {
       description: 'Je contacte une entreprise ou le CIO / Mission Locale de Nice.',
       status: 'NOT_STARTED',
       statusLabel: 'À faire',
-      icon: '🏛️',
+      icon: 'landmark',
       routeTarget: 'ANNUAIRE_SUPPORT'
     };
 

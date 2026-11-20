@@ -330,7 +330,7 @@ export const TONE_OPTIONS: ToneOption[] = [
             aria-label="Ouvrir ou fermer le menu de navigation"
             class="h-10 w-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-lg font-extrabold text-white"
           >
-            {{ isMobileMenuOpen ? '✕' : '☰' }}
+            <mb-icon [name]="isMobileMenuOpen ? 'x' : 'menu'"></mb-icon>
           </button>
         </div>
       </div>
@@ -377,7 +377,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               aria-label="Fermer le menu"
               class="lg:hidden h-8 w-8 rounded-lg bg-white/10 text-white text-sm font-bold flex items-center justify-center shrink-0 ml-2"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
         </div>
@@ -971,7 +971,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="relative rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-8 shadow-lg overflow-hidden">
                   <div class="relative z-10 max-w-2xl space-y-4">
                     <div class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-purple-100">
-                      <span>🎯</span>
+                      <span><mb-icon name="target"></mb-icon></span>
                       <span>Parcours Accompagné • Dossier Rdv {{ rdvNumber }}</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
@@ -996,7 +996,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="openAudioRestitutionView()"
                         class="rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white px-5 py-3 text-sm font-bold flex items-center gap-2 cursor-pointer"
                       >
-                        <span>▶</span>
+                        <span><mb-icon name="play" [filled]="true"></mb-icon></span>
                         <span>Écouter le bilan audio (≈ 6 min)</span>
                       </button>
                     </div>
@@ -1010,7 +1010,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg font-black">
-                          📄
+                          <mb-icon name="file-text"></mb-icon>
                         </div>
                         <span [class]="restitutionStatus === 'PUBLISHED' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'" class="px-2.5 py-0.5 rounded-full border text-[11px] font-extrabold">
                           {{ restitutionStatus === 'PUBLISHED' ? '✓ Disponible' : 'En préparation' }}
@@ -1037,7 +1037,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-pink-100 text-[#EC4899] flex items-center justify-center text-lg font-black">
-                          💼
+                          <mb-icon name="file-text"></mb-icon>
                         </div>
                         <span class="px-2.5 py-0.5 rounded-full bg-purple-50 text-[#7C3AED] border border-purple-200 text-[11px] font-extrabold">
                           {{ careers.length }} pistes
@@ -1064,7 +1064,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-black">
-                          🎯
+                          <mb-icon name="target"></mb-icon>
                         </div>
                         <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-extrabold">
                           Étape 2 sur 4
@@ -1091,7 +1091,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg font-black">
-                          📅
+                          <mb-icon name="calendar"></mb-icon>
                         </div>
                         <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-[11px] font-extrabold">
                           Mer. 18 nov.
@@ -1124,7 +1124,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       </h3>
                       <div class="grid grid-cols-4 gap-2 text-center text-xs">
                         <div class="space-y-1">
-                          <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#7C3AED] text-white font-bold">✓</span>
+                          <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#7C3AED] text-white font-bold"><mb-icon name="check"></mb-icon></span>
                           <span class="block font-bold text-[#0F1035]">Découvrir</span>
                         </div>
                         <div class="space-y-1">
@@ -1254,7 +1254,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           (click)="selectedCareerDetail.isFavorite = !selectedCareerDetail.isFavorite"
                           class="rounded-full bg-white text-[#0F1035] px-5 py-2 text-xs font-extrabold shadow"
                         >
-                          {{ selectedCareerDetail.isFavorite ? 'Retiré / Ajouté aux favoris' : '♡ Ajouter aux favoris' }}
+                          {{ selectedCareerDetail.isFavorite ? 'Retiré / Ajouté aux favoris' : 'Ajouter aux favoris' }}
                         </button>
                         <button
                           type="button"
@@ -1269,7 +1269,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           (click)="selectedCareerDetail = null"
                           class="rounded-full bg-[#7C3AED] text-white border border-white/40 px-5 py-2 text-xs font-extrabold shadow"
                         >
-                          ↗ Retour à mon immersion pro
+                          <mb-icon name="external-link"></mb-icon> Retour à mon immersion pro
                         </button>
                       </div>
                     </div>
@@ -1296,7 +1296,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       title="Vivre une immersion en réalité virtuelle sur Métiers360 (nouvel onglet)"
                       class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center hover:bg-[#F3EFFE] hover:border-[#7C3AED] transition cursor-pointer"
                     >
-                      <mb-icon name="handshake"></mb-icon> Immersion Pro <span class="text-[#7C3AED]">↗</span>
+                      <mb-icon name="handshake"></mb-icon> Immersion Pro <span class="text-[#7C3AED]"><mb-icon name="external-link"></mb-icon></span>
                     </a>
                   </div>
 
@@ -1428,7 +1428,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <div class="rounded-xl bg-[#F0FDF4] border border-emerald-200 p-3 text-xs text-emerald-900 font-bold">
-                          ✓ {{ getCareerTrainingAccessibility(selectedCareerDetail).accessLevel }}
+                          <mb-icon name="check"></mb-icon> {{ getCareerTrainingAccessibility(selectedCareerDetail).accessLevel }}
                         </div>
 
                         <div class="space-y-1.5 text-xs text-[#31355B]">
@@ -1504,7 +1504,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         >
                           <span><mb-icon name="glasses"></mb-icon></span>
                           <span>Vivre une immersion VR 360° sur Métiers360</span>
-                          <span>↗</span>
+                          <span><mb-icon name="external-link"></mb-icon></span>
                         </a>
 
                         <!-- Bouton d'action ou confirmation de demande -->
@@ -1657,7 +1657,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     ESPACE CONSEILLER • {{ counselorOrganization }}
                   </span>
                   <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
-                    Bonjour, {{ counselorDisplayName }} 👋
+                    Bonjour, {{ counselorDisplayName }}
                   </h2>
                   <p class="text-xs sm:text-sm sm:text-base text-[#E7E8FB] leading-relaxed">
                     Voici les dossiers et les actions qui nécessitent votre attention.
@@ -1779,7 +1779,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#F0EDFA]">
                   <div class="flex items-center gap-2.5">
                     <div class="h-9 w-9 rounded-xl bg-purple-50 text-[#7C3AED] ring-1 ring-purple-100 flex items-center justify-center text-lg">
-                      ⚡
+                      <mb-icon name="zap"></mb-icon>
                     </div>
                     <div>
                       <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Mes priorités opérationnelles</h3>
@@ -1877,7 +1877,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
                     <div class="flex items-center gap-3 min-w-0">
                       <div class="h-10 w-10 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-black shrink-0">
-                        📅
+                        <mb-icon name="calendar"></mb-icon>
                       </div>
                       <div class="min-w-0">
                         <div class="flex items-center gap-2">
@@ -2001,7 +2001,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 shadow-xs text-xs">
-                        ✓
+                        <mb-icon name="check"></mb-icon>
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">01. Importer</span>
                       <span class="text-[9px] text-emerald-700 font-bold truncate w-full">PDF 17p</span>
@@ -2339,7 +2339,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         <span>Étape 2/6 : Préparation & Convention</span>
                       </span>
                       <span class="rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 text-xs font-bold">
-                        ✓ Éligible PMSMP (1-3 jours)
+                        <mb-icon name="check"></mb-icon> Éligible PMSMP (1-3 jours)
                       </span>
                     </div>
                   </div>
@@ -2573,7 +2573,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </svg>
                   <span>{{ uploadErrorMessage }}</span>
                 </div>
-                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black cursor-pointer">✕</button>
+                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black cursor-pointer"><mb-icon name="x"></mb-icon></button>
               </div>
 
               <!-- En-tête officiel du Module 3 -->
@@ -2672,7 +2672,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         class="rounded-2xl border-2 border-dashed border-[#C4B5FD] hover:border-[#7C3AED] bg-[#FAF8FF] hover:bg-[#F5F3FF] transition p-8 text-center space-y-3 cursor-pointer flex flex-col items-center justify-center"
                       >
                         <div class="h-14 w-14 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-2xl">
-                          📄
+                          <mb-icon name="file-text"></mb-icon>
                         </div>
                         <div>
                           <p class="text-sm font-extrabold text-[#0F1035]">
@@ -2690,7 +2690,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         <div class="flex items-center justify-between">
                           <div class="flex items-center gap-3">
                             <div class="h-10 w-10 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg font-bold">
-                              📄
+                              <mb-icon name="file-text"></mb-icon>
                             </div>
                             <div>
                               <p class="text-sm font-extrabold text-[#0F1035]">{{ importUploadedFileName }}</p>
@@ -2701,7 +2701,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                             *ngIf="importStep === 'READY'"
                             class="rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-extrabold"
                           >
-                            ✓ Extraction terminée
+                            <mb-icon name="check"></mb-icon> Extraction terminée
                           </span>
                         </div>
 
@@ -2752,7 +2752,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
                   <div class="flex items-center gap-2.5 pb-2 border-b border-[#F0EDFA]">
                     <div class="h-8 w-8 rounded-xl bg-purple-50 text-[#7C3AED] flex items-center justify-center text-sm font-bold">
-                      📋
+                      <mb-icon name="clipboard-list"></mb-icon>
                     </div>
                     <div>
                       <h3 class="text-sm font-black text-[#0F1035]">Dossiers en attente</h3>
@@ -2811,7 +2811,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </svg>
                   <span>{{ uploadErrorMessage }}</span>
                 </div>
-                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black">✕</button>
+                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black"><mb-icon name="x"></mb-icon></button>
               </div>
 
               <div
@@ -2824,7 +2824,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </svg>
                   <span>{{ uploadSuccessNotice }}</span>
                 </div>
-                <button type="button" (click)="uploadSuccessNotice = null" class="text-emerald-500 hover:text-emerald-700 font-black">✕</button>
+                <button type="button" (click)="uploadSuccessNotice = null" class="text-emerald-500 hover:text-emerald-700 font-black"><mb-icon name="x"></mb-icon></button>
               </div>
 
               <!-- En-tête Dossier Emma D. & Stepper 6 Étapes -->
@@ -2861,7 +2861,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="rounded-full bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 text-xs font-bold transition flex items-center gap-1.5"
                     >
                       <span>Voir rendu jeune</span>
-                      <span>↗</span>
+                      <span><mb-icon name="external-link"></mb-icon></span>
                     </button>
                   </div>
                 </div>
@@ -2869,10 +2869,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <!-- Notification temporaire -->
                 <div *ngIf="workflowNotice" class="rounded-2xl bg-white/95 text-[#0F1035] p-3 text-xs font-extrabold flex items-center justify-between shadow-md">
                   <span class="flex items-center gap-2">
-                    <span class="text-emerald-600">✓</span>
+                    <span class="text-emerald-600"><mb-icon name="check"></mb-icon></span>
                     <span>{{ workflowNotice }}</span>
                   </span>
-                  <button type="button" (click)="workflowNotice = null" class="text-gray-400 hover:text-black">✕</button>
+                  <button type="button" (click)="workflowNotice = null" class="text-gray-400 hover:text-black"><mb-icon name="x"></mb-icon></button>
                 </div>
 
                 <!-- Stepper 6 étapes Master Prompt -->
@@ -2992,7 +2992,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <p class="text-xs text-gray-500 pl-8">Choisis le dossier du jeune concerné par ce rapport.</p>
                       <div class="pl-8 pt-1">
                         <div class="relative">
-                          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">👤</span>
+                          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"><mb-icon name="user"></mb-icon></span>
                           <select class="w-full rounded-2xl bg-gray-50 border border-gray-300 pl-11 pr-8 py-3 text-xs sm:text-sm font-bold text-gray-800 focus:outline-none focus:border-[#7C3AED]">
                             <option value="emma">Emma D. — Dossier Rdv 2187 (Centre des Possibles)</option>
                             <option value="lucas">Lucas M. — Dossier Rdv 2188 (Mission Locale)</option>
@@ -3021,7 +3021,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           class="rounded-2xl border-2 border-dashed border-[#C4B5FD] hover:border-[#7C3AED] transition-all p-8 text-center space-y-3 bg-[#FAF8FF] cursor-pointer flex flex-col items-center justify-center"
                         >
                           <div class="h-14 w-14 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-2xl">
-                            ☁️
+                            <mb-icon name="cloud"></mb-icon>
                           </div>
                           <div>
                             <p class="text-sm font-extrabold text-[#0F1035]">
@@ -3030,7 +3030,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                             <p class="text-xs text-gray-400 mt-0.5">Glisse ton fichier dans cette zone ou clique pour le sélectionner.</p>
                           </div>
                           <span class="rounded-full bg-white border border-gray-200 px-3 py-1 text-[11px] font-bold text-gray-600 flex items-center gap-1 shadow-2xs">
-                            <span>📄</span>
+                            <span><mb-icon name="file-text"></mb-icon></span>
                             <span>PDF uniquement</span>
                           </span>
                         </div>
@@ -3047,7 +3047,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       
                       <div class="pl-8 pt-1 grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
-                          <span class="text-base text-gray-500">📄</span>
+                          <span class="text-base text-gray-500"><mb-icon name="file-text"></mb-icon></span>
                           <div>
                             <span class="text-[10px] uppercase font-bold text-gray-400 block">Nombre de pages</span>
                             <span class="text-xs font-black text-gray-900">{{ uploadedFile ? '17 pages' : '—' }}</span>
@@ -3055,7 +3055,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
-                          <span class="text-base text-gray-500">💾</span>
+                          <span class="text-base text-gray-500"><mb-icon name="save"></mb-icon></span>
                           <div>
                             <span class="text-[10px] uppercase font-bold text-gray-400 block">Taille du fichier</span>
                             <span class="text-xs font-black text-gray-900">{{ uploadedFile ? uploadedFile.size : '—' }}</span>
@@ -3063,7 +3063,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
-                          <span class="text-base text-gray-500">📁</span>
+                          <span class="text-base text-gray-500"><mb-icon name="folder"></mb-icon></span>
                           <div>
                             <span class="text-[10px] uppercase font-bold text-gray-400 block">Dossier associé</span>
                             <span class="text-xs font-black text-gray-900">Emma D. (2187)</span>
@@ -3079,12 +3079,12 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="setWorkflowStep(3)"
                         class="w-full sm:w-auto rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#541fd0] hover:to-[#8228d6] text-white px-7 py-3 text-xs sm:text-sm font-black shadow-md flex items-center justify-center gap-2 cursor-pointer"
                       >
-                        <span>▶</span>
+                        <span><mb-icon name="play" [filled]="true"></mb-icon></span>
                         <span>Démarrer l'extraction</span>
                       </button>
 
                       <span class="text-[11px] text-gray-500 text-center sm:text-right">
-                        ⓘ Les données extraites seront soumises à ton contrôle professionnel.
+                        <mb-icon name="info"></mb-icon> Les données extraites seront soumises à ton contrôle professionnel.
                       </span>
                     </div>
                   </div>
@@ -3093,7 +3093,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="lg:col-span-4 space-y-4">
                     <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 sm:p-6 shadow-sm space-y-4">
                       <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
-                        <span class="text-purple-600 font-bold">🏁</span>
+                        <span class="text-purple-600 font-bold"><mb-icon name="flag"></mb-icon></span>
                         <h4 class="text-sm font-black text-[#0F1035]">Étapes du traitement</h4>
                       </div>
 
@@ -3156,7 +3156,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                     <!-- Encart de garantie éthique -->
                     <div class="rounded-2xl bg-purple-50/70 border border-purple-200 p-4 flex items-start gap-3">
-                      <span class="text-lg">🛡️</span>
+                      <span class="text-lg"><mb-icon name="shield-check"></mb-icon></span>
                       <p class="text-xs text-purple-900 font-bold leading-relaxed">
                         Les informations extraites doivent être obligatoirement contrôlées par un conseiller avant toute publication.
                       </p>
@@ -3198,7 +3198,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div>
                       <label class="block text-xs font-black uppercase tracking-wider text-[#42466B]">Statut du compte rendu</label>
                       <span class="inline-flex items-center gap-1.5 mt-2 rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-extrabold">
-                        ✓ Validé par le professionnel
+                        <mb-icon name="check"></mb-icon> Validé par le professionnel
                       </span>
                     </div>
                   </div>
@@ -3242,7 +3242,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           *ngFor="let career of interviewForm.explicitCareers; let i = index"
                           class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 text-emerald-800 px-3.5 py-1 text-xs font-bold"
                         >
-                          <span>★ {{ career }}</span>
+                          <span><mb-icon name="star" [filled]="true"></mb-icon> {{ career }}</span>
                           <button type="button" (click)="removeExplicitCareer(i)" class="text-emerald-700 hover:text-black font-black">×</button>
                         </span>
                       </div>
@@ -3398,7 +3398,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="bulkValidateCareers()"
                         class="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-black shadow transition cursor-pointer"
                       >
-                        ✓ Tout valider conforme (22/22)
+                        <mb-icon name="check"></mb-icon> Tout valider conforme (22/22)
                       </button>
                     </div>
                   </div>
@@ -3528,7 +3528,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <strong class="text-xs leading-tight line-clamp-1">{{ ep.title }}</strong>
                     <div class="flex items-center justify-between text-[10px] pt-1">
                       <span>{{ ep.wordCount }} mots</span>
-                      <span class="text-emerald-300 font-extrabold">✓ Prêt</span>
+                      <span class="text-emerald-300 font-extrabold"><mb-icon name="check"></mb-icon> Prêt</span>
                     </div>
                   </button>
                 </div>
@@ -3626,19 +3626,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <h4 class="text-xs font-black uppercase tracking-wider text-[#42466B]">Contrôles de sécurité &amp; Multi-Tenant</h4>
                       <ul class="space-y-2 text-xs font-bold text-[#0F1035]">
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>Isolation Établissement : Centre des Possibles (Nice)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>Professionnel autorisé : Sarah Dupont (Psychologue)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>Destinataire unique : Emma D. (Jeune autorisé)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>Stockage privé sécurisé sans exposition d'URL brute</span>
                         </li>
                       </ul>
@@ -3648,19 +3648,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <h4 class="text-xs font-black uppercase tracking-wider text-[#42466B]">Contrôles de conformité documentaire</h4>
                       <ul class="space-y-2 text-xs font-bold text-[#0F1035]">
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>22 Métiers O*NET extraits et validés (zéro omission)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>6 Épisodes audio thématiques calibrés à ~2 minutes</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>Zéro diagnostic psychologique autonome (Centre des Possibles fait foi)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span>✓</span>
+                          <span><mb-icon name="check"></mb-icon></span>
                           <span>Preuves sourcées pages 1 à 17 vérifiées</span>
                         </li>
                       </ul>
@@ -3792,7 +3792,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               (click)="isMobileMenuOpen = true"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px] text-[#42466B] font-semibold"
             >
-              <span class="text-base leading-none">☰</span>
+              <span class="text-base leading-none"><mb-icon name="menu"></mb-icon></span>
               <span class="mt-0.5">Plus</span>
             </button>
           </div>
@@ -3839,7 +3839,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               (click)="isMobileMenuOpen = true"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px] text-[#42466B] font-semibold"
             >
-              <span class="text-base leading-none">☰</span>
+              <span class="text-base leading-none"><mb-icon name="menu"></mb-icon></span>
               <span class="mt-0.5">Plus</span>
             </button>
           </div>
@@ -3886,7 +3886,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               (click)="isMobileMenuOpen = true"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px] text-[#42466B] font-semibold"
             >
-              <span class="text-base leading-none">☰</span>
+              <span class="text-base leading-none"><mb-icon name="menu"></mb-icon></span>
               <span class="mt-0.5">Plus</span>
             </button>
           </div>
@@ -3913,7 +3913,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 (click)="showZoneDefinitionModal = false"
                 class="h-8 w-8 rounded-full bg-[#F3EFFE] text-[#6D28D9] hover:bg-[#EDE9FE] flex items-center justify-center font-black text-sm shrink-0"
               >
-                ✕
+                <mb-icon name="x"></mb-icon>
               </button>
             </div>
 
@@ -5527,7 +5527,7 @@ export class AppComponent implements OnInit {
   getCounselorHeaderTitle(): string {
     switch (this.activeCounselorTab) {
       case 'TABLEAU_DE_BORD':
-        return `Bonjour, ${this.counselorDisplayName} 👋`;
+        return `Bonjour, ${this.counselorDisplayName}`;
       case 'DOSSIERS_JEUNES':
         return 'Dossiers jeunes';
       case 'IMPORTER_RAPPORT':

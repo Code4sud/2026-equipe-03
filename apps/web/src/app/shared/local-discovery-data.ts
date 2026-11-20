@@ -91,9 +91,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Bac pro Métiers de la communication et des industries graphiques. Ateliers d’imprimerie, chaîne graphique et conception assistée par ordinateur.',
     targetCareers: ['Opérateur d’impression', 'Infographiste', 'Concepteur graphique', 'Technicien prépresse'],
     targetCareersDetailed: [
-      { icon: '🖨️', name: 'Opérateur d’impression' },
-      { icon: '✏️', name: 'Infographiste' },
-      { icon: '📐', name: 'Concepteur graphique' }
+      { icon: 'printer', name: 'Opérateur d’impression' },
+      { icon: 'pencil', name: 'Infographiste' },
+      { icon: 'ruler', name: 'Concepteur graphique' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -137,9 +137,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Lycée des métiers du second œuvre et de l’habitat. Ateliers de peinture décorative, patines, pose d’enduits et agencements intérieurs.',
     targetCareers: ['Peintre décorateur', 'Plaquiste', 'Menuisier agenceur', 'Décorateur d’intérieur'],
     targetCareersDetailed: [
-      { icon: '🎨', name: 'Peintre décorateur' },
-      { icon: '🪵', name: 'Menuisier agenceur' },
-      { icon: '🏠', name: 'Décorateur d’intérieur' }
+      { icon: 'palette', name: 'Peintre décorateur' },
+      { icon: 'hammer', name: 'Menuisier agenceur' },
+      { icon: 'house', name: 'Décorateur d’intérieur' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -183,9 +183,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Pôle de référence pour l’apprentissage dans les Alpes-Maritimes. Plateaux techniques modernes pour la peinture, les finitions et la décoration.',
     targetCareers: ['Peintre décorateur', 'Plaquiste', 'Solier moquettiste', 'Électricien'],
     targetCareersDetailed: [
-      { icon: '🎨', name: 'Peintre applicateur' },
-      { icon: '🧱', name: 'Plaquiste décorateur' },
-      { icon: '⚡', name: 'Électricien du bâtiment' }
+      { icon: 'palette', name: 'Peintre applicateur' },
+      { icon: 'hard-hat', name: 'Plaquiste décorateur' },
+      { icon: 'zap', name: 'Électricien du bâtiment' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -229,9 +229,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Pôle d’enseignement professionnel réputé au cœur de Nice. Sections graphisme, décors et agencement de l’espace.',
     targetCareers: ['Graphiste', 'Infographiste 3D', 'Peintre décorateur', 'Menuisier'],
     targetCareersDetailed: [
-      { icon: '✏️', name: 'Graphiste' },
-      { icon: '🖥️', name: 'Infographiste 3D' },
-      { icon: '📐', name: 'Designer d’espace' }
+      { icon: 'pencil', name: 'Graphiste' },
+      { icon: 'laptop', name: 'Infographiste 3D' },
+      { icon: 'ruler', name: 'Designer d’espace' }
     ],
     hasImmersion: false,
     verificationBadge: '✓ Établissement vérifié',
@@ -274,9 +274,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Enseignement artistique formant aux métiers créatifs, identités visuelles, packaging et design d’espace.',
     targetCareers: ['Designer graphique', 'Directeur artistique', 'Illustrateur', 'Scénographe'],
     targetCareersDetailed: [
-      { icon: '🎨', name: 'Designer graphique' },
-      { icon: '✒️', name: 'Illustrateur' },
-      { icon: '🏛️', name: 'Scénographe' }
+      { icon: 'palette', name: 'Designer graphique' },
+      { icon: 'pen-line', name: 'Illustrateur' },
+      { icon: 'landmark', name: 'Scénographe' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -320,9 +320,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Institution nationale prestigieuse. Ateliers monumentaux de sculpture, création graphique, nouveaux médias et édition.',
     targetCareers: ['Artiste plasticien', 'Scénographe', 'Restaurateur d’œuvres', 'Créateur visuel'],
     targetCareersDetailed: [
-      { icon: '🏛️', name: 'Artiste plasticien' },
-      { icon: '🎭', name: 'Scénographe' },
-      { icon: '🖌️', name: 'Créateur visuel' }
+      { icon: 'landmark', name: 'Artiste plasticien' },
+      { icon: 'drama', name: 'Scénographe' },
+      { icon: 'palette', name: 'Créateur visuel' }
     ],
     hasImmersion: false,
     verificationBadge: '✓ Établissement vérifié',
@@ -369,9 +369,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Atelier d’impression numérique grand format, découpe laser, enseignes et habillages graphiques de commerces niçois.',
     targetCareers: ['Graphiste', 'Opérateur d’impression', 'Poseur d’enseignes'],
     targetCareersDetailed: [
-      { icon: '✏️', name: 'Graphiste' },
-      { icon: '🖨️', name: 'Opérateur d’impression' },
-      { icon: '🪧', name: 'Poseur d’enseignes' }
+      { icon: 'pencil', name: 'Graphiste' },
+      { icon: 'printer', name: 'Opérateur d’impression' },
+      { icon: 'presentation', name: 'Poseur d’enseignes' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -416,9 +416,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Atelier spécialisé dans les finitions décoratives haut de gamme, rénovation de villas Belle Époque et décors muraux écologiques.',
     targetCareers: ['Peintre décorateur', 'Plaquiste', 'Solier'],
     targetCareersDetailed: [
-      { icon: '🎨', name: 'Peintre décorateur' },
-      { icon: '🖌️', name: 'Artisan plâtrier' },
-      { icon: '🏛️', name: 'Restaurateur bâti' }
+      { icon: 'palette', name: 'Peintre décorateur' },
+      { icon: 'palette', name: 'Artisan plâtrier' },
+      { icon: 'landmark', name: 'Restaurateur bâti' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -463,9 +463,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Studio professionnel accueillant pour faire découvrir les métiers du son, le traitement acoustique des parois et le mixage audio.',
     targetCareers: ['Technicien du son', 'Régisseur son', 'Acousticien'],
     targetCareersDetailed: [
-      { icon: '🎧', name: 'Technicien du son' },
-      { icon: '🎛️', name: 'Régisseur son' },
-      { icon: '🔊', name: 'Monteur audio' }
+      { icon: 'headphones', name: 'Technicien du son' },
+      { icon: 'settings', name: 'Régisseur son' },
+      { icon: 'audio-lines', name: 'Monteur audio' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -510,9 +510,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Entreprise familiale de compagnons peintres intervenant sur la Métropole. Partenaire actif de l’immersion professionnelle.',
     targetCareers: ['Peintre décorateur', 'Solier moquettiste', 'Façadier'],
     targetCareersDetailed: [
-      { icon: '🎨', name: 'Compagnon peintre' },
-      { icon: '🪜', name: 'Façadier' },
-      { icon: '🏠', name: 'Poseur de revêtements' }
+      { icon: 'palette', name: 'Compagnon peintre' },
+      { icon: 'trending-up', name: 'Façadier' },
+      { icon: 'house', name: 'Poseur de revêtements' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -557,9 +557,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Bureau d’études et atelier de prototypage 3D pour l’industrie, le design produit et les agences d’architecture de la Côte d’Azur.',
     targetCareers: ['Modélisateur 3D', 'Designer industriel', 'Technicien de fabrication additive'],
     targetCareersDetailed: [
-      { icon: '🖥️', name: 'Modélisateur 3D' },
-      { icon: '⚙️', name: 'Opérateur additive 3D' },
-      { icon: '📐', name: 'Dessinateur CAO' }
+      { icon: 'laptop', name: 'Modélisateur 3D' },
+      { icon: 'settings', name: 'Opérateur additive 3D' },
+      { icon: 'ruler', name: 'Dessinateur CAO' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion possible',
@@ -608,9 +608,9 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Accompagnement des 16–25 ans : orientation, formation, emploi, immersion. Conventions de stage PMSMP gratuites et sécurisées.',
     targetCareers: ['Tous métiers', 'Orientation personnalisée', 'Immersion entreprise'],
     targetCareersDetailed: [
-      { icon: '🧭', name: 'Conseiller d’orientation' },
-      { icon: '🤝', name: 'Médiateur emploi' },
-      { icon: '💼', name: 'Chargé de relation entreprises' }
+      { icon: 'compass', name: 'Conseiller d’orientation' },
+      { icon: 'handshake', name: 'Médiateur emploi' },
+      { icon: 'briefcase', name: 'Chargé de relation entreprises' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Délivre des conventions de stage',
@@ -654,8 +654,8 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Service public de l’orientation scolaire et professionnelle. Documentation officielle Onisep et bilans complémentaires gratuits.',
     targetCareers: ['Tous secteurs', 'Filières professionnelles', 'Études supérieures'],
     targetCareersDetailed: [
-      { icon: '🧠', name: 'Psychologue Éducation Nationale' },
-      { icon: '📚', name: 'Documentaliste orientation' }
+      { icon: 'brain', name: 'Psychologue Éducation Nationale' },
+      { icon: 'library', name: 'Documentaliste orientation' }
     ],
     hasImmersion: false,
     verificationBadge: '✓ Organisme public vérifié',
@@ -698,8 +698,8 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Point d’accueil sans condition pour tous les jeunes : guides d’orientation, ateliers CV/lettre, mobilité européenne et aides aux projets.',
     targetCareers: ['Tous métiers', 'Mobilité internationale', 'Vie pratique'],
     targetCareersDetailed: [
-      { icon: 'ℹ️', name: 'Conseiller Info Jeunes' },
-      { icon: '🌍', name: 'Référent mobilité Europe' }
+      { icon: 'info', name: 'Conseiller Info Jeunes' },
+      { icon: 'globe', name: 'Référent mobilité Europe' }
     ],
     hasImmersion: false,
     verificationBadge: '✓ Organisme public vérifié',
@@ -742,8 +742,8 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'La Chambre des Métiers aide les jeunes à trouver un maître d’apprentissage et délivre des conventions "Pass Métiers" pour les vacances.',
     targetCareers: ['Métiers d’art', 'Artisanat du bâtiment', 'Métiers de bouche'],
     targetCareersDetailed: [
-      { icon: '🛠️', name: 'Conseiller apprentissage' },
-      { icon: '📋', name: 'Chargé des conventions Pass Métiers' }
+      { icon: 'hammer', name: 'Conseiller apprentissage' },
+      { icon: 'clipboard-list', name: 'Chargé des conventions Pass Métiers' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Conventions Pass Métiers',
@@ -787,8 +787,8 @@ export const LOCAL_OPPORTUNITIES_DATA: LocalOpportunity[] = [
     description: 'Expertise sur les aménagements de parcours, sécurisation des immersions et valorisation des compétences singulières.',
     targetCareers: ['Tous métiers adaptés', 'Numérique', 'Artisanat'],
     targetCareersDetailed: [
-      { icon: '♿', name: 'Conseiller en insertion adaptée' },
-      { icon: '📐', name: 'Ergonome conseil' }
+      { icon: 'accessibility', name: 'Conseiller en insertion adaptée' },
+      { icon: 'ruler', name: 'Ergonome conseil' }
     ],
     hasImmersion: true,
     immersionBadge: '✓ Immersion accompagnée',

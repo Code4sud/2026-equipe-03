@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 
 export interface DocumentItem {
@@ -23,7 +24,7 @@ export interface DocumentItem {
 @Component({
   selector: 'app-documents-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="space-y-6 pb-12">
       <!-- ================================================================== -->
@@ -229,7 +230,7 @@ export interface DocumentItem {
                   [ngClass]="doc.format === 'AUDIO' ? 'bg-[#7C3AED] hover:bg-[#6D28D9] text-white' : 'bg-white hover:bg-purple-50 text-[#6D28D9] border border-purple-200'"
                   class="rounded-full px-4 py-1.5 text-xs font-black shadow-xs transition cursor-pointer flex items-center gap-1.5"
                 >
-                  <span *ngIf="doc.format === 'AUDIO'">▶</span>
+                  <span *ngIf="doc.format === 'AUDIO'"><mb-icon name="play" [filled]="true"></mb-icon></span>
                   <svg *ngIf="doc.format === 'PDF'" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -362,10 +363,10 @@ export interface DocumentItem {
                 class="flex items-center justify-between p-2.5 rounded-xl hover:bg-purple-50 text-gray-700 hover:text-[#7C3AED] font-semibold transition"
               >
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🌐</span>
+                  <span class="text-gray-400"><mb-icon name="globe"></mb-icon></span>
                   <span>Base Région Sud (orientation-regionsud.fr)</span>
                 </div>
-                <span class="text-gray-400">↗</span>
+                <span class="text-gray-400"><mb-icon name="external-link"></mb-icon></span>
               </a>
 
               <a
@@ -375,10 +376,10 @@ export interface DocumentItem {
                 class="flex items-center justify-between p-2.5 rounded-xl hover:bg-purple-50 text-gray-700 hover:text-[#7C3AED] font-semibold transition"
               >
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🌐</span>
+                  <span class="text-gray-400"><mb-icon name="globe"></mb-icon></span>
                   <span>Guide des métiers ONISEP</span>
                 </div>
-                <span class="text-gray-400">↗</span>
+                <span class="text-gray-400"><mb-icon name="external-link"></mb-icon></span>
               </a>
 
               <a
@@ -388,10 +389,10 @@ export interface DocumentItem {
                 class="flex items-center justify-between p-2.5 rounded-xl hover:bg-purple-50 text-gray-700 hover:text-[#7C3AED] font-semibold transition"
               >
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🌐</span>
+                  <span class="text-gray-400"><mb-icon name="globe"></mb-icon></span>
                   <span>Trouver une formation (Parcoursup)</span>
                 </div>
-                <span class="text-gray-400">↗</span>
+                <span class="text-gray-400"><mb-icon name="external-link"></mb-icon></span>
               </a>
             </div>
           </div>
@@ -454,7 +455,7 @@ export interface DocumentItem {
                 (click)="closeViewer()"
                 class="h-8 w-8 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm font-bold flex items-center justify-center ml-2"
               >
-                ✕
+                <mb-icon name="x"></mb-icon>
               </button>
             </div>
           </div>
@@ -561,7 +562,7 @@ export interface DocumentItem {
         >
           <div class="flex items-center justify-between border-b pb-3 border-gray-100">
             <div class="flex items-center gap-2.5">
-              <span class="h-9 w-9 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold">📁</span>
+              <span class="h-9 w-9 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold"><mb-icon name="folder"></mb-icon></span>
               <div>
                 <h3 class="font-black text-base text-[#0F1035]">Créer mon dossier de préparation</h3>
                 <p class="text-xs text-gray-500">Pour mon rendez-vous avec Sophie Martin</p>
@@ -572,7 +573,7 @@ export interface DocumentItem {
               (click)="isDossierModalOpen = false"
               class="h-8 w-8 rounded-lg bg-gray-100 text-gray-600 text-sm font-bold flex items-center justify-center hover:bg-gray-200"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 

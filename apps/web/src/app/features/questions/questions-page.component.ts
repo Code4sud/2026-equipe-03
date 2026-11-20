@@ -94,7 +94,7 @@ export interface PersonalJournalNote {
             placeholder="Rechercher une question, un métier..."
             class="w-full pl-9 pr-12 py-2.5 rounded-full bg-white border border-[#E4E0F5] text-xs font-semibold text-[#0F1035] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/30 shadow-2xs"
           />
-          <span class="absolute left-3 top-3 text-gray-400 text-xs">🔍</span>
+          <span class="absolute left-3 top-3 text-gray-400 text-xs"><mb-icon name="search"></mb-icon></span>
           <span class="absolute right-3 top-2.5 px-2 py-0.5 rounded-md bg-gray-100 text-[10px] font-bold text-gray-500">⌘K</span>
         </div>
       </div>
@@ -119,21 +119,21 @@ export interface PersonalJournalNote {
           <div class="grid grid-cols-3 gap-3 shrink-0">
             <!-- 1. Total questions -->
             <div class="rounded-2xl bg-white p-3.5 sm:p-4 text-center text-[#0F1035] shadow-sm min-w-[90px] sm:min-w-[110px] space-y-1">
-              <div class="text-lg sm:text-xl text-[#7C3AED] leading-none">💬</div>
+              <div class="text-lg sm:text-xl text-[#7C3AED] leading-none"><mb-icon name="message-circle"></mb-icon></div>
               <div class="text-xl sm:text-2xl font-black text-[#0F1035] leading-none">{{ questionsList.length }}</div>
               <div class="text-[10px] sm:text-[11px] font-bold text-gray-500">questions</div>
             </div>
 
             <!-- 2. Réponses reçues -->
             <div class="rounded-2xl bg-white p-3.5 sm:p-4 text-center text-[#0F1035] shadow-sm min-w-[90px] sm:min-w-[110px] space-y-1">
-              <div class="text-lg sm:text-xl text-emerald-600 leading-none">✓</div>
+              <div class="text-lg sm:text-xl text-emerald-600 leading-none"><mb-icon name="check"></mb-icon></div>
               <div class="text-xl sm:text-2xl font-black text-[#0F1035] leading-none">{{ answeredCount }}</div>
               <div class="text-[10px] sm:text-[11px] font-bold text-gray-500">réponse{{ answeredCount > 1 ? 's' : '' }}</div>
             </div>
 
             <!-- 3. Sélectionnées RDV -->
             <div class="rounded-2xl bg-white p-3.5 sm:p-4 text-center text-[#0F1035] shadow-sm min-w-[90px] sm:min-w-[110px] space-y-1">
-              <div class="text-lg sm:text-xl text-[#7C3AED] leading-none">📅</div>
+              <div class="text-lg sm:text-xl text-[#7C3AED] leading-none"><mb-icon name="calendar"></mb-icon></div>
               <div class="text-xl sm:text-2xl font-black text-[#0F1035] leading-none">{{ selectedForMeetingCount }}</div>
               <div class="text-[9px] sm:text-[10px] font-bold text-gray-500 leading-tight">sélectionnées pour le rdv</div>
             </div>
@@ -153,7 +153,7 @@ export interface PersonalJournalNote {
             : 'bg-white border border-[#E4E0F5] text-[#42466B] hover:bg-[#F8F7FF] font-semibold'"
           class="py-3 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
         >
-          <span>💬</span>
+          <span><mb-icon name="message-circle"></mb-icon></span>
           <span>Mes questions ({{ questionsList.length }})</span>
         </button>
 
@@ -165,7 +165,7 @@ export interface PersonalJournalNote {
             : 'bg-white border border-[#E4E0F5] text-[#42466B] hover:bg-[#F8F7FF] font-semibold'"
           class="py-3 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
         >
-          <span>📅</span>
+          <span><mb-icon name="calendar"></mb-icon></span>
           <span>Préparer mon échange</span>
         </button>
 
@@ -177,7 +177,7 @@ export interface PersonalJournalNote {
             : 'bg-white border border-[#E4E0F5] text-[#42466B] hover:bg-[#F8F7FF] font-semibold'"
           class="py-3 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
         >
-          <span>📝</span>
+          <span><mb-icon name="notebook-pen"></mb-icon></span>
           <span>Mes notes & idées</span>
         </button>
       </div>
@@ -190,7 +190,7 @@ export interface PersonalJournalNote {
         <div class="lg:col-span-7 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-5">
           <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
             <div class="flex items-center gap-2">
-              <span class="text-base text-[#7C3AED]">💬</span>
+              <span class="text-base text-[#7C3AED]"><mb-icon name="message-circle"></mb-icon></span>
               <h3 class="text-base font-extrabold text-[#0F1035]">
                 Mes questions enregistrées
               </h3>
@@ -227,7 +227,7 @@ export interface PersonalJournalNote {
                     class="w-5 h-5 rounded-md flex items-center justify-center text-xs font-bold transition shrink-0 cursor-pointer"
                     [ngClass]="q.selectedForMeeting ? 'bg-[#7C3AED] text-white shadow-xs' : 'border-2 border-gray-300 hover:border-[#7C3AED] bg-white'"
                   >
-                    <span *ngIf="q.selectedForMeeting">✓</span>
+                    <span *ngIf="q.selectedForMeeting"><mb-icon name="check"></mb-icon></span>
                   </button>
 
                   <!-- Badge Catégorie -->
@@ -258,7 +258,7 @@ export interface PersonalJournalNote {
                 <div *ngIf="q.counselorReply" class="p-3 rounded-xl bg-white border border-purple-200 shadow-2xs space-y-1.5">
                   <div class="flex items-center justify-between text-[11px] font-extrabold text-[#7C3AED]">
                     <div class="flex items-center gap-1.5">
-                      <span>💬</span>
+                      <span><mb-icon name="message-circle"></mb-icon></span>
                       <span>Réponse du conseiller ({{ q.counselorReply.counselorName }})</span>
                     </div>
                     <span class="text-gray-400 font-medium">{{ q.counselorReply.publishedAt }}</span>
@@ -306,7 +306,7 @@ export interface PersonalJournalNote {
             </button>
 
             <span class="text-xs font-extrabold text-[#7C3AED] flex items-center gap-1.5">
-              <span>☑</span>
+              <span><mb-icon name="square-check"></mb-icon></span>
               <span>{{ selectedForMeetingCount }} questions sélectionnées</span>
             </span>
           </div>
@@ -318,7 +318,7 @@ export interface PersonalJournalNote {
           <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-4">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-[#7C3AED]">📅</span>
+                <span class="text-base text-[#7C3AED]"><mb-icon name="calendar"></mb-icon></span>
                 <span>Mon prochain rendez-vous</span>
               </div>
               <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold">
@@ -335,8 +335,8 @@ export interface PersonalJournalNote {
 
               <div class="space-y-1 text-xs">
                 <h4 class="font-extrabold text-[#0F1035] text-sm">Échange avec mon conseiller</h4>
-                <p class="text-gray-500 font-medium">🕒 14h30 – 15h30</p>
-                <p class="text-gray-500 font-medium">📍 Centre des Possibles (Nice)</p>
+                <p class="text-gray-500 font-medium"><mb-icon name="clock"></mb-icon> 14h30 – 15h30</p>
+                <p class="text-gray-500 font-medium"><mb-icon name="map-pin"></mb-icon> Centre des Possibles (Nice)</p>
               </div>
             </div>
 
@@ -368,7 +368,7 @@ export interface PersonalJournalNote {
             <div class="flex items-start justify-between gap-3">
               <div class="space-y-1">
                 <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                  <span class="text-base text-blue-600">📄</span>
+                  <span class="text-base text-blue-600"><mb-icon name="file-text"></mb-icon></span>
                   <span>Ma fiche de préparation</span>
                 </div>
                 <p class="text-xs text-gray-500 leading-relaxed font-medium">
@@ -376,7 +376,7 @@ export interface PersonalJournalNote {
                 </p>
               </div>
               <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-xl shrink-0">
-                📝
+                <mb-icon name="notebook-pen"></mb-icon>
               </div>
             </div>
 
@@ -385,7 +385,7 @@ export interface PersonalJournalNote {
               (click)="downloadPreparationPdf()"
               class="w-full py-2.5 rounded-xl border border-[#7C3AED] text-[#7C3AED] hover:bg-purple-50 text-xs font-extrabold transition cursor-pointer flex items-center justify-center gap-2"
             >
-              <span>📥</span>
+              <span><mb-icon name="download"></mb-icon></span>
               <span>Générer ma fiche (PDF)</span>
             </button>
           </div>
@@ -441,14 +441,14 @@ export interface PersonalJournalNote {
                 (click)="downloadPreparationPdf()"
                 class="px-4 py-2 rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-bold transition flex items-center gap-1.5 shadow-xs cursor-pointer"
               >
-                <span>📥 Télécharger PDF</span>
+                <span><mb-icon name="download"></mb-icon> Télécharger PDF</span>
               </button>
               <button
                 type="button"
                 (click)="shareWithCounselor()"
                 class="px-4 py-2 rounded-xl border border-[#7C3AED] text-[#7C3AED] hover:bg-purple-50 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
               >
-                <span>🤝 {{ sharedSuccess ? '✓ Transmis à Sophie M.' : 'Partager avec mon conseiller' }}</span>
+                <span><mb-icon name="handshake"></mb-icon> {{ sharedSuccess ? '✓ Transmis à Sophie M.' : 'Partager avec mon conseiller' }}</span>
               </button>
             </div>
           </div>
@@ -565,7 +565,7 @@ export interface PersonalJournalNote {
               {{ editingQuestionId ? 'Modifier la question' : 'Ajouter une nouvelle question' }}
             </h3>
             <button type="button" (click)="showQuestionModal = false" class="text-gray-400 hover:text-gray-600 text-lg cursor-pointer">
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 
@@ -594,7 +594,7 @@ export interface PersonalJournalNote {
                   (click)="askCoachToReformulate()"
                   class="text-[11px] text-[#7C3AED] font-bold hover:underline cursor-pointer flex items-center gap-1"
                 >
-                  <span>✨ Aide Coach IA</span>
+                  <span><mb-icon name="sparkles"></mb-icon> Aide Coach IA</span>
                 </button>
               </div>
               <textarea
@@ -637,7 +637,7 @@ export interface PersonalJournalNote {
       <div *ngIf="showCoachHelper" class="fixed inset-0 z-50 bg-[#0F1035]/60 backdrop-blur-xs flex items-center justify-center p-4">
         <div class="w-full max-w-md rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-2xl space-y-4">
           <div class="flex items-center gap-2 text-sm font-extrabold text-[#7C3AED]">
-            <span>✨ Coach IA — Aide à la formulation</span>
+            <span><mb-icon name="sparkles"></mb-icon> Coach IA — Aide à la formulation</span>
           </div>
 
           <p class="text-xs text-gray-600 leading-relaxed font-medium">

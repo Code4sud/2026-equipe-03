@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 
 export type AppointmentStatus = 'CONFIRMED' | 'PLANNED' | 'COMPLETED' | 'TO_CONFIRM' | 'CANCELLED' | 'ABSENT';
@@ -60,7 +61,7 @@ export interface YouthFollowUpItem {
 @Component({
   selector: 'app-counselor-appointments',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="space-y-6 pb-12">
       <!-- ================================================================== -->
@@ -69,7 +70,7 @@ export interface YouthFollowUpItem {
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div class="flex items-center gap-3.5">
           <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-[#EDE9FE] to-[#DDD6FE] text-[#7C3AED] flex items-center justify-center text-2xl shadow-xs shrink-0">
-            📅
+            <mb-icon name="calendar"></mb-icon>
           </div>
           <div>
             <h2 class="text-2xl font-black text-[#0F1035] tracking-tight">Suivi &amp; rendez-vous</h2>
@@ -100,7 +101,7 @@ export interface YouthFollowUpItem {
           class="rounded-[22px] bg-white border border-[#E4E0F5] hover:border-purple-300 p-4 sm:p-5 shadow-xs transition text-left flex items-center gap-4 cursor-pointer"
         >
           <div class="h-11 w-11 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl shrink-0">
-            📅
+            <mb-icon name="calendar"></mb-icon>
           </div>
           <div>
             <span class="text-2xl sm:text-3xl font-black text-[#0F1035] block leading-none">6</span>
@@ -115,7 +116,7 @@ export interface YouthFollowUpItem {
           class="rounded-[22px] bg-white border border-[#E4E0F5] hover:border-emerald-300 p-4 sm:p-5 shadow-xs transition text-left flex items-center gap-4 cursor-pointer"
         >
           <div class="h-11 w-11 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shrink-0">
-            ✓
+            <mb-icon name="check"></mb-icon>
           </div>
           <div>
             <span class="text-2xl sm:text-3xl font-black text-[#0F1035] block leading-none">4</span>
@@ -130,7 +131,7 @@ export interface YouthFollowUpItem {
           class="rounded-[22px] bg-white border border-[#E4E0F5] hover:border-amber-300 p-4 sm:p-5 shadow-xs transition text-left flex items-center gap-4 cursor-pointer"
         >
           <div class="h-11 w-11 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shrink-0">
-            🔔
+            <mb-icon name="bell"></mb-icon>
           </div>
           <div>
             <span class="text-2xl sm:text-3xl font-black text-[#0F1035] block leading-none">2</span>
@@ -145,7 +146,7 @@ export interface YouthFollowUpItem {
           class="rounded-[22px] bg-white border border-[#E4E0F5] hover:border-purple-300 p-4 sm:p-5 shadow-xs transition text-left flex items-center gap-4 cursor-pointer"
         >
           <div class="h-11 w-11 rounded-2xl bg-purple-50 text-[#7C3AED] flex items-center justify-center text-xl shrink-0">
-            📋
+            <mb-icon name="clipboard-list"></mb-icon>
           </div>
           <div>
             <span class="text-2xl sm:text-3xl font-black text-[#0F1035] block leading-none">3</span>
@@ -166,7 +167,7 @@ export interface YouthFollowUpItem {
             : 'bg-white text-[#42466B] hover:text-[#0F1035] border border-[#E4E0F5]'"
           class="rounded-full px-5 py-2.5 transition flex items-center gap-2 cursor-pointer"
         >
-          <span>📅</span>
+          <span><mb-icon name="calendar"></mb-icon></span>
           <span>Mon agenda</span>
         </button>
 
@@ -178,7 +179,7 @@ export interface YouthFollowUpItem {
             : 'bg-white text-[#42466B] hover:text-[#0F1035] border border-[#E4E0F5]'"
           class="rounded-full px-5 py-2.5 transition flex items-center gap-2 cursor-pointer"
         >
-          <span>📋</span>
+          <span><mb-icon name="clipboard-list"></mb-icon></span>
           <span>Mes rendez-vous</span>
         </button>
 
@@ -190,7 +191,7 @@ export interface YouthFollowUpItem {
             : 'bg-white text-[#42466B] hover:text-[#0F1035] border border-[#E4E0F5]'"
           class="rounded-full px-5 py-2.5 transition flex items-center gap-2 cursor-pointer"
         >
-          <span>👥</span>
+          <span><mb-icon name="users"></mb-icon></span>
           <span>Jeunes à suivre</span>
         </button>
       </div>
@@ -291,7 +292,7 @@ export interface YouthFollowUpItem {
                       class="h-full rounded-xl p-1.5 text-[11px] bg-emerald-50 border border-emerald-200 text-emerald-900 cursor-pointer hover:shadow-xs transition"
                     >
                       <div class="flex items-center gap-1 font-bold">
-                        <span>✓</span>
+                        <span><mb-icon name="check"></mb-icon></span>
                         <span class="truncate">Emma D.</span>
                       </div>
                       <span class="text-[10px] text-emerald-700 block truncate">Bilan &amp; pistes</span>
@@ -337,7 +338,7 @@ export interface YouthFollowUpItem {
                       class="h-full rounded-xl p-1.5 text-[11px] bg-emerald-50 border border-emerald-200 text-emerald-900 cursor-pointer hover:shadow-xs transition"
                     >
                       <div class="font-bold flex items-center gap-1">
-                        <span>✓</span>
+                        <span><mb-icon name="check"></mb-icon></span>
                         <span class="truncate">Aïcha D.</span>
                       </div>
                       <span class="text-[10px] text-emerald-700 block truncate">Orientation</span>
@@ -402,7 +403,7 @@ export interface YouthFollowUpItem {
                       class="h-full rounded-xl p-1.5 text-[11px] bg-rose-50 border border-rose-200 text-rose-900 cursor-pointer hover:shadow-xs transition line-through opacity-75"
                     >
                       <div class="font-bold flex items-center gap-1">
-                        <span>✕</span>
+                        <span><mb-icon name="x"></mb-icon></span>
                         <span class="truncate">Noah P.</span>
                       </div>
                       <span class="text-[10px] text-rose-700 block truncate">Questions</span>
@@ -464,7 +465,7 @@ export interface YouthFollowUpItem {
                 [ngClass]="getStatusBadgeClass(selectedApt.status)"
                 class="rounded-full px-3 py-1 text-xs font-black shadow-2xs flex items-center gap-1.5"
               >
-                <span>{{ getStatusIcon(selectedApt.status) }}</span>
+                <mb-icon [name]="getStatusIcon(selectedApt.status)"></mb-icon>
                 <span>{{ selectedApt.statusLabel }}</span>
               </span>
             </div>
@@ -472,15 +473,15 @@ export interface YouthFollowUpItem {
             <!-- Détails temporels et géographiques -->
             <div class="space-y-1.5 text-xs text-[#42466B] bg-[#FAF8FF] border border-[#E4E0F5] rounded-2xl p-3.5">
               <div class="flex items-center gap-2">
-                <span>📅</span>
+                <span><mb-icon name="calendar"></mb-icon></span>
                 <span class="font-bold text-gray-900">{{ formatAptDate(selectedApt.date) }}</span>
               </div>
               <div class="flex items-center gap-2">
-                <span>⏰</span>
+                <span><mb-icon name="clock"></mb-icon></span>
                 <span>{{ selectedApt.startHour }} – {{ selectedApt.endHour }} ({{ selectedApt.durationLabel }})</span>
               </div>
               <div class="flex items-center gap-2">
-                <span>📍</span>
+                <span><mb-icon name="map-pin"></mb-icon></span>
                 <span>{{ selectedApt.location }}</span>
               </div>
             </div>
@@ -534,7 +535,7 @@ export interface YouthFollowUpItem {
             <div *ngIf="detailTab === 'INFO'" class="space-y-4 text-xs">
               <div class="space-y-1">
                 <span class="text-gray-500 font-bold block flex items-center gap-1.5">
-                  <span>👤</span>
+                  <span><mb-icon name="user"></mb-icon></span>
                   <span>Motif</span>
                 </span>
                 <p class="text-gray-800 leading-relaxed font-medium pl-6">
@@ -544,7 +545,7 @@ export interface YouthFollowUpItem {
 
               <div class="space-y-1.5">
                 <span class="text-gray-500 font-bold block flex items-center gap-1.5">
-                  <span>🎯</span>
+                  <span><mb-icon name="target"></mb-icon></span>
                   <span>Objectifs</span>
                 </span>
                 <ul class="space-y-1 pl-6 list-disc list-inside text-gray-800">
@@ -631,7 +632,7 @@ export interface YouthFollowUpItem {
                 (click)="markAsCompleted(selectedApt)"
                 class="w-full rounded-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 font-black shadow-sm cursor-pointer"
               >
-                ✓ Clôturer et valider l'entretien
+                <mb-icon name="check"></mb-icon> Clôturer et valider l'entretien
               </button>
             </div>
 
@@ -667,7 +668,7 @@ export interface YouthFollowUpItem {
         <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
           <div class="flex items-center justify-between pb-2 border-b border-gray-100">
             <div class="flex items-center gap-2.5">
-              <span class="text-xl">👥</span>
+              <span class="text-xl"><mb-icon name="users"></mb-icon></span>
               <div>
                 <h3 class="text-base font-black text-[#0F1035]">Jeunes à suivre</h3>
                 <p class="text-xs text-gray-400">Dossiers nécessitant une action ou un suivi prochain.</p>
@@ -706,13 +707,13 @@ export interface YouthFollowUpItem {
                   </td>
                   <td class="py-3">
                     <span [class]="youth.situationBadgeClass" class="rounded-full px-3 py-1 text-[11px] font-bold shadow-2xs inline-flex items-center gap-1.5">
-                      <span>{{ youth.situationIcon }}</span>
+                      <mb-icon [name]="youth.situationIcon"></mb-icon>
                       <span>{{ youth.situation }}</span>
                     </span>
                   </td>
                   <td class="py-3 text-gray-700 font-medium">
                     <div class="flex items-center gap-1.5">
-                      <span>{{ youth.nextActionIcon }}</span>
+                      <mb-icon [name]="youth.nextActionIcon"></mb-icon>
                       <span>{{ youth.nextAction }}</span>
                     </div>
                   </td>
@@ -734,7 +735,7 @@ export interface YouthFollowUpItem {
           <!-- Barre de recherche et filtres de statut -->
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div class="relative flex-1 max-w-md">
-              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"><mb-icon name="search"></mb-icon></span>
               <input
                 type="text"
                 [(ngModel)]="searchQuery"
@@ -815,7 +816,7 @@ export interface YouthFollowUpItem {
                   </td>
                   <td class="py-3">
                     <span [class]="getStatusBadgeClass(apt.status)" class="rounded-full px-2.5 py-0.5 text-[10px] font-black inline-flex items-center gap-1">
-                      <span>{{ getStatusIcon(apt.status) }}</span>
+                      <mb-icon [name]="getStatusIcon(apt.status)"></mb-icon>
                       <span>{{ apt.statusLabel }}</span>
                     </span>
                   </td>
@@ -875,7 +876,7 @@ export interface YouthFollowUpItem {
               <div class="p-3 rounded-xl bg-white border border-gray-100 space-y-1 text-xs">
                 <span class="text-[10px] uppercase font-bold text-gray-400 block">Prochaine action</span>
                 <p class="font-bold text-gray-800 flex items-center gap-1.5">
-                  <span>{{ y.nextActionIcon }}</span>
+                  <mb-icon [name]="y.nextActionIcon"></mb-icon>
                   <span>{{ y.nextAction }}</span>
                 </p>
                 <span *ngIf="y.dueDate" class="text-[11px] text-amber-700 font-bold block pt-1">
@@ -897,7 +898,7 @@ export interface YouthFollowUpItem {
         <div class="rounded-[28px] bg-white border border-[#E4E0F5] max-w-lg w-full p-6 sm:p-7 shadow-2xl space-y-4">
           <div class="flex items-center justify-between pb-3 border-b border-gray-100">
             <div class="flex items-center gap-2.5">
-              <span class="text-xl">📅</span>
+              <span class="text-xl"><mb-icon name="calendar"></mb-icon></span>
               <h3 class="text-lg font-black text-[#0F1035]">Nouveau rendez-vous</h3>
             </div>
             <button
@@ -905,7 +906,7 @@ export interface YouthFollowUpItem {
               (click)="isNewModalOpen = false"
               class="h-8 w-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-sm cursor-pointer"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 
@@ -1001,7 +1002,7 @@ export interface YouthFollowUpItem {
 
             <!-- Alerte conflit éventuelle -->
             <div *ngIf="conflictError" class="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-bold">
-              ⚠️ {{ conflictError }}
+              <mb-icon name="triangle-alert"></mb-icon> {{ conflictError }}
             </div>
 
             <!-- Boutons valider / annuler -->
@@ -1293,9 +1294,9 @@ export class CounselorAppointmentsComponent implements OnInit {
       dossierRef: 'Rdv 2187',
       situation: 'Entretien réalisé',
       situationBadgeClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
-      situationIcon: '✓',
+      situationIcon: 'check',
       nextAction: 'Consulter le compte rendu',
-      nextActionIcon: '📄',
+      nextActionIcon: 'file-text',
       dueDate: undefined
     },
     {
@@ -1304,9 +1305,9 @@ export class CounselorAppointmentsComponent implements OnInit {
       dossierRef: 'Dossier 2188',
       situation: 'Rendez-vous planifié',
       situationBadgeClass: 'bg-amber-50 text-amber-700 border border-amber-200',
-      situationIcon: '📅',
+      situationIcon: 'calendar',
       nextAction: 'Préparer l\'entretien',
-      nextActionIcon: '✏️',
+      nextActionIcon: 'pencil',
       dueDate: '19 nov. 2026'
     },
     {
@@ -1315,9 +1316,9 @@ export class CounselorAppointmentsComponent implements OnInit {
       dossierRef: 'Dossier 2189',
       situation: 'Action en attente',
       situationBadgeClass: 'bg-sky-50 text-sky-700 border border-sky-200',
-      situationIcon: '⌛',
+      situationIcon: 'hourglass',
       nextAction: 'Vérifier l\'avancement (ressources, candidatures)',
-      nextActionIcon: '📋',
+      nextActionIcon: 'clipboard-list',
       dueDate: '21 nov. 2026'
     },
     {
@@ -1326,9 +1327,9 @@ export class CounselorAppointmentsComponent implements OnInit {
       dossierRef: 'Dossier 2190',
       situation: 'Dossier en cours',
       situationBadgeClass: 'bg-purple-50 text-purple-700 border border-purple-200',
-      situationIcon: '...',
+      situationIcon: 'ellipsis',
       nextAction: 'Examiner les éléments disponibles (extraction)',
-      nextActionIcon: '🔍',
+      nextActionIcon: 'search',
       dueDate: undefined
     }
   ];
@@ -1397,12 +1398,12 @@ export class CounselorAppointmentsComponent implements OnInit {
 
   getStatusIcon(status: AppointmentStatus): string {
     switch (status) {
-      case 'CONFIRMED': return '✓';
-      case 'COMPLETED': return '✓';
-      case 'PLANNED': return '●';
-      case 'TO_CONFIRM': return '●';
-      case 'CANCELLED': return '✕';
-      default: return '●';
+      case 'CONFIRMED': return 'check';
+      case 'COMPLETED': return 'check';
+      case 'PLANNED': return 'dot';
+      case 'TO_CONFIRM': return 'dot';
+      case 'CANCELLED': return 'x';
+      default: return 'dot';
     }
   }
 

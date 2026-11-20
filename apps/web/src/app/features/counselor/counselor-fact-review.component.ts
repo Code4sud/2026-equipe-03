@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 
 export type FactReviewStatus = 'PENDING_REVIEW' | 'VERIFIED' | 'CORRECTED' | 'NEEDS_CLARIFICATION' | 'REJECTED';
@@ -27,7 +28,7 @@ export interface ReviewableFact {
 @Component({
   selector: 'app-counselor-fact-review',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="space-y-6 pb-12">
       <!-- ================================================================== -->
@@ -36,7 +37,7 @@ export interface ReviewableFact {
       <div class="rounded-[28px] bg-gradient-to-r from-[#170E43] via-[#3B1974] to-[#6929C4] p-5 sm:p-6 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div class="flex items-center gap-3.5">
           <div class="h-12 w-12 rounded-2xl bg-white/10 backdrop-blur-xs text-purple-200 border border-white/20 flex items-center justify-center text-2xl shrink-0">
-            🤖
+            <mb-icon name="bot"></mb-icon>
           </div>
           <div>
             <div class="flex items-center gap-2.5 flex-wrap">
@@ -72,7 +73,7 @@ export interface ReviewableFact {
           class="rounded-2xl border p-2.5 sm:p-3 text-left transition flex items-center gap-2.5 bg-white border-purple-200 shadow-xs cursor-pointer hover:bg-purple-50/50"
         >
           <div class="h-7 w-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">
-            ✓
+            <mb-icon name="check"></mb-icon>
           </div>
           <div class="min-w-0">
             <span class="text-[10px] uppercase font-bold text-gray-400 block">1</span>
@@ -159,7 +160,7 @@ export interface ReviewableFact {
           <div class="space-y-1">
             <div class="flex items-center gap-2.5">
               <span class="h-9 w-9 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg font-bold">
-                🛡️
+                <mb-icon name="shield-check"></mb-icon>
               </span>
               <h3 class="text-xl font-black text-[#0F1035]">Révision des faits extraits</h3>
             </div>
@@ -171,12 +172,12 @@ export interface ReviewableFact {
           <!-- 3 Capsules Indicateurs : Détectés, Contrôlés, Publication bloquée/débloquée -->
           <div class="flex items-center gap-3 flex-wrap">
             <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] px-4 py-2 flex items-center gap-2 shadow-2xs">
-              <span class="text-sm">📄</span>
+              <span class="text-sm"><mb-icon name="file-text"></mb-icon></span>
               <span class="text-xs font-black text-[#0F1035]">{{ facts.length }} faits détectés</span>
             </div>
 
             <div class="rounded-2xl bg-emerald-50 border border-emerald-200 px-4 py-2 flex items-center gap-2 shadow-2xs">
-              <span class="text-sm text-emerald-600">✓</span>
+              <span class="text-sm text-emerald-600"><mb-icon name="check"></mb-icon></span>
               <span class="text-xs font-black text-emerald-800">{{ verifiedCount }} contrôlé{{ verifiedCount > 1 ? 's' : '' }}</span>
             </div>
 
@@ -187,7 +188,7 @@ export interface ReviewableFact {
                 : 'bg-rose-50 border-rose-200 text-rose-700'"
               class="rounded-2xl border px-4 py-2 flex items-center gap-2 shadow-2xs transition-all"
             >
-              <span>{{ isPublicationReady ? '🔓' : '🔒' }}</span>
+              <span><mb-icon [name]="isPublicationReady ? 'lock-open' : 'lock'"></mb-icon></span>
               <span class="text-xs font-black">
                 {{ isPublicationReady ? 'Publication débloquée' : 'Publication bloquée' }}
               </span>
@@ -277,7 +278,7 @@ export interface ReviewableFact {
                 title="Télécharger le PDF original"
                 class="h-7 w-7 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-100 flex items-center justify-center ml-1"
               >
-                📥
+                <mb-icon name="download"></mb-icon>
               </button>
             </div>
           </div>
@@ -390,7 +391,7 @@ export interface ReviewableFact {
           <!-- En-tête Zone Droite -->
           <div class="flex items-center justify-between pb-3 border-b border-gray-100">
             <div class="flex items-center gap-2">
-              <span class="text-purple-600 font-bold">✨</span>
+              <span class="text-purple-600 font-bold"><mb-icon name="sparkles"></mb-icon></span>
               <h4 class="text-base font-black text-[#0F1035]">Extraction IA</h4>
             </div>
             <span class="rounded-full bg-purple-50 border border-purple-200 text-[#7C3AED] px-3 py-0.5 text-xs font-black">
@@ -427,7 +428,7 @@ export interface ReviewableFact {
                   : 'bg-amber-50 text-amber-800 border-amber-300'"
                 class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 font-black"
               >
-                <span>{{ selectedFact.status === 'VERIFIED' ? '✓' : '⚠️' }}</span>
+                <span><mb-icon [name]="selectedFact.status === 'VERIFIED' ? 'check' : 'triangle-alert'"></mb-icon></span>
                 <span>{{ selectedFact.status === 'VERIFIED' ? 'Vérifié' : 'À contrôler' }}</span>
               </span>
 
@@ -446,7 +447,7 @@ export interface ReviewableFact {
                 (click)="goToProofPage(selectedFact)"
                 class="rounded-xl border border-gray-300 hover:border-[#7C3AED] hover:bg-purple-50 text-gray-700 hover:text-[#7C3AED] py-2.5 px-3 text-xs font-black transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
               >
-                <span>📄</span>
+                <span><mb-icon name="file-text"></mb-icon></span>
                 <span>Voir la preuve PDF</span>
               </button>
 
@@ -456,7 +457,7 @@ export interface ReviewableFact {
                 (click)="openCorrectionModal(selectedFact)"
                 class="rounded-xl border border-gray-300 hover:border-[#7C3AED] hover:bg-purple-50 text-gray-700 hover:text-[#7C3AED] py-2.5 px-3 text-xs font-black transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
               >
-                <span>✏️</span>
+                <span><mb-icon name="pencil"></mb-icon></span>
                 <span>Corriger</span>
               </button>
 
@@ -466,7 +467,7 @@ export interface ReviewableFact {
                 (click)="validateFact(selectedFact)"
                 class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white py-2.5 px-4 text-xs font-black transition flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg cursor-pointer"
               >
-                <span>✓</span>
+                <span><mb-icon name="check"></mb-icon></span>
                 <span>{{ selectedFact.status === 'VERIFIED' ? 'Revalider' : 'Valider' }}</span>
               </button>
             </div>
@@ -480,7 +481,7 @@ export interface ReviewableFact {
       <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-100">
           <div class="flex items-center gap-2">
-            <span class="text-base text-gray-500">☰</span>
+            <span class="text-base text-gray-500"><mb-icon name="menu"></mb-icon></span>
             <h4 class="text-base font-black text-[#0F1035]">
               Liste des faits à contrôler ({{ facts.length }})
             </h4>
@@ -525,7 +526,7 @@ export interface ReviewableFact {
                   : 'bg-amber-100 text-amber-800'"
                 class="rounded-full px-2.5 py-0.5 text-[11px] font-black flex items-center gap-1"
               >
-                <span>{{ fact.status === 'VERIFIED' ? '✓' : '⚠️' }}</span>
+                <span><mb-icon [name]="fact.status === 'VERIFIED' ? 'check' : 'triangle-alert'"></mb-icon></span>
                 <span>{{ fact.status === 'VERIFIED' ? 'Vérifié' : 'À contrôler' }}</span>
               </span>
               <span class="text-gray-400 group-hover:text-[#7C3AED] font-black text-sm transition">›</span>
@@ -537,10 +538,10 @@ export interface ReviewableFact {
         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
           <p class="text-xs text-gray-500">
             <span *ngIf="!isPublicationReady">
-              ⚠️ Veuillez vérifier et valider les {{ facts.length - verifiedCount }} éléments restants avant de publier.
+              <mb-icon name="triangle-alert"></mb-icon> Veuillez vérifier et valider les {{ facts.length - verifiedCount }} éléments restants avant de publier.
             </span>
             <span *ngIf="isPublicationReady" class="text-emerald-700 font-bold">
-              ✓ Tous les faits extraits ont été vérifiés par le professionnel.
+              <mb-icon name="check"></mb-icon> Tous les faits extraits ont été vérifiés par le professionnel.
             </span>
           </p>
 
@@ -578,7 +579,7 @@ export interface ReviewableFact {
               (click)="closeCorrectionModal()"
               class="h-8 w-8 rounded-lg bg-gray-100 text-gray-600 text-sm font-bold flex items-center justify-center hover:bg-gray-200"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 

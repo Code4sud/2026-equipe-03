@@ -79,7 +79,7 @@ export interface SimulationTurn {
           <!-- Sélecteur rapide de projet métier pour la simulation & immersion -->
           <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 text-xs space-y-2 shrink-0">
             <div class="flex items-center justify-between gap-3 text-purple-100 font-bold">
-              <span>🎯 Projet en cours :</span>
+              <span><mb-icon name="target"></mb-icon> Projet en cours :</span>
               <span class="text-[11px] px-2 py-0.5 rounded-full bg-white/20 text-white font-extrabold">Dossier Rdv 2187</span>
             </div>
             <div class="flex items-center gap-2">
@@ -89,7 +89,7 @@ export interface SimulationTurn {
                 [class]="selectedCareer === 'Technicien du son' ? 'bg-white text-[#7C3AED] shadow-md font-black' : 'bg-white/15 text-white hover:bg-white/25 font-bold'"
                 class="px-3 py-1.5 rounded-xl transition cursor-pointer text-xs flex items-center gap-1.5"
               >
-                <span>🎧</span>
+                <span><mb-icon name="headphones"></mb-icon></span>
                 <span>Technicien du son (p. 12)</span>
               </button>
               <button
@@ -98,7 +98,7 @@ export interface SimulationTurn {
                 [class]="selectedCareer === 'Peintre décorateur' ? 'bg-white text-[#7C3AED] shadow-md font-black' : 'bg-white/15 text-white hover:bg-white/25 font-bold'"
                 class="px-3 py-1.5 rounded-xl transition cursor-pointer text-xs flex items-center gap-1.5"
               >
-                <span>🎨</span>
+                <span><mb-icon name="palette"></mb-icon></span>
                 <span>Peintre décorateur (p. 8)</span>
               </button>
             </div>
@@ -123,7 +123,7 @@ export interface SimulationTurn {
             [class]="activeTab === 'EMAIL' ? 'bg-[#7C3AED] text-white' : 'bg-purple-100 text-[#7C3AED]'"
             class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 transition"
           >
-            ✉️
+            <mb-icon name="mail"></mb-icon>
           </div>
           <div class="min-w-0">
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] truncate">Rédiger un email</h4>
@@ -146,7 +146,7 @@ export interface SimulationTurn {
             [class]="activeTab === 'CALL_SCRIPT' ? 'bg-[#7C3AED] text-white' : 'bg-blue-100 text-blue-600'"
             class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 transition"
           >
-            📞
+            <mb-icon name="phone"></mb-icon>
           </div>
           <div class="min-w-0">
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] truncate">Préparer un appel</h4>
@@ -169,7 +169,7 @@ export interface SimulationTurn {
             [class]="activeTab === 'FOLLOWUP' ? 'bg-[#7C3AED] text-white' : 'bg-amber-100 text-amber-700'"
             class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 transition"
           >
-            🔄
+            <mb-icon name="refresh-cw"></mb-icon>
           </div>
           <div class="min-w-0">
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] truncate">Préparer une relance</h4>
@@ -192,7 +192,7 @@ export interface SimulationTurn {
             [class]="activeTab === 'TRAINING' ? 'bg-[#7C3AED] text-white' : 'bg-emerald-100 text-emerald-700'"
             class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 transition"
           >
-            🎙️
+            <mb-icon name="mic"></mb-icon>
           </div>
           <div class="min-w-0">
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] truncate">S'entraîner</h4>
@@ -215,7 +215,7 @@ export interface SimulationTurn {
             [class]="activeTab === 'CHAT' ? 'bg-[#7C3AED] text-white' : 'bg-pink-100 text-pink-600'"
             class="w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 transition"
           >
-            💬
+            <mb-icon name="message-circle"></mb-icon>
           </div>
           <div class="min-w-0">
             <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] truncate">Discuter</h4>
@@ -238,7 +238,7 @@ export interface SimulationTurn {
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span class="text-[#7C3AED]">🎯</span>
+                  <span class="text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
                   <span>Mon projet actuel</span>
                 </span>
                 <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -248,15 +248,15 @@ export interface SimulationTurn {
 
               <div class="space-y-2 text-xs text-[#0F1035]">
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🔨 Métier :</span>
+                  <span class="text-gray-400"><mb-icon name="hammer"></mb-icon> Métier :</span>
                   <span class="font-bold">{{ selectedCareer }}</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🏢 Entreprise :</span>
+                  <span class="text-gray-400"><mb-icon name="building-2"></mb-icon> Entreprise :</span>
                   <span class="font-bold">{{ companyName }}</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🚩 Étape :</span>
+                  <span class="text-gray-400"><mb-icon name="flag"></mb-icon> Étape :</span>
                   <span class="font-bold">Préparation de la prise de contact</span>
                 </div>
               </div>
@@ -305,7 +305,7 @@ export interface SimulationTurn {
                   (click)="generateMessage()"
                   class="w-full py-3 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white font-extrabold text-xs shadow-md hover:shadow-lg transition cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <span>✨</span>
+                  <span><mb-icon name="sparkles"></mb-icon></span>
                   <span>Générer mon message</span>
                 </button>
               </div>
@@ -316,7 +316,7 @@ export interface SimulationTurn {
           <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
             <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
               <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-2">
-                <span class="text-[#7C3AED]">✨</span>
+                <span class="text-[#7C3AED]"><mb-icon name="sparkles"></mb-icon></span>
                 <span>Proposition de message</span>
               </span>
               <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-purple-50 text-[#7C3AED] border border-purple-200">
@@ -341,7 +341,7 @@ export interface SimulationTurn {
                 (click)="copyMessage()"
                 class="px-3 py-1.5 rounded-xl border border-gray-300 text-xs font-bold text-[#0F1035] hover:bg-gray-50 transition cursor-pointer flex items-center gap-1"
               >
-                <span>📋</span>
+                <span><mb-icon name="clipboard-list"></mb-icon></span>
                 <span>{{ copiedToast ? 'Copié !' : 'Copier le texte' }}</span>
               </button>
               <button
@@ -349,7 +349,7 @@ export interface SimulationTurn {
                 (click)="downloadMessagePdf()"
                 class="px-3 py-1.5 rounded-xl border border-gray-300 text-xs font-bold text-[#0F1035] hover:bg-gray-50 transition cursor-pointer flex items-center gap-1"
               >
-                <span>📥</span>
+                <span><mb-icon name="download"></mb-icon></span>
                 <span>Télécharger (TXT / PDF)</span>
               </button>
             </div>
@@ -360,7 +360,7 @@ export interface SimulationTurn {
                 (click)="saveToImmersionProject()"
                 class="w-full py-2.5 rounded-2xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-extrabold text-xs shadow-sm transition cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>💾</span>
+                <span><mb-icon name="save"></mb-icon></span>
                 <span>Enregistrer dans mon projet</span>
               </button>
               <button
@@ -368,7 +368,7 @@ export interface SimulationTurn {
                 (click)="saveToImmersionProject()"
                 class="w-full py-2 rounded-2xl border border-purple-300 bg-purple-50 hover:bg-purple-100 text-[#6D28D9] font-extrabold text-xs transition cursor-pointer flex items-center justify-center gap-1.5"
               >
-                <span>🔗</span>
+                <span><mb-icon name="link"></mb-icon></span>
                 <span>Lier à mon immersion</span>
               </button>
             </div>
@@ -378,24 +378,24 @@ export interface SimulationTurn {
           <div class="lg:col-span-3 space-y-4">
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-amber-500">💡</span>
+                <span class="text-base text-amber-500"><mb-icon name="lightbulb"></mb-icon></span>
                 <span>Conseils du Coach</span>
               </div>
               <ul class="space-y-2 text-xs font-medium text-emerald-800">
                 <li class="flex items-start gap-1.5">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Sois clair(e) sur ton objectif.</span>
                 </li>
                 <li class="flex items-start gap-1.5">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Reste poli(e) et courtois(e).</span>
                 </li>
                 <li class="flex items-start gap-1.5">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Indique une période réaliste.</span>
                 </li>
                 <li class="flex items-start gap-1.5">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Montre ta motivation pour le métier.</span>
                 </li>
               </ul>
@@ -403,7 +403,7 @@ export interface SimulationTurn {
 
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-[#7C3AED]">⏱️</span>
+                <span class="text-base text-[#7C3AED]"><mb-icon name="timer"></mb-icon></span>
                 <span>Et après ?</span>
               </div>
               <div class="space-y-2 text-xs text-[#42466B]">
@@ -425,7 +425,7 @@ export interface SimulationTurn {
             <!-- Besoin d'aide ? -->
             <div class="rounded-[28px] bg-[#F5F3FF] border border-[#DDD6FE] p-5 space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#6D28D9]">
-                <span class="text-base">💬</span>
+                <span class="text-base"><mb-icon name="message-circle"></mb-icon></span>
                 <span>Besoin d'aide ?</span>
               </div>
               <p class="text-[11px] text-[#4C1D95]">Tu hésites sur la formulation ? Viens échanger avec moi.</p>
@@ -451,7 +451,7 @@ export interface SimulationTurn {
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span class="text-blue-600">📞</span>
+                  <span class="text-blue-600"><mb-icon name="phone"></mb-icon></span>
                   <span>Entreprise à contacter</span>
                 </span>
                 <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
@@ -461,15 +461,15 @@ export interface SimulationTurn {
 
               <div class="space-y-2 text-xs text-[#0F1035]">
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🏢 Structure :</span>
+                  <span class="text-gray-400"><mb-icon name="building-2"></mb-icon> Structure :</span>
                   <span class="font-bold">{{ companyName }}</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🔨 Métier :</span>
+                  <span class="text-gray-400"><mb-icon name="hammer"></mb-icon> Métier :</span>
                   <span class="font-bold">{{ selectedCareer }}</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">☎️ Téléphone :</span>
+                  <span class="text-gray-400"><mb-icon name="phone"></mb-icon> Téléphone :</span>
                   <span class="font-bold text-[#7C3AED]">{{ callPhoneNumber }}</span>
                 </div>
               </div>
@@ -539,7 +539,7 @@ export interface SimulationTurn {
           <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
             <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
               <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-2">
-                <span class="text-blue-600">📜</span>
+                <span class="text-blue-600"><mb-icon name="file-text"></mb-icon></span>
                 <span>Mon script téléphonique guidé</span>
               </span>
               <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
@@ -582,7 +582,7 @@ export interface SimulationTurn {
               <!-- Boîte à outils : Si on te dit... -->
               <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
                 <div class="text-[11px] font-extrabold text-amber-900 flex items-center gap-1.5">
-                  <span>💡</span>
+                  <span><mb-icon name="lightbulb"></mb-icon></span>
                   <span>Que répondre si...</span>
                 </div>
                 <div class="text-[11px] space-y-1.5 text-amber-950">
@@ -604,7 +604,7 @@ export interface SimulationTurn {
                 (click)="copyCallScript()"
                 class="px-4 py-2 rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-xs font-bold transition cursor-pointer flex items-center gap-1.5 shadow-xs"
               >
-                <span>📋</span>
+                <span><mb-icon name="clipboard-list"></mb-icon></span>
                 <span>{{ copiedToast ? 'Script copié !' : 'Copier tout le script' }}</span>
               </button>
               <button
@@ -612,7 +612,7 @@ export interface SimulationTurn {
                 (click)="selectTab('TRAINING')"
                 class="px-4 py-2 rounded-xl border border-[#7C3AED] text-[#7C3AED] hover:bg-purple-50 text-xs font-bold transition cursor-pointer flex items-center gap-1.5"
               >
-                <span>🎙️</span>
+                <span><mb-icon name="headphones"></mb-icon></span>
                 <span>S'entraîner à voix haute</span>
               </button>
             </div>
@@ -622,20 +622,20 @@ export interface SimulationTurn {
           <div class="lg:col-span-3 space-y-4">
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-amber-500">🎯</span>
+                <span class="text-base text-amber-500"><mb-icon name="target"></mb-icon></span>
                 <span>Conseils avant d'appeler</span>
               </div>
               <ul class="space-y-2 text-xs font-medium text-[#42466B]">
                 <li class="flex items-start gap-1.5">
-                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                   <span>Prends une grande inspiration et souris : ça s'entend au téléphone !</span>
                 </li>
                 <li class="flex items-start gap-1.5">
-                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                   <span>Aie un bloc-notes et un stylo prêt pour noter le nom de la personne.</span>
                 </li>
                 <li class="flex items-start gap-1.5">
-                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                   <span>Appelle de préférence le matin entre 9h30 et 11h30.</span>
                 </li>
               </ul>
@@ -643,7 +643,7 @@ export interface SimulationTurn {
 
             <div class="rounded-[28px] bg-blue-50 border border-blue-200 p-5 space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-blue-900">
-                <span class="text-base">🚀</span>
+                <span class="text-base"><mb-icon name="rocket"></mb-icon></span>
                 <span>Peur d'appeler ?</span>
               </div>
               <p class="text-[11px] text-blue-950">
@@ -671,7 +671,7 @@ export interface SimulationTurn {
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span class="text-amber-600">🔄</span>
+                  <span class="text-amber-600"><mb-icon name="refresh-cw"></mb-icon></span>
                   <span>Entreprise relancée</span>
                 </span>
                 <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
@@ -681,15 +681,15 @@ export interface SimulationTurn {
 
               <div class="space-y-2 text-xs text-[#0F1035]">
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🏢 Entreprise :</span>
+                  <span class="text-gray-400"><mb-icon name="building-2"></mb-icon> Entreprise :</span>
                   <span class="font-bold">{{ companyName }}</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">🔨 Métier :</span>
+                  <span class="text-gray-400"><mb-icon name="hammer"></mb-icon> Métier :</span>
                   <span class="font-bold">{{ selectedCareer }}</span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="text-gray-400">📅 1ère demande :</span>
+                  <span class="text-gray-400"><mb-icon name="calendar"></mb-icon> 1ère demande :</span>
                   <span class="font-bold">Il y a quelques jours</span>
                 </div>
               </div>
@@ -751,7 +751,7 @@ export interface SimulationTurn {
           <div class="lg:col-span-5 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
             <div class="flex items-center justify-between pb-2 border-b border-[#F0EDFA]">
               <span class="text-xs font-extrabold text-[#0F1035] flex items-center gap-2">
-                <span class="text-amber-600">✨</span>
+                <span class="text-amber-600"><mb-icon name="sparkles"></mb-icon></span>
                 <span>Message de relance optimisé</span>
               </span>
               <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
@@ -776,7 +776,7 @@ export interface SimulationTurn {
                 (click)="copyFollowupMessage()"
                 class="px-3 py-1.5 rounded-xl border border-gray-300 text-xs font-bold text-[#0F1035] hover:bg-gray-50 transition cursor-pointer flex items-center gap-1"
               >
-                <span>📋</span>
+                <span><mb-icon name="clipboard-list"></mb-icon></span>
                 <span>{{ copiedToast ? 'Copié !' : 'Copier le message' }}</span>
               </button>
               <button
@@ -784,7 +784,7 @@ export interface SimulationTurn {
                 (click)="downloadFollowupPdf()"
                 class="px-3 py-1.5 rounded-xl border border-gray-300 text-xs font-bold text-[#0F1035] hover:bg-gray-50 transition cursor-pointer flex items-center gap-1"
               >
-                <span>📥</span>
+                <span><mb-icon name="download"></mb-icon></span>
                 <span>Télécharger</span>
               </button>
             </div>
@@ -795,7 +795,7 @@ export interface SimulationTurn {
                 (click)="saveToImmersionProject()"
                 class="w-full py-2.5 rounded-2xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-extrabold text-xs shadow-sm transition cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>💾</span>
+                <span><mb-icon name="save"></mb-icon></span>
                 <span>Enregistrer dans mon suivi d'immersion</span>
               </button>
             </div>
@@ -805,7 +805,7 @@ export interface SimulationTurn {
           <div class="lg:col-span-3 space-y-4">
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-amber-500">💡</span>
+                <span class="text-base text-amber-500"><mb-icon name="lightbulb"></mb-icon></span>
                 <span>Pourquoi relancer ?</span>
               </div>
               <p class="text-xs text-gray-600 leading-relaxed">
@@ -813,15 +813,15 @@ export interface SimulationTurn {
               </p>
               <ul class="space-y-1.5 text-xs font-medium text-emerald-800">
                 <li class="flex items-start gap-1">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Reste toujours positif.</span>
                 </li>
                 <li class="flex items-start gap-1">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Ne fais aucun reproche.</span>
                 </li>
                 <li class="flex items-start gap-1">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Précise ta flexibilité sur les dates.</span>
                 </li>
               </ul>
@@ -840,7 +840,7 @@ export interface SimulationTurn {
             <!-- En-tête -->
             <div class="space-y-1">
               <div class="flex items-center gap-2">
-                <span class="text-xl text-[#7C3AED]">🎯</span>
+                <mb-icon name="target" class="text-xl text-[#7C3AED]"></mb-icon>
                 <h3 class="text-lg sm:text-xl font-extrabold text-[#0F1035]">
                   Mon entraînement avec le Coach
                 </h3>
@@ -864,7 +864,7 @@ export interface SimulationTurn {
                     : 'bg-white border border-[#E4E0F5] text-[#42466B] hover:bg-[#F8F7FF] font-semibold'"
                   class="py-2.5 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
                 >
-                  <span>🎙️</span>
+                  <mb-icon name="mic" class="text-base"></mb-icon>
                   <span>Vocal</span>
                 </button>
 
@@ -876,7 +876,7 @@ export interface SimulationTurn {
                     : 'bg-white border border-[#E4E0F5] text-[#42466B] hover:bg-[#F8F7FF] font-semibold'"
                   class="py-2.5 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 transition cursor-pointer"
                 >
-                  <span>💬</span>
+                  <mb-icon name="keyboard" class="text-base"></mb-icon>
                   <span>Texte</span>
                 </button>
               </div>
@@ -902,13 +902,17 @@ export interface SimulationTurn {
                       [class]="activeScenario.id === sc.id ? 'bg-[#7C3AED] text-white' : 'bg-gray-100 text-gray-500'"
                       class="w-5 h-5 rounded-full flex items-center justify-center text-xs shrink-0 transition"
                     >
-                      <span *ngIf="activeScenario.id === sc.id">●</span>
+                      <mb-icon *ngIf="activeScenario.id === sc.id" name="check" class="text-[11px]"></mb-icon>
                     </div>
                     <span class="text-xs sm:text-sm font-extrabold text-[#0F1035]">
                       {{ sc.title }}
                     </span>
                   </div>
-                  <span class="text-base shrink-0">{{ getScenarioEmoji(sc.id) }}</span>
+                  <mb-icon
+                    [name]="getScenarioIcon(sc.id)"
+                    class="text-lg"
+                    [ngClass]="activeScenario.id === sc.id ? 'text-[#7C3AED]' : 'text-gray-400'"
+                  ></mb-icon>
                 </div>
               </div>
             </div>
@@ -963,7 +967,7 @@ export interface SimulationTurn {
                   [disabled]="!userTextResponse.trim()"
                   class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-[#7C3AED] hover:bg-[#6D28D9] disabled:opacity-40 text-white font-extrabold text-xs sm:text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>✈️</span>
+                  <span><mb-icon name="plane"></mb-icon></span>
                   <span>Envoyer ma réponse</span>
                 </button>
 
@@ -972,13 +976,13 @@ export interface SimulationTurn {
                   (click)="setTrainingMode('VOCAL')"
                   class="w-full sm:w-auto px-5 py-3 rounded-2xl border-2 border-[#7C3AED] text-[#7C3AED] hover:bg-[#F5F3FF] font-extrabold text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>🎙️</span>
+                  <span><mb-icon name="mic"></mb-icon></span>
                   <span>Basculer en mode vocal</span>
                 </button>
               </div>
 
               <div class="text-center text-[11px] text-gray-400 font-medium">
-                ⓘ Tu peux changer de mode à tout moment.
+                <mb-icon name="info"></mb-icon> Tu peux changer de mode à tout moment.
               </div>
             </div>
 
@@ -1043,8 +1047,8 @@ export interface SimulationTurn {
                     class="w-14 h-14 rounded-full text-white flex items-center justify-center text-2xl shadow-lg mx-2 transition cursor-pointer"
                     title="Cliquer pour parler ou arrêter"
                   >
-                    <span *ngIf="voiceState !== 'THINKING'">🎙️</span>
-                    <span *ngIf="voiceState === 'THINKING'" class="text-sm">⏳</span>
+                    <span *ngIf="voiceState !== 'THINKING'"><mb-icon name="mic"></mb-icon></span>
+                    <span *ngIf="voiceState === 'THINKING'" class="text-sm"><mb-icon name="hourglass"></mb-icon></span>
                   </div>
 
                   <span class="w-1.5 h-4 bg-[#C4B5FD] rounded-full wave-bar" [class.animate-pulse]="voiceState === 'SPEAKING' || voiceState === 'LISTENING'" style="animation-delay: 0.4s"></span>
@@ -1068,7 +1072,8 @@ export interface SimulationTurn {
                     (click)="toggleVoiceListening()"
                     class="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] hover:from-[#6D28D9] hover:to-[#5B21B6] text-white font-extrabold text-xs sm:text-sm shadow-md transition cursor-pointer flex items-center justify-center gap-2"
                   >
-                    <span>{{ voiceState === 'LISTENING' ? '⏹️ Valider ma réponse vocale' : '▶ Activer le micro & parler' }}</span>
+                    <mb-icon [name]="voiceState === 'LISTENING' ? 'square' : 'mic'" [filled]="voiceState === 'LISTENING'"></mb-icon>
+                    <span>{{ voiceState === 'LISTENING' ? 'Valider ma réponse vocale' : 'Activer le micro & parler' }}</span>
                   </button>
 
                   <!-- Filet de sécurité démo jury : Réponse type instantanée en 1 clic -->
@@ -1078,7 +1083,7 @@ export interface SimulationTurn {
                     class="w-full sm:w-auto px-4 py-3 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
                     title="Génère une réponse type réaliste si le micro n'est pas disponible"
                   >
-                    <span>⚡ Réponse type Démo</span>
+                    <span><mb-icon name="zap"></mb-icon> Réponse type Démo</span>
                   </button>
                 </div>
 
@@ -1088,7 +1093,8 @@ export interface SimulationTurn {
                     (click)="togglePauseVoice()"
                     class="px-3 py-1.5 rounded-xl bg-white border border-[#E4E0F5] hover:bg-gray-50 text-xs font-bold text-[#0F1035] transition flex items-center gap-1 shadow-2xs cursor-pointer"
                   >
-                    <span>{{ voiceState === 'PAUSED' ? '▶ Reprendre' : '⏸ Pause' }}</span>
+                    <mb-icon [name]="voiceState === 'PAUSED' ? 'play' : 'pause'" [filled]="true"></mb-icon>
+                    <span>{{ voiceState === 'PAUSED' ? 'Reprendre' : 'Pause' }}</span>
                   </button>
 
                   <button
@@ -1096,7 +1102,7 @@ export interface SimulationTurn {
                     (click)="replayCurrentQuestion()"
                     class="px-3 py-1.5 rounded-xl bg-white border border-[#E4E0F5] hover:bg-gray-50 text-xs font-bold text-[#0F1035] transition flex items-center gap-1 shadow-2xs cursor-pointer"
                   >
-                    <span>🔄 Répéter la question</span>
+                    <span><mb-icon name="refresh-cw"></mb-icon> Répéter la question</span>
                   </button>
 
                   <button
@@ -1104,7 +1110,7 @@ export interface SimulationTurn {
                     (click)="finishTrainingNow()"
                     class="px-3 py-1.5 rounded-xl bg-purple-50 border border-purple-200 hover:bg-purple-100 text-xs font-bold text-[#7C3AED] transition flex items-center gap-1 cursor-pointer"
                   >
-                    <span>🏁 Conclure la simulation</span>
+                    <span><mb-icon name="flag"></mb-icon> Conclure la simulation</span>
                   </button>
                 </div>
 
@@ -1113,7 +1119,7 @@ export interface SimulationTurn {
                   (click)="setTrainingMode('TEXT')"
                   class="text-xs font-bold text-[#7C3AED] hover:underline flex items-center gap-1 cursor-pointer pt-1"
                 >
-                  <span>💬 Passer en mode texte</span>
+                  <span><mb-icon name="message-circle"></mb-icon> Passer en mode texte</span>
                 </button>
               </div>
 
@@ -1121,7 +1127,7 @@ export interface SimulationTurn {
               <div *ngIf="simulationTurns.length > 0" class="space-y-3 pt-3 border-t border-[#F0EDFA]">
                 <div class="flex items-center justify-between">
                   <h4 class="text-xs font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                    <span class="text-base text-[#7C3AED]">💬</span>
+                    <span class="text-base text-[#7C3AED]"><mb-icon name="message-circle"></mb-icon></span>
                     <span>Échanges de la simulation</span>
                   </h4>
                   <span class="text-[11px] font-bold text-gray-400">
@@ -1135,7 +1141,7 @@ export interface SimulationTurn {
                     <div class="flex justify-end">
                       <div class="rounded-2xl rounded-tr-sm bg-purple-100 text-[#0F1035] p-3 max-w-[85%] space-y-1 shadow-2xs">
                         <div class="flex items-center justify-between gap-2 text-[10px] text-purple-700 font-bold">
-                          <span>👤 Toi (Étape {{ turn.stepIndex + 1 }})</span>
+                          <span><mb-icon name="user"></mb-icon> Toi (Étape {{ turn.stepIndex + 1 }})</span>
                           <span>{{ turn.timestamp }}</span>
                         </div>
                         <p class="font-medium text-xs leading-relaxed">« {{ turn.userText }} »</p>
@@ -1146,11 +1152,11 @@ export interface SimulationTurn {
                     <div class="flex justify-start">
                       <div class="rounded-2xl rounded-tl-sm bg-[#F8F7FF] border border-[#DDD6FE] text-[#0F1035] p-3 max-w-[90%] space-y-1.5 shadow-2xs">
                         <div class="flex items-center gap-1.5 text-xs font-extrabold text-[#7C3AED]">
-                          <span>🤖 Coach IA</span>
+                          <span><mb-icon name="bot"></mb-icon> Coach IA</span>
                           <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Écoute active</span>
                         </div>
                         <div *ngIf="turn.feedback" class="text-emerald-800 font-semibold text-xs bg-emerald-50/80 p-2 rounded-xl border border-emerald-200/60">
-                          ✨ {{ turn.feedback }}
+                          <mb-icon name="sparkles"></mb-icon> {{ turn.feedback }}
                         </div>
                         <div *ngIf="turn.coachReply" class="text-xs font-semibold text-[#1E1B4B] pt-0.5">
                           {{ turn.coachReply }}
@@ -1165,7 +1171,7 @@ export interface SimulationTurn {
               <div *ngIf="isTrainingCompleted" class="rounded-[24px] bg-gradient-to-r from-emerald-600 via-teal-600 to-[#7C3AED] text-white p-6 shadow-xl space-y-4">
                 <div class="flex items-start gap-4">
                   <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl shrink-0 border border-white/25">
-                    🎉
+                    <mb-icon name="sparkles"></mb-icon>
                   </div>
                   <div class="space-y-1">
                     <div class="flex items-center gap-2">
@@ -1184,7 +1190,7 @@ export interface SimulationTurn {
                     (click)="goToImmersion()"
                     class="flex-1 py-3.5 px-6 rounded-2xl bg-white hover:bg-emerald-50 text-[#0F1035] font-black text-xs sm:text-sm shadow-lg transition flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
                   >
-                    <span>🎯 Passer à l'action : Préparer mon immersion pour {{ selectedCareer }} →</span>
+                    <span><mb-icon name="target"></mb-icon> Passer à l'action : Préparer mon immersion pour {{ selectedCareer }} →</span>
                   </button>
 
                   <button
@@ -1192,7 +1198,7 @@ export interface SimulationTurn {
                     (click)="resetTraining()"
                     class="py-3 px-4 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs transition cursor-pointer text-center"
                   >
-                    🔄 Recommencer
+                    <mb-icon name="refresh-cw"></mb-icon> Recommencer
                   </button>
                 </div>
               </div>
@@ -1203,12 +1209,12 @@ export interface SimulationTurn {
           <div class="lg:col-span-5 space-y-5">
             <div *ngIf="trainingMode === 'TEXT'" class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-amber-500">💡</span>
+                <span class="text-base text-amber-500"><mb-icon name="lightbulb"></mb-icon></span>
                 <span>Conseils pour répondre</span>
               </div>
               <ul class="space-y-2 text-xs font-medium text-[#42466B]">
                 <li *ngFor="let tip of activeScenario.tipsForAnswering" class="flex items-start gap-2">
-                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                   <span>{{ tip }}</span>
                 </li>
               </ul>
@@ -1217,13 +1223,13 @@ export interface SimulationTurn {
             <!-- Mon retour d'entraînement -->
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-4">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035] pb-2 border-b border-[#F0EDFA]">
-                <span class="text-base text-[#7C3AED]">🎯</span>
+                <span class="text-base text-[#7C3AED]"><mb-icon name="target"></mb-icon></span>
                 <span>Mon retour d'entraînement</span>
               </div>
 
               <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1">
                 <div class="flex items-center gap-1.5 text-xs font-extrabold text-emerald-800">
-                  <span>✓</span>
+                  <span><mb-icon name="check"></mb-icon></span>
                   <span>Ce que tu as bien fait</span>
                 </div>
                 <p class="text-xs text-emerald-900 leading-relaxed font-medium">
@@ -1233,7 +1239,7 @@ export interface SimulationTurn {
 
               <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 space-y-1">
                 <div class="flex items-center gap-1.5 text-xs font-extrabold text-amber-800">
-                  <span>💡</span>
+                  <span><mb-icon name="lightbulb"></mb-icon></span>
                   <span>Ce que tu peux améliorer</span>
                 </div>
                 <p class="text-xs text-amber-900 leading-relaxed font-medium">
@@ -1243,7 +1249,7 @@ export interface SimulationTurn {
 
               <div class="p-3.5 rounded-2xl bg-purple-50 border border-purple-200 space-y-1">
                 <div class="flex items-center gap-1.5 text-xs font-extrabold text-[#7C3AED]">
-                  <span>🎯</span>
+                  <span><mb-icon name="target"></mb-icon></span>
                   <span>Ton prochain défi</span>
                 </div>
                 <p class="text-xs text-[#5B21B6] leading-relaxed font-medium">
@@ -1254,12 +1260,12 @@ export interface SimulationTurn {
 
             <div *ngIf="trainingMode === 'VOCAL'" class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-blue-500">ℹ️</span>
+                <span class="text-base text-blue-500">ℹ</span>
                 <span>Conseils pour réussir</span>
               </div>
               <ul class="space-y-2 text-xs font-medium text-[#42466B]">
                 <li *ngFor="let tip of activeScenario.tipsForSuccess" class="flex items-start gap-2">
-                  <span class="text-emerald-600 font-bold">✓</span>
+                  <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                   <span>{{ tip }}</span>
                 </li>
               </ul>
@@ -1268,7 +1274,7 @@ export interface SimulationTurn {
         </div>
 
         <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-3 text-center text-xs text-gray-500 font-semibold flex items-center justify-center gap-2">
-          <span>🔒</span>
+          <span><mb-icon name="lock"></mb-icon></span>
           <span>Ton audio n'est pas enregistré par défaut. L'entraînement est confidentiel et bienveillant.</span>
         </div>
       </div>
@@ -1285,7 +1291,7 @@ export interface SimulationTurn {
             <span>{{ ollamaConnected ? 'Coach IA en ligne : Modèle ' + ollamaModel : 'Coach IA en ligne (Mode sécurisé bienveillant & souverain)' }}</span>
           </div>
           <button type="button" (click)="checkOllama()" class="hover:underline cursor-pointer">
-            {{ ollamaConnected ? '✓ Connecté' : '🔄 Actualiser' }}
+            <mb-icon [name]="ollamaConnected ? 'check' : 'refresh-cw'"></mb-icon> {{ ollamaConnected ? 'Connecté' : 'Actualiser' }}
           </button>
         </div>
 
@@ -1322,7 +1328,7 @@ export interface SimulationTurn {
               >
                 <!-- Avatar si coach -->
                 <div *ngIf="msg.sender === 'coach'" class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center shrink-0 text-xs border border-purple-200">
-                  🤖
+                  <mb-icon name="bot"></mb-icon>
                 </div>
 
                 <div
@@ -1339,7 +1345,7 @@ export interface SimulationTurn {
               <!-- Indicateur de frappe IA -->
               <div *ngIf="isCoachThinking" class="flex gap-2.5 justify-start">
                 <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center shrink-0 text-xs border border-purple-200">
-                  🤖
+                  <mb-icon name="bot"></mb-icon>
                 </div>
                 <div class="bg-[#F8F7FF] border border-[#E4E0F5] p-3 rounded-2xl rounded-tl-xs flex items-center gap-1.5 text-xs text-[#7C3AED]">
                   <span class="w-1.5 h-1.5 bg-[#7C3AED] rounded-full animate-pulse"></span>
@@ -1359,21 +1365,21 @@ export interface SimulationTurn {
                   (click)="sendChatMessage('Comment me présenter en 1 minute ?')"
                   class="px-2.5 py-1 rounded-full bg-[#F5F3FF] hover:bg-purple-100 text-[#6D28D9] text-[11px] font-bold transition cursor-pointer border border-purple-200"
                 >
-                  💬 Comment me présenter en 1 min ?
+                  <mb-icon name="message-circle"></mb-icon> Comment me présenter en 1 min ?
                 </button>
                 <button
                   type="button"
                   (click)="sendChatMessage('Quelles questions poser le 1er jour de mon immersion ?')"
                   class="px-2.5 py-1 rounded-full bg-[#F5F3FF] hover:bg-purple-100 text-[#6D28D9] text-[11px] font-bold transition cursor-pointer border border-purple-200"
                 >
-                  ❓ Quelles questions poser le 1er jour ?
+                  <mb-icon name="message-circle-question"></mb-icon> Quelles questions poser le 1er jour ?
                 </button>
                 <button
                   type="button"
                   (click)="sendChatMessage('Que faire si je suis timide au téléphone ?')"
                   class="px-2.5 py-1 rounded-full bg-[#F5F3FF] hover:bg-purple-100 text-[#6D28D9] text-[11px] font-bold transition cursor-pointer border border-purple-200"
                 >
-                  🌱 Que faire si je suis timide ?
+                  <mb-icon name="sprout"></mb-icon> Que faire si je suis timide ?
                 </button>
               </div>
             </div>
@@ -1394,7 +1400,7 @@ export interface SimulationTurn {
                 class="px-5 py-3 rounded-2xl bg-[#7C3AED] hover:bg-[#6D28D9] disabled:opacity-40 text-white font-extrabold text-xs transition cursor-pointer flex items-center gap-1.5 shadow-md"
               >
                 <span>Envoyer</span>
-                <span>✈️</span>
+                <span><mb-icon name="plane"></mb-icon></span>
               </button>
             </div>
           </div>
@@ -1403,7 +1409,7 @@ export interface SimulationTurn {
           <div class="lg:col-span-4 space-y-4">
             <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 shadow-sm space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                <span class="text-base text-[#7C3AED]">🤝</span>
+                <span class="text-base text-[#7C3AED]"><mb-icon name="handshake"></mb-icon></span>
                 <span>Mon espace bienveillant</span>
               </div>
               <p class="text-xs text-[#42466B] leading-relaxed">
@@ -1418,7 +1424,7 @@ export interface SimulationTurn {
 
             <div class="rounded-[28px] bg-emerald-50 border border-emerald-200 p-5 space-y-3">
               <div class="flex items-center gap-2 text-xs font-extrabold text-emerald-900">
-                <span class="text-base">💡</span>
+                <span class="text-base"><mb-icon name="lightbulb"></mb-icon></span>
                 <span>Idées de sujets à aborder</span>
               </div>
               <ul class="space-y-1.5 text-xs text-emerald-950 font-medium">
@@ -1486,7 +1492,7 @@ export class CoachIaComponent implements OnInit, OnDestroy {
   chatMessages: Array<{ sender: 'user' | 'coach'; text: string; time: string }> = [
     {
       sender: 'coach',
-      text: 'Bonjour Emma ! 👋 Je suis ton Coach IA d’orientation. Je connais ton profil créatif et ton projet pour découvrir le métier de Technicien du son (ou Peintre décorateur). Tu peux me poser toutes tes questions pour préparer ton immersion, contacter une entreprise ou surmonter tes doutes. De quoi souhaites-tu parler aujourd’hui ?',
+      text: 'Bonjour Emma ! Je suis ton Coach IA d’orientation. Je connais ton profil créatif et ton projet pour découvrir le métier de Technicien du son (ou Peintre décorateur). Tu peux me poser toutes tes questions pour préparer ton immersion, contacter une entreprise ou surmonter tes doutes. De quoi souhaites-tu parler aujourd’hui ?',
       time: '10:00'
     }
   ];
@@ -1595,13 +1601,14 @@ export class CoachIaComponent implements OnInit, OnDestroy {
     }
   }
 
-  getScenarioEmoji(id: TrainingScenarioId): string {
+  /** Icône <mb-icon> illustrant chaque situation d'entraînement. */
+  getScenarioIcon(id: TrainingScenarioId): string {
     switch (id) {
-      case 'SCENARIO_CALL': return '📞';
-      case 'SCENARIO_INTERVIEW': return '👤';
-      case 'SCENARIO_QUESTIONS': return '❓';
-      case 'SCENARIO_PRESENTATION': return '📊';
-      default: return '💬';
+      case 'SCENARIO_CALL': return 'phone';
+      case 'SCENARIO_INTERVIEW': return 'handshake';
+      case 'SCENARIO_QUESTIONS': return 'message-circle-question';
+      case 'SCENARIO_PRESENTATION': return 'presentation';
+      default: return 'message-circle';
     }
   }
 
@@ -1871,9 +1878,9 @@ export class CoachIaComponent implements OnInit, OnDestroy {
 
   getVoiceStateMessage(): string {
     switch (this.voiceState) {
-      case 'LISTENING': return '🎤 Je t\'écoute... Parle naturellement !';
-      case 'SPEAKING': return '🗣️ Le coach te pose la question...';
-      case 'PAUSED': return '⏸️ Entraînement en pause.';
+      case 'LISTENING': return 'Je t\'écoute... Parle naturellement !';
+      case 'SPEAKING': return 'Le coach te pose la question...';
+      case 'PAUSED': return 'Entraînement en pause.';
       default: return 'Prêt(e) ? Parle quand tu es prêt(e).';
     }
   }

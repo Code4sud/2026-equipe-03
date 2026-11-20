@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 
 export interface UserProfileData {
@@ -14,7 +15,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="space-y-6 pb-14">
       <!-- ================================================================== -->
@@ -168,7 +169,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
                       Espace Jeune
                     </span>
                     <span class="inline-flex items-center gap-1 text-xs font-semibold text-gray-500">
-                      <span>📁</span>
+                      <span><mb-icon name="folder"></mb-icon></span>
                       <span>Dossier Rdv {{ rdvNumber }}</span>
                     </span>
                   </div>
@@ -192,7 +193,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
                     (click)="openCropModal()"
                     class="rounded-full border border-gray-300 hover:border-gray-400 bg-white text-gray-700 font-bold text-xs px-4 py-2 transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
                   >
-                    <span>⛶</span>
+                    <span><mb-icon name="maximize"></mb-icon></span>
                     <span>Recadrer</span>
                   </button>
 
@@ -291,7 +292,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
 
               <div class="flex items-center gap-1.5 shrink-0 self-start sm:self-center">
                 <span class="rounded-full bg-white border border-gray-200 text-gray-500 px-2.5 py-1 text-[11px] font-bold flex items-center gap-1">
-                  <span>🔒</span>
+                  <span><mb-icon name="lock"></mb-icon></span>
                   <span>Non modifiable</span>
                 </span>
               </div>
@@ -305,8 +306,8 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
                 [disabled]="isSaving || !hasUnsavedChanges"
                 class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-black text-xs sm:text-sm px-6 py-3 shadow-md hover:shadow-lg transition flex items-center gap-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                <span *ngIf="!isSaving">✓</span>
-                <span *ngIf="isSaving" class="inline-block animate-spin">⏳</span>
+                <span *ngIf="!isSaving"><mb-icon name="check"></mb-icon></span>
+                <span *ngIf="isSaving" class="inline-block animate-spin"><mb-icon name="refresh-cw"></mb-icon></span>
                 <span>Enregistrer les modifications</span>
               </button>
 
@@ -314,7 +315,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
                 *ngIf="savedSuccess && !hasUnsavedChanges"
                 class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 text-xs font-bold animate-fadeIn"
               >
-                <span>✓</span>
+                <span><mb-icon name="check"></mb-icon></span>
                 <span>Modifications enregistrées</span>
               </span>
             </div>
@@ -383,7 +384,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
               <h4 class="text-sm font-black text-[#0F1035]">Sessions actives</h4>
               <div class="rounded-2xl bg-gray-50 border border-gray-200 p-4 flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                  <span class="text-xl">💻</span>
+                  <span class="text-xl"><mb-icon name="laptop"></mb-icon></span>
                   <div>
                     <p class="text-xs font-bold text-gray-900">Navigateur Web (Session actuelle)</p>
                     <p class="text-[11px] text-gray-500">Connecté depuis Nice, France • IP sécurisée</p>
@@ -397,7 +398,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
                 (click)="logout.emit()"
                 class="text-xs font-bold text-rose-600 hover:underline flex items-center gap-1.5"
               >
-                <span>🚪</span>
+                <span><mb-icon name="door-open"></mb-icon></span>
                 <span>Se déconnecter de tous les appareils</span>
               </button>
             </div>
@@ -572,7 +573,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
             </div>
 
             <div class="rounded-2xl bg-purple-50/70 border border-purple-200 p-4 text-xs text-[#5B21B6] space-y-2">
-              <p class="font-bold">🛡️ Engagement Souveraineté & RGPD Région Sud</p>
+              <p class="font-bold"><mb-icon name="shield-check"></mb-icon> Engagement Souveraineté & RGPD Région Sud</p>
               <p class="text-[11px] leading-relaxed">
                 Toutes tes données sont hébergées en France de façon chiffrée. Seuls ton conseiller référent et toi y ont accès. Tu conserves la pleine propriété de tes bilans et notes.
               </p>
@@ -723,7 +724,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
               (click)="closeEmailModal()"
               class="h-8 w-8 rounded-lg bg-gray-100 text-gray-600 text-sm font-bold flex items-center justify-center hover:bg-gray-200"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 
@@ -805,7 +806,7 @@ export type SettingsTab = 'PROFILE' | 'SECURITY' | 'NOTIFICATIONS' | 'PREFERENCE
               (click)="closeCropModal()"
               class="h-8 w-8 rounded-lg bg-gray-100 text-gray-600 text-sm font-bold flex items-center justify-center hover:bg-gray-200"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 

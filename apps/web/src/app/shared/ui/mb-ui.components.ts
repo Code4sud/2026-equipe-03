@@ -289,7 +289,7 @@ export class MbAudioPlayerComponent {
             : 'bg-[var(--mb-surface)] text-[var(--mb-text)] border-[var(--mb-border)] hover:bg-[var(--mb-surface-soft)]'"
           class="min-h-11 px-4 py-2 rounded-md border text-sm font-semibold transition"
         >
-          {{ isBookmarked ? '★ Piste retenue' : '☆ Retenir cette piste' }}
+          <mb-icon name="star" [filled]="isBookmarked"></mb-icon> {{ isBookmarked ? 'Piste retenue' : 'Retenir cette piste' }}
         </button>
 
         <button

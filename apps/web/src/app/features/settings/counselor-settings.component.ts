@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 
 export interface CounselorProfileData {
@@ -14,7 +15,7 @@ export interface CounselorProfileData {
 @Component({
   selector: 'app-counselor-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="max-w-6xl mx-auto space-y-6 pb-14">
       <!-- ================================================================== -->
@@ -22,7 +23,7 @@ export interface CounselorProfileData {
       <!-- ================================================================== -->
       <div class="flex items-center gap-4">
         <div class="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-2xl font-bold border border-[#E9D5FF] shrink-0 shadow-2xs">
-          ⚙️
+          <mb-icon name="settings"></mb-icon>
         </div>
         <div>
           <h1 class="text-2xl sm:text-3xl font-black text-[#0F1035] tracking-tight">
@@ -46,7 +47,7 @@ export interface CounselorProfileData {
           
           <!-- Titre de la carte -->
           <div class="flex items-center gap-2.5 pb-2 border-b border-[#F0EDFA]">
-            <span class="text-lg text-[#7C3AED]">👤</span>
+            <span class="text-lg text-[#7C3AED]"><mb-icon name="user"></mb-icon></span>
             <h2 class="text-lg sm:text-xl font-black text-[#0F1035]">
               Profil professionnel
             </h2>
@@ -75,7 +76,7 @@ export interface CounselorProfileData {
                 title="Modifier la photo"
                 aria-label="Modifier la photo"
               >
-                📷
+                <mb-icon name="camera"></mb-icon>
               </button>
             </div>
 
@@ -98,7 +99,7 @@ export interface CounselorProfileData {
                   {{ roleTitle }}
                 </p>
                 <p class="text-xs font-semibold text-[#42466B] mt-1 flex items-center justify-center sm:justify-start gap-1.5">
-                  <span>🏛️</span>
+                  <span><mb-icon name="landmark"></mb-icon></span>
                   <span>{{ organization }}</span>
                 </p>
               </div>
@@ -111,7 +112,7 @@ export interface CounselorProfileData {
                   (click)="fileInput.click()"
                   class="rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-extrabold text-xs px-3.5 py-2 shadow-sm transition flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span>📷</span>
+                  <span><mb-icon name="camera"></mb-icon></span>
                   <span>Modifier la photo</span>
                 </button>
 
@@ -121,7 +122,7 @@ export interface CounselorProfileData {
                   (click)="openCropModal()"
                   class="rounded-xl border border-[#D8DCF0] bg-white hover:bg-[#F8F7FF] text-[#0F1035] font-extrabold text-xs px-3.5 py-2 transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
                 >
-                  <span>⛶</span>
+                  <span><mb-icon name="maximize"></mb-icon></span>
                   <span>Recadrer</span>
                 </button>
 
@@ -131,18 +132,18 @@ export interface CounselorProfileData {
                   (click)="removePhoto()"
                   class="rounded-xl border border-rose-200 bg-rose-50/60 hover:bg-rose-100 text-rose-600 font-extrabold text-xs px-3.5 py-2 transition flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span>🗑️</span>
+                  <span><mb-icon name="trash-2"></mb-icon></span>
                   <span>Supprimer</span>
                 </button>
               </div>
 
               <!-- Notifications de statut photo -->
               <div *ngIf="photoSuccess" class="rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 animate-fadeIn">
-                <span>✓</span>
+                <span><mb-icon name="check"></mb-icon></span>
                 <span>Photo de profil mise à jour !</span>
               </div>
               <div *ngIf="photoError" class="rounded-xl bg-rose-50 border border-rose-200 text-rose-700 px-3 py-1.5 text-xs font-bold flex items-center gap-1.5 animate-fadeIn">
-                <span>⚠️</span>
+                <span><mb-icon name="triangle-alert"></mb-icon></span>
                 <span>{{ photoError }}</span>
               </div>
             </div>
@@ -186,7 +187,7 @@ export interface CounselorProfileData {
               </label>
               <div class="relative">
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED]">
-                  ✉️
+                  <mb-icon name="mail"></mb-icon>
                 </span>
                 <input
                   type="email"
@@ -205,7 +206,7 @@ export interface CounselorProfileData {
               </label>
               <div class="relative">
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#7C3AED] pointer-events-none">
-                  💼
+                  <mb-icon name="briefcase"></mb-icon>
                 </span>
                 <select
                   [(ngModel)]="roleTitle"
@@ -228,13 +229,13 @@ export interface CounselorProfileData {
               <label class="block text-xs font-bold text-[#42466B] mb-1.5 flex items-center justify-between">
                 <span>Organisme de rattachement</span>
                 <span class="text-[11px] font-semibold text-gray-400 flex items-center gap-1">
-                  <span>🔒</span>
+                  <span><mb-icon name="lock"></mb-icon></span>
                   <span>Non modifiable</span>
                 </span>
               </label>
               <div class="relative">
                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-gray-500">
-                  🏛️
+                  <mb-icon name="landmark"></mb-icon>
                 </span>
                 <input
                   type="text"
@@ -243,11 +244,11 @@ export interface CounselorProfileData {
                   class="w-full rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] pl-11 pr-11 py-3 text-sm font-bold text-[#31355B] cursor-not-allowed select-none shadow-2xs"
                 />
                 <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400" title="Le rattachement professionnel est géré par un responsable de votre structure.">
-                  🔒
+                  <mb-icon name="lock"></mb-icon>
                 </span>
               </div>
               <p class="text-[11px] text-gray-500 mt-1.5 flex items-center gap-1">
-                <span>ℹ️</span>
+                <span>ℹ</span>
                 <span>Le rattachement professionnel est géré par un responsable de votre structure.</span>
               </p>
             </div>
@@ -260,14 +261,14 @@ export interface CounselorProfileData {
                 [disabled]="isSaving"
                 class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 shadow-md hover:shadow-lg transition flex items-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span *ngIf="!isSaving">✓</span>
-                <span *ngIf="isSaving" class="inline-block animate-spin">⏳</span>
+                <span *ngIf="!isSaving"><mb-icon name="check"></mb-icon></span>
+                <span *ngIf="isSaving" class="inline-block animate-spin"><mb-icon name="refresh-cw"></mb-icon></span>
                 <span>Enregistrer les modifications</span>
               </button>
 
               <!-- Confirmation fidèle à la capture : Modifications enregistrées aujourd'hui à HH:MM -->
               <span *ngIf="lastSavedTimestamp" class="text-xs font-bold text-emerald-600 flex items-center gap-1.5 animate-fadeIn">
-                <span>✓</span>
+                <span><mb-icon name="check"></mb-icon></span>
                 <span>Modifications enregistrées {{ lastSavedTimestamp }}</span>
               </span>
             </div>
@@ -288,7 +289,7 @@ export interface CounselorProfileData {
             >
               <div class="flex items-center gap-3.5 min-w-0">
                 <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                  🛡️
+                  <mb-icon name="shield-check"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -309,7 +310,7 @@ export interface CounselorProfileData {
               <!-- Formulaire changement de mot de passe -->
               <div class="space-y-3 bg-white p-4 rounded-2xl border border-[#E4E0F5]">
                 <h4 class="font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span>🔑</span>
+                  <span><mb-icon name="lock"></mb-icon></span>
                   <span>Changer de mot de passe</span>
                 </h4>
                 
@@ -361,7 +362,7 @@ export interface CounselorProfileData {
               <div class="space-y-2 bg-white p-4 rounded-2xl border border-[#E4E0F5]">
                 <h4 class="font-extrabold text-[#0F1035] flex items-center justify-between">
                   <span class="flex items-center gap-1.5">
-                    <span>💻</span>
+                    <span><mb-icon name="laptop"></mb-icon></span>
                     <span>Sessions actives</span>
                   </span>
                   <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">
@@ -402,7 +403,7 @@ export interface CounselorProfileData {
             >
               <div class="flex items-center gap-3.5 min-w-0">
                 <div class="h-11 w-11 rounded-2xl bg-[#FEF3C7] text-[#D97706] flex items-center justify-center text-lg font-bold shrink-0">
-                  🔔
+                  <mb-icon name="bell"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -453,7 +454,7 @@ export interface CounselorProfileData {
               </label>
 
               <p *ngIf="notifSavedNotice" class="text-[11px] font-bold text-emerald-600 animate-fadeIn">
-                ✓ Vos préférences de notifications ont été enregistrées.
+                <mb-icon name="check"></mb-icon> Vos préférences de notifications ont été enregistrées.
               </p>
             </div>
           </div>
@@ -467,7 +468,7 @@ export interface CounselorProfileData {
             >
               <div class="flex items-center gap-3.5 min-w-0">
                 <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                  🎛️
+                  <mb-icon name="settings"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -494,7 +495,7 @@ export interface CounselorProfileData {
                     [class]="theme === 'light' ? 'bg-[#7C3AED] text-white font-extrabold shadow-sm' : 'bg-white border border-[#E4E0F5] text-gray-700 font-bold'"
                     class="py-2.5 rounded-xl text-xs transition cursor-pointer"
                   >
-                    ☀️ Thème clair
+                    <mb-icon name="sun"></mb-icon> Thème clair
                   </button>
                   <button
                     type="button"
@@ -502,7 +503,7 @@ export interface CounselorProfileData {
                     [class]="theme === 'dark' ? 'bg-[#7C3AED] text-white font-extrabold shadow-sm' : 'bg-white border border-[#E4E0F5] text-gray-700 font-bold'"
                     class="py-2.5 rounded-xl text-xs transition cursor-pointer"
                   >
-                    🌙 Thème sombre
+                    <mb-icon name="moon"></mb-icon> Thème sombre
                   </button>
                 </div>
               </div>
@@ -556,7 +557,7 @@ export interface CounselorProfileData {
             >
               <div class="flex items-center gap-3.5 min-w-0">
                 <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                  📅
+                  <mb-icon name="calendar"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -603,7 +604,7 @@ export interface CounselorProfileData {
             >
               <div class="flex items-center gap-3.5 min-w-0">
                 <div class="h-11 w-11 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-lg font-bold shrink-0">
-                  🛡️
+                  <mb-icon name="shield-check"></mb-icon>
                 </div>
                 <div class="min-w-0">
                   <h3 class="text-sm sm:text-base font-extrabold text-[#0F1035] truncate">
@@ -630,7 +631,7 @@ export interface CounselorProfileData {
                   (click)="downloadDataExport()"
                   class="rounded-xl border border-[#D8DCF0] bg-white hover:bg-gray-50 text-[#0F1035] font-extrabold text-xs px-3.5 py-2 transition shadow-2xs cursor-pointer flex items-center gap-1.5"
                 >
-                  <span>📥</span>
+                  <span><mb-icon name="download"></mb-icon></span>
                   <span>Exporter mes données personnelles (RGPD JSON)</span>
                 </button>
               </div>
@@ -681,7 +682,7 @@ export interface CounselorProfileData {
         <div class="bg-white rounded-3xl p-6 sm:p-7 max-w-md w-full shadow-2xl border border-[#E4E0F5] space-y-5">
           <div class="flex items-center justify-between pb-3 border-b border-[#F0EDFA]">
             <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-2">
-              <span>⛶</span>
+              <span><mb-icon name="maximize"></mb-icon></span>
               <span>Ajuster et recadrer la photo</span>
             </h3>
             <button
@@ -689,7 +690,7 @@ export interface CounselorProfileData {
               (click)="showCropModal = false"
               class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-sm cursor-pointer"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
           </div>
 
@@ -753,7 +754,7 @@ export interface CounselorProfileData {
         <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-[#E4E0F5] space-y-4">
           <div class="text-center space-y-2">
             <div class="h-12 w-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto text-xl">
-              🚪
+              <mb-icon name="door-open"></mb-icon>
             </div>
             <h3 class="text-lg font-black text-[#0F1035]">
               Confirmer la déconnexion

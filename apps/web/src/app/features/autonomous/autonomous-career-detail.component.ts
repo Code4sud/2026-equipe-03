@@ -157,15 +157,15 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
                 <span class="text-xs font-extrabold text-[#0F1035] block">Qualités professionnelles appréciées</span>
                 <ul class="space-y-1.5 text-xs text-[#42466B]">
                   <li class="flex items-center gap-2">
-                    <span class="text-emerald-600 font-bold">✓</span>
+                    <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                     <span>Curiosité et envie d'apprendre</span>
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-emerald-600 font-bold">✓</span>
+                    <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                     <span>Sens de l'écoute et esprit d'équipe</span>
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-emerald-600 font-bold">✓</span>
+                    <span class="text-emerald-600 font-bold"><mb-icon name="check"></mb-icon></span>
                     <span>Rigueur et organisation</span>
                   </li>
                 </ul>
@@ -257,7 +257,7 @@ import { UICatalogCareer } from '../../shared/autonomous-data';
                 <li *ngFor="let path of career.suggestedPathways">{{ path }}</li>
               </ul>
               <div class="mt-3 p-2.5 rounded-xl bg-white border border-[#DDD6FE] text-[10px] text-[#6B7280]">
-                ℹ️ <em>Sources vérifiées O*NET FR & Onisep. Les filières peuvent varier selon ton profil.</em>
+                ℹ <em>Sources vérifiées O*NET FR & Onisep. Les filières peuvent varier selon ton profil.</em>
               </div>
             </div>
           </section>

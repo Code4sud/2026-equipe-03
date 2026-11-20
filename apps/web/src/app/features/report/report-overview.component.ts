@@ -96,7 +96,7 @@ export interface UIHexacoItem {
             </div>
           </div>
           <div class="hidden lg:flex items-center justify-center pr-6 text-4xl sm:text-5xl select-none">
-            🏔️🚩
+            <mb-icon name="mountain"></mb-icon><mb-icon name="flag"></mb-icon>
           </div>
         </div>
       </div>
@@ -173,9 +173,9 @@ export interface UIHexacoItem {
                     class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0] hover:bg-[#D1FAE5] transition cursor-pointer shadow-2xs"
                     title="En savoir plus sur l'assistance par IA"
                   >
-                    <span>🌿</span>
+                    <span><mb-icon name="leaf"></mb-icon></span>
                     <span>Explication assistée par IA</span>
-                    <span class="text-[11px] font-normal text-[#059669]">ⓘ</span>
+                    <span class="text-[11px] font-normal text-[#059669]"><mb-icon name="info"></mb-icon></span>
                   </button>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export interface UIHexacoItem {
                     : 'text-[#42466B] hover:text-[#0F1035]'"
                   class="flex-1 py-2 px-3 rounded-xl transition text-center cursor-pointer font-bold"
                 >
-                  🌟 En clair &amp; simple
+                  <mb-icon name="star"></mb-icon> En clair &amp; simple
                 </button>
                 <button
                   type="button"
@@ -200,7 +200,7 @@ export interface UIHexacoItem {
                     : 'text-[#42466B] hover:text-[#0F1035]'"
                   class="flex-1 py-2 px-3 rounded-xl transition text-center cursor-pointer font-bold"
                 >
-                  👥 Pour mes proches
+                  <mb-icon name="users"></mb-icon> Pour mes proches
                 </button>
                 <button
                   type="button"
@@ -210,7 +210,7 @@ export interface UIHexacoItem {
                     : 'text-[#42466B] hover:text-[#0F1035]'"
                   class="flex-1 py-2 px-3 rounded-xl transition text-center cursor-pointer font-bold"
                 >
-                  💼 Dans la vraie vie
+                  <mb-icon name="briefcase"></mb-icon> Dans la vraie vie
                 </button>
               </div>
 
@@ -253,7 +253,7 @@ export interface UIHexacoItem {
 
               <!-- Encadré lavande « En bref » -->
               <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-4 text-xs sm:text-[13px] text-[#31355B] leading-relaxed flex items-start gap-2.5">
-                <span class="text-base shrink-0 mt-0.5">💡</span>
+                <span class="text-base shrink-0 mt-0.5"><mb-icon name="lightbulb"></mb-icon></span>
                 <p>
                   <strong>En bref :</strong> {{ synthesisEnBref }}
                 </p>
@@ -270,7 +270,7 @@ export interface UIHexacoItem {
                       : 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46] hover:bg-[#D1FAE5]'"
                     class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
-                    <span>✓</span>
+                    <span><mb-icon name="check"></mb-icon></span>
                     <span class="truncate">Centres d'intérêt</span>
                   </button>
 
@@ -282,7 +282,7 @@ export interface UIHexacoItem {
                       : 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46] hover:bg-[#D1FAE5]'"
                     class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
-                    <span>✓</span>
+                    <span><mb-icon name="check"></mb-icon></span>
                     <span class="truncate">Aptitudes</span>
                   </button>
 
@@ -294,7 +294,7 @@ export interface UIHexacoItem {
                       : 'bg-[#ECFDF5] border-[#A7F3D0] text-[#065F46] hover:bg-[#D1FAE5]'"
                     class="rounded-xl border p-2 text-center text-xs font-extrabold transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
-                    <span>✓</span>
+                    <span><mb-icon name="check"></mb-icon></span>
                     <span class="truncate">Personnalité</span>
                   </button>
 
@@ -303,7 +303,7 @@ export interface UIHexacoItem {
                     (click)="onExploreCareers()"
                     class="rounded-xl bg-[#FAF5FF] border border-[#DDD6FE] p-2 text-center text-xs font-extrabold text-[#7C3AED] hover:bg-[#F3E8FF] transition flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
                   >
-                    <span>🚀</span>
+                    <span><mb-icon name="rocket"></mb-icon></span>
                     <span class="truncate">{{ careers.length }} métiers</span>
                   </button>
                 </div>
@@ -312,10 +312,10 @@ export interface UIHexacoItem {
                 <div *ngIf="activeDetailCard === 'RIASEC'" class="p-4 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-2.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
                   <div class="flex items-center justify-between pb-1 border-b border-emerald-100">
                     <span class="font-black text-[#0F1035] flex items-center gap-1.5">
-                      <span>🎨</span>
+                      <span><mb-icon name="palette"></mb-icon></span>
                       <span>Tes centres d'intérêt réels (p. 4 du rapport) :</span>
                     </span>
-                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer">✕</button>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer"><mb-icon name="x"></mb-icon></button>
                   </div>
                   <p>• <strong>Artistique (dominant)</strong> : Tu aimes créer, concevoir et inventer sans être enfermée dans une routine.</p>
                   <p>• <strong>Entreprenant (fort)</strong> : Tu as de l'énergie pour proposer des idées et mener des projets.</p>
@@ -325,11 +325,11 @@ export interface UIHexacoItem {
                   <div class="mt-3 pt-2 border-t border-emerald-100/60 space-y-2">
                     <div class="flex items-center justify-between">
                       <span class="text-[11px] font-extrabold text-[#0F1035] flex items-center gap-1">
-                        <span>💭</span>
+                        <span><mb-icon name="message-circle"></mb-icon></span>
                         <span>Qu'est-ce que tu en penses ?</span>
                       </span>
                       <span *ngIf="userFeelings['riasec']" class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                        ✓ Noté
+                        <mb-icon name="check"></mb-icon> Noté
                       </span>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
@@ -339,7 +339,7 @@ export interface UIHexacoItem {
                         [class]="userFeelings['riasec'] === 'RECOGNIZED' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        😊 Je me reconnais
+                        <mb-icon name="smile"></mb-icon> Je me reconnais
                       </button>
                       <button
                         type="button"
@@ -347,7 +347,7 @@ export interface UIHexacoItem {
                         [class]="userFeelings['riasec'] === 'NOT_SURE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        🤔 Pas sûr
+                        <mb-icon name="message-circle-question"></mb-icon> Pas sûr
                       </button>
                       <button
                         type="button"
@@ -355,16 +355,16 @@ export interface UIHexacoItem {
                         [class]="userFeelings['riasec'] === 'WANT_TO_DISCUSS' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        💬 En parler au conseiller
+                        <mb-icon name="message-circle"></mb-icon> En parler au conseiller
                       </button>
                     </div>
                     <div class="flex items-center gap-2 pt-1 text-[11px]">
                       <button type="button" (click)="onNotUnderstood('Centres d’intérêt RIASEC')" class="text-amber-700 hover:underline cursor-pointer font-bold">
-                        ❓ Je n'ai pas compris
+                        <mb-icon name="message-circle-question"></mb-icon> Je n'ai pas compris
                       </button>
                       <span class="text-gray-300">•</span>
                       <button type="button" (click)="onNoteQuestion('Centres d’intérêt RIASEC')" class="text-[#7C3AED] hover:underline cursor-pointer font-bold">
-                        📝 Noter une question
+                        <mb-icon name="notebook-pen"></mb-icon> Noter une question
                       </button>
                     </div>
                   </div>
@@ -373,10 +373,10 @@ export interface UIHexacoItem {
                 <div *ngIf="activeDetailCard === 'APTITUDES'" class="p-4 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-2.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
                   <div class="flex items-center justify-between pb-1 border-b border-emerald-100">
                     <span class="font-black text-[#0F1035] flex items-center gap-1.5">
-                      <span>💡</span>
+                      <span><mb-icon name="lightbulb"></mb-icon></span>
                       <span>Tes aptitudes observées (p. 5 du rapport) :</span>
                     </span>
-                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer">✕</button>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer"><mb-icon name="x"></mb-icon></button>
                   </div>
                   <p>• <strong>Flexibilité mentale</strong> : Tu t'adaptes rapidement quand la consigne ou la situation change.</p>
                   <p>• <strong>Mémoire visuelle</strong> : Tu retiens facilement les images, schémas et agencements d'espace.</p>
@@ -387,11 +387,11 @@ export interface UIHexacoItem {
                   <div class="mt-3 pt-2 border-t border-emerald-100/60 space-y-2">
                     <div class="flex items-center justify-between">
                       <span class="text-[11px] font-extrabold text-[#0F1035] flex items-center gap-1">
-                        <span>💭</span>
+                        <span><mb-icon name="message-circle"></mb-icon></span>
                         <span>Qu'est-ce que tu en penses ?</span>
                       </span>
                       <span *ngIf="userFeelings['aptitudes']" class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                        ✓ Noté
+                        <mb-icon name="check"></mb-icon> Noté
                       </span>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
@@ -401,7 +401,7 @@ export interface UIHexacoItem {
                         [class]="userFeelings['aptitudes'] === 'RECOGNIZED' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        😊 Je me reconnais
+                        <mb-icon name="smile"></mb-icon> Je me reconnais
                       </button>
                       <button
                         type="button"
@@ -409,7 +409,7 @@ export interface UIHexacoItem {
                         [class]="userFeelings['aptitudes'] === 'NOT_SURE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        🤔 Pas sûr
+                        <mb-icon name="message-circle-question"></mb-icon> Pas sûr
                       </button>
                       <button
                         type="button"
@@ -417,16 +417,16 @@ export interface UIHexacoItem {
                         [class]="userFeelings['aptitudes'] === 'WANT_TO_DISCUSS' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        💬 En parler au conseiller
+                        <mb-icon name="message-circle"></mb-icon> En parler au conseiller
                       </button>
                     </div>
                     <div class="flex items-center gap-2 pt-1 text-[11px]">
                       <button type="button" (click)="onNotUnderstood('Aptitudes observées')" class="text-amber-700 hover:underline cursor-pointer font-bold">
-                        ❓ Je n'ai pas compris
+                        <mb-icon name="message-circle-question"></mb-icon> Je n'ai pas compris
                       </button>
                       <span class="text-gray-300">•</span>
                       <button type="button" (click)="onNoteQuestion('Aptitudes observées')" class="text-[#7C3AED] hover:underline cursor-pointer font-bold">
-                        📝 Noter une question
+                        <mb-icon name="notebook-pen"></mb-icon> Noter une question
                       </button>
                     </div>
                   </div>
@@ -435,10 +435,10 @@ export interface UIHexacoItem {
                 <div *ngIf="activeDetailCard === 'HEXACO'" class="p-4 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-2.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
                   <div class="flex items-center justify-between pb-1 border-b border-emerald-100">
                     <span class="font-black text-[#0F1035] flex items-center gap-1.5">
-                      <span>🤝</span>
+                      <span><mb-icon name="handshake"></mb-icon></span>
                       <span>Ta personnalité au travail (p. 6 du rapport) :</span>
                     </span>
-                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer">✕</button>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer"><mb-icon name="x"></mb-icon></button>
                   </div>
                   <p>• <strong>Curiosité &amp; Ouverture</strong> : Tu t'intéresses à ce qui est nouveau et créatif.</p>
                   <p>• <strong>Esprit d'équipe &amp; Agréabilité</strong> : Tu privilégies la bonne entente et l'écoute mutuelle.</p>
@@ -448,11 +448,11 @@ export interface UIHexacoItem {
                   <div class="mt-3 pt-2 border-t border-emerald-100/60 space-y-2">
                     <div class="flex items-center justify-between">
                       <span class="text-[11px] font-extrabold text-[#0F1035] flex items-center gap-1">
-                        <span>💭</span>
+                        <span><mb-icon name="message-circle"></mb-icon></span>
                         <span>Qu'est-ce que tu en penses ?</span>
                       </span>
                       <span *ngIf="userFeelings['hexaco']" class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                        ✓ Noté
+                        <mb-icon name="check"></mb-icon> Noté
                       </span>
                     </div>
                     <div class="flex flex-wrap gap-1.5">
@@ -462,7 +462,7 @@ export interface UIHexacoItem {
                         [class]="userFeelings['hexaco'] === 'RECOGNIZED' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        😊 Je me reconnais
+                        <mb-icon name="smile"></mb-icon> Je me reconnais
                       </button>
                       <button
                         type="button"
@@ -470,7 +470,7 @@ export interface UIHexacoItem {
                         [class]="userFeelings['hexaco'] === 'NOT_SURE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        🤔 Pas sûr
+                        <mb-icon name="message-circle-question"></mb-icon> Pas sûr
                       </button>
                       <button
                         type="button"
@@ -478,16 +478,16 @@ export interface UIHexacoItem {
                         [class]="userFeelings['hexaco'] === 'WANT_TO_DISCUSS' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                         class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
                       >
-                        💬 En parler au conseiller
+                        <mb-icon name="message-circle"></mb-icon> En parler au conseiller
                       </button>
                     </div>
                     <div class="flex items-center gap-2 pt-1 text-[11px]">
                       <button type="button" (click)="onNotUnderstood('Personnalité au travail')" class="text-amber-700 hover:underline cursor-pointer font-bold">
-                        ❓ Je n'ai pas compris
+                        <mb-icon name="message-circle-question"></mb-icon> Je n'ai pas compris
                       </button>
                       <span class="text-gray-300">•</span>
                       <button type="button" (click)="onNoteQuestion('Personnalité au travail')" class="text-[#7C3AED] hover:underline cursor-pointer font-bold">
-                        📝 Noter une question
+                        <mb-icon name="notebook-pen"></mb-icon> Noter une question
                       </button>
                     </div>
                   </div>
@@ -511,21 +511,21 @@ export interface UIHexacoItem {
                   (click)="askPredefinedQuestion(1)"
                   class="rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] hover:border-[#7C3AED] hover:bg-[#F3E8FF] px-3 py-1.5 text-xs font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
                 >
-                  🎨 Dominante artistique ?
+                  <mb-icon name="palette"></mb-icon> Dominante artistique ?
                 </button>
                 <button
                   type="button"
                   (click)="askPredefinedQuestion(2)"
                   class="rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] hover:border-[#7C3AED] hover:bg-[#F3E8FF] px-3 py-1.5 text-xs font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
                 >
-                  ❓ Pas de notes ?
+                  <mb-icon name="message-circle-question"></mb-icon> Pas de notes ?
                 </button>
                 <button
                   type="button"
                   (click)="askPredefinedQuestion(3)"
                   class="rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] hover:border-[#7C3AED] hover:bg-[#F3E8FF] px-3 py-1.5 text-xs font-bold text-[#42466B] hover:text-[#7C3AED] transition cursor-pointer shadow-2xs"
                 >
-                  📈 Résultats évolutifs ?
+                  <mb-icon name="trending-up"></mb-icon> Résultats évolutifs ?
                 </button>
               </div>
 
@@ -558,7 +558,7 @@ export interface UIHexacoItem {
                     <mb-icon name="sparkles"></mb-icon>
                     <span>Réponse certifiée · Rapport Rdv {{ rdvNumber }}</span>
                   </span>
-                  <button type="button" (click)="aiQuestionAnswer = null" class="text-gray-400 hover:text-gray-600 font-bold text-sm">✕</button>
+                  <button type="button" (click)="aiQuestionAnswer = null" class="text-gray-400 hover:text-gray-600 font-bold text-sm"><mb-icon name="x"></mb-icon></button>
                 </div>
                 <p class="leading-relaxed">{{ aiQuestionAnswer }}</p>
 
@@ -890,7 +890,7 @@ export interface UIHexacoItem {
                 <div class="flex items-start justify-between gap-2 mb-2">
                   <div class="flex items-center gap-2.5 min-w-0">
                     <div class="h-11 w-11 rounded-xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 font-bold text-lg">
-                      💼
+                      <mb-icon name="briefcase"></mb-icon>
                     </div>
                     <div class="min-w-0">
                       <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition leading-tight">
@@ -915,7 +915,7 @@ export interface UIHexacoItem {
                   <p class="text-[10px] font-bold text-[#64748B] flex items-center justify-between">
                     <span>Mon ressenti :</span>
                     <span *ngIf="careerPreferences[c.id]" class="text-emerald-700 font-extrabold">
-                      {{ getPreferenceLabel(careerPreferences[c.id]) }}
+                      <mb-icon [name]="getPreferenceIcon(careerPreferences[c.id])"></mb-icon> {{ getPreferenceLabel(careerPreferences[c.id]) }}
                     </span>
                   </p>
                   <div class="grid grid-cols-2 gap-1 text-[10px]">
@@ -925,7 +925,7 @@ export interface UIHexacoItem {
                       [class]="careerPreferences[c.id] === 'INTERESTED' ? 'bg-emerald-600 text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                       class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-emerald-400"
                     >
-                      ❤️ Ça m'intéresse
+                      <mb-icon name="heart" [filled]="true"></mb-icon> Ça m'intéresse
                     </button>
                     <button
                       type="button"
@@ -933,7 +933,7 @@ export interface UIHexacoItem {
                       [class]="careerPreferences[c.id] === 'LEARN_MORE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                       class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-[#7C3AED]"
                     >
-                      🔍 En savoir plus
+                      <mb-icon name="search"></mb-icon> En savoir plus
                     </button>
                     <button
                       type="button"
@@ -941,7 +941,7 @@ export interface UIHexacoItem {
                       [class]="careerPreferences[c.id] === 'NOT_SURE' ? 'bg-amber-600 text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                       class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-amber-400"
                     >
-                      ❓ Pas sûr
+                      <mb-icon name="message-circle-question"></mb-icon> Pas sûr
                     </button>
                     <button
                       type="button"
@@ -949,7 +949,7 @@ export interface UIHexacoItem {
                       [class]="careerPreferences[c.id] === 'DISCUSS' ? 'bg-[#2563EB] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
                       class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-blue-400"
                     >
-                      💬 En parler
+                      <mb-icon name="message-circle"></mb-icon> En parler
                     </button>
                   </div>
                 </div>
@@ -961,7 +961,7 @@ export interface UIHexacoItem {
                 (click)="onPrepareImmersion(c)"
                 class="w-full mt-2 rounded-xl bg-[#FAF5FF] hover:bg-[#7C3AED] text-[#7C3AED] hover:text-white border border-[#DDD6FE] hover:border-transparent py-2 px-3 text-xs font-extrabold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs group-hover:bg-[#7C3AED] group-hover:text-white"
               >
-                <span>🚀 Préparer une immersion</span>
+                <span><mb-icon name="rocket"></mb-icon> Préparer une immersion</span>
                 <span>→</span>
               </button>
             </div>
@@ -1085,7 +1085,7 @@ export interface UIHexacoItem {
               class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 transition cursor-pointer group"
             >
               <div class="flex items-center gap-3.5 min-w-0">
-                <span class="text-lg shrink-0">🎨</span>
+                <span class="text-lg shrink-0"><mb-icon name="palette"></mb-icon></span>
                 <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">Explorer le métier de Designer graphique</span>
               </div>
               <div class="flex items-center gap-4 text-xs font-bold">
@@ -1101,7 +1101,7 @@ export interface UIHexacoItem {
               class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 transition cursor-pointer group"
             >
               <div class="flex items-center gap-3.5 min-w-0">
-                <span class="text-lg shrink-0">💬</span>
+                <span class="text-lg shrink-0"><mb-icon name="message-circle"></mb-icon></span>
                 <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">Préparer mes questions pour le conseiller</span>
               </div>
               <div class="flex items-center gap-4 text-xs font-bold">
@@ -1117,7 +1117,7 @@ export interface UIHexacoItem {
               class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3 transition cursor-pointer group"
             >
               <div class="flex items-center gap-3.5 min-w-0">
-                <span class="text-lg shrink-0">💼</span>
+                <span class="text-lg shrink-0"><mb-icon name="briefcase"></mb-icon></span>
                 <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">Me renseigner sur une immersion</span>
               </div>
               <div class="flex items-center gap-4 text-xs font-bold">
@@ -1160,7 +1160,7 @@ export interface UIHexacoItem {
             (click)="showTranscriptModal = false"
             class="h-9 w-9 rounded-full bg-[#F3EFFE] text-[#6D28D9] flex items-center justify-center font-bold hover:bg-[#E9D5FF] transition"
           >
-            ✕
+            <mb-icon name="x"></mb-icon>
           </button>
         </div>
 
@@ -1212,7 +1212,7 @@ export interface UIHexacoItem {
       >
         <div class="flex items-center justify-between border-b border-[#F0EDFA] pb-3">
           <div class="flex items-center gap-2.5">
-            <span class="text-2xl">🌿</span>
+            <span class="text-2xl"><mb-icon name="leaf"></mb-icon></span>
             <h3 class="text-lg font-extrabold text-[#0F1035]">
               Explication assistée par IA
             </h3>
@@ -1222,7 +1222,7 @@ export interface UIHexacoItem {
             (click)="showAIInfoModal = false"
             class="h-9 w-9 rounded-full bg-[#F3EFFE] text-[#6D28D9] flex items-center justify-center font-bold hover:bg-[#E9D5FF] transition cursor-pointer"
           >
-            ✕
+            <mb-icon name="x"></mb-icon>
           </button>
         </div>
 
@@ -1395,12 +1395,22 @@ export class ReportOverviewComponent implements OnInit, OnDestroy {
     }
   }
 
+  getPreferenceIcon(pref: string): string {
+    switch (pref) {
+      case 'INTERESTED': return 'heart';
+      case 'LEARN_MORE': return 'search';
+      case 'NOT_SURE': return 'circle-help';
+      case 'DISCUSS': return 'message-circle';
+      default: return '';
+    }
+  }
+
   getPreferenceLabel(pref: string): string {
     switch (pref) {
-      case 'INTERESTED': return '❤️ Ça m\'intéresse';
-      case 'LEARN_MORE': return '🔍 En savoir plus';
-      case 'NOT_SURE': return '❓ Pas sûr';
-      case 'DISCUSS': return '💬 En parler';
+      case 'INTERESTED': return 'Ça m\'intéresse';
+      case 'LEARN_MORE': return 'En savoir plus';
+      case 'NOT_SURE': return 'Pas sûr';
+      case 'DISCUSS': return 'En parler';
       default: return '';
     }
   }

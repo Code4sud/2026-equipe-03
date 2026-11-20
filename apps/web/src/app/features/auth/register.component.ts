@@ -81,9 +81,9 @@ export interface RegisterSuccessEvent {
           <div class="relative w-full max-w-[340px] flex items-center justify-center py-4">
 
             <!-- Éclats lumineux décoratifs -->
-            <div class="absolute -top-1 left-6 text-[#FDE047] text-xl font-bold select-none animate-pulse">✦</div>
-            <div class="absolute top-3 right-8 text-white text-lg font-bold select-none opacity-80">✦</div>
-            <div class="absolute bottom-4 left-4 text-[#FDE047] text-sm select-none opacity-70">✦</div>
+            <div class="absolute -top-1 left-6 text-[#FDE047] text-xl font-bold select-none animate-pulse"><mb-icon name="sparkles"></mb-icon></div>
+            <div class="absolute top-3 right-8 text-white text-lg font-bold select-none opacity-80"><mb-icon name="sparkles"></mb-icon></div>
+            <div class="absolute bottom-4 left-4 text-[#FDE047] text-sm select-none opacity-70"><mb-icon name="sparkles"></mb-icon></div>
 
             <!-- Composition vectorielle moderne des 3 parcours -->
             <div class="relative w-full flex items-center justify-center gap-2.5 sm:gap-3">

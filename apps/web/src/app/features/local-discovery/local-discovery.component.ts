@@ -71,7 +71,7 @@ declare const L: any;
           <div class="flex items-start sm:items-center gap-4 max-w-2xl">
             <!-- Carré translucide avec picto pin blanc -->
             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 border border-white/20 shadow-md">
-              <span class="text-2xl sm:text-3xl">📍</span>
+              <span class="text-2xl sm:text-3xl"><mb-icon name="map-pin"></mb-icon></span>
             </div>
             <div class="space-y-1">
               <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
@@ -217,7 +217,7 @@ declare const L: any;
         <div class="lg:col-span-8 xl:col-span-9 flex flex-col space-y-3">
           <div class="flex items-center justify-between px-1">
             <div class="flex items-center gap-2">
-              <span class="text-base text-[#7C3AED]">📍</span>
+              <span class="text-base text-[#7C3AED]"><mb-icon name="map-pin"></mb-icon></span>
               <h2 class="text-base sm:text-lg font-extrabold text-[#0F1035]">
                 Carte des opportunités — Nice et alentours
               </h2>
@@ -263,7 +263,7 @@ declare const L: any;
               <div class="flex items-center justify-between">
                 <h3 class="text-base font-extrabold text-[#0F1035] flex items-center gap-1.5">
                   <span>{{ filteredOpportunities.length }} résultats vérifiés</span>
-                  <span class="text-xs text-gray-400 font-bold" title="Données officielles contrôlées">ⓘ</span>
+                  <span class="text-xs text-gray-400 font-bold" title="Données officielles contrôlées"><mb-icon name="info"></mb-icon></span>
                 </h3>
               </div>
 
@@ -276,7 +276,7 @@ declare const L: any;
                 >
                   <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-base font-black shrink-0">
-                      🎓
+                      <mb-icon name="graduation-cap"></mb-icon>
                     </div>
                     <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
                       Formations ({{ counts.formations }})
@@ -292,7 +292,7 @@ declare const L: any;
                 >
                   <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-base font-black shrink-0">
-                      💼
+                      <mb-icon name="briefcase"></mb-icon>
                     </div>
                     <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-emerald-700 transition">
                       Entreprises ({{ counts.entreprises }})
@@ -308,7 +308,7 @@ declare const L: any;
                 >
                   <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-xl bg-sky-100 text-[#0284C7] flex items-center justify-center text-base font-black shrink-0">
-                      🏛️
+                      <mb-icon name="landmark"></mb-icon>
                     </div>
                     <span class="text-xs sm:text-sm font-extrabold text-[#0F1035] group-hover:text-[#0284C7] transition">
                       Structures d'aide ({{ counts.structuresAide }})
@@ -322,7 +322,7 @@ declare const L: any;
             <!-- Encadré vert Sources officielles (Fidèle à la Maquette 1) -->
             <div class="rounded-2xl bg-[#ECFDF5] border border-[#A7F3D0] p-4 space-y-2 mt-4">
               <div class="flex items-center gap-2 text-emerald-800 text-xs font-extrabold">
-                <span class="text-sm">🛡️</span>
+                <span class="text-sm"><mb-icon name="shield-check"></mb-icon></span>
                 <span>Sources officielles</span>
               </div>
               <p class="text-[11px] text-emerald-900 leading-relaxed font-medium">
@@ -418,7 +418,7 @@ declare const L: any;
                 </h3>
 
                 <div class="flex items-center gap-1.5 text-xs text-gray-500 font-semibold">
-                  <span>📍</span>
+                  <span><mb-icon name="map-pin"></mb-icon></span>
                   <span>{{ item.city }} • {{ item.distanceKm }} km</span>
                 </div>
 
@@ -489,14 +489,14 @@ declare const L: any;
                 {{ selectedOpportunity.categoryLabel }}
               </span>
               <span class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full bg-white text-[#0F1035] shadow-md">
-                <span class="text-emerald-600 font-black">✓</span>
+                <span class="text-emerald-600 font-black"><mb-icon name="check"></mb-icon></span>
                 <span>{{ selectedOpportunity.verificationBadge.replace('✓ ', '') }}</span>
               </span>
               <span
                 *ngIf="selectedOpportunity.hasImmersion"
                 class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full bg-[#EDE9FE] text-[#6D28D9] border border-[#C4B5FD] shadow-md"
               >
-                <span class="font-black">✓</span>
+                <span class="font-black"><mb-icon name="check"></mb-icon></span>
                 <span>Immersion possible</span>
               </span>
             </div>
@@ -508,7 +508,7 @@ declare const L: any;
               class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center font-bold text-base transition cursor-pointer z-10 border border-white/20"
               aria-label="Fermer"
             >
-              ✕
+              <mb-icon name="x"></mb-icon>
             </button>
 
             <!-- Titre & Spécialité en bas de l'image -->
@@ -525,16 +525,16 @@ declare const L: any;
           <!-- 5.2 Ligne d'adresse et lien "Voir sur la carte" (Fidèle à la Maquette 2) -->
           <div class="px-5 sm:px-7 py-3 bg-[#F8F7FF] border-b border-[#E4E0F5] flex flex-wrap items-center justify-between gap-3 text-xs sm:text-[13px] font-semibold text-[#42466B]">
             <div class="flex items-center gap-2 flex-wrap">
-              <span>📍 {{ selectedOpportunity.address }}</span>
+              <span><mb-icon name="map-pin"></mb-icon> {{ selectedOpportunity.address }}</span>
               <span>•</span>
-              <span>⏱ {{ selectedOpportunity.distanceKm }} km de toi</span>
+              <span><mb-icon name="timer"></mb-icon> {{ selectedOpportunity.distanceKm }} km de toi</span>
             </div>
             <button
               type="button"
               (click)="viewOnMap(selectedOpportunity)"
               class="text-[#7C3AED] hover:text-[#5B21B6] font-extrabold inline-flex items-center gap-1 transition cursor-pointer"
             >
-              <span>↗ Voir sur la carte</span>
+              <span><mb-icon name="external-link"></mb-icon> Voir sur la carte</span>
             </button>
           </div>
 
@@ -546,7 +546,7 @@ declare const L: any;
                 <!-- 1. Pourquoi c'est pertinent pour toi ? (Bloc violet clair) -->
                 <div class="rounded-2xl bg-[#F5F3FF] border border-[#DDD6FE] p-4 sm:p-5 space-y-2">
                   <div class="flex items-center gap-2 text-xs font-extrabold text-[#6D28D9] uppercase tracking-wider">
-                    <span class="text-base">🎯</span>
+                    <span class="text-base"><mb-icon name="target"></mb-icon></span>
                     <span>Pourquoi c'est pertinent pour toi ?</span>
                   </div>
                   <p class="text-xs sm:text-sm text-[#4C1D95] font-medium leading-relaxed">
@@ -557,7 +557,7 @@ declare const L: any;
                 <!-- 2. Métiers à découvrir -->
                 <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 sm:p-5 space-y-3">
                   <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                    <span class="text-base text-[#7C3AED]">📍</span>
+                    <span class="text-base text-[#7C3AED]"><mb-icon name="map-pin"></mb-icon></span>
                     <span>Métiers à découvrir</span>
                   </div>
                   <div class="flex flex-wrap items-center gap-2 pt-1">
@@ -565,7 +565,7 @@ declare const L: any;
                       *ngFor="let m of selectedOpportunity.targetCareersDetailed || []"
                       class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] text-xs font-bold text-[#0F1035] shadow-2xs hover:border-[#7C3AED] transition"
                     >
-                      <span>{{ m.icon }}</span>
+                      <mb-icon [name]="m.icon"></mb-icon>
                       <span>{{ m.name }}</span>
                     </div>
                     <div
@@ -576,7 +576,7 @@ declare const L: any;
                         *ngFor="let c of selectedOpportunity.targetCareers"
                         class="px-3 py-1.5 rounded-xl bg-[#F8F7FF] border border-[#E4E0F5] text-xs font-bold text-[#0F1035]"
                       >
-                        💼 {{ c }}
+                        <mb-icon name="briefcase"></mb-icon> {{ c }}
                       </span>
                     </div>
                   </div>
@@ -586,14 +586,14 @@ declare const L: any;
                 <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 sm:p-5 space-y-3">
                   <div class="flex items-center justify-between flex-wrap gap-2">
                     <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                      <span class="text-base">📅</span>
+                      <span class="text-base"><mb-icon name="calendar"></mb-icon></span>
                       <span>Modalités d'immersion</span>
                     </div>
                     <span
                       *ngIf="selectedOpportunity.hasImmersion"
                       class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200"
                     >
-                      ✓ Immersion possible
+                      <mb-icon name="check"></mb-icon> Immersion possible
                     </span>
                   </div>
 
@@ -619,28 +619,28 @@ declare const L: any;
                 <!-- 1. Contact & Informations -->
                 <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 sm:p-5 space-y-3">
                   <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                    <span class="text-base">🔍</span>
+                    <span class="text-base"><mb-icon name="search"></mb-icon></span>
                     <span>Contact & Informations</span>
                   </div>
 
                   <div class="space-y-2.5 text-xs sm:text-[13px]">
                     <div *ngIf="selectedOpportunity.contactInfo.phone" class="flex items-center gap-2 font-bold text-[#0F1035]">
-                      <span>📞</span>
+                      <span><mb-icon name="phone"></mb-icon></span>
                       <a [href]="'tel:' + selectedOpportunity.contactInfo.phone" class="hover:text-[#7C3AED] transition">
                         {{ selectedOpportunity.contactInfo.phone }}
                       </a>
                     </div>
                     <div *ngIf="selectedOpportunity.contactInfo.email" class="flex items-center gap-2 font-bold text-[#0F1035]">
-                      <span>✉️</span>
+                      <span><mb-icon name="mail"></mb-icon></span>
                       <a [href]="'mailto:' + selectedOpportunity.contactInfo.email" class="hover:text-[#7C3AED] transition truncate">
                         {{ selectedOpportunity.contactInfo.email }}
                       </a>
                     </div>
                     <div *ngIf="selectedOpportunity.contactInfo.websiteUrl" class="flex items-center gap-2 font-bold text-[#7C3AED]">
-                      <span>🌐</span>
+                      <span><mb-icon name="globe"></mb-icon></span>
                       <a [href]="selectedOpportunity.contactInfo.websiteUrl" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1">
                         <span>{{ selectedOpportunity.contactInfo.websiteUrl.replace('https://', '') }}</span>
-                        <span>↗</span>
+                        <span><mb-icon name="external-link"></mb-icon></span>
                       </a>
                     </div>
                   </div>
@@ -649,21 +649,21 @@ declare const L: any;
                 <!-- 2. Accès & Transports -->
                 <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 sm:p-5 space-y-3">
                   <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                    <span class="text-base">🚌</span>
+                    <span class="text-base"><mb-icon name="bus"></mb-icon></span>
                     <span>Accès & Transports</span>
                   </div>
 
                   <div class="space-y-2 text-xs sm:text-[13px] text-[#42466B]">
                     <div *ngIf="selectedOpportunity.accessTransports.tram" class="flex items-start gap-2">
-                      <span class="text-sm shrink-0">🚊</span>
+                      <span class="text-sm shrink-0"><mb-icon name="bus"></mb-icon></span>
                       <span class="font-medium">{{ selectedOpportunity.accessTransports.tram }}</span>
                     </div>
                     <div *ngIf="selectedOpportunity.accessTransports.bus" class="flex items-start gap-2">
-                      <span class="text-sm shrink-0">🚌</span>
+                      <span class="text-sm shrink-0"><mb-icon name="bus"></mb-icon></span>
                       <span class="font-medium">{{ selectedOpportunity.accessTransports.bus }}</span>
                     </div>
                     <div *ngIf="selectedOpportunity.accessTransports.walking" class="flex items-start gap-2">
-                      <span class="text-sm shrink-0">🚶</span>
+                      <span class="text-sm shrink-0"><mb-icon name="bus"></mb-icon></span>
                       <span class="font-medium">{{ selectedOpportunity.accessTransports.walking }}</span>
                     </div>
                   </div>
@@ -672,7 +672,7 @@ declare const L: any;
                 <!-- 3. Source & Fiabilité -->
                 <div class="rounded-2xl bg-white border border-[#E4E0F5] p-4 sm:p-5 space-y-2">
                   <div class="flex items-center gap-2 text-xs font-extrabold text-[#0F1035]">
-                    <span class="text-base text-emerald-600">🛡️</span>
+                    <span class="text-base text-emerald-600"><mb-icon name="shield-check"></mb-icon></span>
                     <span>Source & Fiabilité</span>
                   </div>
 
@@ -713,7 +713,7 @@ declare const L: any;
                 (click)="onOpenCoachIA(selectedOpportunity)"
                 class="flex-1 sm:flex-none px-5 py-3 rounded-2xl border-2 border-[#7C3AED] text-[#7C3AED] hover:bg-[#F5F3FF] active:scale-95 text-xs sm:text-sm font-extrabold transition flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
               >
-                <span>✨</span>
+                <span><mb-icon name="sparkles"></mb-icon></span>
                 <span>Préparer ma demande avec Mon Coach IA</span>
               </button>
 
@@ -723,7 +723,7 @@ declare const L: any;
                 (click)="onChooseForImmersion(selectedOpportunity)"
                 class="flex-1 sm:flex-none px-6 py-3 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] hover:from-[#6D28D9] hover:to-[#5B21B6] text-white active:scale-95 text-xs sm:text-sm font-extrabold shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>📅</span>
+                <span><mb-icon name="calendar"></mb-icon></span>
                 <span>Demander une immersion</span>
               </button>
             </div>
@@ -928,12 +928,13 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
           ? '#059669' // Vert Émeraude (comme sur la Maquette 1)
           : '#0284C7'; // Bleu Cyan
 
-      const iconEmoji =
+      const iconEmoji = mbIconSvg(
         opp.category === 'FORMATION'
-          ? '🎓'
+          ? 'graduation-cap'
           : opp.category === 'ENTREPRISE'
-          ? '💼'
-          : '🏛️';
+          ? 'briefcase'
+          : 'landmark'
+      );
 
       const customIcon = L.divIcon({
         className: 'custom-leaflet-marker',
@@ -972,7 +973,7 @@ export class LocalDiscoveryComponent implements OnInit, AfterViewInit, OnDestroy
             ${opp.name}
           </h4>
           <p style="font-size: 11px; color: #6B7280; margin: 0 0 6px 0;">
-            📍 ${opp.city} · ${opp.distanceKm} km
+            ${mbIconSvg('map-pin')} ${opp.city} · ${opp.distanceKm} km
           </p>
           <button id="btn-popup-${opp.id}" style="
             width: 100%;

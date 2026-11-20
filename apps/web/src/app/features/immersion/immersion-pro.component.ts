@@ -10,6 +10,7 @@
 
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import { saveDraftItem } from '../../shared/autonomous-data';
 import {
@@ -32,7 +33,7 @@ export interface ContactProgressStep {
 @Component({
   selector: 'app-immersion-pro',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="max-w-6xl mx-auto space-y-6 pb-16 animate-fadeIn">
 
@@ -56,7 +57,7 @@ export interface ContactProgressStep {
         <!-- Titre & Sous-titre -->
         <div class="flex items-center gap-3.5">
           <div class="h-12 w-12 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-2xl font-bold border border-[#E9D5FF] shrink-0 shadow-2xs">
-            💼
+            <mb-icon name="briefcase"></mb-icon>
           </div>
           <div>
             <h1 class="text-2xl sm:text-3xl font-black text-[#0F1035] tracking-tight">
@@ -83,7 +84,7 @@ export interface ContactProgressStep {
             class="rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm font-extrabold flex items-center gap-2 relative z-10 transition cursor-pointer shadow-2xs"
           >
             <span class="h-5 w-5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep === 1">1</span>
-            <span class="h-5 w-5 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep > 1">✓</span>
+            <span class="h-5 w-5 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep > 1"><mb-icon name="check"></mb-icon></span>
             <span class="h-5 w-5 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-[11px] font-black" *ngIf="activeStep < 1">1</span>
             <span>Je découvre un métier</span>
           </button>
@@ -98,7 +99,7 @@ export interface ContactProgressStep {
             class="rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm font-extrabold flex items-center gap-2 relative z-10 transition cursor-pointer shadow-2xs"
           >
             <span class="h-5 w-5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep === 2">2</span>
-            <span class="h-5 w-5 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep > 2">✓</span>
+            <span class="h-5 w-5 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep > 2"><mb-icon name="check"></mb-icon></span>
             <span class="h-5 w-5 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-[11px] font-black" *ngIf="activeStep < 2">2</span>
             <span>Je prépare mon immersion</span>
           </button>
@@ -113,7 +114,7 @@ export interface ContactProgressStep {
             class="rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm font-extrabold flex items-center gap-2 relative z-10 transition cursor-pointer shadow-2xs"
           >
             <span class="h-5 w-5 rounded-full bg-white text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep === 3">3</span>
-            <span class="h-5 w-5 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep > 3">✓</span>
+            <span class="h-5 w-5 rounded-full bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-[11px] font-black" *ngIf="activeStep > 3"><mb-icon name="check"></mb-icon></span>
             <span class="h-5 w-5 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center text-[11px] font-black" *ngIf="activeStep < 3">3</span>
             <span>Je contacte une entreprise</span>
           </button>
@@ -170,7 +171,7 @@ export interface ContactProgressStep {
                   [title]="isCareerFavorite ? 'Retirer des favoris' : 'Enregistrer pour plus tard'"
                 >
                   <span [class.text-rose-500]="isCareerFavorite" [class.text-gray-400]="!isCareerFavorite">
-                    {{ isCareerFavorite ? '❤️' : '🤍' }}
+                    <mb-icon name="heart" [filled]="isCareerFavorite"></mb-icon>
                   </span>
                 </button>
               </div>
@@ -184,7 +185,7 @@ export interface ContactProgressStep {
                   [class]="selectedCareer.title === 'Technicien du son' ? 'bg-[#7C3AED] text-white font-extrabold shadow-2xs' : 'bg-[#F8F7FF] text-[#0F1035] hover:bg-purple-100 font-semibold'"
                   class="px-2.5 py-1 rounded-lg text-[11px] transition cursor-pointer"
                 >
-                  🎧 Technicien du son (p. 12)
+                  <mb-icon name="headphones"></mb-icon> Technicien du son (p. 12)
                 </button>
                 <button
                   type="button"
@@ -192,7 +193,7 @@ export interface ContactProgressStep {
                   [class]="selectedCareer.title === 'Peintre décorateur' ? 'bg-[#7C3AED] text-white font-extrabold shadow-2xs' : 'bg-[#F8F7FF] text-[#0F1035] hover:bg-purple-100 font-semibold'"
                   class="px-2.5 py-1 rounded-lg text-[11px] transition cursor-pointer"
                 >
-                  🎨 Peintre décorateur (p. 8)
+                  <mb-icon name="palette"></mb-icon> Peintre décorateur (p. 8)
                 </button>
               </div>
 
@@ -217,7 +218,7 @@ export interface ContactProgressStep {
                   : 'bg-[#F8F7FF] text-[#42466B] hover:bg-purple-100 font-semibold'"
                 class="rounded-full px-4 py-2 text-xs flex items-center gap-1.5 transition cursor-pointer"
               >
-                <span>📅</span>
+                <span><mb-icon name="calendar"></mb-icon></span>
                 <span>Une journée type</span>
               </button>
 
@@ -229,7 +230,7 @@ export interface ContactProgressStep {
                   : 'bg-[#F8F7FF] text-[#42466B] hover:bg-purple-100 font-semibold'"
                 class="rounded-full px-4 py-2 text-xs flex items-center gap-1.5 transition cursor-pointer"
               >
-                <span>⭐</span>
+                <span><mb-icon name="star"></mb-icon></span>
                 <span>Compétences</span>
               </button>
 
@@ -241,7 +242,7 @@ export interface ContactProgressStep {
                   : 'bg-[#F8F7FF] text-[#42466B] hover:bg-purple-100 font-semibold'"
                 class="rounded-full px-4 py-2 text-xs flex items-center gap-1.5 transition cursor-pointer"
               >
-                <span>🏗️</span>
+                <span><mb-icon name="hard-hat"></mb-icon></span>
                 <span>Conditions</span>
               </button>
             </div>
@@ -249,15 +250,15 @@ export interface ContactProgressStep {
             <!-- Contenu Onglet 1 : Une journée type (Fidèle aux 3 puces de la maquette) -->
             <div *ngIf="step1SubTab === 'DAY'" class="rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] p-5 space-y-3 text-xs sm:text-sm animate-fadeIn">
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Préparer les murs et les surfaces (nettoyage, ponçage, enduit)</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Choisir les couleurs et les matériaux avec le client ou l'équipe</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Appliquer les peintures et réaliser les finitions (effets décoratifs, vernis)</span>
               </div>
             </div>
@@ -265,15 +266,15 @@ export interface ContactProgressStep {
             <!-- Contenu Onglet 2 : Compétences -->
             <div *ngIf="step1SubTab === 'SKILLS'" class="rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] p-5 space-y-3 text-xs sm:text-sm animate-fadeIn">
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Sens du détail et harmonie des couleurs</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Maîtrise des gestes techniques (rouleaux, brosses, pistolet)</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Rigueur et respect des consignes de propreté du chantier</span>
               </div>
             </div>
@@ -281,15 +282,15 @@ export interface ContactProgressStep {
             <!-- Contenu Onglet 3 : Conditions -->
             <div *ngIf="step1SubTab === 'CONDITIONS'" class="rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] p-5 space-y-3 text-xs sm:text-sm animate-fadeIn">
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Chantiers intérieurs et extérieurs, parfois en hauteur sur escabeau</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Équipements de protection fournis (masque, gants, combinaison)</span>
               </div>
               <div class="flex items-start gap-3">
-                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0">✓</span>
+                <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black shrink-0"><mb-icon name="check"></mb-icon></span>
                 <span class="text-[#0F1035] font-semibold pt-0.5">Horaires réguliers de journée (généralement 8h00 - 16h30)</span>
               </div>
             </div>
@@ -303,7 +304,7 @@ export interface ContactProgressStep {
               (click)="goToStep(2)"
               class="rounded-full bg-gradient-to-r from-[#6328E8] via-[#7C3AED] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-extrabold text-xs sm:text-sm px-6 sm:px-7 py-3.5 shadow-md hover:shadow-lg transition flex items-center gap-2 cursor-pointer"
             >
-              <span>🚀</span>
+              <span><mb-icon name="rocket"></mb-icon></span>
               <span>Ce métier m'intéresse → Préparer mon immersion</span>
             </button>
 
@@ -313,7 +314,7 @@ export interface ContactProgressStep {
               (click)="toggleFavorite()"
               class="rounded-full border border-[#D8DCF0] bg-white hover:bg-gray-50 text-[#0F1035] font-extrabold text-xs px-5 py-3.5 transition flex items-center gap-1.5 cursor-pointer shadow-2xs"
             >
-              <span>🔖</span>
+              <span><mb-icon name="bookmark"></mb-icon></span>
               <span>{{ isCareerFavorite ? 'Enregistré dans mes favoris ✓' : 'Enregistrer pour plus tard' }}</span>
             </button>
           </div>
@@ -324,7 +325,7 @@ export interface ContactProgressStep {
           <!-- En-tête Assistant avec Robot IA -->
           <div class="text-center space-y-2">
             <div class="h-14 w-14 rounded-2xl bg-[#F3E8FF] text-[#7C3AED] flex items-center justify-center text-3xl mx-auto shadow-2xs border border-[#E9D5FF]">
-              🤖
+              <mb-icon name="bot"></mb-icon>
             </div>
             <h3 class="text-base sm:text-lg font-black text-[#0F1035]">
               Besoin d'un coup de main ?
@@ -341,7 +342,7 @@ export interface ContactProgressStep {
               (click)="askCoach('Bonjour ! Peux-tu m\\'expliquer le métier de Peintre décorateur en quelques mots simples ?')"
               class="w-full rounded-full border border-[#7C3AED] bg-white hover:bg-[#FAF8FF] text-[#7C3AED] font-extrabold text-xs py-2.5 transition flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
             >
-              <span>💬</span>
+              <span><mb-icon name="message-circle"></mb-icon></span>
               <span>Poser une question</span>
             </button>
           </div>
@@ -353,7 +354,7 @@ export interface ContactProgressStep {
               (click)="askCoach('Comment m\\'assurer que le métier de Peintre décorateur me correspond ?')"
               class="w-full text-left font-bold text-[#42466B] hover:text-[#7C3AED] flex items-center gap-2 transition p-1.5 rounded-lg hover:bg-[#FAF8FF]"
             >
-              <span class="text-[#7C3AED] font-black">✓</span>
+              <span class="text-[#7C3AED] font-black"><mb-icon name="check"></mb-icon></span>
               <span>Comprendre le métier</span>
             </button>
             <button
@@ -361,7 +362,7 @@ export interface ContactProgressStep {
               (click)="askCoach('Comment rédiger un message poli pour demander un stage d\\'observation ?')"
               class="w-full text-left font-bold text-[#42466B] hover:text-[#7C3AED] flex items-center gap-2 transition p-1.5 rounded-lg hover:bg-[#FAF8FF]"
             >
-              <span class="text-[#7C3AED] font-black">✓</span>
+              <span class="text-[#7C3AED] font-black"><mb-icon name="check"></mb-icon></span>
               <span>Préparer un message</span>
             </button>
             <button
@@ -369,7 +370,7 @@ export interface ContactProgressStep {
               (click)="askCoach('Où trouver des entreprises de peinture et décoration prêtes à accueillir un jeune à Nice ?')"
               class="w-full text-left font-bold text-[#42466B] hover:text-[#7C3AED] flex items-center gap-2 transition p-1.5 rounded-lg hover:bg-[#FAF8FF]"
             >
-              <span class="text-[#7C3AED] font-black">✓</span>
+              <span class="text-[#7C3AED] font-black"><mb-icon name="check"></mb-icon></span>
               <span>Trouver des entreprises</span>
             </button>
             <button
@@ -377,7 +378,7 @@ export interface ContactProgressStep {
               (click)="askCoach('Quelles sont les questions importantes à poser à un professionnel lors d\\'un premier contact ?')"
               class="w-full text-left font-bold text-[#42466B] hover:text-[#7C3AED] flex items-center gap-2 transition p-1.5 rounded-lg hover:bg-[#FAF8FF]"
             >
-              <span class="text-[#7C3AED] font-black">✓</span>
+              <span class="text-[#7C3AED] font-black"><mb-icon name="check"></mb-icon></span>
               <span>Savoir quoi demander</span>
             </button>
           </div>
@@ -396,7 +397,7 @@ export interface ContactProgressStep {
           <!-- Bloc A : Mon métier -->
           <div class="p-4 rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-              <span class="text-3xl">🎨</span>
+              <span class="text-3xl"><mb-icon name="palette"></mb-icon></span>
               <div>
                 <h3 class="text-lg font-black text-[#0F1035]">
                   {{ selectedCareer.title }}
@@ -483,7 +484,7 @@ export interface ContactProgressStep {
 
           <!-- Bloc D : Projet prêt & Validation -->
           <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium flex items-start gap-2.5">
-            <span class="text-base">ℹ️</span>
+            <span class="text-base">ℹ</span>
             <span>Pas besoin d'avoir déjà une convention pour préparer ta démarche. Nous t'expliquerons comment formaliser l'accueil le moment venu selon ta situation.</span>
           </div>
 
@@ -522,7 +523,7 @@ export interface ContactProgressStep {
             [class]="step3SubSpace === 'SEARCH' ? 'bg-[#7C3AED] text-white font-extrabold shadow-sm' : 'bg-white border border-[#E4E0F5] text-[#42466B] font-bold'"
             class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
           >
-            <span>🏢</span>
+            <span><mb-icon name="building-2"></mb-icon></span>
             <span>A. Trouver une structure</span>
           </button>
 
@@ -532,7 +533,7 @@ export interface ContactProgressStep {
             [class]="step3SubSpace === 'COACH' ? 'bg-[#7C3AED] text-white font-extrabold shadow-sm' : 'bg-white border border-[#E4E0F5] text-[#42466B] font-bold'"
             class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
           >
-            <span>💬</span>
+            <span><mb-icon name="message-circle"></mb-icon></span>
             <span>B. Préparer ma demande avec le Coach IA</span>
           </button>
 
@@ -542,7 +543,7 @@ export interface ContactProgressStep {
             [class]="step3SubSpace === 'TRACKING' ? 'bg-[#7C3AED] text-white font-extrabold shadow-sm' : 'bg-white border border-[#E4E0F5] text-[#42466B] font-bold'"
             class="rounded-full px-4 py-2 text-xs transition cursor-pointer flex items-center gap-1.5"
           >
-            <span>📋</span>
+            <span><mb-icon name="clipboard-list"></mb-icon></span>
             <span>C. Suivre mes démarches ({{ followedCompanies.length }})</span>
           </button>
         </div>
@@ -559,7 +560,7 @@ export interface ContactProgressStep {
               </p>
             </div>
             <span class="rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1">
-              ✓ Sources vérifiées
+              <mb-icon name="check"></mb-icon> Sources vérifiées
             </span>
           </div>
 
@@ -573,7 +574,7 @@ export interface ContactProgressStep {
                   <span class="text-xs font-extrabold text-[#7C3AED] bg-purple-50 px-2.5 py-0.5 rounded-full">
                     {{ comp.city }} • {{ comp.distanceKm }} km
                   </span>
-                  <span class="text-xs font-bold text-emerald-700">✓ Référencé</span>
+                  <span class="text-xs font-bold text-emerald-700"><mb-icon name="check"></mb-icon> Référencé</span>
                 </div>
                 <h4 class="font-extrabold text-[#0F1035] text-base leading-snug">
                   {{ comp.name }}
@@ -582,8 +583,8 @@ export interface ContactProgressStep {
                   {{ comp.headline }}
                 </p>
                 <div class="pt-1 text-xs text-gray-500 space-y-0.5">
-                  <p>📍 {{ comp.address }}</p>
-                  <p>📞 {{ comp.contactPhone || 'Non communiqué' }}</p>
+                  <p><mb-icon name="map-pin"></mb-icon> {{ comp.address }}</p>
+                  <p><mb-icon name="phone"></mb-icon> {{ comp.contactPhone || 'Non communiqué' }}</p>
                 </div>
               </div>
 
@@ -616,7 +617,7 @@ export interface ContactProgressStep {
             <!-- Option 1 : Rédiger un email -->
             <div class="p-4 rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] space-y-3">
               <h4 class="font-extrabold text-xs sm:text-sm text-[#0F1035] flex items-center gap-1.5">
-                <span>✉️</span>
+                <span><mb-icon name="mail"></mb-icon></span>
                 <span>Option 1 — Préparer un email</span>
               </h4>
               <p class="text-xs text-[#6B7280]">
@@ -632,14 +633,14 @@ export interface ContactProgressStep {
                 (click)="copyEmailDraft()"
                 class="w-full py-2 rounded-xl bg-white border border-[#7C3AED] text-[#7C3AED] font-extrabold text-xs hover:bg-purple-50 transition cursor-pointer"
               >
-                {{ emailCopied ? '✓ Message copié !' : '📋 Copier le texte' }}
+                <mb-icon [name]="emailCopied ? 'check' : 'clipboard-list'"></mb-icon> {{ emailCopied ? 'Message copié !' : 'Copier le texte' }}
               </button>
             </div>
 
             <!-- Option 2 : Préparer un appel -->
             <div class="p-4 rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] space-y-3">
               <h4 class="font-extrabold text-xs sm:text-sm text-[#0F1035] flex items-center gap-1.5">
-                <span>📞</span>
+                <span><mb-icon name="phone"></mb-icon></span>
                 <span>Option 2 — Préparer un appel</span>
               </h4>
               <p class="text-xs text-[#6B7280]">
@@ -654,7 +655,7 @@ export interface ContactProgressStep {
                 (click)="copyPhoneScript()"
                 class="w-full py-2 rounded-xl bg-white border border-[#7C3AED] text-[#7C3AED] font-extrabold text-xs hover:bg-purple-50 transition cursor-pointer"
               >
-                {{ scriptCopied ? '✓ Script copié !' : '📋 Copier le script' }}
+                <mb-icon [name]="scriptCopied ? 'check' : 'clipboard-list'"></mb-icon> {{ scriptCopied ? 'Script copié !' : 'Copier le script' }}
               </button>
             </div>
 
@@ -662,7 +663,7 @@ export interface ContactProgressStep {
             <div class="p-4 rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] space-y-3 flex flex-col justify-between">
               <div class="space-y-2">
                 <h4 class="font-extrabold text-xs sm:text-sm text-[#0F1035] flex items-center gap-1.5">
-                  <span>🎙️</span>
+                  <span><mb-icon name="mic"></mb-icon></span>
                   <span>Option 3 — M'entraîner</span>
                 </h4>
                 <p class="text-xs text-[#6B7280]">
@@ -710,7 +711,7 @@ export interface ContactProgressStep {
                   <option value="EN_ATTENTE">En attente de réponse</option>
                   <option value="REPONSE_RECUE">Réponse reçue</option>
                   <option value="RELANCE">À relancer</option>
-                  <option value="CONFIRME">Immersion confirmée ✓</option>
+                  <option value="CONFIRME">Immersion confirmée </option>
                 </select>
 
                 <button
@@ -756,7 +757,7 @@ export interface ContactProgressStep {
         <!-- ÉTAT A : Si aucune immersion n'a encore eu lieu -->
         <div *ngIf="!hasCompletedImmersion" class="rounded-[32px] bg-white border border-[#E4E0F5] p-8 text-center space-y-4 shadow-sm">
           <div class="h-16 w-16 rounded-3xl bg-[#FAF8FF] text-[#7C3AED] flex items-center justify-center text-3xl mx-auto border border-[#E9D5FF]">
-            🕒
+            <mb-icon name="clock"></mb-icon>
           </div>
           <h2 class="text-xl sm:text-2xl font-black text-[#0F1035]">
             Tu n'as pas encore réalisé d'immersion
@@ -848,12 +849,12 @@ export interface ContactProgressStep {
               (click)="saveReflection()"
               class="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm px-6 py-3 transition shadow-md cursor-pointer flex items-center gap-2"
             >
-              <span>💾</span>
+              <span><mb-icon name="save"></mb-icon></span>
               <span>Enregistrer mon bilan</span>
             </button>
 
             <span *ngIf="reflectionSaved" class="text-xs font-bold text-emerald-600">
-              ✓ Bilan sauvegardé avec succès !
+              <mb-icon name="check"></mb-icon> Bilan sauvegardé avec succès !
             </span>
           </div>
         </div>

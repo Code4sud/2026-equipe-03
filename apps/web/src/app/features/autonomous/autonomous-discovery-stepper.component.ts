@@ -7,6 +7,7 @@
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import { UICatalogCareer } from '../../shared/autonomous-data';
 import { ONET_CAREERS_CATALOG_DATA } from '../../shared/onet-careers-data';
@@ -24,7 +25,7 @@ export interface DiscoveryActivityCard {
 @Component({
   selector: 'app-autonomous-discovery-stepper',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MbIconComponent],
   template: `
     <div class="max-w-5xl mx-auto space-y-6 pb-16 animate-fadeIn">
 
@@ -41,8 +42,8 @@ export interface DiscoveryActivityCard {
             : (currentStep > 1 ? 'bg-[#EDE9FE] text-[#7C3AED] font-extrabold' : 'bg-white text-[#42466B] border border-[#E4E0F5] font-semibold')"
           class="rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer"
         >
-          <span *ngIf="currentStep > 1" class="text-xs">✓</span>
-          <span *ngIf="currentStep <= 1">🧭</span>
+          <span *ngIf="currentStep > 1" class="text-xs"><mb-icon name="check"></mb-icon></span>
+          <span *ngIf="currentStep <= 1"><mb-icon name="compass"></mb-icon></span>
           <span>1. Je découvre</span>
         </button>
 
@@ -57,8 +58,8 @@ export interface DiscoveryActivityCard {
             : (currentStep > 2 ? 'bg-[#EDE9FE] text-[#7C3AED] font-extrabold' : 'bg-white text-[#42466B] border border-[#E4E0F5] font-semibold')"
           class="rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer"
         >
-          <span *ngIf="currentStep > 2" class="text-xs">✓</span>
-          <span *ngIf="currentStep <= 2">💼</span>
+          <span *ngIf="currentStep > 2" class="text-xs"><mb-icon name="check"></mb-icon></span>
+          <span *ngIf="currentStep <= 2"><mb-icon name="briefcase"></mb-icon></span>
           <span>2. J'explore</span>
         </button>
 
@@ -73,7 +74,7 @@ export interface DiscoveryActivityCard {
             : 'bg-white text-[#42466B] border border-[#E4E0F5] font-semibold'"
           class="rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm flex items-center gap-2 transition cursor-pointer"
         >
-          <span>⚑</span>
+          <span><mb-icon name="flag"></mb-icon></span>
           <span>3. Je passe à l'action</span>
         </button>
       </div>
@@ -229,7 +230,7 @@ export interface DiscoveryActivityCard {
               (click)="openFullCatalog.emit()"
               class="text-xs sm:text-sm font-bold text-[#6B7280] hover:text-[#7C3AED] transition inline-flex items-center gap-1.5 hover:underline cursor-pointer"
             >
-              <span>📖</span>
+              <span><mb-icon name="book-open"></mb-icon></span>
               <span>Voir tout le catalogue (721 métiers)</span>
             </button>
           </div>
@@ -277,7 +278,7 @@ export interface DiscoveryActivityCard {
               <div class="flex items-center justify-between gap-2">
                 <!-- Tag thématique -->
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F3EFFE] text-[#7C3AED] px-3.5 py-1 text-xs font-black">
-                  <span>🎨</span>
+                  <span><mb-icon name="palette"></mb-icon></span>
                   <span>Créer • Art • Communication</span>
                 </span>
 
@@ -289,7 +290,7 @@ export interface DiscoveryActivityCard {
                   [title]="isCareerFavorite ? 'Retirer des favoris' : 'Ajouter à mes favoris'"
                 >
                   <span [class.text-rose-500]="isCareerFavorite" [class.text-gray-400]="!isCareerFavorite">
-                    {{ isCareerFavorite ? '❤️' : '🤍' }}
+                    <mb-icon name="heart" [filled]="isCareerFavorite"></mb-icon>
                   </span>
                 </button>
               </div>
@@ -307,7 +308,7 @@ export interface DiscoveryActivityCard {
           <!-- Section « En quoi consiste ce métier ? » -->
           <div class="pt-4 border-t border-[#F0EDFA] space-y-2">
             <h3 class="text-base sm:text-lg font-black text-[#0F1035] flex items-center gap-2">
-              <span class="text-[#7C3AED] text-lg">🎯</span>
+              <span class="text-[#7C3AED] text-lg"><mb-icon name="target"></mb-icon></span>
               <span>En quoi consiste ce métier ?</span>
             </h3>
             <p class="text-xs sm:text-sm text-[#42466B] leading-relaxed font-medium">
@@ -320,7 +321,7 @@ export interface DiscoveryActivityCard {
             <!-- Bloc 1 : Ce que tu fais -->
             <div class="rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] p-4 sm:p-5 flex items-start gap-3.5">
               <div class="h-11 w-11 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xl shrink-0">
-                🖥️
+                <mb-icon name="laptop"></mb-icon>
               </div>
               <div class="space-y-1">
                 <h4 class="font-extrabold text-[#0F1035] text-sm">
@@ -335,7 +336,7 @@ export interface DiscoveryActivityCard {
             <!-- Bloc 2 : Comment y arriver ? -->
             <div class="rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] p-4 sm:p-5 flex items-start gap-3.5">
               <div class="h-11 w-11 rounded-2xl bg-[#E0E7FF] text-[#4F46E5] flex items-center justify-center text-xl shrink-0">
-                🎓
+                <mb-icon name="graduation-cap"></mb-icon>
               </div>
               <div class="space-y-1">
                 <h4 class="font-extrabold text-[#0F1035] text-sm">
@@ -356,7 +357,7 @@ export interface DiscoveryActivityCard {
               class="rounded-2xl bg-white border border-[#E4E0F5] hover:border-rose-300 p-4 shadow-2xs hover:shadow-sm transition cursor-pointer flex flex-col justify-between space-y-2 group"
             >
               <div class="flex items-center gap-2">
-                <span class="text-rose-500 text-lg">❤️</span>
+                <span class="text-rose-500 text-lg"><mb-icon name="heart" [filled]="true"></mb-icon></span>
                 <span class="font-extrabold text-xs sm:text-sm text-[#0F1035] group-hover:text-rose-600">
                   Ce métier m'intéresse
                 </span>
@@ -372,7 +373,7 @@ export interface DiscoveryActivityCard {
               class="rounded-2xl bg-[#FEF9C3]/50 border border-[#FDE047] hover:border-amber-400 p-4 shadow-2xs hover:shadow-sm transition cursor-pointer flex flex-col justify-between space-y-2 group"
             >
               <div class="flex items-center gap-2">
-                <span class="text-amber-600 text-lg">📍</span>
+                <span class="text-amber-600 text-lg"><mb-icon name="map-pin"></mb-icon></span>
                 <span class="font-extrabold text-xs sm:text-sm text-[#0F1035] group-hover:text-amber-800">
                   Je veux le découvrir près de chez moi
                 </span>
@@ -388,7 +389,7 @@ export interface DiscoveryActivityCard {
               class="rounded-2xl bg-[#FAF5FF] border border-[#E9D5FF] hover:border-[#7C3AED] p-4 shadow-2xs hover:shadow-sm transition cursor-pointer flex flex-col justify-between space-y-2 group"
             >
               <div class="flex items-center gap-2">
-                <span class="text-[#7C3AED] text-lg">💬</span>
+                <span class="text-[#7C3AED] text-lg"><mb-icon name="message-circle"></mb-icon></span>
                 <span class="font-extrabold text-xs sm:text-sm text-[#0F1035] group-hover:text-[#7C3AED]">
                   J'ai une question
                 </span>
@@ -406,7 +407,7 @@ export interface DiscoveryActivityCard {
               (click)="showMoreDetails = !showMoreDetails"
               class="rounded-full border border-[#D8DCF0] bg-white hover:bg-[#FAF8FF] px-5 py-2.5 text-xs font-bold text-[#0F1035] transition inline-flex items-center gap-2 cursor-pointer shadow-2xs"
             >
-              <span>ℹ️</span>
+              <span>ℹ</span>
               <span>{{ showMoreDetails ? 'Masquer les détails' : 'En savoir plus' }}</span>
               <span>{{ showMoreDetails ? '▲' : '▼' }}</span>
             </button>
@@ -417,7 +418,7 @@ export interface DiscoveryActivityCard {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="p-4 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] space-y-2">
                 <h5 class="font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span>🎯</span>
+                  <span><mb-icon name="target"></mb-icon></span>
                   <span>Missions principales (O*NET FR)</span>
                 </h5>
                 <ul class="list-disc list-inside space-y-1 text-xs text-[#31355B]">
@@ -430,7 +431,7 @@ export interface DiscoveryActivityCard {
 
               <div class="p-4 rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] space-y-2">
                 <h5 class="font-extrabold text-[#0F1035] flex items-center gap-1.5">
-                  <span>💼</span>
+                  <span><mb-icon name="briefcase"></mb-icon></span>
                   <span>Conditions & Accompagnement</span>
                 </h5>
                 <p class="text-xs text-[#31355B]">
@@ -477,7 +478,7 @@ export interface DiscoveryActivityCard {
         <!-- Rappel du métier sélectionné sous forme de vignette compacte -->
         <div class="max-w-md mx-auto rounded-2xl bg-white border border-[#E4E0F5] p-3.5 flex items-center gap-3.5 shadow-xs">
           <div class="h-12 w-12 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-xl shrink-0">
-            🎨
+            <mb-icon name="palette"></mb-icon>
           </div>
           <div class="min-w-0 flex-1">
             <h4 class="font-extrabold text-sm text-[#0F1035] truncate">
@@ -487,7 +488,7 @@ export interface DiscoveryActivityCard {
               Un métier pour créer des images et communiquer des idées.
             </p>
           </div>
-          <span *ngIf="isCareerFavorite" class="text-rose-500 text-sm" title="Favori sauvegardé">❤️</span>
+          <span *ngIf="isCareerFavorite" class="text-rose-500 text-sm" title="Favori sauvegardé"><mb-icon name="heart" [filled]="true"></mb-icon></span>
         </div>
 
         <!-- 3 Cartes d'action décisionnelles (Maquette 3) -->
@@ -502,7 +503,7 @@ export interface DiscoveryActivityCard {
             class="rounded-3xl bg-white border border-[#E4E0F5] p-6 shadow-xs hover:shadow-md transition cursor-pointer flex flex-col justify-between space-y-4 group"
           >
             <div class="space-y-2">
-              <span class="text-2xl">❤️</span>
+              <span class="text-2xl"><mb-icon name="heart" [filled]="true"></mb-icon></span>
               <h3 class="text-base font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
                 Garder ce métier
               </h3>
@@ -528,7 +529,7 @@ export interface DiscoveryActivityCard {
             </span>
 
             <div class="space-y-2">
-              <span class="text-2xl">📍</span>
+              <span class="text-2xl"><mb-icon name="map-pin"></mb-icon></span>
               <h3 class="text-base font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
                 Le découvrir près de chez moi
               </h3>
@@ -552,7 +553,7 @@ export interface DiscoveryActivityCard {
             class="rounded-3xl bg-white border border-[#E4E0F5] p-6 shadow-xs hover:shadow-md transition cursor-pointer flex flex-col justify-between space-y-4 group"
           >
             <div class="space-y-2">
-              <span class="text-2xl">💬</span>
+              <span class="text-2xl"><mb-icon name="message-circle"></mb-icon></span>
               <h3 class="text-base font-extrabold text-[#0F1035] group-hover:text-[#7C3AED] transition">
                 Poser une question
               </h3>
@@ -583,7 +584,7 @@ export interface DiscoveryActivityCard {
             <div class="space-y-1.5">
               <div class="h-2 rounded-full bg-emerald-500"></div>
               <p class="font-bold text-emerald-700 flex items-center justify-center gap-1">
-                <span>✓</span>
+                <span><mb-icon name="check"></mb-icon></span>
                 <span>Métier découvert</span>
               </p>
             </div>
@@ -592,7 +593,7 @@ export interface DiscoveryActivityCard {
             <div class="space-y-1.5">
               <div class="h-2 rounded-full bg-[#7C3AED]"></div>
               <p class="font-extrabold text-[#7C3AED] flex items-center justify-center gap-1">
-                <span>⚪</span>
+                <span><mb-icon name="circle"></mb-icon></span>
                 <span>Formation à explorer</span>
               </p>
             </div>
@@ -615,7 +616,7 @@ export interface DiscoveryActivityCard {
             (click)="executeMainAction()"
             class="w-full sm:w-auto rounded-full bg-gradient-to-r from-[#6328E8] via-[#7C3AED] to-[#9333EA] hover:from-[#5320C6] hover:to-[#7E22CE] text-white font-extrabold text-sm sm:text-base px-8 py-4 shadow-lg hover:shadow-xl transition cursor-pointer flex items-center justify-center gap-2"
           >
-            <span>🎓</span>
+            <span><mb-icon name="graduation-cap"></mb-icon></span>
             <span>Trouver une formation ou une immersion →</span>
           </button>
 
@@ -625,7 +626,7 @@ export interface DiscoveryActivityCard {
             (click)="goToStep(1)"
             class="w-full sm:w-auto rounded-full border border-[#D8DCF0] bg-white hover:bg-gray-50 text-[#0F1035] font-extrabold text-xs sm:text-sm px-6 py-4 transition cursor-pointer flex items-center justify-center gap-2 shadow-2xs"
           >
-            <span>🔄</span>
+            <span><mb-icon name="refresh-cw"></mb-icon></span>
             <span>Voir un autre métier</span>
           </button>
 
@@ -635,7 +636,7 @@ export interface DiscoveryActivityCard {
             (click)="goHome.emit()"
             class="w-full sm:w-auto rounded-full bg-transparent hover:bg-gray-100 text-[#6B7280] font-bold text-xs sm:text-sm px-5 py-4 transition cursor-pointer flex items-center justify-center gap-1.5"
           >
-            <span>🕒</span>
+            <span><mb-icon name="clock"></mb-icon></span>
             <span>Revenir plus tard</span>
           </button>
         </div>

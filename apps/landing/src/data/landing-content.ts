@@ -1,365 +1,405 @@
 // ============================================================================
-// Contenu vérifié métier de la Landing Page MonBilan+ (Rectification Sujet 1)
-// - Fidèle au Rapport des Possibles Rdv 2187 (17 pages, 22 métiers, 5 zones)
-// - MonBilan+ intervient APRÈS la production du rapport par le Centre des Possibles
-// - Zéro statistique non démontrée, zéro modèle commercial inventé,
-//   zéro promesse de passation de test ou de diagnostic psychologique.
+// Contenu vérifié métier de la Landing Page MonBilan+ (Refonte Premium)
+// Positionnement : « Comprendre son bilan. Explorer ses possibles. Passer à l'action. »
+// - Prolonge la restitution du Rapport des Possibles (audios 2 min sourcés)
+// - Accompagne le jeune dans la découverte des métiers et l'action
+// - Parcours autonome pour les jeunes sans bilan
+// - Zéro partenariat institutionnel inventé, zéro fausse promesse, RGPD strict.
 // ============================================================================
 
-import {
-  AudienceCardItem,
-  DeploymentModeCard,
-  EcosystemBenefitCard,
-  FaqItem,
-  FeatureItem,
-  HeroPillar,
-  HowItWorksStep,
-  ImpactMetricItem
-} from '@/types/landing';
+export interface TwoWayCard {
+  id: string;
+  badge: string;
+  badgeBg: string;
+  badgeText: string;
+  title: string;
+  quote: string;
+  description: string;
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  icon: string;
+}
 
-export const HERO_PILLARS: HeroPillar[] = [
+export interface AudioEpisodeItem {
+  id: string;
+  number: number;
+  title: string;
+  subtitle: string;
+  duration: string;
+  pageRef: string;
+  summary: string;
+  scriptExcerpt: string;
+}
+
+export interface ActionStepItem {
+  number: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  tag: string;
+  features: string[];
+  icon: string;
+}
+
+export interface CounselorRoleItem {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface StructureBenefitItem {
+  id: string;
+  name: string;
+  role: string;
+  benefits: string[];
+  icon: string;
+}
+
+export interface MethodologyPillarItem {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+// ----------------------------------------------------------------------------
+// Section 2 : Deux façons de commencer
+// ----------------------------------------------------------------------------
+export const TWO_WAYS_START: TwoWayCard[] = [
   {
-    id: 'restitution-audio',
-    title: 'Restitution audio & texte',
-    description: 'Écoute l’essentiel de ton rapport validé par ton conseiller et lis la transcription accessible.',
-    icon: 'target'
+    id: 'avec-rapport',
+    badge: 'Jeune accompagné',
+    badgeBg: 'bg-[#EDE9FE] text-[#6D28D9]',
+    badgeText: 'Jeune accompagné',
+    title: 'J’ai un Rapport des Possibles',
+    quote: '« Je retrouve mon bilan, je comprends mes résultats et j’avance avec mon conseiller. »',
+    description:
+      'Tu as réalisé un bilan au Centre des Possibles ou dans ta structure. Retrouve tes résultats sous forme d’épisodes audio clairs et prépare tes prochains rendez-vous d’orientation.',
+    features: [
+      '5 épisodes audio de 2 minutes vérifiés par ton conseiller',
+      'Explications simples de ton profil RIASEC, aptitudes et HEXACO',
+      '22 métiers d’avenir proposés et classés par zone de préparation',
+      'Carnet de questions pour préparer ton prochain entretien'
+    ],
+    ctaLabel: 'Accéder avec mon rapport',
+    ctaHref: './app/index.html',
+    icon: 'clipboard-list'
   },
   {
-    id: 'metiers-proposes',
-    title: 'Métiers proposés dans ton bilan',
-    description: 'Explore les métiers présents dans ton rapport d’orientation, répartis sur 5 zones de préparation.',
+    id: 'autonome',
+    badge: 'Jeune autonome',
+    badgeBg: 'bg-[#E0F2FE] text-[#0369A1]',
+    badgeText: 'Jeune autonome',
+    title: 'Je découvre par moi-même',
+    quote: '« J’explore les métiers, mes envies et les ressources disponibles, sans bilan préalable. »',
+    description:
+      'Tu n’as pas encore réalisé de bilan d’orientation ? Découvre librement les métiers d’avenir, teste notre simulateur d’immersion professionnelle et trouve une aide près de chez toi.',
+    features: [
+      'Catalogue libre de 22 métiers d’avenir (O*NET FR & Référentiel France)',
+      'Simulateur d’Immersion Pro avec entreprises partenaires du 06',
+      'Entraînement aux appels et emails de stage avec le Coach IA',
+      'Annuaire géolocalisé des structures d’aide (CIO, Mission Locale)'
+    ],
+    ctaLabel: 'Explorer librement',
+    ctaHref: './app/index.html',
+    icon: 'compass'
+  }
+];
+
+// ----------------------------------------------------------------------------
+// Section 3 : Comprendre en deux minutes (Les 5 épisodes audio)
+// ----------------------------------------------------------------------------
+export const AUDIO_EPISODES_PREVIEW: AudioEpisodeItem[] = [
+  {
+    id: 'ep-1',
+    number: 1,
+    title: 'Ma personnalité',
+    subtitle: 'Dimensions HEXACO & style de relation',
+    duration: '02:08',
+    pageRef: 'Rapport des Possibles, pages 8–10',
+    summary: 'Comprendre tes traits dominants, ta manière de communiquer et tes points d’appui sans aucun jugement ni étiquette.',
+    scriptExcerpt: '« Ton profil met en valeur un tempérament curieux, attentif aux détails et particulièrement à l’aise lorsqu’il s’agit d’organiser un projet concret... »'
+  },
+  {
+    id: 'ep-2',
+    number: 2,
+    title: 'Mes centres d’intérêt',
+    subtitle: 'Profil RIASEC : Créativité & Organisation',
+    duration: '02:15',
+    pageRef: 'Rapport des Possibles, pages 4–6',
+    summary: 'Décrypter tes affinités dominantes (Artistique, Conventionnel, Social) pour identifier les environnements de travail où tu t’épanouiras.',
+    scriptExcerpt: '« Tes résultats révèlent une forte affinité pour les activités créatives alliées à un besoin d’ordre et de méthode. C’est un duo précieux dans les métiers d’art et du numérique... »'
+  },
+  {
+    id: 'ep-3',
+    number: 3,
+    title: 'Mes aptitudes',
+    subtitle: 'Forces cognitives & psychomotricité',
+    duration: '01:54',
+    pageRef: 'Rapport des Possibles, pages 11–13',
+    summary: 'Mettre en lumière tes facilités de raisonnement spatial, de mémoire visuelle et de coordination technique observées lors des ateliers.',
+    scriptExcerpt: '« Lors des épreuves pratiques, ta coordination motrice fine et ta visualisation dans l’espace sont ressorties parmi tes forces majeures... »'
+  },
+  {
+    id: 'ep-4',
+    number: 4,
+    title: 'Mes envies et mes souhaits',
+    subtitle: 'Ce qui compte vraiment pour toi',
+    duration: '02:02',
+    pageRef: 'Entretien de restitution & Carnet de souhaits',
+    summary: 'Faire le lien entre tes aspirations personnelles exprimées lors de l’entretien et la réalité des environnements professionnels.',
+    scriptExcerpt: '« Tu as souligné ton envie d’exercer une activité qui ait un résultat visible chaque jour, avec une autonomie dans ton organisation... »'
+  },
+  {
+    id: 'ep-5',
+    number: 5,
+    title: 'Mes pistes professionnelles',
+    subtitle: '22 métiers explorés par zone de préparation',
+    duration: '02:26',
+    pageRef: 'Rapport des Possibles, pages 14–17',
+    summary: 'Découvrir les métiers en cohérence avec ton profil, répartis du court terme (0–6 mois) aux filières plus longues.',
+    scriptExcerpt: '« Plusieurs pistes concrètes ressortent : les métiers du décor et du second œuvre, les métiers techniques du spectacle et du son, ou encore la gestion de projets culturels... »'
+  }
+];
+
+// ----------------------------------------------------------------------------
+// Section 4 : De la compréhension à l'action (Les 4 étapes)
+// ----------------------------------------------------------------------------
+export const ACTION_STEPS: ActionStepItem[] = [
+  {
+    number: 1,
+    title: 'Je comprends',
+    subtitle: 'S’approprier son bilan sans barrière',
+    description:
+      'J’écoute les 5 audios de 2 minutes sur mon téléphone ou mon ordinateur. Je lis la transcription synchronisée et je vérifie les renvois aux pages de mon rapport original.',
+    tag: 'Audios 2 min • Sources vérifiées',
+    features: ['Synthèse vocale chaleureuse', 'Références page par page', 'Lecture à son rythme'],
+    icon: 'headphones'
+  },
+  {
+    number: 2,
+    title: 'J’explore',
+    subtitle: 'Découvrir des métiers qui me correspondent',
+    description:
+      'Je navigue parmi les 22 métiers proposés dans mon bilan ou dans le catalogue ouvert. Je découvre les compétences réelles, les conditions de travail et les formations locales.',
+    tag: '22 métiers • 5 zones de temps',
+    features: ['Fiches détaillées illustrées', 'Formations dans le 06', 'Mise en favoris immédiate'],
     icon: 'compass'
   },
   {
-    id: 'references-sources',
-    title: 'Sources vérifiables (p. 1 à 17)',
-    description: 'Chaque explication sur tes résultats RIASEC, aptitudes et HEXACO renvoie à la page du document original.',
-    icon: 'route'
-  },
-  {
-    id: 'preparation-echange',
-    title: 'Carnet de questions',
-    description: 'Conserve tes découvertes et prépare tes prochaines questions pour ton conseiller d’orientation.',
-    icon: 'bolt'
-  }
-];
-
-export const AUDIENCE_CARDS: AudienceCardItem[] = [
-  {
-    id: 'lyceens',
-    title: 'Collégiens & Lycéens',
-    description: 'Comprendre et retenir son Rapport des Possibles après son rendez-vous au Centre.',
-    icon: 'cap',
-    href: './app/index.html'
-  },
-  {
-    id: 'etudiants',
-    title: 'Étudiants',
-    description: 'Explorer les pistes de métiers présentes dans son bilan selon le temps de préparation souhaité.',
-    icon: 'users',
-    href: './app/index.html'
-  },
-  {
-    id: 'insertion',
-    title: 'Jeunes en insertion (15–25 ans)',
-    description: 'S’approprier ses résultats grâce à une restitution vocale claire, sans barrière de l’écrit.',
-    icon: 'briefcase',
-    href: './app/index.html'
-  }
-];
-
-// Section §3.B — Les 4 étapes exactes du parcours
-export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
-  {
-    stepNumber: 1,
-    title: 'Ton bilan est réalisé',
+    number: 3,
+    title: 'Je prépare',
+    subtitle: 'Garder le fil et s’entraîner',
     description:
-      'Le Centre des Possibles réalise les évaluations et l’entretien d’orientation.',
-    badgeText: 'Au Centre des Possibles',
-    icon: 'clipboard'
+      'Je note mes questions pour mon conseiller dans mon carnet personnel. J’utilise le Coach IA pour simuler un appel de candidature ou rédiger un email de stage percutant.',
+    tag: 'Carnet de questions • Coach IA',
+    features: ['Questions pour le conseiller', 'Simulateur d’appel téléphonique', 'Modèles d’emails de stage'],
+    icon: 'clipboard-list'
   },
   {
-    stepNumber: 2,
-    title: 'Ton rapport est transformé',
+    number: 4,
+    title: 'J’agis',
+    subtitle: 'Tester le terrain en immersion réelle',
     description:
-      'MonBilan+ structure les informations du rapport et prépare une restitution pédagogique.',
-    badgeText: 'Structuration sourcée',
-    icon: 'chart'
-  },
-  {
-    stepNumber: 3,
-    title: 'Ton conseiller vérifie',
-    description:
-      'Le professionnel contrôle les informations et valide la restitution avant sa publication.',
-    badgeText: 'Validation humaine',
-    icon: 'briefcase'
-  },
-  {
-    stepNumber: 4,
-    title: 'Tu explores tes possibles',
-    description:
-      'Le jeune écoute son bilan, comprend ses résultats, découvre les métiers proposés et prépare ses prochaines questions.',
-    badgeText: 'Audio & Exploration',
-    icon: 'route'
+      'Je choisis une entreprise vérifiée sur la Côte d’Azur, j’édite ma convention d’immersion professionnelle et je réalise mes premiers pas concrets dans le monde du travail.',
+    tag: 'Immersion Pro • Entreprises du 06',
+    features: ['Entreprises partenaires réelles', 'Convention simplifiée', 'Suivi pas-à-pas des démarches'],
+    icon: 'rocket'
   }
 ];
 
-// Section §3.C — Les 8 fonctionnalités exactes relevant du Sujet 1
-export const FEATURES_GRID: FeatureItem[] = [
+// ----------------------------------------------------------------------------
+// Section 5 : Un accompagnement humain (Rôle du conseiller)
+// ----------------------------------------------------------------------------
+export const COUNSELOR_PILLARS: CounselorRoleItem[] = [
   {
-    id: 'restitution-audio-personnalisee',
-    title: '1. Restitution audio personnalisée',
-    description: 'Écoute une synthèse vocale claire de ton bilan, générée à partir du script validé par ton conseiller.',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'headphones',
-    visualKind: 'audio'
+    id: 'c-verif',
+    title: 'Vérifier les informations',
+    description:
+      'Le conseiller contrôle rigoureusement les données issues du rapport PDF et élimine toute erreur d’interprétation avant la restitution.',
+    icon: 'shield-check'
   },
   {
-    id: 'transcription-accessible',
-    title: '2. Transcription accessible',
-    description: 'Lis l’intégralité du texte synchronisé avec l’audio, ajuste la vitesse de lecture et navigue au clavier.',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'shield',
-    visualKind: 'security'
+    id: 'c-valide',
+    title: 'Valider la restitution',
+    description:
+      'Chaque script audio est relu, corrigé et approuvé par un professionnel certifié avant d’être mis à la disposition du jeune.',
+    icon: 'circle-check'
   },
   {
-    id: 'explication-resultats-existants',
-    title: '3. Explication des résultats existants',
-    description: 'Comprends tes dimensions RIASEC, tes aptitudes cognitives et ta personnalité HEXACO sans nouveau calcul ni diagnostic.',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'target',
-    visualKind: 'bilan'
-  },
-  {
-    id: 'references-verifiables-rapport',
-    title: '4. Références vérifiables au rapport',
-    description: 'Chaque affirmation personnelle affiche le numéro de page et l’extrait exact de ton Rapport des Possibles.',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'folder',
-    visualKind: 'documents'
-  },
-  {
-    id: 'exploration-metiers-proposes',
-    title: '5. Exploration des métiers proposés',
-    description: 'Explore les métiers proposés dans ton rapport d’orientation (22 métiers répartis sur 5 zones de préparation).',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'briefcase',
-    visualKind: 'careers'
-  },
-  {
-    id: 'carnet-de-questions',
-    title: '6. Carnet de questions',
-    description: 'Note tes questions au fil de ta lecture ou de ton écoute pour préparer ton prochain échange avec ton conseiller.',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'chat',
-    visualKind: 'questions'
-  },
-  {
-    id: 'conservation-des-documents',
-    title: '7. Conservation des documents',
-    description: 'Retrouve ton rapport d’orientation PDF original, ta synthèse écrite et tes fiches de pistes au même endroit.',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'route',
-    visualKind: 'roadmap'
-  },
-  {
-    id: 'validation-professionnelle',
-    title: '8. Validation professionnelle avant publication',
-    description: 'Les restitutions sont vérifiées et validées par un professionnel avant d’être mises à disposition du jeune.',
-    statusLabel: 'Opérationnel (Démo)',
-    isOperational: true,
-    icon: 'users',
-    visualKind: 'counselor'
-  }
-];
-
-export const IMPACT_PILLS: { title: string; subtitle: string; icon: 'check' | 'cap' | 'briefcase' | 'leaf' }[] = [
-  {
-    title: 'Meilleure mémorisation',
-    subtitle: 'conserver l’essentiel après l’entretien de 15 minutes',
-    icon: 'check'
-  },
-  {
-    title: 'Fidélité au rapport original',
-    subtitle: 'aucune donnée ni aucun score inventés par l’IA',
-    icon: 'cap'
-  },
-  {
-    title: 'Exploration structurée',
-    subtitle: 'découvrir les métiers proposés par zone de préparation',
-    icon: 'briefcase'
-  },
-  {
-    title: 'Médiation humaine préservée',
-    subtitle: 'validation obligatoire par le conseiller avant publication',
-    icon: 'leaf'
-  }
-];
-
-// Repères structurels vérifiables issus du Rapport des Possibles 2187 (aucun KPI d'impact non démontré)
-export const IMPACT_METRICS: ImpactMetricItem[] = [
-  {
-    id: 'pages-rapport',
-    value: '17 pages',
-    label: 'du Rapport des Possibles',
-    sublabel: 'Structurées en explications simples, audio et références par page',
-    icon: 'chart'
-  },
-  {
-    id: 'metiers-rapport-2187',
-    value: '22 métiers',
-    label: 'proposés dans le bilan 2187',
-    sublabel: 'Présentés dans leurs 5 zones de préparation sans classement inédit',
-    icon: 'cap'
-  },
-  {
-    id: 'zones-preparation',
-    value: '5 zones',
-    label: 'de temps de préparation',
-    sublabel: 'De 0–6 mois (Zone 1) jusqu’aux cursus longs 4–10 ans (Zone 5)',
-    icon: 'target'
-  },
-  {
-    id: 'validation-pro',
-    value: '100 %',
-    label: 'validé par un professionnel',
-    sublabel: 'Contrôle humain systématique avant génération audio et publication',
+    id: 'c-accompagne',
+    title: 'Accompagner le jeune',
+    description:
+      'La plateforme ne remplace jamais l’échange humain : elle sert de tremplin aux entretiens d’orientation et de base de discussion.',
     icon: 'users'
+  },
+  {
+    id: 'c-suit',
+    title: 'Suivre les éléments partagés',
+    description:
+      'Le conseiller accède uniquement aux questions et aux démarches que le jeune a choisi de partager volontairement.',
+    icon: 'file-text'
+  },
+  {
+    id: 'c-facilite',
+    title: 'Faciliter les prochaines étapes',
+    description:
+      'Aider le jeune à transformer ses réflexions en actions concrètes : choix de filière, candidature en formation ou immersion.',
+    icon: 'route'
   }
 ];
 
-export const ECOSYSTEM_BENEFITS: EcosystemBenefitCard[] = [
+// ----------------------------------------------------------------------------
+// Section 6 : Pour les structures
+// ----------------------------------------------------------------------------
+export const STRUCTURES_BENEFITS: StructureBenefitItem[] = [
   {
-    id: 'jeunes',
-    title: 'Pour le jeune (15–25 ans)',
-    icon: 'cap',
-    bullets: [
-      'Retrouver son bilan dans un format audio et visuel accessible',
-      'Explorer les métiers proposés dans son rapport sans jargon',
-      'Noter ses questions pour préparer la suite de son parcours'
-    ]
+    id: 'centre-possibles',
+    name: 'Centre des Possibles',
+    role: 'Prolonger l’impact de l’évaluation',
+    benefits: [
+      'Garantir que le jeune retient l’essentiel après l’entretien de 15 minutes',
+      'Fournir un support accessible, pérenne et réécoutable avec sa famille',
+      'Conserver une fidélité documentaire stricte aux 17 pages du rapport'
+    ],
+    icon: 'sparkles'
   },
   {
-    id: 'conseillers',
-    title: 'Pour le psychologue / conseiller',
-    icon: 'users',
-    bullets: [
-      'Prolonger l’impact de l’entretien individuel de restitution',
-      'Vérifier les données extraites et valider chaque formulation',
-      'Suivre les questions préparées par le jeune entre deux échanges'
-    ]
+    id: 'structures-orientation',
+    name: 'Structures d’orientation & d’insertion',
+    role: 'Missions Locales, CIO, France Travail',
+    benefits: [
+      'Faciliter le premier échange grâce aux questions préparées par le jeune',
+      'Disposer d’un outil pratique pour formaliser les démarches d’immersion',
+      'Assurer la traçabilité des étapes sans alourdir la charge administrative'
+    ],
+    icon: 'building'
   },
   {
-    id: 'structures',
-    title: 'Pour les structures partenaires',
-    icon: 'building',
-    bullets: [
-      'Respect strict de la méthodologie du Centre des Possibles',
-      'Cloisonnement des dossiers par établissement (Multi-Tenant RLS)',
-      'Traitement local respectueux de la confidentialité (RGPD)'
-    ]
+    id: 'collectivites',
+    name: 'Collectivités territoriales',
+    role: 'Région Sud, Métropoles & Départements',
+    benefits: [
+      'Valoriser les filières d’avenir et les métiers en tension du territoire azuréen',
+      'Rapprocher les jeunes des entreprises et artisans locaux (Sophia, Nice, Cannes)',
+      'Respecter les standards de souveraineté numérique et d’accessibilité WCAG AA'
+    ],
+    icon: 'landmark'
+  },
+  {
+    id: 'organismes-formation',
+    name: 'Organismes de formation',
+    role: 'CFA, Lycées Professionnels, Universités',
+    benefits: [
+      'Rendre visibles les parcours de formation adaptés aux métiers du bilan',
+      'Accueillir des candidats motivés ayant mûri leur projet d’orientation',
+      'Faciliter la mise en relation avec des tuteurs et maîtres d’apprentissage'
+    ],
+    icon: 'graduation-cap'
   }
 ];
 
-// Section §3.G — Présentation du projet, des espaces et du cadre institutionnel (aucun tarif ni offre commerciale)
-export const DEPLOYMENT_MODES: DeploymentModeCard[] = [
+// ----------------------------------------------------------------------------
+// Section 8 : Méthodologie et confidentialité
+// ----------------------------------------------------------------------------
+export const METHODOLOGY_PILLARS: MethodologyPillarItem[] = [
   {
-    id: 'espace-jeune',
-    name: 'Espace Jeune',
-    subtitle: 'Restitution après le rendez-vous au Centre des Possibles.',
-    badgeLabel: '6 rubriques',
-    badgeSub: 'de consultation',
-    icon: 'user',
-    features: [
-      'Accueil & résumé de la restitution publiée',
-      'Mon bilan : RIASEC, aptitudes et HEXACO sourcés',
-      'Explorer les métiers proposés (Zones 1 à 5)',
-      'Mon parcours, Mes questions & Mes documents'
-    ],
-    ctaLabel: 'Découvrir l’Espace Jeune',
-    ctaHref: './app/index.html'
+    id: 'm-fidelite',
+    title: 'Fidélité au rapport original',
+    description:
+      'Chaque fait restitué (RIASEC, HEXACO, aptitudes) renvoie précisément à la page correspondante du Rapport des Possibles (p. 1 à 17). Aucune affirmation n’est inventée.',
+    icon: 'folder'
   },
   {
-    id: 'espace-conseiller',
-    name: 'Espace Conseiller',
-    subtitle: 'Supervision, contrôle des sources et publication.',
-    badgeLabel: '8 rubriques',
-    badgeSub: 'métier',
-    recommended: true,
-    icon: 'cap',
-    features: [
-      'Tableau de bord & gestion des Dossiers jeunes',
-      'Importation de rapport PDF & Vérification des données',
-      'Validation et publication (avec synthèse vocale Piper TTS)',
-      'Suivi et rendez-vous, Statistiques & Paramètres'
-    ],
-    ctaLabel: 'Découvrir l’Espace Conseiller',
-    ctaHref: './app/index.html'
+    id: 'm-validation',
+    title: 'Validation humaine obligatoire',
+    description:
+      'Aucun audio ni synthèse n’est publié sans la vérification préalable et la signature d’un conseiller ou psychologue d’orientation.',
+    icon: 'users'
   },
   {
-    id: 'fidelite-rapport',
-    name: 'Fidélité Documentaire',
-    subtitle: 'Basé sur le Rapport des Possibles (ex. Rdv 2187).',
-    badgeLabel: 'Zéro invention',
-    badgeSub: 'Sources p. 1–17',
-    icon: 'building',
-    features: [
-      'Profil RIASEC et HEXACO fidèle au document',
-      'Aucun score numérique inventé sur les graphiques',
-      'Présentation des 22 métiers proposés par zone',
-      'Rappel systématique des réserves méthodologiques'
-    ],
-    ctaLabel: 'Inspecter le rapport 2187',
-    ctaHref: './app/index.html'
+    id: 'm-scores',
+    title: 'Absence de nouveaux scores',
+    description:
+      'MonBilan+ n’administre aucun test et ne recalcule aucun score psychométrique. La plateforme se concentre sur l’explication pédagogique des résultats déjà établis.',
+    icon: 'chart-column'
   },
   {
-    id: 'cadre-hackathon',
-    name: 'Hackathon Azuréen #3',
-    subtitle: 'Sujet 1 — Équipe 03 (Code4Sud).',
-    badgeLabel: 'Open Source',
-    badgeSub: 'Licence MIT',
-    icon: 'users',
-    features: [
-      'Monolithe modulaire NestJS & PostgreSQL RLS',
-      'Interface Angular + Landing Next.js (WCAG 2.2 AA)',
-      'IA locale (Ollama / Qwen) & voix locale (Piper TTS)',
-      'Aucun rapport personnel réel publié dans le dépôt'
-    ],
-    ctaLabel: 'Explorer la démonstration',
-    ctaHref: './app/index.html'
+    id: 'm-reserves',
+    title: 'Réserves méthodologiques affichées',
+    description:
+      'Un bilan est une photographie à un instant T et ne résume jamais une personne. Ces résultats constituent des repères de discussion et non une trajectoire figée.',
+    icon: 'info'
+  },
+  {
+    id: 'm-rgpd',
+    title: 'Confidentialité & RGPD strict',
+    description:
+      'Minimisation des données, pseudonymisation des dossiers, hébergement local souverain et contrôle strict des accès : les données du jeune lui appartiennent.',
+    icon: 'shield'
+  },
+  {
+    id: 'm-tenancy',
+    title: 'Cloisonnement multi-établissements',
+    description:
+      'Chaque structure bénéficie d’un environnement étanche garanti par la politique PostgreSQL Row-Level Security (RLS) : aucune fuite de données inter-structures.',
+    icon: 'lock'
   }
 ];
 
+// ----------------------------------------------------------------------------
+// Section 9 : FAQ (Les 7 questions officielles demandées)
+// ----------------------------------------------------------------------------
 export const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'faq-1',
-    question: 'Est-ce que MonBilan+ fait passer des tests d’orientation ?',
+    question: 'À qui s’adresse MonBilan+ ?',
     answer:
-      'Non. C’est le Centre des Possibles qui accueille le jeune, réalise les évaluations ludiques (intérêts professionnels RIASEC, aptitudes cognitives, personnalité HEXACO, psychomotricité), génère le Rapport des Possibles et assure l’entretien avec un psychologue du travail. MonBilan+ intervient uniquement après pour rendre ce rapport facile à comprendre, écoutable en audio et consultable dans la durée.'
+      'MonBilan+ s’adresse à tous les jeunes de 15 à 25 ans (collégiens, lycéens, étudiants, jeunes en recherche de voie ou en insertion) ainsi qu’aux professionnels de l’orientation (conseillers du Centre des Possibles, CIO, Missions Locales, établissements scolaires). La plateforme propose deux entrées adaptées : un parcours avec rapport pour comprendre son bilan, et un parcours autonome pour explorer librement les métiers.'
   },
   {
     id: 'faq-2',
-    question: 'Quel est le rôle du psychologue ou du conseiller dans MonBilan+ ?',
+    question: 'Dois-je avoir un Rapport des Possibles ?',
     answer:
-      'Les restitutions sont vérifiées et validées par un professionnel avant d’être mises à disposition du jeune. Le conseiller importe le rapport, contrôle les données extraites, relit et corrige si besoin le script pédagogique, puis autorise la synthèse vocale et la publication.'
+      'Non, ce n’est pas obligatoire. Si tu as déjà passé un bilan au Centre des Possibles, MonBilan+ te permet de retrouver ton rapport, d’écouter tes audios personnalisés et de préparer tes rendez-vous. Si tu n’en as pas, le parcours autonome te donne accès à l’ensemble du catalogue des 22 métiers d’avenir, au simulateur d’immersion professionnelle et à l’annuaire des structures d’aide.'
   },
   {
     id: 'faq-3',
-    question: 'Comment sont présentés les métiers et les graphiques du rapport ?',
+    question: 'Comment fonctionnent les audios de deux minutes ?',
     answer:
-      'MonBilan+ affiche exclusivement les métiers proposés dans le rapport d’orientation du jeune (par exemple les 22 métiers répartis sur 5 zones de préparation dans le rapport 2187), sans créer de classement inédit ni garantir une correspondance. Pour les graphiques dont les valeurs ne sont pas extractibles en texte brut, MonBilan+ fournit une explication qualitative vérifiée et renvoie à la page originale du rapport.'
+      'Les audios de 2 minutes sont des synthèses vocales pédagogiques conçues à partir des extractions exactes de ton Rapport des Possibles (personnalité, intérêts RIASEC, aptitudes, envies, pistes métiers). Chaque script est relu, corrigé et validé par ton conseiller avant d’être généré. Tu peux les écouter à tout moment, lire la transcription écrite synchronisée et retrouver le numéro de page d’origine.'
   },
   {
     id: 'faq-4',
-    question: 'Les résultats du bilan sont-ils définitifs ?',
+    question: 'Qui valide mes résultats ?',
     answer:
-      'Non. Comme l’indiquent les pages 5 et 17 du Rapport des Possibles, les résultats proviennent de travaux expérimentaux et représentent une image à un instant T. Ils ne peuvent pas rendre compte du profil complet d’un individu et constituent des pistes de réflexion à explorer avec un conseiller.'
+      'C’est un professionnel de l’orientation (psychologue du travail, conseiller d’orientation) qui contrôle les informations extraites et valide la restitution avant sa publication. L’intelligence artificielle intervient uniquement comme outil d’assistance à la mise en forme et à la synthèse vocale, sous le contrôle absolu du conseiller.'
+  },
+  {
+    id: 'faq-5',
+    question: 'Puis-je utiliser MonBilan+ sans conseiller ?',
+    answer:
+      'Oui, via le mode « Je découvre par moi-même ». Tu peux explorer les métiers d’avenir, consulter les fiches détaillées, t’entraîner avec le Coach IA pour préparer un email de stage, et trouver les coordonnées du CIO ou de la Mission Locale la plus proche lorsque tu souhaiteras rencontrer un professionnel.'
+  },
+  {
+    id: 'faq-6',
+    question: 'Mes données sont-elles protégées ?',
+    answer:
+      'Oui, de façon très stricte. MonBilan+ applique le Règlement Général sur la Protection des Données (RGPD). Les dossiers sont pseudonymisés (code Rdv), aucune donnée personnelle n’est revendue ni utilisée pour entraîner des modèles publics, et l’architecture PostgreSQL intègre une sécurité au niveau des lignes (Row-Level Security) pour isoler rigoureusement chaque structure.'
+  },
+  {
+    id: 'faq-7',
+    question: 'Comment fonctionne la démonstration ?',
+    answer:
+      'La démonstration officielle du Hackathon Azuréen #3 est accessible immédiatement sans création de compte via le bouton « Découvrir la démonstration ». Elle s’appuie sur un dossier fictif certifié (Emma Dubois, Rdv 2187) et permet de tester en conditions réelles l’écoute audio, la consultation du bilan, l’Espace Conseiller et le simulateur d’immersion.'
   }
 ];
+

@@ -1,53 +1,62 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FAQ_ITEMS } from '@/data/landing-content';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { FAQ_ITEMS } from '@/data/landing-content';
+import { Icon } from '@/components/ui/Icon';
 
 export function FaqSection() {
-  const [openId, setOpenId] = useState<string>(FAQ_ITEMS[0]?.id ?? '');
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggle = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="py-16 lg:py-24 bg-[#F8F7FF]">
-      <Container className="max-w-4xl space-y-10">
+    <section id="faq" aria-labelledby="faq-heading" className="py-16 lg:py-24 bg-[#F8F7FF]">
+      <Container>
         <SectionHeading
-          badge="Questions fréquentes"
-          title="Tout comprendre sur MonBilan+"
-          subtitle="Comment fonctionnent la restitution audio, la vérification des sources et la protection de tes données."
+          badge="Foire Aux Questions"
+          title="Questions fréquentes"
+          subtitle="Tout ce que tu dois savoir sur le fonctionnement de MonBilan+, les audios de 2 minutes, l’accompagnement et la protection de tes données."
+          centered
         />
 
-        <div className="space-y-4">
-          {FAQ_ITEMS.map((item) => {
-            const isOpen = openId === item.id;
+        <div className="max-w-3xl mx-auto mt-10 lg:mt-14 space-y-3.5">
+          {FAQ_ITEMS.map((item, idx) => {
+            const isOpen = openIndex === idx;
             return (
               <div
                 key={item.id}
-                className="rounded-2xl bg-white border border-[#E4E0F5] shadow-card overflow-hidden"
+                className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                  isOpen ? 'bg-white border-[#7C3AED] shadow-md' : 'bg-white/80 border-[#E4E0F5] hover:border-[#C4B5FD]'
+                }`}
               >
-                <h3>
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    aria-controls={`faq-panel-${item.id}`}
-                    onClick={() => setOpenId(isOpen ? '' : item.id)}
-                    className="w-full min-h-14 px-6 py-4 text-left flex items-center justify-between gap-4 font-extrabold text-base sm:text-lg text-[#0F1035] hover:bg-[#F5F2FF] transition"
-                  >
-                    <span>{item.question}</span>
-                    <span
-                      aria-hidden="true"
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-black"
-                    >
-                      {isOpen ? '−' : '+'}
+                <button
+                  type="button"
+                  onClick={() => toggle(idx)}
+                  aria-expanded={isOpen}
+                  className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 font-extrabold text-sm sm:text-base text-[#0F1035] focus:outline-none"
+                >
+                  <span className="flex items-center gap-3">
+                    <span className="w-7 h-7 rounded-lg bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-xs font-black shrink-0">
+                      {idx + 1}
                     </span>
-                  </button>
-                </h3>
-                {isOpen && (
-                  <div
-                    id={`faq-panel-${item.id}`}
-                    className="px-6 pb-5 pt-1 text-sm sm:text-base text-[#42466B] leading-relaxed border-t border-[#F0EDFA]"
+                    <span>{item.question}</span>
+                  </span>
+                  <span
+                    className={`w-7 h-7 rounded-full bg-[#F4F2FF] text-[#7C3AED] flex items-center justify-center text-sm font-bold transition-transform shrink-0 ${
+                      isOpen ? 'rotate-180 bg-[#7C3AED] text-white' : ''
+                    }`}
                   >
-                    {item.answer}
+                    ▾
+                  </span>
+                </button>
+
+                {isOpen && (
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-[#42466B] leading-relaxed border-t border-[#F0EDFA]">
+                    <p>{item.answer}</p>
                   </div>
                 )}
               </div>

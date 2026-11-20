@@ -1,244 +1,205 @@
-import { Icon } from '@/components/ui/Icon';
 import React from 'react';
-import { HERO_PILLARS } from '@/data/landing-content';
 import { SITE_CONFIG } from '@/config/site';
 import { Container } from '@/components/ui/Container';
 import { PrimaryButton } from '@/components/ui/PrimaryButton';
+import { Icon } from '@/components/ui/Icon';
 
 export function HeroSection() {
   return (
     <section
       id="accueil"
       aria-labelledby="hero-title"
-      className="relative overflow-hidden bg-gradient-to-b from-[#F5F2FF] via-[#F8F7FF] to-[#EFEAFC] pt-8 pb-12 lg:pt-12 lg:pb-14"
+      className="relative overflow-hidden bg-gradient-to-b from-[#F5F2FF] via-[#F8F7FF] to-[#EFEAFC] pt-8 pb-14 lg:pt-14 lg:pb-20"
     >
-      {/* Bandeau : texte à gauche (aligné sur le Container) + zone violette des bulles collée au bord droit */}
-      <div className="relative z-10 flex flex-col lg:flex-row">
-          {/* Colonne gauche : Badge, Titre, Sous-titre, 2 CTA et 3 garanties */}
-          <div className="px-4 sm:px-6 lg:w-[62%] xl:w-[66%] lg:self-center lg:pr-10 lg:pl-[max(2rem,calc((100%_-_80rem)/2_+_2rem))] space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#EAE4FF] border border-[#D3C4FF] px-4 py-1.5 text-xs sm:text-sm font-extrabold text-[#3B1D8F] shadow-sm">
-              <span className="inline-flex h-5 w-5 items-center justify-center rounded-md bg-[#7935F5] text-white text-[11px]">
+      {/* Halos lumineux d'arrière-plan */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#7C3AED]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 -right-24 w-96 h-96 bg-[#EC4899]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+          {/* COLONNE GAUCHE (7 cols) : Titre officiel, sous-titre et 3 CTA */}
+          <div className="lg:col-span-7 space-y-6">
+
+            {/* Badge officiel de positionnement */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#EDE9FE] border border-[#DDD6FE] px-4 py-1.5 text-xs sm:text-sm font-extrabold text-[#5B21B6] shadow-xs">
+              <span className="flex h-5 w-5 items-center justify-center rounded-md bg-[#7C3AED] text-white text-[11px] font-bold">
                 ★
               </span>
-              <span>IA • Orientation • Employabilité</span>
+              <span>Orientation • Restitution Audio • Immersion Pro</span>
             </div>
 
+            {/* Titre officiel exigé */}
             <h1
               id="hero-title"
-              className="text-4xl sm:text-5xl lg:text-[clamp(34px,3.4vw,48px)] font-extrabold tracking-tight text-[#0F1035] leading-[1.3]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-extrabold tracking-tight text-[#0F1035] leading-[1.2]"
             >
-              Ton bilan d’orientation,{' '}
-              <span className="mt-2 inline-flex flex-wrap lg:flex-nowrap lg:whitespace-nowrap items-center gap-x-2.5 gap-y-2">
-                <span>enfin</span>
-                <span className="inline-block rounded-2xl bg-gradient-to-r from-[#7935F5] via-[#8B3DFF] to-[#A855F7] px-4 py-1 text-white shadow-cta">
-                  facile à comprendre.
-                </span>
+              Ton bilan prend tout son sens.{' '}
+              <span className="block mt-1.5 text-transparent bg-clip-text bg-gradient-to-r from-[#6328E8] via-[#7C3AED] to-[#9333EA]">
+                Ton avenir prend forme.
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg xl:text-xl text-[#31355B] leading-relaxed max-w-2xl">
-              Après ton rendez-vous au Centre des Possibles, retrouve ton bilan sous une forme simple, interactive et accessible. Écoute tes résultats, découvre les métiers proposés et prépare la suite avec ton conseiller.
+            {/* Sous-titre officiel exigé */}
+            <p className="text-base sm:text-lg text-[#31355B] leading-relaxed max-w-2xl">
+              Comprends les résultats de ton Rapport des Possibles grâce à des audios de deux minutes, explore les métiers qui t'intéressent et prépare tes prochaines étapes avec un accompagnement adapté.
             </p>
 
-            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 pt-1">
-              <PrimaryButton href={SITE_CONFIG.demoAppUrl} variant="primary" className="w-full sm:w-auto justify-center">
+            {/* LES 3 CTA EXIGÉS */}
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2">
+              {/* CTA 1 : Découvrir la démonstration */}
+              <PrimaryButton
+                href={SITE_CONFIG.demoAppUrl}
+                variant="primary"
+                className="w-full sm:w-auto justify-center shadow-lg hover:shadow-xl font-extrabold"
+              >
                 <span>Découvrir la démonstration</span>
                 <span aria-hidden="true">→</span>
               </PrimaryButton>
 
-              <PrimaryButton href="#comment-ca-marche" variant="secondary" className="w-full sm:w-auto justify-center">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] text-xs">
-                  ▶
-                </span>
-                <span>Comment ça marche ?</span>
-              </PrimaryButton>
+              {/* CTA 2 : Créer mon compte */}
+              <a
+                href={SITE_CONFIG.registerAppUrl}
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#7C3AED] bg-white px-5 py-3 text-sm font-extrabold text-[#7C3AED] hover:bg-[#F5F3FF] transition shadow-xs"
+              >
+                <Icon name="user" />
+                <span>Créer mon compte</span>
+              </a>
+
+              {/* CTA 3 : Je suis professionnel */}
+              <a
+                href={SITE_CONFIG.counselorAppUrl}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-[#D8DCF0] bg-white/80 px-4 py-3 text-xs sm:text-sm font-bold text-[#42466B] hover:text-[#0F1035] hover:bg-white transition"
+              >
+                <Icon name="briefcase" />
+                <span>Je suis professionnel</span>
+              </a>
             </div>
 
-            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-1 text-xs sm:text-sm font-bold text-[#1B1B62]">
+            {/* 3 Garanties déontologiques */}
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 text-xs sm:text-sm font-bold text-[#1B1B62]">
               <li className="flex items-center gap-2">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#DCFCE7] text-[#16A34A] text-xs">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#DCFCE7] text-[#16A34A] text-xs font-black">
                   ✓
                 </span>
-                <span>Simple et rapide</span>
+                <span>Audios pédagogiques de 2 min</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#DCFCE7] text-[#16A34A] text-xs">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#DCFCE7] text-[#16A34A] text-xs font-black">
                   ✓
                 </span>
-                <span>Personnalisé &amp; sourcé</span>
+                <span>Validé par un conseiller</span>
               </li>
               <li className="flex items-center gap-2">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#DCFCE7] text-[#16A34A] text-xs">
-                  <Icon name="shield-check" />
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#EDE9FE] text-[#7C3AED] text-xs font-black">
+                  <Icon name="shield" />
                 </span>
-                <span>Sécurisé (RGPD)</span>
+                <span>Sécurisé (RGPD &amp; RLS)</span>
               </li>
             </ul>
+
           </div>
 
-          {/* Colonne droite : 3 cartes blanches flottantes inclinées */}
-          {/* Zone violette : de la ligne jusqu'au bord droit, bulles centrées dedans */}
-          <div className="relative mt-8 lg:-mt-12 lg:w-[38%] xl:w-[34%] px-4 sm:px-6 lg:py-12 flex flex-col sm:flex-row items-center justify-center lg:rounded-bl-[180px] lg:bg-gradient-to-bl lg:from-[#A855F7]/35 lg:via-[#C084FC]/20 lg:to-transparent">
-            {/* Grille mobile (< sm) des 3 cartes repères pour éviter tout chevauchement sur smartphone */}
-            <div className="grid grid-cols-1 gap-2.5 w-full mt-4 sm:hidden">
-              <div className="rounded-2xl bg-white p-3.5 shadow-card border border-[#E4E0F5] flex items-center justify-between">
-                <span className="font-extrabold text-xs text-[#0F1035]"><Icon name="clipboard-list" /> Mon bilan</span>
-                <span className="text-[11px] font-bold text-[#1B1B62]">Intérêts • Aptitudes • Personnalité</span>
-              </div>
-              <div className="rounded-2xl bg-white p-3.5 shadow-card border border-[#E4E0F5] flex items-center justify-between">
-                <span className="font-extrabold text-xs text-[#0F1035]"><Icon name="briefcase" /> Métiers du bilan</span>
-                <span className="text-[11px] font-bold text-[#1B1B62]">Peintre • Technicien son • Radio</span>
-              </div>
-              <div className="rounded-2xl bg-white p-3.5 shadow-card border border-[#E4E0F5] flex items-center justify-between">
-                <span className="font-extrabold text-xs text-[#0F1035]"><Icon name="link" /> Mon parcours</span>
-                <span className="text-[11px] font-bold text-[#1B1B62]">Formations • Étapes • Questions</span>
-              </div>
-            </div>
+          {/* COLONNE DROITE (5 cols) : Composition premium illustrant l'interface MonBilan+ */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative w-full max-w-md mx-auto space-y-3.5">
 
-            {/* Pile centrale des 3 cartes qui se chevauchent (≥ sm) */}
-            <div className="hidden sm:block relative w-[320px] h-[380px]">
-            {/* Carte 1 (haut, à l'arrière) : Mon bilan */}
-            <div className="absolute left-0 top-0 z-10 w-[225px] rounded-[22px] bg-white p-4 shadow-floating border border-[#E4E0F5] -rotate-3">
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3EFFE] text-[#6D28D9] text-sm font-bold">
-                  <Icon name="clipboard-list" />
-                </span>
-                <span className="text-base font-extrabold text-[#0F1035]">Mon bilan</span>
-              </div>
-              <ul className="space-y-1.5 text-xs font-bold text-[#1B1B62]">
-                <li className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#22C55E] text-white text-[10px]">
-                    ✓
+              {/* CARTE 1 : LECTEUR AUDIO DÉMO (2 MINUTES SOURCÉES) */}
+              <div className="rounded-3xl bg-white p-4 sm:p-5 shadow-xl border border-[#E4E0F5] space-y-3 transition-transform hover:-translate-y-1 duration-200">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-10 h-10 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-bold">
+                      <Icon name="headphones" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold text-[#6D28D9] uppercase tracking-wider block">
+                        Épisode 2 • 02:15
+                      </span>
+                      <h3 className="text-sm font-extrabold text-[#0F1035]">
+                        Mes centres d'intérêt (RIASEC)
+                      </h3>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                    Vérifié p. 4
                   </span>
-                  <span>Centres d’intérêt</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#22C55E] text-white text-[10px]">
-                    ✓
-                  </span>
-                  <span>Aptitudes</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#22C55E] text-white text-[10px]">
-                    ✓
-                  </span>
-                  <span>Personnalité</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Carte 2 (bas, au premier plan) : Métiers proposés dans le bilan */}
-            <div className="absolute left-4 bottom-0 z-30 w-[240px] rounded-[22px] bg-white p-4 shadow-floating border border-[#E4E0F5] -rotate-2">
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3EFFE] text-[#6D28D9] text-sm font-bold">
-                  <Icon name="briefcase" />
-                </span>
-                <span className="text-sm font-extrabold text-[#0F1035]">Métiers du bilan</span>
-              </div>
-              <ul className="space-y-2 text-xs font-bold text-[#1B1B62]">
-                <li className="flex items-center gap-2.5">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FFEDD5] text-[#EA580C]">
-                    <Icon name="palette" />
-                  </span>
-                  <span>Peintre décorateur</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9]">
-                    <Icon name="headphones" />
-                  </span>
-                  <span>Technicien du son</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#D1FAE5] text-[#059669]">
-                    <Icon name="radio" />
-                  </span>
-                  <span>Animateur Radio</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Carte 3 (milieu droite) : Mon parcours */}
-            <div className="absolute right-0 top-[115px] z-20 w-[200px] rounded-[22px] bg-white p-4 shadow-floating border border-[#E4E0F5] rotate-3">
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F3EFFE] text-[#6D28D9] text-sm font-bold">
-                  <Icon name="link" />
-                </span>
-                <span className="text-sm font-extrabold text-[#0F1035]">Mon parcours</span>
-              </div>
-              <ul className="space-y-2 text-xs font-bold text-[#1B1B62]">
-                <li className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#22C55E] text-white text-[10px]">
-                    ✓
-                  </span>
-                  <span>Formations</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#22C55E] text-white text-[10px]">
-                    ✓
-                  </span>
-                  <span>Étapes</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#22C55E] text-white text-[10px]">
-                    ✓
-                  </span>
-                  <span>Questions</span>
-                </li>
-              </ul>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <Container className="relative z-10 mt-10">
-        {/* Barre horizontale blanche des 4 piliers (en bas du Hero) */}
-        <div className="rounded-[28px] bg-white/95 border border-[#E4E0F5] p-6 sm:p-7 shadow-card">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:divide-x lg:divide-[#E4E0F5]">
-            {HERO_PILLARS.map((pillar, index) => (
-              <div
-                key={pillar.id}
-                className={`flex items-start gap-4 ${index > 0 ? 'lg:pl-6' : ''}`}
-              >
-                <div
-                  aria-hidden="true"
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F3EFFE] text-[#6D28D9]"
-                >
-                  {pillar.icon === 'target' && (
-                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-                      <circle cx="12" cy="12" r="9" />
-                      <circle cx="12" cy="12" r="4" />
-                    </svg>
-                  )}
-                  {pillar.icon === 'compass' && (
-                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-                      <circle cx="12" cy="12" r="9" />
-                      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
-                    </svg>
-                  )}
-                  {pillar.icon === 'route' && (
-                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-                      <circle cx="6" cy="18" r="2.5" />
-                      <circle cx="18" cy="6" r="2.5" />
-                      <path d="M8.5 18H12a3 3 0 003-3V9a3 3 0 013-3" />
-                    </svg>
-                  )}
-                  {pillar.icon === 'bolt' && (
-                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                    </svg>
-                  )}
                 </div>
-                <div>
-                  <h2 className="text-base font-extrabold text-[#0F1035]">
-                    {pillar.title}
-                  </h2>
-                  <p className="mt-1 text-xs sm:text-sm text-[#42466B] leading-relaxed">
-                    {pillar.description}
-                  </p>
+
+                {/* Forme d'onde audio & curseur */}
+                <div className="space-y-1.5 pt-1">
+                  <div className="flex items-center justify-between text-[11px] font-bold text-[#64748B]">
+                    <span>01:12</span>
+                    <div className="flex items-center gap-1">
+                      <span className="w-1 h-3 bg-[#7C3AED] rounded-full animate-pulse" />
+                      <span className="w-1 h-5 bg-[#7C3AED] rounded-full animate-pulse delay-75" />
+                      <span className="w-1 h-2 bg-[#7C3AED] rounded-full animate-pulse delay-150" />
+                      <span className="w-1 h-4 bg-[#C4B5FD] rounded-full" />
+                      <span className="w-1 h-3 bg-[#C4B5FD] rounded-full" />
+                      <span className="w-1 h-5 bg-[#C4B5FD] rounded-full" />
+                      <span className="w-1 h-2 bg-[#C4B5FD] rounded-full" />
+                      <span className="w-1 h-4 bg-[#E4E0F5] rounded-full" />
+                    </div>
+                    <span>02:15</span>
+                  </div>
+                  <div className="w-full bg-[#F1F0F9] h-2 rounded-full overflow-hidden">
+                    <div className="bg-gradient-to-r from-[#6328E8] to-[#9333EA] h-full w-[54%] rounded-full" />
+                  </div>
                 </div>
+
+                {/* Extrait transcription */}
+                <p className="text-[11px] text-[#42466B] italic bg-[#FAF8FF] p-2.5 rounded-xl border border-[#EDE9FE] line-clamp-2">
+                  « Tes résultats révèlent une forte affinité pour les activités créatives alliées à un besoin d’ordre et de méthode... »
+                </p>
               </div>
-            ))}
+
+              {/* CARTE 2 : CARTE MÉTIER RECOMMANDÉ D'AVENIR */}
+              <div className="rounded-3xl bg-white p-4 sm:p-5 shadow-lg border border-[#E4E0F5] flex items-center justify-between gap-3 transition-transform hover:-translate-y-1 duration-200">
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl shrink-0 font-bold">
+                    <Icon name="briefcase" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <h4 className="text-xs sm:text-sm font-extrabold text-[#0F1035]">
+                        Peintre décorateur
+                      </h4>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#EDE9FE] text-[#6D28D9]">
+                        Zone 2
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-[#555A8A]">
+                      Second œuvre • Atelier Décors Riviera (Nice 06)
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs font-bold text-[#7C3AED] bg-[#F5F3FF] px-2.5 py-1 rounded-xl">
+                  92% affinité
+                </span>
+              </div>
+
+              {/* CARTE 3 : PROCHAINE ÉTAPE CONCRÈTE (IMMERSION / CONTACT) */}
+              <div className="rounded-3xl bg-gradient-to-r from-[#1E1B4B] to-[#2E1065] text-white p-4 sm:p-5 shadow-xl flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-sm font-bold text-white shrink-0">
+                    <Icon name="rocket" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-purple-200 block">
+                      Prochaine étape concrète
+                    </span>
+                    <p className="text-xs font-extrabold text-white">
+                      Préparer une immersion professionnelle (06)
+                    </p>
+                  </div>
+                </div>
+                <span className="text-xs bg-white text-[#1E1B4B] px-3 py-1.5 rounded-full font-black shrink-0 hover:bg-purple-100 transition">
+                  Agir →
+                </span>
+              </div>
+
+            </div>
           </div>
+
         </div>
       </Container>
     </section>

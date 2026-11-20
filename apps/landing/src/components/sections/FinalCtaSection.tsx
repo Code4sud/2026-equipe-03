@@ -1,33 +1,61 @@
 import React from 'react';
-import { SITE_CONFIG } from '@/config/site';
 import { Container } from '@/components/ui/Container';
-import { PrimaryButton } from '@/components/ui/PrimaryButton';
+import { SITE_CONFIG } from '@/config/site';
+import { Icon } from '@/components/ui/Icon';
 
 export function FinalCtaSection() {
   return (
-    <section aria-labelledby="final-cta-title" className="py-16 lg:py-20 bg-white">
-      <Container>
-        <div className="rounded-[32px] bg-gradient-to-r from-[#241763] via-[#4C1D95] to-[#7935F5] p-8 sm:p-12 lg:p-14 text-white shadow-floating relative overflow-hidden">
-          <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6">
-            <span className="inline-block rounded-full bg-white/15 border border-white/25 px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-[#E7E8FB]">
-              Démonstration interactive • Hackathon Azuréen #3
-            </span>
-            <h2
-              id="final-cta-title"
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight"
-            >
-              Prêt à explorer un Rapport des Possibles augmenté ?
-            </h2>
-            <p className="text-base sm:text-lg text-[#E7E8FB]/90 leading-relaxed max-w-2xl mx-auto">
-              Teste dès maintenant l’Espace Jeune (audio + preuves PDF + métiers par zone) et le Studio Conseiller (contrôle des faits + validation humaine + sécurité RLS) sur un dossier 100 % fictif.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-              <PrimaryButton href={SITE_CONFIG.demoAppUrl} variant="outline-white">
-                <span>Ouvrir l’application MonBilan+</span>
-                <span aria-hidden="true">→</span>
-              </PrimaryButton>
-            </div>
-          </div>
+    <section aria-labelledby="final-cta-heading" className="py-16 lg:py-24 bg-gradient-to-br from-[#1E1B4B] via-[#2B1B69] to-[#120E38] text-white relative overflow-hidden">
+      {/* Halos décoratifs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#7C3AED]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#EC4899]/15 rounded-full blur-3xl pointer-events-none" />
+
+      <Container className="relative z-10 text-center space-y-8 max-w-4xl mx-auto">
+        {/* Badge d'action */}
+        <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-xs font-black text-purple-200">
+          <span>★</span>
+          <span>Ton orientation commence maintenant</span>
+        </div>
+
+        {/* Titre officiel exigé */}
+        <h2
+          id="final-cta-heading"
+          className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight"
+        >
+          Tes possibles ne s'arrêtent pas à ton bilan.
+        </h2>
+
+        {/* Sous-titre */}
+        <p className="text-sm sm:text-base lg:text-lg text-purple-100 max-w-2xl mx-auto leading-relaxed">
+          Que tu disposes déjà d’un Rapport des Possibles ou que tu découvres ton orientation en toute autonomie, accède à des outils simples, pratiques et conçus pour toi.
+        </p>
+
+        {/* Les 2 CTA exigés */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          {/* CTA 1 : Commencer mon parcours */}
+          <a
+            href={SITE_CONFIG.registerAppUrl}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#6328E8] via-[#7C3AED] to-[#9333EA] text-white font-black text-base py-3.5 px-8 shadow-xl hover:brightness-110 active:scale-98 transition"
+          >
+            <span>Commencer mon parcours</span>
+            <span aria-hidden="true">→</span>
+          </a>
+
+          {/* CTA 2 : Découvrir la démo */}
+          <a
+            href={SITE_CONFIG.demoAppUrl}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 text-white font-extrabold text-base py-3.5 px-8 transition"
+          >
+            <Icon name="play" />
+            <span>Découvrir la démo</span>
+          </a>
+        </div>
+
+        {/* Rappel des 3 promesses */}
+        <div className="pt-6 border-t border-white/15 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-xs font-semibold text-purple-200">
+          <span>✓ 100% gratuit pour le jeune</span>
+          <span>✓ Aucun compte obligatoire pour la démo</span>
+          <span>✓ Conforme RGPD &amp; RLS</span>
         </div>
       </Container>
     </section>

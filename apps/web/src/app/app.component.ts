@@ -961,11 +961,12 @@ export const TONE_OPTIONS: ToneOption[] = [
                 </ng-container>
               </div>
 
-              <!-- ÉCRAN 6 : ANNUAIRE DES STRUCTURES D'ACCOMPAGNEMENT -->
+              <!-- STRUCTURES D'ACCOMPAGNEMENT : TROUVER DE L'AIDE (3 Écrans) -->
               <div *ngIf="activeYoungTab === 'ANNUAIRE_SUPPORT'" class="space-y-6">
                 <app-support-directory
                   [resources]="supportResources"
                   (goToImmersion)="selectYoungTab('IMMERSION_PRO')"
+                  (navigateToCoach)="handleSupportCoach($event)"
                 ></app-support-directory>
               </div>
 
@@ -3633,6 +3634,12 @@ export class AppComponent implements OnInit {
   }
 
   handleImmersionCoach(prompt: string): void {
+    this.coachInitialMessage = prompt;
+    this.selectYoungTab('COACH_IA');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  handleSupportCoach(prompt: string): void {
     this.coachInitialMessage = prompt;
     this.selectYoungTab('COACH_IA');
     window.scrollTo({ top: 0, behavior: 'smooth' });

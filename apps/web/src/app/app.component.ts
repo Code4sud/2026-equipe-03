@@ -1123,6 +1123,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   [project]="immersionProject"
                   (careerSelected)="startImmersionForCareer($event)"
                   (viewDetail)="selectedCareerDetail = $event"
+                  (navigateToCoach)="handleImmersionCoach($event)"
                 ></app-immersion-pro>
 
                 <!-- FICHE MÉTIER DÉTAILLÉE (Maquette "Découvrir le métier de peintre décorateur.webp") -->
@@ -3627,6 +3628,12 @@ export class AppComponent implements OnInit {
 
   handleDiscoveryCoach(event: { careerTitle: string; prompt: string }): void {
     this.coachInitialMessage = event.prompt;
+    this.selectYoungTab('COACH_IA');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  handleImmersionCoach(prompt: string): void {
+    this.coachInitialMessage = prompt;
     this.selectYoungTab('COACH_IA');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

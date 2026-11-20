@@ -7,15 +7,11 @@ Projet réalisé à Nice les 18, 19 et 20 novembre 2026, sur le thème **« L'or
 
 ## Le projet
 
-### Le problème
-
 Choisir son orientation est une étape importante, mais comprendre ses résultats et savoir quoi en faire reste difficile pour de nombreux jeunes.
 
 Au Centre des Possibles, un jeune peut recevoir un Rapport des Possibles de 17 pages présentant sa personnalité, ses centres d'intérêt, ses aptitudes et différentes pistes professionnelles. Malgré la richesse de ce document et l'entretien avec un professionnel, certaines informations peuvent être difficiles à retenir, à comprendre ou à transformer en démarches concrètes.
 
 **Le défi n'est donc pas seulement de produire un bilan : c'est de permettre au jeune de se l'approprier et de passer à l'action.**
-
-### Notre solution : MonBilan+
 
 MonBilan+ est une plateforme numérique d'orientation qui accompagne les jeunes de la compréhension de leurs résultats jusqu'à la construction de leurs prochaines étapes.
 

@@ -534,10 +534,10 @@ export const TONE_OPTIONS: ToneOption[] = [
               <ng-container *ngIf="activePortal === 'YOUNG'">
                 <div *ngIf="activeYoungTab === 'ACCUEIL' && journeyMode === 'SUPPORTED'">
                   <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] truncate">
-                    Bonjour Emma
+                    Bonjour ! Prêt à découvrir tes possibilités ?
                   </h1>
                   <p class="text-xs sm:text-sm text-[#42466B] line-clamp-1">
-                    Bienvenue sur <strong>MonBilan+</strong>, ton espace pour comprendre ton bilan (Rdv {{ rdvNumber }}) et explorer des pistes de métiers.
+                    Ton bilan est là pour t'aider à mieux te connaître et explorer tes idées. Avance à ton rythme.
                   </p>
                 </div>
                 <div *ngIf="activeYoungTab === 'ACCUEIL_AUTONOME' || (journeyMode === 'AUTONOMOUS' && activeYoungTab === 'ACCUEIL')">
@@ -974,45 +974,158 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
 
               <!-- ========================================================== -->
-              <!-- VUE JEUNE 1 : ACCUEIL ACCOMPAGNÉ (Fidèle à Tableau de bord Emma) -->
+              <!-- VUE JEUNE 1 : ACCUEIL ACCOMPAGNÉ (Les 4 Blocs du Parcours Cible) -->
               <!-- ========================================================== -->
               <div *ngIf="activeYoungTab === 'ACCUEIL' && journeyMode === 'SUPPORTED'" class="space-y-6">
                 <!-- Bannière Hero violette avec Emma au casque + 2 CTA -->
                 <div class="relative rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-8 shadow-lg overflow-hidden">
                   <div class="relative z-10 max-w-2xl space-y-4">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-purple-100">
+                      <span>🎯</span>
+                      <span>Parcours Accompagné • Dossier Rdv {{ rdvNumber }}</span>
+                    </div>
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
-                      Découvre ton bilan,<br />
-                      <span class="inline-block rounded-2xl bg-gradient-to-r from-[#EC4899] to-[#A855F7] px-3.5 py-0.5 mt-1">explore tes possibles !</span>
+                      Bonjour Emma !<br />
+                      <span class="inline-block rounded-2xl bg-gradient-to-r from-[#EC4899] to-[#A855F7] px-3.5 py-0.5 mt-1">Prête à découvrir tes possibles ?</span>
                     </h2>
                     <p class="text-sm text-[#E7E8FB] leading-relaxed max-w-xl">
-                      Écoute ta restitution, comprends tes résultats et découvre des métiers qui s’y rapportent (Rapport Rdv {{ rdvNumber }}).
+                      Ton bilan est là pour t'aider à mieux te connaître et explorer tes idées. Avance à ton rythme avec ta conseillère Sophie Martin.
                     </p>
                     <div class="flex flex-wrap items-center gap-3 pt-1">
                       <button
+                        *ngIf="restitutionStatus === 'PUBLISHED'"
                         type="button"
-                        (click)="openAudioRestitutionView()"
-                        class="rounded-full bg-gradient-to-r from-[#EC4899] to-[#D946EF] hover:opacity-95 text-white px-5 py-2.5 text-sm font-extrabold shadow-md flex items-center gap-2"
+                        (click)="selectYoungTab('MON_BILAN')"
+                        class="rounded-full bg-gradient-to-r from-[#EC4899] to-[#D946EF] hover:opacity-95 text-white px-6 py-3 text-sm font-extrabold shadow-md flex items-center gap-2 cursor-pointer"
                       >
-                        <span>▶</span>
-                        <span>Écouter mon bilan (≈ 6 min)</span>
+                        <span>Comprendre mon bilan</span>
+                        <span>→</span>
                       </button>
                       <button
                         type="button"
-                        (click)="selectYoungTab('MES_DOCUMENTS')"
-                        class="rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white px-5 py-2.5 text-sm font-bold flex items-center gap-2"
+                        (click)="openAudioRestitutionView()"
+                        class="rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white px-5 py-3 text-sm font-bold flex items-center gap-2 cursor-pointer"
                       >
-                        <span><mb-icon name="file-text"></mb-icon></span>
-                        <span>Voir mon rapport</span>
+                        <span>▶</span>
+                        <span>Écouter le bilan audio (≈ 6 min)</span>
                       </button>
                     </div>
                   </div>
                 </div>
 
+                <!-- LES 4 BLOCS PRINCIPAUX (Section 4 — Étape 1 du Prompt) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                  <!-- BLOC 1 : MON BILAN -->
+                  <div class="rounded-3xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg font-black">
+                          📄
+                        </div>
+                        <span [class]="restitutionStatus === 'PUBLISHED' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'" class="px-2.5 py-0.5 rounded-full border text-[11px] font-extrabold">
+                          {{ restitutionStatus === 'PUBLISHED' ? '✓ Disponible' : 'En préparation' }}
+                        </span>
+                      </div>
+                      <div>
+                        <h3 class="text-base font-extrabold text-[#0F1035]">Mon bilan</h3>
+                        <p class="text-xs text-[#555A8A] mt-1 leading-relaxed">
+                          {{ restitutionStatus === 'PUBLISHED' ? 'Rapport validé par Sophie Martin. 6 chapitres expliqués simplement.' : 'En cours de validation par votre conseillère.' }}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="selectYoungTab('MON_BILAN')"
+                      class="w-full py-2.5 rounded-xl bg-[#F3EFFE] hover:bg-[#EDE9FE] text-[#7C3AED] text-xs font-black transition text-center cursor-pointer"
+                    >
+                      Comprendre mon bilan →
+                    </button>
+                  </div>
 
+                  <!-- BLOC 2 : MES MÉTIERS -->
+                  <div class="rounded-3xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-pink-100 text-[#EC4899] flex items-center justify-center text-lg font-black">
+                          💼
+                        </div>
+                        <span class="px-2.5 py-0.5 rounded-full bg-purple-50 text-[#7C3AED] border border-purple-200 text-[11px] font-extrabold">
+                          {{ careers.length }} pistes
+                        </span>
+                      </div>
+                      <div>
+                        <h3 class="text-base font-extrabold text-[#0F1035]">Mes métiers</h3>
+                        <p class="text-xs text-[#555A8A] mt-1 leading-relaxed">
+                          Pistes professionnelles identifiées dans ton rapport. Découvre et enregistre tes favoris.
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="onExploreCareers()"
+                      class="w-full py-2.5 rounded-xl bg-[#FDF2F8] hover:bg-[#FCE7F3] text-[#DB2777] text-xs font-black transition text-center cursor-pointer"
+                    >
+                      Explorer les métiers →
+                    </button>
+                  </div>
 
-                <!-- Rangée du bas : "Mon parcours d'exploration (2/4)" + "Mon prochain rendez-vous (MAR 18 NOV)" -->
+                  <!-- BLOC 3 : MON PARCOURS -->
+                  <div class="rounded-3xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-black">
+                          🎯
+                        </div>
+                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-extrabold">
+                          Étape 2 sur 4
+                        </span>
+                      </div>
+                      <div>
+                        <h3 class="text-base font-extrabold text-[#0F1035]">Mon parcours</h3>
+                        <p class="text-xs text-[#555A8A] mt-1 leading-relaxed">
+                          Prochaine action : explorer les fiches métiers et préparer tes questions pour l'entretien.
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="selectYoungTab('MON_PARCOURS')"
+                      class="w-full py-2.5 rounded-xl bg-[#FFFBEB] hover:bg-[#FEF3C7] text-amber-800 text-xs font-black transition text-center cursor-pointer"
+                    >
+                      Continuer mon parcours →
+                    </button>
+                  </div>
+
+                  <!-- BLOC 4 : MON PROCHAIN ÉCHANGE -->
+                  <div class="rounded-3xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between">
+                        <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg font-black">
+                          📅
+                        </div>
+                        <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-[11px] font-extrabold">
+                          Mer. 18 nov.
+                        </span>
+                      </div>
+                      <div>
+                        <h3 class="text-base font-extrabold text-[#0F1035]">Mon prochain échange</h3>
+                        <p class="text-xs text-[#555A8A] mt-1 leading-relaxed">
+                          14h30 – 15h30 avec Sophie Martin au Centre des Possibles (Nice).
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="selectYoungTab('MES_QUESTIONS')"
+                      class="w-full py-2.5 rounded-xl bg-[#EFF6FF] hover:bg-[#DBEAFE] text-blue-700 text-xs font-black transition text-center cursor-pointer"
+                    >
+                      Préparer mes questions →
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Rangée d'état : Stepper horizontal & Détail du rendez-vous -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <!-- Stepper horizontal 1..4 + Jauge 2/4 étapes -->
                   <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm flex flex-wrap items-center justify-between gap-4">
                     <div class="space-y-4 flex-1">
                       <h3 class="text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
@@ -1022,19 +1135,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <div class="grid grid-cols-4 gap-2 text-center text-xs">
                         <div class="space-y-1">
                           <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#7C3AED] text-white font-bold">✓</span>
-                          <span class="block font-bold text-[#0F1035]">Découvrir mon bilan</span>
+                          <span class="block font-bold text-[#0F1035]">Découvrir</span>
                         </div>
                         <div class="space-y-1">
                           <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#7C3AED] text-white font-bold">2</span>
-                          <span class="block font-bold text-[#0F1035]">Explorer des métiers</span>
+                          <span class="block font-bold text-[#0F1035]">Explorer</span>
                         </div>
                         <div class="space-y-1">
                           <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-bold">3</span>
-                          <span class="block text-[#42466B]">Noter mes questions</span>
+                          <span class="block text-[#42466B]">Questions</span>
                         </div>
                         <div class="space-y-1">
                           <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#F3EFFE] text-[#6D28D9] font-bold">4</span>
-                          <span class="block text-[#42466B]">Préparer mon RDV</span>
+                          <span class="block text-[#42466B]">Agir</span>
                         </div>
                       </div>
                     </div>
@@ -1045,7 +1158,6 @@ export const TONE_OPTIONS: ToneOption[] = [
                     </div>
                   </div>
 
-                  <!-- Mon prochain rendez-vous -->
                   <div class="lg:col-span-6 rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
                     <h3 class="text-lg font-extrabold text-[#0F1035] flex items-center gap-2">
                       <span class="text-[#7C3AED]"><mb-icon name="calendar"></mb-icon></span>
@@ -1059,14 +1171,14 @@ export const TONE_OPTIONS: ToneOption[] = [
                           <span class="text-[11px] font-bold text-[#42466B] block">NOV</span>
                         </div>
                         <div class="space-y-1 text-xs sm:text-sm">
-                          <p class="font-extrabold text-[#0F1035]">Échange avec mon conseiller</p>
+                          <p class="font-extrabold text-[#0F1035]">Échange avec Sophie Martin</p>
                           <p class="text-[#42466B]"><mb-icon name="clock"></mb-icon> 14h30 – 15h30 • <mb-icon name="map-pin"></mb-icon> Centre des Possibles (Nice)</p>
                         </div>
                       </div>
                       <button
                         type="button"
                         (click)="selectYoungTab('MES_QUESTIONS')"
-                        class="rounded-full border-2 border-[#7C3AED] text-[#6D28D9] hover:bg-[#F3EFFE] px-5 py-2 text-xs font-extrabold transition"
+                        class="rounded-full border-2 border-[#7C3AED] text-[#6D28D9] hover:bg-[#F3EFFE] px-5 py-2 text-xs font-extrabold transition cursor-pointer"
                       >
                         Préparer mes questions →
                       </button>
@@ -1090,6 +1202,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   (navigateTab)="selectYoungTab($any($event))"
                   (exploreCareers)="selectYoungTab('IMMERSION_PRO')"
                   (saveQuestion)="onSaveQuestionFromBilan($event)"
+                  (prepareImmersion)="startImmersionForCareer($event)"
                 ></app-report-overview>
               </div>
 

@@ -309,35 +309,188 @@ export interface UIHexacoItem {
                 </div>
 
                 <!-- Volet déroulant interactif certifié (sans jargon) -->
-                <div *ngIf="activeDetailCard === 'RIASEC'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
-                  <p class="font-black text-[#0F1035] flex items-center justify-between">
-                    <span>🎨 Tes centres d'intérêt réels (p. 4 du rapport) :</span>
-                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
-                  </p>
+                <div *ngIf="activeDetailCard === 'RIASEC'" class="p-4 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-2.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
+                  <div class="flex items-center justify-between pb-1 border-b border-emerald-100">
+                    <span class="font-black text-[#0F1035] flex items-center gap-1.5">
+                      <span>🎨</span>
+                      <span>Tes centres d'intérêt réels (p. 4 du rapport) :</span>
+                    </span>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer">✕</button>
+                  </div>
                   <p>• <strong>Artistique (dominant)</strong> : Tu aimes créer, concevoir et inventer sans être enfermée dans une routine.</p>
                   <p>• <strong>Entreprenant (fort)</strong> : Tu as de l'énergie pour proposer des idées et mener des projets.</p>
                   <p>• <strong>Réaliste (présent)</strong> : Tu as besoin d'actions concrètes et de voir le résultat de tes efforts.</p>
+
+                  <!-- Interaction réflexive : Qu'est-ce que tu en penses ? -->
+                  <div class="mt-3 pt-2 border-t border-emerald-100/60 space-y-2">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[11px] font-extrabold text-[#0F1035] flex items-center gap-1">
+                        <span>💭</span>
+                        <span>Qu'est-ce que tu en penses ?</span>
+                      </span>
+                      <span *ngIf="userFeelings['riasec']" class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
+                        ✓ Noté
+                      </span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <button
+                        type="button"
+                        (click)="setFeeling('riasec', 'RECOGNIZED', 'Centres d’intérêt RIASEC')"
+                        [class]="userFeelings['riasec'] === 'RECOGNIZED' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        😊 Je me reconnais
+                      </button>
+                      <button
+                        type="button"
+                        (click)="setFeeling('riasec', 'NOT_SURE', 'Centres d’intérêt RIASEC')"
+                        [class]="userFeelings['riasec'] === 'NOT_SURE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        🤔 Pas sûr
+                      </button>
+                      <button
+                        type="button"
+                        (click)="setFeeling('riasec', 'WANT_TO_DISCUSS', 'Centres d’intérêt RIASEC')"
+                        [class]="userFeelings['riasec'] === 'WANT_TO_DISCUSS' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        💬 En parler au conseiller
+                      </button>
+                    </div>
+                    <div class="flex items-center gap-2 pt-1 text-[11px]">
+                      <button type="button" (click)="onNotUnderstood('Centres d’intérêt RIASEC')" class="text-amber-700 hover:underline cursor-pointer font-bold">
+                        ❓ Je n'ai pas compris
+                      </button>
+                      <span class="text-gray-300">•</span>
+                      <button type="button" (click)="onNoteQuestion('Centres d’intérêt RIASEC')" class="text-[#7C3AED] hover:underline cursor-pointer font-bold">
+                        📝 Noter une question
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
-                <div *ngIf="activeDetailCard === 'APTITUDES'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
-                  <p class="font-black text-[#0F1035] flex items-center justify-between">
-                    <span>💡 Tes aptitudes observées (p. 5 du rapport) :</span>
-                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
-                  </p>
+                <div *ngIf="activeDetailCard === 'APTITUDES'" class="p-4 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-2.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
+                  <div class="flex items-center justify-between pb-1 border-b border-emerald-100">
+                    <span class="font-black text-[#0F1035] flex items-center gap-1.5">
+                      <span>💡</span>
+                      <span>Tes aptitudes observées (p. 5 du rapport) :</span>
+                    </span>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer">✕</button>
+                  </div>
                   <p>• <strong>Flexibilité mentale</strong> : Tu t'adaptes rapidement quand la consigne ou la situation change.</p>
                   <p>• <strong>Mémoire visuelle</strong> : Tu retiens facilement les images, schémas et agencements d'espace.</p>
                   <p>• <strong>Partage du temps</strong> : Tu sais mener plusieurs petites tâches de front sans paniquer.</p>
                   <p>• <strong>Logique déductive</strong> : Tu rassembles les indices pour trouver la solution logique.</p>
+
+                  <!-- Interaction réflexive : Qu'est-ce que tu en penses ? -->
+                  <div class="mt-3 pt-2 border-t border-emerald-100/60 space-y-2">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[11px] font-extrabold text-[#0F1035] flex items-center gap-1">
+                        <span>💭</span>
+                        <span>Qu'est-ce que tu en penses ?</span>
+                      </span>
+                      <span *ngIf="userFeelings['aptitudes']" class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
+                        ✓ Noté
+                      </span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <button
+                        type="button"
+                        (click)="setFeeling('aptitudes', 'RECOGNIZED', 'Aptitudes cognitives')"
+                        [class]="userFeelings['aptitudes'] === 'RECOGNIZED' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        😊 Je me reconnais
+                      </button>
+                      <button
+                        type="button"
+                        (click)="setFeeling('aptitudes', 'NOT_SURE', 'Aptitudes cognitives')"
+                        [class]="userFeelings['aptitudes'] === 'NOT_SURE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        🤔 Pas sûr
+                      </button>
+                      <button
+                        type="button"
+                        (click)="setFeeling('aptitudes', 'WANT_TO_DISCUSS', 'Aptitudes cognitives')"
+                        [class]="userFeelings['aptitudes'] === 'WANT_TO_DISCUSS' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        💬 En parler au conseiller
+                      </button>
+                    </div>
+                    <div class="flex items-center gap-2 pt-1 text-[11px]">
+                      <button type="button" (click)="onNotUnderstood('Aptitudes observées')" class="text-amber-700 hover:underline cursor-pointer font-bold">
+                        ❓ Je n'ai pas compris
+                      </button>
+                      <span class="text-gray-300">•</span>
+                      <button type="button" (click)="onNoteQuestion('Aptitudes observées')" class="text-[#7C3AED] hover:underline cursor-pointer font-bold">
+                        📝 Noter une question
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
-                <div *ngIf="activeDetailCard === 'HEXACO'" class="p-3.5 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-1.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
-                  <p class="font-black text-[#0F1035] flex items-center justify-between">
-                    <span>🤝 Ta personnalité au travail (p. 6 du rapport) :</span>
-                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold">✕</button>
-                  </p>
+                <div *ngIf="activeDetailCard === 'HEXACO'" class="p-4 rounded-2xl bg-white border-2 border-emerald-500/40 space-y-2.5 text-xs text-[#1E1B4B] animate-fadeIn shadow-xs">
+                  <div class="flex items-center justify-between pb-1 border-b border-emerald-100">
+                    <span class="font-black text-[#0F1035] flex items-center gap-1.5">
+                      <span>🤝</span>
+                      <span>Ta personnalité au travail (p. 6 du rapport) :</span>
+                    </span>
+                    <button type="button" (click)="activeDetailCard = null" class="text-gray-400 hover:text-gray-600 font-bold cursor-pointer">✕</button>
+                  </div>
                   <p>• <strong>Curiosité &amp; Ouverture</strong> : Tu t'intéresses à ce qui est nouveau et créatif.</p>
                   <p>• <strong>Esprit d'équipe &amp; Agréabilité</strong> : Tu privilégies la bonne entente et l'écoute mutuelle.</p>
                   <p>• <strong>Sincérité &amp; Humilité</strong> : Tu apprécies la franchise et le respect mutuel.</p>
+
+                  <!-- Interaction réflexive : Qu'est-ce que tu en penses ? -->
+                  <div class="mt-3 pt-2 border-t border-emerald-100/60 space-y-2">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[11px] font-extrabold text-[#0F1035] flex items-center gap-1">
+                        <span>💭</span>
+                        <span>Qu'est-ce que tu en penses ?</span>
+                      </span>
+                      <span *ngIf="userFeelings['hexaco']" class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
+                        ✓ Noté
+                      </span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <button
+                        type="button"
+                        (click)="setFeeling('hexaco', 'RECOGNIZED', 'Personnalité au travail')"
+                        [class]="userFeelings['hexaco'] === 'RECOGNIZED' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        😊 Je me reconnais
+                      </button>
+                      <button
+                        type="button"
+                        (click)="setFeeling('hexaco', 'NOT_SURE', 'Personnalité au travail')"
+                        [class]="userFeelings['hexaco'] === 'NOT_SURE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        🤔 Pas sûr
+                      </button>
+                      <button
+                        type="button"
+                        (click)="setFeeling('hexaco', 'WANT_TO_DISCUSS', 'Personnalité au travail')"
+                        [class]="userFeelings['hexaco'] === 'WANT_TO_DISCUSS' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                        class="px-2.5 py-1 rounded-full text-[11px] transition cursor-pointer"
+                      >
+                        💬 En parler au conseiller
+                      </button>
+                    </div>
+                    <div class="flex items-center gap-2 pt-1 text-[11px]">
+                      <button type="button" (click)="onNotUnderstood('Personnalité au travail')" class="text-amber-700 hover:underline cursor-pointer font-bold">
+                        ❓ Je n'ai pas compris
+                      </button>
+                      <span class="text-gray-300">•</span>
+                      <button type="button" (click)="onNoteQuestion('Personnalité au travail')" class="text-[#7C3AED] hover:underline cursor-pointer font-bold">
+                        📝 Noter une question
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -694,64 +847,141 @@ export interface UIHexacoItem {
             </button>
           </div>
 
-          <!-- 3 Cartes Métiers sélectionnées (Fidèles à la maquette) -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
-            <!-- Métier 1 : Designer graphique -->
-            <div
-              (click)="onExploreCareers()"
-              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-4 flex items-center justify-between gap-3 shadow-2xs cursor-pointer transition group"
-            >
-              <div class="flex items-center gap-3 min-w-0">
-                <div class="h-11 w-11 rounded-2xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 text-lg group-hover:scale-105 transition">
-                  🎨
-                </div>
-                <div class="min-w-0">
-                  <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition truncate">Designer graphique</h4>
-                  <p class="text-xs text-[#64748B] truncate">Création · Communication</p>
-                </div>
-              </div>
-              <span class="rounded-full bg-[#DCFCE7] text-[#15803D] border border-emerald-200 px-2.5 py-1 text-[11px] font-extrabold shrink-0">
-                ✓ Suivi
-              </span>
+          <!-- Filtres et recherche sur les 22 métiers -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+            <div class="flex items-center gap-1.5 flex-wrap">
+              <span class="text-xs font-bold text-[#555A8A] mr-1">Filtrer par niveau d'études :</span>
+              <button
+                type="button"
+                (click)="selectedZoneFilter = 'ALL'"
+                [class]="selectedZoneFilter === 'ALL' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                class="px-2.5 py-1 rounded-full text-xs transition cursor-pointer"
+              >
+                Tous ({{ careers.length }})
+              </button>
+              <button
+                *ngFor="let z of [1, 2, 3, 4, 5]"
+                type="button"
+                (click)="selectedZoneFilter = z"
+                [class]="selectedZoneFilter === z ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                class="px-2.5 py-1 rounded-full text-xs transition cursor-pointer"
+              >
+                Zone {{ z }}
+              </button>
             </div>
 
-            <!-- Métier 2 : Chef de projet -->
-            <div
-              (click)="onExploreCareers()"
-              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-4 flex items-center justify-between gap-3 shadow-2xs cursor-pointer transition group"
-            >
-              <div class="flex items-center gap-3 min-w-0">
-                <div class="h-11 w-11 rounded-2xl bg-[#EFF6FF] text-[#2563EB] border border-[#BFDBFE] flex items-center justify-center shrink-0 text-lg group-hover:scale-105 transition">
-                  📁
-                </div>
-                <div class="min-w-0">
-                  <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition truncate">Chef de projet</h4>
-                  <p class="text-xs text-[#64748B] truncate">Organisation · Gestion</p>
-                </div>
-              </div>
-              <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] border border-purple-200 px-2.5 py-1 text-[11px] font-extrabold shrink-0">
-                ● À explorer
-              </span>
+            <div class="w-full sm:w-64">
+              <input
+                type="text"
+                [(ngModel)]="careersSearchTerm"
+                placeholder="Rechercher un métier du bilan..."
+                class="w-full bg-[#F8F7FF] border border-[#E4E0F5] rounded-xl px-3 py-1.5 text-xs font-medium text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:bg-white"
+              />
             </div>
+          </div>
 
-            <!-- Métier 3 : Technicien audiovisuel -->
+          <!-- Grille des métiers réels du rapport -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-1">
             <div
-              (click)="onExploreCareers()"
-              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white hover:bg-[#FAFAFC] p-4 flex items-center justify-between gap-3 shadow-2xs cursor-pointer transition group"
+              *ngFor="let c of displayedReportCareers"
+              class="rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-white p-4 flex flex-col justify-between gap-3 shadow-2xs transition group"
             >
-              <div class="flex items-center gap-3 min-w-0">
-                <div class="h-11 w-11 rounded-2xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 text-lg group-hover:scale-105 transition">
-                  📹
+              <div>
+                <div class="flex items-start justify-between gap-2 mb-2">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <img
+                      *ngIf="c.imageUrl"
+                      [src]="c.imageUrl"
+                      [alt]="c.titleFr"
+                      class="h-11 w-11 rounded-xl object-cover border border-[#E4E0F5] shrink-0"
+                    />
+                    <div *ngIf="!c.imageUrl" class="h-11 w-11 rounded-xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 font-bold">
+                      💼
+                    </div>
+                    <div class="min-w-0">
+                      <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition leading-tight">
+                        {{ c.titleFr }}
+                      </h4>
+                      <p class="text-[11px] text-[#64748B] truncate mt-0.5">
+                        {{ c.sectorTag || c.educationLevel || 'Zone ' + c.jobZone }}
+                      </p>
+                    </div>
+                  </div>
+                  <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] border border-purple-200 px-2 py-0.5 text-[10px] font-extrabold shrink-0">
+                    Zone {{ c.jobZone }}
+                  </span>
                 </div>
-                <div class="min-w-0">
-                  <h4 class="font-extrabold text-sm text-[#0F1035] group-hover:text-[#7C3AED] transition truncate">Technicien audiovisuel</h4>
-                  <p class="text-xs text-[#64748B] truncate">Image · Production</p>
+
+                <p *ngIf="c.shortSummary" class="text-xs text-[#555A8A] line-clamp-2 leading-relaxed mb-3">
+                  {{ c.shortSummary }}
+                </p>
+
+                <!-- Boutons de qualification du ressenti / préférence -->
+                <div class="space-y-1.5 pt-2 border-t border-[#F0EDFA]">
+                  <p class="text-[10px] font-bold text-[#64748B] flex items-center justify-between">
+                    <span>Mon ressenti :</span>
+                    <span *ngIf="careerPreferences[c.id]" class="text-emerald-700 font-extrabold">
+                      {{ getPreferenceLabel(careerPreferences[c.id]) }}
+                    </span>
+                  </p>
+                  <div class="grid grid-cols-2 gap-1 text-[10px]">
+                    <button
+                      type="button"
+                      (click)="setCareerPreference(c.id, 'INTERESTED', c.titleFr)"
+                      [class]="careerPreferences[c.id] === 'INTERESTED' ? 'bg-emerald-600 text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                      class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-emerald-400"
+                    >
+                      ❤️ Ça m'intéresse
+                    </button>
+                    <button
+                      type="button"
+                      (click)="setCareerPreference(c.id, 'LEARN_MORE', c.titleFr)"
+                      [class]="careerPreferences[c.id] === 'LEARN_MORE' ? 'bg-[#7C3AED] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                      class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-[#7C3AED]"
+                    >
+                      🔍 En savoir plus
+                    </button>
+                    <button
+                      type="button"
+                      (click)="setCareerPreference(c.id, 'NOT_SURE', c.titleFr)"
+                      [class]="careerPreferences[c.id] === 'NOT_SURE' ? 'bg-amber-600 text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                      class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-amber-400"
+                    >
+                      ❓ Pas sûr
+                    </button>
+                    <button
+                      type="button"
+                      (click)="setCareerPreference(c.id, 'DISCUSS', c.titleFr)"
+                      [class]="careerPreferences[c.id] === 'DISCUSS' ? 'bg-[#2563EB] text-white font-extrabold' : 'bg-[#FAF8FF] border border-[#DDD6FE] text-[#42466B] font-bold'"
+                      class="px-2 py-1 rounded-lg transition text-left truncate cursor-pointer hover:border-blue-400"
+                    >
+                      💬 En parler
+                    </button>
+                  </div>
                 </div>
               </div>
-              <span class="rounded-full bg-[#EDE9FE] text-[#6D28D9] border border-purple-200 px-2.5 py-1 text-[11px] font-extrabold shrink-0">
-                ● À explorer
-              </span>
+
+              <!-- Passerelle Immersion Pro -->
+              <button
+                type="button"
+                (click)="onPrepareImmersion(c)"
+                class="w-full mt-2 rounded-xl bg-[#FAF5FF] hover:bg-[#7C3AED] text-[#7C3AED] hover:text-white border border-[#DDD6FE] hover:border-transparent py-2 px-3 text-xs font-extrabold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs group-hover:bg-[#7C3AED] group-hover:text-white"
+              >
+                <span>🚀 Préparer une immersion</span>
+                <span>→</span>
+              </button>
             </div>
+          </div>
+
+          <!-- Afficher plus / Réduire -->
+          <div *ngIf="!careersSearchTerm && selectedZoneFilter === 'ALL' && careers.length > 6" class="pt-2 text-center">
+            <button
+              type="button"
+              (click)="showAllReportCareers = !showAllReportCareers"
+              class="rounded-full bg-[#FAF8FF] border border-[#DDD6FE] hover:border-[#7C3AED] text-[#7C3AED] font-extrabold px-5 py-2 text-xs transition cursor-pointer"
+            >
+              {{ showAllReportCareers ? '▲ Afficher moins de métiers' : '▼ Découvrir les 22 métiers conseillés du bilan (' + careers.length + ')' }}
+            </button>
           </div>
         </div>
 
@@ -1044,8 +1274,15 @@ export class ReportOverviewComponent implements OnInit, OnDestroy {
   @Output() navigateTab = new EventEmitter<string>();
   @Output() exploreCareers = new EventEmitter<void>();
   @Output() saveQuestion = new EventEmitter<{ text: string; answer?: string }>();
+  @Output() prepareImmersion = new EventEmitter<UICareer>();
 
   questionAlreadySaved: boolean = false;
+
+  userFeelings: Record<string, string> = {};
+  careerPreferences: Record<string, string> = {};
+  careersSearchTerm: string = '';
+  showAllReportCareers: boolean = false;
+  selectedZoneFilter: number | 'ALL' = 'ALL';
 
   activeSubTab: ReportSubTab = 'COMPRENDRE';
   selectedEpisodeIndex: number = 0;
@@ -1101,8 +1338,100 @@ export class ReportOverviewComponent implements OnInit, OnDestroy {
     if (this.currentEpisode) {
       this.audioDurationSec = this.currentEpisode.targetDurationSec || 120;
     }
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        const feelingsRaw = localStorage.getItem('monbilan_young_feelings_' + this.rdvNumber);
+        if (feelingsRaw) this.userFeelings = JSON.parse(feelingsRaw);
+        const prefsRaw = localStorage.getItem('monbilan_career_prefs_' + this.rdvNumber);
+        if (prefsRaw) this.careerPreferences = JSON.parse(prefsRaw);
+      } catch (e) {
+        console.warn('Erreur chargement localStorage', e);
+      }
+    }
     this.aiExplanationText = this.getFallbackExplanation('SIMPLE');
     await this.checkOllama();
+  }
+
+  setFeeling(domainKey: string, feeling: string, domainLabel: string): void {
+    this.userFeelings[domainKey] = feeling;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        localStorage.setItem('monbilan_young_feelings_' + this.rdvNumber, JSON.stringify(this.userFeelings));
+      } catch (e) {}
+    }
+    if (feeling === 'WANT_TO_DISCUSS') {
+      this.saveQuestion.emit({
+        text: `J'aimerais échanger sur le point : ${domainLabel} (mon ressenti : en parler avec le conseiller)`,
+        answer: undefined
+      });
+    }
+  }
+
+  onNotUnderstood(topicLabel: string): void {
+    this.saveQuestion.emit({
+      text: `Je n'ai pas bien compris la section : ${topicLabel}. Peux-tu me la réexpliquer lors de notre rdv ?`,
+      answer: undefined
+    });
+  }
+
+  onNoteQuestion(topicLabel: string): void {
+    if (typeof window !== 'undefined') {
+      const q = window.prompt(`Quelle question souhaites-tu noter à propos de "${topicLabel}" ?`);
+      if (q && q.trim()) {
+        this.saveQuestion.emit({
+          text: `[${topicLabel}] ${q.trim()}`,
+          answer: undefined
+        });
+      }
+    }
+  }
+
+  setCareerPreference(careerId: string, pref: string, careerTitle: string): void {
+    this.careerPreferences[careerId] = pref;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        localStorage.setItem('monbilan_career_prefs_' + this.rdvNumber, JSON.stringify(this.careerPreferences));
+      } catch (e) {}
+    }
+    if (pref === 'DISCUSS') {
+      this.saveQuestion.emit({
+        text: `J'aimerais échanger sur le métier : ${careerTitle} (conseillé dans mon bilan)`,
+        answer: undefined
+      });
+    }
+  }
+
+  getPreferenceLabel(pref: string): string {
+    switch (pref) {
+      case 'INTERESTED': return '❤️ Ça m\'intéresse';
+      case 'LEARN_MORE': return '🔍 En savoir plus';
+      case 'NOT_SURE': return '❓ Pas sûr';
+      case 'DISCUSS': return '💬 En parler';
+      default: return '';
+    }
+  }
+
+  onPrepareImmersion(career: UICareer): void {
+    this.prepareImmersion.emit(career);
+  }
+
+  get displayedReportCareers(): UICareer[] {
+    let list = this.careers || [];
+    if (this.selectedZoneFilter !== 'ALL') {
+      list = list.filter(c => c.jobZone === this.selectedZoneFilter);
+    }
+    if (this.careersSearchTerm && this.careersSearchTerm.trim()) {
+      const q = this.careersSearchTerm.toLowerCase().trim();
+      list = list.filter(c =>
+        (c.titleFr || '').toLowerCase().includes(q) ||
+        (c.sectorTag || '').toLowerCase().includes(q) ||
+        (c.shortSummary || '').toLowerCase().includes(q)
+      );
+    }
+    if (!this.showAllReportCareers && !this.careersSearchTerm.trim() && this.selectedZoneFilter === 'ALL') {
+      return list.slice(0, 6);
+    }
+    return list;
   }
 
   async checkOllama(): Promise<void> {

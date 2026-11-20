@@ -2,16 +2,13 @@
 
 Projet réalisé à Nice les 18, 19 et 20 novembre 2026, sur le thème **« L'orientation et l'employabilité grâce à l'IA »**, organisé par [Code4Sud](https://code4sud.fr).
 
-**Équipe :** Bastien Ozil, Mathilde Poirier, Saidou Yaya Diallo, Enzo Sarfati, Farimzhara Dambly, William Baghdadi.  
-**Écoles :** 42 Nice, Centrale Méditerranée
-
 ## Le projet
 
 Choisir son orientation est une étape importante, mais comprendre ses résultats et savoir quoi en faire reste difficile pour de nombreux jeunes.
 
 Au Centre des Possibles, un jeune peut recevoir un Rapport des Possibles de 17 pages présentant sa personnalité, ses centres d'intérêt, ses aptitudes et différentes pistes professionnelles. Malgré la richesse de ce document et l'entretien avec un professionnel, certaines informations peuvent être difficiles à retenir, à comprendre ou à transformer en démarches concrètes.
 
-**Le défi n'est donc pas seulement de produire un bilan : c'est de permettre au jeune de se l'approprier et de passer à l'action.**
+**Le défi n'est donc pas seulement de produire un bilan: c'est de permettre au jeune de se l'approprier et de passer à l'action.**
 
 MonBilan+ est une plateforme numérique d'orientation qui accompagne les jeunes de la compréhension de leurs résultats jusqu'à la construction de leurs prochaines étapes.
 
@@ -21,7 +18,7 @@ La plateforme s'articule autour de deux expériences complémentaires.
 
 **1. Comprendre son bilan**
 
-Pour les jeunes disposant d'un Rapport des Possibles, MonBilan+ transforme les informations du document en contenus pédagogiques accessibles :
+Pour les jeunes disposant d'un Rapport des Possibles, MonBilan+ transforme les informations du document en contenus pédagogiques accessibles:
 
 - Des épisodes audio courts, d'environ deux minutes, pour comprendre les différentes dimensions du bilan.
 - Des explications simples sur la personnalité, les centres d'intérêt, les aptitudes et les pistes professionnelles.
@@ -135,17 +132,7 @@ Consultez [`ARCHITECTURE.md`](./ARCHITECTURE.md) et [`docs/architecture/DESIGN_S
 - **`apps/api` (NestJS Modular Monolith)** : 12 modules Clean Architecture & DDD, isolation Multi-Tenant stricte via **PostgreSQL Row-Level Security (`FORCE RLS`)**.
 - **`apps/worker` (BullMQ)** : Workers asynchrones d'extraction PDF, de génération LLM locale (`Ollama / Qwen`) et de synthèse vocale (`Piper TTS`).
 
-## Publier sur le site du hackathon
-
-1. Complétez `projet.json` (nom, pitch, description, écoles, technologies, liens).
-2. Ajoutez vos captures dans `captures/` et listez-les dans `projet.json`.
-3. Poussez sur `main` : votre fiche apparaît sur https://orientation.code4sud.fr/projets/equipe-03 en moins d'une minute.
-
-Toute la doc : https://orientation.code4sud.fr/doc/
-
-## Démo en ligne
-
-À chaque push sur `main`, le workflow GitHub Pages exécute `npm ci && npm run build` et publie `./dist` :
+## Demo Hackhaton
 - **Landing page Next.js** : `https://code4sud.github.io/2026-equipe-03/`
 - **Application interactive (Espace Jeune & Conseiller — Rapport 2187)** : `https://code4sud.github.io/2026-equipe-03/app/`
 

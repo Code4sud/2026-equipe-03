@@ -20,10 +20,10 @@
   "video": "",
   "captures": [
     "captures/landing_page.png",
-    "captures/accueuil_jeune.png",
+    "captures/accueil_jeune.png",
     "captures/bilan.png",
     "captures/coach_ia.png",
     "captures/immersion.png",
-    "captures/location.png"
+    "captures/localisation.png"
   ]
 }

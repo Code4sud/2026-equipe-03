@@ -8,9 +8,10 @@
 // Assistant contextuel latéral : « Besoin d'un coup de main ? »
 // ============================================================================
 
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { saveDraftItem } from '../../shared/autonomous-data';
 import {
   IMMERSION_CAREERS_CATALOG,
   IMMERSION_COMPANIES_DATA,
@@ -908,9 +909,49 @@ export class ImmersionProComponent implements OnInit {
   reflectionSaved = false;
 
   ngOnInit(): void {
+    this.updateCareerFromProject();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['project']) {
+      this.updateCareerFromProject();
+    }
+  }
+
+  private updateCareerFromProject(): void {
     if (this.project?.careerTitle) {
-      const found = IMMERSION_CAREERS_CATALOG.find((c) => c.title === this.project.careerTitle);
-      if (found) this.selectedCareer = found;
+      const found = IMMERSION_CAREERS_CATALOG.find(
+        (c) => c.title.toLowerCase() === this.project?.careerTitle.toLowerCase()
+      );
+      if (found) {
+        this.selectedCareer = found;
+      } else {
+        this.selectedCareer = {
+          id: this.project.careerId || 'custom-immersion',
+          title: this.project.careerTitle,
+          tagline: 'Découverte professionnelle • Terrain',
+          domain: 'decouverte',
+          domainTag: 'Orientation libre',
+          sectorTag: 'Métiers d’avenir',
+          sectorColor: 'bg-purple-100 text-[#7C3AED]',
+          pageNumber: 1,
+          jobZone: this.project.careerZone || 2,
+          educationLevel: 'Selon filière',
+          shortSummary: `Découvre le métier de ${this.project.careerTitle} en entreprise lors d'un court stage d'observation.`,
+          heroImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+          activitesPrincipales: [
+            `Observer les missions quotidiennes d'un(e) ${this.project.careerTitle}`,
+            'Comprendre l’environnement de travail et les outils utilisés',
+            'Poser des questions aux professionnels de l’équipe'
+          ],
+          competencesMobilisees: ['Curiosité', 'Sens du contact', 'Rigueur'],
+          conditionsTravail: ['En journée, en entreprise ou sur site', 'Au sein d\'une équipe de professionnels'],
+          perspectives: ['Opportunités de stage, alternance ou formation continue'],
+          formations: ['Consulter les formations recommandées sur MonBilan+'],
+          temoignages: []
+        };
+      }
+      this.emailDraft = `Bonjour,\n\nJe m'appelle Emma et je prépare mon orientation professionnelle. Dans le cadre de mon projet pour découvrir le métier de ${this.selectedCareer.title}, je souhaiterais observer vos activités et échanger avec votre équipe lors d'un court stage d'observation.\n\nSeriez-vous disposés à m'accueillir pendant quelques jours ?\n\nMerci pour votre temps et votre retour.\n\nCordialement,\nEmma D.`;
     }
   }
 
@@ -959,15 +1000,33 @@ export class ImmersionProComponent implements OnInit {
       navigator.clipboard.writeText(this.emailDraft);
     }
     this.emailCopied = true;
+    saveDraftItem({
+      id: 'immersion-email-' + Date.now(),
+      type: 'EMAIL',
+      title: 'Demande immersion — ' + this.selectedCareer.title,
+      careerTitle: this.selectedCareer.title,
+      recipient: this.currentTargetCompany?.name || 'Entreprise 06',
+      content: this.emailDraft,
+      date: new Date().toLocaleDateString('fr-FR')
+    });
     setTimeout(() => (this.emailCopied = false), 3000);
   }
 
   copyPhoneScript(): void {
-    const script = `Bonjour, je m'appelle Emma et je m'intéresse au métier de peintre décorateur. Est-il possible d'échanger avec le responsable d'atelier pour une journée d'observation ?`;
+    const script = `Bonjour, je m'appelle Emma et je m'intéresse au métier de ${this.selectedCareer.title}. Est-il possible d'échanger avec le responsable d'atelier pour une journée d'observation ?`;
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(script);
     }
     this.scriptCopied = true;
+    saveDraftItem({
+      id: 'immersion-phone-' + Date.now(),
+      type: 'CALL_SCRIPT',
+      title: 'Script appel — ' + this.selectedCareer.title,
+      careerTitle: this.selectedCareer.title,
+      recipient: this.currentTargetCompany?.name || 'Entreprise 06',
+      content: script,
+      date: new Date().toLocaleDateString('fr-FR')
+    });
     setTimeout(() => (this.scriptCopied = false), 3000);
   }
 

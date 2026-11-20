@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MbIconComponent } from '../../shared/ui/mb-icon.component';
+import { loadSavedDrafts, SavedDraft } from '../../shared/autonomous-data';
 
 export interface ExplorationNote {
   id: string;
@@ -56,10 +57,10 @@ export interface ExplorationStepItem {
           </div>
           <div>
             <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F1035] tracking-tight">
-              Mon parcours d'exploration
+              {{ journeyMode === 'AUTONOMOUS' ? 'Mon parcours' : "Mon parcours d'exploration" }}
             </h1>
             <p class="text-xs sm:text-sm text-gray-500 font-medium">
-              Retrouve tes découvertes, suis ta progression et prépare la suite avec ton conseiller.
+              {{ journeyMode === 'AUTONOMOUS' ? 'Retrouve tes découvertes et avance à ton rythme.' : 'Retrouve tes découvertes, suis ta progression et prépare la suite avec ton conseiller.' }}
             </p>
           </div>
         </div>
@@ -373,19 +374,23 @@ export interface ExplorationStepItem {
               <span class="text-gray-400 group-hover:text-[#7C3AED] transition">›</span>
             </button>
 
-            <!-- 2. Mes questions -->
+            <!-- 2. Mes questions OU Trouver de l'aide -->
             <button
               type="button"
-              (click)="navigateTo('MES_QUESTIONS')"
+              (click)="navigateTo(journeyMode === 'AUTONOMOUS' ? 'ANNUAIRE_SUPPORT' : 'MES_QUESTIONS')"
               class="p-3.5 rounded-2xl bg-white border border-[#E4E0F5] hover:border-[#7C3AED]/40 hover:bg-[#FDFCFE] text-left transition flex items-center justify-between gap-2 shadow-2xs cursor-pointer group"
             >
               <div class="flex items-center gap-2.5 min-w-0">
                 <div class="w-8 h-8 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-sm shrink-0">
-                  💬
+                  {{ journeyMode === 'AUTONOMOUS' ? '🏛️' : '💬' }}
                 </div>
                 <div class="min-w-0">
-                  <h4 class="text-xs font-extrabold text-[#0F1035] truncate group-hover:text-[#7C3AED]">Mes questions</h4>
-                  <p class="text-[10px] text-gray-500 truncate">Avec conseiller ({{ questionsCount }})</p>
+                  <h4 class="text-xs font-extrabold text-[#0F1035] truncate group-hover:text-[#7C3AED]">
+                    {{ journeyMode === 'AUTONOMOUS' ? "Trouver de l'aide" : 'Mes questions' }}
+                  </h4>
+                  <p class="text-[10px] text-gray-500 truncate">
+                    {{ journeyMode === 'AUTONOMOUS' ? 'Structures vérifiées 06' : 'Avec conseiller (' + questionsCount + ')' }}
+                  </p>
                 </div>
               </div>
               <span class="text-gray-400 group-hover:text-[#7C3AED] transition">›</span>
@@ -537,6 +542,74 @@ export interface ExplorationStepItem {
       </div>
 
       <!-- ================================================================== -->
+      <!-- 5. MES MESSAGES PRÉPARÉS (Section demandée Étape 7 du parcours)     -->
+      <!-- ================================================================== -->
+      <div *ngIf="savedDrafts.length > 0" class="rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-1 border-b border-[#F0EDFA]">
+          <div class="flex items-center gap-2.5">
+            <span class="text-xl">✉️</span>
+            <div>
+              <h3 class="text-base sm:text-lg font-extrabold text-[#0F1035]">
+                Mes messages préparés ({{ savedDrafts.length }})
+              </h3>
+              <p class="text-xs text-gray-500">
+                Brouillons d'emails et scripts d'appels créés avec le Coach IA ou Immersion Pro.
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            (click)="navigateTo('COACH_IA')"
+            class="text-xs font-bold text-[#7C3AED] hover:underline self-start sm:self-auto cursor-pointer"
+          >
+            Créer un nouveau message →
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div
+            *ngFor="let draft of savedDrafts"
+            class="p-4 rounded-2xl bg-[#FAF8FF] border border-[#E4E0F5] space-y-2.5 flex flex-col justify-between"
+          >
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-purple-100 text-[#7C3AED] text-[10px] font-black uppercase">
+                  {{ draft.type === 'EMAIL' ? 'Email' : 'Script Appel' }}
+                </span>
+                <span class="text-[10px] text-gray-400 font-semibold">{{ draft.date }}</span>
+              </div>
+              <h4 class="text-xs sm:text-sm font-extrabold text-[#0F1035] leading-tight">
+                {{ draft.title }}
+              </h4>
+              <p class="text-[11px] text-gray-500 font-medium">
+                Destinataire : <strong>{{ draft.recipient || 'Entreprise' }}</strong>
+              </p>
+              <p class="text-xs text-[#42466B] line-clamp-2 italic bg-white p-2.5 rounded-xl border border-[#EDE9FE]">
+                « {{ draft.content }} »
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <button
+                type="button"
+                (click)="copyDraft(draft)"
+                class="px-3 py-1.5 rounded-full bg-white border border-[#7C3AED] text-[#7C3AED] hover:bg-purple-50 text-xs font-bold transition flex items-center gap-1 cursor-pointer"
+              >
+                <span>{{ copiedDraftId === draft.id ? '✓ Copié !' : '📋 Copier le message' }}</span>
+              </button>
+              <button
+                type="button"
+                (click)="navigateTo('COACH_IA')"
+                class="text-xs text-[#7C3AED] font-bold hover:underline cursor-pointer"
+              >
+                Modifier dans le Coach →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================== -->
       <!-- MODAL : MON CARNET DE DÉCOUVERTES                                  -->
       <!-- ================================================================== -->
       <div *ngIf="showNotesModal" class="fixed inset-0 z-50 bg-[#0F1035]/60 backdrop-blur-xs flex items-center justify-center p-4">
@@ -587,6 +660,8 @@ export interface ExplorationStepItem {
   `
 })
 export class ExplorationDashboardComponent implements OnInit {
+  @Input() journeyMode: 'AUTONOMOUS' | 'SUPPORTED' = 'SUPPORTED';
+  @Input() immersionCareerTitle?: string;
   @Input() favoriteCareersCount: number = 4;
   @Input() questionsCount: number = 5;
   @Input() youngDisplayName: string = 'Emma D.';
@@ -594,8 +669,11 @@ export class ExplorationDashboardComponent implements OnInit {
   @Output() openCareerDetail = new EventEmitter<string>();
 
   searchQuery: string = '';
-  completedStepsCount: number = 2; // Étape 1 (Découvrir) et Étape 2 (Explorer)
+  completedStepsCount: number = 2;
   progressPercentage: number = 50;
+
+  savedDrafts: SavedDraft[] = [];
+  copiedDraftId: string | null = null;
 
   explorationSteps: ExplorationStepItem[] = [
     {
@@ -673,10 +751,61 @@ export class ExplorationDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPersistedData();
+    if (this.journeyMode === 'AUTONOMOUS') {
+      this.adaptForAutonomousMode();
+    }
+  }
+
+  private adaptForAutonomousMode(): void {
+    this.explorationSteps[0] = {
+      id: 1,
+      title: 'Découvrir des métiers',
+      description: 'J\'ai exploré les univers et découvert des pistes professionnelles.',
+      status: 'COMPLETED',
+      statusLabel: '✓ Terminé',
+      icon: '🧭',
+      routeTarget: 'EXPLORER_METIERS'
+    };
+    this.explorationSteps[2] = {
+      id: 3,
+      title: 'Préparer mon immersion & mes messages',
+      description: 'J\'ai préparé mon message ou script avec le Coach IA.',
+      status: this.savedDrafts.length > 0 ? 'COMPLETED' : 'IN_PROGRESS',
+      statusLabel: this.savedDrafts.length > 0 ? '✓ Réalisé' : 'En cours',
+      icon: '💡',
+      routeTarget: 'COACH_IA'
+    };
+    this.explorationSteps[3] = {
+      id: 4,
+      title: 'Trouver une structure ou une entreprise',
+      description: 'Je contacte une entreprise ou le CIO / Mission Locale de Nice.',
+      status: 'NOT_STARTED',
+      statusLabel: 'À faire',
+      icon: '🏛️',
+      routeTarget: 'ANNUAIRE_SUPPORT'
+    };
+
+    if (this.immersionCareerTitle) {
+      this.nextActionRecommendation = `Poursuivre la préparation de l'immersion pour ${this.immersionCareerTitle} ou t'entraîner avec le Coach IA.`;
+    } else if (this.favoriteCareersCount > 0) {
+      this.nextActionRecommendation = `Tu as ${this.favoriteCareersCount} métier(s) en favori. Sélectionne une piste pour préparer une immersion de 1 à 3 jours.`;
+    } else {
+      this.nextActionRecommendation = 'Explorer le catalogue pour enregistrer un premier métier qui t’intéresse.';
+    }
+  }
+
+  copyDraft(draft: SavedDraft): void {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(draft.content);
+      this.copiedDraftId = draft.id;
+      setTimeout(() => (this.copiedDraftId = null), 2500);
+    }
   }
 
   private loadPersistedData(): void {
     try {
+      this.savedDrafts = loadSavedDrafts();
+
       // Charger la note du carnet
       const savedNote = localStorage.getItem('monbilan_carnet_note_2187');
       if (savedNote) {

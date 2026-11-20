@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
+import { saveDraftItem } from '../../shared/autonomous-data';
 import {
   COACH_TRAINING_SCENARIOS,
   TrainingScenario,
@@ -1594,6 +1595,15 @@ export class CoachIaComponent implements OnInit, OnDestroy {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(this.generatedBodyText);
       this.copiedToast = true;
+      saveDraftItem({
+        id: 'coach-email-' + Date.now(),
+        type: 'EMAIL',
+        title: this.emailSubject || 'Email pour ' + this.selectedCareer,
+        careerTitle: this.selectedCareer,
+        recipient: this.companyName || 'Entreprise',
+        content: this.generatedBodyText,
+        date: new Date().toLocaleDateString('fr-FR')
+      });
       setTimeout(() => (this.copiedToast = false), 2000);
     }
   }
@@ -1611,7 +1621,16 @@ export class CoachIaComponent implements OnInit, OnDestroy {
 
   saveToImmersionProject(): void {
     this.saveImmersion.emit(this.generatedBodyText);
-    alert('Action enregistrée dans ton projet d’immersion ! Tu peux la retrouver à l’Étape 4 de Mon Immersion Pro.');
+    saveDraftItem({
+      id: 'coach-immersion-draft-' + Date.now(),
+      type: 'EMAIL',
+      title: 'Demande immersion — ' + this.selectedCareer,
+      careerTitle: this.selectedCareer,
+      recipient: this.companyName || 'Entreprise',
+      content: this.generatedBodyText,
+      date: new Date().toLocaleDateString('fr-FR')
+    });
+    alert('Action enregistrée dans ton projet d’immersion ! Tu peux la retrouver dans « Mon parcours ».');
   }
 
   // --------------------------------------------------------------------------
@@ -1639,6 +1658,15 @@ Objectif : ${this.callObjective}
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(script);
       this.copiedToast = true;
+      saveDraftItem({
+        id: 'coach-script-' + Date.now(),
+        type: 'CALL_SCRIPT',
+        title: 'Script appel — ' + this.selectedCareer,
+        careerTitle: this.selectedCareer,
+        recipient: this.companyName || 'Entreprise 06',
+        content: script,
+        date: new Date().toLocaleDateString('fr-FR')
+      });
       setTimeout(() => (this.copiedToast = false), 2000);
     }
   }
@@ -1661,6 +1689,15 @@ Objectif : ${this.callObjective}
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(this.followupBodyText);
       this.copiedToast = true;
+      saveDraftItem({
+        id: 'coach-relance-' + Date.now(),
+        type: 'EMAIL',
+        title: this.followupSubject,
+        careerTitle: this.selectedCareer,
+        recipient: this.companyName || 'Entreprise 06',
+        content: this.followupBodyText,
+        date: new Date().toLocaleDateString('fr-FR')
+      });
       setTimeout(() => (this.copiedToast = false), 2000);
     }
   }

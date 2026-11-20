@@ -160,3 +160,34 @@ export function mapCategoryIcon(category: CareerInterestFilter): string {
     default: return 'briefcase';
   }
 }
+
+export interface SavedDraft {
+  id: string;
+  type: 'EMAIL' | 'CALL_SCRIPT' | 'SUPPORT_MESSAGE';
+  title: string;
+  careerTitle?: string;
+  recipient?: string;
+  content: string;
+  date: string;
+}
+
+export function loadSavedDrafts(): SavedDraft[] {
+  try {
+    const raw = localStorage.getItem('monbilan_young_saved_drafts');
+    if (!raw) return [];
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
+}
+
+export function saveDraftItem(draft: SavedDraft): void {
+  try {
+    const drafts = loadSavedDrafts().filter(d => d.id !== draft.id);
+    drafts.unshift(draft);
+    localStorage.setItem('monbilan_young_saved_drafts', JSON.stringify(drafts.slice(0, 10)));
+  } catch {
+    // ignore
+  }
+}
+

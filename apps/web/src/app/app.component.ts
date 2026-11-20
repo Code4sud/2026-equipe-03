@@ -908,7 +908,10 @@ export const TONE_OPTIONS: ToneOption[] = [
               <div *ngIf="activeYoungTab === 'ACCUEIL_AUTONOME' || (journeyMode === 'AUTONOMOUS' && activeYoungTab === 'ACCUEIL')" class="space-y-6">
                 <app-autonomous-home
                   [favoriteCount]="catalogFavoritesCount"
+                  [immersionCareerTitle]="immersionProject.careerTitle"
+                  [hasImmersionProject]="!!immersionProject.careerTitle"
                   (navigateTo)="handleAutonomousHomeNav($event)"
+                  (navigateToDashboard)="selectYoungTab('MON_PARCOURS')"
                   (openModeModal)="isJourneyChoiceModalOpen = true"
                 ></app-autonomous-home>
               </div>
@@ -1483,9 +1486,11 @@ export const TONE_OPTIONS: ToneOption[] = [
               <!-- ========================================================== -->
               <div *ngIf="activeYoungTab === 'MON_PARCOURS'">
                 <app-exploration-dashboard
-                  [favoriteCareersCount]="favoriteCareers.length || 4"
+                  [journeyMode]="journeyMode"
+                  [immersionCareerTitle]="immersionProject.careerTitle"
+                  [favoriteCareersCount]="journeyMode === 'AUTONOMOUS' ? catalogFavoritesCount : (favoriteCareers.length || 4)"
                   [questionsCount]="questions.length || 5"
-                  [youngDisplayName]="'Emma D.'"
+                  [youngDisplayName]="activePortal === 'YOUNG' && journeyMode === 'AUTONOMOUS' ? 'Jeune' : 'Emma D.'"
                   (navigate)="selectYoungTab($any($event))"
                   (openCareerDetail)="handleOpenCareerByName($event)"
                 ></app-exploration-dashboard>
@@ -3248,6 +3253,15 @@ export const TONE_OPTIONS: ToneOption[] = [
             </button>
             <button
               type="button"
+              (click)="selectYoungTab('MON_PARCOURS')"
+              [class]="activeYoungTab === 'MON_PARCOURS' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
+              class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
+            >
+              <span class="text-base leading-none"><mb-icon name="map"></mb-icon></span>
+              <span class="mt-0.5">Parcours</span>
+            </button>
+            <button
+              type="button"
               (click)="selectYoungTab('CATALOGUE_METIERS')"
               [class]="(activeYoungTab === 'CATALOGUE_METIERS' || activeYoungTab === 'EXPLORER_METIERS') ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
@@ -3263,15 +3277,6 @@ export const TONE_OPTIONS: ToneOption[] = [
             >
               <span class="text-base leading-none"><mb-icon name="briefcase"></mb-icon></span>
               <span class="mt-0.5">Immersion</span>
-            </button>
-            <button
-              type="button"
-              (click)="selectYoungTab('ANNUAIRE_SUPPORT')"
-              [class]="activeYoungTab === 'ANNUAIRE_SUPPORT' ? 'text-[#7C3AED] font-extrabold bg-[#F3EFFE]' : 'text-[#42466B] font-semibold'"
-              class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px]"
-            >
-              <span class="text-base leading-none"><mb-icon name="landmark"></mb-icon></span>
-              <span class="mt-0.5">Aide</span>
             </button>
             <button
               type="button"
@@ -3674,11 +3679,11 @@ export class AppComponent implements OnInit {
     if (this.journeyMode === 'AUTONOMOUS') {
       return [
         { id: 'ACCUEIL_AUTONOME', label: 'Accueil', icon: 'house' },
-        { id: 'MON_BILAN', label: 'Mon bilan', icon: 'headphones' },
-        { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: 'map-pin', badge: '06' },
+        { id: 'MON_PARCOURS', label: 'Mon parcours', icon: 'map' },
+        { id: 'CATALOGUE_METIERS', label: 'Découvrir des métiers', icon: 'search' },
         { id: 'IMMERSION_PRO', label: 'Immersion Pro', icon: 'briefcase', badge: 'Nouveau' },
         { id: 'COACH_IA', label: 'Mon Coach IA', icon: 'sparkles', badge: 'Nouveau' },
-        { id: 'CATALOGUE_METIERS', label: 'Découvrir des métiers', icon: 'search' },
+        { id: 'AUTOUR_DE_MOI', label: 'Autour de moi', icon: 'map-pin', badge: '06' },
         { id: 'ANNUAIRE_SUPPORT', label: 'Trouver de l’aide', icon: 'landmark' },
         { id: 'PARAMETRES_JEUNE', label: 'Paramètres', icon: 'settings' }
       ];

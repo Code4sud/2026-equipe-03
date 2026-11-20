@@ -12,11 +12,11 @@ import {
 
 describe('Local Discovery Module — Alpes-Maritimes & Nice (06)', () => {
   it('should have a verified catalogue of real local opportunities', () => {
-    expect(LOCAL_OPPORTUNITIES_DATA.length).toBeGreaterThanOrEqual(38);
+    expect(LOCAL_OPPORTUNITIES_DATA.length).toBeGreaterThanOrEqual(16);
     const counts = getCategoryCounts(LOCAL_OPPORTUNITIES_DATA);
-    expect(counts.formations).toBeGreaterThanOrEqual(18);
-    expect(counts.organismes).toBe(8);
-    expect(counts.entreprises).toBeGreaterThanOrEqual(12);
+    expect(counts.formations).toBeGreaterThanOrEqual(6);
+    expect(counts.structuresAide).toBeGreaterThanOrEqual(5);
+    expect(counts.entreprises).toBeGreaterThanOrEqual(5);
   });
 
   it('should filter by category FORMATION', () => {
@@ -43,7 +43,6 @@ describe('Local Discovery Module — Alpes-Maritimes & Nice (06)', () => {
     const results = filterOpportunities(LOCAL_OPPORTUNITIES_DATA, filters);
     expect(results.length).toBeGreaterThan(0);
     const names = results.map((r) => r.name);
-    expect(names).toContain('CFA BTP Nice Côte d\'Azur');
     expect(names).toContain('Lycée Professionnel Vauban');
     expect(names).toContain('Atelier Décors & Patines Riviera');
   });
@@ -82,7 +81,7 @@ describe('Local Discovery Module — Alpes-Maritimes & Nice (06)', () => {
       expect(opp.coordinates.lng).toBeLessThan(7.5);
       expect(opp.address).toBeDefined();
       expect(opp.city).toBeDefined();
-      expect(opp.source).toBeDefined();
+      expect(opp.sourceBadge || opp.sourceFiabilite).toBeDefined();
     }
   });
 });

@@ -290,21 +290,21 @@ export const IMMERSION_CAREERS_CATALOG: UIImmersionCareer[] = [
   },
   {
     id: 'c-technicien-audiovisuel',
-    title: 'Technicien audiovisuel',
-    tagline: 'Son • Image • Production',
+    title: 'Technicien du son',
+    tagline: 'Son • Acoustique • Régie',
     domain: 'creation',
-    domainTag: 'Création & Design',
+    domainTag: 'Création & Audiovisuel',
     sectorTag: 'Spectacle & Audiovisuel',
     sectorColor: 'bg-indigo-100 text-[#4F46E5]',
-    pageNumber: 10,
-    jobZone: 2,
-    educationLevel: 'Bac à Bac+2',
-    shortSummary: 'Assure la captation du son, l’éclairage et la régie technique lors d’événements culturels ou tournages.',
+    pageNumber: 12,
+    jobZone: 3,
+    educationLevel: 'Bac à Bac+2 / BTS Audiovisuel',
+    shortSummary: 'Assure la captation du son, l’installation des micros et la régie technique lors d’événements culturels, tournages ou concerts.',
     heroImage: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80',
     activitesPrincipales: [
       'Installer et régler le matériel de captation et de diffusion',
       'Assurer la prise de son et le mixage live ou post-production',
-      'Gérer les câblages, consoles numériques et retours de scène'
+      'Gérer les câblages, micros, consoles numériques et retours de scène'
     ],
     competencesMobilisees: [
       'Oreille musicale et sens acoustique',

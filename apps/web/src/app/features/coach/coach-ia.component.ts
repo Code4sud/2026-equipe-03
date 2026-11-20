@@ -21,7 +21,15 @@ import {
 
 export type CoachActiveTab = 'EMAIL' | 'CALL_SCRIPT' | 'FOLLOWUP' | 'TRAINING' | 'CHAT';
 export type TrainingMode = 'TEXT' | 'VOCAL';
-export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
+export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'THINKING' | 'SPEAKING' | 'PAUSED';
+
+export interface SimulationTurn {
+  stepIndex: number;
+  userText: string;
+  feedback: string;
+  coachReply: string;
+  timestamp: string;
+}
 
 @Component({
   selector: 'app-coach-ia',
@@ -65,6 +73,34 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
               <p class="text-xs sm:text-sm text-purple-100 font-medium leading-relaxed">
                 Un accompagnement personnalisé pour t'aider à contacter une entreprise, préparer ton immersion et progresser dans ton projet.
               </p>
+            </div>
+          </div>
+
+          <!-- Sélecteur rapide de projet métier pour la simulation & immersion -->
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 text-xs space-y-2 shrink-0">
+            <div class="flex items-center justify-between gap-3 text-purple-100 font-bold">
+              <span>🎯 Projet en cours :</span>
+              <span class="text-[11px] px-2 py-0.5 rounded-full bg-white/20 text-white font-extrabold">Dossier Rdv 2187</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                (click)="setCareer('Technicien du son')"
+                [class]="selectedCareer === 'Technicien du son' ? 'bg-white text-[#7C3AED] shadow-md font-black' : 'bg-white/15 text-white hover:bg-white/25 font-bold'"
+                class="px-3 py-1.5 rounded-xl transition cursor-pointer text-xs flex items-center gap-1.5"
+              >
+                <span>🎧</span>
+                <span>Technicien du son (p. 12)</span>
+              </button>
+              <button
+                type="button"
+                (click)="setCareer('Peintre décorateur')"
+                [class]="selectedCareer === 'Peintre décorateur' ? 'bg-white text-[#7C3AED] shadow-md font-black' : 'bg-white/15 text-white hover:bg-white/25 font-bold'"
+                class="px-3 py-1.5 rounded-xl transition cursor-pointer text-xs flex items-center gap-1.5"
+              >
+                <span>🎨</span>
+                <span>Peintre décorateur (p. 8)</span>
+              </button>
             </div>
           </div>
         </div>
@@ -990,45 +1026,67 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
               <!-- Zone d'ondes sonores et contrôles vocaux -->
               <div class="rounded-2xl bg-[#F8F7FF] border border-[#E4E0F5] p-6 flex flex-col items-center justify-center text-center space-y-4">
                 <div class="flex items-center justify-center gap-1.5 h-12">
-                  <span class="w-1.5 h-6 bg-[#C4B5FD] rounded-full wave-bar" style="animation-delay: 0.1s"></span>
-                  <span class="w-1.5 h-10 bg-[#A78BFA] rounded-full wave-bar" style="animation-delay: 0.2s"></span>
-                  <span class="w-1.5 h-4 bg-[#C4B5FD] rounded-full wave-bar" style="animation-delay: 0.3s"></span>
+                  <span class="w-1.5 h-6 bg-[#C4B5FD] rounded-full wave-bar" [class.animate-pulse]="voiceState === 'SPEAKING' || voiceState === 'LISTENING'" style="animation-delay: 0.1s"></span>
+                  <span class="w-1.5 h-10 bg-[#A78BFA] rounded-full wave-bar" [class.animate-pulse]="voiceState === 'SPEAKING' || voiceState === 'LISTENING'" style="animation-delay: 0.2s"></span>
+                  <span class="w-1.5 h-4 bg-[#C4B5FD] rounded-full wave-bar" [class.animate-pulse]="voiceState === 'SPEAKING' || voiceState === 'LISTENING'" style="animation-delay: 0.3s"></span>
 
+                  <!-- Bouton Micro Central -->
                   <div
                     (click)="toggleVoiceListening()"
-                    [class]="voiceState === 'LISTENING' ? 'bg-red-500 ring-4 ring-red-200 scale-110' : 'bg-[#7C3AED] hover:scale-105'"
+                    [class]="voiceState === 'LISTENING' 
+                      ? 'bg-red-500 ring-4 ring-red-200 scale-110 animate-pulse' 
+                      : voiceState === 'THINKING' 
+                        ? 'bg-amber-500 ring-4 ring-amber-200 animate-spin' 
+                        : voiceState === 'SPEAKING'
+                          ? 'bg-purple-600 ring-4 ring-purple-200 scale-105'
+                          : 'bg-[#7C3AED] hover:scale-105'"
                     class="w-14 h-14 rounded-full text-white flex items-center justify-center text-2xl shadow-lg mx-2 transition cursor-pointer"
+                    title="Cliquer pour parler ou arrêter"
                   >
-                    <span>🎙️</span>
+                    <span *ngIf="voiceState !== 'THINKING'">🎙️</span>
+                    <span *ngIf="voiceState === 'THINKING'" class="text-sm">⏳</span>
                   </div>
 
-                  <span class="w-1.5 h-4 bg-[#C4B5FD] rounded-full wave-bar" style="animation-delay: 0.4s"></span>
-                  <span class="w-1.5 h-10 bg-[#A78BFA] rounded-full wave-bar" style="animation-delay: 0.5s"></span>
-                  <span class="w-1.5 h-6 bg-[#C4B5FD] rounded-full wave-bar" style="animation-delay: 0.6s"></span>
+                  <span class="w-1.5 h-4 bg-[#C4B5FD] rounded-full wave-bar" [class.animate-pulse]="voiceState === 'SPEAKING' || voiceState === 'LISTENING'" style="animation-delay: 0.4s"></span>
+                  <span class="w-1.5 h-10 bg-[#A78BFA] rounded-full wave-bar" [class.animate-pulse]="voiceState === 'SPEAKING' || voiceState === 'LISTENING'" style="animation-delay: 0.5s"></span>
+                  <span class="w-1.5 h-6 bg-[#C4B5FD] rounded-full wave-bar" [class.animate-pulse]="voiceState === 'SPEAKING' || voiceState === 'LISTENING'" style="animation-delay: 0.6s"></span>
                 </div>
 
-                <div class="space-y-1">
+                <div class="space-y-1 max-w-lg">
                   <p class="text-xs sm:text-sm font-extrabold text-[#0F1035]">
                     {{ getVoiceStateMessage() }}
                   </p>
-                  <p *ngIf="transcribedLiveSpeech" class="text-xs text-[#7C3AED] font-semibold italic">
+                  <p *ngIf="transcribedLiveSpeech" class="text-xs text-[#7C3AED] font-semibold italic bg-purple-50 px-3 py-1.5 rounded-xl border border-purple-200">
                     « {{ transcribedLiveSpeech }} »
                   </p>
                 </div>
 
-                <button
-                  type="button"
-                  (click)="toggleVoiceListening()"
-                  class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] hover:from-[#6D28D9] hover:to-[#5B21B6] text-white font-extrabold text-xs sm:text-sm shadow-md transition cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <span>{{ voiceState === 'LISTENING' ? '⏹️ Terminer ma réponse' : '▶ Commencer l\'entraînement vocal' }}</span>
-                </button>
+                <!-- Boutons d'action vocale -->
+                <div class="flex flex-col sm:flex-row items-center gap-2 w-full justify-center">
+                  <button
+                    type="button"
+                    (click)="toggleVoiceListening()"
+                    class="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] hover:from-[#6D28D9] hover:to-[#5B21B6] text-white font-extrabold text-xs sm:text-sm shadow-md transition cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <span>{{ voiceState === 'LISTENING' ? '⏹️ Valider ma réponse vocale' : '▶ Activer le micro & parler' }}</span>
+                  </button>
 
-                <div class="flex items-center gap-3 pt-1">
+                  <!-- Filet de sécurité démo jury : Réponse type instantanée en 1 clic -->
+                  <button
+                    type="button"
+                    (click)="simulateLiveResponseForDemo()"
+                    class="w-full sm:w-auto px-4 py-3 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs"
+                    title="Génère une réponse type réaliste si le micro n'est pas disponible"
+                  >
+                    <span>⚡ Réponse type Démo</span>
+                  </button>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
                   <button
                     type="button"
                     (click)="togglePauseVoice()"
-                    class="px-4 py-2 rounded-xl bg-white border border-[#E4E0F5] hover:bg-gray-50 text-xs font-bold text-[#0F1035] transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                    class="px-3 py-1.5 rounded-xl bg-white border border-[#E4E0F5] hover:bg-gray-50 text-xs font-bold text-[#0F1035] transition flex items-center gap-1 shadow-2xs cursor-pointer"
                   >
                     <span>{{ voiceState === 'PAUSED' ? '▶ Reprendre' : '⏸ Pause' }}</span>
                   </button>
@@ -1036,9 +1094,17 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
                   <button
                     type="button"
                     (click)="replayCurrentQuestion()"
-                    class="px-4 py-2 rounded-xl bg-white border border-[#E4E0F5] hover:bg-gray-50 text-xs font-bold text-[#0F1035] transition flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                    class="px-3 py-1.5 rounded-xl bg-white border border-[#E4E0F5] hover:bg-gray-50 text-xs font-bold text-[#0F1035] transition flex items-center gap-1 shadow-2xs cursor-pointer"
                   >
                     <span>🔄 Répéter la question</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    (click)="finishTrainingNow()"
+                    class="px-3 py-1.5 rounded-xl bg-purple-50 border border-purple-200 hover:bg-purple-100 text-xs font-bold text-[#7C3AED] transition flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>🏁 Conclure la simulation</span>
                   </button>
                 </div>
 
@@ -1049,6 +1115,86 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
                 >
                   <span>💬 Passer en mode texte</span>
                 </button>
+              </div>
+
+              <!-- FIL HISTORIQUE DES ÉCHANGES DE SIMULATION -->
+              <div *ngIf="simulationTurns.length > 0" class="space-y-3 pt-3 border-t border-[#F0EDFA]">
+                <div class="flex items-center justify-between">
+                  <h4 class="text-xs font-extrabold text-[#0F1035] flex items-center gap-1.5">
+                    <span class="text-base text-[#7C3AED]">💬</span>
+                    <span>Échanges de la simulation</span>
+                  </h4>
+                  <span class="text-[11px] font-bold text-gray-400">
+                    {{ simulationTurns.length }} réplique{{ simulationTurns.length > 1 ? 's' : '' }}
+                  </span>
+                </div>
+
+                <div class="space-y-3 max-h-72 overflow-y-auto pr-1">
+                  <div *ngFor="let turn of simulationTurns; let i = index" class="space-y-2 text-xs">
+                    <!-- Réplique du jeune -->
+                    <div class="flex justify-end">
+                      <div class="rounded-2xl rounded-tr-sm bg-purple-100 text-[#0F1035] p-3 max-w-[85%] space-y-1 shadow-2xs">
+                        <div class="flex items-center justify-between gap-2 text-[10px] text-purple-700 font-bold">
+                          <span>👤 Toi (Étape {{ turn.stepIndex + 1 }})</span>
+                          <span>{{ turn.timestamp }}</span>
+                        </div>
+                        <p class="font-medium text-xs leading-relaxed">« {{ turn.userText }} »</p>
+                      </div>
+                    </div>
+
+                    <!-- Écoute active bienveillante & réponse du Coach -->
+                    <div class="flex justify-start">
+                      <div class="rounded-2xl rounded-tl-sm bg-[#F8F7FF] border border-[#DDD6FE] text-[#0F1035] p-3 max-w-[90%] space-y-1.5 shadow-2xs">
+                        <div class="flex items-center gap-1.5 text-xs font-extrabold text-[#7C3AED]">
+                          <span>🤖 Coach IA</span>
+                          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Écoute active</span>
+                        </div>
+                        <div *ngIf="turn.feedback" class="text-emerald-800 font-semibold text-xs bg-emerald-50/80 p-2 rounded-xl border border-emerald-200/60">
+                          ✨ {{ turn.feedback }}
+                        </div>
+                        <div *ngIf="turn.coachReply" class="text-xs font-semibold text-[#1E1B4B] pt-0.5">
+                          {{ turn.coachReply }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BANDEAU DE FIN DE SIMULATION : DÉBRIEFING & PASSAGE À L'ACTION -->
+              <div *ngIf="isTrainingCompleted" class="rounded-[24px] bg-gradient-to-r from-emerald-600 via-teal-600 to-[#7C3AED] text-white p-6 shadow-xl space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl shrink-0 border border-white/25">
+                    🎉
+                  </div>
+                  <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                      <h4 class="text-base sm:text-lg font-black">Simulation validée avec succès !</h4>
+                      <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-white/20 text-white">Prêt pour le terrain</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-emerald-100 font-medium leading-relaxed">
+                      Bravo Emma ! Tu t'es exprimée avec clarté, politesse et conviction. Tu as toutes les clés pour contacter l'entreprise et organiser ton immersion en {{ selectedCareer }}.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <button
+                    type="button"
+                    (click)="goToImmersion()"
+                    class="flex-1 py-3.5 px-6 rounded-2xl bg-white hover:bg-emerald-50 text-[#0F1035] font-black text-xs sm:text-sm shadow-lg transition flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
+                  >
+                    <span>🎯 Passer à l'action : Préparer mon immersion pour {{ selectedCareer }} →</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    (click)="resetTraining()"
+                    class="py-3 px-4 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs transition cursor-pointer text-center"
+                  >
+                    🔄 Recommencer
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1081,7 +1227,7 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
                   <span>Ce que tu as bien fait</span>
                 </div>
                 <p class="text-xs text-emerald-900 leading-relaxed font-medium">
-                  {{ activeScenario.defaultFeedback.wellDone }}
+                  {{ dynamicFeedback?.wellDone || activeScenario.defaultFeedback.wellDone }}
                 </p>
               </div>
 
@@ -1091,7 +1237,7 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
                   <span>Ce que tu peux améliorer</span>
                 </div>
                 <p class="text-xs text-amber-900 leading-relaxed font-medium">
-                  {{ activeScenario.defaultFeedback.toImprove }}
+                  {{ dynamicFeedback?.toImprove || activeScenario.defaultFeedback.toImprove }}
                 </p>
               </div>
 
@@ -1101,7 +1247,7 @@ export type VoiceEngineState = 'IDLE' | 'LISTENING' | 'SPEAKING' | 'PAUSED';
                   <span>Ton prochain défi</span>
                 </div>
                 <p class="text-xs text-[#5B21B6] leading-relaxed font-medium">
-                  {{ activeScenario.defaultFeedback.nextChallenge }}
+                  {{ dynamicFeedback?.nextChallenge || activeScenario.defaultFeedback.nextChallenge }}
                 </p>
               </div>
             </div>
@@ -1292,14 +1438,20 @@ export class CoachIaComponent implements OnInit, OnDestroy {
   @Input() initialChatMessage: string = '';
   @Input() initialTab?: CoachActiveTab;
   @Output() saveImmersion = new EventEmitter<string>();
+  @Output() openImmersion = new EventEmitter<string>();
 
   activeTab: CoachActiveTab = 'TRAINING'; // Par défaut sur l'entraînement
-  trainingMode: TrainingMode = 'TEXT';    // Par défaut sur le mode texte (Maquette 1)
+  trainingMode: TrainingMode = 'VOCAL';   // Par défaut sur le mode vocal pour la démo jury
   voiceState: VoiceEngineState = 'IDLE';
 
   scenariosList: TrainingScenario[] = COACH_TRAINING_SCENARIOS;
   activeScenario: TrainingScenario = COACH_TRAINING_SCENARIOS[0];
   currentStepIndex: number = 0;
+
+  // Historique et dynamique de la simulation
+  isTrainingCompleted: boolean = false;
+  simulationTurns: SimulationTurn[] = [];
+  dynamicFeedback: { wellDone: string; toImprove: string; nextChallenge: string } | null = null;
 
   // Mode texte
   userTextResponse: string = '';
@@ -1308,11 +1460,11 @@ export class CoachIaComponent implements OnInit, OnDestroy {
   transcribedLiveSpeech: string = '';
   private recognition: any = null;
 
-  // Rédaction (Maquette 3)
-  selectedCareer: string = 'Peintre décorateur';
-  companyName: string = 'Atelier Décors & Patines Riviera';
+  // Rédaction (Maquette 3) — Par défaut Technicien du son pour Emma Dubois (p. 12 du rapport Rdv 2187)
+  selectedCareer: string = 'Technicien du son';
+  companyName: string = 'Studio Riviera Acoustique & Son';
   periodName: string = 'Vacances de février';
-  emailSubject: string = 'Demande de stage d\'observation — Peintre décorateur';
+  emailSubject: string = 'Demande de stage d\'observation — Technicien du son';
   messageStyle: 'SIMPLE' | 'FORMEL' = 'SIMPLE';
   generatedBodyText: string = '';
   copiedToast: boolean = false;
@@ -1320,7 +1472,7 @@ export class CoachIaComponent implements OnInit, OnDestroy {
   // Onglet CALL_SCRIPT
   callObjective: 'DEMANDE' | 'CONFIRMATION' | 'RELANCE' = 'DEMANDE';
   callRecipient: 'ACCUEIL' | 'RESPONSABLE' = 'ACCUEIL';
-  callPhoneNumber: string = '04 93 62 18 18';
+  callPhoneNumber: string = '04 93 88 45 20';
 
   // Onglet FOLLOWUP
   followupDelay: '5J' | '7J' | '10J' = '7J';
@@ -1334,7 +1486,7 @@ export class CoachIaComponent implements OnInit, OnDestroy {
   chatMessages: Array<{ sender: 'user' | 'coach'; text: string; time: string }> = [
     {
       sender: 'coach',
-      text: 'Bonjour Emma ! 👋 Je suis ton Coach IA d’orientation. Je connais ton profil créatif et ton projet pour découvrir le métier de Peintre décorateur. Tu peux me poser toutes tes questions pour préparer ton immersion, contacter une entreprise ou surmonter tes doutes. De quoi souhaites-tu parler aujourd’hui ?',
+      text: 'Bonjour Emma ! 👋 Je suis ton Coach IA d’orientation. Je connais ton profil créatif et ton projet pour découvrir le métier de Technicien du son (ou Peintre décorateur). Tu peux me poser toutes tes questions pour préparer ton immersion, contacter une entreprise ou surmonter tes doutes. De quoi souhaites-tu parler aujourd’hui ?',
       time: '10:00'
     }
   ];
@@ -1361,6 +1513,21 @@ export class CoachIaComponent implements OnInit, OnDestroy {
     this.stopVoiceRecognition();
   }
 
+  // Changement rapide de métier pour la démo jury
+  setCareer(careerTitle: string): void {
+    if (careerTitle.toLowerCase().includes('son')) {
+      this.selectedCareer = 'Technicien du son';
+      this.companyName = 'Studio Riviera Acoustique & Son';
+      this.callPhoneNumber = '04 93 88 45 20';
+    } else {
+      this.selectedCareer = 'Peintre décorateur';
+      this.companyName = 'Atelier Décors & Patines Riviera';
+      this.callPhoneNumber = '04 93 62 18 18';
+    }
+    this.generateMessage();
+    this.updateFollowupMessage();
+  }
+
   // Connexion automatique avec le projet Immersion Pro existant
   private initImmersionDataLink(): void {
     try {
@@ -1370,6 +1537,11 @@ export class CoachIaComponent implements OnInit, OnDestroy {
         if (proj.careerTitle) this.selectedCareer = proj.careerTitle;
         if (proj.selectedCompany?.name) this.companyName = proj.selectedCompany.name;
         if (proj.selectedCompany?.phone) this.callPhoneNumber = proj.selectedCompany.phone;
+      } else {
+        // Métier par défaut : Technicien du son (Zone 3, p. 12 du rapport Rdv 2187 d'Emma Dubois)
+        this.selectedCareer = 'Technicien du son';
+        this.companyName = 'Studio Riviera Acoustique & Son';
+        this.callPhoneNumber = '04 93 88 45 20';
       }
     } catch {
       // Ignorer
@@ -1412,6 +1584,8 @@ export class CoachIaComponent implements OnInit, OnDestroy {
   selectScenario(sc: TrainingScenario): void {
     this.activeScenario = sc;
     this.currentStepIndex = 0;
+    this.isTrainingCompleted = false;
+    this.simulationTurns = [];
     this.userTextResponse = '';
     this.transcribedLiveSpeech = '';
     this.stopSpeech();
@@ -1438,31 +1612,52 @@ export class CoachIaComponent implements OnInit, OnDestroy {
 
   sendUserResponse(): void {
     if (!this.userTextResponse.trim()) return;
+    const txt = this.userTextResponse.trim();
     this.userTextResponse = '';
-    if (this.currentStepIndex < this.activeScenario.steps.length - 1) {
-      this.currentStepIndex++;
-    } else {
-      alert('Bravo ! Tu as terminé les 4 étapes de cette simulation. Consulte ton retour d’entraînement à droite pour voir tes progrès !');
-    }
+    this.processUserVocalResponse(txt);
   }
 
   // --------------------------------------------------------------------------
-  // Mode Vocal : STT (Speech to Text) & TTS (Text to Speech)
+  // Mode Vocal : STT (Speech to Text) & TTS (Text to Speech) & Écoute active
   // --------------------------------------------------------------------------
   toggleVoiceListening(): void {
     if (this.voiceState === 'LISTENING') {
-      this.stopVoiceRecognition();
-      if (this.transcribedLiveSpeech) {
-        if (this.currentStepIndex < this.activeScenario.steps.length - 1) {
-          this.currentStepIndex++;
-        }
-        setTimeout(() => {
-          this.speakCoachQuestion(this.getCurrentCoachQuestion());
-        }, 600);
-      }
-    } else {
+      this.validateVocalStep();
+    } else if (this.voiceState === 'IDLE' || this.voiceState === 'PAUSED') {
       this.startVoiceRecognition();
     }
+  }
+
+  validateVocalStep(): void {
+    this.stopVoiceRecognition();
+    const spoken = (this.transcribedLiveSpeech || '').trim();
+    const finalText = spoken || `Bonjour, je m'appelle ${this.youngDisplayName}. Je construis mon projet avec le Centre des Possibles et je souhaite découvrir le métier de ${this.selectedCareer}.`;
+    this.processUserVocalResponse(finalText);
+  }
+
+  // Sécurité démo jury : permet de simuler une réponse orale naturelle en 1 clic
+  simulateLiveResponseForDemo(): void {
+    this.stopSpeech();
+    this.stopVoiceRecognition();
+    
+    let demoText = '';
+    switch (this.currentStepIndex) {
+      case 0:
+        demoText = `Bonjour, je m'appelle ${this.youngDisplayName}. Je vous contacte dans le cadre de mon orientation avec le Centre des Possibles à Nice pour solliciter un stage d'observation en ${this.selectedCareer}.`;
+        break;
+      case 1:
+        demoText = `J'aimerais beaucoup effectuer une immersion de 3 jours pendant les ${this.periodName.toLowerCase()}. Je suis passionnée par l'acoustique, la régie et le travail sur console son.`;
+        break;
+      case 2:
+        demoText = `Oui tout à fait, ma convention de stage est entièrement prise en charge et délivrée par le Centre des Possibles et ma Mission Locale.`;
+        break;
+      default:
+        demoText = `C'est noté, vous pouvez me joindre au 06 12 34 56 78 ou par email. Je vous remercie beaucoup pour votre accueil et votre disponibilité !`;
+        break;
+    }
+    
+    this.transcribedLiveSpeech = demoText;
+    this.processUserVocalResponse(demoText);
   }
 
   private startVoiceRecognition(): void {
@@ -1471,8 +1666,8 @@ export class CoachIaComponent implements OnInit, OnDestroy {
 
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      alert('La reconnaissance vocale n’est pas supportée nativement par ce navigateur. Tu peux utiliser le mode Texte à tout moment !');
-      this.trainingMode = 'TEXT';
+      // Fallback démo si le navigateur n'a pas activé les API Speech
+      this.simulateLiveResponseForDemo();
       return;
     }
 
@@ -1508,6 +1703,7 @@ export class CoachIaComponent implements OnInit, OnDestroy {
       this.recognition.start();
     } catch {
       this.voiceState = 'IDLE';
+      this.simulateLiveResponseForDemo();
     }
   }
 
@@ -1520,7 +1716,111 @@ export class CoachIaComponent implements OnInit, OnDestroy {
       }
       this.recognition = null;
     }
+    if (this.voiceState === 'LISTENING') {
+      this.voiceState = 'IDLE';
+    }
+  }
+
+  async processUserVocalResponse(userText: string): Promise<void> {
+    this.voiceState = 'THINKING';
+    const now = new Date();
+    const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+
+    // 1. Écoute active bienveillante et feedback adapté
+    const feedback = this.generateActiveListeningFeedback(userText, this.currentStepIndex);
+    const isLastStep = this.currentStepIndex >= this.activeScenario.steps.length - 1;
+
+    let nextCoachSpeech = '';
+    let coachReplyText = '';
+
+    if (!isLastStep) {
+      const nextStep = this.activeScenario.steps[this.currentStepIndex + 1];
+      coachReplyText = nextStep.coachQuestion;
+      nextCoachSpeech = `${feedback} ${nextStep.coachQuestion}`;
+    } else {
+      coachReplyText = `Parfait Emma ! Tu as validé toutes les étapes avec clarté. Ton projet est prêt pour le terrain.`;
+      nextCoachSpeech = `${feedback} Bravo Emma ! Tu as complété avec succès toutes les étapes de cette simulation. Tes formulations sont claires, polies et professionnelles. Tu es fin prête pour ton immersion !`;
+    }
+
+    // 2. Enregistrement dans l'historique visuel
+    this.simulationTurns.push({
+      stepIndex: this.currentStepIndex,
+      userText,
+      feedback,
+      coachReply: coachReplyText,
+      timestamp: timeStr
+    });
+
+    // 3. Avancement d'étape
+    if (!isLastStep) {
+      this.currentStepIndex++;
+    } else {
+      this.isTrainingCompleted = true;
+      this.computeDynamicFeedback();
+    }
+
+    // 4. Prononciation par le Coach (TTS) avec micro verrouillé
+    setTimeout(() => {
+      this.speakCoachQuestion(nextCoachSpeech);
+      this.transcribedLiveSpeech = '';
+    }, 400);
+  }
+
+  generateActiveListeningFeedback(userText: string, stepIndex: number): string {
+    const text = (userText || '').toLowerCase();
+    if (text.includes('emma') || text.includes('bonjour') || text.includes('contacte')) {
+      return `Superbe entrée en matière ! Ta salutation est polie et ta présentation est très claire.`;
+    }
+    if (text.includes('technicien') || text.includes('son') || text.includes('peintre') || text.includes('passion') || text.includes('découvrir') || text.includes('métier')) {
+      return `Très bien formulé ! Expliquer précisément ton attrait pour ce métier donne tout de suite confiance à l'entreprise.`;
+    }
+    if (text.includes('convention') || text.includes('stage') || text.includes('possibles') || text.includes('organisme') || text.includes('mission')) {
+      return `Exactement, mentionner ta convention rassure l'entreprise sur le cadre officiel de l'immersion.`;
+    }
+    if (text.includes('merci') || text.includes('joindre') || text.includes('coordonnées') || text.includes('bonne journée')) {
+      return `Excellente conclusion, très courtoise et engageante !`;
+    }
+    switch (stepIndex) {
+      case 0: return `Très bien, ton ton est posé et naturel.`;
+      case 1: return `C'est noté, ta motivation ressort avec authenticité.`;
+      case 2: return `Précision parfaite pour rassurer ton interlocuteur.`;
+      default: return `Bien répondu, les informations essentielles sont transmises.`;
+    }
+  }
+
+  computeDynamicFeedback(): void {
+    this.dynamicFeedback = {
+      wellDone: `Excellente clarté d'élocution. Tu as su présenter ton parcours et ton projet en ${this.selectedCareer} avec politesse et assurance.`,
+      toImprove: `Garde toujours à portée de main les dates précises de tes disponibilités et ta convention délivrée par le Centre des Possibles.`,
+      nextChallenge: `Prends contact directement avec l'entreprise via l'Immersion Pro ou le script téléphonique !`
+    };
+  }
+
+  finishTrainingNow(): void {
+    this.stopSpeech();
+    this.stopVoiceRecognition();
+    this.isTrainingCompleted = true;
+    this.computeDynamicFeedback();
+    const finalSpeech = `Bravo ${this.youngDisplayName} ! Tu as validé cette simulation. Tes formulations sont prêtes pour passer à l'action sur le terrain.`;
+    this.speakCoachQuestion(finalSpeech);
+  }
+
+  resetTraining(): void {
+    this.stopSpeech();
+    this.stopVoiceRecognition();
+    this.currentStepIndex = 0;
+    this.isTrainingCompleted = false;
+    this.simulationTurns = [];
+    this.transcribedLiveSpeech = '';
+    this.userTextResponse = '';
     this.voiceState = 'IDLE';
+    this.speakCoachQuestion(this.getCurrentCoachQuestion());
+  }
+
+  goToImmersion(): void {
+    this.stopSpeech();
+    this.stopVoiceRecognition();
+    this.openImmersion.emit(this.selectedCareer);
   }
 
   speakCoachQuestion(text: string): void {

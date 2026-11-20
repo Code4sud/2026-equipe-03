@@ -159,8 +159,7 @@ export interface ContactProgressStep {
               <div class="flex items-center justify-between gap-2">
                 <!-- Tag thématique -->
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F3EFFE] text-[#7C3AED] px-3.5 py-1 text-xs font-black">
-                  <span>🎨</span>
-                  <span>Création • Bâtiment • Décoration</span>
+                  <span>{{ selectedCareer.domainTag || 'Création & Métiers' }}</span>
                 </span>
 
                 <!-- Bouton Favori Cœur -->
@@ -176,12 +175,33 @@ export interface ContactProgressStep {
                 </button>
               </div>
 
+              <!-- Sélecteur rapide de métier de démo -->
+              <div class="flex items-center gap-2 pt-1">
+                <span class="text-[11px] font-bold text-gray-400">Changer de métier :</span>
+                <button
+                  type="button"
+                  (click)="switchDemoCareer('Technicien du son')"
+                  [class]="selectedCareer.title === 'Technicien du son' ? 'bg-[#7C3AED] text-white font-extrabold shadow-2xs' : 'bg-[#F8F7FF] text-[#0F1035] hover:bg-purple-100 font-semibold'"
+                  class="px-2.5 py-1 rounded-lg text-[11px] transition cursor-pointer"
+                >
+                  🎧 Technicien du son (p. 12)
+                </button>
+                <button
+                  type="button"
+                  (click)="switchDemoCareer('Peintre décorateur')"
+                  [class]="selectedCareer.title === 'Peintre décorateur' ? 'bg-[#7C3AED] text-white font-extrabold shadow-2xs' : 'bg-[#F8F7FF] text-[#0F1035] hover:bg-purple-100 font-semibold'"
+                  class="px-2.5 py-1 rounded-lg text-[11px] transition cursor-pointer"
+                >
+                  🎨 Peintre décorateur (p. 8)
+                </button>
+              </div>
+
               <h2 class="text-3xl font-black text-[#0F1035] tracking-tight">
                 {{ selectedCareer.title }}
               </h2>
 
               <p class="text-xs sm:text-sm text-[#42466B] font-medium leading-relaxed">
-                Un peintre décorateur prépare les surfaces, applique des peintures et réalise des finitions pour embellir des espaces.
+                {{ selectedCareer.shortSummary }}
               </p>
             </div>
           </div>
@@ -951,6 +971,19 @@ export class ImmersionProComponent implements OnInit {
         };
       }
       this.emailDraft = `Bonjour,\n\nJe m'appelle Emma et je prépare mon orientation professionnelle. Dans le cadre de mon projet pour découvrir le métier de ${this.selectedCareer.title}, je souhaiterais observer vos activités et échanger avec votre équipe lors d'un court stage d'observation.\n\nSeriez-vous disposés à m'accueillir pendant quelques jours ?\n\nMerci pour votre temps et votre retour.\n\nCordialement,\nEmma D.`;
+    }
+  }
+
+  switchDemoCareer(title: string): void {
+    const found = IMMERSION_CAREERS_CATALOG.find((c) => c.title.toLowerCase().includes(title.toLowerCase()));
+    if (found) {
+      this.selectedCareer = found;
+      if (this.project) {
+        this.project.careerTitle = found.title;
+        this.project.careerZone = found.jobZone;
+        this.project.careerPage = found.pageNumber;
+      }
+      this.emailDraft = `Bonjour,\n\nJe m'appelle Emma et je prépare mon orientation professionnelle. Dans le cadre de mon projet pour découvrir le métier de ${found.title}, je souhaiterais observer vos activités et échanger avec votre équipe lors d'un court stage d'observation.\n\nSeriez-vous disposés à m'accueillir pendant quelques jours ?\n\nMerci pour votre temps et votre retour.\n\nCordialement,\nEmma D.`;
     }
   }
 

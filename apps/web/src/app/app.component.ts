@@ -1215,6 +1215,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   [youngDisplayName]="'Emma D.'"
                   [initialChatMessage]="coachInitialMessage"
                   (saveImmersion)="onSaveImmersionMessage($event)"
+                  (openImmersion)="handleCoachToImmersion($event)"
                 ></app-coach-ia>
               </div>
 
@@ -4266,6 +4267,25 @@ export class AppComponent implements OnInit {
     this.immersionStepActive = 3;
     this.activeYoungTab = 'IMMERSION_PRO';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  handleCoachToImmersion(careerTitle?: string): void {
+    const targetCareer = careerTitle || 'Technicien du son';
+    const found = this.careers.find(
+      (c) =>
+        (c.titleFr && c.titleFr.toLowerCase().includes(targetCareer.toLowerCase())) ||
+        ((c as any).title && (c as any).title.toLowerCase().includes(targetCareer.toLowerCase()))
+    );
+    if (found) {
+      this.startImmersionForCareer(found);
+    } else {
+      if (this.immersionProject) {
+        this.immersionProject.careerTitle = targetCareer;
+        this.immersionProject.currentStep = 2;
+      }
+      this.activeYoungTab = 'IMMERSION_PRO';
+    }
+    window.scrollTo({ top: 120, behavior: 'smooth' });
   }
 
   get catalogFavoritesCount(): number {

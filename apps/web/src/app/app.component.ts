@@ -1659,120 +1659,262 @@ export const TONE_OPTIONS: ToneOption[] = [
           <ng-container *ngIf="activePortal === 'COUNSELOR'">
             <!-- VUE CONSEILLER 1 : TABLEAU DE BORD (Maquette "Tableau de bord MonBilan+ lumineux.webp") -->
             <div *ngIf="activeCounselorTab === 'TABLEAU_DE_BORD'" class="space-y-6">
-              <!-- Bannière Hero Conseiller épurée -->
+              <!-- Bannière Hero Conseiller épurée et personnalisée -->
               <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#3B1D8F] to-[#6D28D9] text-white p-6 sm:p-8 shadow-lg">
                 <div class="max-w-3xl space-y-4">
                   <span class="inline-block rounded-full bg-white/15 px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider">
-                    ESPACE CONSEILLER
+                    ESPACE CONSEILLER • {{ counselorOrganization }}
                   </span>
                   <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
-                    Gérez, personnalisez et validez les bilans d’orientation
+                    Bonjour, {{ counselorDisplayName }} 👋
                   </h2>
                   <p class="text-xs sm:text-sm sm:text-base text-[#E7E8FB] leading-relaxed">
-                    Importez un rapport du Centre des Possibles, contrôlez les informations extraites, personnalisez la restitution et publiez-la pour le jeune.
+                    Voici les dossiers et les actions qui nécessitent votre attention.
                   </p>
                   <div class="pt-2 flex flex-wrap items-center gap-3">
                     <button
                       type="button"
-                      (click)="activeCounselorTab = 'IMPORTER_RAPPORT'"
-                      class="inline-flex items-center gap-2 rounded-full bg-white text-[#1A1354] hover:bg-[#F3EFFE] px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-extrabold shadow-md hover:shadow-lg transition-all"
+                      (click)="selectCounselorTab('IMPORTER_RAPPORT')"
+                      class="inline-flex items-center gap-2 rounded-full bg-white text-[#1A1354] hover:bg-[#F3EFFE] px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-extrabold shadow-md hover:shadow-lg transition cursor-pointer"
                     >
                       <svg class="h-4 w-4 text-[#6D28D9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                       </svg>
-                      <span>Importer un rapport</span>
+                      <span>+ Importer un rapport</span>
                     </button>
                     <button
                       type="button"
-                      (click)="activeCounselorTab = 'DOSSIERS_JEUNES'"
-                      class="inline-flex items-center gap-2 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-extrabold backdrop-blur-sm transition-all"
+                      (click)="filterDossiersByStatus('ALL')"
+                      class="inline-flex items-center gap-2 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 px-5 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-extrabold backdrop-blur-sm transition cursor-pointer"
                     >
                       <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                       </svg>
-                      <span>Voir les dossiers jeunes</span>
+                      <span>Voir les dossiers jeunes ({{ counselorDossiers.length }})</span>
                     </button>
                   </div>
                 </div>
               </div>
 
-              <!-- 4 Cartes compteurs de suivi avec icônes vectorielles propres (Fidèle à la maquette Tableau de bord lumineux) -->
+              <!-- 4 Cartes indicateurs calculés réels et cliquables -->
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
                 <!-- Carte 1 : Dossiers actifs -->
-                <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition space-y-3">
+                <div
+                  (click)="filterDossiersByStatus('ALL')"
+                  class="rounded-2xl bg-white border border-[#E4E0F5] hover:border-[#7C3AED] p-5 shadow-sm hover:shadow-md transition space-y-3 cursor-pointer group"
+                >
                   <div class="flex items-center justify-between">
-                    <div class="h-11 w-11 rounded-2xl bg-purple-50 text-[#7C3AED] ring-1 ring-purple-100 flex items-center justify-center">
+                    <div class="h-11 w-11 rounded-2xl bg-purple-50 text-[#7C3AED] group-hover:bg-[#7C3AED] group-hover:text-white transition ring-1 ring-purple-100 flex items-center justify-center">
                       <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                       </svg>
                     </div>
-                    <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700 ring-1 ring-emerald-200/60">
-                      <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                      </svg>
-                      +12 %
+                    <span class="text-[11px] font-extrabold text-[#7C3AED] bg-[#FAF8FF] px-2.5 py-0.5 rounded-full border border-[#DDD6FE]">
+                      Tous →
                     </span>
                   </div>
                   <div>
-                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">24</span>
+                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">{{ counselorDossiers.length }}</span>
                     <span class="text-xs font-semibold text-[#42466B] block mt-0.5">Dossiers actifs</span>
                   </div>
                 </div>
 
-                <!-- Carte 2 : Restitutions publiées -->
-                <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition space-y-3">
+                <!-- Carte 2 : Rapports à vérifier -->
+                <div
+                  (click)="filterDossiersByStatus('TO_REVIEW')"
+                  class="rounded-2xl bg-white border border-[#E4E0F5] hover:border-purple-500 p-5 shadow-sm hover:shadow-md transition space-y-3 cursor-pointer group"
+                >
                   <div class="flex items-center justify-between">
-                    <div class="h-11 w-11 rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100 flex items-center justify-center">
+                    <div class="h-11 w-11 rounded-2xl bg-purple-50 text-purple-700 group-hover:bg-purple-600 group-hover:text-white transition ring-1 ring-purple-100 flex items-center justify-center">
                       <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                       </svg>
                     </div>
-                    <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-700 ring-1 ring-emerald-200/60">
-                      <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                      </svg>
-                      +20 %
+                    <span class="text-[11px] font-extrabold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200">
+                      À contrôler →
                     </span>
                   </div>
                   <div>
-                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">18</span>
-                    <span class="text-xs font-semibold text-[#42466B] block mt-0.5">Restitutions publiées</span>
+                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">{{ dossiersToReviewCount }}</span>
+                    <span class="text-xs font-semibold text-[#42466B] block mt-0.5">Rapports à vérifier</span>
                   </div>
                 </div>
 
-                <!-- Carte 3 : En attente de validation -->
-                <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition space-y-3">
+                <!-- Carte 3 : Restitutions à valider -->
+                <div
+                  (click)="filterDossiersByStatus('TO_VALIDATE')"
+                  class="rounded-2xl bg-white border border-[#E4E0F5] hover:border-amber-500 p-5 shadow-sm hover:shadow-md transition space-y-3 cursor-pointer group"
+                >
                   <div class="flex items-center justify-between">
-                    <div class="h-11 w-11 rounded-2xl bg-amber-50 text-amber-600 ring-1 ring-amber-100 flex items-center justify-center">
+                    <div class="h-11 w-11 rounded-2xl bg-amber-50 text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition ring-1 ring-amber-100 flex items-center justify-center">
                       <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <span class="inline-flex items-center rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-bold text-amber-700 ring-1 ring-amber-200/60">
-                      À contrôler
+                    <span class="text-[11px] font-extrabold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                      En attente →
                     </span>
                   </div>
                   <div>
-                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">4</span>
-                    <span class="text-xs font-semibold text-[#42466B] block mt-0.5">En attente de validation</span>
+                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">{{ dossiersToValidateCount }}</span>
+                    <span class="text-xs font-semibold text-[#42466B] block mt-0.5">Restitutions à valider</span>
                   </div>
                 </div>
 
-                <!-- Carte 4 : Rendez-vous cette semaine -->
-                <div class="rounded-2xl bg-white border border-[#E4E0F5] p-5 shadow-sm hover:shadow-md transition space-y-3">
+                <!-- Carte 4 : Rendez-vous à venir -->
+                <div
+                  (click)="selectCounselorTab('SUIVI_RDV')"
+                  class="rounded-2xl bg-white border border-[#E4E0F5] hover:border-blue-500 p-5 shadow-sm hover:shadow-md transition space-y-3 cursor-pointer group"
+                >
                   <div class="flex items-center justify-between">
-                    <div class="h-11 w-11 rounded-2xl bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100 flex items-center justify-center">
+                    <div class="h-11 w-11 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition ring-1 ring-blue-100 flex items-center justify-center">
                       <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <span class="inline-flex items-center rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-bold text-indigo-700 ring-1 ring-indigo-200/60">
-                      Nice
+                    <span class="text-[11px] font-extrabold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                      Agenda →
                     </span>
                   </div>
                   <div>
-                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">6</span>
-                    <span class="text-xs font-semibold text-[#42466B] block mt-0.5">Rendez-vous cette semaine</span>
+                    <span class="text-3xl font-black text-[#0F1035] tracking-tight">{{ upcomingAppointmentsCount }}</span>
+                    <span class="text-xs font-semibold text-[#42466B] block mt-0.5">Rendez-vous à venir</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Section MES PRIORITÉS (Ordonnée par urgence opérationnelle) -->
+              <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#F0EDFA]">
+                  <div class="flex items-center gap-2.5">
+                    <div class="h-9 w-9 rounded-xl bg-purple-50 text-[#7C3AED] ring-1 ring-purple-100 flex items-center justify-center text-lg">
+                      ⚡
+                    </div>
+                    <div>
+                      <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Mes priorités opérationnelles</h3>
+                      <p class="text-xs text-[#6B7280]">Actions requérant votre intervention professionnelle</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold text-[#7C3AED] bg-[#FAF8FF] px-3 py-1 rounded-full border border-[#DDD6FE]">
+                    4 actions prioritaires
+                  </span>
+                </div>
+
+                <div class="divide-y divide-[#F0EDFA]">
+                  <!-- Priorité 1 : Rapport nécessitant vérification (Matéo R.) -->
+                  <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <img
+                        *ngIf="hasAvatar('assets/visuals/avatar-mateo.png')"
+                        src="assets/visuals/avatar-mateo.png"
+                        alt="Matéo R."
+                        class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shrink-0"
+                      />
+                      <div class="min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span class="font-extrabold text-sm text-[#0F1035]">Matéo R. (17 ans)</span>
+                          <span class="text-xs font-mono text-[#6D28D9] font-bold">Dossier 2190</span>
+                          <span class="text-[10px] font-extrabold bg-purple-50 text-purple-700 px-2 py-0.5 rounded-full border border-purple-200">À vérifier</span>
+                        </div>
+                        <p class="text-xs text-[#42466B] mt-0.5">Extraction IA terminée (17 pages) • 7 faits extraits nécessitent votre contrôle humain</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-3 shrink-0">
+                      <span class="text-xs text-[#6B7280]">08 nov. 2026</span>
+                      <button
+                        type="button"
+                        (click)="openDossierWorkflow(1, 'd-2190')"
+                        class="rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-4 py-1.5 text-xs font-extrabold transition cursor-pointer shadow-xs"
+                      >
+                        Vérifier les faits →
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Priorité 2 : Restitution prête pour validation (Lucas M.) -->
+                  <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <img
+                        *ngIf="hasAvatar('assets/visuals/avatar-lucas.png')"
+                        src="assets/visuals/avatar-lucas.png"
+                        alt="Lucas M."
+                        class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shrink-0"
+                      />
+                      <div class="min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span class="font-extrabold text-sm text-[#0F1035]">Lucas M. (16 ans)</span>
+                          <span class="text-xs font-mono text-[#6D28D9] font-bold">Dossier 2188</span>
+                          <span class="text-[10px] font-extrabold bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full border border-amber-200">À valider</span>
+                        </div>
+                        <p class="text-xs text-[#42466B] mt-0.5">Faits validés • Restitution rédigée prête pour relecture finale et publication</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-3 shrink-0">
+                      <span class="text-xs text-[#6B7280]">11 nov. 2026</span>
+                      <button
+                        type="button"
+                        (click)="openDossierWorkflow(4, 'd-2188')"
+                        class="rounded-full bg-amber-600 hover:bg-amber-700 text-white px-4 py-1.5 text-xs font-extrabold transition cursor-pointer shadow-xs"
+                      >
+                        Relire la restitution →
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Priorité 3 : Questions partagées par Emma D. -->
+                  <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <img
+                        *ngIf="hasAvatar('assets/visuals/avatar-emma.png')"
+                        src="assets/visuals/avatar-emma.png"
+                        alt="Emma D."
+                        class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shrink-0"
+                      />
+                      <div class="min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span class="font-extrabold text-sm text-[#0F1035]">Emma D. (16 ans)</span>
+                          <span class="text-xs font-mono text-[#6D28D9] font-bold">Rdv 2187</span>
+                          <span class="text-[10px] font-extrabold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-200">Questions partagées</span>
+                        </div>
+                        <p class="text-xs text-[#42466B] mt-0.5">La jeune a noté 2 questions sur son profil artistique et 1 métier favori pour son entretien</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-3 shrink-0">
+                      <span class="text-xs text-[#6B7280]">12 nov. 2026</span>
+                      <button
+                        type="button"
+                        (click)="selectCounselorTab('SUIVI_RDV')"
+                        class="rounded-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 text-xs font-extrabold transition cursor-pointer shadow-xs"
+                      >
+                        Préparer l'échange →
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Priorité 4 : Rendez-vous daté Sophie Martin & Emma D. -->
+                  <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <div class="h-10 w-10 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-black shrink-0">
+                        📅
+                      </div>
+                      <div class="min-w-0">
+                        <div class="flex items-center gap-2">
+                          <span class="font-extrabold text-sm text-[#0F1035]">Entretien d'orientation — Emma D.</span>
+                          <span class="text-[10px] font-extrabold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">Confirmé</span>
+                        </div>
+                        <p class="text-xs text-[#42466B] mt-0.5">Mer. 18 nov. 14h30 – 15h30 • Centre des Possibles (Nice) • Salle d'entretien 2</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-3 shrink-0">
+                      <span class="text-xs text-[#6B7280]">Mer. 18 nov.</span>
+                      <button
+                        type="button"
+                        (click)="selectCounselorTab('SUIVI_RDV')"
+                        class="rounded-full bg-white border border-[#E4E0F5] hover:border-[#7C3AED] text-[#7C3AED] px-4 py-1.5 text-xs font-extrabold transition cursor-pointer"
+                      >
+                        Ouvrir la fiche rdv →
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1795,8 +1937,8 @@ export const TONE_OPTIONS: ToneOption[] = [
                     </div>
                     <button
                       type="button"
-                      (click)="activeCounselorTab = 'DOSSIERS_JEUNES'"
-                      class="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#7C3AED] hover:text-[#6D28D9] transition group"
+                      (click)="filterDossiersByStatus('ALL')"
+                      class="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#7C3AED] hover:text-[#6D28D9] transition group cursor-pointer"
                     >
                       <span>Voir tous les dossiers</span>
                       <svg class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2250,38 +2392,104 @@ export const TONE_OPTIONS: ToneOption[] = [
               </div>
             </div>
 
-            <!-- VUE CONSEILLER 2 : DOSSIERS JEUNES (Maquette "Tableau de bord des dossiers jeunes.webp") -->
+            <!-- VUE CONSEILLER 2 : DOSSIERS JEUNES (Refonte Ergonomique & Contextuelle) -->
             <div *ngIf="activeCounselorTab === 'DOSSIERS_JEUNES'" class="space-y-6">
-              <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
+              <div class="rounded-[26px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-5">
                 <div class="flex flex-wrap items-center justify-between gap-4">
-                  <div class="flex gap-2 text-xs font-extrabold">
-                    <span class="rounded-full bg-[#7C3AED] text-white px-4 py-2">Tous (4)</span>
-                    <span class="rounded-full bg-[#F4F2FF] text-[#0F1035] px-4 py-2">À valider (1)</span>
-                    <span class="rounded-full bg-[#F4F2FF] text-[#0F1035] px-4 py-2">Publiés (2)</span>
+                  <div>
+                    <h2 class="text-xl sm:text-2xl font-black text-[#0F1035]">Dossiers jeunes</h2>
+                    <p class="text-xs sm:text-sm text-[#42466B]">Retrouvez vos dossiers, suivez leur avancement et poursuivez votre accompagnement.</p>
                   </div>
                   <button
                     type="button"
-                    (click)="activeCounselorTab = 'IMPORTER_RAPPORT'"
-                    class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] text-white px-5 py-2 text-xs font-extrabold shadow"
+                    (click)="selectCounselorTab('IMPORTER_RAPPORT')"
+                    class="rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:opacity-95 text-white px-5 py-2.5 text-xs font-extrabold shadow flex items-center gap-2 cursor-pointer transition"
                   >
-                    + Importer un rapport
+                    <span>+ Importer un rapport</span>
                   </button>
                 </div>
 
+                <!-- Barre d'outils et filtres -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[#F0EDFA]">
+                  <!-- 6 Onglets de statut avec compteurs dynamiques -->
+                  <div class="flex gap-1.5 flex-wrap text-xs font-extrabold">
+                    <button
+                      type="button"
+                      (click)="dossiersFilterStatus = 'ALL'"
+                      [class]="dossiersFilterStatus === 'ALL' ? 'bg-[#7C3AED] text-white shadow-2xs' : 'bg-[#F4F2FF] text-[#42466B] hover:bg-[#EDE9FE]'"
+                      class="rounded-full px-3.5 py-1.5 transition cursor-pointer"
+                    >
+                      Tous ({{ counselorDossiers.length }})
+                    </button>
+                    <button
+                      type="button"
+                      (click)="dossiersFilterStatus = 'EXTRACTION'"
+                      [class]="dossiersFilterStatus === 'EXTRACTION' ? 'bg-[#7C3AED] text-white shadow-2xs' : 'bg-[#F4F2FF] text-[#42466B] hover:bg-[#EDE9FE]'"
+                      class="rounded-full px-3.5 py-1.5 transition cursor-pointer"
+                    >
+                      En cours d'extraction ({{ dossiersExtractionCount }})
+                    </button>
+                    <button
+                      type="button"
+                      (click)="dossiersFilterStatus = 'TO_REVIEW'"
+                      [class]="dossiersFilterStatus === 'TO_REVIEW' ? 'bg-[#7C3AED] text-white shadow-2xs' : 'bg-[#F4F2FF] text-[#42466B] hover:bg-[#EDE9FE]'"
+                      class="rounded-full px-3.5 py-1.5 transition cursor-pointer"
+                    >
+                      À vérifier ({{ dossiersToReviewCount }})
+                    </button>
+                    <button
+                      type="button"
+                      (click)="dossiersFilterStatus = 'TO_VALIDATE'"
+                      [class]="dossiersFilterStatus === 'TO_VALIDATE' ? 'bg-[#7C3AED] text-white shadow-2xs' : 'bg-[#F4F2FF] text-[#42466B] hover:bg-[#EDE9FE]'"
+                      class="rounded-full px-3.5 py-1.5 transition cursor-pointer"
+                    >
+                      À valider ({{ dossiersToValidateCount }})
+                    </button>
+                    <button
+                      type="button"
+                      (click)="dossiersFilterStatus = 'PUBLISHED'"
+                      [class]="dossiersFilterStatus === 'PUBLISHED' ? 'bg-[#7C3AED] text-white shadow-2xs' : 'bg-[#F4F2FF] text-[#42466B] hover:bg-[#EDE9FE]'"
+                      class="rounded-full px-3.5 py-1.5 transition cursor-pointer"
+                    >
+                      Publiés ({{ dossiersPublishedCount }})
+                    </button>
+                    <button
+                      type="button"
+                      (click)="dossiersFilterStatus = 'FOLLOW_UP'"
+                      [class]="dossiersFilterStatus === 'FOLLOW_UP' ? 'bg-[#7C3AED] text-white shadow-2xs' : 'bg-[#F4F2FF] text-[#42466B] hover:bg-[#EDE9FE]'"
+                      class="rounded-full px-3.5 py-1.5 transition cursor-pointer"
+                    >
+                      À suivre ({{ dossiersFollowUpCount }})
+                    </button>
+                  </div>
+
+                  <!-- Recherche par mot-clé -->
+                  <div class="w-full sm:w-64">
+                    <input
+                      type="text"
+                      [(ngModel)]="dossiersSearchTerm"
+                      placeholder="Rechercher par nom, dossier..."
+                      class="w-full bg-[#F8F7FF] border border-[#E4E0F5] rounded-xl px-3.5 py-2 text-xs font-medium text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:bg-white"
+                    />
+                  </div>
+                </div>
+
+                <!-- Tableau des dossiers avec colonnes et actions contextuelles -->
                 <div class="overflow-x-auto">
                   <table class="w-full text-left text-xs sm:text-sm border-collapse">
                     <thead>
-                      <tr class="border-b border-[#E4E0F5] text-xs text-[#42466B] uppercase">
+                      <tr class="border-b border-[#E4E0F5] text-xs text-[#42466B] uppercase font-bold">
                         <th class="py-3 pr-4">Jeune</th>
                         <th class="py-3 pr-4">Dossier</th>
                         <th class="py-3 pr-4">Structure</th>
-                        <th class="py-3 pr-4">Statut</th>
-                        <th class="py-3 pr-4">Date du rapport</th>
-                        <th class="py-3">Actions</th>
+                        <th class="py-3 pr-4">État du traitement</th>
+                        <th class="py-3 pr-4">Dernière activité</th>
+                        <th class="py-3 pr-4">Prochaine action</th>
+                        <th class="py-3 text-right">Actions</th>
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-[#F0EDFA]">
-                      <tr *ngFor="let d of counselorDossiers" class="hover:bg-[#FAF9FF] transition">
+                      <tr *ngFor="let d of filteredCounselorDossiers" class="hover:bg-[#FAF9FF] transition">
                         <td class="py-3.5 pr-4 font-extrabold text-[#0F1035]">
                           <div class="flex items-center gap-3">
                             <img
@@ -2310,24 +2518,65 @@ export const TONE_OPTIONS: ToneOption[] = [
                             <span *ngIf="d.statusLabel.includes('Publié')" class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                             <span *ngIf="d.statusLabel.includes('valider')" class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
                             <span *ngIf="d.statusLabel.includes('Extraction')" class="h-1.5 w-1.5 rounded-full bg-purple-500"></span>
+                            <span *ngIf="d.statusLabel.includes('vérifier')" class="h-1.5 w-1.5 rounded-full bg-purple-500"></span>
                             <span>{{ d.statusLabel }}</span>
                           </span>
                         </td>
-                        <td class="py-3.5 pr-4 text-[#42466B]">{{ d.date }}</td>
-                        <td class="py-3.5 flex gap-2">
+                        <td class="py-3.5 pr-4 text-xs text-[#42466B]">
+                          {{ d.lastActivity || d.date }}
+                        </td>
+                        <td class="py-3.5 pr-4 text-xs font-semibold text-[#0F1035]">
+                          {{ d.nextAction }}
+                        </td>
+                        <td class="py-3.5 text-right">
+                          <!-- Action contextuelle selon l'état réel du dossier -->
+                          <div class="flex items-center justify-end gap-2">
+                            <button
+                              *ngIf="d.status === 'EXTRACTING'"
+                              type="button"
+                              (click)="openDossierWorkflow(1, d.id)"
+                              class="rounded-full bg-[#F3EFFE] hover:bg-[#EDE9FE] text-[#6D28D9] px-3.5 py-1.5 text-xs font-bold transition cursor-pointer"
+                            >
+                              Voir l'avancement
+                            </button>
+                            <button
+                              *ngIf="d.status === 'TO_REVIEW'"
+                              type="button"
+                              (click)="openDossierWorkflow(1, d.id)"
+                              class="rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-3.5 py-1.5 text-xs font-extrabold transition cursor-pointer shadow-xs"
+                            >
+                              Vérifier les faits
+                            </button>
+                            <button
+                              *ngIf="d.status === 'TO_VALIDATE'"
+                              type="button"
+                              (click)="openDossierWorkflow(4, d.id)"
+                              class="rounded-full bg-amber-600 hover:bg-amber-700 text-white px-3.5 py-1.5 text-xs font-extrabold transition cursor-pointer shadow-xs"
+                            >
+                              Relire la restitution
+                            </button>
+                            <button
+                              *ngIf="d.status === 'PUBLISHED'"
+                              type="button"
+                              (click)="selectCounselorTab('SUIVI_RDV')"
+                              class="rounded-full bg-[#F3EFFE] hover:bg-[#EDE9FE] text-[#6D28D9] px-3.5 py-1.5 text-xs font-bold transition cursor-pointer"
+                            >
+                              Préparer le suivi
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <!-- État si liste vide -->
+                      <tr *ngIf="filteredCounselorDossiers.length === 0">
+                        <td colspan="7" class="py-8 text-center text-xs sm:text-sm text-[#64748B]">
+                          <p class="font-bold text-[#0F1035] text-base mb-1">Aucun dossier trouvé</p>
+                          <p class="mb-3">Aucun dossier ne correspond à votre filtre de statut ou terme de recherche.</p>
                           <button
                             type="button"
-                            (click)="openDossierWorkflow(1)"
-                            class="rounded-full bg-[#F3EFFE] text-[#6D28D9] px-3 py-1 text-xs font-bold"
+                            (click)="dossiersFilterStatus = 'ALL'; dossiersSearchTerm = ''"
+                            class="rounded-full bg-[#F3EFFE] text-[#6D28D9] font-extrabold px-4 py-1.5 text-xs transition cursor-pointer"
                           >
-                            Faits PDF
-                          </button>
-                          <button
-                            type="button"
-                            (click)="openDossierWorkflow(4)"
-                            class="rounded-full bg-[#7C3AED] text-white px-3 py-1 text-xs font-bold"
-                          >
-                            Valider
+                            Réinitialiser les filtres
                           </button>
                         </td>
                       </tr>
@@ -2338,9 +2587,246 @@ export const TONE_OPTIONS: ToneOption[] = [
             </div>
 
             <!-- ========================================================== -->
+            <!-- VUE CONSEILLER 3 : IMPORTER UN RAPPORT (MODULE 3 DÉDIÉ)    -->
+            <!-- ========================================================== -->
+            <div *ngIf="activeCounselorTab === 'IMPORTER_RAPPORT'" class="space-y-6">
+              <input
+                #standaloneFileInput
+                type="file"
+                (change)="onStandaloneReportFileSelected($event)"
+                accept="application/pdf,.pdf"
+                class="hidden"
+              />
+
+              <!-- Alerte erreur ou notice -->
+              <div
+                *ngIf="uploadErrorMessage"
+                class="rounded-2xl bg-red-50 border border-red-200 p-4 text-xs font-bold text-red-800 flex items-center justify-between"
+              >
+                <div class="flex items-center gap-2">
+                  <svg class="h-4 w-4 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>{{ uploadErrorMessage }}</span>
+                </div>
+                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black cursor-pointer">✕</button>
+              </div>
+
+              <!-- En-tête officiel du Module 3 -->
+              <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-7 shadow-lg space-y-3">
+                <span class="inline-block rounded-full bg-white/20 px-3 py-0.5 text-xs font-black uppercase tracking-wider text-purple-100">
+                  Importation &amp; Pré-traitement
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white">Importer un rapport d’orientation</h2>
+                <p class="text-xs sm:text-sm text-[#E7E8FB] max-w-2xl leading-relaxed">
+                  Ajoutez un rapport pour préparer sa restitution. Le contenu devra être vérifié avant publication.
+                </p>
+              </div>
+
+              <!-- Choix : Nouvel import ou reprendre un dossier existant -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <!-- Colonne Gauche (8 Cols) : Formulaire d'importation -->
+                <div class="lg:col-span-8 rounded-[28px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
+                  <!-- Étape 1 : Sélectionner le jeune ou créer un profil -->
+                  <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                      <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black">1</span>
+                      <h3 class="text-sm font-black text-[#0F1035]">Sélectionner le jeune ou créer un dossier</h3>
+                    </div>
+                    <p class="text-xs text-[#6B7280] pl-8">Indiquez à quel jeune associer ce bilan officiel.</p>
+                    <div class="pl-8 pt-1">
+                      <select
+                        [(ngModel)]="importSelectedYoungId"
+                        class="w-full rounded-2xl bg-gray-50 border border-gray-300 px-4 py-3 text-xs sm:text-sm font-bold text-gray-800 focus:outline-none focus:border-[#7C3AED]"
+                      >
+                        <option value="new">+ Créer un nouveau dossier jeune</option>
+                        <option value="mateo">Matéo R. — Lycée Simone Veil (Dossier 2190)</option>
+                        <option value="lucas">Lucas M. — Lycée Masséna (Dossier 2188)</option>
+                        <option value="aicha">Aïcha D. — Lycée Apollinaire (Dossier 2189)</option>
+                        <option value="emma">Emma D. — Centre des Possibles (Rdv 2187)</option>
+                      </select>
+                    </div>
+
+                    <!-- Champs de création si nouveau jeune -->
+                    <div *ngIf="importSelectedYoungId === 'new'" class="pl-8 pt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label class="text-[11px] font-extrabold text-[#42466B] block mb-1">Prénom &amp; Initiale :</label>
+                        <input
+                          type="text"
+                          [(ngModel)]="importNewYoungName"
+                          placeholder="Ex : Maxime T."
+                          class="w-full bg-[#FAF8FF] border border-[#DDD6FE] rounded-xl px-3.5 py-2 text-xs font-semibold text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
+                        />
+                      </div>
+                      <div>
+                        <label class="text-[11px] font-extrabold text-[#42466B] block mb-1">Âge :</label>
+                        <input
+                          type="text"
+                          [(ngModel)]="importNewYoungAge"
+                          placeholder="Ex : 16 ans"
+                          class="w-full bg-[#FAF8FF] border border-[#DDD6FE] rounded-xl px-3.5 py-2 text-xs font-semibold text-[#0F1035] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Étape 2 : Structure de rattachement -->
+                  <div class="space-y-2 pt-2 border-t border-gray-100">
+                    <div class="flex items-center gap-2">
+                      <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black">2</span>
+                      <h3 class="text-sm font-black text-[#0F1035]">Structure de rattachement</h3>
+                    </div>
+                    <p class="text-xs text-[#6B7280] pl-8">Établissement ou antenne émettrice du bilan.</p>
+                    <div class="pl-8 pt-1">
+                      <select
+                        [(ngModel)]="importSelectedStructure"
+                        class="w-full rounded-2xl bg-gray-50 border border-gray-300 px-4 py-3 text-xs sm:text-sm font-bold text-gray-800 focus:outline-none focus:border-[#7C3AED]"
+                      >
+                        <option value="Centre des Possibles — Nice">Centre des Possibles — Nice</option>
+                        <option value="Mission Locale Nice Côte d'Azur">Mission Locale Nice Côte d'Azur</option>
+                        <option value="Lycée Masséna">Lycée Masséna</option>
+                        <option value="Lycée Simone Veil">Lycée Simone Veil</option>
+                        <option value="Lycée Apollinaire">Lycée Apollinaire</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Étape 3 : Zone de dépôt Drag & Drop -->
+                  <div class="space-y-2 pt-2 border-t border-gray-100">
+                    <div class="flex items-center gap-2">
+                      <span class="h-6 w-6 rounded-full bg-[#7C3AED] text-white flex items-center justify-center text-xs font-black">3</span>
+                      <h3 class="text-sm font-black text-[#0F1035]">Téléverser le rapport original (PDF)</h3>
+                    </div>
+                    <p class="text-xs text-[#6B7280] pl-8">Format PDF uniquement (taille max. 25 Mo). Contrôle d'intégrité automatique.</p>
+
+                    <div class="pl-8 pt-1">
+                      <div
+                        *ngIf="importStep === 'IDLE'"
+                        (dragover)="$event.preventDefault()"
+                        (drop)="onStandaloneReportFileDropped($event)"
+                        (click)="standaloneFileInput.click()"
+                        class="rounded-2xl border-2 border-dashed border-[#C4B5FD] hover:border-[#7C3AED] bg-[#FAF8FF] hover:bg-[#F5F3FF] transition p-8 text-center space-y-3 cursor-pointer flex flex-col items-center justify-center"
+                      >
+                        <div class="h-14 w-14 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-2xl">
+                          📄
+                        </div>
+                        <div>
+                          <p class="text-sm font-extrabold text-[#0F1035]">
+                            Glissez le rapport PDF ici ou <span class="text-[#7C3AED] underline">parcourir vos fichiers</span>
+                          </p>
+                          <p class="text-xs text-gray-500 mt-0.5">Compatible avec les bilans d'orientation du Centre des Possibles (17 pages).</p>
+                        </div>
+                        <span class="rounded-full bg-white border border-[#DDD6FE] px-3 py-1 text-[11px] font-bold text-gray-600 shadow-2xs">
+                          PDF • Maximum 25 Mo
+                        </span>
+                      </div>
+
+                      <!-- État de transfert et pipeline d'extraction -->
+                      <div *ngIf="importStep !== 'IDLE'" class="rounded-2xl border border-[#E4E0F5] bg-[#F8F7FF] p-5 space-y-4">
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center gap-3">
+                            <div class="h-10 w-10 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg font-bold">
+                              📄
+                            </div>
+                            <div>
+                              <p class="text-sm font-extrabold text-[#0F1035]">{{ importUploadedFileName }}</p>
+                              <p class="text-xs text-[#6B7280]">{{ importUploadedFileSize }} • Fichier reçu</p>
+                            </div>
+                          </div>
+                          <span
+                            *ngIf="importStep === 'READY'"
+                            class="rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-extrabold"
+                          >
+                            ✓ Extraction terminée
+                          </span>
+                        </div>
+
+                        <!-- Pipeline d'états réels -->
+                        <div class="space-y-2 text-xs">
+                          <div class="flex items-center justify-between text-xs font-bold text-[#42466B]">
+                            <span>Pipeline de traitement :</span>
+                            <span>{{ importProgressPercent }}%</span>
+                          </div>
+                          <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div
+                              class="bg-[#7C3AED] h-full rounded-full transition-all duration-300"
+                              [style.width.%]="importProgressPercent"
+                            ></div>
+                          </div>
+                          <div class="grid grid-cols-4 gap-1 text-[10px] text-center pt-1 font-bold">
+                            <span [class.text-emerald-700]="importProgressPercent >= 25">1. Fichier reçu</span>
+                            <span [class.text-emerald-700]="importProgressPercent >= 50">2. Contrôle intégrité</span>
+                            <span [class.text-emerald-700]="importProgressPercent >= 75">3. Extraction faits</span>
+                            <span [class.text-emerald-700]="importProgressPercent === 100">4. Prêt pour revue</span>
+                          </div>
+                        </div>
+
+                        <!-- Actions post-upload -->
+                        <div *ngIf="importStep === 'READY'" class="pt-3 border-t border-[#E4E0F5] flex flex-wrap items-center justify-between gap-3">
+                          <button
+                            type="button"
+                            (click)="resetStandaloneImport()"
+                            class="text-xs text-gray-500 hover:text-gray-700 font-bold cursor-pointer"
+                          >
+                            Remplacer le fichier
+                          </button>
+                          <button
+                            type="button"
+                            (click)="openDossierWorkflow(1)"
+                            class="rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-5 py-2 text-xs font-extrabold transition flex items-center gap-2 shadow-xs cursor-pointer"
+                          >
+                            <span>Passer à la vérification des faits extraits</span>
+                            <span>→</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Colonne Droite (4 Cols) : Reprendre le traitement d'un dossier en cours -->
+                <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
+                  <div class="flex items-center gap-2.5 pb-2 border-b border-[#F0EDFA]">
+                    <div class="h-8 w-8 rounded-xl bg-purple-50 text-[#7C3AED] flex items-center justify-center text-sm font-bold">
+                      📋
+                    </div>
+                    <div>
+                      <h3 class="text-sm font-black text-[#0F1035]">Dossiers en attente</h3>
+                      <p class="text-[11px] text-[#6B7280]">Reprendre le traitement d'un dossier</p>
+                    </div>
+                  </div>
+
+                  <div class="space-y-3 text-xs">
+                    <div
+                      *ngFor="let d of counselorDossiers"
+                      class="p-3 rounded-2xl border border-[#E4E0F5] hover:border-[#7C3AED] bg-[#FAF8FF] space-y-2 transition"
+                    >
+                      <div class="flex items-center justify-between">
+                        <span class="font-extrabold text-[#0F1035]">{{ d.name }}</span>
+                        <span [class]="d.badgeClass" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                          {{ d.statusLabel }}
+                        </span>
+                      </div>
+                      <p class="text-[11px] text-[#6B7280]">{{ d.rdv }} • {{ d.school }}</p>
+                      <div class="pt-1 flex justify-end">
+                        <button
+                          type="button"
+                          (click)="openDossierWorkflow(d.status === 'TO_VALIDATE' ? 4 : 1, d.id)"
+                          class="rounded-full bg-white border border-[#DDD6FE] hover:border-[#7C3AED] text-[#7C3AED] font-extrabold px-3 py-1 text-[11px] transition cursor-pointer"
+                        >
+                          Reprendre le dossier →
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================== -->
             <!-- VUE CONSEILLER : DOSSIER & WORKFLOW 6 ÉTAPES (MASTER ENGINE) -->
             <!-- ========================================================== -->
-            <div *ngIf="activeCounselorTab === 'IMPORTER_RAPPORT' || activeCounselorTab === 'VERIFICATION_DONNEES' || activeCounselorTab === 'VALIDATIONS_PUBLICATIONS'" class="space-y-6">
+            <div *ngIf="activeCounselorTab === 'VALIDATIONS_PUBLICATIONS' || activeCounselorTab === 'VERIFICATION_DONNEES'" class="space-y-6">
               <!-- Input natif masqué pour l'import de fichier depuis ordinateur, smartphone ou tablette -->
               <input
                 #fileInput
@@ -3886,46 +4372,191 @@ export class AppComponent implements OnInit {
 
   counselorDossiers = [
     {
+      id: 'd-2187',
       name: 'Emma D.',
       age: '16 ans',
       rdv: 'Rdv 2187',
       school: 'Centre des Possibles — Nice',
       date: '12 nov. 2026',
+      status: 'PUBLISHED',
       statusLabel: 'Publié',
       badgeClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200/60',
-      avatarUrl: 'assets/visuals/avatar-emma.png'
+      avatarUrl: 'assets/visuals/avatar-emma.png',
+      lastActivity: 'Restitution publiée • Audio généré',
+      nextAction: 'Préparer le rdv du 18 nov.'
     },
     {
+      id: 'd-2188',
       name: 'Lucas M.',
       age: '16 ans',
       rdv: 'Dossier 2188',
       school: 'Lycée Masséna',
       date: '11 nov. 2026',
+      status: 'TO_VALIDATE',
       statusLabel: 'À valider',
       badgeClass: 'bg-amber-50 text-amber-700 border border-amber-200/60',
-      avatarUrl: 'assets/visuals/avatar-lucas.png'
+      avatarUrl: 'assets/visuals/avatar-lucas.png',
+      lastActivity: 'Restitution rédigée en attente',
+      nextAction: 'Relire la proposition'
     },
     {
+      id: 'd-2189',
       name: 'Aïcha D.',
       age: '18 ans',
       rdv: 'Dossier 2189',
       school: 'Lycée Apollinaire',
       date: '09 nov. 2026',
+      status: 'PUBLISHED',
       statusLabel: 'Publié',
       badgeClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200/60',
-      avatarUrl: 'assets/visuals/avatar-aicha.png'
+      avatarUrl: 'assets/visuals/avatar-aicha.png',
+      lastActivity: 'Entretien du 23 nov. planifié',
+      nextAction: 'Préparer les 5 questions clés'
     },
     {
+      id: 'd-2190',
       name: 'Matéo R.',
       age: '17 ans',
       rdv: 'Dossier 2190',
       school: 'Lycée Simone Veil',
       date: '08 nov. 2026',
-      statusLabel: 'Extraction IA',
+      status: 'TO_REVIEW',
+      statusLabel: 'À vérifier',
       badgeClass: 'bg-purple-50 text-purple-700 border border-purple-200/60',
-      avatarUrl: 'assets/visuals/avatar-mateo.png'
+      avatarUrl: 'assets/visuals/avatar-mateo.png',
+      lastActivity: 'Extraction IA terminée (17 pages)',
+      nextAction: 'Contrôler les 7 faits extraits'
     }
   ];
+
+  // Filtres et recherche pour les dossiers jeunes
+  dossiersFilterStatus: string = 'ALL';
+  dossiersSearchTerm: string = '';
+  dossiersStructureFilter: string = 'ALL';
+  dossiersSortBy: 'DATE_DESC' | 'DATE_ASC' | 'NAME' = 'DATE_DESC';
+
+  // Import de rapport autonome (Module 3)
+  importStep: 'IDLE' | 'UPLOADING' | 'EXTRACTING' | 'READY' = 'IDLE';
+  importSelectedYoungId: string = 'new';
+  importNewYoungName: string = '';
+  importNewYoungAge: string = '16';
+  importSelectedStructure: string = 'Centre des Possibles — Nice';
+  importUploadedFileName: string | null = null;
+  importUploadedFileSize: string | null = null;
+  importProgressPercent: number = 0;
+  importSelectedTabMode: 'NEW_IMPORT' | 'RESUME_EXISTING' = 'NEW_IMPORT';
+
+  filterDossiersByStatus(status: string): void {
+    this.dossiersFilterStatus = status;
+    this.selectCounselorTab('DOSSIERS_JEUNES');
+  }
+
+  get filteredCounselorDossiers(): any[] {
+    let list = [...this.counselorDossiers];
+    if (this.dossiersFilterStatus !== 'ALL') {
+      if (this.dossiersFilterStatus === 'EXTRACTION') {
+        list = list.filter(d => d.status === 'EXTRACTING' || d.statusLabel.toLowerCase().includes('extraction'));
+      } else if (this.dossiersFilterStatus === 'TO_REVIEW') {
+        list = list.filter(d => d.status === 'TO_REVIEW' || d.statusLabel.toLowerCase().includes('vérifier'));
+      } else if (this.dossiersFilterStatus === 'TO_VALIDATE') {
+        list = list.filter(d => d.status === 'TO_VALIDATE' || d.statusLabel.toLowerCase().includes('valider'));
+      } else if (this.dossiersFilterStatus === 'PUBLISHED') {
+        list = list.filter(d => d.status === 'PUBLISHED' || d.statusLabel.toLowerCase().includes('publié'));
+      } else if (this.dossiersFilterStatus === 'FOLLOW_UP') {
+        list = list.filter(d => d.status === 'PUBLISHED' || d.nextAction.toLowerCase().includes('rdv'));
+      }
+    }
+    if (this.dossiersStructureFilter !== 'ALL') {
+      list = list.filter(d => d.school.toLowerCase().includes(this.dossiersStructureFilter.toLowerCase()));
+    }
+    if (this.dossiersSearchTerm && this.dossiersSearchTerm.trim()) {
+      const q = this.dossiersSearchTerm.toLowerCase().trim();
+      list = list.filter(d =>
+        d.name.toLowerCase().includes(q) ||
+        d.rdv.toLowerCase().includes(q) ||
+        d.school.toLowerCase().includes(q) ||
+        d.nextAction.toLowerCase().includes(q)
+      );
+    }
+    if (this.dossiersSortBy === 'NAME') {
+      list.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (this.dossiersSortBy === 'DATE_ASC') {
+      list.sort((a, b) => a.date.localeCompare(b.date));
+    }
+    return list;
+  }
+
+  get dossiersExtractionCount(): number {
+    return this.counselorDossiers.filter(d => d.status === 'EXTRACTING' || d.statusLabel.toLowerCase().includes('extraction')).length;
+  }
+
+  get dossiersToReviewCount(): number {
+    return this.counselorDossiers.filter(d => d.status === 'TO_REVIEW' || d.statusLabel.toLowerCase().includes('vérifier')).length;
+  }
+
+  get dossiersToValidateCount(): number {
+    return this.counselorDossiers.filter(d => d.status === 'TO_VALIDATE' || d.statusLabel.toLowerCase().includes('valider')).length;
+  }
+
+  get dossiersPublishedCount(): number {
+    return this.counselorDossiers.filter(d => d.status === 'PUBLISHED' || d.statusLabel.toLowerCase().includes('publié')).length;
+  }
+
+  get dossiersFollowUpCount(): number {
+    return this.counselorDossiers.filter(d => d.status === 'PUBLISHED' || d.nextAction.toLowerCase().includes('rdv')).length;
+  }
+
+  get upcomingAppointmentsCount(): number {
+    return 3;
+  }
+
+  onStandaloneReportFileSelected(event: any): void {
+    const file = event.target?.files?.[0];
+    if (file) {
+      this.handleStandaloneFileUpload(file);
+    }
+  }
+
+  onStandaloneReportFileDropped(event: DragEvent): void {
+    event.preventDefault();
+    const file = event.dataTransfer?.files?.[0];
+    if (file) {
+      this.handleStandaloneFileUpload(file);
+    }
+  }
+
+  handleStandaloneFileUpload(file: File): void {
+    if (!file.name.toLowerCase().endsWith('.pdf')) {
+      this.uploadErrorMessage = 'Format invalide. Seuls les fichiers PDF sont acceptés.';
+      return;
+    }
+    if (file.size > 25 * 1024 * 1024) {
+      this.uploadErrorMessage = 'Fichier trop volumineux. La taille maximale est de 25 Mo.';
+      return;
+    }
+    this.uploadErrorMessage = null;
+    this.importUploadedFileName = file.name;
+    this.importUploadedFileSize = `${(file.size / (1024 * 1024)).toFixed(1)} Mo`;
+    this.importStep = 'UPLOADING';
+    this.importProgressPercent = 35;
+
+    setTimeout(() => {
+      this.importStep = 'EXTRACTING';
+      this.importProgressPercent = 70;
+    }, 700);
+
+    setTimeout(() => {
+      this.importStep = 'READY';
+      this.importProgressPercent = 100;
+    }, 1500);
+  }
+
+  resetStandaloneImport(): void {
+    this.importStep = 'IDLE';
+    this.importUploadedFileName = null;
+    this.importUploadedFileSize = null;
+    this.importProgressPercent = 0;
+  }
 
   audioChapters = [
     { title: 'Mon profil en résumé (Rdv 2187)', timeRange: '00:00 – 01:02' },
@@ -4777,11 +5408,11 @@ export class AppComponent implements OnInit {
   getCounselorHeaderSubtitle(): string {
     switch (this.activeCounselorTab) {
       case 'TABLEAU_DE_BORD':
-        return 'Bienvenue sur votre espace conseiller MonBilan+. Suivez vos jeunes et validez les restitutions.';
+        return 'Voici les dossiers et les actions qui nécessitent votre attention.';
       case 'DOSSIERS_JEUNES':
         return 'Consultez, suivez et gérez les parcours d’orientation de vos jeunes accompagnés.';
       case 'IMPORTER_RAPPORT':
-        return 'Ajoutez un rapport du Centre des Possibles pour structurer une restitution vérifiée.';
+        return 'Ajoutez un rapport pour préparer sa restitution. Le contenu devra être vérifié avant publication.';
       case 'VERIFICATION_DONNEES':
         return 'Contrôlez chaque information extraite du rapport original (pages 1 à 17).';
       case 'VALIDATIONS_PUBLICATIONS':
@@ -4816,10 +5447,13 @@ export class AppComponent implements OnInit {
     }
   }
 
-  openDossierWorkflow(step: CounselorWorkflowStep = 1): void {
+  openDossierWorkflow(step: CounselorWorkflowStep = 1, dossierId: string = 'd-2187'): void {
     this.activePortal = 'COUNSELOR';
-    this.activeCounselorTab = 'IMPORTER_RAPPORT';
+    this.activeCounselorTab = 'VALIDATIONS_PUBLICATIONS';
     this.setWorkflowStep(step);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
   }
 
   openCounselorValidation(): void {
@@ -4829,11 +5463,11 @@ export class AppComponent implements OnInit {
   getCounselorHeaderTitle(): string {
     switch (this.activeCounselorTab) {
       case 'TABLEAU_DE_BORD':
-        return 'Bonjour, Conseiller !';
+        return `Bonjour, ${this.counselorDisplayName} 👋`;
       case 'DOSSIERS_JEUNES':
         return 'Dossiers jeunes';
       case 'IMPORTER_RAPPORT':
-        return 'Importer un rapport';
+        return 'Importer un rapport d’orientation';
       case 'VERIFICATION_DONNEES':
         return 'Vérification des données extraites';
       case 'VALIDATIONS_PUBLICATIONS':

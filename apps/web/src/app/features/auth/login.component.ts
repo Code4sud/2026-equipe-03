@@ -304,14 +304,14 @@ export interface LoginSuccessEvent {
             <span class="bg-white px-3 text-xs text-[#8E92BC] font-bold absolute">Ou</span>
           </div>
 
-          <!-- Bouton secondaire : Créer mon compte jeune -->
+          <!-- Bouton secondaire : Créer un compte -->
           <button
             type="button"
-            (click)="onRegisterYoung()"
+            (click)="onGoToRegister()"
             class="w-full rounded-full border-2 border-[#7C3AED] text-[#7C3AED] hover:bg-[#F5F3FF] font-black text-xs sm:text-sm py-3 transition flex items-center justify-center gap-2 shadow-2xs"
           >
             <span><mb-icon name="user-plus"></mb-icon></span>
-            <span>Créer mon compte jeune</span>
+            <span>Créer un compte</span>
           </button>
 
           <!-- Footer d'information -->
@@ -351,6 +351,7 @@ export interface LoginSuccessEvent {
 export class LoginComponent implements OnInit {
   @Output() loginSuccess = new EventEmitter<LoginSuccessEvent>();
   @Output() registerYoung = new EventEmitter<void>();
+  @Output() goToRegister = new EventEmitter<void>();
 
   selectedProfile: AuthProfileType = 'YOUNG';
   email: string = 'emma.d@monbilan.fr';
@@ -404,7 +405,13 @@ export class LoginComponent implements OnInit {
     alert('Un email de réinitialisation sécurisé a été préparé si votre adresse correspond à un compte.');
   }
 
+  onGoToRegister(): void {
+    this.goToRegister.emit();
+    this.registerYoung.emit();
+  }
+
   onRegisterYoung(): void {
+    this.goToRegister.emit();
     this.registerYoung.emit();
   }
 }

@@ -31,6 +31,7 @@ import { SupportDirectoryComponent } from './features/autonomous/support-directo
 import { ReportOverviewComponent } from './features/report/report-overview.component';
 import { CoachIaComponent } from './features/coach/coach-ia.component';
 import { LoginComponent, LoginSuccessEvent } from './features/auth/login.component';
+import { RegisterComponent, RegisterSuccessEvent } from './features/auth/register.component';
 import { LocalDiscoveryComponent } from './features/local-discovery/local-discovery.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { ExplorationDashboardComponent } from './features/exploration/exploration-dashboard.component';
@@ -278,15 +279,25 @@ export const TONE_OPTIONS: ToneOption[] = [
     CounselorAppointmentsComponent,
     SettingsComponent,
     CounselorSettingsComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   template: `
-    <!-- Page de Connexion Premium (Maquette officielle) -->
-    <app-login
-      *ngIf="!isAuthenticated"
-      (loginSuccess)="onLoginSuccess($event)"
-      (registerYoung)="onRegisterYoung()"
-    ></app-login>
+    <!-- Authentification Premium (Connexion ou Inscription selon maquette officielle) -->
+    <ng-container *ngIf="!isAuthenticated">
+      <app-login
+        *ngIf="authView === 'LOGIN'"
+        (loginSuccess)="onLoginSuccess($event)"
+        (goToRegister)="authView = 'REGISTER'"
+        (registerYoung)="authView = 'REGISTER'"
+      ></app-login>
+
+      <app-register
+        *ngIf="authView === 'REGISTER'"
+        (goToLogin)="authView = 'LOGIN'"
+        (registerSuccess)="onRegisterSuccess($event)"
+      ></app-register>
+    </ng-container>
 
     <!-- Shell Applicatif Protégé (Authentifié) -->
     <div *ngIf="isAuthenticated" class="min-h-screen flex flex-col lg:flex-row bg-[#F4F2FF] text-[#0F1035] font-sans overflow-x-hidden">
@@ -4092,8 +4103,11 @@ export class AppComponent implements OnInit {
     }
   }
 
+  authView: 'LOGIN' | 'REGISTER' = 'LOGIN';
+
   onLoginSuccess(event: LoginSuccessEvent): void {
     this.isAuthenticated = true;
+    this.authView = 'LOGIN';
     this.activePortal = event.role;
     if (event.role === 'YOUNG') {
       this.currentUserEmail = event.email;
@@ -4106,15 +4120,44 @@ export class AppComponent implements OnInit {
     }
   }
 
+  onRegisterSuccess(event: RegisterSuccessEvent): void {
+    this.isAuthenticated = true;
+    this.authView = 'LOGIN';
+
+    if (event.role === 'YOUNG') {
+      this.activePortal = 'YOUNG';
+      this.currentUserEmail = event.email;
+      this.currentUserDisplayName = event.displayName;
+      this.userFirstName = event.firstName;
+      this.userLastName = event.lastName;
+
+      if (event.mode === 'AUTONOMOUS') {
+        this.journeyMode = 'AUTONOMOUS';
+        this.selectYoungTab('ACCUEIL_AUTONOME');
+      } else {
+        this.journeyMode = 'SUPPORTED';
+        this.selectYoungTab('ACCUEIL');
+      }
+    } else {
+      this.activePortal = 'COUNSELOR';
+      this.counselorEmail = event.email;
+      this.counselorDisplayName = event.displayName;
+      this.counselorFirstName = event.firstName;
+      this.counselorLastName = event.lastName;
+      if (event.organization) {
+        this.counselorOrganization = event.organization;
+      }
+      this.selectCounselorTab('TABLEAU_DE_BORD');
+    }
+  }
+
   logout(): void {
     this.isAuthenticated = false;
+    this.authView = 'LOGIN';
   }
 
   onRegisterYoung(): void {
-    this.isAuthenticated = true;
-    this.activePortal = 'YOUNG';
-    this.journeyMode = 'AUTONOMOUS';
-    this.selectYoungTab('ACCUEIL_AUTONOME');
+    this.authView = 'REGISTER';
   }
   activeYoungTab: YoungTab = 'ACCUEIL';
   activeCounselorTab: CounselorTab = 'TABLEAU_DE_BORD';

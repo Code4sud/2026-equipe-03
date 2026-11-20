@@ -889,13 +889,7 @@ export interface UIHexacoItem {
               <div>
                 <div class="flex items-start justify-between gap-2 mb-2">
                   <div class="flex items-center gap-2.5 min-w-0">
-                    <img
-                      *ngIf="c.imageUrl"
-                      [src]="c.imageUrl"
-                      [alt]="c.titleFr"
-                      class="h-11 w-11 rounded-xl object-cover border border-[#E4E0F5] shrink-0"
-                    />
-                    <div *ngIf="!c.imageUrl" class="h-11 w-11 rounded-xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 font-bold">
+                    <div class="h-11 w-11 rounded-xl bg-[#FAF5FF] text-[#7C3AED] border border-[#DDD6FE] flex items-center justify-center shrink-0 font-bold text-lg">
                       💼
                     </div>
                     <div class="min-w-0">

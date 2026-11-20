@@ -486,24 +486,10 @@ export const TONE_OPTIONS: ToneOption[] = [
               class="flex items-center gap-2.5 cursor-pointer group"
               title="Accéder aux paramètres du compte"
             >
-              <!-- Photo de profil -->
+              <!-- Photo de profil / Initiales typographiques (Zéro image IA) -->
               <div class="relative h-10 w-10 rounded-full overflow-hidden shrink-0 border-2 border-[#A855F7]/60 bg-gradient-to-br from-[#7C3AED] to-[#6328E8] flex items-center justify-center text-white font-black text-xs shadow-md">
-                <img
-                  *ngIf="activePortal === 'YOUNG'"
-                  [src]="userPhotoUrl"
-                  alt="Photo de profil"
-                  class="h-full w-full object-cover"
-                  onerror="this.style.display='none'"
-                />
-                <img
-                  *ngIf="activePortal === 'COUNSELOR' && counselorPhotoUrl"
-                  [src]="counselorPhotoUrl"
-                  alt="Sophie Martin"
-                  class="h-full w-full object-cover"
-                  onerror="this.style.display='none'"
-                />
                 <span *ngIf="activePortal === 'YOUNG'">ED</span>
-                <span *ngIf="activePortal === 'COUNSELOR' && !counselorPhotoUrl">{{ getCounselorInitials() }}</span>
+                <span *ngIf="activePortal === 'COUNSELOR'">{{ getCounselorInitials() }}</span>
               </div>
               <div class="min-w-0 flex-1">
                 <p class="text-xs font-black text-white group-hover:text-purple-200 transition truncate leading-tight">
@@ -805,22 +791,8 @@ export const TONE_OPTIONS: ToneOption[] = [
                   class="rounded-full bg-white border border-[#E2DCFA] pl-1.5 pr-2.5 sm:pr-3.5 py-1.5 shadow-[0_2px_10px_rgba(109,40,217,0.06)] hover:border-[#7C3AED] transition flex items-center gap-2.5 focus:outline-none"
                 >
                   <div class="h-9 w-9 rounded-full overflow-hidden bg-gradient-to-br from-[#7C3AED] to-[#6328E8] text-white font-extrabold text-xs flex items-center justify-center shadow-sm shrink-0">
-                    <img
-                      *ngIf="activePortal === 'YOUNG'"
-                      [src]="userPhotoUrl"
-                      alt="Emma D."
-                      class="h-full w-full object-cover"
-                      onerror="this.style.display='none'"
-                    />
-                    <img
-                      *ngIf="activePortal === 'COUNSELOR' && counselorPhotoUrl"
-                      [src]="counselorPhotoUrl"
-                      alt="Sophie Martin"
-                      class="h-full w-full object-cover"
-                      onerror="this.style.display='none'"
-                    />
                     <span *ngIf="activePortal === 'YOUNG'">ED</span>
-                    <span *ngIf="activePortal === 'COUNSELOR' && !counselorPhotoUrl">{{ getCounselorInitials() }}</span>
+                    <span *ngIf="activePortal === 'COUNSELOR'">{{ getCounselorInitials() }}</span>
                   </div>
                   <div class="hidden sm:block text-left">
                     <span class="text-xs font-extrabold text-[#0F1035] block leading-tight">
@@ -842,22 +814,8 @@ export const TONE_OPTIONS: ToneOption[] = [
                 >
                   <div class="px-3 py-2 border-b border-[#F0EDFA] flex items-center gap-2.5">
                     <div class="h-10 w-10 rounded-full overflow-hidden bg-gradient-to-br from-[#7C3AED] to-[#6328E8] text-white font-black text-xs flex items-center justify-center shrink-0">
-                      <img
-                        *ngIf="activePortal === 'YOUNG'"
-                        [src]="userPhotoUrl"
-                        alt="Photo"
-                        class="h-full w-full object-cover"
-                        onerror="this.style.display='none'"
-                      />
-                      <img
-                        *ngIf="activePortal === 'COUNSELOR' && counselorPhotoUrl"
-                        [src]="counselorPhotoUrl"
-                        alt="Photo"
-                        class="h-full w-full object-cover"
-                        onerror="this.style.display='none'"
-                      />
                       <span *ngIf="activePortal === 'YOUNG'">ED</span>
-                      <span *ngIf="activePortal === 'COUNSELOR' && !counselorPhotoUrl">{{ getCounselorInitials() }}</span>
+                      <span *ngIf="activePortal === 'COUNSELOR'">{{ getCounselorInitials() }}</span>
                     </div>
                     <div class="min-w-0">
                       <p class="font-extrabold text-[#0F1035] truncate">{{ activePortal === 'YOUNG' ? (journeyMode === 'AUTONOMOUS' ? 'Jeune Autonome' : currentUserDisplayName) : counselorDisplayName }}</p>
@@ -1836,12 +1794,9 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <!-- Priorité 1 : Rapport nécessitant vérification (Matéo R.) -->
                   <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
                     <div class="flex items-center gap-3 min-w-0">
-                      <img
-                        *ngIf="hasAvatar('assets/visuals/avatar-mateo.png')"
-                        src="assets/visuals/avatar-mateo.png"
-                        alt="Matéo R."
-                        class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shrink-0"
-                      />
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#6328E8] text-white flex items-center justify-center font-extrabold text-xs ring-2 ring-purple-100 shrink-0">
+                        MR
+                      </div>
                       <div class="min-w-0">
                         <div class="flex items-center gap-2">
                           <span class="font-extrabold text-sm text-[#0F1035]">Matéo R. (17 ans)</span>
@@ -1866,12 +1821,9 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <!-- Priorité 2 : Restitution prête pour validation (Lucas M.) -->
                   <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
                     <div class="flex items-center gap-3 min-w-0">
-                      <img
-                        *ngIf="hasAvatar('assets/visuals/avatar-lucas.png')"
-                        src="assets/visuals/avatar-lucas.png"
-                        alt="Lucas M."
-                        class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shrink-0"
-                      />
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-amber-600 to-amber-700 text-white flex items-center justify-center font-extrabold text-xs ring-2 ring-amber-100 shrink-0">
+                        LM
+                      </div>
                       <div class="min-w-0">
                         <div class="flex items-center gap-2">
                           <span class="font-extrabold text-sm text-[#0F1035]">Lucas M. (16 ans)</span>
@@ -1896,12 +1848,9 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <!-- Priorité 3 : Questions partagées par Emma D. -->
                   <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
                     <div class="flex items-center gap-3 min-w-0">
-                      <img
-                        *ngIf="hasAvatar('assets/visuals/avatar-emma.png')"
-                        src="assets/visuals/avatar-emma.png"
-                        alt="Emma D."
-                        class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shrink-0"
-                      />
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center font-extrabold text-xs ring-2 ring-blue-100 shrink-0">
+                        ED
+                      </div>
                       <div class="min-w-0">
                         <div class="flex items-center gap-2">
                           <span class="font-extrabold text-sm text-[#0F1035]">Emma D. (16 ans)</span>
@@ -1985,19 +1934,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="py-3.5 flex items-center justify-between gap-3 hover:bg-[#FBFBFE] px-2 rounded-xl transition"
                     >
                       <div class="flex items-center gap-3 min-w-0">
-                        <img
-                          *ngIf="hasAvatar(d.avatarUrl); else dossierListInitials"
-                          [src]="d.avatarUrl"
-                          [alt]="d.name"
-                          (error)="markAvatarFailed(d.avatarUrl)"
-                          class="h-10 w-10 rounded-full object-cover ring-2 ring-purple-100 shadow-sm flex-shrink-0"
-                        />
-                        <ng-template #dossierListInitials>
-                          <span
-                            [attr.aria-label]="d.name"
-                            class="h-10 w-10 rounded-full bg-[#EDE9FE] text-[#6D28D9] ring-2 ring-purple-100 shadow-sm flex-shrink-0 flex items-center justify-center text-sm font-extrabold"
-                          >{{ getInitials(d.name) }}</span>
-                        </ng-template>
+                        <span
+                          [attr.aria-label]="d.name"
+                          class="h-10 w-10 rounded-full bg-[#EDE9FE] text-[#6D28D9] ring-2 ring-purple-100 shadow-sm flex-shrink-0 flex items-center justify-center text-sm font-extrabold"
+                        >{{ getInitials(d.name) }}</span>
                         <div class="truncate">
                           <span class="font-extrabold text-[#0F1035] text-sm block leading-tight">{{ d.name }}</span>
                           <span class="text-xs text-[#6B7280] block">{{ d.age }} • {{ d.rdv }}</span>
@@ -2524,19 +2464,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <tr *ngFor="let d of filteredCounselorDossiers" class="hover:bg-[#FAF9FF] transition">
                         <td class="py-3.5 pr-4 font-extrabold text-[#0F1035]">
                           <div class="flex items-center gap-3">
-                            <img
-                              *ngIf="hasAvatar(d.avatarUrl); else dossierTableInitials"
-                              [src]="d.avatarUrl"
-                              [alt]="d.name"
-                              (error)="markAvatarFailed(d.avatarUrl)"
-                              class="h-9 w-9 rounded-full object-cover ring-2 ring-purple-100 shadow-2xs flex-shrink-0"
-                            />
-                            <ng-template #dossierTableInitials>
-                              <span
-                                [attr.aria-label]="d.name"
-                                class="h-9 w-9 rounded-full bg-[#EDE9FE] text-[#6D28D9] ring-2 ring-purple-100 shadow-2xs flex-shrink-0 flex items-center justify-center text-xs font-extrabold"
-                              >{{ getInitials(d.name) }}</span>
-                            </ng-template>
+                            <span
+                              [attr.aria-label]="d.name"
+                              class="h-9 w-9 rounded-full bg-[#EDE9FE] text-[#6D28D9] ring-2 ring-purple-100 shadow-2xs flex-shrink-0 flex items-center justify-center text-xs font-extrabold"
+                            >{{ getInitials(d.name) }}</span>
                             <div>
                               <span class="block leading-tight">{{ d.name }}</span>
                               <span class="text-xs text-[#6B7280] font-normal">{{ d.age }}</span>
@@ -2899,19 +2830,12 @@ export const TONE_OPTIONS: ToneOption[] = [
               <div class="rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-7 shadow-lg space-y-5">
                 <div class="flex flex-wrap items-center justify-between gap-4">
                   <div class="flex items-center gap-3.5">
-                    <img
-                      *ngIf="hasAvatar('assets/visuals/avatar-emma.png'); else emmaHeaderInitials"
-                      src="assets/visuals/avatar-emma.png"
-                      alt="Emma D."
-                      (error)="markAvatarFailed('assets/visuals/avatar-emma.png')"
-                      class="h-14 w-14 rounded-2xl object-cover ring-2 ring-white/30 shadow-md"
-                    />
-                    <ng-template #emmaHeaderInitials>
-                      <span
-                        aria-label="Emma D."
-                        class="h-14 w-14 rounded-2xl bg-white/20 ring-2 ring-white/30 shadow-md flex items-center justify-center text-xl font-black text-white"
-                      >{{ getInitials('Emma D.') }}</span>
-                    </ng-template>
+                    <div
+                      aria-label="Emma D."
+                      class="h-14 w-14 rounded-2xl bg-white/20 ring-2 ring-white/30 shadow-md flex items-center justify-center text-xl font-black text-white shrink-0"
+                    >
+                      ED
+                    </div>
                     <div>
                       <div class="flex items-center gap-2">
                         <h2 class="text-xl sm:text-2xl font-black text-white">Dossier Emma D. (16 ans)</h2>
@@ -4071,7 +3995,7 @@ export class AppComponent implements OnInit {
   currentUserDisplayName: string = 'Emma D.';
   userFirstName: string = 'Emma';
   userLastName: string = 'D.';
-  userPhotoUrl: string = 'assets/visuals/profile-emma.png';
+  userPhotoUrl: string = '';
 
   counselorFirstName: string = 'Sophie';
   counselorLastName: string = 'Martin';
@@ -4079,7 +4003,7 @@ export class AppComponent implements OnInit {
   counselorEmail: string = 'sophie.martin@centre-des-possibles.fr';
   counselorRoleTitle: string = 'Conseillère d\'orientation';
   counselorOrganization: string = 'Centre des Possibles';
-  counselorPhotoUrl: string = 'assets/visuals/profile-counselor.png';
+  counselorPhotoUrl: string = '';
 
   activePortal: 'YOUNG' | 'COUNSELOR' = 'YOUNG';
 
@@ -4421,9 +4345,9 @@ export class AppComponent implements OnInit {
   /** Photos de profil qui n'ont pas pu être chargées (fichier absent, URL cassée…). */
   private failedAvatars = new Set<string>();
 
-  /** Vrai si le jeune a une photo de profil utilisable. */
+  /** Zéro image IA : on privilégie toujours les initiales typographiques et badges sémantiques. */
   hasAvatar(url?: string | null): boolean {
-    return !!url && !this.failedAvatars.has(url);
+    return false;
   }
 
   /** Appelé quand une photo ne se charge pas : on bascule sur les initiales. */

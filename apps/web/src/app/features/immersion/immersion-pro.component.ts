@@ -145,14 +145,13 @@ export interface ContactProgressStep {
         <div class="lg:col-span-8 rounded-[32px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
           <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-start">
             
-            <!-- Visuel photo du peintre (Exactement career-peintre.png de la maquette) -->
-            <div class="sm:col-span-5 rounded-2xl overflow-hidden bg-gray-100 shadow-md aspect-4/3 relative">
-              <img
-                src="assets/visuals/career-peintre.png"
-                alt="Peintre décorateur au travail"
-                class="w-full h-full object-cover"
-                (error)="onPhotoError($event)"
-              />
+            <!-- Visuel Métier Vectoriel (Sans image IA) -->
+            <div class="sm:col-span-5 rounded-2xl overflow-hidden bg-gradient-to-tr from-[#31104B] via-[#4C1D95] to-[#7C3AED] shadow-md aspect-4/3 relative flex flex-col items-center justify-center p-6 text-white text-center">
+              <div class="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-3xl mb-3 shadow-md border border-white/20">
+                <mb-icon name="palette"></mb-icon>
+              </div>
+              <span class="text-sm font-extrabold tracking-wide">Fiche Métier Immersion</span>
+              <span class="text-[11px] text-[#DDD6FE] mt-1">Code ROME : B1301</span>
             </div>
 
             <!-- Bloc Identité Métier -->

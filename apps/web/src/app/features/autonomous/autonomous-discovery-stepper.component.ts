@@ -263,15 +263,13 @@ export interface DiscoveryActivityCard {
         <div class="rounded-[32px] bg-white border border-[#E4E0F5] p-6 sm:p-8 shadow-sm space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             
-            <!-- Visuel Métier (Jeune avec tablette graphique et casque) -->
-            <div class="md:col-span-5 relative rounded-2xl overflow-hidden bg-gradient-to-tr from-purple-900 to-indigo-600 aspect-4/3 flex items-center justify-center shadow-inner">
-              <img
-                src="assets/visuals/step1-boy-laptop.png"
-                alt="Graphiste au travail"
-                class="h-full w-full object-cover"
-                (error)="onHeroImageError($event)"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            <!-- Visuel Métier Vectoriel (Sans image IA) -->
+            <div class="md:col-span-5 relative rounded-2xl overflow-hidden bg-gradient-to-tr from-[#31104B] via-[#4C1D95] to-[#7C3AED] aspect-4/3 flex flex-col items-center justify-center p-6 text-white text-center shadow-inner">
+              <div class="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-3xl mb-3 shadow-md border border-white/20">
+                <mb-icon name="palette"></mb-icon>
+              </div>
+              <span class="text-sm font-extrabold tracking-wide">Fiche Découverte Métier</span>
+              <span class="text-[11px] text-[#DDD6FE] mt-1">O*NET 27-1024.00 FR</span>
             </div>
 
             <!-- Bloc Titre, Badge & Favori -->
@@ -770,9 +768,8 @@ export class AutonomousDiscoveryStepperComponent implements OnInit {
   }
 
   onHeroImageError(event: Event): void {
-    // Si l'image locale échoue, on bascule sur un fallback d'asset local
     const img = event.target as HTMLImageElement;
-    img.src = 'assets/visuals/feat-2-careers.png';
+    img.style.display = 'none';
   }
 
   private loadRepresentativeCareer(careerId: string): void {

@@ -76,54 +76,45 @@ export interface RegisterSuccessEvent {
           </div>
         </div>
 
-        <!-- MILIEU DE COLONNE : ILLUSTRATION DES 3 JEUNES AVEC ÉCLATS LUMINEUX -->
+        <!-- MILIEU DE COLONNE : COMPOSITION VECTORIELLE ÉPURÉE (ZÉRO IMAGE IA) -->
         <div class="my-6 lg:my-8 relative z-10 flex flex-col items-center justify-center">
-          <div class="relative w-full max-w-[340px] flex items-end justify-center">
+          <div class="relative w-full max-w-[340px] flex items-center justify-center py-4">
 
-            <!-- Éclats lumineux décoratifs comme sur la maquette -->
-            <div class="absolute -top-3 left-4 text-[#FDE047] text-xl font-bold select-none animate-pulse">✦</div>
-            <div class="absolute top-2 right-6 text-white text-lg font-bold select-none opacity-80">✦</div>
-            <div class="absolute top-1/3 -left-3 flex flex-col gap-1 opacity-70">
-              <span class="block w-3 h-0.5 bg-white/70 rotate-[-30deg]"></span>
-              <span class="block w-2.5 h-0.5 bg-white/70 rotate-[-15deg]"></span>
-            </div>
-            <div class="absolute top-1/4 -right-2 flex flex-col gap-1 opacity-70">
-              <span class="block w-3 h-0.5 bg-white/70 rotate-[30deg]"></span>
-              <span class="block w-2.5 h-0.5 bg-white/70 rotate-[15deg]"></span>
-            </div>
+            <!-- Éclats lumineux décoratifs -->
+            <div class="absolute -top-1 left-6 text-[#FDE047] text-xl font-bold select-none animate-pulse">✦</div>
+            <div class="absolute top-3 right-8 text-white text-lg font-bold select-none opacity-80">✦</div>
+            <div class="absolute bottom-4 left-4 text-[#FDE047] text-sm select-none opacity-70">✦</div>
 
-            <!-- Composition stylisée des 3 jeunes de la maquette -->
-            <div class="relative flex items-end justify-center w-full h-[220px] sm:h-[250px]">
-              <!-- Jeune 1 (Gauche) : Fille au casque audio violet et sweat -->
-              <div class="absolute left-2 sm:left-4 bottom-0 z-10 w-[110px] sm:w-[130px] transition-transform hover:scale-105">
-                <img
-                  src="assets/visuals/hero-girl-headphones.png"
-                  alt="Jeune fille au casque audio"
-                  class="w-full h-auto object-contain drop-shadow-xl"
-                  (error)="onImgError($event)"
-                />
+            <!-- Composition vectorielle moderne des 3 parcours -->
+            <div class="relative w-full flex items-center justify-center gap-2.5 sm:gap-3">
+              <!-- Pilule 1 : Comprendre (Casque Audio) -->
+              <div class="flex-1 bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 flex flex-col items-center text-center shadow-lg transition-transform hover:-translate-y-1">
+                <div class="w-11 h-11 rounded-xl bg-white/20 text-white flex items-center justify-center text-xl mb-2 shadow-inner">
+                  <mb-icon name="headphones"></mb-icon>
+                </div>
+                <span class="text-[11px] font-extrabold text-white leading-tight">Audios 2 min</span>
+                <span class="text-[9px] text-[#DDD6FE] mt-0.5">Mon bilan</span>
               </div>
 
-              <!-- Jeune 2 (Centre) : Garçon au sac à dos et t-shirt bleu -->
-              <div class="relative z-20 w-[125px] sm:w-[150px] transition-transform hover:scale-105 mb-0">
-                <img
-                  src="assets/visuals/hero-boy-backpack.png"
-                  alt="Jeune homme au sac à dos"
-                  class="w-full h-auto object-contain drop-shadow-2xl"
-                  (error)="onImgError($event)"
-                />
+              <!-- Pilule 2 : Explorer (Boussole Métiers) - mise en avant -->
+              <div class="flex-1 bg-white/20 backdrop-blur-lg rounded-2xl p-4 border-2 border-white/40 flex flex-col items-center text-center shadow-xl scale-105 z-10 transition-transform hover:scale-110">
+                <div class="w-12 h-12 rounded-xl bg-white text-[#6328E8] flex items-center justify-center text-2xl mb-2 shadow-md">
+                  <mb-icon name="compass"></mb-icon>
+                </div>
+                <span class="text-xs font-black text-white leading-tight">Explorer</span>
+                <span class="text-[9px] text-[#F3E8FF] mt-0.5">22 Métiers</span>
               </div>
 
-              <!-- Jeune 3 (Droite) : Fille aux lunettes et carnet/tablette -->
-              <div class="absolute right-2 sm:right-4 bottom-0 z-10 w-[110px] sm:w-[130px] transition-transform hover:scale-105">
-                <img
-                  src="assets/visuals/avatar-aicha.png"
-                  alt="Jeune fille étudiante avec carnet"
-                  class="w-full h-auto object-contain drop-shadow-xl rounded-b-2xl"
-                  (error)="onImgError($event)"
-                />
+              <!-- Pilule 3 : Agir (Accompagnement & Immersion) -->
+              <div class="flex-1 bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 flex flex-col items-center text-center shadow-lg transition-transform hover:-translate-y-1">
+                <div class="w-11 h-11 rounded-xl bg-white/20 text-white flex items-center justify-center text-xl mb-2 shadow-inner">
+                  <mb-icon name="users"></mb-icon>
+                </div>
+                <span class="text-[11px] font-extrabold text-white leading-tight">Accompagné</span>
+                <span class="text-[9px] text-[#DDD6FE] mt-0.5">Conseiller</span>
               </div>
             </div>
+
           </div>
         </div>
 

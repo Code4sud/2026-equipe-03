@@ -464,13 +464,11 @@ export interface ExplorationStepItem {
               (click)="openCareer(m.title)"
               class="rounded-2xl border border-[#E4E0F5] overflow-hidden bg-white hover:shadow-md hover:border-[#7C3AED]/40 transition cursor-pointer flex flex-col justify-between group"
             >
-              <!-- Photo du métier -->
-              <div class="relative h-24 sm:h-28 overflow-hidden bg-purple-50">
-                <img
-                  [src]="m.image"
-                  [alt]="m.title"
-                  class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                />
+              <!-- Vignette vectorielle du métier (Sans image IA) -->
+              <div class="relative h-24 sm:h-28 overflow-hidden bg-gradient-to-br from-[#EDE9FE] via-[#F3E8FF] to-[#FAF5FF] flex items-center justify-center">
+                <span class="text-3xl filter drop-shadow-xs group-hover:scale-110 transition duration-300">
+                  {{ m.tag.includes('Art') ? '🎨' : (m.tag.includes('Service') ? '☕' : (m.tag.includes('Animation') ? '🎙️' : '💼')) }}
+                </span>
                 <!-- Bouton Favori coeur -->
                 <button
                   type="button"

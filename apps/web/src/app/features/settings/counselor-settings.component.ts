@@ -791,7 +791,7 @@ export class CounselorSettingsComponent implements OnInit {
   @Input() email = 'sophie.martin@centre-des-possibles.fr';
   @Input() roleTitle = "Conseillère d'orientation";
   @Input() organization = 'Centre des Possibles';
-  @Input() photoUrl = 'assets/visuals/profile-counselor.png';
+  @Input() photoUrl = '';
 
   @Output() profileSave = new EventEmitter<CounselorProfileData>();
   @Output() logout = new EventEmitter<void>();

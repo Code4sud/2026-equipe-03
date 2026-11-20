@@ -260,7 +260,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MbIconComponent, 
+  imports: [MbIconComponent,
     CommonModule,
     FormsModule,
     ImmersionProComponent,
@@ -288,6 +288,7 @@ export const TONE_OPTIONS: ToneOption[] = [
     <ng-container *ngIf="!isAuthenticated">
       <app-login
         *ngIf="authView === 'LOGIN'"
+        [initialProfile]="initialAuthProfile"
         (loginSuccess)="onLoginSuccess($event)"
         (goToRegister)="authView = 'REGISTER'"
         (registerYoung)="authView = 'REGISTER'"
@@ -330,7 +331,7 @@ export const TONE_OPTIONS: ToneOption[] = [
             aria-label="Ouvrir ou fermer le menu de navigation"
             class="h-10 w-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-lg font-extrabold text-white"
           >
-            <mb-icon [name]="isMobileMenuOpen ? 'x' : 'menu'"></mb-icon>
+            {{ isMobileMenuOpen ? '✕' : '☰' }}
           </button>
         </div>
       </div>
@@ -377,7 +378,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               aria-label="Fermer le menu"
               class="lg:hidden h-8 w-8 rounded-lg bg-white/10 text-white text-sm font-bold flex items-center justify-center shrink-0 ml-2"
             >
-              <mb-icon name="x"></mb-icon>
+              ✕
             </button>
           </div>
         </div>
@@ -971,7 +972,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="relative rounded-[28px] bg-gradient-to-r from-[#1A1354] via-[#4C1D95] to-[#6D28D9] text-white p-6 sm:p-8 shadow-lg overflow-hidden">
                   <div class="relative z-10 max-w-2xl space-y-4">
                     <div class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-purple-100">
-                      <span><mb-icon name="target"></mb-icon></span>
+                      <span>🎯</span>
                       <span>Parcours Accompagné • Dossier Rdv {{ rdvNumber }}</span>
                     </div>
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
@@ -996,7 +997,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="openAudioRestitutionView()"
                         class="rounded-full bg-white/15 hover:bg-white/25 border border-white/40 text-white px-5 py-3 text-sm font-bold flex items-center gap-2 cursor-pointer"
                       >
-                        <span><mb-icon name="play" [filled]="true"></mb-icon></span>
+                        <span>▶</span>
                         <span>Écouter le bilan audio (≈ 6 min)</span>
                       </button>
                     </div>
@@ -1010,7 +1011,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg font-black">
-                          <mb-icon name="file-text"></mb-icon>
+                          📄
                         </div>
                         <span [class]="restitutionStatus === 'PUBLISHED' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200'" class="px-2.5 py-0.5 rounded-full border text-[11px] font-extrabold">
                           {{ restitutionStatus === 'PUBLISHED' ? '✓ Disponible' : 'En préparation' }}
@@ -1037,7 +1038,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-pink-100 text-[#EC4899] flex items-center justify-center text-lg font-black">
-                          <mb-icon name="file-text"></mb-icon>
+                          💼
                         </div>
                         <span class="px-2.5 py-0.5 rounded-full bg-purple-50 text-[#7C3AED] border border-purple-200 text-[11px] font-extrabold">
                           {{ careers.length }} pistes
@@ -1064,7 +1065,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-black">
-                          <mb-icon name="target"></mb-icon>
+                          🎯
                         </div>
                         <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-extrabold">
                           Étape 2 sur 4
@@ -1091,7 +1092,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div class="space-y-3">
                       <div class="flex items-center justify-between">
                         <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg font-black">
-                          <mb-icon name="calendar"></mb-icon>
+                          📅
                         </div>
                         <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 text-[11px] font-extrabold">
                           Mer. 18 nov.
@@ -1124,7 +1125,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       </h3>
                       <div class="grid grid-cols-4 gap-2 text-center text-xs">
                         <div class="space-y-1">
-                          <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#7C3AED] text-white font-bold"><mb-icon name="check"></mb-icon></span>
+                          <span class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-[#7C3AED] text-white font-bold">✓</span>
                           <span class="block font-bold text-[#0F1035]">Découvrir</span>
                         </div>
                         <div class="space-y-1">
@@ -1254,7 +1255,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           (click)="selectedCareerDetail.isFavorite = !selectedCareerDetail.isFavorite"
                           class="rounded-full bg-white text-[#0F1035] px-5 py-2 text-xs font-extrabold shadow"
                         >
-                          {{ selectedCareerDetail.isFavorite ? 'Retiré / Ajouté aux favoris' : 'Ajouter aux favoris' }}
+                          {{ selectedCareerDetail.isFavorite ? 'Retiré / Ajouté aux favoris' : '♡ Ajouter aux favoris' }}
                         </button>
                         <button
                           type="button"
@@ -1269,7 +1270,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           (click)="selectedCareerDetail = null"
                           class="rounded-full bg-[#7C3AED] text-white border border-white/40 px-5 py-2 text-xs font-extrabold shadow"
                         >
-                          <mb-icon name="external-link"></mb-icon> Retour à mon immersion pro
+                          ↗ Retour à mon immersion pro
                         </button>
                       </div>
                     </div>
@@ -1296,7 +1297,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       title="Vivre une immersion en réalité virtuelle sur Métiers360 (nouvel onglet)"
                       class="rounded-full bg-white text-[#0F1035] border border-[#E4E0F5] py-2.5 px-4 text-center hover:bg-[#F3EFFE] hover:border-[#7C3AED] transition cursor-pointer"
                     >
-                      <mb-icon name="handshake"></mb-icon> Immersion Pro <span class="text-[#7C3AED]"><mb-icon name="external-link"></mb-icon></span>
+                      <mb-icon name="handshake"></mb-icon> Immersion Pro <span class="text-[#7C3AED]">↗</span>
                     </a>
                   </div>
 
@@ -1428,7 +1429,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <div class="rounded-xl bg-[#F0FDF4] border border-emerald-200 p-3 text-xs text-emerald-900 font-bold">
-                          <mb-icon name="check"></mb-icon> {{ getCareerTrainingAccessibility(selectedCareerDetail).accessLevel }}
+                          ✓ {{ getCareerTrainingAccessibility(selectedCareerDetail).accessLevel }}
                         </div>
 
                         <div class="space-y-1.5 text-xs text-[#31355B]">
@@ -1504,7 +1505,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         >
                           <span><mb-icon name="glasses"></mb-icon></span>
                           <span>Vivre une immersion VR 360° sur Métiers360</span>
-                          <span><mb-icon name="external-link"></mb-icon></span>
+                          <span>↗</span>
                         </a>
 
                         <!-- Bouton d'action ou confirmation de demande -->
@@ -1657,7 +1658,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     ESPACE CONSEILLER • {{ counselorOrganization }}
                   </span>
                   <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
-                    Bonjour, {{ counselorDisplayName }}
+                    Bonjour, {{ counselorDisplayName }} 👋
                   </h2>
                   <p class="text-xs sm:text-sm sm:text-base text-[#E7E8FB] leading-relaxed">
                     Voici les dossiers et les actions qui nécessitent votre attention.
@@ -1779,7 +1780,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#F0EDFA]">
                   <div class="flex items-center gap-2.5">
                     <div class="h-9 w-9 rounded-xl bg-purple-50 text-[#7C3AED] ring-1 ring-purple-100 flex items-center justify-center text-lg">
-                      <mb-icon name="zap"></mb-icon>
+                      ⚡
                     </div>
                     <div>
                       <h3 class="text-base sm:text-lg font-black text-[#0F1035]">Mes priorités opérationnelles</h3>
@@ -1877,7 +1878,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="py-3.5 flex flex-wrap items-center justify-between gap-3 hover:bg-[#FAF9FF] p-2 rounded-xl transition">
                     <div class="flex items-center gap-3 min-w-0">
                       <div class="h-10 w-10 rounded-2xl bg-[#EDE9FE] text-[#7C3AED] flex items-center justify-center text-lg font-black shrink-0">
-                        <mb-icon name="calendar"></mb-icon>
+                        📅
                       </div>
                       <div class="min-w-0">
                         <div class="flex items-center gap-2">
@@ -2001,7 +2002,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold mb-1 shadow-xs text-xs">
-                        <mb-icon name="check"></mb-icon>
+                        ✓
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">01. Importer</span>
                       <span class="text-[9px] text-emerald-700 font-bold truncate w-full">PDF 17p</span>
@@ -2029,10 +2030,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="p-2 sm:p-2.5 rounded-2xl shadow-xs flex flex-col items-center hover:bg-purple-50/50 transition cursor-pointer min-w-0 overflow-hidden"
                     >
                       <div class="h-7 w-7 sm:h-8 sm:w-8 rounded-full bg-purple-100 text-[#7C3AED] flex items-center justify-center font-bold mb-1 text-xs">
-                        <mb-icon name="zap"></mb-icon>
+                        <mb-icon name="sliders"></mb-icon>
                       </div>
                       <span class="text-[11px] font-black text-[#0F1035] block leading-tight truncate w-full">03. Rapprochement</span>
-                      <span class="text-[9px] text-purple-700 font-bold truncate w-full">Sélection IA</span>
+                      <span class="text-[9px] text-purple-700 font-bold truncate w-full">Analyse guidée</span>
                     </button>
 
                     <!-- Étape 4 -->
@@ -2339,7 +2340,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         <span>Étape 2/6 : Préparation & Convention</span>
                       </span>
                       <span class="rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 text-xs font-bold">
-                        <mb-icon name="check"></mb-icon> Éligible PMSMP (1-3 jours)
+                        ✓ Éligible PMSMP (1-3 jours)
                       </span>
                     </div>
                   </div>
@@ -2573,7 +2574,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </svg>
                   <span>{{ uploadErrorMessage }}</span>
                 </div>
-                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black cursor-pointer"><mb-icon name="x"></mb-icon></button>
+                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black cursor-pointer">✕</button>
               </div>
 
               <!-- En-tête officiel du Module 3 -->
@@ -2672,7 +2673,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         class="rounded-2xl border-2 border-dashed border-[#C4B5FD] hover:border-[#7C3AED] bg-[#FAF8FF] hover:bg-[#F5F3FF] transition p-8 text-center space-y-3 cursor-pointer flex flex-col items-center justify-center"
                       >
                         <div class="h-14 w-14 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-2xl">
-                          <mb-icon name="file-text"></mb-icon>
+                          📄
                         </div>
                         <div>
                           <p class="text-sm font-extrabold text-[#0F1035]">
@@ -2690,7 +2691,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         <div class="flex items-center justify-between">
                           <div class="flex items-center gap-3">
                             <div class="h-10 w-10 rounded-xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-lg font-bold">
-                              <mb-icon name="file-text"></mb-icon>
+                              📄
                             </div>
                             <div>
                               <p class="text-sm font-extrabold text-[#0F1035]">{{ importUploadedFileName }}</p>
@@ -2701,7 +2702,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                             *ngIf="importStep === 'READY'"
                             class="rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-extrabold"
                           >
-                            <mb-icon name="check"></mb-icon> Extraction terminée
+                            ✓ Extraction terminée
                           </span>
                         </div>
 
@@ -2752,7 +2753,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="lg:col-span-4 rounded-[28px] bg-white border border-[#E4E0F5] p-6 shadow-sm space-y-4">
                   <div class="flex items-center gap-2.5 pb-2 border-b border-[#F0EDFA]">
                     <div class="h-8 w-8 rounded-xl bg-purple-50 text-[#7C3AED] flex items-center justify-center text-sm font-bold">
-                      <mb-icon name="clipboard-list"></mb-icon>
+                      📋
                     </div>
                     <div>
                       <h3 class="text-sm font-black text-[#0F1035]">Dossiers en attente</h3>
@@ -2811,7 +2812,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </svg>
                   <span>{{ uploadErrorMessage }}</span>
                 </div>
-                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black"><mb-icon name="x"></mb-icon></button>
+                <button type="button" (click)="uploadErrorMessage = null" class="text-red-500 hover:text-red-700 font-black">✕</button>
               </div>
 
               <div
@@ -2824,7 +2825,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   </svg>
                   <span>{{ uploadSuccessNotice }}</span>
                 </div>
-                <button type="button" (click)="uploadSuccessNotice = null" class="text-emerald-500 hover:text-emerald-700 font-black"><mb-icon name="x"></mb-icon></button>
+                <button type="button" (click)="uploadSuccessNotice = null" class="text-emerald-500 hover:text-emerald-700 font-black">✕</button>
               </div>
 
               <!-- En-tête Dossier Emma D. & Stepper 6 Étapes -->
@@ -2861,7 +2862,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       class="rounded-full bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 text-xs font-bold transition flex items-center gap-1.5"
                     >
                       <span>Voir rendu jeune</span>
-                      <span><mb-icon name="external-link"></mb-icon></span>
+                      <span>↗</span>
                     </button>
                   </div>
                 </div>
@@ -2869,10 +2870,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <!-- Notification temporaire -->
                 <div *ngIf="workflowNotice" class="rounded-2xl bg-white/95 text-[#0F1035] p-3 text-xs font-extrabold flex items-center justify-between shadow-md">
                   <span class="flex items-center gap-2">
-                    <span class="text-emerald-600"><mb-icon name="check"></mb-icon></span>
+                    <span class="text-emerald-600">✓</span>
                     <span>{{ workflowNotice }}</span>
                   </span>
-                  <button type="button" (click)="workflowNotice = null" class="text-gray-400 hover:text-black"><mb-icon name="x"></mb-icon></button>
+                  <button type="button" (click)="workflowNotice = null" class="text-gray-400 hover:text-black">✕</button>
                 </div>
 
                 <!-- Stepper 6 étapes Master Prompt -->
@@ -2919,10 +2920,10 @@ export const TONE_OPTIONS: ToneOption[] = [
                   >
                     <div class="flex items-center justify-between">
                       <span class="text-[10px] font-mono tracking-wider uppercase opacity-80">Étape 03</span>
-                      <span class="text-xs"><mb-icon name="zap"></mb-icon></span>
+                      <span class="text-xs"><mb-icon name="sliders"></mb-icon></span>
                     </div>
-                    <div class="text-xs leading-tight font-extrabold">03. Sélection IA</div>
-                    <span class="text-[10px] text-purple-200 font-extrabold">Rapprochement</span>
+                    <div class="text-xs leading-tight font-extrabold">03. Rapprochement</div>
+                    <span class="text-[10px] text-purple-200 font-extrabold">Analyse guidée</span>
                   </button>
 
                   <button
@@ -2992,7 +2993,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <p class="text-xs text-gray-500 pl-8">Choisis le dossier du jeune concerné par ce rapport.</p>
                       <div class="pl-8 pt-1">
                         <div class="relative">
-                          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"><mb-icon name="user"></mb-icon></span>
+                          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">👤</span>
                           <select class="w-full rounded-2xl bg-gray-50 border border-gray-300 pl-11 pr-8 py-3 text-xs sm:text-sm font-bold text-gray-800 focus:outline-none focus:border-[#7C3AED]">
                             <option value="emma">Emma D. — Dossier Rdv 2187 (Centre des Possibles)</option>
                             <option value="lucas">Lucas M. — Dossier Rdv 2188 (Mission Locale)</option>
@@ -3021,7 +3022,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           class="rounded-2xl border-2 border-dashed border-[#C4B5FD] hover:border-[#7C3AED] transition-all p-8 text-center space-y-3 bg-[#FAF8FF] cursor-pointer flex flex-col items-center justify-center"
                         >
                           <div class="h-14 w-14 rounded-2xl bg-purple-100 text-[#7C3AED] flex items-center justify-center text-2xl">
-                            <mb-icon name="cloud"></mb-icon>
+                            ☁️
                           </div>
                           <div>
                             <p class="text-sm font-extrabold text-[#0F1035]">
@@ -3030,7 +3031,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                             <p class="text-xs text-gray-400 mt-0.5">Glisse ton fichier dans cette zone ou clique pour le sélectionner.</p>
                           </div>
                           <span class="rounded-full bg-white border border-gray-200 px-3 py-1 text-[11px] font-bold text-gray-600 flex items-center gap-1 shadow-2xs">
-                            <span><mb-icon name="file-text"></mb-icon></span>
+                            <span>📄</span>
                             <span>PDF uniquement</span>
                           </span>
                         </div>
@@ -3047,7 +3048,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                       
                       <div class="pl-8 pt-1 grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
-                          <span class="text-base text-gray-500"><mb-icon name="file-text"></mb-icon></span>
+                          <span class="text-base text-gray-500">📄</span>
                           <div>
                             <span class="text-[10px] uppercase font-bold text-gray-400 block">Nombre de pages</span>
                             <span class="text-xs font-black text-gray-900">{{ uploadedFile ? '17 pages' : '—' }}</span>
@@ -3055,7 +3056,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
-                          <span class="text-base text-gray-500"><mb-icon name="save"></mb-icon></span>
+                          <span class="text-base text-gray-500">💾</span>
                           <div>
                             <span class="text-[10px] uppercase font-bold text-gray-400 block">Taille du fichier</span>
                             <span class="text-xs font-black text-gray-900">{{ uploadedFile ? uploadedFile.size : '—' }}</span>
@@ -3063,7 +3064,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         </div>
 
                         <div class="rounded-xl border border-gray-200 bg-gray-50 p-3 flex items-center gap-2.5">
-                          <span class="text-base text-gray-500"><mb-icon name="folder"></mb-icon></span>
+                          <span class="text-base text-gray-500">📁</span>
                           <div>
                             <span class="text-[10px] uppercase font-bold text-gray-400 block">Dossier associé</span>
                             <span class="text-xs font-black text-gray-900">Emma D. (2187)</span>
@@ -3079,12 +3080,12 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="setWorkflowStep(3)"
                         class="w-full sm:w-auto rounded-full bg-gradient-to-r from-[#6328E8] to-[#9333EA] hover:from-[#541fd0] hover:to-[#8228d6] text-white px-7 py-3 text-xs sm:text-sm font-black shadow-md flex items-center justify-center gap-2 cursor-pointer"
                       >
-                        <span><mb-icon name="play" [filled]="true"></mb-icon></span>
+                        <span>▶</span>
                         <span>Démarrer l'extraction</span>
                       </button>
 
                       <span class="text-[11px] text-gray-500 text-center sm:text-right">
-                        <mb-icon name="info"></mb-icon> Les données extraites seront soumises à ton contrôle professionnel.
+                        ⓘ Les données extraites seront soumises à ton contrôle professionnel.
                       </span>
                     </div>
                   </div>
@@ -3093,7 +3094,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                   <div class="lg:col-span-4 space-y-4">
                     <div class="rounded-[28px] bg-white border border-[#E4E0F5] p-5 sm:p-6 shadow-sm space-y-4">
                       <div class="flex items-center gap-2 pb-2 border-b border-gray-100">
-                        <span class="text-purple-600 font-bold"><mb-icon name="flag"></mb-icon></span>
+                        <span class="text-purple-600 font-bold">🏁</span>
                         <h4 class="text-sm font-black text-[#0F1035]">Étapes du traitement</h4>
                       </div>
 
@@ -3156,7 +3157,7 @@ export const TONE_OPTIONS: ToneOption[] = [
 
                     <!-- Encart de garantie éthique -->
                     <div class="rounded-2xl bg-purple-50/70 border border-purple-200 p-4 flex items-start gap-3">
-                      <span class="text-lg"><mb-icon name="shield-check"></mb-icon></span>
+                      <span class="text-lg">🛡️</span>
                       <p class="text-xs text-purple-900 font-bold leading-relaxed">
                         Les informations extraites doivent être obligatoirement contrôlées par un conseiller avant toute publication.
                       </p>
@@ -3198,7 +3199,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                     <div>
                       <label class="block text-xs font-black uppercase tracking-wider text-[#42466B]">Statut du compte rendu</label>
                       <span class="inline-flex items-center gap-1.5 mt-2 rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-extrabold">
-                        <mb-icon name="check"></mb-icon> Validé par le professionnel
+                        ✓ Validé par le professionnel
                       </span>
                     </div>
                   </div>
@@ -3242,7 +3243,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                           *ngFor="let career of interviewForm.explicitCareers; let i = index"
                           class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 text-emerald-800 px-3.5 py-1 text-xs font-bold"
                         >
-                          <span><mb-icon name="star" [filled]="true"></mb-icon> {{ career }}</span>
+                          <span>★ {{ career }}</span>
                           <button type="button" (click)="removeExplicitCareer(i)" class="text-emerald-700 hover:text-black font-black">×</button>
                         </span>
                       </div>
@@ -3398,7 +3399,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                         (click)="bulkValidateCareers()"
                         class="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-xs font-black shadow transition cursor-pointer"
                       >
-                        <mb-icon name="check"></mb-icon> Tout valider conforme (22/22)
+                        ✓ Tout valider conforme (22/22)
                       </button>
                     </div>
                   </div>
@@ -3500,35 +3501,56 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <div class="rounded-2xl bg-gradient-to-r from-purple-50 via-white to-pink-50 border border-purple-200 p-4 flex flex-wrap items-center justify-between gap-3 shadow-xs">
                   <div>
                     <h3 class="text-base font-black text-[#0F1035]">6 Épisodes thématiques calibrés à ~2 minutes</h3>
-                    <p class="text-xs text-[#42466B]">Volume : ~250 mots par épisode • Synthèse vocale Piper TTS &amp; Transcription synchronisée</p>
+                    <p class="text-xs text-[#42466B]">Volume : ~250 mots par épisode • Synthèse vocale Piper TTS et transcription synchronisée</p>
                   </div>
                   <button
                     type="button"
                     (click)="generateAllEpisodesAudio()"
                     [disabled]="isGeneratingPiperAudio"
-                    class="rounded-full bg-gradient-to-r from-[#EC4899] to-[#9333EA] text-white px-5 py-2 text-xs font-black shadow hover:opacity-95 transition flex items-center gap-2 cursor-pointer"
+                    class="rounded-full bg-gradient-to-r from-[#7C3AED] to-[#5B21B6] text-white px-5 py-2.5 text-xs font-black shadow hover:opacity-95 transition flex items-center gap-2 cursor-pointer"
                   >
                     <span *ngIf="isGeneratingPiperAudio" class="h-3.5 w-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                    <span><mb-icon name="zap"></mb-icon> Générer l'audio des 6 épisodes (Piper TTS)</span>
+                    <span>Générer l'audio des 6 épisodes (Piper TTS)</span>
                   </button>
                 </div>
 
-                <!-- Sélecteur des 6 épisodes -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+                <!-- Sélecteur des 6 épisodes avec visibilité nette et contrastée -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                   <button
                     *ngFor="let ep of audioEpisodes; let idx = index"
                     type="button"
                     (click)="selectEpisode(idx)"
                     [class]="selectedEpisodeIndex === idx
-                      ? 'bg-[#7C3AED] text-white shadow-md ring-2 ring-purple-300 font-black'
-                      : 'bg-white text-[#0F1035] border border-[#E4E0F5] hover:bg-purple-50 font-bold'"
-                    class="rounded-2xl p-3 text-left transition flex flex-col justify-between gap-1 cursor-pointer"
+                      ? 'bg-[#5B21B6] text-white shadow-lg ring-2 ring-purple-400 font-extrabold border-2 border-[#5B21B6]'
+                      : 'bg-white text-[#0F1035] border-2 border-slate-200 hover:border-purple-300 hover:bg-purple-50 font-bold'"
+                    class="rounded-2xl p-3.5 text-left transition flex flex-col justify-between gap-1.5 cursor-pointer shadow-sm min-h-[96px]"
                   >
-                    <span class="text-[10px] uppercase font-mono tracking-wider opacity-85">Épisode {{ ep.episodeNumber }}</span>
-                    <strong class="text-xs leading-tight line-clamp-1">{{ ep.title }}</strong>
-                    <div class="flex items-center justify-between text-[10px] pt-1">
+                    <div class="flex items-center justify-between">
+                      <span
+                        [class]="selectedEpisodeIndex === idx ? 'text-purple-200' : 'text-purple-700'"
+                        class="text-[10px] uppercase font-mono font-black tracking-wider"
+                      >
+                        Épisode {{ ep.episodeNumber }}
+                      </span>
+                      <span
+                        [class]="selectedEpisodeIndex === idx ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'"
+                        class="text-[9px] font-black px-1.5 py-0.5 rounded-full"
+                      >
+                        Prêt
+                      </span>
+                    </div>
+                    <strong
+                      [class]="selectedEpisodeIndex === idx ? 'text-white' : 'text-[#0F1035]'"
+                      class="text-xs leading-snug line-clamp-2"
+                    >
+                      {{ ep.title }}
+                    </strong>
+                    <div
+                      [class]="selectedEpisodeIndex === idx ? 'text-purple-200' : 'text-slate-500'"
+                      class="flex items-center justify-between text-[10px] pt-1 border-t border-slate-200/40"
+                    >
                       <span>{{ ep.wordCount }} mots</span>
-                      <span class="text-emerald-300 font-extrabold"><mb-icon name="check"></mb-icon> Prêt</span>
+                      <span>~2 min</span>
                     </div>
                   </button>
                 </div>
@@ -3544,48 +3566,81 @@ export const TONE_OPTIONS: ToneOption[] = [
                         <h3 class="text-lg font-black text-[#0F1035]">{{ currentEpisode.title }}</h3>
                       </div>
                       <p class="text-xs text-[#42466B] mt-1">
-                        Références vérifiables : Pages {{ currentEpisode.sourcePages.join(', ') }} du Rapport du Centre des Possibles
+                        Références vérifiables : Pages {{ getEpisodeSourcePages(currentEpisode) }} du Rapport du Centre des Possibles
                       </p>
                     </div>
 
+                    <!-- Contrôles audio de l'épisode pour le Conseiller (sans emoji ni icône IA) -->
                     <div class="flex items-center gap-2">
                       <span class="rounded-full bg-emerald-100 text-emerald-800 px-3 py-1 text-xs font-black">
                         {{ currentEpisode.wordCount }} mots (~2 min)
                       </span>
+
+                      <!-- Bouton d'écoute de l'audio disponible ou du script -->
+                      <button
+                        type="button"
+                        (click)="toggleCounselorEpisodeAudio()"
+                        [class]="counselorAudioPlaying || isSpeaking ? 'bg-amber-600 hover:bg-amber-700' : 'bg-[#7C3AED] hover:bg-[#6D28D9]'"
+                        class="rounded-full text-white px-5 py-2 text-xs font-extrabold shadow transition cursor-pointer flex items-center gap-2"
+                      >
+                        <span *ngIf="counselorAudioPlaying || isSpeaking" class="inline-block w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                        <span>{{ getCounselorAudioButtonLabel() }}</span>
+                      </button>
+
+                      <!-- Bouton Génération Synthèse Piper TTS -->
                       <button
                         type="button"
                         (click)="generateEpisodeAudio(selectedEpisodeIndex)"
-                        class="rounded-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-4 py-1.5 text-xs font-extrabold shadow transition cursor-pointer"
+                        class="rounded-full bg-white border border-purple-300 text-[#6D28D9] hover:bg-purple-50 px-4 py-2 text-xs font-extrabold transition cursor-pointer"
                       >
                         Synthèse vocale Piper TTS
                       </button>
                     </div>
                   </div>
 
-                  <!-- Éditeur du script pédagogique -->
+                  <!-- Éditeur du script pédagogique modifiable -->
                   <div class="space-y-2">
-                    <label class="text-xs font-extrabold text-[#31355B] block">Script audio pédagogique (validé et éditable) :</label>
+                    <div class="flex items-center justify-between">
+                      <label class="text-xs font-extrabold text-[#31355B] block">
+                        Script audio pédagogique (validé et modifiable) :
+                      </label>
+                      <span class="text-[11px] font-bold text-slate-500">
+                        {{ getWordCount(currentEpisode.script) }} mots
+                      </span>
+                    </div>
                     <textarea
                       [(ngModel)]="currentEpisode.script"
-                      rows="6"
-                      class="w-full rounded-2xl bg-[#F8F7FF] border border-[#D8DCF0] p-4 text-xs sm:text-sm text-[#0F1035] leading-relaxed focus:bg-white transition"
+                      (ngModelChange)="onScriptChange(currentEpisode)"
+                      rows="7"
+                      class="w-full rounded-2xl bg-[#F8F7FF] focus:bg-white border-2 border-[#D8DCF0] focus:border-[#7C3AED] p-4 text-xs sm:text-sm text-[#0F1035] font-medium leading-relaxed focus:outline-none transition shadow-inner"
+                      placeholder="Script audio de l'épisode..."
                     ></textarea>
                   </div>
 
                   <!-- Timeline des segments synchronisés -->
                   <div class="space-y-2">
-                    <label class="text-xs font-extrabold text-[#31355B] block">Segments synchronisés (alignement texte/voix) :</label>
-                    <div class="space-y-1.5">
+                    <div class="flex items-center justify-between">
+                      <label class="text-xs font-extrabold text-[#31355B] block">
+                        Segments synchronisés (alignement texte / voix) :
+                      </label>
+                      <span class="text-[11px] text-slate-500 font-semibold">
+                        Cliquez sur un segment pour l'écouter
+                      </span>
+                    </div>
+                    <div class="space-y-2 max-h-56 overflow-y-auto pr-1">
                       <div
-                        *ngFor="let seg of currentEpisode.segments; let sIdx = index"
-                        (click)="activeAudioSegmentIndex = sIdx"
-                        [class]="activeAudioSegmentIndex === sIdx ? 'bg-purple-100 border-[#7C3AED]' : 'bg-gray-50 border-transparent'"
-                        class="p-2.5 rounded-xl border text-xs flex items-center justify-between cursor-pointer hover:bg-purple-50 transition"
+                        *ngFor="let seg of currentEpisode.transcriptSegments; let sIdx = index"
+                        (click)="activeAudioSegmentIndex = sIdx; playSegmentAudio(seg)"
+                        [class]="activeAudioSegmentIndex === sIdx ? 'bg-purple-100 border-[#7C3AED] ring-1 ring-[#7C3AED]' : 'bg-gray-50 border-gray-200'"
+                        class="p-3 rounded-xl border text-xs flex items-center justify-between cursor-pointer hover:bg-purple-50 transition"
                       >
-                        <span class="font-mono text-[#6D28D9] font-bold w-28 flex-shrink-0">
-                          [{{ seg.startMs / 1000 | number:'1.0-0' }}s – {{ seg.endMs / 1000 | number:'1.0-0' }}s]
+                        <span class="font-mono text-[#6D28D9] font-bold w-32 shrink-0">
+                          [{{ (seg.startMs / 1000).toFixed(0) }}s – {{ (seg.endMs / 1000).toFixed(0) }}s]
                         </span>
-                        <span class="text-[#0F1035] flex-1 px-2 font-medium">{{ seg.text }}</span>
+                        <span class="text-[#0F1035] flex-1 px-3 font-medium">{{ seg.text }}</span>
+                        <span class="text-[11px] font-bold text-[#7C3AED] hover:underline shrink-0">
+                          Écouter
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -3626,19 +3681,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <h4 class="text-xs font-black uppercase tracking-wider text-[#42466B]">Contrôles de sécurité &amp; Multi-Tenant</h4>
                       <ul class="space-y-2 text-xs font-bold text-[#0F1035]">
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>Isolation Établissement : Centre des Possibles (Nice)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>Professionnel autorisé : Sarah Dupont (Psychologue)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>Destinataire unique : Emma D. (Jeune autorisé)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>Stockage privé sécurisé sans exposition d'URL brute</span>
                         </li>
                       </ul>
@@ -3648,19 +3703,19 @@ export const TONE_OPTIONS: ToneOption[] = [
                       <h4 class="text-xs font-black uppercase tracking-wider text-[#42466B]">Contrôles de conformité documentaire</h4>
                       <ul class="space-y-2 text-xs font-bold text-[#0F1035]">
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>22 Métiers O*NET extraits et validés (zéro omission)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>6 Épisodes audio thématiques calibrés à ~2 minutes</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>Zéro diagnostic psychologique autonome (Centre des Possibles fait foi)</span>
                         </li>
                         <li class="flex items-center gap-2 text-emerald-700">
-                          <span><mb-icon name="check"></mb-icon></span>
+                          <span>✓</span>
                           <span>Preuves sourcées pages 1 à 17 vérifiées</span>
                         </li>
                       </ul>
@@ -3792,7 +3847,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               (click)="isMobileMenuOpen = true"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px] text-[#42466B] font-semibold"
             >
-              <span class="text-base leading-none"><mb-icon name="menu"></mb-icon></span>
+              <span class="text-base leading-none">☰</span>
               <span class="mt-0.5">Plus</span>
             </button>
           </div>
@@ -3839,7 +3894,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               (click)="isMobileMenuOpen = true"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px] text-[#42466B] font-semibold"
             >
-              <span class="text-base leading-none"><mb-icon name="menu"></mb-icon></span>
+              <span class="text-base leading-none">☰</span>
               <span class="mt-0.5">Plus</span>
             </button>
           </div>
@@ -3886,7 +3941,7 @@ export const TONE_OPTIONS: ToneOption[] = [
               (click)="isMobileMenuOpen = true"
               class="flex flex-col items-center justify-center py-1.5 rounded-xl text-[11px] text-[#42466B] font-semibold"
             >
-              <span class="text-base leading-none"><mb-icon name="menu"></mb-icon></span>
+              <span class="text-base leading-none">☰</span>
               <span class="mt-0.5">Plus</span>
             </button>
           </div>
@@ -3913,7 +3968,7 @@ export const TONE_OPTIONS: ToneOption[] = [
                 (click)="showZoneDefinitionModal = false"
                 class="h-8 w-8 rounded-full bg-[#F3EFFE] text-[#6D28D9] hover:bg-[#EDE9FE] flex items-center justify-center font-black text-sm shrink-0"
               >
-                <mb-icon name="x"></mb-icon>
+                ✕
               </button>
             </div>
 
@@ -3990,7 +4045,8 @@ export class AppComponent implements OnInit {
     this.authService = authService;
   }
 
-  isAuthenticated: boolean = true;
+  isAuthenticated: boolean = false;
+  initialAuthProfile: 'YOUNG' | 'COUNSELOR' = 'YOUNG';
   isDemoMode: boolean = true;
   currentUserEmail: string = 'emma.d@monbilan.fr';
   currentUserDisplayName: string = 'Emma D.';
@@ -4061,6 +4117,11 @@ export class AppComponent implements OnInit {
   onLoginSuccess(event: LoginSuccessEvent): void {
     this.isAuthenticated = true;
     this.authView = 'LOGIN';
+    if (typeof window !== 'undefined') {
+      try {
+        sessionStorage.setItem('monbilan_active_session', 'true');
+      } catch {}
+    }
     this.isDemoMode = event.isDemo ?? (event.email.includes('monbilan.fr') || event.email.includes('centre-des-possibles.fr'));
     this.activePortal = event.role;
     if (event.role === 'YOUNG') {
@@ -4077,6 +4138,11 @@ export class AppComponent implements OnInit {
   onRegisterSuccess(event: RegisterSuccessEvent): void {
     this.isAuthenticated = true;
     this.authView = 'LOGIN';
+    if (typeof window !== 'undefined') {
+      try {
+        sessionStorage.setItem('monbilan_active_session', 'true');
+      } catch {}
+    }
     this.isDemoMode = false; // Tout nouveau compte créé est en Mode Réel
 
     if (event.role === 'YOUNG') {
@@ -4110,6 +4176,11 @@ export class AppComponent implements OnInit {
     this.authService.logout();
     this.isAuthenticated = false;
     this.authView = 'LOGIN';
+    if (typeof window !== 'undefined') {
+      try {
+        sessionStorage.removeItem('monbilan_active_session');
+      } catch {}
+    }
   }
 
   onRegisterYoung(): void {
@@ -5212,8 +5283,9 @@ export class AppComponent implements OnInit {
     this.loadPersistedQuestions();
 
     // Restauration de session authentifiée (Démo ou Réelle)
+    const hasActiveSession = typeof window !== 'undefined' && sessionStorage.getItem('monbilan_active_session') === 'true';
     const existingSession = this.authService.restoreSession();
-    if (existingSession) {
+    if (existingSession && hasActiveSession) {
       this.isAuthenticated = true;
       this.isDemoMode = existingSession.isDemo;
       if (existingSession.role === 'YOUNG') {
@@ -5233,6 +5305,9 @@ export class AppComponent implements OnInit {
           this.counselorOrganization = existingSession.organization;
         }
       }
+    } else {
+      this.isAuthenticated = false;
+      this.authView = 'LOGIN';
     }
 
     if (typeof window !== 'undefined') {
@@ -5276,7 +5351,12 @@ export class AppComponent implements OnInit {
         // LocalStorage fallback
       }
       if (window.location.hash === '#counselor') {
-        this.activePortal = 'COUNSELOR';
+        this.initialAuthProfile = 'COUNSELOR';
+        if (this.isAuthenticated) {
+          this.activePortal = 'COUNSELOR';
+        } else {
+          this.authView = 'LOGIN';
+        }
       } else if (window.location.hash === '#register') {
         this.isAuthenticated = false;
         this.authView = 'REGISTER';
@@ -5292,7 +5372,12 @@ export class AppComponent implements OnInit {
   onHashChange(): void {
     if (typeof window !== 'undefined') {
       if (window.location.hash === '#counselor') {
-        this.activePortal = 'COUNSELOR';
+        this.initialAuthProfile = 'COUNSELOR';
+        if (this.isAuthenticated) {
+          this.activePortal = 'COUNSELOR';
+        } else {
+          this.authView = 'LOGIN';
+        }
       } else if (window.location.hash === '#register') {
         this.isAuthenticated = false;
         this.authView = 'REGISTER';
@@ -5527,7 +5612,7 @@ export class AppComponent implements OnInit {
   getCounselorHeaderTitle(): string {
     switch (this.activeCounselorTab) {
       case 'TABLEAU_DE_BORD':
-        return `Bonjour, ${this.counselorDisplayName}`;
+        return `Bonjour, ${this.counselorDisplayName} 👋`;
       case 'DOSSIERS_JEUNES':
         return 'Dossiers jeunes';
       case 'IMPORTER_RAPPORT':
@@ -6287,7 +6372,90 @@ export class AppComponent implements OnInit {
   selectEpisode(idx: number): void {
     this.selectedEpisodeIndex = idx;
     this.activeAudioSegmentIndex = 0;
+    this.stopCounselorEpisodeAudio();
   }
+
+  counselorAudioPlaying = false;
+  private counselorAudio: HTMLAudioElement | null = null;
+
+  getEpisodeSourcePages(ep: UIEpisode): string {
+    if (!ep || !ep.sourceReferences || ep.sourceReferences.length === 0) return '1, 2';
+    return ep.sourceReferences.map((r) => r.page).join(', ');
+  }
+
+  getWordCount(text: string): number {
+    if (!text) return 0;
+    return text.trim().split(/\s+/).filter(Boolean).length;
+  }
+
+  onScriptChange(ep: UIEpisode): void {
+    if (!ep) return;
+    ep.wordCount = this.getWordCount(ep.script);
+  }
+
+  getCounselorAudioButtonLabel(): string {
+    return this.counselorAudioPlaying || this.isSpeaking
+      ? 'Arrêter l’écoute'
+      : 'Écouter l’épisode (Audio WAV / Voix)';
+  }
+
+  toggleCounselorEpisodeAudio(): void {
+    if (this.counselorAudioPlaying) {
+      this.stopCounselorEpisodeAudio();
+      return;
+    }
+
+    if (this.isSpeaking) {
+      this.stopSpeech();
+    }
+
+    try {
+      if (!this.counselorAudio) {
+        this.counselorAudio = new Audio('assets/demo-restitution.wav');
+        this.counselorAudio.onended = () => {
+          this.counselorAudioPlaying = false;
+        };
+        this.counselorAudio.onerror = () => {
+          this.counselorAudioPlaying = false;
+          this.playCounselorTTS();
+        };
+      }
+      this.counselorAudio.currentTime = 0;
+      this.counselorAudio.play().then(() => {
+        this.counselorAudioPlaying = true;
+      }).catch(() => {
+        this.playCounselorTTS();
+      });
+    } catch {
+      this.playCounselorTTS();
+    }
+  }
+
+  playCounselorTTS(): void {
+    const ep = this.currentEpisode;
+    if (!ep || !ep.script) return;
+    this.counselorAudioPlaying = true;
+    this.toggleSpeech(ep.script);
+  }
+
+  stopCounselorEpisodeAudio(): void {
+    if (this.counselorAudio) {
+      this.counselorAudio.pause();
+      this.counselorAudio.currentTime = 0;
+    }
+    if (this.isSpeaking) {
+      this.stopSpeech();
+    }
+    this.counselorAudioPlaying = false;
+  }
+
+  playSegmentAudio(seg: { startMs: number; endMs: number; text: string }): void {
+    if (!seg || !seg.text) return;
+    this.stopCounselorEpisodeAudio();
+    this.toggleSpeech(seg.text);
+  }
+
+
 
   generateEpisodeAudio(idx: number): void {
     this.isGeneratingPiperAudio = true;

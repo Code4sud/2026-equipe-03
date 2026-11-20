@@ -7,7 +7,7 @@
 // ============================================================================
 
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService, UserSession } from '../../core/auth.service';
@@ -369,6 +369,7 @@ export interface LoginSuccessEvent {
 export class LoginComponent implements OnInit {
   private readonly authService = inject(AuthService);
 
+  @Input() initialProfile: AuthProfileType = 'YOUNG';
   @Output() loginSuccess = new EventEmitter<LoginSuccessEvent>();
   @Output() registerYoung = new EventEmitter<void>();
   @Output() goToRegister = new EventEmitter<void>();
@@ -381,7 +382,12 @@ export class LoginComponent implements OnInit {
   isLoading: boolean = false;
   errorMessage: string | null = null;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.initialProfile) {
+      this.selectedProfile = this.initialProfile;
+      this.fillDemoCredentials(this.initialProfile);
+    }
+  }
 
   async onSubmit(): Promise<void> {
     if (!this.email || !this.password) {

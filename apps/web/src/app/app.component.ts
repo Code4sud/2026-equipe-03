@@ -40,6 +40,7 @@ import { DocumentsPageComponent } from './features/documents/documents-page.comp
 import { CounselorSettingsComponent, CounselorProfileData } from './features/settings/counselor-settings.component';
 import { CounselorFactReviewComponent } from './features/counselor/counselor-fact-review.component';
 import { CounselorAppointmentsComponent } from './features/counselor/counselor-appointments.component';
+import { AuthService } from './core/auth.service';
 import {
   JourneyMode,
   UICatalogCareer,
@@ -698,6 +699,26 @@ export const TONE_OPTIONS: ToneOption[] = [
                 <kbd class="pointer-events-none hidden lg:inline-flex items-center rounded-md bg-white border border-[#E2DCFA] px-1.5 py-0.5 text-[10px] font-extrabold text-[#6D28D9] absolute right-3 top-1/2 -translate-y-1/2 shadow-2xs">
                   ⌘K
                 </kbd>
+              </div>
+
+              <!-- Badge Discret d'Environnement Démo vs Réel -->
+              <div class="hidden md:flex items-center">
+                <span
+                  *ngIf="isDemoMode"
+                  class="px-3 py-1.5 rounded-full text-[11px] font-bold bg-[#EDE9FE] text-[#6D28D9] border border-[#DDD6FE] flex items-center gap-1.5 shadow-2xs select-none"
+                  title="Environnement de démonstration officiel du Hackathon Azuréen"
+                >
+                  <span class="w-2 h-2 rounded-full bg-[#8B5CF6] animate-pulse"></span>
+                  <span>Mode Démonstration</span>
+                </span>
+                <span
+                  *ngIf="!isDemoMode"
+                  class="px-3 py-1.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5 shadow-2xs select-none"
+                  title="Environnement connecté réel"
+                >
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <span>Mode Réel</span>
+                </span>
               </div>
 
               <!-- Cloche de notification vectorielle + Popover de notifications aligné à droite -->
@@ -4038,7 +4059,14 @@ export const TONE_OPTIONS: ToneOption[] = [
   `
 })
 export class AppComponent implements OnInit {
+  private readonly authService: AuthService;
+
+  constructor(authService: AuthService) {
+    this.authService = authService;
+  }
+
   isAuthenticated: boolean = true;
+  isDemoMode: boolean = true;
   currentUserEmail: string = 'emma.d@monbilan.fr';
   currentUserDisplayName: string = 'Emma D.';
   userFirstName: string = 'Emma';
@@ -4108,6 +4136,7 @@ export class AppComponent implements OnInit {
   onLoginSuccess(event: LoginSuccessEvent): void {
     this.isAuthenticated = true;
     this.authView = 'LOGIN';
+    this.isDemoMode = event.isDemo ?? (event.email.includes('monbilan.fr') || event.email.includes('centre-des-possibles.fr'));
     this.activePortal = event.role;
     if (event.role === 'YOUNG') {
       this.currentUserEmail = event.email;
@@ -4123,6 +4152,7 @@ export class AppComponent implements OnInit {
   onRegisterSuccess(event: RegisterSuccessEvent): void {
     this.isAuthenticated = true;
     this.authView = 'LOGIN';
+    this.isDemoMode = false; // Tout nouveau compte créé est en Mode Réel
 
     if (event.role === 'YOUNG') {
       this.activePortal = 'YOUNG';
@@ -4152,6 +4182,7 @@ export class AppComponent implements OnInit {
   }
 
   logout(): void {
+    this.authService.logout();
     this.isAuthenticated = false;
     this.authView = 'LOGIN';
   }
@@ -5235,6 +5266,31 @@ export class AppComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.loadBrowserVoices();
     this.loadPersistedQuestions();
+
+    // Restauration de session authentifiée (Démo ou Réelle)
+    const existingSession = this.authService.restoreSession();
+    if (existingSession) {
+      this.isAuthenticated = true;
+      this.isDemoMode = existingSession.isDemo;
+      if (existingSession.role === 'YOUNG') {
+        this.activePortal = 'YOUNG';
+        this.currentUserEmail = existingSession.email;
+        this.currentUserDisplayName = existingSession.displayName;
+        this.userFirstName = existingSession.firstName;
+        this.userLastName = existingSession.lastName;
+        this.journeyMode = existingSession.mode;
+      } else {
+        this.activePortal = 'COUNSELOR';
+        this.counselorEmail = existingSession.email;
+        this.counselorDisplayName = existingSession.displayName;
+        this.counselorFirstName = existingSession.firstName;
+        this.counselorLastName = existingSession.lastName;
+        if (existingSession.organization) {
+          this.counselorOrganization = existingSession.organization;
+        }
+      }
+    }
+
     if (typeof window !== 'undefined') {
       try {
         const savedPhoto = localStorage.getItem('monbilan_user_photo');

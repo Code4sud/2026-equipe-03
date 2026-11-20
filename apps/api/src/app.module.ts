@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MonBilanApplicationService } from './common/monbilan-application.service.js';
 import { MonBilanController } from './common/monbilan.controller.js';
+import { RealAuthService } from './common/auth/real-auth.service.js';
 import {
   AudioModule,
   AuditModule,
@@ -32,6 +33,6 @@ import {
     AuditModule
   ],
   controllers: [MonBilanController],
-  providers: [MonBilanApplicationService]
+  providers: [MonBilanApplicationService, RealAuthService]
 })
 export class AppModule {}

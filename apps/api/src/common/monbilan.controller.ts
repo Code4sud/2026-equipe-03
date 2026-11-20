@@ -19,12 +19,15 @@ import {
 import type { Response } from 'express';
 import { DEMO_IDS } from './demo-fixture.js';
 import { MonBilanApplicationService } from './monbilan-application.service.js';
+import { RealAuthService, RegisterInput } from './auth/real-auth.service.js';
 
 @Controller('v1')
 export class MonBilanController {
   constructor(
     @Inject(MonBilanApplicationService)
-    private readonly appService: MonBilanApplicationService
+    private readonly appService: MonBilanApplicationService,
+    @Inject(RealAuthService)
+    private readonly realAuth: RealAuthService
   ) {}
 
   @Get('health')
@@ -447,6 +450,55 @@ export class MonBilanController {
   getUserSessions(@Headers() headers: Record<string, string | string[] | undefined>) {
     const actor = this.appService.resolveActorFromHeaders(headers);
     return this.appService.getUserSessions(actor);
+  }
+
+  // --------------------------------------------------------------------------
+  // Authentification Réelle Multi-Profil (Jeune autonome, Accompagné, Conseiller)
+  // --------------------------------------------------------------------------
+  @Post('auth/register')
+  async registerUser(@Body() body: RegisterInput) {
+    return this.realAuth.register(body);
+  }
+
+  @Post('auth/login')
+  async loginUser(@Body() body: { email: string; password: string }) {
+    return this.realAuth.login(body.email, body.password);
+  }
+
+  @Post('auth/logout')
+  logoutUser(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const authHeader = String(headers['authorization'] || headers['Authorization'] || '');
+    this.realAuth.destroySession(authHeader);
+    return { success: true, message: 'Session fermée avec succès.' };
+  }
+
+  @Get('auth/me')
+  getAuthMe(@Headers() headers: Record<string, string | string[] | undefined>) {
+    const authHeader = String(headers['authorization'] || headers['Authorization'] || '');
+    const session = this.realAuth.getSessionByToken(authHeader);
+    if (!session) {
+      return { authenticated: false };
+    }
+    return {
+      authenticated: true,
+      user: {
+        id: session.userId,
+        email: session.email,
+        displayName: session.displayName,
+        firstName: session.firstName,
+        lastName: session.lastName,
+        role: session.role,
+        mode: session.mode,
+        tenantId: session.tenantId,
+        organization: session.organization,
+        isDemo: session.isDemo
+      }
+    };
+  }
+
+  @Post('auth/verify-code')
+  verifyInvitationOrCounselorCode(@Body() body: { type: 'COUNSELOR_KEY' | 'INVITATION_CODE'; code: string }) {
+    return this.realAuth.verifyCode(body.type, body.code);
   }
 
   // --------------------------------------------------------------------------

@@ -69,6 +69,7 @@ import {
   loadOnetCareersCatalog,
   DEMO_LOCAL_OPPORTUNITIES
 } from './demo-fixture.js';
+import { RealAuthService } from './auth/real-auth.service.js';
 
 @Injectable()
 export class MonBilanApplicationService {
@@ -101,7 +102,10 @@ export class MonBilanApplicationService {
     process.env['PIPER_VOICE_MODEL'] ?? 'fr_FR-upmc-medium'
   );
 
-  constructor() {
+  private readonly realAuth: RealAuthService;
+
+  constructor(realAuth?: RealAuthService) {
+    this.realAuth = realAuth ?? new RealAuthService();
     const initial = createInitialDemoState();
     this.reports.set(initial.report.id, initial.report);
     this.restitutions.set(initial.restitution.id, initial.restitution);
@@ -134,6 +138,33 @@ export class MonBilanApplicationService {
   // Résolution du contexte Acteur & Tenant (Identity, Tenancy & Authorization)
   // --------------------------------------------------------------------------
   resolveActorFromHeaders(headers: Record<string, string | string[] | undefined>): AccessActor {
+    // 1. Session Réelle authentifiée (si token Bearer présent)
+    const authHeader = headers['authorization'] || headers['Authorization'];
+    if (authHeader && typeof authHeader === 'string' && authHeader.startsWith('Bearer ')) {
+      const session = this.realAuth.getSessionByToken(authHeader);
+      if (session) {
+        if (session.role === 'YOUNG') {
+          return {
+            userId: session.userId,
+            activeTenantId: session.tenantId,
+            memberTenantIds: [session.tenantId],
+            role: 'YOUNG',
+            assignedYoungProfileIds: [],
+            ownYoungProfileId: session.userId
+          };
+        } else {
+          return {
+            userId: session.userId,
+            activeTenantId: session.tenantId,
+            memberTenantIds: [session.tenantId],
+            role: 'COUNSELOR',
+            assignedYoungProfileIds: [DEMO_IDS.YOUNG_PROFILE_LEO]
+          };
+        }
+      }
+    }
+
+    // 2. Mode Démonstration / Headers standards
     const roleHeader = String(headers['x-demo-role'] ?? 'COUNSELOR').toUpperCase();
     const tenantHeader = String(headers['x-tenant-id'] ?? DEMO_IDS.TENANT_NICE);
     const actorHeader = headers['x-actor-id'] ? String(headers['x-actor-id']) : undefined;
@@ -1112,11 +1143,28 @@ export class MonBilanApplicationService {
   }
 
   getUserFavorites(actor: AccessActor): string[] {
+    const realFavs = this.realAuth.getFavorites(actor.userId);
+    if (realFavs && realFavs.length > 0) {
+      return realFavs;
+    }
     const favSet = this.userFavorites.get(actor.userId) ?? new Set<string>();
     return Array.from(favSet);
   }
 
   toggleUserFavorite(actor: AccessActor, careerId: string): { careerId: string; isFavorite: boolean } {
+    // Si c'est un utilisateur réel enregistré
+    const realUser = this.realAuth.getUserById(actor.userId);
+    if (realUser) {
+      const isFav = realUser.favorites.includes(careerId);
+      if (isFav) {
+        this.realAuth.removeFavorite(actor.userId, careerId);
+      } else {
+        this.realAuth.addFavorite(actor.userId, careerId);
+      }
+      this.recordAudit(actor, !isFav ? 'CAREER_FAVORITED' : 'CAREER_UNFAVORITED', 'Career', careerId);
+      return { careerId, isFavorite: !isFav };
+    }
+
     if (!this.userFavorites.has(actor.userId)) {
       this.userFavorites.set(actor.userId, new Set<string>());
     }

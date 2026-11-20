@@ -9,9 +9,10 @@
 // ============================================================================
 
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MbIconComponent } from '../../shared/ui/mb-icon.component';
+import { AuthService } from '../../core/auth.service';
 
 export type RegisterProfileType = 'AUTONOMOUS' | 'SUPPORTED' | 'COUNSELOR';
 
@@ -671,6 +672,8 @@ export interface RegisterSuccessEvent {
   `]
 })
 export class RegisterComponent {
+  private readonly authService = inject(AuthService);
+
   @Output() goToLogin = new EventEmitter<void>();
   @Output() registerSuccess = new EventEmitter<RegisterSuccessEvent>();
 
@@ -787,7 +790,7 @@ export class RegisterComponent {
     return true;
   }
 
-  onSubmitStep2(): void {
+  async onSubmitStep2(): Promise<void> {
     if (!this.isStep2Valid()) {
       this.errorMessage = 'Merci de compléter tous les champs requis.';
       return;
@@ -796,11 +799,29 @@ export class RegisterComponent {
     this.isLoading = true;
     this.errorMessage = null;
 
-    // Simulation de création sécurisée (NestJS + Prisma)
-    setTimeout(() => {
+    try {
+      const isCounselor = this.selectedProfile === 'COUNSELOR';
+      const role = isCounselor ? 'COUNSELOR' : 'YOUNG';
+      const mode = this.selectedProfile === 'SUPPORTED' ? 'SUPPORTED' : 'AUTONOMOUS';
+
+      await this.authService.register({
+        email: this.email,
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        role,
+        mode,
+        invitationCode: this.invitationCode,
+        organization: this.organization,
+        counselorKey: this.counselorKey
+      });
+
       this.isLoading = false;
       this.currentStep = 3;
-    }, 450);
+    } catch (err: any) {
+      this.isLoading = false;
+      this.errorMessage = err.message || 'Erreur lors de l\'inscription.';
+    }
   }
 
   onEnterApp(): void {

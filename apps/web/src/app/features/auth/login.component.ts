@@ -7,9 +7,10 @@
 // ============================================================================
 
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { MbIconComponent } from '../../shared/ui/mb-icon.component';
 import { FormsModule } from '@angular/forms';
+import { AuthService, UserSession } from '../../core/auth.service';
 
 export type AuthProfileType = 'YOUNG' | 'COUNSELOR';
 
@@ -18,6 +19,7 @@ export interface LoginSuccessEvent {
   email: string;
   displayName: string;
   rememberMe: boolean;
+  isDemo?: boolean;
 }
 
 @Component({
@@ -319,12 +321,28 @@ export interface LoginSuccessEvent {
             Tu n'as pas encore de compte ? Commence ton parcours dès maintenant.
           </p>
 
-          <!-- ACCÈS RAPIDE DÉMO (Pour test immédiat avec rôles réels certifiés) -->
-          <div class="pt-3 border-t border-[#F0EDFA] text-center space-y-2">
-            <p class="text-[10px] uppercase tracking-wider font-extrabold text-[#8E92BC]">
-              Accès rapide Démonstration (Certifié)
-            </p>
-            <div class="flex items-center justify-center gap-2 flex-wrap">
+          <!-- ACCÈS DÉMONSTRATION DU HACKATHON (Conservé sans régression) -->
+          <div class="pt-3 border-t border-[#F0EDFA] text-center space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] uppercase tracking-wider font-extrabold text-[#7C3AED] flex items-center gap-1">
+                <mb-icon name="sparkles"></mb-icon>
+                <span>Accès Démonstration Hackathon</span>
+              </span>
+              <span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-bold">100% préservé</span>
+            </div>
+
+            <!-- Bouton Découvrir la démonstration en 1 clic -->
+            <button
+              type="button"
+              (click)="launchQuickDemo('YOUNG')"
+              class="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#EDE9FE] to-[#F5F3FF] border border-[#DDD6FE] text-[#6D28D9] font-extrabold text-xs hover:bg-[#DDD6FE]/40 transition flex items-center justify-center gap-2 shadow-2xs"
+            >
+              <mb-icon name="play"></mb-icon>
+              <span>Découvrir la démonstration (Emma Dubois)</span>
+            </button>
+
+            <!-- Accès rapides individuels -->
+            <div class="flex items-center justify-center gap-2 flex-wrap pt-0.5">
               <button
                 type="button"
                 (click)="fillDemoCredentials('YOUNG')"
@@ -349,6 +367,8 @@ export interface LoginSuccessEvent {
   `
 })
 export class LoginComponent implements OnInit {
+  private readonly authService = inject(AuthService);
+
   @Output() loginSuccess = new EventEmitter<LoginSuccessEvent>();
   @Output() registerYoung = new EventEmitter<void>();
   @Output() goToRegister = new EventEmitter<void>();
@@ -363,7 +383,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (!this.email || !this.password) {
       this.errorMessage = 'Merci de renseigner votre email et mot de passe.';
       return;
@@ -372,22 +392,26 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.errorMessage = null;
 
-    // Simulation de validation réseau / token avec contrôle strict des rôles
-    setTimeout(() => {
+    try {
+      const session: UserSession = await this.authService.login(this.email, this.password);
       this.isLoading = false;
 
-      // Détection stricte du rôle
-      const isCounselor = this.selectedProfile === 'COUNSELOR' || this.email.includes('conseil') || this.email.includes('sarah') || this.email.includes('sophie');
-      const role: AuthProfileType = isCounselor ? 'COUNSELOR' : 'YOUNG';
-      const displayName = role === 'COUNSELOR' ? 'Sophie Martin' : 'Emma D.';
-
       this.loginSuccess.emit({
-        role,
-        email: this.email,
-        displayName,
-        rememberMe: this.rememberMe
+        role: session.role,
+        email: session.email,
+        displayName: session.displayName,
+        rememberMe: this.rememberMe,
+        isDemo: session.isDemo
       });
-    }, 450);
+    } catch (err: any) {
+      this.isLoading = false;
+      this.errorMessage = err.message || 'Identifiants incorrects ou service inaccessible.';
+    }
+  }
+
+  async launchQuickDemo(role: AuthProfileType = 'YOUNG'): Promise<void> {
+    this.fillDemoCredentials(role);
+    await this.onSubmit();
   }
 
   fillDemoCredentials(role: AuthProfileType): void {
